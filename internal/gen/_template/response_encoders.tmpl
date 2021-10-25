@@ -45,24 +45,13 @@ w.WriteHeader({{ $.StatusCode }})
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if eq $.ContentType "application/json" }}
-{{- if $.Schema.IsArray }}
-    js := json.NewStream(w)
-    js.WriteArrayStart()
-    for i, elem := range response {
-        elem.WriteJSON(js)
-        if i != len(response) - 1 {
-            js.WriteMore()
-        }
-    }
-    js.WriteArrayEnd()
-    if err := js.Flush(); err != nil {
-        return err
-    }
-{{- else }}
-if err := response{{ if $.Default }}.Response{{ end }}.WriteJSONTo(w); err != nil {
+j := json.NewStream(w)
+more := json.NewMore(j)
+defer more.Reset()
+{{ template "json_value" resp_elem $ }}
+if err := j.Flush(); err != nil {
     return err
 }
-{{- end }}
 return nil
 {{- else }}
 return fmt.Errorf("{{ $.ContentType }} encoder not implemented")

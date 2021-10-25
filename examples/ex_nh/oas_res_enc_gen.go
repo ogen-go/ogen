@@ -55,7 +55,11 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter) error {
 	case *SearchOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -72,7 +76,11 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 	case *SearchByTagIDOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -89,7 +97,12 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter) error {
 	case *Book:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil

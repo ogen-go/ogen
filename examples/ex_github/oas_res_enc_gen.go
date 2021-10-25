@@ -53,7 +53,12 @@ var (
 func encodeMetaRootResponse(response MetaRoot, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -62,7 +67,12 @@ func encodeMetaRootResponse(response MetaRoot, w http.ResponseWriter) error {
 func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -76,7 +86,12 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -93,7 +108,12 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -110,7 +130,12 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -124,7 +149,11 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -134,21 +163,33 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListGrantsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListGrantsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -162,7 +203,12 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	case *ApplicationGrant:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -172,14 +218,22 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	case *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsGetGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -199,14 +253,22 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -220,28 +282,46 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *Integration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetBySlugApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetBySlugApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -255,7 +335,11 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -265,21 +349,33 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -293,7 +389,12 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -303,14 +404,22 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -330,14 +439,22 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -351,7 +468,11 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 	case *CodesOfConductGetAllCodesOfConductOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -368,7 +489,12 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 	case *CodeOfConduct:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -378,7 +504,12 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -392,7 +523,12 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter) error
 	case *EmojisGetOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -407,7 +543,12 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter) error
 func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response ActionsEnterprisePermissions, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -421,7 +562,12 @@ func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response
 func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -445,7 +591,12 @@ func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResp
 func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedActions, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -459,7 +610,12 @@ func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response Enterpris
 func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -468,7 +624,12 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -477,7 +638,12 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -491,7 +657,12 @@ func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp
 func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -500,7 +671,12 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(respo
 func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -524,7 +700,12 @@ func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResp
 func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -548,7 +729,12 @@ func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(r
 func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -557,16 +743,19 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response []RunnerApplication, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -575,7 +764,12 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -584,7 +778,12 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -593,7 +792,12 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response Authen
 func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runner, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -607,7 +811,12 @@ func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response 
 func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -616,7 +825,12 @@ func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsag
 func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -625,7 +839,12 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUs
 func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -634,7 +853,12 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -645,7 +869,11 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter) error
 	case *GistsListOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -655,7 +883,12 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter) error
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -669,7 +902,11 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	case *GistsListStarredOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -679,14 +916,22 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	case *GistsListStarredApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsListStarredApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -706,14 +951,22 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter) e
 	case *GistsDeleteApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -727,7 +980,11 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	case *GistsListCommentsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -737,14 +994,22 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	case *GistsListCommentsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -758,7 +1023,12 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -768,14 +1038,22 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	case *GistsCreateCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsCreateCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -789,7 +1067,12 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -799,14 +1082,24 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	case *ForbiddenGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -826,14 +1119,22 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 	case *GistsDeleteCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsDeleteCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -847,14 +1148,24 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -868,7 +1179,11 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	case *GistsListCommitsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -878,14 +1193,22 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	case *GistsListCommitsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -905,14 +1228,24 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsCheckIsStarredNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -932,14 +1265,22 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter) error
 	case *GistsStarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsStarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -959,14 +1300,22 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter) e
 	case *GistsUnstarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *GistsUnstarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -980,7 +1329,11 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 	case *GitignoreGetAllTemplatesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -997,7 +1350,12 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 	case *GitignoreTemplate:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1014,7 +1372,12 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	case *AppsListReposAccessibleToInstallationOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1024,14 +1387,22 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	case *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListReposAccessibleToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1050,7 +1421,11 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 	case *LicensesGetAllCommonlyUsedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1067,7 +1442,12 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter) e
 	case *License:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1077,14 +1457,22 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter) e
 	case *LicensesGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *LicensesGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1112,21 +1500,34 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1140,21 +1541,33 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	case *AppsListPlansOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListPlansApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListPlansApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1168,14 +1581,24 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1192,14 +1615,23 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	case *AppsListPlansStubbedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1213,7 +1645,12 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter) error {
 	case *APIOverview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1230,7 +1667,12 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1243,14 +1685,22 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityMarkNotificationsAsReadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1264,7 +1714,12 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	case *Thread:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1274,14 +1729,22 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	case *ActivityGetThreadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityGetThreadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1301,7 +1764,12 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1315,7 +1783,12 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1325,14 +1798,22 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1346,7 +1827,12 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1356,14 +1842,22 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	case *ActivitySetThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivitySetThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1383,14 +1877,22 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	case *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityDeleteThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1410,7 +1912,11 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter) error {
 	case *OrgsListOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1427,14 +1933,24 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter) error {
 	case *OrganizationFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1446,7 +1962,12 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter) error {
 func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response ActionsOrganizationPermissions, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1460,7 +1981,12 @@ func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response Actio
 func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganization, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1484,7 +2010,12 @@ func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1498,7 +2029,12 @@ func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllow
 func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1507,7 +2043,12 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1516,7 +2057,12 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1530,7 +2076,12 @@ func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDel
 func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1539,7 +2090,12 @@ func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1563,7 +2119,12 @@ func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response 
 func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1587,7 +2148,12 @@ func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response Actions
 func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1596,16 +2162,19 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplication, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1614,7 +2183,12 @@ func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplicat
 func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1623,7 +2197,12 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationT
 func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1632,7 +2211,12 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, 
 func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1646,7 +2230,12 @@ func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSe
 func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecrets, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1655,7 +2244,12 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecrets, w http.
 func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1664,7 +2258,12 @@ func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.Resp
 func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1675,7 +2274,12 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1695,7 +2299,12 @@ func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecret, w htt
 func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecret, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1737,14 +2346,23 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 	case *OrgsListBlockedUsersOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1761,7 +2379,12 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1778,16 +2401,19 @@ func encodeOrgsUnblockUserResponse(response OrgsUnblockUser, w http.ResponseWrit
 func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorization, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -1801,7 +2427,12 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1815,14 +2446,23 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	case *OrgsListFailedInvitationsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1836,14 +2476,23 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	case *OrgsListWebhooksOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1857,14 +2506,24 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 	case *OrgHook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1881,7 +2540,12 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1898,7 +2562,12 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1917,14 +2586,23 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	case *OrgsListPendingInvitationsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1938,14 +2616,23 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	case *OrgsListInvitationTeamsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1978,7 +2665,12 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -1992,21 +2684,34 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2023,14 +2728,22 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	case *OrgsRemoveMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsRemoveMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2047,7 +2760,12 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2064,7 +2782,12 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2081,7 +2804,12 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2095,14 +2823,23 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	case *MigrationsListReposForOrgOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2116,7 +2853,12 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2129,7 +2871,12 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2146,7 +2893,12 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	case *OrgsRemoveOutsideCollaboratorUnprocessableEntity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2160,42 +2912,68 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForOrgApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2207,16 +2985,19 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2243,7 +3024,12 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2260,7 +3046,12 @@ func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsR
 func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2269,7 +3060,12 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsag
 func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2278,7 +3074,12 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUs
 func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2287,7 +3088,12 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsa
 func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2298,14 +3104,23 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter) error
 	case *TeamsListOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2319,14 +3134,24 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2343,7 +3168,12 @@ func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrg, w http.ResponseWr
 func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2352,7 +3182,12 @@ func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter) er
 func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2361,7 +3196,12 @@ func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2375,7 +3215,12 @@ func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOr
 func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2384,7 +3229,12 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2393,7 +3243,12 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2407,7 +3262,12 @@ func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscuss
 func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2418,14 +3278,22 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2444,14 +3312,22 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2468,16 +3344,19 @@ func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForT
 func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvitation, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2488,7 +3367,12 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2505,7 +3389,12 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2536,16 +3425,19 @@ func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembers
 func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2556,7 +3448,12 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2576,7 +3473,12 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 	case *TeamsAddOrUpdateProjectPermissionsInOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2593,16 +3495,19 @@ func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrg, w h
 func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2613,7 +3518,12 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2641,7 +3551,12 @@ func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrg, w http.Re
 func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2650,7 +3565,12 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMapping, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2659,16 +3579,19 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMap
 func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -2679,7 +3602,12 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2689,21 +3617,33 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectsGetCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2723,21 +3663,34 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	case *ProjectsDeleteCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteCardForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2751,7 +3704,12 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2761,28 +3719,45 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectsUpdateCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2796,7 +3771,12 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2806,21 +3786,33 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectsGetColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetColumnApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2840,14 +3832,22 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 	case *ProjectsDeleteColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2861,7 +3861,12 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2871,14 +3876,22 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	case *ProjectsUpdateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2892,7 +3905,12 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ProjectsMoveColumnCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2902,21 +3920,34 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ProjectsMoveColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsMoveColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2930,7 +3961,12 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter) e
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2940,14 +3976,22 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter) e
 	case *ProjectsGetApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -2967,28 +4011,45 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsDeleteApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3002,7 +4063,12 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3012,14 +4078,23 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ProjectsUpdateApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsUpdateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3029,14 +4104,23 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ProjectsUpdateApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3050,7 +4134,11 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	case *ProjectsListColumnsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3060,14 +4148,22 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	case *ProjectsListColumnsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsListColumnsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3081,7 +4177,12 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3091,21 +4192,34 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ProjectsCreateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3119,7 +4233,12 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter)
 	case *RateLimitOverview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3129,7 +4248,12 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter)
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3149,28 +4273,45 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *ReactionsDeleteLegacyApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsDeleteLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReactionsDeleteLegacyApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3184,28 +4325,45 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter) error {
 	case *FullRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3222,21 +4380,34 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter) e
 	case *ReposDeleteApplicationJSONTemporaryRedirect:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(307)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3248,7 +4419,12 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter) e
 func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepo, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3257,7 +4433,12 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3276,7 +4457,12 @@ func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifact, w h
 func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3290,7 +4476,12 @@ func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownload
 func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response ActionsRepositoryPermissions, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3304,7 +4495,12 @@ func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response Actions
 func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3318,7 +4514,12 @@ func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowed
 func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepo, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3327,16 +4528,19 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplication, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3345,7 +4549,12 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 func encodeActionsCreateRegistrationTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3354,7 +4563,12 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response Authentication
 func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3363,7 +4577,12 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken,
 func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3377,7 +4596,12 @@ func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteS
 func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3391,16 +4615,19 @@ func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRun, w
 func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3411,21 +4638,34 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActionsApproveWorkflowRunApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActionsApproveWorkflowRunApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3437,7 +4677,12 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifacts, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3446,7 +4691,12 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRun, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3465,7 +4715,12 @@ func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRu
 func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflow, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3474,7 +4729,12 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflow, w http.Re
 func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflow, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3483,7 +4743,12 @@ func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflow, w http.Re
 func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3492,7 +4757,12 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecrets, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3501,7 +4771,12 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecrets, w htt
 func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3510,7 +4785,12 @@ func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.Res
 func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3521,7 +4801,12 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 	case *ActionsCreateOrUpdateRepoSecretCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3541,7 +4826,12 @@ func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecret, w h
 func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflows, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3552,14 +4842,23 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	case *IssuesListAssigneesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3576,7 +4875,12 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3588,16 +4892,19 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3608,14 +4915,24 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 	case *Autolink:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3632,7 +4949,12 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3656,14 +4978,23 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	case *ReposListBranchesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3677,28 +5008,46 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *BranchWithProtection:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetBranchApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposGetBranchApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3712,14 +5061,24 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 	case *BranchProtection:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3733,28 +5092,46 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ProtectedBranch:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposUpdateBranchProtectionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposUpdateBranchProtectionApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3771,7 +5148,12 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3783,7 +5165,12 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3792,7 +5179,12 @@ func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3806,7 +5198,12 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3818,7 +5215,12 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -3832,7 +5234,12 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3846,14 +5253,24 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3867,14 +5284,24 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3891,7 +5318,12 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3905,14 +5337,24 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 	case *StatusCheckPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3931,14 +5373,23 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 	case *ReposGetAllStatusCheckContextsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3952,14 +5403,24 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 	case *BranchRestrictionPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3978,14 +5439,23 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	case *ReposGetAppsWithAccessToProtectedBranchOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -3999,14 +5469,23 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	case *ReposGetTeamsWithAccessToProtectedBranchOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4020,14 +5499,23 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 	case *ReposGetUsersWithAccessToProtectedBranchOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4039,7 +5527,12 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4048,16 +5541,19 @@ func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter) error {
 func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4068,14 +5564,22 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 	case *ChecksCreateSuiteApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ChecksCreateSuiteApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4087,7 +5591,12 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4096,7 +5605,12 @@ func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w h
 func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4105,7 +5619,12 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter) er
 func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuite, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4116,28 +5635,45 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *CodeScanningListAlertInstancesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListAlertInstancesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListAlertInstancesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4151,28 +5687,45 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *CodeScanningListRecentAnalysesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListRecentAnalysesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningListRecentAnalysesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4186,7 +5739,12 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningAnalysis:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4197,21 +5755,34 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningGetAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningGetAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4225,14 +5796,23 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningAnalysisDeletion:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningDeleteAnalysisApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4243,21 +5823,34 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningDeleteAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4271,7 +5864,12 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *CodeScanningSarifsReceipt:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4281,14 +5879,22 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *CodeScanningUploadSarifApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *CodeScanningUploadSarifApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4298,7 +5904,12 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4312,14 +5923,24 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	case *CodeScanningSarifsStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4329,7 +5950,12 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4361,14 +5987,24 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 	case *RepositoryCollaboratorPermission:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4380,16 +6016,19 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4400,14 +6039,24 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4424,7 +6073,12 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4438,14 +6092,24 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4464,14 +6128,22 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListCommitsApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4482,21 +6154,33 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListCommitsApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4508,16 +6192,19 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4526,7 +6213,12 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRef, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4537,14 +6229,24 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	case *CombinedCommitStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4558,14 +6260,23 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	case *ReposListCommitStatusesForRefOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4577,7 +6288,12 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4588,21 +6304,34 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	case *CommitComparison:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposCompareCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposCompareCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4616,7 +6345,11 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	case *ReposListContributorsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4626,14 +6359,22 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	case *ReposListContributorsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListContributorsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4650,14 +6391,24 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4671,14 +6422,23 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	case *ReposListDeploymentStatusesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4692,21 +6452,36 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	case *DeploymentStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4725,14 +6500,24 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter)
 	case *GitCommit:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4744,16 +6529,19 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter)
 func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4764,14 +6552,24 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter) error
 	case *GitRef:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4785,14 +6583,24 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter) error
 	case *GitTag:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4809,7 +6617,12 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4826,7 +6639,12 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4843,7 +6661,12 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4857,14 +6680,24 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 	case *Import:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4881,7 +6714,12 @@ func encodeMigrationsCancelImportResponse(response MigrationsCancelImport, w htt
 func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4892,14 +6730,23 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 	case *MigrationsGetCommitAuthorsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4911,16 +6758,19 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4931,7 +6781,12 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 	case *InteractionLimitResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -4959,16 +6814,19 @@ func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRe
 func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4982,7 +6840,12 @@ func encodeReposDeleteInvitationResponse(response ReposDeleteInvitation, w http.
 func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -4993,14 +6856,24 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 	case *IssueComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5024,21 +6897,33 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	case *IssuesListCommentsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesListCommentsApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5052,14 +6937,23 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	case *IssuesListLabelsOnIssueOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5076,7 +6970,12 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5090,21 +6989,33 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	case *IssuesRemoveLabelOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesRemoveLabelApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesRemoveLabelApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5121,14 +7032,22 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter)
 	case *IssuesUnlockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *IssuesUnlockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5145,16 +7064,19 @@ func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssue, w h
 func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5165,14 +7087,24 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 	case *DeployKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5191,14 +7123,23 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	case *IssuesListLabelsForRepoOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5212,14 +7153,24 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 	case *Label:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5236,7 +7187,12 @@ func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabel, w http.Response
 func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5245,7 +7201,12 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter) erro
 func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5256,7 +7217,12 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5276,7 +7242,12 @@ func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepo, w htt
 func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5287,7 +7258,12 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 	case *MergedUpstream:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5307,14 +7283,24 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 	case *Milestone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5331,7 +7317,12 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5343,7 +7334,12 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5352,16 +7348,19 @@ func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWrit
 func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5370,16 +7369,19 @@ func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.Respons
 func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []Thread, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5390,7 +7392,12 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 	case *ActivityMarkRepoNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5407,14 +7414,24 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 	case *Page:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5426,16 +7443,19 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5444,7 +7464,12 @@ func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWri
 func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5453,7 +7478,12 @@ func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.Respo
 func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5462,7 +7492,12 @@ func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseW
 func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5473,14 +7508,24 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	case *PagesHealthCheck:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5490,7 +7535,12 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5507,42 +7557,68 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForRepoApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5556,14 +7632,24 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5580,7 +7666,12 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5592,7 +7683,12 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5608,14 +7704,24 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5627,16 +7733,19 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5658,7 +7767,12 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5667,16 +7781,19 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 func encodePullsListReviewsResponse(response []PullRequestReview, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5687,21 +7804,36 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5715,14 +7847,24 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5736,14 +7878,24 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5757,21 +7909,36 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5785,14 +7952,23 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	case *PullsListCommentsForReviewOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5806,21 +7982,36 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5834,28 +8025,46 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PullsSubmitReviewApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PullsSubmitReviewApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5869,14 +8078,23 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	case *ReposListReleasesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5890,7 +8108,12 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	case *ReleaseAsset:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5900,14 +8123,24 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5924,7 +8157,12 @@ func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAsset, w h
 func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5933,7 +8171,12 @@ func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.Respons
 func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -5944,14 +8187,24 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5965,14 +8218,24 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -5991,14 +8254,24 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6010,16 +8283,19 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6030,7 +8306,12 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6040,7 +8321,12 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6054,7 +8340,12 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6067,7 +8358,12 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6081,14 +8377,23 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 	case *ReposGetCodeFrequencyStatsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6105,14 +8410,23 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 	case *ReposGetCommitActivityStatsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6129,14 +8443,23 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 	case *ReposGetContributorsStatsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6153,14 +8476,24 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	case *ParticipationStats:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6174,7 +8507,11 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 	case *ReposGetPunchCardStatsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6189,7 +8526,12 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6198,16 +8540,19 @@ func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWrite
 func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6218,14 +8563,24 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 	case *RepositorySubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6240,7 +8595,12 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6254,16 +8614,19 @@ func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSub
 func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6277,16 +8640,19 @@ func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArch
 func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6297,21 +8663,36 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6325,28 +8706,48 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6360,14 +8761,23 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 	case *ReposGetTopPathsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6381,14 +8791,23 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 	case *ReposGetTopReferrersOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6400,7 +8819,12 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6437,7 +8861,12 @@ func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArch
 func encodeReposCreateUsingTemplateResponse(response Repository, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6446,7 +8875,12 @@ func encodeReposCreateUsingTemplateResponse(response Repository, w http.Response
 func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecrets, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6455,7 +8889,12 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6464,7 +8903,12 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w h
 func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6475,7 +8919,12 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6495,7 +8944,12 @@ func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironm
 func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimGroupListEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6504,7 +8958,12 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimG
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6513,7 +8972,12 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response Sci
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6522,7 +8986,12 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6536,7 +9005,12 @@ func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response Enterpr
 func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6545,7 +9019,12 @@ func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response S
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6554,7 +9033,12 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6563,7 +9047,12 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6577,7 +9066,12 @@ func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAd
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6594,7 +9088,11 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 	case *ScimDeleteUserFromOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6605,7 +9103,11 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6623,14 +9125,24 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6642,7 +9154,12 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6651,7 +9168,12 @@ func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6665,7 +9187,12 @@ func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLeg
 func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6674,7 +9201,12 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6683,7 +9215,12 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6697,7 +9234,12 @@ func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscus
 func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6706,7 +9248,12 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6715,7 +9262,12 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reacti
 func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6724,16 +9276,19 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvitation, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -6760,7 +9315,12 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6793,14 +9353,24 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6814,7 +9384,12 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6824,7 +9399,12 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6854,14 +9434,23 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	case *TeamsListProjectsLegacyOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6875,7 +9464,12 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6892,14 +9486,23 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	case *TeamsListReposLegacyOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6913,7 +9516,12 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6938,21 +9546,34 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	case *GroupMapping:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsListIdpGroupsForLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsListIdpGroupsForLegacyApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6966,7 +9587,11 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -6976,28 +9601,45 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListBlockedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListBlockedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7017,21 +9659,33 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	case *UsersCheckBlockedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckBlockedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckBlockedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7051,21 +9705,33 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter)
 	case *UsersUnblockApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnblockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnblockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7079,7 +9745,11 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7089,21 +9759,33 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7117,7 +9799,11 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	case *UsersListFollowersForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7127,14 +9813,22 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7148,7 +9842,11 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	case *UsersListFollowedByAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7158,14 +9856,22 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	case *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7185,21 +9891,33 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7219,21 +9937,33 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter) e
 	case *UsersFollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersFollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersFollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7253,21 +9983,33 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 	case *UsersUnfollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnfollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersUnfollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7281,7 +10023,11 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7291,21 +10037,33 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7319,7 +10077,12 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *GpgKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7329,21 +10092,33 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7357,7 +10132,12 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	case *AppsListInstallationReposForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7367,14 +10147,22 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7394,14 +10182,22 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	case *AppsAddRepoToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsAddRepoToInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7421,14 +10217,22 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	case *AppsRemoveRepoFromInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsRemoveRepoFromInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7447,7 +10251,11 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7457,21 +10265,33 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7485,7 +10305,12 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *Key:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7495,21 +10320,33 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7529,21 +10366,33 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7557,7 +10406,11 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	case *AppsListSubscriptionsForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7567,14 +10420,22 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7588,7 +10449,11 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7598,7 +10463,12 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7612,21 +10482,34 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7640,7 +10523,11 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	case *MigrationsListForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7650,14 +10537,22 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	case *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7671,7 +10566,12 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7681,21 +10581,33 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7715,14 +10627,22 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7742,21 +10662,33 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7776,21 +10708,33 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7804,14 +10748,23 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	case *MigrationsListReposForUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7825,7 +10778,11 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	case *OrgsListForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7835,14 +10792,22 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	case *OrgsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *OrgsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7856,7 +10821,12 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7866,28 +10836,46 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7901,7 +10889,11 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7911,21 +10903,33 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7939,7 +10943,11 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7949,21 +10957,33 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -7983,21 +11003,33 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	case *ReposDeclineInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeclineInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposDeclineInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8017,21 +11049,33 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	case *ReposAcceptInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposAcceptInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ReposAcceptInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8051,21 +11095,33 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8085,21 +11141,33 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8119,21 +11187,33 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8147,7 +11227,11 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	case *ActivityListWatchedReposForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8157,14 +11241,22 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8178,7 +11270,11 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	case *TeamsListForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8188,14 +11284,22 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	case *TeamsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *TeamsListForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8209,7 +11313,11 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter) error
 	case *UsersListOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		_ = elem // Unsupported kind "alias" for field "".
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -8224,16 +11332,19 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter) error
 func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8242,16 +11353,19 @@ func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.Respo
 func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8273,16 +11387,19 @@ func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUse
 func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8291,16 +11408,19 @@ func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWri
 func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8309,16 +11429,19 @@ func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.Respo
 func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8327,7 +11450,12 @@ func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.Respons
 func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8336,7 +11464,12 @@ func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsa
 func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8345,7 +11478,12 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingU
 func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -8354,16 +11492,19 @@ func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUs
 func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil

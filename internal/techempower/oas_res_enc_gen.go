@@ -53,16 +53,19 @@ var (
 func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -71,7 +74,12 @@ func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error 
 func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -80,7 +88,12 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -89,16 +102,19 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -107,16 +123,19 @@ func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error 
 func encodeUpdatesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		elem.WriteJSON(j)
 	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil

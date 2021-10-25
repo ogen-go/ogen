@@ -55,14 +55,24 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 	case *InstanceInfo:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -79,14 +89,24 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -100,21 +120,36 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 	case *Balloon:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -131,14 +166,24 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter) err
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -155,14 +200,24 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter)
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -176,21 +231,36 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 	case *BalloonStats:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -207,14 +277,24 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -231,14 +311,24 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -255,14 +345,24 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -279,14 +379,24 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -303,14 +413,24 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter) error
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -324,14 +444,24 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 	case *MachineConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -348,14 +478,24 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -372,14 +512,24 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -396,14 +546,24 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter) err
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -417,21 +577,36 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter) error {
 	case *MmdsGetOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -448,14 +623,24 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter) error {
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -472,14 +657,24 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter) error
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -496,14 +691,24 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -520,14 +725,24 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -544,14 +759,24 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -568,14 +793,24 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -592,14 +827,24 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter)
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -616,14 +861,24 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter) error {
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -637,14 +892,24 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 	case *FullVmConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -661,14 +926,24 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil

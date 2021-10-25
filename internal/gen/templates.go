@@ -39,6 +39,17 @@ func templateFuncs() template.FuncMap {
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
 		"array_elem": func(s *ast.Schema) Elem { return Elem{Type: s, ArrElem: true, Var: "elem"} },
+		"resp_elem": func(i *ast.ResponseInfo) Elem {
+			v := "response"
+			if i.Default {
+				v = v + ".Response"
+			}
+			return Elem{
+				Type:    i.Schema,
+				ArrElem: true,
+				Var:     v,
+			}
+		},
 		"field_elem": fieldElem,
 		"toString":   func(v interface{}) string { return fmt.Sprintf("%v", v) },
 		"enumString": func(v interface{}) string {

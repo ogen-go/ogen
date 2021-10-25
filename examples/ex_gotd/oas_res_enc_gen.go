@@ -53,7 +53,12 @@ var (
 func encodeAddStickerToSetResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -62,7 +67,12 @@ func encodeAddStickerToSetResponse(response Result, w http.ResponseWriter) error
 func encodeAnswerCallbackQueryResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -71,7 +81,12 @@ func encodeAnswerCallbackQueryResponse(response Result, w http.ResponseWriter) e
 func encodeAnswerInlineQueryResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -80,7 +95,12 @@ func encodeAnswerInlineQueryResponse(response Result, w http.ResponseWriter) err
 func encodeAnswerPreCheckoutQueryResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -89,7 +109,12 @@ func encodeAnswerPreCheckoutQueryResponse(response Result, w http.ResponseWriter
 func encodeAnswerShippingQueryResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -98,7 +123,12 @@ func encodeAnswerShippingQueryResponse(response Result, w http.ResponseWriter) e
 func encodeBanChatMemberResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -107,7 +137,12 @@ func encodeBanChatMemberResponse(response Result, w http.ResponseWriter) error {
 func encodeCopyMessageResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -116,7 +151,12 @@ func encodeCopyMessageResponse(response Result, w http.ResponseWriter) error {
 func encodeCreateChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -125,7 +165,12 @@ func encodeCreateChatInviteLinkResponse(response Result, w http.ResponseWriter) 
 func encodeCreateNewStickerSetResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -134,7 +179,12 @@ func encodeCreateNewStickerSetResponse(response Result, w http.ResponseWriter) e
 func encodeDeleteChatPhotoResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -143,7 +193,12 @@ func encodeDeleteChatPhotoResponse(response Result, w http.ResponseWriter) error
 func encodeDeleteChatStickerSetResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -152,7 +207,12 @@ func encodeDeleteChatStickerSetResponse(response Result, w http.ResponseWriter) 
 func encodeDeleteMessageResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -161,7 +221,12 @@ func encodeDeleteMessageResponse(response Result, w http.ResponseWriter) error {
 func encodeDeleteMyCommandsResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -170,7 +235,12 @@ func encodeDeleteMyCommandsResponse(response Result, w http.ResponseWriter) erro
 func encodeDeleteStickerFromSetResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -179,7 +249,12 @@ func encodeDeleteStickerFromSetResponse(response Result, w http.ResponseWriter) 
 func encodeDeleteWebhookResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -188,7 +263,12 @@ func encodeDeleteWebhookResponse(response Result, w http.ResponseWriter) error {
 func encodeEditChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -197,7 +277,12 @@ func encodeEditChatInviteLinkResponse(response Result, w http.ResponseWriter) er
 func encodeEditMessageCaptionResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -206,7 +291,12 @@ func encodeEditMessageCaptionResponse(response Result, w http.ResponseWriter) er
 func encodeEditMessageLiveLocationResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -215,7 +305,12 @@ func encodeEditMessageLiveLocationResponse(response Result, w http.ResponseWrite
 func encodeEditMessageMediaResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -224,7 +319,12 @@ func encodeEditMessageMediaResponse(response Result, w http.ResponseWriter) erro
 func encodeEditMessageReplyMarkupResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -233,7 +333,12 @@ func encodeEditMessageReplyMarkupResponse(response Result, w http.ResponseWriter
 func encodeEditMessageTextResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -242,7 +347,12 @@ func encodeEditMessageTextResponse(response Result, w http.ResponseWriter) error
 func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -251,7 +361,12 @@ func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter) 
 func encodeForwardMessageResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -260,7 +375,12 @@ func encodeForwardMessageResponse(response Message, w http.ResponseWriter) error
 func encodeGetChatResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -269,7 +389,12 @@ func encodeGetChatResponse(response Result, w http.ResponseWriter) error {
 func encodeGetChatAdministratorsResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -278,7 +403,12 @@ func encodeGetChatAdministratorsResponse(response Result, w http.ResponseWriter)
 func encodeGetChatMemberResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -287,7 +417,12 @@ func encodeGetChatMemberResponse(response Result, w http.ResponseWriter) error {
 func encodeGetChatMemberCountResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -296,7 +431,12 @@ func encodeGetChatMemberCountResponse(response Result, w http.ResponseWriter) er
 func encodeGetFileResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -305,7 +445,12 @@ func encodeGetFileResponse(response Result, w http.ResponseWriter) error {
 func encodeGetGameHighScoresResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -314,7 +459,12 @@ func encodeGetGameHighScoresResponse(response Result, w http.ResponseWriter) err
 func encodeGetMeResponse(response User, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -323,7 +473,12 @@ func encodeGetMeResponse(response User, w http.ResponseWriter) error {
 func encodeGetMyCommandsResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -332,7 +487,12 @@ func encodeGetMyCommandsResponse(response Result, w http.ResponseWriter) error {
 func encodeGetStickerSetResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -341,7 +501,12 @@ func encodeGetStickerSetResponse(response Result, w http.ResponseWriter) error {
 func encodeGetUpdatesResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -350,7 +515,12 @@ func encodeGetUpdatesResponse(response Result, w http.ResponseWriter) error {
 func encodeGetUserProfilePhotosResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -359,7 +529,12 @@ func encodeGetUserProfilePhotosResponse(response Result, w http.ResponseWriter) 
 func encodeLeaveChatResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -368,7 +543,12 @@ func encodeLeaveChatResponse(response Result, w http.ResponseWriter) error {
 func encodePinChatMessageResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -377,7 +557,12 @@ func encodePinChatMessageResponse(response Result, w http.ResponseWriter) error 
 func encodePromoteChatMemberResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -386,7 +571,12 @@ func encodePromoteChatMemberResponse(response Result, w http.ResponseWriter) err
 func encodeRestrictChatMemberResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -395,7 +585,12 @@ func encodeRestrictChatMemberResponse(response Result, w http.ResponseWriter) er
 func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -404,7 +599,12 @@ func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter) 
 func encodeSendAnimationResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -413,7 +613,12 @@ func encodeSendAnimationResponse(response Message, w http.ResponseWriter) error 
 func encodeSendAudioResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -422,7 +627,12 @@ func encodeSendAudioResponse(response Result, w http.ResponseWriter) error {
 func encodeSendChatActionResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -431,7 +641,12 @@ func encodeSendChatActionResponse(response Result, w http.ResponseWriter) error 
 func encodeSendContactResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -440,7 +655,12 @@ func encodeSendContactResponse(response Message, w http.ResponseWriter) error {
 func encodeSendDiceResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -449,7 +669,12 @@ func encodeSendDiceResponse(response Message, w http.ResponseWriter) error {
 func encodeSendDocumentResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -458,7 +683,12 @@ func encodeSendDocumentResponse(response Message, w http.ResponseWriter) error {
 func encodeSendGameResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -467,7 +697,12 @@ func encodeSendGameResponse(response Message, w http.ResponseWriter) error {
 func encodeSendInvoiceResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -476,7 +711,12 @@ func encodeSendInvoiceResponse(response Message, w http.ResponseWriter) error {
 func encodeSendLocationResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -485,7 +725,12 @@ func encodeSendLocationResponse(response Message, w http.ResponseWriter) error {
 func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -494,7 +739,12 @@ func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter) error 
 func encodeSendMessageResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -503,7 +753,12 @@ func encodeSendMessageResponse(response Message, w http.ResponseWriter) error {
 func encodeSendPhotoResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -512,7 +767,12 @@ func encodeSendPhotoResponse(response Message, w http.ResponseWriter) error {
 func encodeSendPollResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -521,7 +781,12 @@ func encodeSendPollResponse(response Message, w http.ResponseWriter) error {
 func encodeSendStickerResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -530,7 +795,12 @@ func encodeSendStickerResponse(response Message, w http.ResponseWriter) error {
 func encodeSendVenueResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -539,7 +809,12 @@ func encodeSendVenueResponse(response Message, w http.ResponseWriter) error {
 func encodeSendVideoResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -548,7 +823,12 @@ func encodeSendVideoResponse(response Message, w http.ResponseWriter) error {
 func encodeSendVideoNoteResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -557,7 +837,12 @@ func encodeSendVideoNoteResponse(response Message, w http.ResponseWriter) error 
 func encodeSendVoiceResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -566,7 +851,12 @@ func encodeSendVoiceResponse(response Message, w http.ResponseWriter) error {
 func encodeSetChatAdministratorCustomTitleResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -575,7 +865,12 @@ func encodeSetChatAdministratorCustomTitleResponse(response Result, w http.Respo
 func encodeSetChatDescriptionResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -584,7 +879,12 @@ func encodeSetChatDescriptionResponse(response Result, w http.ResponseWriter) er
 func encodeSetChatPermissionsResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -593,7 +893,12 @@ func encodeSetChatPermissionsResponse(response Result, w http.ResponseWriter) er
 func encodeSetChatPhotoResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -602,7 +907,12 @@ func encodeSetChatPhotoResponse(response Result, w http.ResponseWriter) error {
 func encodeSetChatStickerSetResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -611,7 +921,12 @@ func encodeSetChatStickerSetResponse(response Result, w http.ResponseWriter) err
 func encodeSetChatTitleResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -620,7 +935,12 @@ func encodeSetChatTitleResponse(response Result, w http.ResponseWriter) error {
 func encodeSetGameScoreResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -629,7 +949,12 @@ func encodeSetGameScoreResponse(response Result, w http.ResponseWriter) error {
 func encodeSetMyCommandsResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -638,7 +963,12 @@ func encodeSetMyCommandsResponse(response Result, w http.ResponseWriter) error {
 func encodeSetPassportDataErrorsResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -647,7 +977,12 @@ func encodeSetPassportDataErrorsResponse(response Result, w http.ResponseWriter)
 func encodeSetStickerPositionInSetResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -656,7 +991,12 @@ func encodeSetStickerPositionInSetResponse(response Result, w http.ResponseWrite
 func encodeSetStickerSetThumbResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -665,7 +1005,12 @@ func encodeSetStickerSetThumbResponse(response Result, w http.ResponseWriter) er
 func encodeSetWebhookResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -674,7 +1019,12 @@ func encodeSetWebhookResponse(response Result, w http.ResponseWriter) error {
 func encodeStopMessageLiveLocationResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -683,7 +1033,12 @@ func encodeStopMessageLiveLocationResponse(response Result, w http.ResponseWrite
 func encodeStopPollResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -692,7 +1047,12 @@ func encodeStopPollResponse(response Result, w http.ResponseWriter) error {
 func encodeUnbanChatMemberResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -701,7 +1061,12 @@ func encodeUnbanChatMemberResponse(response Result, w http.ResponseWriter) error
 func encodeUnpinAllChatMessagesResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -710,7 +1075,12 @@ func encodeUnpinAllChatMessagesResponse(response Result, w http.ResponseWriter) 
 func encodeUnpinChatMessageResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -719,7 +1089,12 @@ func encodeUnpinChatMessageResponse(response Result, w http.ResponseWriter) erro
 func encodeUploadStickerFileResponse(response Result, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil

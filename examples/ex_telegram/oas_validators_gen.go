@@ -232,14 +232,6 @@ func (s *MaskPosition) Validate() error {
 }
 func (s *Message) Validate() error {
 	var failures []validate.FieldError
-	if s.Chat == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "chat",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}

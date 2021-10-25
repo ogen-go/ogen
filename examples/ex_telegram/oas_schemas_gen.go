@@ -210,7 +210,7 @@ type Chat struct {
 	Location         OptChatLocation    `json:"location"`
 	Permissions      OptChatPermissions `json:"permissions"`
 	Photo            OptChatPhoto       `json:"photo"`
-	PinnedMessage    OptMessage         `json:"pinned_message"`
+	PinnedMessage    *Message           `json:"pinned_message"`
 	SlowModeDelay    OptInt             `json:"slow_mode_delay"`
 	StickerSetName   OptString          `json:"sticker_set_name"`
 	Title            OptString          `json:"title"`
@@ -706,7 +706,7 @@ type Message struct {
 	Caption                 OptString                  `json:"caption"`
 	CaptionEntities         []MessageEntity            `json:"caption_entities"`
 	ChannelChatCreated      OptBool                    `json:"channel_chat_created"`
-	Chat                    *Chat                      `json:"chat"`
+	Chat                    Chat                       `json:"chat"`
 	ConnectedWebsite        OptString                  `json:"connected_website"`
 	Contact                 OptContact                 `json:"contact"`
 	Date                    int                        `json:"date"`
@@ -717,7 +717,7 @@ type Message struct {
 	Entities                []MessageEntity            `json:"entities"`
 	ForwardDate             OptInt                     `json:"forward_date"`
 	ForwardFrom             OptUser                    `json:"forward_from"`
-	ForwardFromChat         *Chat                      `json:"forward_from_chat"`
+	ForwardFromChat         OptChat                    `json:"forward_from_chat"`
 	ForwardFromMessageID    OptInt                     `json:"forward_from_message_id"`
 	ForwardSenderName       OptString                  `json:"forward_sender_name"`
 	ForwardSignature        OptString                  `json:"forward_signature"`
@@ -741,7 +741,7 @@ type Message struct {
 	ProximityAlertTriggered OptProximityAlertTriggered `json:"proximity_alert_triggered"`
 	ReplyMarkup             OptInlineKeyboardMarkup    `json:"reply_markup"`
 	ReplyToMessage          *Message                   `json:"reply_to_message"`
-	SenderChat              *Chat                      `json:"sender_chat"`
+	SenderChat              OptChat                    `json:"sender_chat"`
 	Sticker                 OptSticker                 `json:"sticker"`
 	SuccessfulPayment       OptSuccessfulPayment       `json:"successful_payment"`
 	SupergroupChatCreated   OptBool                    `json:"supergroup_chat_created"`
@@ -929,6 +929,44 @@ func (o *OptCallbackQuery) SetTo(v CallbackQuery) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptCallbackQuery) Get() (v CallbackQuery, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptChat returns new OptChat with value set to v.
+func NewOptChat(v Chat) OptChat {
+	return OptChat{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChat is optional Chat.
+type OptChat struct {
+	Value Chat
+	Set   bool
+}
+
+// IsSet returns true if OptChat was set.
+func (o OptChat) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChat) Reset() {
+	var v Chat
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChat) SetTo(v Chat) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChat) Get() (v Chat, ok bool) {
 	if !o.Set {
 		return v, false
 	}

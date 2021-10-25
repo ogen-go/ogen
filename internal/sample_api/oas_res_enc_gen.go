@@ -55,7 +55,12 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -77,7 +82,12 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -87,7 +97,12 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -101,14 +116,24 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
 	case *PetGetDefaultStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		if err := response.Response.WriteJSONTo(w); err != nil {
+		j := json.NewStream(w)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
 			return err
 		}
 		return nil
@@ -120,7 +145,12 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -129,7 +159,12 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteString(response)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -138,7 +173,12 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
+	j := json.NewStream(w)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
 		return err
 	}
 	return nil
