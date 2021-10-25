@@ -72,8 +72,8 @@
             }
         {{- end -}}
     {{- else -}}
-        {{- if $.ArrElem -}}
-          _ = elem
+        {{- if $.SubElem -}}
+          _ = {{ $.Var }}
         {{- end -}}
         // Unsupported kind "{{ $.Schema.Kind  }}" for field "{{ $.Field }}".
     {{- end }}

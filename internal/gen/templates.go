@@ -13,7 +13,7 @@ import (
 
 func fieldElem(s *ast.SchemaField) Elem {
 	return Elem{
-		ArrElem: false,
+		SubElem: false,
 		Field:   s.Tag,
 		Schema:  s.Type,
 		Var:     fmt.Sprintf("s.%s", s.Name),
@@ -22,14 +22,14 @@ func fieldElem(s *ast.SchemaField) Elem {
 
 // Elem variable helper for recursive array or object encoding.
 type Elem struct {
-	ArrElem bool
+	SubElem bool
 	Field   string
 	Schema  *ast.Schema
 	Var     string
 }
 
 func (e Elem) NextVar() string {
-	if !e.ArrElem {
+	if !e.SubElem {
 		return "elem"
 	}
 	return e.Var + "Elem"
@@ -45,17 +45,24 @@ func templateFuncs() template.FuncMap {
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
+		"pointer_elem": func(parent Elem) Elem {
+			return Elem{
+				Schema:  parent.Schema.PointerTo,
+				SubElem: true,
+				Var:     parent.NextVar(),
+			}
+		},
 		"sub_array_elem": func(parent Elem, s *ast.Schema) Elem {
 			return Elem{
 				Schema:  s,
-				ArrElem: true,
+				SubElem: true,
 				Var:     parent.NextVar(),
 			}
 		},
 		"array_elem": func(s *ast.Schema) Elem {
 			return Elem{
 				Schema:  s,
-				ArrElem: true,
+				SubElem: true,
 				Var:     "elem",
 			}
 		},

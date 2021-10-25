@@ -1,16 +1,44 @@
 {
   "birthday": "2011-10-10",
+  "friends": [
+    {
+      "birthday": "2011-10-10",
+      "id": 43,
+      "ip": "127.0.0.2",
+      "ip_v4": "127.0.0.2",
+      "ip_v6": "2001:db8:85a3::8a2e:370:7335",
+      "kind": "big",
+      "name": "BestFriend",
+      "nickname": "friend",
+      "rate": "5s",
+      "uri": "s3://foo/baz",
+      "unique_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
   "id": 42,
   "ip": "127.0.0.1",
   "ip_v4": "127.0.0.1",
   "ip_v6": "2001:db8:85a3::8a2e:370:7334",
-  "name": "SomePet",
   "kind": "smol",
+  "name": "SomePet",
   "next": {
     "description": "Foo"
   },
   "nickname": "Nick",
   "nullStr": "Bar",
+  "primary": {
+    "birthday": "2011-10-10",
+    "id": 43,
+    "ip": "127.0.0.2",
+    "ip_v4": "127.0.0.2",
+    "ip_v6": "2001:db8:85a3::8a2e:370:7335",
+    "kind": "big",
+    "name": "BestFriend",
+    "nickname": "friend",
+    "rate": "5s",
+    "uri": "s3://foo/baz",
+    "unique_id": "00000000-0000-0000-0000-000000000000"
+  },
   "rate": "1s",
   "tag": "fc9d49c6-1f3d-4ecb-92c7-be6d5049b3c8",
   "testArray1": [

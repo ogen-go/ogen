@@ -1,6 +1,15 @@
 {{- define "dec_json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    {{- if $.Schema.JSONRead -}}
+    {{- if $.Schema.IsPointer -}}
+        var {{ $.NextVar }} {{ $.Schema.PointerTo.Type }}
+        if err := func() error {
+          {{- template "dec_json_value" pointer_elem $ }}
+        }(); err != nil {
+          return err
+        }
+        {{ $.Var }} = &{{ $.NextVar }}
+        return i.Error
+    {{- else if $.Schema.JSONRead -}}
         {{ $.Var }} = {{ $.Schema.Type }}(i.{{ $.Schema.JSONRead }}())
         return i.Error
     {{- else if $.Schema.JSONHelper }}

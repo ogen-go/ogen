@@ -122,6 +122,20 @@ func TestIntegration(t *testing.T) {
 		ctx := context.Background()
 
 		date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
+
+		friend := api.Pet{
+			Birthday: conv.Date(date),
+			ID:       43,
+			Name:     "BestFriend",
+			Rate:     time.Second * 5,
+			URI:      url.URL{Scheme: "s3", Host: "foo", Path: "baz"},
+			IP:       net.IPv4(127, 0, 0, 2),
+			IPV4:     net.IPv4(127, 0, 0, 2),
+			Kind:     api.PetKindBig,
+			IPV6:     net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7335"),
+			Nickname: api.NewNilString("friend"),
+		}
+
 		pet := api.Pet{
 			Birthday:     conv.Date(date),
 			ID:           42,
@@ -144,9 +158,8 @@ func TestIntegration(t *testing.T) {
 			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 			Next:         api.NewOptData(api.Data{Description: api.NewOptString("Foo")}),
 			Kind:         api.PetKindSmol,
-
-			// TODO(ernado): support decoding and check those
-			Friends: nil,
+			Primary:      &friend,
+			Friends:      []api.Pet{friend},
 			TestArray1: [][]string{
 				{"Foo", "Bar"},
 				{"Baz"},

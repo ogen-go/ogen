@@ -59999,7 +59999,14 @@ func (s *ActionsEnterprisePermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_actions_url":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*SelectedActionsURL" (pointer) is not implemented`)
+				var elem SelectedActionsURL
+				if err := func() error {
+					return fmt.Errorf(`decoding of "SelectedActionsURL" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.SelectedActionsURL = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -60103,7 +60110,14 @@ func (s *ActionsOrganizationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_actions_url":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*SelectedActionsURL" (pointer) is not implemented`)
+				var elem SelectedActionsURL
+				if err := func() error {
+					return fmt.Errorf(`decoding of "SelectedActionsURL" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.SelectedActionsURL = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -60334,7 +60348,14 @@ func (s *ActionsRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_actions_url":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*SelectedActionsURL" (pointer) is not implemented`)
+				var elem SelectedActionsURL
+				if err := func() error {
+					return fmt.Errorf(`decoding of "SelectedActionsURL" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.SelectedActionsURL = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -64827,7 +64848,14 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "analysis_key":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAnalysisAnalysisKey" (pointer) is not implemented`)
+				var elem CodeScanningAnalysisAnalysisKey
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAnalysisAnalysisKey" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.AnalysisKey = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -64835,7 +64863,14 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "category":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAnalysisCategory" (pointer) is not implemented`)
+				var elem CodeScanningAnalysisCategory
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAnalysisCategory" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.Category = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -64878,7 +64913,14 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "environment":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAlertEnvironment" (pointer) is not implemented`)
+				var elem CodeScanningAlertEnvironment
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAlertEnvironment" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.Environment = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -64919,7 +64961,14 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ref":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningRef" (pointer) is not implemented`)
+				var elem CodeScanningRef
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningRef" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.Ref = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -65180,7 +65229,14 @@ func (s *CodeScanningAnalysis) ReadJSON(i *json.Iterator) error {
 			return true
 		case "category":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAnalysisCategory" (pointer) is not implemented`)
+				var elem CodeScanningAnalysisCategory
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAnalysisCategory" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.Category = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -65484,7 +65540,14 @@ func (s *CodeScanningAnalysisTool) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "guid":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAnalysisToolGUID" (pointer) is not implemented`)
+				var elem CodeScanningAnalysisToolGUID
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAnalysisToolGUID" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.GUID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -65492,7 +65555,14 @@ func (s *CodeScanningAnalysisTool) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAnalysisToolName" (pointer) is not implemented`)
+				var elem CodeScanningAnalysisToolName
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAnalysisToolName" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.Name = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -65500,7 +65570,14 @@ func (s *CodeScanningAnalysisTool) ReadJSON(i *json.Iterator) error {
 			return true
 		case "version":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAnalysisToolVersion" (pointer) is not implemented`)
+				var elem CodeScanningAnalysisToolVersion
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAnalysisToolVersion" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.Version = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -65590,7 +65667,14 @@ func (s *CodeScanningSarifsReceipt) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "id":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*CodeScanningAnalysisSarifID" (pointer) is not implemented`)
+				var elem CodeScanningAnalysisSarifID
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CodeScanningAnalysisSarifID" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.ID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -91269,7 +91353,14 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "created_at":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*AlertCreatedAt" (pointer) is not implemented`)
+				var elem AlertCreatedAt
+				if err := func() error {
+					return fmt.Errorf(`decoding of "AlertCreatedAt" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.CreatedAt = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -91277,7 +91368,14 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*AlertHTMLURL" (pointer) is not implemented`)
+				var elem AlertHTMLURL
+				if err := func() error {
+					return fmt.Errorf(`decoding of "AlertHTMLURL" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.HTMLURL = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -91296,7 +91394,14 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "number":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*AlertNumber" (pointer) is not implemented`)
+				var elem AlertNumber
+				if err := func() error {
+					return fmt.Errorf(`decoding of "AlertNumber" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.Number = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -91370,7 +91475,14 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*AlertURL" (pointer) is not implemented`)
+				var elem AlertURL
+				if err := func() error {
+					return fmt.Errorf(`decoding of "AlertURL" (alias) is not implemented`)
+				}(); err != nil {
+					return err
+				}
+				s.URL = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false

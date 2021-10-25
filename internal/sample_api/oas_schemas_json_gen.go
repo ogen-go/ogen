@@ -840,7 +840,17 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "primary":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*Pet" (pointer) is not implemented`)
+				var elem Pet
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Primary = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
