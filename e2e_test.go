@@ -53,7 +53,7 @@ type sampleAPIServer struct {
 	pet api.Pet
 }
 
-func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetParams) (api.FoobarGetResponse, error) {
+func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetParams) (api.FoobarGetRes, error) {
 	panic("implement me")
 }
 
@@ -61,15 +61,15 @@ func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDefault, e
 	panic("implement me")
 }
 
-func (s sampleAPIServer) FoobarPost(ctx context.Context, req *api.Pet) (api.FoobarPostResponse, error) {
+func (s sampleAPIServer) FoobarPost(ctx context.Context, req *api.Pet) (api.FoobarPostRes, error) {
 	panic("implement me")
 }
 
-func (s sampleAPIServer) PetGet(ctx context.Context, params api.PetGetParams) (api.PetGetResponse, error) {
+func (s sampleAPIServer) PetGet(ctx context.Context, params api.PetGetParams) (api.PetGetRes, error) {
 	panic("implement me")
 }
 
-func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.PetCreateRequest) (pet api.Pet, err error) {
+func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.PetCreateReq) (pet api.Pet, err error) {
 	switch p := req.(type) {
 	case *api.Pet:
 		s.pet = *p

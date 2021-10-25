@@ -31,6 +31,7 @@ func (g *Generator) fixInterfaceCollision(m *ast.Method) error {
 	}
 
 	// TODO(ernado): pick different name
+	_, _ = g.freeSchemaName(nil)
 	return xerrors.Errorf("interface %s collides with schema", iface.Name)
 }
 
