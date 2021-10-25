@@ -9072,6 +9072,102 @@ func (s *GetSchedulingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) err
 	return i.Error
 }
 
+func (GetServiceAccountIssuerOpenIDConfigurationOK) WriteJSON(j *json.Stream)        {}
+func (GetServiceAccountIssuerOpenIDConfigurationOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetServiceAccountIssuerOpenIDConfigurationOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetServiceAccountIssuerOpenIDConfigurationOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetServiceAccountIssuerOpenIDConfigurationUnauthorized json value to io.Writer.
+func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetServiceAccountIssuerOpenIDConfigurationUnauthorized json value from io.Reader.
+func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetServiceAccountIssuerOpenIDConfigurationUnauthorized from json stream.
+func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+func (GetServiceAccountIssuerOpenIDKeysetOK) WriteJSON(j *json.Stream)        {}
+func (GetServiceAccountIssuerOpenIDKeysetOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetServiceAccountIssuerOpenIDKeysetOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetServiceAccountIssuerOpenIDKeysetOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetServiceAccountIssuerOpenIDKeysetUnauthorized json value to io.Writer.
+func (s GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetServiceAccountIssuerOpenIDKeysetUnauthorized json value from io.Reader.
+func (s *GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetServiceAccountIssuerOpenIDKeysetUnauthorized from json stream.
+func (s *GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
 func (GetStorageAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetStorageAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
 func (GetStorageAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }

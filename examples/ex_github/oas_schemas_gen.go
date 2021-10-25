@@ -1162,6 +1162,18 @@ type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
 
 func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisRes() {}
 
+type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
+
+func (*CodeScanningGetAnalysisApplicationJSONForbidden) codeScanningGetAnalysisRes() {}
+
+type CodeScanningGetAnalysisApplicationJSONNotFound BasicError
+
+func (*CodeScanningGetAnalysisApplicationJSONNotFound) codeScanningGetAnalysisRes() {}
+
+type CodeScanningGetAnalysisOKApplicationJSONSarif string
+
+func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisRes() {}
+
 type CodeScanningGetSarifNotFound struct{}
 
 func (*CodeScanningGetSarifNotFound) codeScanningGetSarifRes() {}
@@ -2236,14 +2248,16 @@ type MarkdownRenderApplicationJSONReq struct {
 	Text    string                                  `json:"text"`
 }
 
-func (*MarkdownRenderApplicationJSONReq) markdownRenderReq() {}
-
 type MarkdownRenderApplicationJSONReqMode string
 
 const (
 	MarkdownRenderApplicationJSONReqModeMarkdown MarkdownRenderApplicationJSONReqMode = "markdown"
 	MarkdownRenderApplicationJSONReqModeGfm      MarkdownRenderApplicationJSONReqMode = "gfm"
 )
+
+type MarkdownRenderOK string
+
+func (*MarkdownRenderOK) markdownRenderRes() {}
 
 type MarketplacePurchaseMarketplacePendingChange struct {
 	EffectiveDate OptString                 `json:"effective_date"`
@@ -3120,6 +3134,7 @@ func (*NotModified) gitignoreGetAllTemplatesRes()                          {}
 func (*NotModified) gitignoreGetTemplateRes()                              {}
 func (*NotModified) licensesGetAllCommonlyUsedRes()                        {}
 func (*NotModified) licensesGetRes()                                       {}
+func (*NotModified) markdownRenderRes()                                    {}
 func (*NotModified) metaGetRes()                                           {}
 func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
 func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
@@ -13275,6 +13290,7 @@ type ServiceUnavailable struct {
 }
 
 func (*ServiceUnavailable) codeScanningDeleteAnalysisRes()     {}
+func (*ServiceUnavailable) codeScanningGetAnalysisRes()        {}
 func (*ServiceUnavailable) codeScanningGetSarifRes()           {}
 func (*ServiceUnavailable) codeScanningListAlertInstancesRes() {}
 func (*ServiceUnavailable) codeScanningListRecentAnalysesRes() {}
@@ -14641,6 +14657,8 @@ type CodeScanningAnalysis struct {
 	URL          CodeScanningAnalysisURL         `json:"url"`
 	Warning      string                          `json:"warning"`
 }
+
+func (*CodeScanningAnalysis) codeScanningGetAnalysisRes() {}
 
 type CodeScanningAnalysisAnalysisKey string
 

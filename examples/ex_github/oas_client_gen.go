@@ -2534,6 +2534,34 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	return result, nil
 }
 
+func (c *Client) MarkdownRender(ctx context.Context, req MarkdownRenderApplicationJSONReq) (res MarkdownRenderRes, err error) {
+	body, contentType, err := encodeMarkdownRenderRequest(req)
+	if err != nil {
+		return res, err
+	}
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/markdown"
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMarkdownRenderResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/accounts/"
@@ -2884,6 +2912,40 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	defer resp.Body.Close()
 
 	result, err := decodeActivityDeleteThreadSubscriptionResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (res string, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/octocat"
+
+	q := u.Query()
+	{
+		// Encode 's' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.S
+		param := e.EncodeString(v)
+		q.Set("s", param)
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMetaGetOctocatResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}
@@ -11860,6 +11922,56 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	defer resp.Body.Close()
 
 	result, err := decodeCodeScanningListRecentAnalysesResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (res CodeScanningGetAnalysisRes, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/repos/"
+	{
+		// Encode 'owner' parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		u.Path += e.EncodeString(params.Owner)
+	}
+	u.Path += "/"
+	{
+		// Encode 'repo' parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		u.Path += e.EncodeString(params.Repo)
+	}
+	u.Path += "/code-scanning/analyses/"
+	{
+		// Encode 'analysis_id' parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "analysis_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		u.Path += e.EncodeInt(params.AnalysisID)
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeCodeScanningGetAnalysisResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}
@@ -22624,6 +22736,27 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	result, err := decodeActivityListReposWatchedByUserResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) MetaGetZen(ctx context.Context) (res string, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/zen"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMetaGetZenResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}

@@ -200,6 +200,23 @@ func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApp
 	}
 }
 
+func decodeMarkdownRenderRequest(r *http.Request) (req MarkdownRenderApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request MarkdownRenderApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
 func decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkNotificationsAsReadApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":

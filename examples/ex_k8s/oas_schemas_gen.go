@@ -2709,6 +2709,24 @@ type GetSchedulingV1APIResourcesUnauthorized struct{}
 
 func (*GetSchedulingV1APIResourcesUnauthorized) getSchedulingV1APIResourcesRes() {}
 
+type GetServiceAccountIssuerOpenIDConfigurationOK string
+
+func (*GetServiceAccountIssuerOpenIDConfigurationOK) getServiceAccountIssuerOpenIDConfigurationRes() {
+}
+
+type GetServiceAccountIssuerOpenIDConfigurationUnauthorized struct{}
+
+func (*GetServiceAccountIssuerOpenIDConfigurationUnauthorized) getServiceAccountIssuerOpenIDConfigurationRes() {
+}
+
+type GetServiceAccountIssuerOpenIDKeysetOK string
+
+func (*GetServiceAccountIssuerOpenIDKeysetOK) getServiceAccountIssuerOpenIDKeysetRes() {}
+
+type GetServiceAccountIssuerOpenIDKeysetUnauthorized struct{}
+
+func (*GetServiceAccountIssuerOpenIDKeysetUnauthorized) getServiceAccountIssuerOpenIDKeysetRes() {}
+
 type GetStorageAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetStorageAPIGroupApplicationJSONOK) getStorageAPIGroupRes() {}

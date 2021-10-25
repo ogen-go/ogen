@@ -72,6 +72,27 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
+func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/.well-known/openid-configuration/"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/"
@@ -10899,6 +10920,27 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 	defer resp.Body.Close()
 
 	result, err := decodeLogFileListHandlerResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/openid/v1/jwks/"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}

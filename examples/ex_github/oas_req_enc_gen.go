@@ -86,6 +86,10 @@ func encodeGistsUpdateCommentRequest(req GistsUpdateCommentApplicationJSONReq) (
 	return json.Encode(req), "application/json", nil
 }
 
+func encodeMarkdownRenderRequest(req MarkdownRenderApplicationJSONReq) (data []byte, contentType string, err error) {
+	return json.Encode(req), "application/json", nil
+}
+
 func encodeActivityMarkNotificationsAsReadRequest(req *ActivityMarkNotificationsAsReadApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }

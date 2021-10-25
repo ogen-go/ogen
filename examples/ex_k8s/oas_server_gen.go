@@ -52,6 +52,8 @@ var (
 
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
+	// GetServiceAccountIssuerOpenIDConfiguration implements getServiceAccountIssuerOpenIDConfiguration operation.
+	GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (GetServiceAccountIssuerOpenIDConfigurationRes, error)
 	// GetCoreAPIVersions implements getCoreAPIVersions operation.
 	GetCoreAPIVersions(ctx context.Context) (GetCoreAPIVersionsRes, error)
 	// GetCoreV1APIResources implements getCoreV1APIResources operation.
@@ -514,6 +516,8 @@ type Server interface {
 	WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, error)
 	// LogFileListHandler implements logFileListHandler operation.
 	LogFileListHandler(ctx context.Context) (LogFileListHandler, error)
+	// GetServiceAccountIssuerOpenIDKeyset implements getServiceAccountIssuerOpenIDKeyset operation.
+	GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (GetServiceAccountIssuerOpenIDKeysetRes, error)
 	// GetCodeVersion implements getCodeVersion operation.
 	GetCodeVersion(ctx context.Context) (GetCodeVersionRes, error)
 }

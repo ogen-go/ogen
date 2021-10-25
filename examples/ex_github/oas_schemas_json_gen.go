@@ -8479,6 +8479,21 @@ func (CodeScanningDeleteAnalysisApplicationJSONNotFound) ReadJSON(i *json.Iterat
 func (CodeScanningDeleteAnalysisApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CodeScanningDeleteAnalysisApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
+func (CodeScanningGetAnalysisApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
+func (CodeScanningGetAnalysisApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
+func (CodeScanningGetAnalysisApplicationJSONForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CodeScanningGetAnalysisApplicationJSONForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CodeScanningGetAnalysisApplicationJSONNotFound) WriteJSON(j *json.Stream)        {}
+func (CodeScanningGetAnalysisApplicationJSONNotFound) ReadJSON(i *json.Iterator) error { return nil }
+func (CodeScanningGetAnalysisApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CodeScanningGetAnalysisApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CodeScanningGetAnalysisOKApplicationJSONSarif) WriteJSON(j *json.Stream)        {}
+func (CodeScanningGetAnalysisOKApplicationJSONSarif) ReadJSON(i *json.Iterator) error { return nil }
+func (CodeScanningGetAnalysisOKApplicationJSONSarif) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CodeScanningGetAnalysisOKApplicationJSONSarif) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s CodeScanningGetSarifNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -17859,6 +17874,11 @@ func (s *MarkdownRenderApplicationJSONReqMode) ReadJSON(i *json.Iterator) error 
 	*s = MarkdownRenderApplicationJSONReqMode(i.ReadString())
 	return i.Error
 }
+
+func (MarkdownRenderOK) WriteJSON(j *json.Stream)        {}
+func (MarkdownRenderOK) ReadJSON(i *json.Iterator) error { return nil }
+func (MarkdownRenderOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (MarkdownRenderOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s MarketplacePurchaseMarketplacePendingChange) WriteJSON(j *json.Stream) {

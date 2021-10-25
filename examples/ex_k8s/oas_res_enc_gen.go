@@ -50,6 +50,23 @@ var (
 	_ = net.IP{}
 )
 
+func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *GetServiceAccountIssuerOpenIDConfigurationOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		if err := response.WriteJSONTo(w); err != nil {
+			return err
+		}
+		return nil
+	case *GetServiceAccountIssuerOpenIDConfigurationUnauthorized:
+		w.WriteHeader(401)
+		return nil
+	default:
+		return fmt.Errorf("/.well-known/openid-configuration/: unexpected response type: %T", response)
+	}
+}
+
 func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetCoreAPIVersionsApplicationJSONOK:
@@ -7657,6 +7674,20 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 func encodeLogFileListHandlerResponse(response LogFileListHandler, w http.ResponseWriter) error {
 	w.WriteHeader(401)
 	return nil
+}
+
+func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccountIssuerOpenIDKeysetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *GetServiceAccountIssuerOpenIDKeysetOK:
+		w.Header().Set("Content-Type", "application/jwk-set+json")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/jwk-set+json encoder not implemented")
+	case *GetServiceAccountIssuerOpenIDKeysetUnauthorized:
+		w.WriteHeader(401)
+		return nil
+	default:
+		return fmt.Errorf("/openid/v1/jwks/: unexpected response type: %T", response)
+	}
 }
 
 func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWriter) error {

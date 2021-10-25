@@ -3105,6 +3105,34 @@ func decodeActivityDeleteThreadSubscriptionParams(r *http.Request) (ActivityDele
 	return params, nil
 }
 
+func decodeMetaGetOctocatParams(r *http.Request) (MetaGetOctocatParams, error) {
+	var params MetaGetOctocatParams
+	// Decode param 's' located in 'Query'.
+	if err := func() error {
+		values, ok := r.URL.Query()["s"]
+		if !ok {
+			return nil
+		}
+
+		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+			Values:  values,
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+
+		v, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		params.S = string(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	return params, nil
+}
+
 func decodeOrgsListParams(r *http.Request) (OrgsListParams, error) {
 	var params OrgsListParams
 	// Decode param 'since' located in 'Query'.
@@ -15546,6 +15574,83 @@ func decodeCodeScanningListRecentAnalysesParams(r *http.Request) (CodeScanningLi
 		}
 
 		params.SarifID = string(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	return params, nil
+}
+
+func decodeCodeScanningGetAnalysisParams(r *http.Request) (CodeScanningGetAnalysisParams, error) {
+	var params CodeScanningGetAnalysisParams
+	// Decode param 'owner' located in 'Path'.
+	if err := func() error {
+		param := chi.URLParam(r, "owner")
+		if len(param) == 0 {
+			return fmt.Errorf("path parameter 'owner' not specified")
+		}
+
+		d := uri.NewPathDecoder(uri.PathDecoderConfig{
+			Param:   "owner",
+			Value:   param,
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+
+		v, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		params.Owner = string(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	// Decode param 'repo' located in 'Path'.
+	if err := func() error {
+		param := chi.URLParam(r, "repo")
+		if len(param) == 0 {
+			return fmt.Errorf("path parameter 'repo' not specified")
+		}
+
+		d := uri.NewPathDecoder(uri.PathDecoderConfig{
+			Param:   "repo",
+			Value:   param,
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+
+		v, err := d.DecodeString()
+		if err != nil {
+			return err
+		}
+
+		params.Repo = string(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	// Decode param 'analysis_id' located in 'Path'.
+	if err := func() error {
+		param := chi.URLParam(r, "analysis_id")
+		if len(param) == 0 {
+			return fmt.Errorf("path parameter 'analysis_id' not specified")
+		}
+
+		d := uri.NewPathDecoder(uri.PathDecoderConfig{
+			Param:   "analysis_id",
+			Value:   param,
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+
+		v, err := d.DecodeInt()
+		if err != nil {
+			return err
+		}
+
+		params.AnalysisID = int(v)
 		return nil
 	}(); err != nil {
 		return params, err

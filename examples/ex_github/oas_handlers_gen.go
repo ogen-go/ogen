@@ -1404,6 +1404,27 @@ func NewLicensesGetHandler(s Server) func(w http.ResponseWriter, r *http.Request
 	}
 }
 
+func NewMarkdownRenderHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		request, err := decodeMarkdownRenderRequest(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.MarkdownRender(r.Context(), request)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeMarkdownRenderResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func NewAppsGetSubscriptionPlanForAccountHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeAppsGetSubscriptionPlanForAccountParams(r)
@@ -1629,6 +1650,27 @@ func NewActivityDeleteThreadSubscriptionHandler(s Server) func(w http.ResponseWr
 		}
 
 		if err := encodeActivityDeleteThreadSubscriptionResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewMetaGetOctocatHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodeMetaGetOctocatParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.MetaGetOctocat(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeMetaGetOctocatResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -5690,6 +5732,27 @@ func NewCodeScanningListRecentAnalysesHandler(s Server) func(w http.ResponseWrit
 		}
 
 		if err := encodeCodeScanningListRecentAnalysesResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewCodeScanningGetAnalysisHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodeCodeScanningGetAnalysisParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.CodeScanningGetAnalysis(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeCodeScanningGetAnalysisResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -10380,6 +10443,22 @@ func NewActivityListReposWatchedByUserHandler(s Server) func(w http.ResponseWrit
 		}
 
 		if err := encodeActivityListReposWatchedByUserResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewMetaGetZenHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.MetaGetZen(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeMetaGetZenResponse(response, w); err != nil {
 			_ = err
 			return
 		}

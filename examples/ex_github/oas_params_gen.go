@@ -363,6 +363,10 @@ type ActivityDeleteThreadSubscriptionParams struct {
 	ThreadID int
 }
 
+type MetaGetOctocatParams struct {
+	S string
+}
+
 type OrgsListParams struct {
 	Since   int
 	PerPage int
@@ -1399,6 +1403,12 @@ type CodeScanningListRecentAnalysesParams struct {
 	PerPage  int
 	Ref      string
 	SarifID  string
+}
+
+type CodeScanningGetAnalysisParams struct {
+	Owner      string
+	Repo       string
+	AnalysisID int
 }
 
 type CodeScanningDeleteAnalysisParams struct {

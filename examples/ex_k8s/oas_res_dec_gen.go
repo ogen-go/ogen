@@ -50,6 +50,27 @@ var (
 	_ = net.IP{}
 )
 
+func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			var response GetServiceAccountIssuerOpenIDConfigurationOK
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 401:
+		return &GetServiceAccountIssuerOpenIDConfigurationUnauthorized{}, nil
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersionsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -7224,6 +7245,22 @@ func decodeLogFileListHandlerResponse(resp *http.Response) (res LogFileListHandl
 	switch resp.StatusCode {
 	case 401:
 		return LogFileListHandler{}, nil
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/jwk-set+json":
+			return res, fmt.Errorf("application/jwk-set+json decoder not implemented")
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	case 401:
+		return &GetServiceAccountIssuerOpenIDKeysetUnauthorized{}, nil
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}

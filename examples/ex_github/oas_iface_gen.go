@@ -216,6 +216,11 @@ type CodeScanningDeleteAnalysisRes interface {
 	codeScanningDeleteAnalysisRes()
 }
 
+// CodeScanningGetAnalysisRes represents code-scanning/get-analysis response.
+type CodeScanningGetAnalysisRes interface {
+	codeScanningGetAnalysisRes()
+}
+
 // CodeScanningGetSarifRes represents code-scanning/get-sarif response.
 type CodeScanningGetSarifRes interface {
 	codeScanningGetSarifRes()
@@ -496,9 +501,9 @@ type LicensesGetRes interface {
 	licensesGetRes()
 }
 
-// MarkdownRenderReq represents markdown/render request.
-type MarkdownRenderReq interface {
-	markdownRenderReq()
+// MarkdownRenderRes represents markdown/render response.
+type MarkdownRenderRes interface {
+	markdownRenderRes()
 }
 
 // MetaGetRes represents meta/get response.

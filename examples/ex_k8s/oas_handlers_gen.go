@@ -50,6 +50,22 @@ var (
 	_ = net.IP{}
 )
 
+func NewGetServiceAccountIssuerOpenIDConfigurationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.GetServiceAccountIssuerOpenIDConfiguration(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func NewGetCoreAPIVersionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -4375,6 +4391,22 @@ func NewLogFileListHandlerHandler(s Server) func(w http.ResponseWriter, r *http.
 		}
 
 		if err := encodeLogFileListHandlerResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewGetServiceAccountIssuerOpenIDKeysetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.GetServiceAccountIssuerOpenIDKeyset(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeGetServiceAccountIssuerOpenIDKeysetResponse(response, w); err != nil {
 			_ = err
 			return
 		}
