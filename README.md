@@ -90,6 +90,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 
 # Draft Roadmap
 
+* Primitive requests/responses (string, int, enum, bool, etc)
 * Handle unexpected json keys
 * Convenient global errors schema (e.g. 500, 404)
 * Security (e.g. Bearer token)
