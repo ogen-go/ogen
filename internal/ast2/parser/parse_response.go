@@ -11,7 +11,7 @@ import (
 )
 
 func (p *parser) parseResponses(responses ogen.Responses) (*ast.MethodResponse, error) {
-	result := ast.CreateMethodResponses()
+	result := ast.CreateMethodResponse()
 	if len(responses) == 0 {
 		return nil, fmt.Errorf("no responses")
 	}

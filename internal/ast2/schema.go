@@ -47,18 +47,6 @@ type Schema struct {
 
 type SchemaField struct {
 	Name     string
-	Type     *Schema
+	Schema   *Schema
 	Optional bool
-}
-
-func CreateRequestBody() *RequestBody {
-	return &RequestBody{
-		Contents: map[string]*Schema{},
-	}
-}
-
-func CreateResponse() *Response {
-	return &Response{
-		Contents: map[string]*Schema{},
-	}
 }

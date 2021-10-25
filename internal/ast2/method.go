@@ -14,6 +14,20 @@ type PathPart struct {
 	Param *Parameter
 }
 
+type RequestBody struct {
+	Contents map[string]*Schema
+	Required bool
+}
+
+type MethodResponse struct {
+	StatusCode map[int]*Response
+	Default    *Response
+}
+
+type Response struct {
+	Contents map[string]*Schema
+}
+
 func (m *Method) Path() (path string) {
 	for _, part := range m.PathParts {
 		if part.Raw != "" {

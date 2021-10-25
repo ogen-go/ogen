@@ -29,11 +29,11 @@ func TestSchemaSimple(t *testing.T) {
 		Fields: []ast.SchemaField{
 			{
 				Name: "id",
-				Type: &ast.Schema{Type: ast.Integer},
+				Schema: &ast.Schema{Type: ast.Integer},
 			},
 			{
 				Name: "name",
-				Type: &ast.Schema{Type: ast.String},
+				Schema: &ast.Schema{Type: ast.String},
 			},
 		},
 	}
@@ -70,18 +70,18 @@ func TestSchemaRecursive(t *testing.T) {
 	pet.Fields = []ast.SchemaField{
 		{
 			Name: "friends",
-			Type: &ast.Schema{
+			Schema: &ast.Schema{
 				Type: ast.Array,
 				Item: pet,
 			},
 		},
 		{
 			Name: "id",
-			Type: &ast.Schema{Type: ast.Integer},
+			Schema: &ast.Schema{Type: ast.Integer},
 		},
 		{
 			Name: "name",
-			Type: &ast.Schema{Type: ast.String},
+			Schema: &ast.Schema{Type: ast.String},
 		},
 	}
 
@@ -92,18 +92,18 @@ func TestSchemaRecursive(t *testing.T) {
 			Fields: []ast.SchemaField{
 				{
 					Name: "friends",
-					Type: &ast.Schema{
+					Schema: &ast.Schema{
 						Type: ast.Array,
 						Item: pet,
 					},
 				},
 				{
 					Name: "id",
-					Type: &ast.Schema{Type: ast.Integer},
+					Schema: &ast.Schema{Type: ast.Integer},
 				},
 				{
 					Name: "name",
-					Type: &ast.Schema{Type: ast.String},
+					Schema: &ast.Schema{Type: ast.String},
 				},
 			},
 		},
@@ -129,15 +129,15 @@ func TestSchemaSideEffects(t *testing.T) {
 			Fields: []ast.SchemaField{
 				{
 					Name: "age",
-					Type: &ast.Schema{Type: ast.Integer},
+					Schema: &ast.Schema{Type: ast.Integer},
 				},
 				{
 					Name: "id",
-					Type: &ast.Schema{Type: ast.Integer},
+					Schema: &ast.Schema{Type: ast.Integer},
 				},
 				{
 					Name: "name",
-					Type: &ast.Schema{Type: ast.String},
+					Schema: &ast.Schema{Type: ast.String},
 				},
 			},
 		},
@@ -148,11 +148,11 @@ func TestSchemaSideEffects(t *testing.T) {
 		Fields: []ast.SchemaField{
 			{
 				Name: "name",
-				Type: &ast.Schema{Type: ast.String},
+				Schema: &ast.Schema{Type: ast.String},
 			},
 			{
 				Name: "owner",
-				Type: expectSide[0],
+				Schema: expectSide[0],
 			},
 		},
 	}
@@ -211,7 +211,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 		Fields: []ast.SchemaField{
 			{
 				Name: "pets",
-				Type: pets,
+				Schema: pets,
 			},
 		},
 	}

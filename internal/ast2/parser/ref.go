@@ -62,7 +62,6 @@ func (p *parser) resolveResponse(ref string) (*ast.Response, error) {
 		//
 		// So, we need to create new *ast.Response and copy schemas into it.
 		newR := ast.CreateResponse()
-		newR.NoContent = r.NoContent
 		newR.Contents = make(map[string]*ast.Schema)
 		for ctype, s := range r.Contents {
 			newR.Contents[ctype] = s

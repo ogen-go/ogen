@@ -109,7 +109,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 
 			s.Fields = append(s.Fields, ast.SchemaField{
 				Name:     propName,
-				Type:     prop,
+				Schema:   prop,
 				Optional: optional(propName),
 			})
 		}
