@@ -126,6 +126,15 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	return nil
 }
 
+func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	if err := response.WriteJSONTo(w); err != nil {
+		return err
+	}
+	return nil
+}
+
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

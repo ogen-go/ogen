@@ -56,5 +56,6 @@ func Register(r chi.Router, s Server) {
 	r.MethodFunc("POST", "/foobar", NewFoobarPostHandler(s))
 	r.MethodFunc("GET", "/pet", NewPetGetHandler(s))
 	r.MethodFunc("POST", "/pet", NewPetCreateHandler(s))
+	r.MethodFunc("GET", "/pet/name/{id}", NewPetNameByIDHandler(s))
 	r.MethodFunc("GET", "/pet/{name}", NewPetGetByNameHandler(s))
 }

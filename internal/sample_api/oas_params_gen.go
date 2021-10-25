@@ -62,6 +62,10 @@ type PetGetParams struct {
 	Token  string
 }
 
+type PetNameByIDParams struct {
+	ID int
+}
+
 type PetGetByNameParams struct {
 	Name string
 }

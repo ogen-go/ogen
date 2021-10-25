@@ -16,6 +16,35 @@
     "version": "1.0.1"
   },
   "paths": {
+    "/pet/name/{id}": {
+      "get": {
+        "description": "Returns pet name by pet id",
+        "operationId": "petNameByID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "pet ID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pet": {
       "get": {
         "description": "Returns pet from the system that the user has access to",
