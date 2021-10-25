@@ -140,6 +140,25 @@ func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
 	}
 }
 
+func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			var response Pet
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:

@@ -129,6 +129,27 @@ func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		request, err := decodePetCreateRequest(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetCreate(r.Context(), request)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetCreateResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodePetGetByNameParams(r)
