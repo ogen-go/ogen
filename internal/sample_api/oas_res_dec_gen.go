@@ -159,6 +159,36 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 	}
 }
 
+func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			var response []string
+			i := json.NewIterator()
+			i.Reset(resp.Body)
+			i.ReadArrayCB(func(i *json.Iterator) bool {
+				var elem string
+				if err := elem.ReadJSON(i); err != nil {
+					i.ReportError("ReadArray", err.Error())
+					return false
+				}
+				response = append(response, elem)
+				return true
+			})
+			if err := i.Error; err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:

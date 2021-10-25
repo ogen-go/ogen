@@ -5,3 +5,4 @@ _bin/*
 *-fuzz.zip
 
 *.out
+*.dump

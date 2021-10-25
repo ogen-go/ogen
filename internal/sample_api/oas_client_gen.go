@@ -249,6 +249,36 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err 
 	return result, nil
 }
 
+func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/friendNames/"
+	{
+		// Encode 'id' parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		u.Path += e.EncodeInt(params.ID)
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetFriendsNamesByIDResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/name/"

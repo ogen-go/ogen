@@ -62,6 +62,8 @@ type Server interface {
 	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
 	// PetCreate implements petCreate operation.
 	PetCreate(ctx context.Context, req PetCreateReq) (Pet, error)
+	// PetFriendsNamesByID implements petFriendsNamesByID operation.
+	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
 	// PetNameByID implements petNameByID operation.
 	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
 	// PetGetByName implements petGetByName operation.

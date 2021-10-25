@@ -162,6 +162,28 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	return nil
 }
 
+func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
+		return err
+	}
+	return nil
+}
+
 func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

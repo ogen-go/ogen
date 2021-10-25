@@ -45,6 +45,38 @@
         }
       }
     },
+    "/pet/friendNames/{id}": {
+      "get": {
+        "description": "Returns names of all friends of pet",
+        "operationId": "petFriendsNamesByID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "pet ID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Names of all friends",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pet": {
       "get": {
         "description": "Returns pet from the system that the user has access to",

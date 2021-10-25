@@ -56,6 +56,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter) error {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
+		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
 		_ = elem // Unsupported kind "alias" for field "".
@@ -77,6 +78,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
+		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
 		_ = elem // Unsupported kind "alias" for field "".
@@ -98,6 +100,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter) error {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
+		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
 		more.More()
