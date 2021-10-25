@@ -2,6 +2,7 @@ package gen
 
 import (
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 func forEachOps(item ogen.PathItem, f func(method string, op ogen.Operation) error) error {
@@ -22,4 +23,17 @@ func forEachOps(item ogen.PathItem, f func(method string, op ogen.Operation) err
 	handle("patch", item.Patch)
 	handle("trace", item.Trace)
 	return err
+}
+
+func isUnderlyingPrimitive(s *ast.Schema) bool {
+	switch s.Kind {
+	case ast.KindPrimitive, ast.KindEnum:
+		return true
+	case ast.KindAlias:
+		return isUnderlyingPrimitive(s.AliasTo)
+	case ast.KindPointer:
+		return isUnderlyingPrimitive(s.PointerTo)
+	default:
+		return false
+	}
 }

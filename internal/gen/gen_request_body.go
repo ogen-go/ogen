@@ -28,6 +28,10 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
+		if isUnderlyingPrimitive(schema) {
+			return nil, &ErrNotImplemented{"requestBody with primitive type"}
+		}
+
 		if inlined := media.Schema.Ref == ""; inlined {
 			// Wrap scalar type with an alias.
 			// It is necessary because schema should satisfy

@@ -158,6 +158,10 @@ func (g *Generator) generateResponse(respName string, resp ogen.Response) (*ast.
 			return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
 		}
 
+		if isUnderlyingPrimitive(schema) {
+			return nil, &ErrNotImplemented{"response with primitive type"}
+		}
+
 		if inlined := media.Schema.Ref == ""; inlined {
 			// Wrap scalar type with an alias.
 			// It is necessary because schema should satisfy
