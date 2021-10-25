@@ -55,19 +55,39 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response []WorldObject
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem WorldObject
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem WorldObject
+					if err := func() error {
+
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					response = append(response, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
 				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -85,8 +105,23 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WorldObject
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -104,8 +139,23 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response HelloWorld
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -123,19 +173,39 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response []WorldObject
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem WorldObject
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem WorldObject
+					if err := func() error {
+
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					response = append(response, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
 				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -153,19 +223,39 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response []WorldObject
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem WorldObject
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem WorldObject
+					if err := func() error {
+
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					response = append(response, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
 				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 

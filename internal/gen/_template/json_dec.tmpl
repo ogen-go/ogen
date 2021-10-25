@@ -1,80 +1,39 @@
-{{- define "enc_json_array" }}
+{{- define "dec_json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    more.Down()
-    j.WriteArrayStart()
-    for _, elem := range {{ $.Var }} {
-    {{ template "enc_json_value" array_elem $.Type.Item }}
-    }
-    j.WriteArrayEnd()
-    more.Up()
-{{- end }}
+    {{- if $.Schema.JSONRead -}}
+        {{ $.Var }} = i.{{ $.Schema.JSONRead }}()
+        return i.Error
+    {{- else if $.Schema.JSONHelper }}
+        v, err := json.Read{{ $.Schema.JSONHelper }}(i)
+        if err != nil {
+            return err
+        }
 
-{{- define "enc_json_start" -}}
-    {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    more.More()
-    {{- if $.Field }}
-      j.WriteObjectField("{{ $.Field }}")
-    {{- end -}}
-{{- end -}}
-
-{{- define "enc_json_value" -}}
-    {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    {{- if or ($.Type.IsStruct) ($.Type.IsEnum) ($.Type.IsPointer) -}}
-        {{- if or (eq $.Type.NilSemantic "invalid") (eq $.Type.NilSemantic "optional") -}}
-          if {{ $.Var }} != nil {
-          {{- template "enc_json_start" $ }}
-          {{ $.Var }}.WriteJSON(j)
-          }
-        {{- else if eq $.Type.NilSemantic "null" -}}
-            {{- template "enc_json_start" $ }}
-            if {{ $.Var }} == nil {
-            j.WriteNil()
-            } else {
-            {{ $.Var }}.WriteJSON(j)
-            }
-        {{- else -}}
-            {{- template "enc_json_start" $ }}
-            {{ $.Var }}.WriteJSON(j)
-        {{- end -}}
-    {{- else if $.Type.GenericOf -}}
-        {{- $g := $.Type.GenericOf -}}
-        {{- $v := $.Type.GenericVariant -}}
-        {{- if $v.Optional -}}
-          if {{ $.Var }}.Set {
-          {{- template "enc_json_start" $ }}
-          {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
-          }
-        {{- else -}}
-            {{- template "enc_json_start" $ }}
-            {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
-        {{- end -}}
-    {{- else if $.Type.JSONHelper -}}
-        {{ template "enc_json_start" $ }}
-        json.Write{{ $.Type.JSONHelper }}(j, {{ $.Var }})
-    {{- else if $.Type.JSONWrite -}}
-        {{ template "enc_json_start" $ }}
-        j.{{ $.Type.JSONWrite }}({{ $.Var }})
-    {{- else if $.Type.IsArray -}}
-        {{- if eq $.Type.NilSemantic "invalid" -}}
-            {{ template "enc_json_start" $ }}
-            {{ template "enc_json_array" $ -}}
-        {{- else if eq $.Type.NilSemantic "optional" -}}
-          if {{ $.Var }} != nil {
-          {{ template "enc_json_start" $ }}
-          {{ template "enc_json_array" $ -}}
-          }
-        {{- else if eq $.Type.NilSemantic "null" -}}
-            {{- template "enc_json_start" $ }}
-            if {{ $.Var }} == nil {
-            j.WriteNil()
-            } else {
-            {{- template "enc_json_array" $ -}}
-            }
-        {{- end -}}
-    {{- else -}}
-        {{- if $.ArrElem -}}
-          _ = elem
-        {{- end -}}
-        // Unsupported kind "{{ $.Type.Kind  }}" for field "{{ $.Field }}".
+        {{ $.Var }} = v
+        return i.Error
+    {{- else if or ($.Schema.IsStruct) ($.Schema.IsEnum) }}
+        if err := {{ $.Var }}.ReadJSON(i); err != nil {
+            return err
+        }
+        return i.Error
+    {{- else if $.Schema.IsArray }}
+        var retErr error
+        i.ReadArrayCB(func(i *json.Iterator) bool {
+           var elem {{ $.Schema.Item.Type }}
+           if err := func() error {
+              {{ template "dec_json_value" array_elem $.Schema.Item }}
+           }(); err != nil {
+               retErr = err
+               return false
+           }
+           {{ $.Var }} = append({{ $.Var }}, elem)
+           return true
+        })
+        if retErr != nil {
+           return retErr
+        }
+        return i.Error
+    {{- else  -}}
+        return fmt.Errorf(`decoding of "{{ $.Schema.Type }}" ({{ $.Schema.Kind }}) is not implemented`)
     {{- end }}
 {{- end -}}

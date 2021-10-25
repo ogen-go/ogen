@@ -53,6 +53,14 @@ type sampleAPIServer struct {
 	pet api.Pet
 }
 
+func (s sampleAPIServer) PetFriendsNamesByID(ctx context.Context, params api.PetFriendsNamesByIDParams) ([]string, error) {
+	panic("implement me")
+}
+
+func (s sampleAPIServer) PetNameByID(ctx context.Context, params api.PetNameByIDParams) (string, error) {
+	panic("implement me")
+}
+
 func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetParams) (api.FoobarGetRes, error) {
 	panic("implement me")
 }

@@ -15,7 +15,7 @@ func fieldElem(s *ast.SchemaField) Elem {
 	return Elem{
 		ArrElem: false,
 		Field:   s.Tag,
-		Type:    s.Type,
+		Schema:  s.Type,
 		Var:     fmt.Sprintf("s.%s", s.Name),
 	}
 }
@@ -24,7 +24,7 @@ func fieldElem(s *ast.SchemaField) Elem {
 type Elem struct {
 	ArrElem bool
 	Field   string
-	Type    *ast.Schema
+	Schema  *ast.Schema
 	Var     string
 }
 
@@ -38,16 +38,16 @@ func templateFuncs() template.FuncMap {
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
-		"array_elem": func(s *ast.Schema) Elem { return Elem{Type: s, ArrElem: true, Var: "elem"} },
-		"resp_elem": func(i *ast.ResponseInfo) Elem {
+		"array_elem": func(s *ast.Schema) Elem { return Elem{Schema: s, ArrElem: true, Var: "elem"} },
+		"req_elem":   func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "response"} },
+		"res_elem": func(i *ast.ResponseInfo) Elem {
 			v := "response"
 			if i.Default {
 				v = v + ".Response"
 			}
 			return Elem{
-				Type:    i.Schema,
-				ArrElem: true,
-				Var:     v,
+				Schema: i.Schema,
+				Var:    v,
 			}
 		},
 		"field_elem": fieldElem,

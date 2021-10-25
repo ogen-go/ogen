@@ -14,34 +14,29 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
         return {{ if $m.IsResponseIface }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
         {{- else }}{{/* Decode content response */}}
         switch resp.Header.Get("Content-Type") {
-        {{- range $ctype, $schema := $response.Contents }}{{/* Range over contents */}}
-        case "{{ $ctype }}":
-            {{- if eq $ctype "application/json" }}{{/* Decode */}}
+        {{- range $contentType, $schema := $response.Contents }}{{/* Range over contents */}}
+        case "{{ $contentType }}":
+            {{- if eq $contentType "application/json" }}{{/* Decode */}}
+            buf := json.GetBuffer()
+            defer json.PutBuffer(buf)
+            if _, err := io.Copy(buf, resp.Body); err != nil {
+                return res, err
+            }
+
+            i := json.GetIterator()
+            defer json.PutIterator(i)
+            i.ResetBytes(buf.Bytes())
+
             var response {{ $schema.Type }}
-            {{- if eq $schema.Kind "array" }}
-                i := json.NewIterator()
-                i.Reset(resp.Body)
-                i.ReadArrayCB(func(i *json.Iterator) bool {
-                    var elem {{ $schema.Item.Type }}
-                    if err := elem.ReadJSON(i); err != nil {
-                        i.ReportError("ReadArray", err.Error())
-                        return false
-                    }
-                    response = append(response, elem)
-                    return true
-                })
-                if err := i.Error; err != nil {
-                    return res, err
-                }
-            {{- else }}
-                if err := response.ReadJSONFrom(resp.Body); err != nil {
-                    return res, err
-                }
-            {{ end }}
+            if err := func() error {
+                {{- template "dec_json_value" req_elem $schema }}
+            }(); err != nil {
+                return res, err
+            }
 
             return {{ if $m.IsResponseIface }}&{{ end }}response, nil
             {{- else }}
-            return res, fmt.Errorf("{{ $ctype }} decoder not implemented")
+            return res, fmt.Errorf("{{ $contentType }} decoder not implemented")
             {{- end }}{{/* Decode */}}
         {{- end }}{{/* Range over contents */}}
         default:
