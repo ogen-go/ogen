@@ -59,7 +59,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter) error {
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -81,7 +81,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}

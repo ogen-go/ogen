@@ -55,8 +55,20 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response SearchOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "SearchOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -76,8 +88,20 @@ func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, err
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response SearchByTagIDOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "SearchByTagIDOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -97,8 +121,23 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response Book
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 

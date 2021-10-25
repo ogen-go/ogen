@@ -55,8 +55,20 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetServiceAccountIssuerOpenIDConfigurationOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetServiceAccountIssuerOpenIDConfigurationOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -76,8 +88,20 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersio
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetCoreAPIVersionsApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetCoreAPIVersionsApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -101,8 +125,20 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetCoreV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetCoreV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -126,8 +162,20 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1ComponentStatusApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1ComponentStatusApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -155,8 +203,20 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -184,8 +244,20 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1EndpointsForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1EndpointsForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -213,8 +285,20 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res Lis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1EventForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -242,8 +326,20 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -271,8 +367,20 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1Names
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1NamespaceApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -300,8 +408,20 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1N
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1NamespaceApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -316,8 +436,20 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1N
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1NamespaceApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -332,8 +464,20 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1N
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1NamespaceApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1NamespaceApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -357,8 +501,20 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, e
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1NodeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1NodeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -386,8 +542,20 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1NodeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -402,8 +570,20 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeRe
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1NodeApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -418,8 +598,20 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeRe
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1NodeApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1NodeApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -443,8 +635,20 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response) (res DeleteCo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteCoreV1CollectionNodeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteCoreV1CollectionNodeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -468,8 +672,20 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -497,8 +713,20 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCore
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1PersistentVolumeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -526,8 +754,20 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res Create
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1PersistentVolumeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -542,8 +782,20 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res Create
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1PersistentVolumeApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -558,8 +810,20 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res Create
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCoreV1PersistentVolumeApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCoreV1PersistentVolumeApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -583,8 +847,20 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -608,8 +884,20 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListC
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1PodForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1PodForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -637,8 +925,20 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -666,8 +966,20 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -695,8 +1007,20 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -724,8 +1048,20 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res Li
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1SecretForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1SecretForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -753,8 +1089,20 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -782,8 +1130,20 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res L
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoreV1ServiceForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoreV1ServiceForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -811,8 +1171,20 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -840,8 +1212,20 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -869,8 +1253,20 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1EventListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -898,8 +1294,20 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -927,8 +1335,20 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1NamespaceListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1NamespaceListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -956,8 +1376,20 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1Node
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1NodeListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1NodeListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -985,8 +1417,20 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1014,8 +1458,20 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res Wat
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1PersistentVolumeListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1PersistentVolumeListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1043,8 +1499,20 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1PodListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1PodListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1072,8 +1540,20 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1101,8 +1581,20 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1130,8 +1622,20 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1159,8 +1663,20 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1SecretListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1SecretListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1188,8 +1704,20 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1217,8 +1745,20 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1246,8 +1786,20 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, e
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAPIVersionsApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAPIVersionsApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1271,8 +1823,20 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res Ge
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAdmissionregistrationAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAdmissionregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1296,8 +1860,20 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAdmissionregistrationV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAdmissionregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1321,8 +1897,20 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1350,8 +1938,20 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1366,8 +1966,20 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1382,8 +1994,20 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1407,8 +2031,20 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1432,8 +2068,20 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1461,8 +2109,20 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1477,8 +2137,20 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1493,8 +2165,20 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1518,8 +2202,20 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1543,8 +2239,20 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1572,8 +2280,20 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1601,8 +2321,20 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiexte
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetApiextensionsAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetApiextensionsAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1626,8 +2358,20 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetA
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetApiextensionsV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetApiextensionsV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1651,8 +2395,20 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1680,8 +2436,20 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1696,8 +2464,20 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1712,8 +2492,20 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1737,8 +2529,20 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1762,8 +2566,20 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1791,8 +2607,20 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApire
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetApiregistrationAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetApiregistrationAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1816,8 +2644,20 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res Ge
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetApiregistrationV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetApiregistrationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1841,8 +2681,20 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res Lis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListApiregistrationV1APIServiceApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1870,8 +2722,20 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res C
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateApiregistrationV1APIServiceApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1886,8 +2750,20 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res C
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateApiregistrationV1APIServiceApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1902,8 +2778,20 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res C
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateApiregistrationV1APIServiceApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateApiregistrationV1APIServiceApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1927,8 +2815,20 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1952,8 +2852,20 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchApiregistrationV1APIServiceListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchApiregistrationV1APIServiceListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -1981,8 +2893,20 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAppsAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAppsAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2006,8 +2930,20 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAppsV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAppsV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2031,8 +2967,20 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2060,8 +3008,20 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2089,8 +3049,20 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAppsV1DeploymentForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAppsV1DeploymentForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2118,8 +3090,20 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2147,8 +3131,20 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2176,8 +3172,20 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2205,8 +3213,20 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2234,8 +3254,20 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2263,8 +3295,20 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2292,8 +3336,20 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2321,8 +3377,20 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthen
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAuthenticationAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAuthenticationAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2346,8 +3414,20 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res Get
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAuthenticationV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAuthenticationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2371,8 +3451,20 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res C
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthenticationV1TokenReviewApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2387,8 +3479,20 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res C
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthenticationV1TokenReviewApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2403,8 +3507,20 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res C
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthenticationV1TokenReviewApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthenticationV1TokenReviewApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2428,8 +3544,20 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthori
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAuthorizationAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2453,8 +3581,20 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetA
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAuthorizationV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2478,8 +3618,20 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2494,8 +3646,20 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2510,8 +3674,20 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2535,8 +3711,20 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2551,8 +3739,20 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2567,8 +3767,20 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2592,8 +3804,20 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2608,8 +3832,20 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2624,8 +3860,20 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2649,8 +3897,20 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscali
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAutoscalingAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAutoscalingAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2674,8 +3934,20 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAut
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAutoscalingV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAutoscalingV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2699,8 +3971,20 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2728,8 +4012,20 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2757,8 +4053,20 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res G
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAutoscalingV2beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAutoscalingV2beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2782,8 +4090,20 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2811,8 +4131,20 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2840,8 +4172,20 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res G
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetAutoscalingV2beta2APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetAutoscalingV2beta2APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2865,8 +4209,20 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2894,8 +4250,20 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2923,8 +4291,20 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetBatchAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetBatchAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2948,8 +4328,20 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1AP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetBatchV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetBatchV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -2973,8 +4365,20 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListBatchV1CronJobForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListBatchV1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3002,8 +4406,20 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res List
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListBatchV1JobForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListBatchV1JobForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3031,8 +4447,20 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3060,8 +4488,20 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchBatchV1JobListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchBatchV1JobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3089,8 +4529,20 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatc
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetBatchV1beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetBatchV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3114,8 +4566,20 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3143,8 +4607,20 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3172,8 +4648,20 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertific
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetCertificatesAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetCertificatesAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3197,8 +4685,20 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetCertificatesV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetCertificatesV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3222,8 +4722,20 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCertificatesV1CertificateSigningRequestApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3251,8 +4763,20 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3267,8 +4791,20 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3283,8 +4819,20 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3308,8 +4856,20 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3333,8 +4893,20 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3362,8 +4934,20 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordina
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetCoordinationAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetCoordinationAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3387,8 +4971,20 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetCoordinationV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetCoordinationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3412,8 +5008,20 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3441,8 +5049,20 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3470,8 +5090,20 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetDiscoveryAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetDiscoveryAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3495,8 +5127,20 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDisco
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetDiscoveryV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetDiscoveryV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3520,8 +5164,20 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3549,8 +5205,20 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3578,8 +5246,20 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res Get
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetDiscoveryV1beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetDiscoveryV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3603,8 +5283,20 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3632,8 +5324,20 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3661,8 +5365,20 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroup
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetEventsAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetEventsAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3686,8 +5402,20 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetEventsV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetEventsV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3711,8 +5439,20 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res L
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListEventsV1EventForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListEventsV1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3740,8 +5480,20 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchEventsV1EventListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchEventsV1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3769,8 +5521,20 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEve
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetEventsV1beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetEventsV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3794,8 +5558,20 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListEventsV1beta1EventForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListEventsV1beta1EventForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3823,8 +5599,20 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3852,8 +5640,20 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res Get
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetFlowcontrolApiserverAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetFlowcontrolApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3877,8 +5677,20 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3902,8 +5714,20 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3931,8 +5755,20 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3947,8 +5783,20 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3963,8 +5811,20 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -3988,8 +5848,20 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4013,8 +5885,20 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4042,8 +5926,20 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4058,8 +5954,20 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4074,8 +5982,20 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4099,8 +6019,20 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4124,8 +6056,20 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4153,8 +6097,20 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4182,8 +6138,20 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4207,8 +6175,20 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4236,8 +6216,20 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4252,8 +6244,20 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4268,8 +6272,20 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4293,8 +6309,20 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4318,8 +6346,20 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4347,8 +6387,20 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4363,8 +6415,20 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4379,8 +6443,20 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4404,8 +6480,20 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4429,8 +6517,20 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4458,8 +6558,20 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4487,8 +6599,20 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInt
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetInternalApiserverAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetInternalApiserverAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4512,8 +6636,20 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4537,8 +6673,20 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4566,8 +6714,20 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4582,8 +6742,20 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4598,8 +6770,20 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4623,8 +6807,20 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4648,8 +6844,20 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4677,8 +6885,20 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworking
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetNetworkingAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetNetworkingAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4702,8 +6922,20 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetw
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetNetworkingV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetNetworkingV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4727,8 +6959,20 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListNetworkingV1IngressClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4756,8 +7000,20 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res Crea
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNetworkingV1IngressClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4772,8 +7028,20 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res Crea
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNetworkingV1IngressClassApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4788,8 +7056,20 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res Crea
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNetworkingV1IngressClassApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNetworkingV1IngressClassApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4813,8 +7093,20 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteNetworkingV1CollectionIngressClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteNetworkingV1CollectionIngressClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4838,8 +7130,20 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListNetworkingV1IngressForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListNetworkingV1IngressForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4867,8 +7171,20 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4896,8 +7212,20 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res W
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchNetworkingV1IngressClassListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchNetworkingV1IngressClassListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4925,8 +7253,20 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4954,8 +7294,20 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -4983,8 +7335,20 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes,
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetNodeAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetNodeAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5008,8 +7372,20 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetNodeV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetNodeV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5033,8 +7409,20 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1Ru
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListNodeV1RuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5062,8 +7450,20 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNode
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1RuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5078,8 +7478,20 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNode
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1RuntimeClassApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5094,8 +7506,20 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNode
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1RuntimeClassApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5119,8 +7543,20 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteNodeV1CollectionRuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteNodeV1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5144,8 +7580,20 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchNodeV1RuntimeClassListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchNodeV1RuntimeClassListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5173,8 +7621,20 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNode
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetNodeV1alpha1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetNodeV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5198,8 +7658,20 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListNodeV1alpha1RuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5227,8 +7699,20 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Crea
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5243,8 +7727,20 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Crea
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5259,8 +7755,20 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Crea
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5284,8 +7792,20 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5309,8 +7829,20 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res W
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchNodeV1alpha1RuntimeClassListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchNodeV1alpha1RuntimeClassListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5338,8 +7870,20 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetNodeV1beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetNodeV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5363,8 +7907,20 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNod
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListNodeV1beta1RuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5392,8 +7948,20 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res Creat
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5408,8 +7976,20 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res Creat
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5424,8 +8004,20 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res Creat
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateNodeV1beta1RuntimeClassApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateNodeV1beta1RuntimeClassApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5449,8 +8041,20 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5474,8 +8078,20 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res Wa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchNodeV1beta1RuntimeClassListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchNodeV1beta1RuntimeClassListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5503,8 +8119,20 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroup
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetPolicyAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetPolicyAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5528,8 +8156,20 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetPolicyV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetPolicyV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5553,8 +8193,20 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5582,8 +8234,20 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5611,8 +8275,20 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPol
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetPolicyV1beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetPolicyV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5636,8 +8312,20 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5665,8 +8353,20 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5694,8 +8394,20 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5710,8 +8422,20 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (re
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5726,8 +8450,20 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (re
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5751,8 +8487,20 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5776,8 +8524,20 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5805,8 +8565,20 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5834,8 +8606,20 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRba
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetRbacAuthorizationAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetRbacAuthorizationAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5859,8 +8643,20 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetRbacAuthorizationV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetRbacAuthorizationV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5884,8 +8680,20 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5913,8 +8721,20 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5929,8 +8749,20 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5945,8 +8777,20 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5970,8 +8814,20 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -5995,8 +8851,20 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListRbacAuthorizationV1ClusterRoleApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6024,8 +8892,20 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6040,8 +8920,20 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (re
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6056,8 +8948,20 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (re
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6081,8 +8985,20 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6106,8 +9022,20 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6135,8 +9063,20 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6164,8 +9104,20 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6193,8 +9145,20 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6222,8 +9186,20 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6251,8 +9227,20 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6280,8 +9268,20 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetScheduling
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetSchedulingAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetSchedulingAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6305,8 +9305,20 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSche
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetSchedulingV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetSchedulingV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6330,8 +9342,20 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListS
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListSchedulingV1PriorityClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6359,8 +9383,20 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res Cre
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateSchedulingV1PriorityClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6375,8 +9411,20 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res Cre
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateSchedulingV1PriorityClassApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6391,8 +9439,20 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res Cre
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateSchedulingV1PriorityClassApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateSchedulingV1PriorityClassApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6416,8 +9476,20 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6441,8 +9513,20 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchSchedulingV1PriorityClassListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchSchedulingV1PriorityClassListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6470,8 +9554,20 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGro
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetStorageAPIGroupApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetStorageAPIGroupApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6495,8 +9591,20 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorage
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetStorageV1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetStorageV1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6520,8 +9628,20 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListStorageV1CSIDriverApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6549,8 +9669,20 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStor
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1CSIDriverApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6565,8 +9697,20 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStor
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1CSIDriverApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6581,8 +9725,20 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStor
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1CSIDriverApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1CSIDriverApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6606,8 +9762,20 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteStorageV1CollectionCSIDriverApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteStorageV1CollectionCSIDriverApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6631,8 +9799,20 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1C
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListStorageV1CSINodeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6660,8 +9840,20 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorag
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1CSINodeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6676,8 +9868,20 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorag
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1CSINodeApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6692,8 +9896,20 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorag
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1CSINodeApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1CSINodeApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6717,8 +9933,20 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response) (res De
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteStorageV1CollectionCSINodeApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteStorageV1CollectionCSINodeApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6742,8 +9970,20 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStora
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListStorageV1StorageClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6771,8 +10011,20 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateS
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1StorageClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6787,8 +10039,20 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateS
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1StorageClassApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6803,8 +10067,20 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateS
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1StorageClassApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1StorageClassApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6828,8 +10104,20 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response) (r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteStorageV1CollectionStorageClassApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteStorageV1CollectionStorageClassApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6853,8 +10141,20 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListS
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListStorageV1VolumeAttachmentApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6882,8 +10182,20 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res Cre
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1VolumeAttachmentApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6898,8 +10210,20 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res Cre
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1VolumeAttachmentApplicationJSONCreated
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONCreated" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6914,8 +10238,20 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res Cre
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response CreateStorageV1VolumeAttachmentApplicationJSONAccepted
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "CreateStorageV1VolumeAttachmentApplicationJSONAccepted" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6939,8 +10275,20 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6964,8 +10312,20 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchSt
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchStorageV1CSIDriverListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchStorageV1CSIDriverListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -6993,8 +10353,20 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStor
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchStorageV1CSINodeListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchStorageV1CSINodeListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7022,8 +10394,20 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res Watc
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchStorageV1StorageClassListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchStorageV1StorageClassListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7051,8 +10435,20 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchStorageV1VolumeAttachmentListApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchStorageV1VolumeAttachmentListApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7080,8 +10476,20 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetS
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetStorageV1alpha1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetStorageV1alpha1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7105,8 +10513,20 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7134,8 +10554,20 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7163,8 +10595,20 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetSt
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response GetStorageV1beta1APIResourcesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "GetStorageV1beta1APIResourcesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7188,8 +10632,20 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7217,8 +10673,20 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				return fmt.Errorf(`decoding of "WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK" (alias) is not implemented`)
+			}(); err != nil {
 				return res, err
 			}
 
@@ -7271,8 +10739,23 @@ func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, e
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			buf := json.GetBuffer()
+			defer json.PutBuffer(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response IoK8sApimachineryPkgVersionInfo
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 

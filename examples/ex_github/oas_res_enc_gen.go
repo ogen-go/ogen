@@ -158,7 +158,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -173,7 +173,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -185,7 +185,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -197,7 +197,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -232,7 +232,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -244,7 +244,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -269,7 +269,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -281,7 +281,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -313,7 +313,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -325,7 +325,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -357,7 +357,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -372,7 +372,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -384,7 +384,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -396,7 +396,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -431,7 +431,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -443,7 +443,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -468,7 +468,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -480,7 +480,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -499,7 +499,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -922,7 +922,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter) error
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -957,7 +957,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -972,7 +972,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -984,7 +984,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1009,7 +1009,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1021,7 +1021,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1040,7 +1040,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1055,7 +1055,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1067,7 +1067,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1102,7 +1102,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1114,7 +1114,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1188,7 +1188,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1200,7 +1200,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1252,7 +1252,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1267,7 +1267,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1279,7 +1279,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1343,7 +1343,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter) error
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1355,7 +1355,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter) error
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1380,7 +1380,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1392,7 +1392,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1411,7 +1411,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1472,7 +1472,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1484,7 +1484,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1508,7 +1508,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1546,7 +1546,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1558,7 +1558,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1604,7 +1604,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1616,7 +1616,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1635,7 +1635,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1647,7 +1647,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1659,7 +1659,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1714,7 +1714,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1788,7 +1788,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1800,7 +1800,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1835,7 +1835,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1847,7 +1847,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1908,7 +1908,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1920,7 +1920,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1955,7 +1955,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1967,7 +1967,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -1992,7 +1992,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2004,7 +2004,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2029,7 +2029,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter) error {
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2485,7 +2485,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2590,7 +2590,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2622,7 +2622,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2738,7 +2738,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2770,7 +2770,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2854,7 +2854,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2866,7 +2866,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2888,7 +2888,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2900,7 +2900,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -2988,7 +2988,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3095,7 +3095,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3107,7 +3107,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3119,7 +3119,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3131,7 +3131,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3286,7 +3286,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter) error
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3471,7 +3471,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3483,7 +3483,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3507,7 +3507,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3519,7 +3519,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3826,7 +3826,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3838,7 +3838,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3850,7 +3850,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3875,7 +3875,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3900,7 +3900,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3935,7 +3935,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3947,7 +3947,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -3959,7 +3959,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4007,7 +4007,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4019,7 +4019,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4031,7 +4031,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4056,7 +4056,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4068,7 +4068,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4103,7 +4103,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4115,7 +4115,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4150,7 +4150,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4162,7 +4162,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4210,7 +4210,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4222,7 +4222,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4247,7 +4247,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4272,7 +4272,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4284,7 +4284,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4319,7 +4319,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4347,7 +4347,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4379,7 +4379,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4394,7 +4394,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4406,7 +4406,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4441,7 +4441,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4453,7 +4453,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4527,7 +4527,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4539,7 +4539,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4551,7 +4551,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4596,7 +4596,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter) error {
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4608,7 +4608,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter) error {
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4620,7 +4620,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter) error {
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4642,7 +4642,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4667,7 +4667,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4928,7 +4928,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -4940,7 +4940,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5132,7 +5132,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5275,7 +5275,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5320,7 +5320,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5332,7 +5332,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5410,7 +5410,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5422,7 +5422,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5695,7 +5695,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5765,7 +5765,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5797,7 +5797,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5829,7 +5829,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5898,7 +5898,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5910,7 +5910,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5974,7 +5974,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5986,7 +5986,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -5998,7 +5998,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6030,7 +6030,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6042,7 +6042,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6054,7 +6054,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6103,7 +6103,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6115,7 +6115,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6160,7 +6160,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6176,7 +6176,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6188,7 +6188,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6236,7 +6236,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6248,7 +6248,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6499,7 +6499,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6511,7 +6511,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6527,7 +6527,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6539,7 +6539,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6551,7 +6551,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6640,7 +6640,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6700,7 +6700,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6712,7 +6712,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6731,7 +6731,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6746,7 +6746,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6758,7 +6758,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -6813,7 +6813,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7139,7 +7139,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7314,7 +7314,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7326,7 +7326,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7338,7 +7338,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7357,7 +7357,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7412,7 +7412,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7424,7 +7424,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7436,7 +7436,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7458,7 +7458,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7470,7 +7470,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -7554,7 +7554,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8026,7 +8026,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8038,7 +8038,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8050,7 +8050,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8062,7 +8062,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8433,7 +8433,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8524,7 +8524,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8536,7 +8536,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8568,7 +8568,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8885,7 +8885,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8920,7 +8920,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -8955,7 +8955,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -9023,7 +9023,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -9292,7 +9292,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -9324,7 +9324,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -9638,7 +9638,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -9654,7 +9654,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10002,7 +10002,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10057,7 +10057,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10133,7 +10133,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10145,7 +10145,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10164,7 +10164,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10179,7 +10179,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10191,7 +10191,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10203,7 +10203,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10241,7 +10241,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10253,7 +10253,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10265,7 +10265,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10290,7 +10290,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10302,7 +10302,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10314,7 +10314,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10333,7 +10333,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10348,7 +10348,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10360,7 +10360,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10372,7 +10372,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10391,7 +10391,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10406,7 +10406,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10418,7 +10418,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10437,7 +10437,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10452,7 +10452,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10464,7 +10464,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10489,7 +10489,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10501,7 +10501,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10513,7 +10513,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10538,7 +10538,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10550,7 +10550,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10562,7 +10562,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter) e
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10587,7 +10587,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10599,7 +10599,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10611,7 +10611,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10630,7 +10630,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10645,7 +10645,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10657,7 +10657,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10669,7 +10669,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10704,7 +10704,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10716,7 +10716,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10728,7 +10728,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10763,7 +10763,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10775,7 +10775,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10800,7 +10800,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10812,7 +10812,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10837,7 +10837,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10849,7 +10849,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10873,7 +10873,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10888,7 +10888,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10900,7 +10900,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10912,7 +10912,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10947,7 +10947,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10959,7 +10959,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10971,7 +10971,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -10996,7 +10996,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11008,7 +11008,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11020,7 +11020,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11039,7 +11039,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11054,7 +11054,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11066,7 +11066,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11085,7 +11085,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11133,7 +11133,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11145,7 +11145,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11164,7 +11164,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11179,7 +11179,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11191,7 +11191,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11226,7 +11226,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11238,7 +11238,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11250,7 +11250,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11275,7 +11275,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11287,7 +11287,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11312,7 +11312,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11324,7 +11324,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11336,7 +11336,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11361,7 +11361,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11373,7 +11373,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11385,7 +11385,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11404,7 +11404,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11436,7 +11436,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11451,7 +11451,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11463,7 +11463,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11498,7 +11498,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11510,7 +11510,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11555,7 +11555,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11570,7 +11570,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11582,7 +11582,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11594,7 +11594,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11613,7 +11613,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11628,7 +11628,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11640,7 +11640,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11652,7 +11652,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11677,7 +11677,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11689,7 +11689,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11701,7 +11701,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11726,7 +11726,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11738,7 +11738,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11750,7 +11750,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11775,7 +11775,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11787,7 +11787,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11799,7 +11799,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11824,7 +11824,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11836,7 +11836,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11848,7 +11848,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11873,7 +11873,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11885,7 +11885,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11897,7 +11897,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11916,7 +11916,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11931,7 +11931,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11943,7 +11943,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11962,7 +11962,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11977,7 +11977,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -11989,7 +11989,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
@@ -12008,7 +12008,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter) error
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		_ = elem // Unsupported kind "alias" for field "".
+		// Unsupported kind "alias" for field "".
 		if err := j.Flush(); err != nil {
 			return err
 		}
