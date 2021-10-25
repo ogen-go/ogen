@@ -46,6 +46,7 @@ w.WriteHeader({{ $.StatusCode }})
 return nil
 {{- else if eq $.ContentType "application/json" }}
 j := json.NewStream(w)
+defer json.PutStream(j)
 more := json.NewMore(j)
 defer more.Reset()
 {{ template "json_value" resp_elem $ }}
