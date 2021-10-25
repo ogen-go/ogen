@@ -60,8 +60,6 @@ type Server interface {
 	FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, error)
 	// PetGet implements petGet operation.
 	PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error)
-	// PetCreate implements petCreate operation.
-	PetCreate(ctx context.Context, req PetCreateRequest) (Pet, error)
 	// PetGetByName implements petGetByName operation.
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
 }

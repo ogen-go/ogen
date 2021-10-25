@@ -69,30 +69,6 @@ type GetBookForbidden struct{}
 
 func (*GetBookForbidden) getBookResponse() {}
 
-type GetPageCoverImageForbidden struct{}
-
-func (*GetPageCoverImageForbidden) getPageCoverImageResponse() {}
-
-type GetPageCoverImageOK string
-
-func (*GetPageCoverImageOK) getPageCoverImageResponse() {}
-
-type GetPageImageForbidden struct{}
-
-func (*GetPageImageForbidden) getPageImageResponse() {}
-
-type GetPageImageOK string
-
-func (*GetPageImageOK) getPageImageResponse() {}
-
-type GetPageThumbnailImageForbidden struct{}
-
-func (*GetPageThumbnailImageForbidden) getPageThumbnailImageResponse() {}
-
-type GetPageThumbnailImageOK string
-
-func (*GetPageThumbnailImageOK) getPageThumbnailImageResponse() {}
-
 // Image describes #/components/schemas/Image.
 type Image struct {
 	H OptInt    `json:"h"`

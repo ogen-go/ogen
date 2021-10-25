@@ -823,11 +823,6 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (PetCreateTextPlainRequest) WriteJSON(j *json.Stream)        {}
-func (PetCreateTextPlainRequest) ReadJSON(i *json.Iterator) error { return nil }
-func (PetCreateTextPlainRequest) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PetCreateTextPlainRequest) WriteJSONTo(w io.Writer) error   { return nil }
-
 // WriteJSON implements json.Marshaler.
 func (s PetGetDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()

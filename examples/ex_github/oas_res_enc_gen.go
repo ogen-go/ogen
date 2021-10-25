@@ -1093,34 +1093,6 @@ func encodeLicensesGetResponse(response LicensesGetResponse, w http.ResponseWrit
 	}
 }
 
-func encodeMarkdownRenderResponse(response MarkdownRenderResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *MarkdownRenderOK:
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(200)
-		return fmt.Errorf("text/html encoder not implemented")
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	default:
-		return fmt.Errorf("/markdown: unexpected response type: %T", response)
-	}
-}
-
-func encodeMarkdownRenderRawResponse(response MarkdownRenderRawResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *MarkdownRenderRawOK:
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(200)
-		return fmt.Errorf("text/html encoder not implemented")
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	default:
-		return fmt.Errorf("/markdown/raw: unexpected response type: %T", response)
-	}
-}
-
 func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
@@ -1411,12 +1383,6 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	default:
 		return fmt.Errorf("/notifications/threads/{thread_id}/subscription: unexpected response type: %T", response)
 	}
-}
-
-func encodeMetaGetOctocatResponse(response string, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/octocat-stream")
-	w.WriteHeader(200)
-	return fmt.Errorf("application/octocat-stream encoder not implemented")
 }
 
 func encodeOrgsListResponse(response OrgsListResponse, w http.ResponseWriter) error {
@@ -4195,45 +4161,6 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	}
 }
 
-func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *CodeScanningAnalysis:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *CodeScanningGetAnalysisOKApplicationJSONSarif:
-		w.Header().Set("Content-Type", "application/json+sarif")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json+sarif encoder not implemented")
-	case *CodeScanningGetAnalysisApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *CodeScanningGetAnalysisApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}: unexpected response type: %T", response)
-	}
-}
-
 func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysisResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysisDeletion:
@@ -6034,15 +5961,6 @@ func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.Respon
 	}
 	js.WriteArrayEnd()
 	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
 		return err
 	}
 	return nil
@@ -8390,10 +8308,4 @@ func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, 
 		return err
 	}
 	return nil
-}
-
-func encodeMetaGetZenResponse(response string, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "text/plain")
-	w.WriteHeader(200)
-	return fmt.Errorf("text/plain encoder not implemented")
 }

@@ -66,24 +66,3 @@ func decodeFoobarPostRequest(r *http.Request) (req *Pet, err error) {
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
-
-func decodePetCreateRequest(r *http.Request) (req PetCreateRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request Pet
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return &request, nil
-	case "text/plain":
-		var request PetCreateTextPlainRequest
-		_ = request
-		return req, fmt.Errorf("text/plain decoder not implemented")
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}

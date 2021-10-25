@@ -11,11 +11,6 @@ type FoobarPostResponse interface {
 	foobarPostResponse()
 }
 
-// PetCreateRequest represents petCreate request.
-type PetCreateRequest interface {
-	petCreateRequest()
-}
-
 // PetGetResponse represents petGet response.
 type PetGetResponse interface {
 	petGetResponse()

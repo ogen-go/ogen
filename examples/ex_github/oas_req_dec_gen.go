@@ -200,38 +200,6 @@ func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApp
 	}
 }
 
-func decodeMarkdownRenderRequest(r *http.Request) (req MarkdownRenderApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request MarkdownRenderApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeMarkdownRenderRawRequest(r *http.Request) (req MarkdownRenderRawRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "text/plain":
-		var request MarkdownRenderRawTextPlainRequest
-		_ = request
-		return req, fmt.Errorf("text/plain decoder not implemented")
-	case "text/x-markdown":
-		var request MarkdownRenderRawTextXMarkdownRequest
-		_ = request
-		return req, fmt.Errorf("text/x-markdown decoder not implemented")
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
 func decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkNotificationsAsReadApplicationJSONRequest, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
@@ -1024,17 +992,6 @@ func decodeReposUpdateReleaseRequest(r *http.Request) (req *ReposUpdateReleaseAp
 		}
 
 		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReposUploadReleaseAssetRequest(r *http.Request) (req *string, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "*/*":
-		var request string
-		_ = request
-		return req, fmt.Errorf("*/* decoder not implemented")
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}

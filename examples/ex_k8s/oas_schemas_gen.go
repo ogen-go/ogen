@@ -2758,25 +2758,6 @@ type GetSchedulingV1APIResourcesUnauthorized struct{}
 
 func (*GetSchedulingV1APIResourcesUnauthorized) getSchedulingV1APIResourcesResponse() {}
 
-type GetServiceAccountIssuerOpenIDConfigurationOK string
-
-func (*GetServiceAccountIssuerOpenIDConfigurationOK) getServiceAccountIssuerOpenIDConfigurationResponse() {
-}
-
-type GetServiceAccountIssuerOpenIDConfigurationUnauthorized struct{}
-
-func (*GetServiceAccountIssuerOpenIDConfigurationUnauthorized) getServiceAccountIssuerOpenIDConfigurationResponse() {
-}
-
-type GetServiceAccountIssuerOpenIDKeysetOK string
-
-func (*GetServiceAccountIssuerOpenIDKeysetOK) getServiceAccountIssuerOpenIDKeysetResponse() {}
-
-type GetServiceAccountIssuerOpenIDKeysetUnauthorized struct{}
-
-func (*GetServiceAccountIssuerOpenIDKeysetUnauthorized) getServiceAccountIssuerOpenIDKeysetResponse() {
-}
-
 type GetStorageAPIGroupApplicationJSONOK IoK8sApimachineryPkgApisMetaV1APIGroup
 
 func (*GetStorageAPIGroupApplicationJSONOK) getStorageAPIGroupResponse() {}

@@ -221,34 +221,6 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	return result, nil
 }
 
-func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (res Pet, err error) {
-	body, contentType, err := encodePetCreateRequest(req)
-	if err != nil {
-		return res, err
-	}
-
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet"
-
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
-	defer ht.PutRequest(r)
-
-	r.Header.Set("Content-Type", contentType)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodePetCreateResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/"

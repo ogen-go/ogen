@@ -113,69 +113,6 @@ func NewGetBookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func NewGetPageCoverImageHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGetPageCoverImageParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.GetPageCoverImage(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeGetPageCoverImageResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGetPageImageHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGetPageImageParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.GetPageImage(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeGetPageImageResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGetPageThumbnailImageHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGetPageThumbnailImageParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.GetPageThumbnailImage(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeGetPageThumbnailImageResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func respondError(w http.ResponseWriter, code int, err error) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)

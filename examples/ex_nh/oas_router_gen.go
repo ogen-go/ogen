@@ -54,7 +54,4 @@ func Register(r chi.Router, s Server) {
 	r.MethodFunc("GET", "/api/galleries/search", NewSearchHandler(s))
 	r.MethodFunc("GET", "/api/galleries/tagged", NewSearchByTagIDHandler(s))
 	r.MethodFunc("GET", "/api/gallery/{book_id}", NewGetBookHandler(s))
-	r.MethodFunc("GET", "/galleries/{media_id}/cover.{format}", NewGetPageCoverImageHandler(s))
-	r.MethodFunc("GET", "/galleries/{media_id}/{page}.{format}", NewGetPageImageHandler(s))
-	r.MethodFunc("GET", "/galleries/{media_id}/{page}t.{format}", NewGetPageThumbnailImageHandler(s))
 }

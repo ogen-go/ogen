@@ -86,21 +86,6 @@ func encodeGistsUpdateCommentRequest(req GistsUpdateCommentApplicationJSONReques
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeMarkdownRenderRequest(req MarkdownRenderApplicationJSONRequest) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeMarkdownRenderRawRequest(req MarkdownRenderRawRequest) (data []byte, contentType string, err error) {
-	switch req := req.(type) {
-	case *MarkdownRenderRawTextPlainRequest:
-		return nil, "", fmt.Errorf("text/plain encoder not implemented")
-	case *MarkdownRenderRawTextXMarkdownRequest:
-		return nil, "", fmt.Errorf("text/x-markdown encoder not implemented")
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
 func encodeActivityMarkNotificationsAsReadRequest(req *ActivityMarkNotificationsAsReadApplicationJSONRequest) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
@@ -307,10 +292,6 @@ func encodeReposUpdateReleaseAssetRequest(req *ReposUpdateReleaseAssetApplicatio
 
 func encodeReposUpdateReleaseRequest(req *ReposUpdateReleaseApplicationJSONRequest) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
-}
-
-func encodeReposUploadReleaseAssetRequest(req *string) (data []byte, contentType string, err error) {
-	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
 func encodeSecretScanningUpdateAlertRequest(req SecretScanningUpdateAlertApplicationJSONRequest) (data []byte, contentType string, err error) {

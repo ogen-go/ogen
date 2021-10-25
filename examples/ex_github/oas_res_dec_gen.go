@@ -1651,38 +1651,6 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetResponse, er
 	}
 }
 
-func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "text/html":
-			return res, fmt.Errorf("text/html decoder not implemented")
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRawResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "text/html":
-			return res, fmt.Errorf("text/html decoder not implemented")
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountResponse, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -2086,20 +2054,6 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 			}
 
 			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeMetaGetOctocatResponse(resp *http.Response) (res string, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/octocat-stream":
-			return res, fmt.Errorf("application/octocat-stream decoder not implemented")
 		default:
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -6491,63 +6445,6 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 	}
 }
 
-func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScanningGetAnalysisResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningAnalysis
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		case "application/json+sarif":
-			return res, fmt.Errorf("application/json+sarif decoder not implemented")
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningGetAnalysisApplicationJSONForbidden
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningGetAnalysisApplicationJSONNotFound
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ServiceUnavailable
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScanningDeleteAnalysisResponse, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -9290,25 +9187,6 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res []ReleaseAss
 				return true
 			})
 			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res ReleaseAsset, err error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReleaseAsset
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -12830,20 +12708,6 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res []Mi
 			}
 
 			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeMetaGetZenResponse(resp *http.Response) (res string, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "text/plain":
-			return res, fmt.Errorf("text/plain decoder not implemented")
 		default:
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}

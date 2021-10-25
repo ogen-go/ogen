@@ -521,16 +521,6 @@ type GetSchedulingV1APIResourcesResponse interface {
 	getSchedulingV1APIResourcesResponse()
 }
 
-// GetServiceAccountIssuerOpenIDConfigurationResponse represents getServiceAccountIssuerOpenIDConfiguration response.
-type GetServiceAccountIssuerOpenIDConfigurationResponse interface {
-	getServiceAccountIssuerOpenIDConfigurationResponse()
-}
-
-// GetServiceAccountIssuerOpenIDKeysetResponse represents getServiceAccountIssuerOpenIDKeyset response.
-type GetServiceAccountIssuerOpenIDKeysetResponse interface {
-	getServiceAccountIssuerOpenIDKeysetResponse()
-}
-
 // GetStorageAPIGroupResponse represents getStorageAPIGroup response.
 type GetStorageAPIGroupResponse interface {
 	getStorageAPIGroupResponse()

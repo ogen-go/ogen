@@ -6,21 +6,6 @@ type GetBookResponse interface {
 	getBookResponse()
 }
 
-// GetPageCoverImageResponse represents getPageCoverImage response.
-type GetPageCoverImageResponse interface {
-	getPageCoverImageResponse()
-}
-
-// GetPageImageResponse represents getPageImage response.
-type GetPageImageResponse interface {
-	getPageImageResponse()
-}
-
-// GetPageThumbnailImageResponse represents getPageThumbnailImage response.
-type GetPageThumbnailImageResponse interface {
-	getPageThumbnailImageResponse()
-}
-
 // SearchByTagIDResponse represents searchByTagID response.
 type SearchByTagIDResponse interface {
 	searchByTagIDResponse()

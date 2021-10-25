@@ -363,10 +363,6 @@ type ActivityDeleteThreadSubscriptionParams struct {
 	ThreadID int
 }
 
-type MetaGetOctocatParams struct {
-	S string
-}
-
 type OrgsListParams struct {
 	Since   int
 	PerPage int
@@ -1405,12 +1401,6 @@ type CodeScanningListRecentAnalysesParams struct {
 	SarifID  string
 }
 
-type CodeScanningGetAnalysisParams struct {
-	Owner      string
-	Repo       string
-	AnalysisID int
-}
-
 type CodeScanningDeleteAnalysisParams struct {
 	Owner         string
 	Repo          string
@@ -2055,14 +2045,6 @@ type ReposListReleaseAssetsParams struct {
 	ReleaseID int
 	PerPage   int
 	Page      int
-}
-
-type ReposUploadReleaseAssetParams struct {
-	Owner     string
-	Repo      string
-	ReleaseID int
-	Name      string
-	Label     string
 }
 
 type SecretScanningGetAlertParams struct {

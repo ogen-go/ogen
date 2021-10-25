@@ -51,7 +51,6 @@ var (
 )
 
 func Register(r chi.Router, s Server) {
-	r.MethodFunc("GET", "/.well-known/openid-configuration/", NewGetServiceAccountIssuerOpenIDConfigurationHandler(s))
 	r.MethodFunc("GET", "/api/", NewGetCoreAPIVersionsHandler(s))
 	r.MethodFunc("GET", "/api/v1/", NewGetCoreV1APIResourcesHandler(s))
 	r.MethodFunc("GET", "/api/v1/componentstatuses", NewListCoreV1ComponentStatusHandler(s))
@@ -283,6 +282,5 @@ func Register(r chi.Router, s Server) {
 	r.MethodFunc("GET", "/apis/storage.k8s.io/v1beta1/csistoragecapacities", NewListStorageV1beta1CSIStorageCapacityForAllNamespacesHandler(s))
 	r.MethodFunc("GET", "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities", NewWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesHandler(s))
 	r.MethodFunc("GET", "/logs/", NewLogFileListHandlerHandler(s))
-	r.MethodFunc("GET", "/openid/v1/jwks/", NewGetServiceAccountIssuerOpenIDKeysetHandler(s))
 	r.MethodFunc("GET", "/version/", NewGetCodeVersionHandler(s))
 }

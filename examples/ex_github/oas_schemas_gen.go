@@ -1174,18 +1174,6 @@ type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
 
 func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisResponse() {}
 
-type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
-
-func (*CodeScanningGetAnalysisApplicationJSONForbidden) codeScanningGetAnalysisResponse() {}
-
-type CodeScanningGetAnalysisApplicationJSONNotFound BasicError
-
-func (*CodeScanningGetAnalysisApplicationJSONNotFound) codeScanningGetAnalysisResponse() {}
-
-type CodeScanningGetAnalysisOKApplicationJSONSarif string
-
-func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisResponse() {}
-
 type CodeScanningGetSarifNotFound struct{}
 
 func (*CodeScanningGetSarifNotFound) codeScanningGetSarifResponse() {}
@@ -2266,28 +2254,14 @@ type MarkdownRenderApplicationJSONRequest struct {
 	Text    string                                      `json:"text"`
 }
 
+func (*MarkdownRenderApplicationJSONRequest) markdownRenderRequest() {}
+
 type MarkdownRenderApplicationJSONRequestMode string
 
 const (
 	MarkdownRenderApplicationJSONRequestModeMarkdown MarkdownRenderApplicationJSONRequestMode = "markdown"
 	MarkdownRenderApplicationJSONRequestModeGfm      MarkdownRenderApplicationJSONRequestMode = "gfm"
 )
-
-type MarkdownRenderOK string
-
-func (*MarkdownRenderOK) markdownRenderResponse() {}
-
-type MarkdownRenderRawOK string
-
-func (*MarkdownRenderRawOK) markdownRenderRawResponse() {}
-
-type MarkdownRenderRawTextPlainRequest string
-
-func (*MarkdownRenderRawTextPlainRequest) markdownRenderRawRequest() {}
-
-type MarkdownRenderRawTextXMarkdownRequest string
-
-func (*MarkdownRenderRawTextXMarkdownRequest) markdownRenderRawRequest() {}
 
 type MarketplacePurchaseMarketplacePendingChange struct {
 	EffectiveDate OptString                 `json:"effective_date"`
@@ -3167,8 +3141,6 @@ func (*NotModified) gitignoreGetAllTemplatesResponse()                          
 func (*NotModified) gitignoreGetTemplateResponse()                              {}
 func (*NotModified) licensesGetAllCommonlyUsedResponse()                        {}
 func (*NotModified) licensesGetResponse()                                       {}
-func (*NotModified) markdownRenderRawResponse()                                 {}
-func (*NotModified) markdownRenderResponse()                                    {}
 func (*NotModified) metaGetResponse()                                           {}
 func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserResponse()       {}
 func (*NotModified) migrationsGetArchiveForAuthenticatedUserResponse()          {}
@@ -13350,7 +13322,6 @@ type ServiceUnavailable struct {
 }
 
 func (*ServiceUnavailable) codeScanningDeleteAnalysisResponse()     {}
-func (*ServiceUnavailable) codeScanningGetAnalysisResponse()        {}
 func (*ServiceUnavailable) codeScanningGetSarifResponse()           {}
 func (*ServiceUnavailable) codeScanningListAlertInstancesResponse() {}
 func (*ServiceUnavailable) codeScanningListRecentAnalysesResponse() {}
@@ -14726,8 +14697,6 @@ type CodeScanningAnalysis struct {
 	URL          CodeScanningAnalysisURL         `json:"url"`
 	Warning      string                          `json:"warning"`
 }
-
-func (*CodeScanningAnalysis) codeScanningGetAnalysisResponse() {}
 
 type CodeScanningAnalysisAnalysisKey string
 

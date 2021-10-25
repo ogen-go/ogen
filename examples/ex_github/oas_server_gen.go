@@ -180,10 +180,6 @@ type Server interface {
 	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedResponse, error)
 	// LicensesGet implements licenses/get operation.
 	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetResponse, error)
-	// MarkdownRender implements markdown/render operation.
-	MarkdownRender(ctx context.Context, req MarkdownRenderApplicationJSONRequest) (MarkdownRenderResponse, error)
-	// MarkdownRenderRaw implements markdown/render-raw operation.
-	MarkdownRenderRaw(ctx context.Context, req MarkdownRenderRawRequest) (MarkdownRenderRawResponse, error)
 	// AppsGetSubscriptionPlanForAccount implements apps/get-subscription-plan-for-account operation.
 	AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountResponse, error)
 	// AppsListPlans implements apps/list-plans operation.
@@ -206,8 +202,6 @@ type Server interface {
 	ActivitySetThreadSubscription(ctx context.Context, req *ActivitySetThreadSubscriptionApplicationJSONRequest, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionResponse, error)
 	// ActivityDeleteThreadSubscription implements activity/delete-thread-subscription operation.
 	ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionResponse, error)
-	// MetaGetOctocat implements meta/get-octocat operation.
-	MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (string, error)
 	// OrgsList implements orgs/list operation.
 	OrgsList(ctx context.Context, params OrgsListParams) (OrgsListResponse, error)
 	// OrgsGet implements orgs/get operation.
@@ -580,8 +574,6 @@ type Server interface {
 	CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesResponse, error)
 	// CodeScanningListRecentAnalyses implements code-scanning/list-recent-analyses operation.
 	CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesResponse, error)
-	// CodeScanningGetAnalysis implements code-scanning/get-analysis operation.
-	CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (CodeScanningGetAnalysisResponse, error)
 	// CodeScanningDeleteAnalysis implements code-scanning/delete-analysis operation.
 	CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisResponse, error)
 	// CodeScanningUploadSarif implements code-scanning/upload-sarif operation.
@@ -782,8 +774,6 @@ type Server interface {
 	ReposUpdateRelease(ctx context.Context, req *ReposUpdateReleaseApplicationJSONRequest, params ReposUpdateReleaseParams) (ReposUpdateReleaseResponse, error)
 	// ReposListReleaseAssets implements repos/list-release-assets operation.
 	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) ([]ReleaseAsset, error)
-	// ReposUploadReleaseAsset implements repos/upload-release-asset operation.
-	ReposUploadReleaseAsset(ctx context.Context, req *string, params ReposUploadReleaseAssetParams) (ReleaseAsset, error)
 	// SecretScanningGetAlert implements secret-scanning/get-alert operation.
 	SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertResponse, error)
 	// SecretScanningUpdateAlert implements secret-scanning/update-alert operation.
@@ -1014,6 +1004,4 @@ type Server interface {
 	BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (CombinedBillingUsage, error)
 	// ActivityListReposWatchedByUser implements activity/list-repos-watched-by-user operation.
 	ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) ([]MinimalRepository, error)
-	// MetaGetZen implements meta/get-zen operation.
-	MetaGetZen(ctx context.Context) (string, error)
 }
