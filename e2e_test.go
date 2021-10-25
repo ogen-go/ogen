@@ -135,7 +135,7 @@ func TestIntegration(t *testing.T) {
 			ID:       43,
 			Name:     "BestFriend",
 			Rate:     time.Second * 5,
-			URI:      url.URL{Scheme: "s3", Host: "foo", Path: "baz"},
+			URI:      url.URL{Scheme: "s3", Host: "foo", Path: "/baz"},
 			IP:       net.IPv4(127, 0, 0, 2),
 			IPV4:     net.IPv4(127, 0, 0, 2),
 			Kind:     api.PetKindBig,
@@ -159,7 +159,7 @@ func TestIntegration(t *testing.T) {
 			TestInteger1: api.NewOptInt(10),
 			TestTime:     api.NewOptTime(conv.Time(date)),
 			UniqueID:     uuid.MustParse("f76e18ae-e5ed-4342-922d-762ed1dfe593"),
-			URI:          url.URL{Scheme: "s3", Host: "foo", Path: "bar"},
+			URI:          url.URL{Scheme: "s3", Host: "foo", Path: "/bar"},
 			IP:           net.IPv4(127, 0, 0, 1),
 			IPV4:         net.IPv4(127, 0, 0, 1),
 			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
@@ -170,7 +170,6 @@ func TestIntegration(t *testing.T) {
 			TestArray1: [][]string{
 				{"Foo", "Bar"},
 				{"Baz"},
-				{},
 			},
 		}
 
@@ -220,6 +219,10 @@ func TestIntegration(t *testing.T) {
 			a.Equal(pet.Next, got.Next, "Next")
 
 			a.Equal(pet.Type, got.Type, "Type")
+
+			a.Equal(pet.Friends, got.Friends, "Friends")
+			a.Equal(pet.TestArray1, got.TestArray1, "TestArray1")
+			a.Equal(pet.Primary, got.Primary, "Primary")
 		}
 
 		t.Run("PetCreate", func(t *testing.T) {
