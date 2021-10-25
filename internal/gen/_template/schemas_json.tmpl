@@ -12,7 +12,7 @@ func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
     more := json.NewMore(j)
     defer more.Reset()
     {{- range $f := $s.JSONFields }}
-        {{ template "dec_json_value" field_elem $f -}}
+        {{ template "enc_json__value" field_elem $f -}}
     {{- end }}
     j.WriteObjectEnd()
 }

@@ -1,15 +1,15 @@
-{{- define "dec_json_array" }}
+{{- define "enc_json__array" }}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     more.Down()
     j.WriteArrayStart()
     for _, elem := range {{ $.Var }} {
-    {{ template "dec_json_value" array_elem $.Type.Item }}
+    {{ template "enc_json__value" array_elem $.Type.Item }}
     }
     j.WriteArrayEnd()
     more.Up()
 {{- end }}
 
-{{- define "dec_json_start" -}}
+{{- define "enc_json__start" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     more.More()
     {{- if $.Field }}
@@ -17,23 +17,23 @@
     {{- end -}}
 {{- end -}}
 
-{{- define "dec_json_value" -}}
+{{- define "enc_json__value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     {{- if or ($.Type.IsStruct) ($.Type.IsEnum) ($.Type.IsPointer) -}}
         {{- if or (eq $.Type.NilSemantic "invalid") (eq $.Type.NilSemantic "optional") -}}
           if {{ $.Var }} != nil {
-          {{- template "dec_json_start" $ }}
+          {{- template "enc_json__start" $ }}
           {{ $.Var }}.WriteJSON(j)
           }
         {{- else if eq $.Type.NilSemantic "null" -}}
-            {{- template "dec_json_start" $ }}
+            {{- template "enc_json__start" $ }}
             if {{ $.Var }} == nil {
             j.WriteNil()
             } else {
             {{ $.Var }}.WriteJSON(j)
             }
         {{- else -}}
-            {{- template "dec_json_start" $ }}
+            {{- template "enc_json__start" $ }}
             {{ $.Var }}.WriteJSON(j)
         {{- end -}}
     {{- else if $.Type.GenericOf -}}
@@ -41,34 +41,34 @@
         {{- $v := $.Type.GenericVariant -}}
         {{- if $v.Optional -}}
           if {{ $.Var }}.Set {
-          {{- template "dec_json_start" $ }}
+          {{- template "enc_json__start" $ }}
           {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
           }
         {{- else -}}
-            {{- template "dec_json_start" $ }}
+            {{- template "enc_json__start" $ }}
             {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
         {{- end -}}
     {{- else if $.Type.JSONHelper -}}
-        {{ template "dec_json_start" $ }}
+        {{ template "enc_json__start" $ }}
         json.Write{{ $.Type.JSONHelper }}(j, {{ $.Var }})
     {{- else if $.Type.JSONWrite -}}
-        {{ template "dec_json_start" $ }}
+        {{ template "enc_json__start" $ }}
         j.{{ $.Type.JSONWrite }}({{ $.Var }})
     {{- else if $.Type.IsArray -}}
         {{- if eq $.Type.NilSemantic "invalid" -}}
-            {{ template "dec_json_start" $ }}
-            {{ template "dec_json_array" $ -}}
+            {{ template "enc_json__start" $ }}
+            {{ template "enc_json__array" $ -}}
         {{- else if eq $.Type.NilSemantic "optional" -}}
           if {{ $.Var }} != nil {
-          {{ template "dec_json_start" $ }}
-          {{ template "dec_json_array" $ -}}
+          {{ template "enc_json__start" $ }}
+          {{ template "enc_json__array" $ -}}
           }
         {{- else if eq $.Type.NilSemantic "null" -}}
-            {{- template "dec_json_start" $ }}
+            {{- template "enc_json__start" $ }}
             if {{ $.Var }} == nil {
             j.WriteNil()
             } else {
-            {{- template "dec_json_array" $ -}}
+            {{- template "enc_json__array" $ -}}
             }
         {{- end -}}
     {{- else -}}
