@@ -54,7 +54,14 @@ type sampleAPIServer struct {
 }
 
 func (s sampleAPIServer) PetFriendsNamesByID(ctx context.Context, params api.PetFriendsNamesByIDParams) ([]string, error) {
-	panic("implement me")
+	if int64(params.ID) != s.pet.ID {
+		return []string{}, nil
+	}
+	var names []string
+	for _, f := range s.pet.Friends {
+		names = append(names, f.Name)
+	}
+	return names, nil
 }
 
 func (s sampleAPIServer) PetNameByID(ctx context.Context, params api.PetNameByIDParams) (string, error) {
@@ -224,6 +231,11 @@ func TestIntegration(t *testing.T) {
 				got, err := client.PetGetByName(ctx, api.PetGetByNameParams{Name: pet.Name})
 				require.NoError(t, err)
 				assertPet(t, pet, got)
+			})
+			t.Run("PetGet", func(t *testing.T) {
+				got, err := client.PetFriendsNamesByID(ctx, api.PetFriendsNamesByIDParams{ID: int(pet.ID)})
+				require.NoError(t, err)
+				assert.Equal(t, []string{friend.Name}, got)
 			})
 		})
 	})
