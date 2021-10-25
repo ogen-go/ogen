@@ -1491,23 +1491,23 @@ func (s *MmdsGetOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MmdsPatchApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MmdsPatchApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MmdsPatchApplicationJSONRequest json value to io.Writer.
-func (s MmdsPatchApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MmdsPatchApplicationJSONReq json value to io.Writer.
+func (s MmdsPatchApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MmdsPatchApplicationJSONRequest json value from io.Reader.
-func (s *MmdsPatchApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MmdsPatchApplicationJSONReq json value from io.Reader.
+func (s *MmdsPatchApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -1521,8 +1521,8 @@ func (s *MmdsPatchApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MmdsPatchApplicationJSONRequest from json stream.
-func (s *MmdsPatchApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MmdsPatchApplicationJSONReq from json stream.
+func (s *MmdsPatchApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1577,23 +1577,23 @@ func (s *MmdsPatchNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MmdsPutApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MmdsPutApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MmdsPutApplicationJSONRequest json value to io.Writer.
-func (s MmdsPutApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MmdsPutApplicationJSONReq json value to io.Writer.
+func (s MmdsPutApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MmdsPutApplicationJSONRequest json value from io.Reader.
-func (s *MmdsPutApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MmdsPutApplicationJSONReq json value from io.Reader.
+func (s *MmdsPutApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -1607,8 +1607,8 @@ func (s *MmdsPutApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MmdsPutApplicationJSONRequest from json stream.
-func (s *MmdsPutApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MmdsPutApplicationJSONReq from json stream.
+func (s *MmdsPutApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:

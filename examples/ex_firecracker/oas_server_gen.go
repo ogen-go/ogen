@@ -53,55 +53,55 @@ var (
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
 	// DescribeInstance implements describeInstance operation.
-	DescribeInstance(ctx context.Context) (DescribeInstanceResponse, error)
+	DescribeInstance(ctx context.Context) (DescribeInstanceRes, error)
 	// CreateSyncAction implements createSyncAction operation.
-	CreateSyncAction(ctx context.Context, req InstanceActionInfo) (CreateSyncActionResponse, error)
+	CreateSyncAction(ctx context.Context, req InstanceActionInfo) (CreateSyncActionRes, error)
 	// DescribeBalloonConfig implements describeBalloonConfig operation.
-	DescribeBalloonConfig(ctx context.Context) (DescribeBalloonConfigResponse, error)
+	DescribeBalloonConfig(ctx context.Context) (DescribeBalloonConfigRes, error)
 	// PutBalloon implements putBalloon operation.
-	PutBalloon(ctx context.Context, req Balloon) (PutBalloonResponse, error)
+	PutBalloon(ctx context.Context, req Balloon) (PutBalloonRes, error)
 	// PatchBalloon implements patchBalloon operation.
-	PatchBalloon(ctx context.Context, req BalloonUpdate) (PatchBalloonResponse, error)
+	PatchBalloon(ctx context.Context, req BalloonUpdate) (PatchBalloonRes, error)
 	// DescribeBalloonStats implements describeBalloonStats operation.
-	DescribeBalloonStats(ctx context.Context) (DescribeBalloonStatsResponse, error)
+	DescribeBalloonStats(ctx context.Context) (DescribeBalloonStatsRes, error)
 	// PatchBalloonStatsInterval implements patchBalloonStatsInterval operation.
-	PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (PatchBalloonStatsIntervalResponse, error)
+	PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (PatchBalloonStatsIntervalRes, error)
 	// PutGuestBootSource implements putGuestBootSource operation.
-	PutGuestBootSource(ctx context.Context, req BootSource) (PutGuestBootSourceResponse, error)
+	PutGuestBootSource(ctx context.Context, req BootSource) (PutGuestBootSourceRes, error)
 	// PutGuestDriveByID implements putGuestDriveByID operation.
-	PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (PutGuestDriveByIDResponse, error)
+	PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (PutGuestDriveByIDRes, error)
 	// PatchGuestDriveByID implements patchGuestDriveByID operation.
-	PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (PatchGuestDriveByIDResponse, error)
+	PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (PatchGuestDriveByIDRes, error)
 	// PutLogger implements putLogger operation.
-	PutLogger(ctx context.Context, req Logger) (PutLoggerResponse, error)
+	PutLogger(ctx context.Context, req Logger) (PutLoggerRes, error)
 	// GetMachineConfiguration implements getMachineConfiguration operation.
-	GetMachineConfiguration(ctx context.Context) (GetMachineConfigurationResponse, error)
+	GetMachineConfiguration(ctx context.Context) (GetMachineConfigurationRes, error)
 	// PutMachineConfiguration implements putMachineConfiguration operation.
-	PutMachineConfiguration(ctx context.Context, req *MachineConfiguration) (PutMachineConfigurationResponse, error)
+	PutMachineConfiguration(ctx context.Context, req *MachineConfiguration) (PutMachineConfigurationRes, error)
 	// PatchMachineConfiguration implements patchMachineConfiguration operation.
-	PatchMachineConfiguration(ctx context.Context, req *MachineConfiguration) (PatchMachineConfigurationResponse, error)
+	PatchMachineConfiguration(ctx context.Context, req *MachineConfiguration) (PatchMachineConfigurationRes, error)
 	// PutMetrics implements putMetrics operation.
-	PutMetrics(ctx context.Context, req Metrics) (PutMetricsResponse, error)
+	PutMetrics(ctx context.Context, req Metrics) (PutMetricsRes, error)
 	// MmdsGet implements  operation.
-	MmdsGet(ctx context.Context) (MmdsGetResponse, error)
+	MmdsGet(ctx context.Context) (MmdsGetRes, error)
 	// MmdsPut implements  operation.
-	MmdsPut(ctx context.Context, req *MmdsPutApplicationJSONRequest) (MmdsPutResponse, error)
+	MmdsPut(ctx context.Context, req *MmdsPutApplicationJSONReq) (MmdsPutRes, error)
 	// MmdsPatch implements  operation.
-	MmdsPatch(ctx context.Context, req *MmdsPatchApplicationJSONRequest) (MmdsPatchResponse, error)
+	MmdsPatch(ctx context.Context, req *MmdsPatchApplicationJSONReq) (MmdsPatchRes, error)
 	// MmdsConfigPut implements  operation.
-	MmdsConfigPut(ctx context.Context, req MmdsConfig) (MmdsConfigPutResponse, error)
+	MmdsConfigPut(ctx context.Context, req MmdsConfig) (MmdsConfigPutRes, error)
 	// PutGuestNetworkInterfaceByID implements putGuestNetworkInterfaceByID operation.
-	PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (PutGuestNetworkInterfaceByIDResponse, error)
+	PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (PutGuestNetworkInterfaceByIDRes, error)
 	// PatchGuestNetworkInterfaceByID implements patchGuestNetworkInterfaceByID operation.
-	PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (PatchGuestNetworkInterfaceByIDResponse, error)
+	PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (PatchGuestNetworkInterfaceByIDRes, error)
 	// CreateSnapshot implements createSnapshot operation.
-	CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (CreateSnapshotResponse, error)
+	CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (CreateSnapshotRes, error)
 	// LoadSnapshot implements loadSnapshot operation.
-	LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (LoadSnapshotResponse, error)
+	LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (LoadSnapshotRes, error)
 	// PatchVm implements patchVm operation.
-	PatchVm(ctx context.Context, req VM) (PatchVmResponse, error)
+	PatchVm(ctx context.Context, req VM) (PatchVmRes, error)
 	// GetExportVmConfig implements getExportVmConfig operation.
-	GetExportVmConfig(ctx context.Context) (GetExportVmConfigResponse, error)
+	GetExportVmConfig(ctx context.Context) (GetExportVmConfigRes, error)
 	// PutGuestVsock implements putGuestVsock operation.
-	PutGuestVsock(ctx context.Context, req Vsock) (PutGuestVsockResponse, error)
+	PutGuestVsock(ctx context.Context, req Vsock) (PutGuestVsockRes, error)
 }

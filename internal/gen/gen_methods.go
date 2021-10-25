@@ -67,8 +67,8 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	}
 
 	if op.RequestBody != nil {
-		iface := ast.Iface(methodName + "Request")
-		iface.AddMethod(camel(methodName + "Request"))
+		iface := ast.NewInterface(methodName + "Req")
+		iface.AddMethod(camel(methodName + "Req"))
 		iface.SetDoc(fmt.Sprintf("%s represents %s request.", iface.Name, op.OperationID))
 		g.interfaces[iface.Name] = iface
 
@@ -86,9 +86,9 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	}
 
 	if len(op.Responses) > 0 {
-		iface := ast.Iface(methodName + "Response")
+		iface := ast.NewInterface(methodName + "Res")
 		iface.SetDoc(fmt.Sprintf("%s represents %s response.", iface.Name, op.OperationID))
-		iface.AddMethod(camel(methodName + "Response"))
+		iface.AddMethod(camel(methodName + "Res"))
 		g.interfaces[iface.Name] = iface
 
 		responses, err := g.generateResponses(methodName, op.Responses)

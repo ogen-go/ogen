@@ -22,7 +22,7 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 
 	// Iterate through request body contents...
 	for contentType, media := range body.Content {
-		schemaName := pascal(name, contentType, "Request")
+		schemaName := pascal(name, contentType, "Req")
 		schema, err := g.generateSchema(schemaName, media.Schema)
 		if err != nil {
 			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)

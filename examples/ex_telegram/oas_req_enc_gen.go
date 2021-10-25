@@ -50,192 +50,192 @@ var (
 	_ = net.IP{}
 )
 
-func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostRequest) (data []byte, contentType string, err error) {
+func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *AnswerCallbackQueryPostApplicationJSONRequest:
+	case *AnswerCallbackQueryPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest:
+	case *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *AnswerCallbackQueryPostMultipartFormDataRequest:
+	case *AnswerCallbackQueryPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostRequest) (data []byte, contentType string, err error) {
+func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *AnswerPreCheckoutQueryPostApplicationJSONRequest:
+	case *AnswerPreCheckoutQueryPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest:
+	case *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *AnswerPreCheckoutQueryPostMultipartFormDataRequest:
+	case *AnswerPreCheckoutQueryPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostRequest) (data []byte, contentType string, err error) {
+func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *AnswerShippingQueryPostApplicationJSONRequest:
+	case *AnswerShippingQueryPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest:
+	case *AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *AnswerShippingQueryPostMultipartFormDataRequest:
+	case *AnswerShippingQueryPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostRequest) (data []byte, contentType string, err error) {
+func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *DeleteStickerFromSetPostApplicationJSONRequest:
+	case *DeleteStickerFromSetPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest:
+	case *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *DeleteStickerFromSetPostMultipartFormDataRequest:
+	case *DeleteStickerFromSetPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeDeleteWebhookPostRequest(req DeleteWebhookPostRequest) (data []byte, contentType string, err error) {
+func encodeDeleteWebhookPostRequest(req DeleteWebhookPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *DeleteWebhookPostApplicationJSONRequest:
+	case *DeleteWebhookPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *DeleteWebhookPostApplicationXWwwFormUrlencodedRequest:
+	case *DeleteWebhookPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *DeleteWebhookPostMultipartFormDataRequest:
+	case *DeleteWebhookPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeGetFilePostRequest(req GetFilePostRequest) (data []byte, contentType string, err error) {
+func encodeGetFilePostRequest(req GetFilePostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *GetFilePostApplicationJSONRequest:
+	case *GetFilePostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *GetFilePostApplicationXWwwFormUrlencodedRequest:
+	case *GetFilePostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *GetFilePostMultipartFormDataRequest:
+	case *GetFilePostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostRequest) (data []byte, contentType string, err error) {
+func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *GetGameHighScoresPostApplicationJSONRequest:
+	case *GetGameHighScoresPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest:
+	case *GetGameHighScoresPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *GetGameHighScoresPostMultipartFormDataRequest:
+	case *GetGameHighScoresPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeGetStickerSetPostRequest(req GetStickerSetPostRequest) (data []byte, contentType string, err error) {
+func encodeGetStickerSetPostRequest(req GetStickerSetPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *GetStickerSetPostApplicationJSONRequest:
+	case *GetStickerSetPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *GetStickerSetPostApplicationXWwwFormUrlencodedRequest:
+	case *GetStickerSetPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *GetStickerSetPostMultipartFormDataRequest:
+	case *GetStickerSetPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeGetUpdatesPostRequest(req GetUpdatesPostRequest) (data []byte, contentType string, err error) {
+func encodeGetUpdatesPostRequest(req GetUpdatesPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *GetUpdatesPostApplicationJSONRequest:
+	case *GetUpdatesPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *GetUpdatesPostApplicationXWwwFormUrlencodedRequest:
+	case *GetUpdatesPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *GetUpdatesPostMultipartFormDataRequest:
+	case *GetUpdatesPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostRequest) (data []byte, contentType string, err error) {
+func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *GetUserProfilePhotosPostApplicationJSONRequest:
+	case *GetUserProfilePhotosPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest:
+	case *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *GetUserProfilePhotosPostMultipartFormDataRequest:
+	case *GetUserProfilePhotosPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeSendGamePostRequest(req SendGamePostRequest) (data []byte, contentType string, err error) {
+func encodeSendGamePostRequest(req SendGamePostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *SendGamePostApplicationJSONRequest:
+	case *SendGamePostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *SendGamePostApplicationXWwwFormUrlencodedRequest:
+	case *SendGamePostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *SendGamePostMultipartFormDataRequest:
+	case *SendGamePostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeSendInvoicePostRequest(req SendInvoicePostRequest) (data []byte, contentType string, err error) {
+func encodeSendInvoicePostRequest(req SendInvoicePostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *SendInvoicePostApplicationJSONRequest:
+	case *SendInvoicePostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *SendInvoicePostApplicationXWwwFormUrlencodedRequest:
+	case *SendInvoicePostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *SendInvoicePostMultipartFormDataRequest:
+	case *SendInvoicePostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeSetMyCommandsPostRequest(req SetMyCommandsPostRequest) (data []byte, contentType string, err error) {
+func encodeSetMyCommandsPostRequest(req SetMyCommandsPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *SetMyCommandsPostApplicationJSONRequest:
+	case *SetMyCommandsPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *SetMyCommandsPostApplicationXWwwFormUrlencodedRequest:
+	case *SetMyCommandsPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *SetMyCommandsPostMultipartFormDataRequest:
+	case *SetMyCommandsPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostRequest) (data []byte, contentType string, err error) {
+func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
-	case *SetStickerPositionInSetPostApplicationJSONRequest:
+	case *SetStickerPositionInSetPostApplicationJSONReq:
 		return json.Encode(req), "application/json", nil
-	case *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest:
+	case *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq:
 		return nil, "", fmt.Errorf("application/x-www-form-urlencoded encoder not implemented")
-	case *SetStickerPositionInSetPostMultipartFormDataRequest:
+	case *SetStickerPositionInSetPostMultipartFormDataReq:
 		return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
 
-func encodeSetWebhookPostRequest(req SetWebhookPostMultipartFormDataRequest) (data []byte, contentType string, err error) {
+func encodeSetWebhookPostRequest(req SetWebhookPostMultipartFormDataReq) (data []byte, contentType string, err error) {
 	return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 }
 
-func encodeUploadStickerFilePostRequest(req UploadStickerFilePostMultipartFormDataRequest) (data []byte, contentType string, err error) {
+func encodeUploadStickerFilePostRequest(req UploadStickerFilePostMultipartFormDataReq) (data []byte, contentType string, err error) {
 	return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 }

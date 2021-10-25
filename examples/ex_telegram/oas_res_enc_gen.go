@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostResponse, w http.ResponseWriter) error {
+func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AnswerCallbackQueryPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -71,7 +71,7 @@ func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRespo
 	}
 }
 
-func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPostResponse, w http.ResponseWriter) error {
+func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AnswerPreCheckoutQueryPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -92,7 +92,7 @@ func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPos
 	}
 }
 
-func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostResponse, w http.ResponseWriter) error {
+func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AnswerShippingQueryPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -113,7 +113,7 @@ func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRespo
 	}
 }
 
-func encodeClosePostResponse(response ClosePostResponse, w http.ResponseWriter) error {
+func encodeClosePostResponse(response ClosePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ClosePostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -134,7 +134,7 @@ func encodeClosePostResponse(response ClosePostResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostResponse, w http.ResponseWriter) error {
+func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *DeleteStickerFromSetPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -155,7 +155,7 @@ func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes
 	}
 }
 
-func encodeDeleteWebhookPostResponse(response DeleteWebhookPostResponse, w http.ResponseWriter) error {
+func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *DeleteWebhookPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -176,7 +176,7 @@ func encodeDeleteWebhookPostResponse(response DeleteWebhookPostResponse, w http.
 	}
 }
 
-func encodeGetFilePostResponse(response GetFilePostResponse, w http.ResponseWriter) error {
+func encodeGetFilePostResponse(response GetFilePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetFilePostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -197,7 +197,7 @@ func encodeGetFilePostResponse(response GetFilePostResponse, w http.ResponseWrit
 	}
 }
 
-func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostResponse, w http.ResponseWriter) error {
+func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetGameHighScoresPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -218,7 +218,7 @@ func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostResponse,
 	}
 }
 
-func encodeGetMePostResponse(response GetMePostResponse, w http.ResponseWriter) error {
+func encodeGetMePostResponse(response GetMePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetMePostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -239,7 +239,7 @@ func encodeGetMePostResponse(response GetMePostResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeGetMyCommandsPostResponse(response GetMyCommandsPostResponse, w http.ResponseWriter) error {
+func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetMyCommandsPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -260,7 +260,7 @@ func encodeGetMyCommandsPostResponse(response GetMyCommandsPostResponse, w http.
 	}
 }
 
-func encodeGetStickerSetPostResponse(response GetStickerSetPostResponse, w http.ResponseWriter) error {
+func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetStickerSetPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -281,7 +281,7 @@ func encodeGetStickerSetPostResponse(response GetStickerSetPostResponse, w http.
 	}
 }
 
-func encodeGetUpdatesPostResponse(response GetUpdatesPostResponse, w http.ResponseWriter) error {
+func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetUpdatesPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -302,7 +302,7 @@ func encodeGetUpdatesPostResponse(response GetUpdatesPostResponse, w http.Respon
 	}
 }
 
-func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostResponse, w http.ResponseWriter) error {
+func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetUserProfilePhotosPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -323,7 +323,7 @@ func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes
 	}
 }
 
-func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostResponse, w http.ResponseWriter) error {
+func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetWebhookInfoPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -344,7 +344,7 @@ func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostResponse, w htt
 	}
 }
 
-func encodeLogOutPostResponse(response LogOutPostResponse, w http.ResponseWriter) error {
+func encodeLogOutPostResponse(response LogOutPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *LogOutPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -365,7 +365,7 @@ func encodeLogOutPostResponse(response LogOutPostResponse, w http.ResponseWriter
 	}
 }
 
-func encodeSendGamePostResponse(response SendGamePostResponse, w http.ResponseWriter) error {
+func encodeSendGamePostResponse(response SendGamePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SendGamePostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -386,7 +386,7 @@ func encodeSendGamePostResponse(response SendGamePostResponse, w http.ResponseWr
 	}
 }
 
-func encodeSendInvoicePostResponse(response SendInvoicePostResponse, w http.ResponseWriter) error {
+func encodeSendInvoicePostResponse(response SendInvoicePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SendInvoicePostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -407,7 +407,7 @@ func encodeSendInvoicePostResponse(response SendInvoicePostResponse, w http.Resp
 	}
 }
 
-func encodeSetMyCommandsPostResponse(response SetMyCommandsPostResponse, w http.ResponseWriter) error {
+func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SetMyCommandsPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -428,7 +428,7 @@ func encodeSetMyCommandsPostResponse(response SetMyCommandsPostResponse, w http.
 	}
 }
 
-func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetPostResponse, w http.ResponseWriter) error {
+func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SetStickerPositionInSetPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -449,7 +449,7 @@ func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetP
 	}
 }
 
-func encodeSetWebhookPostResponse(response SetWebhookPostResponse, w http.ResponseWriter) error {
+func encodeSetWebhookPostResponse(response SetWebhookPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SetWebhookPostOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -470,7 +470,7 @@ func encodeSetWebhookPostResponse(response SetWebhookPostResponse, w http.Respon
 	}
 }
 
-func encodeUploadStickerFilePostResponse(response UploadStickerFilePostResponse, w http.ResponseWriter) error {
+func encodeUploadStickerFilePostResponse(response UploadStickerFilePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UploadStickerFilePostOK:
 		w.Header().Set("Content-Type", "application/json")

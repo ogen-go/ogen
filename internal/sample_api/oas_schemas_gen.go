@@ -65,7 +65,7 @@ type ErrorStatusCode struct {
 	Response   Error `json:"-"`
 }
 
-func (*ErrorStatusCode) foobarPostResponse() {}
+func (*ErrorStatusCode) foobarPostRes() {}
 
 type FoobarPutDefault struct {
 	StatusCode int `json:"-"`
@@ -103,8 +103,8 @@ func (o NilString) Get() (v string, ok bool) {
 
 type NotFound struct{}
 
-func (*NotFound) foobarGetResponse()  {}
-func (*NotFound) foobarPostResponse() {}
+func (*NotFound) foobarGetRes()  {}
+func (*NotFound) foobarPostRes() {}
 
 // NewOptData returns new OptData with value set to v.
 func NewOptData(v Data) OptData {
@@ -485,14 +485,14 @@ type Pet struct {
 	UniqueID     uuid.UUID     `json:"unique_id"`
 }
 
-func (*Pet) foobarGetResponse()  {}
-func (*Pet) foobarPostResponse() {}
-func (*Pet) petCreateRequest()   {}
-func (*Pet) petGetResponse()     {}
+func (*Pet) foobarGetRes()  {}
+func (*Pet) foobarPostRes() {}
+func (*Pet) petCreateReq()  {}
+func (*Pet) petGetRes()     {}
 
-type PetCreateTextPlainRequest struct{}
+type PetCreateTextPlainReq struct{}
 
-func (*PetCreateTextPlainRequest) petCreateRequest() {}
+func (*PetCreateTextPlainReq) petCreateReq() {}
 
 type PetGetDefault struct {
 	Message string `json:"message"`
@@ -503,7 +503,7 @@ type PetGetDefaultStatusCode struct {
 	Response   PetGetDefault `json:"-"`
 }
 
-func (*PetGetDefaultStatusCode) petGetResponse() {}
+func (*PetGetDefaultStatusCode) petGetRes() {}
 
 type PetKind string
 

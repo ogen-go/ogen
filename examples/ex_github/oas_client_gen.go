@@ -114,7 +114,7 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 	return result, nil
 }
 
-func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (res AppsDeleteInstallationResponse, err error) {
+func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (res AppsDeleteInstallationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
 	{
@@ -144,7 +144,7 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	return result, nil
 }
 
-func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (res AppsSuspendInstallationResponse, err error) {
+func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (res AppsSuspendInstallationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
 	{
@@ -175,7 +175,7 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 	return result, nil
 }
 
-func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (res AppsUnsuspendInstallationResponse, err error) {
+func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (res AppsUnsuspendInstallationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
 	{
@@ -206,7 +206,7 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	return result, nil
 }
 
-func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsResponse, err error) {
+func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/grants"
 
@@ -260,7 +260,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	return result, nil
 }
 
-func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantResponse, err error) {
+func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/grants/"
 	{
@@ -290,7 +290,7 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	return result, nil
 }
 
-func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantResponse, err error) {
+func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/grants/"
 	{
@@ -320,7 +320,7 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 	return result, nil
 }
 
-func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (res AppsGetBySlugResponse, err error) {
+func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (res AppsGetBySlugRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apps/"
 	{
@@ -350,7 +350,7 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 	return result, nil
 }
 
-func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsResponse, err error) {
+func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations"
 
@@ -404,7 +404,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	return result, nil
 }
 
-func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationResponse, err error) {
+func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/"
 	{
@@ -434,7 +434,7 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 	return result, nil
 }
 
-func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationResponse, err error) {
+func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/"
 	{
@@ -464,7 +464,7 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductResponse, err error) {
+func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/codes_of_conduct"
 
@@ -485,7 +485,7 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 	return result, nil
 }
 
-func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeResponse, err error) {
+func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/codes_of_conduct/"
 	{
@@ -515,7 +515,7 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 	return result, nil
 }
 
-func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetResponse, err error) {
+func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/emojis"
 
@@ -567,7 +567,7 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterprise, err error) {
+func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterprise, err error) {
 	body, contentType, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(req)
 	if err != nil {
 		return res, err
@@ -659,7 +659,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise, err error) {
+func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise, err error) {
 	body, contentType, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(req)
 	if err != nil {
 		return res, err
@@ -900,7 +900,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	body, contentType, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(req)
 	if err != nil {
 		return res, err
@@ -1018,7 +1018,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	body, contentType, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(req)
 	if err != nil {
 		return res, err
@@ -1129,7 +1129,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise, err error) {
+func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise, err error) {
 	body, contentType, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(req)
 	if err != nil {
 		return res, err
@@ -1341,7 +1341,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise, err error) {
+func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise, err error) {
 	body, contentType, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(req)
 	if err != nil {
 		return res, err
@@ -1830,7 +1830,7 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	return result, nil
 }
 
-func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res GistsListResponse, err error) {
+func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res GistsListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists"
 
@@ -1884,7 +1884,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	return result, nil
 }
 
-func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredParams) (res GistsListStarredResponse, err error) {
+func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredParams) (res GistsListStarredRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/starred"
 
@@ -1938,7 +1938,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	return result, nil
 }
 
-func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteResponse, err error) {
+func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -1968,7 +1968,7 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 	return result, nil
 }
 
-func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsResponse, err error) {
+func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -2022,7 +2022,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	return result, nil
 }
 
-func (c *Client) GistsCreateComment(ctx context.Context, req GistsCreateCommentApplicationJSONRequest, params GistsCreateCommentParams) (res GistsCreateCommentResponse, err error) {
+func (c *Client) GistsCreateComment(ctx context.Context, req GistsCreateCommentApplicationJSONReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
 	body, contentType, err := encodeGistsCreateCommentRequest(req)
 	if err != nil {
 		return res, err
@@ -2060,7 +2060,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, req GistsCreateCommentA
 	return result, nil
 }
 
-func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentResponse, err error) {
+func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -2100,7 +2100,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	return result, nil
 }
 
-func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentResponse, err error) {
+func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -2140,7 +2140,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	return result, nil
 }
 
-func (c *Client) GistsUpdateComment(ctx context.Context, req GistsUpdateCommentApplicationJSONRequest, params GistsUpdateCommentParams) (res GistsUpdateCommentResponse, err error) {
+func (c *Client) GistsUpdateComment(ctx context.Context, req GistsUpdateCommentApplicationJSONReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
 	body, contentType, err := encodeGistsUpdateCommentRequest(req)
 	if err != nil {
 		return res, err
@@ -2187,7 +2187,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, req GistsUpdateCommentA
 	return result, nil
 }
 
-func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsResponse, err error) {
+func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -2241,7 +2241,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	return result, nil
 }
 
-func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredResponse, err error) {
+func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -2272,7 +2272,7 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	return result, nil
 }
 
-func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res GistsStarResponse, err error) {
+func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res GistsStarRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -2303,7 +2303,7 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 	return result, nil
 }
 
-func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarResponse, err error) {
+func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -2334,7 +2334,7 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	return result, nil
 }
 
-func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGetAllTemplatesResponse, err error) {
+func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGetAllTemplatesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gitignore/templates"
 
@@ -2355,7 +2355,7 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 	return result, nil
 }
 
-func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (res GitignoreGetTemplateResponse, err error) {
+func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (res GitignoreGetTemplateRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gitignore/templates/"
 	{
@@ -2385,7 +2385,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	return result, nil
 }
 
-func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (res AppsListReposAccessibleToInstallationResponse, err error) {
+func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (res AppsListReposAccessibleToInstallationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/installation/repositories"
 
@@ -2450,7 +2450,7 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	return result, nil
 }
 
-func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedResponse, err error) {
+func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/licenses"
 
@@ -2504,7 +2504,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	return result, nil
 }
 
-func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetResponse, err error) {
+func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/licenses/"
 	{
@@ -2534,7 +2534,7 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	return result, nil
 }
 
-func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountResponse, err error) {
+func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/accounts/"
 	{
@@ -2564,7 +2564,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 	return result, nil
 }
 
-func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) (res AppsListPlansResponse, err error) {
+func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) (res AppsListPlansRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/plans"
 
@@ -2608,7 +2608,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	return result, nil
 }
 
-func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (res AppsGetSubscriptionPlanForAccountStubbedResponse, err error) {
+func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/stubbed/accounts/"
 	{
@@ -2638,7 +2638,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 	return result, nil
 }
 
-func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (res AppsListPlansStubbedResponse, err error) {
+func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (res AppsListPlansStubbedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/stubbed/plans"
 
@@ -2682,7 +2682,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	return result, nil
 }
 
-func (c *Client) MetaGet(ctx context.Context) (res MetaGetResponse, err error) {
+func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/meta"
 
@@ -2703,7 +2703,7 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetResponse, err error) {
 	return result, nil
 }
 
-func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, req *ActivityMarkNotificationsAsReadApplicationJSONRequest) (res ActivityMarkNotificationsAsReadResponse, err error) {
+func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, req *ActivityMarkNotificationsAsReadApplicationJSONReq) (res ActivityMarkNotificationsAsReadRes, err error) {
 	body, contentType, err := encodeActivityMarkNotificationsAsReadRequest(req)
 	if err != nil {
 		return res, err
@@ -2731,7 +2731,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, req *Activ
 	return result, nil
 }
 
-func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadResponse, err error) {
+func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -2761,7 +2761,7 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 	return result, nil
 }
 
-func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadResponse, err error) {
+func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -2791,7 +2791,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	return result, nil
 }
 
-func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (res ActivityGetThreadSubscriptionForAuthenticatedUserResponse, err error) {
+func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -2822,7 +2822,7 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 	return result, nil
 }
 
-func (c *Client) ActivitySetThreadSubscription(ctx context.Context, req *ActivitySetThreadSubscriptionApplicationJSONRequest, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionResponse, err error) {
+func (c *Client) ActivitySetThreadSubscription(ctx context.Context, req *ActivitySetThreadSubscriptionApplicationJSONReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
 	body, contentType, err := encodeActivitySetThreadSubscriptionRequest(req)
 	if err != nil {
 		return res, err
@@ -2860,7 +2860,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, req *Activit
 	return result, nil
 }
 
-func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (res ActivityDeleteThreadSubscriptionResponse, err error) {
+func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (res ActivityDeleteThreadSubscriptionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -2891,7 +2891,7 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	return result, nil
 }
 
-func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsListResponse, err error) {
+func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/organizations"
 
@@ -2935,7 +2935,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	return result, nil
 }
 
-func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGetResponse, err error) {
+func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -2996,7 +2996,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganization, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganization, err error) {
 	body, contentType, err := encodeActionsSetGithubActionsPermissionsOrganizationRequest(req)
 	if err != nil {
 		return res, err
@@ -3088,7 +3088,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization, err error) {
+func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization, err error) {
 	body, contentType, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(req)
 	if err != nil {
 		return res, err
@@ -3329,7 +3329,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
+func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	body, contentType, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -3447,7 +3447,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
+func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	body, contentType, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -3558,7 +3558,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	return result, nil
 }
 
-func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg, err error) {
+func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg, err error) {
 	body, contentType, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -3770,7 +3770,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrg, err error) {
+func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrg, err error) {
 	body, contentType, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -4270,7 +4270,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 	return result, nil
 }
 
-func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, req ActionsCreateOrUpdateOrgSecretApplicationJSONRequest, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretResponse, err error) {
+func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, req ActionsCreateOrUpdateOrgSecretApplicationJSONReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
 	body, contentType, err := encodeActionsCreateOrUpdateOrgSecretRequest(req)
 	if err != nil {
 		return res, err
@@ -4421,7 +4421,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretApplicationJSONRequest, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecret, err error) {
+func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretApplicationJSONReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecret, err error) {
 	body, contentType, err := encodeActionsSetSelectedReposForOrgSecretRequest(req)
 	if err != nil {
 		return res, err
@@ -4469,7 +4469,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req Ac
 	return result, nil
 }
 
-func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (res ActionsAddSelectedRepoToOrgSecretResponse, err error) {
+func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4519,7 +4519,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	return result, nil
 }
 
-func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (res ActionsRemoveSelectedRepoFromOrgSecretResponse, err error) {
+func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4569,7 +4569,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (res OrgsListBlockedUsersResponse, err error) {
+func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (res OrgsListBlockedUsersRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4600,7 +4600,7 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 	return result, nil
 }
 
-func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserResponse, err error) {
+func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4711,7 +4711,7 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	return result, nil
 }
 
-func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (res OrgsRemoveSamlSSOAuthorizationResponse, err error) {
+func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4751,7 +4751,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	return result, nil
 }
 
-func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (res OrgsListFailedInvitationsResponse, err error) {
+func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (res OrgsListFailedInvitationsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4805,7 +4805,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	return result, nil
 }
 
-func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksResponse, err error) {
+func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4859,7 +4859,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	return result, nil
 }
 
-func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (res OrgsGetWebhookResponse, err error) {
+func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (res OrgsGetWebhookRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4899,7 +4899,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 	return result, nil
 }
 
-func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookResponse, err error) {
+func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4939,7 +4939,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 	return result, nil
 }
 
-func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (res OrgsPingWebhookResponse, err error) {
+func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (res OrgsPingWebhookRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5011,7 +5011,7 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (res OrgsListPendingInvitationsResponse, err error) {
+func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (res OrgsListPendingInvitationsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5065,7 +5065,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	return result, nil
 }
 
-func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (res OrgsListInvitationTeamsResponse, err error) {
+func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (res OrgsListInvitationTeamsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5129,7 +5129,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	return result, nil
 }
 
-func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (res OrgsCheckMembershipForUserResponse, err error) {
+func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (res OrgsCheckMembershipForUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5169,7 +5169,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 	return result, nil
 }
 
-func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (res OrgsRemoveMemberResponse, err error) {
+func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (res OrgsRemoveMemberRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5209,7 +5209,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 	return result, nil
 }
 
-func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (res OrgsGetMembershipForUserResponse, err error) {
+func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (res OrgsGetMembershipForUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5249,7 +5249,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 	return result, nil
 }
 
-func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (res OrgsRemoveMembershipForUserResponse, err error) {
+func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (res OrgsRemoveMembershipForUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5289,7 +5289,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 	return result, nil
 }
 
-func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (res MigrationsDownloadArchiveForOrgResponse, err error) {
+func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (res MigrationsDownloadArchiveForOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5330,7 +5330,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 	return result, nil
 }
 
-func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (res MigrationsDeleteArchiveForOrgResponse, err error) {
+func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (res MigrationsDeleteArchiveForOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5371,7 +5371,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 	return result, nil
 }
 
-func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (res MigrationsUnlockRepoForOrgResponse, err error) {
+func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (res MigrationsUnlockRepoForOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5422,7 +5422,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	return result, nil
 }
 
-func (c *Client) MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (res MigrationsListReposForOrgResponse, err error) {
+func (c *Client) MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (res MigrationsListReposForOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5486,7 +5486,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	return result, nil
 }
 
-func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (res OrgsConvertMemberToOutsideCollaboratorResponse, err error) {
+func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5526,7 +5526,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (res OrgsRemoveOutsideCollaboratorResponse, err error) {
+func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (res OrgsRemoveOutsideCollaboratorRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5566,7 +5566,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateForOrgApplicationJSONRequest, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgResponse, err error) {
+func (c *Client) ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateForOrgApplicationJSONReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
 	body, contentType, err := encodeProjectsCreateForOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -5658,7 +5658,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	return result, nil
 }
 
-func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserResponse, err error) {
+func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5698,7 +5698,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 	return result, nil
 }
 
-func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (res OrgsSetPublicMembershipForAuthenticatedUserResponse, err error) {
+func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5925,7 +5925,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	return result, nil
 }
 
-func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res TeamsListResponse, err error) {
+func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res TeamsListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5979,7 +5979,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	return result, nil
 }
 
-func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (res TeamsGetByNameResponse, err error) {
+func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (res TeamsGetByNameRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -6059,7 +6059,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateInOrg(ctx context.Context, req *TeamsUpdateInOrgApplicationJSONRequest, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
+func (c *Client) TeamsUpdateInOrg(ctx context.Context, req *TeamsUpdateInOrgApplicationJSONReq, params TeamsUpdateInOrgParams) (res TeamFull, err error) {
 	body, contentType, err := encodeTeamsUpdateInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6106,7 +6106,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, req *TeamsUpdateInOrgAppl
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreateDiscussionInOrgApplicationJSONRequest, params TeamsCreateDiscussionInOrgParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreateDiscussionInOrgApplicationJSONReq, params TeamsCreateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	body, contentType, err := encodeTeamsCreateDiscussionInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6254,7 +6254,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, req *TeamsUpdateDiscussionInOrgApplicationJSONRequest, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, req *TeamsUpdateDiscussionInOrgApplicationJSONReq, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	body, contentType, err := encodeTeamsUpdateDiscussionInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6311,7 +6311,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, req *TeamsUpdat
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, req TeamsCreateDiscussionCommentInOrgApplicationJSONRequest, params TeamsCreateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, req TeamsCreateDiscussionCommentInOrgApplicationJSONReq, params TeamsCreateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	body, contentType, err := encodeTeamsCreateDiscussionCommentInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6489,7 +6489,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest, params TeamsUpdateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgApplicationJSONReq, params TeamsUpdateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	body, contentType, err := encodeTeamsUpdateDiscussionCommentInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6556,7 +6556,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req Team
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgResponse, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
 	body, contentType, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6694,7 +6694,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgResponse, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
 	body, contentType, err := encodeReactionsCreateForTeamDiscussionInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6876,7 +6876,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	return result, nil
 }
 
-func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (res TeamsGetMembershipForUserInOrgResponse, err error) {
+func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (res TeamsGetMembershipForUserInOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -6926,7 +6926,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgResponse, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
 	body, contentType, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -6983,7 +6983,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	return result, nil
 }
 
-func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (res TeamsRemoveMembershipForUserInOrgResponse, err error) {
+func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -7097,7 +7097,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	return result, nil
 }
 
-func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (res TeamsCheckPermissionsForProjectInOrgResponse, err error) {
+func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -7147,7 +7147,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgResponse, err error) {
+func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	body, contentType, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -7318,7 +7318,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	return result, nil
 }
 
-func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (res TeamsCheckPermissionsForRepoInOrgResponse, err error) {
+func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -7378,7 +7378,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrg, err error) {
+func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrg, err error) {
 	body, contentType, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -7546,7 +7546,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 	return result, nil
 }
 
-func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res GroupMapping, err error) {
+func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res GroupMapping, err error) {
 	body, contentType, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(req)
 	if err != nil {
 		return res, err
@@ -7658,7 +7658,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	return result, nil
 }
 
-func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardResponse, err error) {
+func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
 	{
@@ -7688,7 +7688,7 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 	return result, nil
 }
 
-func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardResponse, err error) {
+func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
 	{
@@ -7718,7 +7718,7 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 	return result, nil
 }
 
-func (c *Client) ProjectsUpdateCard(ctx context.Context, req *ProjectsUpdateCardApplicationJSONRequest, params ProjectsUpdateCardParams) (res ProjectsUpdateCardResponse, err error) {
+func (c *Client) ProjectsUpdateCard(ctx context.Context, req *ProjectsUpdateCardApplicationJSONReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	body, contentType, err := encodeProjectsUpdateCardRequest(req)
 	if err != nil {
 		return res, err
@@ -7755,7 +7755,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, req *ProjectsUpdateCard
 	return result, nil
 }
 
-func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnResponse, err error) {
+func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
 	{
@@ -7785,7 +7785,7 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	return result, nil
 }
 
-func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnResponse, err error) {
+func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
 	{
@@ -7815,7 +7815,7 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 	return result, nil
 }
 
-func (c *Client) ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnApplicationJSONRequest, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnResponse, err error) {
+func (c *Client) ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnApplicationJSONReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
 	body, contentType, err := encodeProjectsUpdateColumnRequest(req)
 	if err != nil {
 		return res, err
@@ -7852,7 +7852,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateCol
 	return result, nil
 }
 
-func (c *Client) ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnApplicationJSONRequest, params ProjectsMoveColumnParams) (res ProjectsMoveColumnResponse, err error) {
+func (c *Client) ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnApplicationJSONReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
 	body, contentType, err := encodeProjectsMoveColumnRequest(req)
 	if err != nil {
 		return res, err
@@ -7890,7 +7890,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnA
 	return result, nil
 }
 
-func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res ProjectsGetResponse, err error) {
+func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res ProjectsGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -7920,7 +7920,7 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 	return result, nil
 }
 
-func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (res ProjectsDeleteResponse, err error) {
+func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (res ProjectsDeleteRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -7950,7 +7950,7 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 	return result, nil
 }
 
-func (c *Client) ProjectsUpdate(ctx context.Context, req *ProjectsUpdateApplicationJSONRequest, params ProjectsUpdateParams) (res ProjectsUpdateResponse, err error) {
+func (c *Client) ProjectsUpdate(ctx context.Context, req *ProjectsUpdateApplicationJSONReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
 	body, contentType, err := encodeProjectsUpdateRequest(req)
 	if err != nil {
 		return res, err
@@ -7987,7 +7987,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, req *ProjectsUpdateApplicat
 	return result, nil
 }
 
-func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsResponse, err error) {
+func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -8041,7 +8041,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnApplicationJSONRequest, params ProjectsCreateColumnParams) (res ProjectsCreateColumnResponse, err error) {
+func (c *Client) ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnApplicationJSONReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
 	body, contentType, err := encodeProjectsCreateColumnRequest(req)
 	if err != nil {
 		return res, err
@@ -8079,7 +8079,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, req ProjectsCreateCol
 	return result, nil
 }
 
-func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetResponse, err error) {
+func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/rate_limit"
 
@@ -8100,7 +8100,7 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetResponse, er
 	return result, nil
 }
 
-func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyResponse, err error) {
+func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/reactions/"
 	{
@@ -8130,7 +8130,7 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 	return result, nil
 }
 
-func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res ReposGetResponse, err error) {
+func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res ReposGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -8170,7 +8170,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 	return result, nil
 }
 
-func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res ReposDeleteResponse, err error) {
+func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res ReposDeleteRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -8576,7 +8576,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepository, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepository, err error) {
 	body, contentType, err := encodeActionsSetGithubActionsPermissionsRepositoryRequest(req)
 	if err != nil {
 		return res, err
@@ -9151,7 +9151,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 	return result, nil
 }
 
-func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (res ActionsApproveWorkflowRunResponse, err error) {
+func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (res ActionsApproveWorkflowRunRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -9737,7 +9737,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 	return result, nil
 }
 
-func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, req ActionsCreateOrUpdateRepoSecretApplicationJSONRequest, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretResponse, err error) {
+func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, req ActionsCreateOrUpdateRepoSecretApplicationJSONReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
 	body, contentType, err := encodeActionsCreateOrUpdateRepoSecretRequest(req)
 	if err != nil {
 		return res, err
@@ -9908,7 +9908,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	return result, nil
 }
 
-func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (res IssuesListAssigneesResponse, err error) {
+func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (res IssuesListAssigneesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -9972,7 +9972,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	return result, nil
 }
 
-func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (res IssuesCheckUserCanBeAssignedResponse, err error) {
+func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (res IssuesCheckUserCanBeAssignedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10076,7 +10076,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	return result, nil
 }
 
-func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (res ReposGetAutolinkResponse, err error) {
+func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (res ReposGetAutolinkRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10126,7 +10126,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 	return result, nil
 }
 
-func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (res ReposDeleteAutolinkResponse, err error) {
+func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (res ReposDeleteAutolinkRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10258,7 +10258,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesResponse, err error) {
+func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10332,7 +10332,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	return result, nil
 }
 
-func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchResponse, err error) {
+func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10382,7 +10382,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 	return result, nil
 }
 
-func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (res ReposGetBranchProtectionResponse, err error) {
+func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (res ReposGetBranchProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10433,7 +10433,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 	return result, nil
 }
 
-func (c *Client) ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionApplicationJSONRequest, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionResponse, err error) {
+func (c *Client) ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionApplicationJSONReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
 	body, contentType, err := encodeReposUpdateBranchProtectionRequest(req)
 	if err != nil {
 		return res, err
@@ -10491,7 +10491,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, req ReposUpdat
 	return result, nil
 }
 
-func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (res ReposDeleteBranchProtectionResponse, err error) {
+func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (res ReposDeleteBranchProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10644,7 +10644,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	return result, nil
 }
 
-func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (res ReposDeleteAdminBranchProtectionResponse, err error) {
+func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (res ReposDeleteAdminBranchProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10746,7 +10746,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 	return result, nil
 }
 
-func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (res ReposDeletePullRequestReviewProtectionResponse, err error) {
+func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (res ReposDeletePullRequestReviewProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10797,7 +10797,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (res ReposGetCommitSignatureProtectionResponse, err error) {
+func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (res ReposGetCommitSignatureProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10848,7 +10848,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 	return result, nil
 }
 
-func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (res ReposCreateCommitSignatureProtectionResponse, err error) {
+func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (res ReposCreateCommitSignatureProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10899,7 +10899,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (res ReposDeleteCommitSignatureProtectionResponse, err error) {
+func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (res ReposDeleteCommitSignatureProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -10950,7 +10950,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (res ReposGetStatusChecksProtectionResponse, err error) {
+func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (res ReposGetStatusChecksProtectionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11052,7 +11052,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	return result, nil
 }
 
-func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (res ReposGetAllStatusCheckContextsResponse, err error) {
+func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (res ReposGetAllStatusCheckContextsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11103,7 +11103,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 	return result, nil
 }
 
-func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (res ReposGetAccessRestrictionsResponse, err error) {
+func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (res ReposGetAccessRestrictionsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11205,7 +11205,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 	return result, nil
 }
 
-func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (res ReposGetAppsWithAccessToProtectedBranchResponse, err error) {
+func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11256,7 +11256,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (res ReposGetTeamsWithAccessToProtectedBranchResponse, err error) {
+func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11307,7 +11307,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 	return result, nil
 }
 
-func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (res ReposGetUsersWithAccessToProtectedBranchResponse, err error) {
+func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11482,7 +11482,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	return result, nil
 }
 
-func (c *Client) ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteApplicationJSONRequest, params ChecksCreateSuiteParams) (res ChecksCreateSuiteResponse, err error) {
+func (c *Client) ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteApplicationJSONReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
 	body, contentType, err := encodeChecksCreateSuiteRequest(req)
 	if err != nil {
 		return res, err
@@ -11530,7 +11530,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteApp
 	return result, nil
 }
 
-func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesApplicationJSONRequest, params ChecksSetSuitesPreferencesParams) (res CheckSuitePreference, err error) {
+func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesApplicationJSONReq, params ChecksSetSuitesPreferencesParams) (res CheckSuitePreference, err error) {
 	body, contentType, err := encodeChecksSetSuitesPreferencesRequest(req)
 	if err != nil {
 		return res, err
@@ -11679,7 +11679,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	return result, nil
 }
 
-func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (res CodeScanningListAlertInstancesResponse, err error) {
+func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (res CodeScanningListAlertInstancesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11763,7 +11763,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	return result, nil
 }
 
-func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (res CodeScanningListRecentAnalysesResponse, err error) {
+func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (res CodeScanningListRecentAnalysesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11867,7 +11867,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	return result, nil
 }
 
-func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (res CodeScanningDeleteAnalysisResponse, err error) {
+func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (res CodeScanningDeleteAnalysisRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -11930,7 +11930,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	return result, nil
 }
 
-func (c *Client) CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifApplicationJSONRequest, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifResponse, err error) {
+func (c *Client) CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifApplicationJSONReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
 	body, contentType, err := encodeCodeScanningUploadSarifRequest(req)
 	if err != nil {
 		return res, err
@@ -11978,7 +11978,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, req CodeScanningUp
 	return result, nil
 }
 
-func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (res CodeScanningGetSarifResponse, err error) {
+func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (res CodeScanningGetSarifRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12028,7 +12028,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 	return result, nil
 }
 
-func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (res ReposCheckCollaboratorResponse, err error) {
+func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (res ReposCheckCollaboratorRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12128,7 +12128,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	return result, nil
 }
 
-func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (res ReposGetCollaboratorPermissionLevelResponse, err error) {
+func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (res ReposGetCollaboratorPermissionLevelRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12243,7 +12243,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	return result, nil
 }
 
-func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentResponse, err error) {
+func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12293,7 +12293,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 	return result, nil
 }
 
-func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentResponse, err error) {
+func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12343,7 +12343,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 	return result, nil
 }
 
-func (c *Client) ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentApplicationJSONRequest, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentResponse, err error) {
+func (c *Client) ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentApplicationJSONReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
 	body, contentType, err := encodeReposUpdateCommitCommentRequest(req)
 	if err != nil {
 		return res, err
@@ -12460,7 +12460,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	return result, nil
 }
 
-func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsParams) (res ReposListCommitsResponse, err error) {
+func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsParams) (res ReposListCommitsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12742,7 +12742,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	return result, nil
 }
 
-func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (res ReposGetCombinedStatusForRefResponse, err error) {
+func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (res ReposGetCombinedStatusForRefRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12816,7 +12816,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	return result, nil
 }
 
-func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (res ReposListCommitStatusesForRefResponse, err error) {
+func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (res ReposListCommitStatusesForRefRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12931,7 +12931,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 	return result, nil
 }
 
-func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (res ReposCompareCommitsResponse, err error) {
+func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (res ReposCompareCommitsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13004,7 +13004,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	return result, nil
 }
 
-func (c *Client) ReposListContributors(ctx context.Context, params ReposListContributorsParams) (res ReposListContributorsResponse, err error) {
+func (c *Client) ReposListContributors(ctx context.Context, params ReposListContributorsParams) (res ReposListContributorsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13078,7 +13078,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	return result, nil
 }
 
-func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (res ReposDeleteDeploymentResponse, err error) {
+func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (res ReposDeleteDeploymentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13128,7 +13128,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	return result, nil
 }
 
-func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (res ReposListDeploymentStatusesResponse, err error) {
+func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (res ReposListDeploymentStatusesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13202,7 +13202,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	return result, nil
 }
 
-func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (res ReposGetDeploymentStatusResponse, err error) {
+func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (res ReposGetDeploymentStatusRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13312,7 +13312,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 	return result, nil
 }
 
-func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (res GitGetCommitResponse, err error) {
+func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (res GitGetCommitRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13435,7 +13435,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	return result, nil
 }
 
-func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res GitGetRefResponse, err error) {
+func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res GitGetRefRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13485,7 +13485,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 	return result, nil
 }
 
-func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res GitGetTagResponse, err error) {
+func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res GitGetTagRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13535,7 +13535,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	return result, nil
 }
 
-func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookResponse, err error) {
+func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13585,7 +13585,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	return result, nil
 }
 
-func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (res ReposPingWebhookResponse, err error) {
+func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (res ReposPingWebhookRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13636,7 +13636,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	return result, nil
 }
 
-func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (res ReposTestPushWebhookResponse, err error) {
+func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (res ReposTestPushWebhookRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13687,7 +13687,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	return result, nil
 }
 
-func (c *Client) MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (res MigrationsGetImportStatusResponse, err error) {
+func (c *Client) MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (res MigrationsGetImportStatusRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13769,7 +13769,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 	return result, nil
 }
 
-func (c *Client) MigrationsUpdateImport(ctx context.Context, req *MigrationsUpdateImportApplicationJSONRequest, params MigrationsUpdateImportParams) (res Import, err error) {
+func (c *Client) MigrationsUpdateImport(ctx context.Context, req *MigrationsUpdateImportApplicationJSONReq, params MigrationsUpdateImportParams) (res Import, err error) {
 	body, contentType, err := encodeMigrationsUpdateImportRequest(req)
 	if err != nil {
 		return res, err
@@ -13817,7 +13817,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, req *MigrationsUpda
 	return result, nil
 }
 
-func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (res MigrationsGetCommitAuthorsResponse, err error) {
+func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (res MigrationsGetCommitAuthorsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13912,7 +13912,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 	return result, nil
 }
 
-func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoResponse, err error) {
+func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
 	body, contentType, err := encodeInteractionsSetRestrictionsForRepoRequest(req)
 	if err != nil {
 		return res, err
@@ -13960,7 +13960,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, req Int
 	return result, nil
 }
 
-func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (res InteractionsRemoveRestrictionsForRepoResponse, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14115,7 +14115,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	return result, nil
 }
 
-func (c *Client) ReposUpdateInvitation(ctx context.Context, req *ReposUpdateInvitationApplicationJSONRequest, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
+func (c *Client) ReposUpdateInvitation(ctx context.Context, req *ReposUpdateInvitationApplicationJSONReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
 	body, contentType, err := encodeReposUpdateInvitationRequest(req)
 	if err != nil {
 		return res, err
@@ -14172,7 +14172,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, req *ReposUpdateInvi
 	return result, nil
 }
 
-func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentResponse, err error) {
+func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14332,7 +14332,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	return result, nil
 }
 
-func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (res IssuesListCommentsResponse, err error) {
+func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (res IssuesListCommentsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14416,7 +14416,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	return result, nil
 }
 
-func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueResponse, err error) {
+func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14490,7 +14490,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	return result, nil
 }
 
-func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsResponse, err error) {
+func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14541,7 +14541,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	return result, nil
 }
 
-func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (res IssuesRemoveLabelResponse, err error) {
+func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (res IssuesRemoveLabelRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14601,7 +14601,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 	return result, nil
 }
 
-func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (res IssuesUnlockResponse, err error) {
+func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (res IssuesUnlockRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14776,7 +14776,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	return result, nil
 }
 
-func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyResponse, err error) {
+func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14876,7 +14876,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 	return result, nil
 }
 
-func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoResponse, err error) {
+func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14940,7 +14940,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	return result, nil
 }
 
-func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelResponse, err error) {
+func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -15040,7 +15040,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 	return result, nil
 }
 
-func (c *Client) IssuesUpdateLabel(ctx context.Context, req *IssuesUpdateLabelApplicationJSONRequest, params IssuesUpdateLabelParams) (res Label, err error) {
+func (c *Client) IssuesUpdateLabel(ctx context.Context, req *IssuesUpdateLabelApplicationJSONReq, params IssuesUpdateLabelParams) (res Label, err error) {
 	body, contentType, err := encodeIssuesUpdateLabelRequest(req)
 	if err != nil {
 		return res, err
@@ -15138,7 +15138,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 	return result, nil
 }
 
-func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (res ReposEnableLfsForRepoResponse, err error) {
+func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (res ReposEnableLfsForRepoRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -15261,7 +15261,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	return result, nil
 }
 
-func (c *Client) ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamApplicationJSONRequest, params ReposMergeUpstreamParams) (res ReposMergeUpstreamResponse, err error) {
+func (c *Client) ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamApplicationJSONReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
 	body, contentType, err := encodeReposMergeUpstreamRequest(req)
 	if err != nil {
 		return res, err
@@ -15309,7 +15309,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamA
 	return result, nil
 }
 
-func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneResponse, err error) {
+func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -15359,7 +15359,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	return result, nil
 }
 
-func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneResponse, err error) {
+func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -15409,7 +15409,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	return result, nil
 }
 
-func (c *Client) IssuesUpdateMilestone(ctx context.Context, req *IssuesUpdateMilestoneApplicationJSONRequest, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
+func (c *Client) IssuesUpdateMilestone(ctx context.Context, req *IssuesUpdateMilestoneApplicationJSONReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
 	body, contentType, err := encodeIssuesUpdateMilestoneRequest(req)
 	if err != nil {
 		return res, err
@@ -15644,7 +15644,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	return result, nil
 }
 
-func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, req *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadResponse, err error) {
+func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, req *ActivityMarkRepoNotificationsAsReadApplicationJSONReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	body, contentType, err := encodeActivityMarkRepoNotificationsAsReadRequest(req)
 	if err != nil {
 		return res, err
@@ -15692,7 +15692,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, req *A
 	return result, nil
 }
 
-func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesResponse, err error) {
+func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -15929,7 +15929,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 	return result, nil
 }
 
-func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (res ReposGetPagesHealthCheckResponse, err error) {
+func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (res ReposGetPagesHealthCheckRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -15970,7 +15970,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateForRepoApplicationJSONRequest, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoResponse, err error) {
+func (c *Client) ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateForRepoApplicationJSONReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
 	body, contentType, err := encodeProjectsCreateForRepoRequest(req)
 	if err != nil {
 		return res, err
@@ -16018,7 +16018,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateFo
 	return result, nil
 }
 
-func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (res PullsGetReviewCommentResponse, err error) {
+func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (res PullsGetReviewCommentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -16068,7 +16068,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	return result, nil
 }
 
-func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (res PullsDeleteReviewCommentResponse, err error) {
+func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (res PullsDeleteReviewCommentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -16118,7 +16118,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	return result, nil
 }
 
-func (c *Client) PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentApplicationJSONRequest, params PullsUpdateReviewCommentParams) (res PullRequestReviewComment, err error) {
+func (c *Client) PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentApplicationJSONReq, params PullsUpdateReviewCommentParams) (res PullRequestReviewComment, err error) {
 	body, contentType, err := encodePullsUpdateReviewCommentRequest(req)
 	if err != nil {
 		return res, err
@@ -16235,7 +16235,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentApplicationJSONRequest, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentResponse, err error) {
+func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentApplicationJSONReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
 	body, contentType, err := encodePullsCreateReplyForReviewCommentRequest(req)
 	if err != nil {
 		return res, err
@@ -16377,7 +16377,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	return result, nil
 }
 
-func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedResponse, err error) {
+func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -16576,7 +16576,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	return result, nil
 }
 
-func (c *Client) PullsCreateReview(ctx context.Context, req *PullsCreateReviewApplicationJSONRequest, params PullsCreateReviewParams) (res PullsCreateReviewResponse, err error) {
+func (c *Client) PullsCreateReview(ctx context.Context, req *PullsCreateReviewApplicationJSONReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
 	body, contentType, err := encodePullsCreateReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -16634,7 +16634,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, req *PullsCreateReviewAp
 	return result, nil
 }
 
-func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewResponse, err error) {
+func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -16694,7 +16694,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 	return result, nil
 }
 
-func (c *Client) PullsUpdateReview(ctx context.Context, req PullsUpdateReviewApplicationJSONRequest, params PullsUpdateReviewParams) (res PullsUpdateReviewResponse, err error) {
+func (c *Client) PullsUpdateReview(ctx context.Context, req PullsUpdateReviewApplicationJSONReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
 	body, contentType, err := encodePullsUpdateReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -16761,7 +16761,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, req PullsUpdateReviewApp
 	return result, nil
 }
 
-func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewResponse, err error) {
+func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -16821,7 +16821,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 	return result, nil
 }
 
-func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (res PullsListCommentsForReviewResponse, err error) {
+func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (res PullsListCommentsForReviewRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -16905,7 +16905,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	return result, nil
 }
 
-func (c *Client) PullsDismissReview(ctx context.Context, req PullsDismissReviewApplicationJSONRequest, params PullsDismissReviewParams) (res PullsDismissReviewResponse, err error) {
+func (c *Client) PullsDismissReview(ctx context.Context, req PullsDismissReviewApplicationJSONReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
 	body, contentType, err := encodePullsDismissReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -16973,7 +16973,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, req PullsDismissReviewA
 	return result, nil
 }
 
-func (c *Client) PullsSubmitReview(ctx context.Context, req PullsSubmitReviewApplicationJSONRequest, params PullsSubmitReviewParams) (res PullsSubmitReviewResponse, err error) {
+func (c *Client) PullsSubmitReview(ctx context.Context, req PullsSubmitReviewApplicationJSONReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
 	body, contentType, err := encodePullsSubmitReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -17041,7 +17041,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, req PullsSubmitReviewApp
 	return result, nil
 }
 
-func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleasesParams) (res ReposListReleasesResponse, err error) {
+func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleasesParams) (res ReposListReleasesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17105,7 +17105,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	return result, nil
 }
 
-func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (res ReposGetReleaseAssetResponse, err error) {
+func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (res ReposGetReleaseAssetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17205,7 +17205,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 	return result, nil
 }
 
-func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, req *ReposUpdateReleaseAssetApplicationJSONRequest, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
+func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, req *ReposUpdateReleaseAssetApplicationJSONReq, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
 	body, contentType, err := encodeReposUpdateReleaseAssetRequest(req)
 	if err != nil {
 		return res, err
@@ -17303,7 +17303,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 	return result, nil
 }
 
-func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (res ReposGetReleaseByTagResponse, err error) {
+func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (res ReposGetReleaseByTagRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17353,7 +17353,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 	return result, nil
 }
 
-func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (res ReposGetReleaseResponse, err error) {
+func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (res ReposGetReleaseRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17453,7 +17453,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	return result, nil
 }
 
-func (c *Client) ReposUpdateRelease(ctx context.Context, req *ReposUpdateReleaseApplicationJSONRequest, params ReposUpdateReleaseParams) (res ReposUpdateReleaseResponse, err error) {
+func (c *Client) ReposUpdateRelease(ctx context.Context, req *ReposUpdateReleaseApplicationJSONReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
 	body, contentType, err := encodeReposUpdateReleaseRequest(req)
 	if err != nil {
 		return res, err
@@ -17584,7 +17584,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	return result, nil
 }
 
-func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (res SecretScanningGetAlertResponse, err error) {
+func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (res SecretScanningGetAlertRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17634,7 +17634,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 	return result, nil
 }
 
-func (c *Client) SecretScanningUpdateAlert(ctx context.Context, req SecretScanningUpdateAlertApplicationJSONRequest, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertResponse, err error) {
+func (c *Client) SecretScanningUpdateAlert(ctx context.Context, req SecretScanningUpdateAlertApplicationJSONReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
 	body, contentType, err := encodeSecretScanningUpdateAlertRequest(req)
 	if err != nil {
 		return res, err
@@ -17691,7 +17691,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, req SecretScanni
 	return result, nil
 }
 
-func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (res ReposGetCodeFrequencyStatsResponse, err error) {
+func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (res ReposGetCodeFrequencyStatsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17732,7 +17732,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 	return result, nil
 }
 
-func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (res ReposGetCommitActivityStatsResponse, err error) {
+func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (res ReposGetCommitActivityStatsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17773,7 +17773,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 	return result, nil
 }
 
-func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (res ReposGetContributorsStatsResponse, err error) {
+func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (res ReposGetContributorsStatsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17814,7 +17814,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 	return result, nil
 }
 
-func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (res ReposGetParticipationStatsResponse, err error) {
+func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (res ReposGetParticipationStatsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17855,7 +17855,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 	return result, nil
 }
 
-func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (res ReposGetPunchCardStatsResponse, err error) {
+func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (res ReposGetPunchCardStatsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -17896,7 +17896,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	return result, nil
 }
 
-func (c *Client) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusApplicationJSONRequest, params ReposCreateCommitStatusParams) (res Status, err error) {
+func (c *Client) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusApplicationJSONReq, params ReposCreateCommitStatusParams) (res Status, err error) {
 	body, contentType, err := encodeReposCreateCommitStatusRequest(req)
 	if err != nil {
 		return res, err
@@ -18017,7 +18017,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	return result, nil
 }
 
-func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionResponse, err error) {
+func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -18058,7 +18058,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 	return result, nil
 }
 
-func (c *Client) ActivitySetRepoSubscription(ctx context.Context, req *ActivitySetRepoSubscriptionApplicationJSONRequest, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
+func (c *Client) ActivitySetRepoSubscription(ctx context.Context, req *ActivitySetRepoSubscriptionApplicationJSONReq, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
 	body, contentType, err := encodeActivitySetRepoSubscriptionRequest(req)
 	if err != nil {
 		return res, err
@@ -18325,7 +18325,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	return result, nil
 }
 
-func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsResponse, err error) {
+func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -18389,7 +18389,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	return result, nil
 }
 
-func (c *Client) ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsApplicationJSONRequest, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsResponse, err error) {
+func (c *Client) ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsApplicationJSONReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
 	body, contentType, err := encodeReposReplaceAllTopicsRequest(req)
 	if err != nil {
 		return res, err
@@ -18437,7 +18437,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllT
 	return result, nil
 }
 
-func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (res ReposGetTopPathsResponse, err error) {
+func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (res ReposGetTopPathsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -18478,7 +18478,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 	return result, nil
 }
 
-func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (res ReposGetTopReferrersResponse, err error) {
+func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (res ReposGetTopReferrersRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -18519,7 +18519,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 	return result, nil
 }
 
-func (c *Client) ReposTransfer(ctx context.Context, req ReposTransferApplicationJSONRequest, params ReposTransferParams) (res MinimalRepository, err error) {
+func (c *Client) ReposTransfer(ctx context.Context, req ReposTransferApplicationJSONReq, params ReposTransferParams) (res MinimalRepository, err error) {
 	body, contentType, err := encodeReposTransferRequest(req)
 	if err != nil {
 		return res, err
@@ -18567,7 +18567,7 @@ func (c *Client) ReposTransfer(ctx context.Context, req ReposTransferApplication
 	return result, nil
 }
 
-func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (res ReposCheckVulnerabilityAlertsResponse, err error) {
+func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (res ReposCheckVulnerabilityAlertsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -18740,7 +18740,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	return result, nil
 }
 
-func (c *Client) ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateApplicationJSONRequest, params ReposCreateUsingTemplateParams) (res Repository, err error) {
+func (c *Client) ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateApplicationJSONReq, params ReposCreateUsingTemplateParams) (res Repository, err error) {
 	body, contentType, err := encodeReposCreateUsingTemplateRequest(req)
 	if err != nil {
 		return res, err
@@ -18943,7 +18943,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 	return result, nil
 }
 
-func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretResponse, err error) {
+func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
 	body, contentType, err := encodeActionsCreateOrUpdateEnvironmentSecretRequest(req)
 	if err != nil {
 		return res, err
@@ -19124,7 +19124,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	body, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(req)
 	if err != nil {
 		return res, err
@@ -19215,7 +19215,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	body, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(req)
 	if err != nil {
 		return res, err
@@ -19366,7 +19366,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	body, contentType, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(req)
 	if err != nil {
 		return res, err
@@ -19444,7 +19444,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	body, contentType, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(req)
 	if err != nil {
 		return res, err
@@ -19531,7 +19531,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	body, contentType, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(req)
 	if err != nil {
 		return res, err
@@ -19578,7 +19578,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	return result, nil
 }
 
-func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgResponse, err error) {
+func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/organizations/"
 	{
@@ -19618,7 +19618,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	return result, nil
 }
 
-func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyResponse, err error) {
+func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -19648,7 +19648,7 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyApplicationJSONRequest, params TeamsCreateDiscussionLegacyParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyApplicationJSONReq, params TeamsCreateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	body, contentType, err := encodeTeamsCreateDiscussionLegacyRequest(req)
 	if err != nil {
 		return res, err
@@ -19766,7 +19766,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, req *TeamsUpdateDiscussionLegacyApplicationJSONRequest, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, req *TeamsUpdateDiscussionLegacyApplicationJSONReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	body, contentType, err := encodeTeamsUpdateDiscussionLegacyRequest(req)
 	if err != nil {
 		return res, err
@@ -19813,7 +19813,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, req *TeamsUpda
 	return result, nil
 }
 
-func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyApplicationJSONRequest, params TeamsCreateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyApplicationJSONReq, params TeamsCreateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	body, contentType, err := encodeTeamsCreateDiscussionCommentLegacyRequest(req)
 	if err != nil {
 		return res, err
@@ -19961,7 +19961,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest, params TeamsUpdateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
+func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyApplicationJSONReq, params TeamsUpdateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	body, contentType, err := encodeTeamsUpdateDiscussionCommentLegacyRequest(req)
 	if err != nil {
 		return res, err
@@ -20018,7 +20018,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req Tea
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res Reaction, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res Reaction, err error) {
 	body, contentType, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(req)
 	if err != nil {
 		return res, err
@@ -20076,7 +20076,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest, params ReactionsCreateForTeamDiscussionLegacyParams) (res Reaction, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res Reaction, err error) {
 	body, contentType, err := encodeReactionsCreateForTeamDiscussionLegacyRequest(req)
 	if err != nil {
 		return res, err
@@ -20178,7 +20178,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	return result, nil
 }
 
-func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyResponse, err error) {
+func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20218,7 +20218,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 	return result, nil
 }
 
-func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyResponse, err error) {
+func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20258,7 +20258,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	return result, nil
 }
 
-func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyResponse, err error) {
+func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20298,7 +20298,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 	return result, nil
 }
 
-func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyResponse, err error) {
+func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20338,7 +20338,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 	return result, nil
 }
 
-func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyResponse, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	body, contentType, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(req)
 	if err != nil {
 		return res, err
@@ -20385,7 +20385,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	return result, nil
 }
 
-func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyResponse, err error) {
+func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20425,7 +20425,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyResponse, err error) {
+func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20479,7 +20479,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	return result, nil
 }
 
-func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyResponse, err error) {
+func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20519,7 +20519,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 	return result, nil
 }
 
-func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyResponse, err error) {
+func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20573,7 +20573,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	return result, nil
 }
 
-func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyResponse, err error) {
+func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20673,7 +20673,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	return result, nil
 }
 
-func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyResponse, err error) {
+func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -20704,7 +20704,7 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 	return result, nil
 }
 
-func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res UsersListBlockedByAuthenticatedResponse, err error) {
+func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res UsersListBlockedByAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/blocks"
 
@@ -20725,7 +20725,7 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 	return result, nil
 }
 
-func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedResponse, err error) {
+func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/blocks/"
 	{
@@ -20755,7 +20755,7 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 	return result, nil
 }
 
-func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockResponse, err error) {
+func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/blocks/"
 	{
@@ -20785,7 +20785,7 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 	return result, nil
 }
 
-func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (res UsersListEmailsForAuthenticatedResponse, err error) {
+func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (res UsersListEmailsForAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
 
@@ -20829,7 +20829,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	return result, nil
 }
 
-func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (res UsersListFollowersForAuthenticatedUserResponse, err error) {
+func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (res UsersListFollowersForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/followers"
 
@@ -20873,7 +20873,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (res UsersListFollowedByAuthenticatedResponse, err error) {
+func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (res UsersListFollowedByAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following"
 
@@ -20917,7 +20917,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	return result, nil
 }
 
-func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedResponse, err error) {
+func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following/"
 	{
@@ -20947,7 +20947,7 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res UsersFollowResponse, err error) {
+func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res UsersFollowRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following/"
 	{
@@ -20977,7 +20977,7 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	return result, nil
 }
 
-func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (res UsersUnfollowResponse, err error) {
+func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (res UsersUnfollowRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following/"
 	{
@@ -21007,7 +21007,7 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 	return result, nil
 }
 
-func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (res UsersListGpgKeysForAuthenticatedResponse, err error) {
+func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (res UsersListGpgKeysForAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys"
 
@@ -21051,7 +21051,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	return result, nil
 }
 
-func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (res UsersGetGpgKeyForAuthenticatedResponse, err error) {
+func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys/"
 	{
@@ -21081,7 +21081,7 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 	return result, nil
 }
 
-func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (res AppsListInstallationReposForAuthenticatedUserResponse, err error) {
+func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/installations/"
 	{
@@ -21135,7 +21135,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (res AppsAddRepoToInstallationResponse, err error) {
+func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (res AppsAddRepoToInstallationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/installations/"
 	{
@@ -21175,7 +21175,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	return result, nil
 }
 
-func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (res AppsRemoveRepoFromInstallationResponse, err error) {
+func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (res AppsRemoveRepoFromInstallationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/installations/"
 	{
@@ -21236,7 +21236,7 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	return result, nil
 }
 
-func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (res UsersListPublicSSHKeysForAuthenticatedResponse, err error) {
+func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys"
 
@@ -21280,7 +21280,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (res UsersGetPublicSSHKeyForAuthenticatedResponse, err error) {
+func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys/"
 	{
@@ -21310,7 +21310,7 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (res UsersDeletePublicSSHKeyForAuthenticatedResponse, err error) {
+func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys/"
 	{
@@ -21340,7 +21340,7 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (res AppsListSubscriptionsForAuthenticatedUserResponse, err error) {
+func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/marketplace_purchases"
 
@@ -21384,7 +21384,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (res AppsListSubscriptionsForAuthenticatedUserStubbedResponse, err error) {
+func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/marketplace_purchases/stubbed"
 
@@ -21428,7 +21428,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserResponse, err error) {
+func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/memberships/orgs/"
 	{
@@ -21458,7 +21458,7 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 	return result, nil
 }
 
-func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (res MigrationsListForAuthenticatedUserResponse, err error) {
+func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (res MigrationsListForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations"
 
@@ -21502,7 +21502,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (res MigrationsGetStatusForAuthenticatedUserResponse, err error) {
+func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -21545,7 +21545,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	return result, nil
 }
 
-func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (res MigrationsGetArchiveForAuthenticatedUserResponse, err error) {
+func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -21576,7 +21576,7 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 	return result, nil
 }
 
-func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (res MigrationsDeleteArchiveForAuthenticatedUserResponse, err error) {
+func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -21607,7 +21607,7 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (res MigrationsUnlockRepoForAuthenticatedUserResponse, err error) {
+func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -21648,7 +21648,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 	return result, nil
 }
 
-func (c *Client) MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (res MigrationsListReposForUserResponse, err error) {
+func (c *Client) MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (res MigrationsListReposForUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -21702,7 +21702,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	return result, nil
 }
 
-func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (res OrgsListForAuthenticatedUserResponse, err error) {
+func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (res OrgsListForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/orgs"
 
@@ -21746,7 +21746,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	return result, nil
 }
 
-func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserApplicationJSONRequest) (res ProjectsCreateForAuthenticatedUserResponse, err error) {
+func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserApplicationJSONReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
 	body, contentType, err := encodeProjectsCreateForAuthenticatedUserRequest(req)
 	if err != nil {
 		return res, err
@@ -21774,7 +21774,7 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, req Pro
 	return result, nil
 }
 
-func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (res UsersListPublicEmailsForAuthenticatedResponse, err error) {
+func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/public_emails"
 
@@ -21818,7 +21818,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	return result, nil
 }
 
-func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (res ReposListInvitationsForAuthenticatedUserResponse, err error) {
+func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repository_invitations"
 
@@ -21862,7 +21862,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	return result, nil
 }
 
-func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationResponse, err error) {
+func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repository_invitations/"
 	{
@@ -21892,7 +21892,7 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 	return result, nil
 }
 
-func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationResponse, err error) {
+func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repository_invitations/"
 	{
@@ -21922,7 +21922,7 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	return result, nil
 }
 
-func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserResponse, err error) {
+func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred/"
 	{
@@ -21962,7 +21962,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (res ActivityStarRepoForAuthenticatedUserResponse, err error) {
+func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred/"
 	{
@@ -22002,7 +22002,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 	return result, nil
 }
 
-func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserResponse, err error) {
+func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred/"
 	{
@@ -22042,7 +22042,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 	return result, nil
 }
 
-func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (res ActivityListWatchedReposForAuthenticatedUserResponse, err error) {
+func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/subscriptions"
 
@@ -22086,7 +22086,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (res TeamsListForAuthenticatedUserResponse, err error) {
+func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (res TeamsListForAuthenticatedUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/teams"
 
@@ -22130,7 +22130,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	return result, nil
 }
 
-func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res UsersListResponse, err error) {
+func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res UsersListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users"
 
@@ -22282,7 +22282,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	return result, nil
 }
 
-func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserResponse, err error) {
+func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{

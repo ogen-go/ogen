@@ -5,13 +5,33 @@ import (
 	"reflect"
 	"sort"
 
+	"golang.org/x/xerrors"
+
 	"github.com/ogen-go/ogen/internal/ast"
 )
 
-func (g *Generator) fix() {
+func (g *Generator) fix() error {
 	for _, m := range g.methods {
 		g.fixEqualResponses(m)
+		if err := g.fixInterfaceCollision(m); err != nil {
+			return err
+		}
 	}
+
+	return nil
+}
+
+func (g *Generator) fixInterfaceCollision(m *ast.Method) error {
+	iface, ok := m.ResponseType.(*ast.Interface)
+	if !ok {
+		return nil
+	}
+	if !g.hasSchema(iface.Name) {
+		return nil
+	}
+
+	// TODO(ernado): pick different name
+	return xerrors.Errorf("interface %s collides with schema", iface.Name)
 }
 
 func (g *Generator) fixEqualResponses(m *ast.Method) {

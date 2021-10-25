@@ -50,10 +50,10 @@ var (
 	_ = net.IP{}
 )
 
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest, err error) {
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest
+		var request EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -67,10 +67,10 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 	}
 }
 
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest, err error) {
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest
+		var request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -98,10 +98,10 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request) (r
 	}
 }
 
-func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest, err error) {
+func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest
+		var request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -115,10 +115,10 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 	}
 }
 
-func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest, err error) {
+func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest
+		var request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -132,10 +132,10 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 	}
 }
 
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest, err error) {
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest
+		var request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -149,10 +149,10 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 	}
 }
 
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest, err error) {
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest
+		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -166,10 +166,10 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 	}
 }
 
-func decodeGistsCreateCommentRequest(r *http.Request) (req GistsCreateCommentApplicationJSONRequest, err error) {
+func decodeGistsCreateCommentRequest(r *http.Request) (req GistsCreateCommentApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GistsCreateCommentApplicationJSONRequest
+		var request GistsCreateCommentApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -183,10 +183,10 @@ func decodeGistsCreateCommentRequest(r *http.Request) (req GistsCreateCommentApp
 	}
 }
 
-func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApplicationJSONRequest, err error) {
+func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GistsUpdateCommentApplicationJSONRequest
+		var request GistsUpdateCommentApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -200,10 +200,10 @@ func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApp
 	}
 }
 
-func decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkNotificationsAsReadApplicationJSONRequest, err error) {
+func decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkNotificationsAsReadApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActivityMarkNotificationsAsReadApplicationJSONRequest
+		var request ActivityMarkNotificationsAsReadApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -214,10 +214,10 @@ func decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (req *Activit
 	}
 }
 
-func decodeActivitySetThreadSubscriptionRequest(r *http.Request) (req *ActivitySetThreadSubscriptionApplicationJSONRequest, err error) {
+func decodeActivitySetThreadSubscriptionRequest(r *http.Request) (req *ActivitySetThreadSubscriptionApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActivitySetThreadSubscriptionApplicationJSONRequest
+		var request ActivitySetThreadSubscriptionApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -228,10 +228,10 @@ func decodeActivitySetThreadSubscriptionRequest(r *http.Request) (req *ActivityS
 	}
 }
 
-func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request) (req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest, err error) {
+func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request) (req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest
+		var request ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -245,10 +245,10 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 	}
 }
 
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request) (req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest, err error) {
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request) (req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest
+		var request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -276,10 +276,10 @@ func decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request) (req *Se
 	}
 }
 
-func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest, err error) {
+func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest
+		var request ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -293,10 +293,10 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req
 	}
 }
 
-func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest, err error) {
+func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest
+		var request ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -310,10 +310,10 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req
 	}
 }
 
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request) (req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest, err error) {
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request) (req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest
+		var request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -327,10 +327,10 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 	}
 }
 
-func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest, err error) {
+func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest
+		var request ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -344,10 +344,10 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (req
 	}
 }
 
-func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (req ActionsCreateOrUpdateOrgSecretApplicationJSONRequest, err error) {
+func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (req ActionsCreateOrUpdateOrgSecretApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsCreateOrUpdateOrgSecretApplicationJSONRequest
+		var request ActionsCreateOrUpdateOrgSecretApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -361,10 +361,10 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (req ActionsCr
 	}
 }
 
-func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (req ActionsSetSelectedReposForOrgSecretApplicationJSONRequest, err error) {
+func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (req ActionsSetSelectedReposForOrgSecretApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsSetSelectedReposForOrgSecretApplicationJSONRequest
+		var request ActionsSetSelectedReposForOrgSecretApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -378,10 +378,10 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (req Acti
 	}
 }
 
-func decodeProjectsCreateForOrgRequest(r *http.Request) (req ProjectsCreateForOrgApplicationJSONRequest, err error) {
+func decodeProjectsCreateForOrgRequest(r *http.Request) (req ProjectsCreateForOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ProjectsCreateForOrgApplicationJSONRequest
+		var request ProjectsCreateForOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -392,117 +392,10 @@ func decodeProjectsCreateForOrgRequest(r *http.Request) (req ProjectsCreateForOr
 	}
 }
 
-func decodeTeamsUpdateInOrgRequest(r *http.Request) (req *TeamsUpdateInOrgApplicationJSONRequest, err error) {
+func decodeTeamsUpdateInOrgRequest(r *http.Request) (req *TeamsUpdateInOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request TeamsUpdateInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (req TeamsCreateDiscussionInOrgApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsCreateDiscussionInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request) (req *TeamsUpdateDiscussionInOrgApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsUpdateDiscussionInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsCreateDiscussionCommentInOrgApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsCreateDiscussionCommentInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest
+		var request TeamsUpdateInOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -516,10 +409,100 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request) (req *
 	}
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest, err error) {
+func decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (req TeamsCreateDiscussionInOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest
+		var request TeamsCreateDiscussionInOrgApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request) (req *TeamsUpdateDiscussionInOrgApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsUpdateDiscussionInOrgApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsCreateDiscussionCommentInOrgApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsCreateDiscussionCommentInOrgApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsUpdateDiscussionCommentInOrgApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsUpdateDiscussionCommentInOrgApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -533,10 +516,10 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request) (req 
 	}
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest, err error) {
+func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest
+		var request TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -550,66 +533,10 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request) (req *Te
 	}
 }
 
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request) (req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest, err error) {
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeProjectsUpdateCardRequest(r *http.Request) (req *ProjectsUpdateCardApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ProjectsUpdateCardApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeProjectsUpdateColumnRequest(r *http.Request) (req ProjectsUpdateColumnApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ProjectsUpdateColumnApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeProjectsMoveColumnRequest(r *http.Request) (req ProjectsMoveColumnApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ProjectsMoveColumnApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeProjectsUpdateRequest(r *http.Request) (req *ProjectsUpdateApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ProjectsUpdateApplicationJSONRequest
+		var request TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -623,10 +550,10 @@ func decodeProjectsUpdateRequest(r *http.Request) (req *ProjectsUpdateApplicatio
 	}
 }
 
-func decodeProjectsCreateColumnRequest(r *http.Request) (req ProjectsCreateColumnApplicationJSONRequest, err error) {
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request) (req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ProjectsCreateColumnApplicationJSONRequest
+		var request TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -637,10 +564,83 @@ func decodeProjectsCreateColumnRequest(r *http.Request) (req ProjectsCreateColum
 	}
 }
 
-func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request) (req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest, err error) {
+func decodeProjectsUpdateCardRequest(r *http.Request) (req *ProjectsUpdateCardApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest
+		var request ProjectsUpdateCardApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeProjectsUpdateColumnRequest(r *http.Request) (req ProjectsUpdateColumnApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ProjectsUpdateColumnApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeProjectsMoveColumnRequest(r *http.Request) (req ProjectsMoveColumnApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ProjectsMoveColumnApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeProjectsUpdateRequest(r *http.Request) (req *ProjectsUpdateApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ProjectsUpdateApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeProjectsCreateColumnRequest(r *http.Request) (req ProjectsCreateColumnApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ProjectsCreateColumnApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request) (req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -668,10 +668,10 @@ func decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request) (req *Sele
 	}
 }
 
-func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (req ActionsCreateOrUpdateRepoSecretApplicationJSONRequest, err error) {
+func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (req ActionsCreateOrUpdateRepoSecretApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsCreateOrUpdateRepoSecretApplicationJSONRequest
+		var request ActionsCreateOrUpdateRepoSecretApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -682,55 +682,10 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (req ActionsC
 	}
 }
 
-func decodeReposUpdateBranchProtectionRequest(r *http.Request) (req ReposUpdateBranchProtectionApplicationJSONRequest, err error) {
+func decodeReposUpdateBranchProtectionRequest(r *http.Request) (req ReposUpdateBranchProtectionApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ReposUpdateBranchProtectionApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeChecksCreateSuiteRequest(r *http.Request) (req ChecksCreateSuiteApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ChecksCreateSuiteApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeChecksSetSuitesPreferencesRequest(r *http.Request) (req ChecksSetSuitesPreferencesApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ChecksSetSuitesPreferencesApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeCodeScanningUploadSarifRequest(r *http.Request) (req CodeScanningUploadSarifApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request CodeScanningUploadSarifApplicationJSONRequest
+		var request ReposUpdateBranchProtectionApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -744,10 +699,10 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request) (req CodeScanningUplo
 	}
 }
 
-func decodeReposUpdateCommitCommentRequest(r *http.Request) (req ReposUpdateCommitCommentApplicationJSONRequest, err error) {
+func decodeChecksCreateSuiteRequest(r *http.Request) (req ChecksCreateSuiteApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ReposUpdateCommitCommentApplicationJSONRequest
+		var request ChecksCreateSuiteApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -758,10 +713,55 @@ func decodeReposUpdateCommitCommentRequest(r *http.Request) (req ReposUpdateComm
 	}
 }
 
-func decodeMigrationsUpdateImportRequest(r *http.Request) (req *MigrationsUpdateImportApplicationJSONRequest, err error) {
+func decodeChecksSetSuitesPreferencesRequest(r *http.Request) (req ChecksSetSuitesPreferencesApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request MigrationsUpdateImportApplicationJSONRequest
+		var request ChecksSetSuitesPreferencesApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeCodeScanningUploadSarifRequest(r *http.Request) (req CodeScanningUploadSarifApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request CodeScanningUploadSarifApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReposUpdateCommitCommentRequest(r *http.Request) (req ReposUpdateCommitCommentApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReposUpdateCommitCommentApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeMigrationsUpdateImportRequest(r *http.Request) (req *MigrationsUpdateImportApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request MigrationsUpdateImportApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -789,10 +789,10 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request) (req Inter
 	}
 }
 
-func decodeReposUpdateInvitationRequest(r *http.Request) (req *ReposUpdateInvitationApplicationJSONRequest, err error) {
+func decodeReposUpdateInvitationRequest(r *http.Request) (req *ReposUpdateInvitationApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ReposUpdateInvitationApplicationJSONRequest
+		var request ReposUpdateInvitationApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -806,10 +806,10 @@ func decodeReposUpdateInvitationRequest(r *http.Request) (req *ReposUpdateInvita
 	}
 }
 
-func decodeIssuesUpdateLabelRequest(r *http.Request) (req *IssuesUpdateLabelApplicationJSONRequest, err error) {
+func decodeIssuesUpdateLabelRequest(r *http.Request) (req *IssuesUpdateLabelApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request IssuesUpdateLabelApplicationJSONRequest
+		var request IssuesUpdateLabelApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -820,10 +820,10 @@ func decodeIssuesUpdateLabelRequest(r *http.Request) (req *IssuesUpdateLabelAppl
 	}
 }
 
-func decodeReposMergeUpstreamRequest(r *http.Request) (req ReposMergeUpstreamApplicationJSONRequest, err error) {
+func decodeReposMergeUpstreamRequest(r *http.Request) (req ReposMergeUpstreamApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ReposMergeUpstreamApplicationJSONRequest
+		var request ReposMergeUpstreamApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -834,83 +834,10 @@ func decodeReposMergeUpstreamRequest(r *http.Request) (req ReposMergeUpstreamApp
 	}
 }
 
-func decodeIssuesUpdateMilestoneRequest(r *http.Request) (req *IssuesUpdateMilestoneApplicationJSONRequest, err error) {
+func decodeIssuesUpdateMilestoneRequest(r *http.Request) (req *IssuesUpdateMilestoneApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request IssuesUpdateMilestoneApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ActivityMarkRepoNotificationsAsReadApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeProjectsCreateForRepoRequest(r *http.Request) (req ProjectsCreateForRepoApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ProjectsCreateForRepoApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodePullsUpdateReviewCommentRequest(r *http.Request) (req PullsUpdateReviewCommentApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request PullsUpdateReviewCommentApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodePullsCreateReplyForReviewCommentRequest(r *http.Request) (req PullsCreateReplyForReviewCommentApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request PullsCreateReplyForReviewCommentApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodePullsCreateReviewRequest(r *http.Request) (req *PullsCreateReviewApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request PullsCreateReviewApplicationJSONRequest
+		var request IssuesUpdateMilestoneApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -924,55 +851,10 @@ func decodePullsCreateReviewRequest(r *http.Request) (req *PullsCreateReviewAppl
 	}
 }
 
-func decodePullsUpdateReviewRequest(r *http.Request) (req PullsUpdateReviewApplicationJSONRequest, err error) {
+func decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkRepoNotificationsAsReadApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request PullsUpdateReviewApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodePullsDismissReviewRequest(r *http.Request) (req PullsDismissReviewApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request PullsDismissReviewApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodePullsSubmitReviewRequest(r *http.Request) (req PullsSubmitReviewApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request PullsSubmitReviewApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReposUpdateReleaseAssetRequest(r *http.Request) (req *ReposUpdateReleaseAssetApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReposUpdateReleaseAssetApplicationJSONRequest
+		var request ActivityMarkRepoNotificationsAsReadApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -983,89 +865,10 @@ func decodeReposUpdateReleaseAssetRequest(r *http.Request) (req *ReposUpdateRele
 	}
 }
 
-func decodeReposUpdateReleaseRequest(r *http.Request) (req *ReposUpdateReleaseApplicationJSONRequest, err error) {
+func decodeProjectsCreateForRepoRequest(r *http.Request) (req ProjectsCreateForRepoApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ReposUpdateReleaseApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeSecretScanningUpdateAlertRequest(r *http.Request) (req SecretScanningUpdateAlertApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request SecretScanningUpdateAlertApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReposCreateCommitStatusRequest(r *http.Request) (req ReposCreateCommitStatusApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReposCreateCommitStatusApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeActivitySetRepoSubscriptionRequest(r *http.Request) (req *ActivitySetRepoSubscriptionApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ActivitySetRepoSubscriptionApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReposReplaceAllTopicsRequest(r *http.Request) (req ReposReplaceAllTopicsApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReposReplaceAllTopicsApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReposTransferRequest(r *http.Request) (req ReposTransferApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReposTransferApplicationJSONRequest
+		var request ProjectsCreateForRepoApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -1076,10 +879,10 @@ func decodeReposTransferRequest(r *http.Request) (req ReposTransferApplicationJS
 	}
 }
 
-func decodeReposCreateUsingTemplateRequest(r *http.Request) (req ReposCreateUsingTemplateApplicationJSONRequest, err error) {
+func decodePullsUpdateReviewCommentRequest(r *http.Request) (req PullsUpdateReviewCommentApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ReposCreateUsingTemplateApplicationJSONRequest
+		var request PullsUpdateReviewCommentApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -1090,10 +893,10 @@ func decodeReposCreateUsingTemplateRequest(r *http.Request) (req ReposCreateUsin
 	}
 }
 
-func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request) (req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest, err error) {
+func decodePullsCreateReplyForReviewCommentRequest(r *http.Request) (req PullsCreateReplyForReviewCommentApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest
+		var request PullsCreateReplyForReviewCommentApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -1104,185 +907,10 @@ func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request) (req A
 	}
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request) (req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest, err error) {
+func decodePullsCreateReviewRequest(r *http.Request) (req *PullsCreateReviewApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request) (req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (req TeamsCreateDiscussionLegacyApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsCreateDiscussionLegacyApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request) (req *TeamsUpdateDiscussionLegacyApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsUpdateDiscussionLegacyApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request) (req TeamsCreateDiscussionCommentLegacyApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsCreateDiscussionCommentLegacyApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request) (req TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.Validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request) (req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest
+		var request PullsCreateReviewApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -1296,10 +924,382 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request) (req 
 	}
 }
 
-func decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request) (req ProjectsCreateForAuthenticatedUserApplicationJSONRequest, err error) {
+func decodePullsUpdateReviewRequest(r *http.Request) (req PullsUpdateReviewApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ProjectsCreateForAuthenticatedUserApplicationJSONRequest
+		var request PullsUpdateReviewApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodePullsDismissReviewRequest(r *http.Request) (req PullsDismissReviewApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request PullsDismissReviewApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodePullsSubmitReviewRequest(r *http.Request) (req PullsSubmitReviewApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request PullsSubmitReviewApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReposUpdateReleaseAssetRequest(r *http.Request) (req *ReposUpdateReleaseAssetApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReposUpdateReleaseAssetApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReposUpdateReleaseRequest(r *http.Request) (req *ReposUpdateReleaseApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReposUpdateReleaseApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeSecretScanningUpdateAlertRequest(r *http.Request) (req SecretScanningUpdateAlertApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request SecretScanningUpdateAlertApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReposCreateCommitStatusRequest(r *http.Request) (req ReposCreateCommitStatusApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReposCreateCommitStatusApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeActivitySetRepoSubscriptionRequest(r *http.Request) (req *ActivitySetRepoSubscriptionApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ActivitySetRepoSubscriptionApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReposReplaceAllTopicsRequest(r *http.Request) (req ReposReplaceAllTopicsApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReposReplaceAllTopicsApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReposTransferRequest(r *http.Request) (req ReposTransferApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReposTransferApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReposCreateUsingTemplateRequest(r *http.Request) (req ReposCreateUsingTemplateApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReposCreateUsingTemplateApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request) (req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request) (req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request) (req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (req TeamsCreateDiscussionLegacyApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsCreateDiscussionLegacyApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request) (req *TeamsUpdateDiscussionLegacyApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsUpdateDiscussionLegacyApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request) (req TeamsCreateDiscussionCommentLegacyApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsCreateDiscussionCommentLegacyApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request) (req TeamsUpdateDiscussionCommentLegacyApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsUpdateDiscussionCommentLegacyApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request) (req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq
+		if err := request.ReadJSONFrom(r.Body); err != nil {
+			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+
+		return &request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request) (req ProjectsCreateForAuthenticatedUserApplicationJSONReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request ProjectsCreateForAuthenticatedUserApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}

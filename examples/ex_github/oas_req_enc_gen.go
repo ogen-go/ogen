@@ -50,11 +50,11 @@ var (
 	_ = net.IP{}
 )
 
-func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
@@ -62,43 +62,43 @@ func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(req SelectedActions
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGistsCreateCommentRequest(req GistsCreateCommentApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeGistsCreateCommentRequest(req GistsCreateCommentApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGistsUpdateCommentRequest(req GistsUpdateCommentApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeGistsUpdateCommentRequest(req GistsUpdateCommentApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActivityMarkNotificationsAsReadRequest(req *ActivityMarkNotificationsAsReadApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActivityMarkNotificationsAsReadRequest(req *ActivityMarkNotificationsAsReadApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActivitySetThreadSubscriptionRequest(req *ActivitySetThreadSubscriptionApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActivitySetThreadSubscriptionRequest(req *ActivitySetThreadSubscriptionApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsSetGithubActionsPermissionsOrganizationRequest(req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsSetGithubActionsPermissionsOrganizationRequest(req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
@@ -106,99 +106,99 @@ func encodeActionsSetAllowedActionsOrganizationRequest(req *SelectedActions) (da
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsCreateOrUpdateOrgSecretRequest(req ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsCreateOrUpdateOrgSecretRequest(req ActionsCreateOrUpdateOrgSecretApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsSetSelectedReposForOrgSecretRequest(req ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsSetSelectedReposForOrgSecretRequest(req ActionsSetSelectedReposForOrgSecretApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsCreateForOrgRequest(req ProjectsCreateForOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsCreateForOrgRequest(req ProjectsCreateForOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsUpdateInOrgRequest(req *TeamsUpdateInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsUpdateInOrgRequest(req *TeamsUpdateInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsCreateDiscussionInOrgRequest(req TeamsCreateDiscussionInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsCreateDiscussionInOrgRequest(req TeamsCreateDiscussionInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsUpdateDiscussionInOrgRequest(req *TeamsUpdateDiscussionInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsUpdateDiscussionInOrgRequest(req *TeamsUpdateDiscussionInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsCreateDiscussionCommentInOrgRequest(req TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsCreateDiscussionCommentInOrgRequest(req TeamsCreateDiscussionCommentInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsUpdateDiscussionCommentInOrgRequest(req TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsUpdateDiscussionCommentInOrgRequest(req TeamsUpdateDiscussionCommentInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReactionsCreateForTeamDiscussionInOrgRequest(req ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReactionsCreateForTeamDiscussionInOrgRequest(req ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsUpdateCardRequest(req *ProjectsUpdateCardApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsUpdateCardRequest(req *ProjectsUpdateCardApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsUpdateColumnRequest(req ProjectsUpdateColumnApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsUpdateColumnRequest(req ProjectsUpdateColumnApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsMoveColumnRequest(req ProjectsMoveColumnApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsMoveColumnRequest(req ProjectsMoveColumnApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsUpdateRequest(req *ProjectsUpdateApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsUpdateRequest(req *ProjectsUpdateApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsCreateColumnRequest(req ProjectsCreateColumnApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsCreateColumnRequest(req ProjectsCreateColumnApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsSetGithubActionsPermissionsRepositoryRequest(req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsSetGithubActionsPermissionsRepositoryRequest(req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
@@ -206,31 +206,31 @@ func encodeActionsSetAllowedActionsRepositoryRequest(req *SelectedActions) (data
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsCreateOrUpdateRepoSecretRequest(req ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsCreateOrUpdateRepoSecretRequest(req ActionsCreateOrUpdateRepoSecretApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposUpdateBranchProtectionRequest(req ReposUpdateBranchProtectionApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposUpdateBranchProtectionRequest(req ReposUpdateBranchProtectionApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeChecksCreateSuiteRequest(req ChecksCreateSuiteApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeChecksCreateSuiteRequest(req ChecksCreateSuiteApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeChecksSetSuitesPreferencesRequest(req ChecksSetSuitesPreferencesApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeChecksSetSuitesPreferencesRequest(req ChecksSetSuitesPreferencesApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeCodeScanningUploadSarifRequest(req CodeScanningUploadSarifApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeCodeScanningUploadSarifRequest(req CodeScanningUploadSarifApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposUpdateCommitCommentRequest(req ReposUpdateCommitCommentApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposUpdateCommitCommentRequest(req ReposUpdateCommitCommentApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeMigrationsUpdateImportRequest(req *MigrationsUpdateImportApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeMigrationsUpdateImportRequest(req *MigrationsUpdateImportApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
@@ -238,138 +238,138 @@ func encodeInteractionsSetRestrictionsForRepoRequest(req InteractionLimit) (data
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposUpdateInvitationRequest(req *ReposUpdateInvitationApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposUpdateInvitationRequest(req *ReposUpdateInvitationApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeIssuesUpdateLabelRequest(req *IssuesUpdateLabelApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeIssuesUpdateLabelRequest(req *IssuesUpdateLabelApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposMergeUpstreamRequest(req ReposMergeUpstreamApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposMergeUpstreamRequest(req ReposMergeUpstreamApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeIssuesUpdateMilestoneRequest(req *IssuesUpdateMilestoneApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeIssuesUpdateMilestoneRequest(req *IssuesUpdateMilestoneApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActivityMarkRepoNotificationsAsReadRequest(req *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActivityMarkRepoNotificationsAsReadRequest(req *ActivityMarkRepoNotificationsAsReadApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsCreateForRepoRequest(req ProjectsCreateForRepoApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsCreateForRepoRequest(req ProjectsCreateForRepoApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePullsUpdateReviewCommentRequest(req PullsUpdateReviewCommentApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodePullsUpdateReviewCommentRequest(req PullsUpdateReviewCommentApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePullsCreateReplyForReviewCommentRequest(req PullsCreateReplyForReviewCommentApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodePullsCreateReplyForReviewCommentRequest(req PullsCreateReplyForReviewCommentApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePullsCreateReviewRequest(req *PullsCreateReviewApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodePullsCreateReviewRequest(req *PullsCreateReviewApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePullsUpdateReviewRequest(req PullsUpdateReviewApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodePullsUpdateReviewRequest(req PullsUpdateReviewApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePullsDismissReviewRequest(req PullsDismissReviewApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodePullsDismissReviewRequest(req PullsDismissReviewApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePullsSubmitReviewRequest(req PullsSubmitReviewApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodePullsSubmitReviewRequest(req PullsSubmitReviewApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposUpdateReleaseAssetRequest(req *ReposUpdateReleaseAssetApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposUpdateReleaseAssetRequest(req *ReposUpdateReleaseAssetApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposUpdateReleaseRequest(req *ReposUpdateReleaseApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposUpdateReleaseRequest(req *ReposUpdateReleaseApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSecretScanningUpdateAlertRequest(req SecretScanningUpdateAlertApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeSecretScanningUpdateAlertRequest(req SecretScanningUpdateAlertApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposCreateCommitStatusRequest(req ReposCreateCommitStatusApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposCreateCommitStatusRequest(req ReposCreateCommitStatusApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActivitySetRepoSubscriptionRequest(req *ActivitySetRepoSubscriptionApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActivitySetRepoSubscriptionRequest(req *ActivitySetRepoSubscriptionApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposReplaceAllTopicsRequest(req ReposReplaceAllTopicsApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposReplaceAllTopicsRequest(req ReposReplaceAllTopicsApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposTransferRequest(req ReposTransferApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposTransferRequest(req ReposTransferApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReposCreateUsingTemplateRequest(req ReposCreateUsingTemplateApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReposCreateUsingTemplateRequest(req ReposCreateUsingTemplateApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeActionsCreateOrUpdateEnvironmentSecretRequest(req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeActionsCreateOrUpdateEnvironmentSecretRequest(req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsCreateDiscussionLegacyRequest(req TeamsCreateDiscussionLegacyApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsCreateDiscussionLegacyRequest(req TeamsCreateDiscussionLegacyApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsUpdateDiscussionLegacyRequest(req *TeamsUpdateDiscussionLegacyApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsUpdateDiscussionLegacyRequest(req *TeamsUpdateDiscussionLegacyApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsCreateDiscussionCommentLegacyRequest(req TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsCreateDiscussionCommentLegacyRequest(req TeamsCreateDiscussionCommentLegacyApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsUpdateDiscussionCommentLegacyRequest(req TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsUpdateDiscussionCommentLegacyRequest(req TeamsUpdateDiscussionCommentLegacyApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeReactionsCreateForTeamDiscussionLegacyRequest(req ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeReactionsCreateForTeamDiscussionLegacyRequest(req ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeProjectsCreateForAuthenticatedUserRequest(req ProjectsCreateForAuthenticatedUserApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeProjectsCreateForAuthenticatedUserRequest(req ProjectsCreateForAuthenticatedUserApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }

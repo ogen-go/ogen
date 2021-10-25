@@ -72,7 +72,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceResponse, err error) {
+func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/"
 
@@ -93,7 +93,7 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceResp
 	return result, nil
 }
 
-func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (res CreateSyncActionResponse, err error) {
+func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (res CreateSyncActionRes, err error) {
 	body, contentType, err := encodeCreateSyncActionRequest(req)
 	if err != nil {
 		return res, err
@@ -121,7 +121,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 	return result, nil
 }
 
-func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigResponse, err error) {
+func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
@@ -142,7 +142,7 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	return result, nil
 }
 
-func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonResponse, err error) {
+func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes, err error) {
 	body, contentType, err := encodePutBalloonRequest(req)
 	if err != nil {
 		return res, err
@@ -170,7 +170,7 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 	return result, nil
 }
 
-func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res PatchBalloonResponse, err error) {
+func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res PatchBalloonRes, err error) {
 	body, contentType, err := encodePatchBalloonRequest(req)
 	if err != nil {
 		return res, err
@@ -198,7 +198,7 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 	return result, nil
 }
 
-func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsResponse, err error) {
+func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
 
@@ -219,7 +219,7 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	return result, nil
 }
 
-func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (res PatchBalloonStatsIntervalResponse, err error) {
+func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
 	body, contentType, err := encodePatchBalloonStatsIntervalRequest(req)
 	if err != nil {
 		return res, err
@@ -247,7 +247,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 	return result, nil
 }
 
-func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res PutGuestBootSourceResponse, err error) {
+func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res PutGuestBootSourceRes, err error) {
 	body, contentType, err := encodePutGuestBootSourceRequest(req)
 	if err != nil {
 		return res, err
@@ -275,7 +275,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 	return result, nil
 }
 
-func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDResponse, err error) {
+func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
 	body, contentType, err := encodePutGuestDriveByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -312,7 +312,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 	return result, nil
 }
 
-func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDResponse, err error) {
+func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
 	body, contentType, err := encodePatchGuestDriveByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -349,7 +349,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 	return result, nil
 }
 
-func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerResponse, err error) {
+func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, err error) {
 	body, contentType, err := encodePutLoggerRequest(req)
 	if err != nil {
 		return res, err
@@ -377,7 +377,7 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRespon
 	return result, nil
 }
 
-func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationResponse, err error) {
+func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
@@ -398,7 +398,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	return result, nil
 }
 
-func (c *Client) PutMachineConfiguration(ctx context.Context, req *MachineConfiguration) (res PutMachineConfigurationResponse, err error) {
+func (c *Client) PutMachineConfiguration(ctx context.Context, req *MachineConfiguration) (res PutMachineConfigurationRes, err error) {
 	body, contentType, err := encodePutMachineConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -426,7 +426,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req *MachineConfig
 	return result, nil
 }
 
-func (c *Client) PatchMachineConfiguration(ctx context.Context, req *MachineConfiguration) (res PatchMachineConfigurationResponse, err error) {
+func (c *Client) PatchMachineConfiguration(ctx context.Context, req *MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	body, contentType, err := encodePatchMachineConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -454,7 +454,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req *MachineConf
 	return result, nil
 }
 
-func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsResponse, err error) {
+func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes, err error) {
 	body, contentType, err := encodePutMetricsRequest(req)
 	if err != nil {
 		return res, err
@@ -482,7 +482,7 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 	return result, nil
 }
 
-func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetResponse, err error) {
+func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
@@ -503,7 +503,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetResponse, err error) {
 	return result, nil
 }
 
-func (c *Client) MmdsPut(ctx context.Context, req *MmdsPutApplicationJSONRequest) (res MmdsPutResponse, err error) {
+func (c *Client) MmdsPut(ctx context.Context, req *MmdsPutApplicationJSONReq) (res MmdsPutRes, err error) {
 	body, contentType, err := encodeMmdsPutRequest(req)
 	if err != nil {
 		return res, err
@@ -531,7 +531,7 @@ func (c *Client) MmdsPut(ctx context.Context, req *MmdsPutApplicationJSONRequest
 	return result, nil
 }
 
-func (c *Client) MmdsPatch(ctx context.Context, req *MmdsPatchApplicationJSONRequest) (res MmdsPatchResponse, err error) {
+func (c *Client) MmdsPatch(ctx context.Context, req *MmdsPatchApplicationJSONReq) (res MmdsPatchRes, err error) {
 	body, contentType, err := encodeMmdsPatchRequest(req)
 	if err != nil {
 		return res, err
@@ -559,7 +559,7 @@ func (c *Client) MmdsPatch(ctx context.Context, req *MmdsPatchApplicationJSONReq
 	return result, nil
 }
 
-func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsConfigPutResponse, err error) {
+func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsConfigPutRes, err error) {
 	body, contentType, err := encodeMmdsConfigPutRequest(req)
 	if err != nil {
 		return res, err
@@ -587,7 +587,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 	return result, nil
 }
 
-func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDResponse, err error) {
+func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	body, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -624,7 +624,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 	return result, nil
 }
 
-func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDResponse, err error) {
+func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	body, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -661,7 +661,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 	return result, nil
 }
 
-func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (res CreateSnapshotResponse, err error) {
+func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (res CreateSnapshotRes, err error) {
 	body, contentType, err := encodeCreateSnapshotRequest(req)
 	if err != nil {
 		return res, err
@@ -689,7 +689,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 	return result, nil
 }
 
-func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res LoadSnapshotResponse, err error) {
+func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res LoadSnapshotRes, err error) {
 	body, contentType, err := encodeLoadSnapshotRequest(req)
 	if err != nil {
 		return res, err
@@ -717,7 +717,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 	return result, nil
 }
 
-func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmResponse, err error) {
+func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error) {
 	body, contentType, err := encodePatchVmRequest(req)
 	if err != nil {
 		return res, err
@@ -745,7 +745,7 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmResponse, err 
 	return result, nil
 }
 
-func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigResponse, err error) {
+func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm/config"
 
@@ -766,7 +766,7 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	return result, nil
 }
 
-func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsockResponse, err error) {
+func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsockRes, err error) {
 	body, contentType, err := encodePutGuestVsockRequest(req)
 	if err != nil {
 		return res, err

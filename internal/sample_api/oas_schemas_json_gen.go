@@ -824,23 +824,23 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetCreateTextPlainRequest) WriteJSON(j *json.Stream) {
+func (s PetCreateTextPlainReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PetCreateTextPlainRequest json value to io.Writer.
-func (s PetCreateTextPlainRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PetCreateTextPlainReq json value to io.Writer.
+func (s PetCreateTextPlainReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PetCreateTextPlainRequest json value from io.Reader.
-func (s *PetCreateTextPlainRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PetCreateTextPlainReq json value from io.Reader.
+func (s *PetCreateTextPlainReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -854,8 +854,8 @@ func (s *PetCreateTextPlainRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PetCreateTextPlainRequest from json stream.
-func (s *PetCreateTextPlainRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PetCreateTextPlainReq from json stream.
+func (s *PetCreateTextPlainReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:

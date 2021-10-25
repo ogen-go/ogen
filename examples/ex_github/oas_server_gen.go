@@ -57,39 +57,39 @@ type Server interface {
 	// AppsGetAuthenticated implements apps/get-authenticated operation.
 	AppsGetAuthenticated(ctx context.Context) (Integration, error)
 	// AppsDeleteInstallation implements apps/delete-installation operation.
-	AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationResponse, error)
+	AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationRes, error)
 	// AppsSuspendInstallation implements apps/suspend-installation operation.
-	AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationResponse, error)
+	AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationRes, error)
 	// AppsUnsuspendInstallation implements apps/unsuspend-installation operation.
-	AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (AppsUnsuspendInstallationResponse, error)
+	AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (AppsUnsuspendInstallationRes, error)
 	// OAuthAuthorizationsListGrants implements oauth-authorizations/list-grants operation.
-	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsResponse, error)
+	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error)
 	// OAuthAuthorizationsGetGrant implements oauth-authorizations/get-grant operation.
-	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantResponse, error)
+	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error)
 	// OAuthAuthorizationsDeleteGrant implements oauth-authorizations/delete-grant operation.
-	OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantResponse, error)
+	OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantRes, error)
 	// AppsGetBySlug implements apps/get-by-slug operation.
-	AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (AppsGetBySlugResponse, error)
+	AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (AppsGetBySlugRes, error)
 	// OAuthAuthorizationsListAuthorizations implements oauth-authorizations/list-authorizations operation.
-	OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsResponse, error)
+	OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error)
 	// OAuthAuthorizationsGetAuthorization implements oauth-authorizations/get-authorization operation.
-	OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationResponse, error)
+	OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationRes, error)
 	// OAuthAuthorizationsDeleteAuthorization implements oauth-authorizations/delete-authorization operation.
-	OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationResponse, error)
+	OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationRes, error)
 	// CodesOfConductGetAllCodesOfConduct implements codes-of-conduct/get-all-codes-of-conduct operation.
-	CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductResponse, error)
+	CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductRes, error)
 	// CodesOfConductGetConductCode implements codes-of-conduct/get-conduct-code operation.
-	CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeResponse, error)
+	CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeRes, error)
 	// EmojisGet implements emojis/get operation.
-	EmojisGet(ctx context.Context) (EmojisGetResponse, error)
+	EmojisGet(ctx context.Context) (EmojisGetRes, error)
 	// EnterpriseAdminGetGithubActionsPermissionsEnterprise implements enterprise-admin/get-github-actions-permissions-enterprise operation.
 	EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (ActionsEnterprisePermissions, error)
 	// EnterpriseAdminSetGithubActionsPermissionsEnterprise implements enterprise-admin/set-github-actions-permissions-enterprise operation.
-	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (EnterpriseAdminSetGithubActionsPermissionsEnterprise, error)
+	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (EnterpriseAdminSetGithubActionsPermissionsEnterprise, error)
 	// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
 	EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise, error)
 	// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
-	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise, error)
+	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise, error)
 	// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
 	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise, error)
 	// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
@@ -101,17 +101,17 @@ type Server interface {
 	// EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise implements enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
 	EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise, error)
 	// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
-	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
+	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise implements enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
 	EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise implements enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
 	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise, error)
 	// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise implements enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
-	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
 	EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise, error)
 	// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
-	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise, error)
+	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise, error)
 	// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
 	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise, error)
 	// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise implements enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
@@ -119,7 +119,7 @@ type Server interface {
 	// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
 	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise, error)
 	// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
-	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise, error)
+	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise, error)
 	// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise implements enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
 	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise, error)
 	// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise implements enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
@@ -145,75 +145,75 @@ type Server interface {
 	// ActivityGetFeeds implements activity/get-feeds operation.
 	ActivityGetFeeds(ctx context.Context) (Feed, error)
 	// GistsList implements gists/list operation.
-	GistsList(ctx context.Context, params GistsListParams) (GistsListResponse, error)
+	GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error)
 	// GistsListStarred implements gists/list-starred operation.
-	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredResponse, error)
+	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error)
 	// GistsDelete implements gists/delete operation.
-	GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteResponse, error)
+	GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteRes, error)
 	// GistsListComments implements gists/list-comments operation.
-	GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsResponse, error)
+	GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error)
 	// GistsCreateComment implements gists/create-comment operation.
-	GistsCreateComment(ctx context.Context, req GistsCreateCommentApplicationJSONRequest, params GistsCreateCommentParams) (GistsCreateCommentResponse, error)
+	GistsCreateComment(ctx context.Context, req GistsCreateCommentApplicationJSONReq, params GistsCreateCommentParams) (GistsCreateCommentRes, error)
 	// GistsGetComment implements gists/get-comment operation.
-	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentResponse, error)
+	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
 	// GistsDeleteComment implements gists/delete-comment operation.
-	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentResponse, error)
+	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error)
 	// GistsUpdateComment implements gists/update-comment operation.
-	GistsUpdateComment(ctx context.Context, req GistsUpdateCommentApplicationJSONRequest, params GistsUpdateCommentParams) (GistsUpdateCommentResponse, error)
+	GistsUpdateComment(ctx context.Context, req GistsUpdateCommentApplicationJSONReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error)
 	// GistsListCommits implements gists/list-commits operation.
-	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsResponse, error)
+	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error)
 	// GistsCheckIsStarred implements gists/check-is-starred operation.
-	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredResponse, error)
+	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error)
 	// GistsStar implements gists/star operation.
-	GistsStar(ctx context.Context, params GistsStarParams) (GistsStarResponse, error)
+	GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error)
 	// GistsUnstar implements gists/unstar operation.
-	GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarResponse, error)
+	GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarRes, error)
 	// GitignoreGetAllTemplates implements gitignore/get-all-templates operation.
-	GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllTemplatesResponse, error)
+	GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllTemplatesRes, error)
 	// GitignoreGetTemplate implements gitignore/get-template operation.
-	GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateResponse, error)
+	GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateRes, error)
 	// AppsListReposAccessibleToInstallation implements apps/list-repos-accessible-to-installation operation.
-	AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationResponse, error)
+	AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationRes, error)
 	// AppsRevokeInstallationAccessToken implements apps/revoke-installation-access-token operation.
 	AppsRevokeInstallationAccessToken(ctx context.Context) (AppsRevokeInstallationAccessToken, error)
 	// LicensesGetAllCommonlyUsed implements licenses/get-all-commonly-used operation.
-	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedResponse, error)
+	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error)
 	// LicensesGet implements licenses/get operation.
-	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetResponse, error)
+	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error)
 	// AppsGetSubscriptionPlanForAccount implements apps/get-subscription-plan-for-account operation.
-	AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountResponse, error)
+	AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountRes, error)
 	// AppsListPlans implements apps/list-plans operation.
-	AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansResponse, error)
+	AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansRes, error)
 	// AppsGetSubscriptionPlanForAccountStubbed implements apps/get-subscription-plan-for-account-stubbed operation.
-	AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (AppsGetSubscriptionPlanForAccountStubbedResponse, error)
+	AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (AppsGetSubscriptionPlanForAccountStubbedRes, error)
 	// AppsListPlansStubbed implements apps/list-plans-stubbed operation.
-	AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedResponse, error)
+	AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedRes, error)
 	// MetaGet implements meta/get operation.
-	MetaGet(ctx context.Context) (MetaGetResponse, error)
+	MetaGet(ctx context.Context) (MetaGetRes, error)
 	// ActivityMarkNotificationsAsRead implements activity/mark-notifications-as-read operation.
-	ActivityMarkNotificationsAsRead(ctx context.Context, req *ActivityMarkNotificationsAsReadApplicationJSONRequest) (ActivityMarkNotificationsAsReadResponse, error)
+	ActivityMarkNotificationsAsRead(ctx context.Context, req *ActivityMarkNotificationsAsReadApplicationJSONReq) (ActivityMarkNotificationsAsReadRes, error)
 	// ActivityGetThread implements activity/get-thread operation.
-	ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadResponse, error)
+	ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadRes, error)
 	// ActivityMarkThreadAsRead implements activity/mark-thread-as-read operation.
-	ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadResponse, error)
+	ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadRes, error)
 	// ActivityGetThreadSubscriptionForAuthenticatedUser implements activity/get-thread-subscription-for-authenticated-user operation.
-	ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (ActivityGetThreadSubscriptionForAuthenticatedUserResponse, error)
+	ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (ActivityGetThreadSubscriptionForAuthenticatedUserRes, error)
 	// ActivitySetThreadSubscription implements activity/set-thread-subscription operation.
-	ActivitySetThreadSubscription(ctx context.Context, req *ActivitySetThreadSubscriptionApplicationJSONRequest, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionResponse, error)
+	ActivitySetThreadSubscription(ctx context.Context, req *ActivitySetThreadSubscriptionApplicationJSONReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error)
 	// ActivityDeleteThreadSubscription implements activity/delete-thread-subscription operation.
-	ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionResponse, error)
+	ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionRes, error)
 	// OrgsList implements orgs/list operation.
-	OrgsList(ctx context.Context, params OrgsListParams) (OrgsListResponse, error)
+	OrgsList(ctx context.Context, params OrgsListParams) (OrgsListRes, error)
 	// OrgsGet implements orgs/get operation.
-	OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetResponse, error)
+	OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes, error)
 	// ActionsGetGithubActionsPermissionsOrganization implements actions/get-github-actions-permissions-organization operation.
 	ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (ActionsOrganizationPermissions, error)
 	// ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
-	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest, params ActionsSetGithubActionsPermissionsOrganizationParams) (ActionsSetGithubActionsPermissionsOrganization, error)
+	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (ActionsSetGithubActionsPermissionsOrganization, error)
 	// ActionsListSelectedRepositoriesEnabledGithubActionsOrganization implements actions/list-selected-repositories-enabled-github-actions-organization operation.
 	ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganization, error)
 	// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization implements actions/set-selected-repositories-enabled-github-actions-organization operation.
-	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization, error)
+	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization, error)
 	// ActionsEnableSelectedRepositoryGithubActionsOrganization implements actions/enable-selected-repository-github-actions-organization operation.
 	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (ActionsEnableSelectedRepositoryGithubActionsOrganization, error)
 	// ActionsDisableSelectedRepositoryGithubActionsOrganization implements actions/disable-selected-repository-github-actions-organization operation.
@@ -225,17 +225,17 @@ type Server interface {
 	// ActionsListSelfHostedRunnerGroupsForOrg implements actions/list-self-hosted-runner-groups-for-org operation.
 	ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (ActionsListSelfHostedRunnerGroupsForOrg, error)
 	// ActionsCreateSelfHostedRunnerGroupForOrg implements actions/create-self-hosted-runner-group-for-org operation.
-	ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
+	ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActionsGetSelfHostedRunnerGroupForOrg implements actions/get-self-hosted-runner-group-for-org operation.
 	ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActionsDeleteSelfHostedRunnerGroupFromOrg implements actions/delete-self-hosted-runner-group-from-org operation.
 	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (ActionsDeleteSelfHostedRunnerGroupFromOrg, error)
 	// ActionsUpdateSelfHostedRunnerGroupForOrg implements actions/update-self-hosted-runner-group-for-org operation.
-	ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
+	ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg implements actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
 	ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrg, error)
 	// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg implements actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
-	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg, error)
+	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg, error)
 	// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg implements actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
 	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg, error)
 	// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg implements actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -243,7 +243,7 @@ type Server interface {
 	// ActionsListSelfHostedRunnersInGroupForOrg implements actions/list-self-hosted-runners-in-group-for-org operation.
 	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (ActionsListSelfHostedRunnersInGroupForOrg, error)
 	// ActionsSetSelfHostedRunnersInGroupForOrg implements actions/set-self-hosted-runners-in-group-for-org operation.
-	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (ActionsSetSelfHostedRunnersInGroupForOrg, error)
+	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (ActionsSetSelfHostedRunnersInGroupForOrg, error)
 	// ActionsAddSelfHostedRunnerToGroupForOrg implements actions/add-self-hosted-runner-to-group-for-org operation.
 	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (ActionsAddSelfHostedRunnerToGroupForOrg, error)
 	// ActionsRemoveSelfHostedRunnerFromGroupForOrg implements actions/remove-self-hosted-runner-from-group-for-org operation.
@@ -267,71 +267,71 @@ type Server interface {
 	// ActionsGetOrgSecret implements actions/get-org-secret operation.
 	ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (OrganizationActionsSecret, error)
 	// ActionsCreateOrUpdateOrgSecret implements actions/create-or-update-org-secret operation.
-	ActionsCreateOrUpdateOrgSecret(ctx context.Context, req ActionsCreateOrUpdateOrgSecretApplicationJSONRequest, params ActionsCreateOrUpdateOrgSecretParams) (ActionsCreateOrUpdateOrgSecretResponse, error)
+	ActionsCreateOrUpdateOrgSecret(ctx context.Context, req ActionsCreateOrUpdateOrgSecretApplicationJSONReq, params ActionsCreateOrUpdateOrgSecretParams) (ActionsCreateOrUpdateOrgSecretRes, error)
 	// ActionsDeleteOrgSecret implements actions/delete-org-secret operation.
 	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (ActionsDeleteOrgSecret, error)
 	// ActionsListSelectedReposForOrgSecret implements actions/list-selected-repos-for-org-secret operation.
 	ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (ActionsListSelectedReposForOrgSecret, error)
 	// ActionsSetSelectedReposForOrgSecret implements actions/set-selected-repos-for-org-secret operation.
-	ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretApplicationJSONRequest, params ActionsSetSelectedReposForOrgSecretParams) (ActionsSetSelectedReposForOrgSecret, error)
+	ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretApplicationJSONReq, params ActionsSetSelectedReposForOrgSecretParams) (ActionsSetSelectedReposForOrgSecret, error)
 	// ActionsAddSelectedRepoToOrgSecret implements actions/add-selected-repo-to-org-secret operation.
-	ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretResponse, error)
+	ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretRes, error)
 	// ActionsRemoveSelectedRepoFromOrgSecret implements actions/remove-selected-repo-from-org-secret operation.
-	ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretResponse, error)
+	ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretRes, error)
 	// OrgsListBlockedUsers implements orgs/list-blocked-users operation.
-	OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersResponse, error)
+	OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersRes, error)
 	// OrgsCheckBlockedUser implements orgs/check-blocked-user operation.
-	OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserResponse, error)
+	OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error)
 	// OrgsUnblockUser implements orgs/unblock-user operation.
 	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (OrgsUnblockUser, error)
 	// OrgsListSamlSSOAuthorizations implements orgs/list-saml-sso-authorizations operation.
 	OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error)
 	// OrgsRemoveSamlSSOAuthorization implements orgs/remove-saml-sso-authorization operation.
-	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationResponse, error)
+	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error)
 	// OrgsListFailedInvitations implements orgs/list-failed-invitations operation.
-	OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsResponse, error)
+	OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsRes, error)
 	// OrgsListWebhooks implements orgs/list-webhooks operation.
-	OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksResponse, error)
+	OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksRes, error)
 	// OrgsGetWebhook implements orgs/get-webhook operation.
-	OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (OrgsGetWebhookResponse, error)
+	OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (OrgsGetWebhookRes, error)
 	// OrgsDeleteWebhook implements orgs/delete-webhook operation.
-	OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookResponse, error)
+	OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookRes, error)
 	// OrgsPingWebhook implements orgs/ping-webhook operation.
-	OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookResponse, error)
+	OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookRes, error)
 	// InteractionsRemoveRestrictionsForOrg implements interactions/remove-restrictions-for-org operation.
 	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (InteractionsRemoveRestrictionsForOrg, error)
 	// OrgsListPendingInvitations implements orgs/list-pending-invitations operation.
-	OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (OrgsListPendingInvitationsResponse, error)
+	OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (OrgsListPendingInvitationsRes, error)
 	// OrgsListInvitationTeams implements orgs/list-invitation-teams operation.
-	OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsResponse, error)
+	OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsRes, error)
 	// OrgsCheckMembershipForUser implements orgs/check-membership-for-user operation.
-	OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserResponse, error)
+	OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserRes, error)
 	// OrgsRemoveMember implements orgs/remove-member operation.
-	OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (OrgsRemoveMemberResponse, error)
+	OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (OrgsRemoveMemberRes, error)
 	// OrgsGetMembershipForUser implements orgs/get-membership-for-user operation.
-	OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (OrgsGetMembershipForUserResponse, error)
+	OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (OrgsGetMembershipForUserRes, error)
 	// OrgsRemoveMembershipForUser implements orgs/remove-membership-for-user operation.
-	OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (OrgsRemoveMembershipForUserResponse, error)
+	OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (OrgsRemoveMembershipForUserRes, error)
 	// MigrationsDownloadArchiveForOrg implements migrations/download-archive-for-org operation.
-	MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (MigrationsDownloadArchiveForOrgResponse, error)
+	MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (MigrationsDownloadArchiveForOrgRes, error)
 	// MigrationsDeleteArchiveForOrg implements migrations/delete-archive-for-org operation.
-	MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (MigrationsDeleteArchiveForOrgResponse, error)
+	MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (MigrationsDeleteArchiveForOrgRes, error)
 	// MigrationsUnlockRepoForOrg implements migrations/unlock-repo-for-org operation.
-	MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (MigrationsUnlockRepoForOrgResponse, error)
+	MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (MigrationsUnlockRepoForOrgRes, error)
 	// MigrationsListReposForOrg implements migrations/list-repos-for-org operation.
-	MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (MigrationsListReposForOrgResponse, error)
+	MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (MigrationsListReposForOrgRes, error)
 	// OrgsConvertMemberToOutsideCollaborator implements orgs/convert-member-to-outside-collaborator operation.
-	OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorResponse, error)
+	OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorRes, error)
 	// OrgsRemoveOutsideCollaborator implements orgs/remove-outside-collaborator operation.
-	OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorResponse, error)
+	OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error)
 	// ProjectsCreateForOrg implements projects/create-for-org operation.
-	ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateForOrgApplicationJSONRequest, params ProjectsCreateForOrgParams) (ProjectsCreateForOrgResponse, error)
+	ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateForOrgApplicationJSONReq, params ProjectsCreateForOrgParams) (ProjectsCreateForOrgRes, error)
 	// OrgsListPublicMembers implements orgs/list-public-members operation.
 	OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) ([]SimpleUser, error)
 	// OrgsCheckPublicMembershipForUser implements orgs/check-public-membership-for-user operation.
-	OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserResponse, error)
+	OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserRes, error)
 	// OrgsSetPublicMembershipForAuthenticatedUser implements orgs/set-public-membership-for-authenticated-user operation.
-	OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserResponse, error)
+	OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error)
 	// OrgsRemovePublicMembershipForAuthenticatedUser implements orgs/remove-public-membership-for-authenticated-user operation.
 	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (OrgsRemovePublicMembershipForAuthenticatedUser, error)
 	// BillingGetGithubActionsBillingOrg implements billing/get-github-actions-billing-org operation.
@@ -343,99 +343,99 @@ type Server interface {
 	// TeamsListIdpGroupsForOrg implements teams/list-idp-groups-for-org operation.
 	TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (GroupMapping, error)
 	// TeamsList implements teams/list operation.
-	TeamsList(ctx context.Context, params TeamsListParams) (TeamsListResponse, error)
+	TeamsList(ctx context.Context, params TeamsListParams) (TeamsListRes, error)
 	// TeamsGetByName implements teams/get-by-name operation.
-	TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameResponse, error)
+	TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameRes, error)
 	// TeamsDeleteInOrg implements teams/delete-in-org operation.
 	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (TeamsDeleteInOrg, error)
 	// TeamsUpdateInOrg implements teams/update-in-org operation.
-	TeamsUpdateInOrg(ctx context.Context, req *TeamsUpdateInOrgApplicationJSONRequest, params TeamsUpdateInOrgParams) (TeamFull, error)
+	TeamsUpdateInOrg(ctx context.Context, req *TeamsUpdateInOrgApplicationJSONReq, params TeamsUpdateInOrgParams) (TeamFull, error)
 	// TeamsCreateDiscussionInOrg implements teams/create-discussion-in-org operation.
-	TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreateDiscussionInOrgApplicationJSONRequest, params TeamsCreateDiscussionInOrgParams) (TeamDiscussion, error)
+	TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreateDiscussionInOrgApplicationJSONReq, params TeamsCreateDiscussionInOrgParams) (TeamDiscussion, error)
 	// TeamsGetDiscussionInOrg implements teams/get-discussion-in-org operation.
 	TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (TeamDiscussion, error)
 	// TeamsDeleteDiscussionInOrg implements teams/delete-discussion-in-org operation.
 	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (TeamsDeleteDiscussionInOrg, error)
 	// TeamsUpdateDiscussionInOrg implements teams/update-discussion-in-org operation.
-	TeamsUpdateDiscussionInOrg(ctx context.Context, req *TeamsUpdateDiscussionInOrgApplicationJSONRequest, params TeamsUpdateDiscussionInOrgParams) (TeamDiscussion, error)
+	TeamsUpdateDiscussionInOrg(ctx context.Context, req *TeamsUpdateDiscussionInOrgApplicationJSONReq, params TeamsUpdateDiscussionInOrgParams) (TeamDiscussion, error)
 	// TeamsCreateDiscussionCommentInOrg implements teams/create-discussion-comment-in-org operation.
-	TeamsCreateDiscussionCommentInOrg(ctx context.Context, req TeamsCreateDiscussionCommentInOrgApplicationJSONRequest, params TeamsCreateDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
+	TeamsCreateDiscussionCommentInOrg(ctx context.Context, req TeamsCreateDiscussionCommentInOrgApplicationJSONReq, params TeamsCreateDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
 	// TeamsGetDiscussionCommentInOrg implements teams/get-discussion-comment-in-org operation.
 	TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
 	// TeamsDeleteDiscussionCommentInOrg implements teams/delete-discussion-comment-in-org operation.
 	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (TeamsDeleteDiscussionCommentInOrg, error)
 	// TeamsUpdateDiscussionCommentInOrg implements teams/update-discussion-comment-in-org operation.
-	TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest, params TeamsUpdateDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
+	TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgApplicationJSONReq, params TeamsUpdateDiscussionCommentInOrgParams) (TeamDiscussionComment, error)
 	// ReactionsCreateForTeamDiscussionCommentInOrg implements reactions/create-for-team-discussion-comment-in-org operation.
-	ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (ReactionsCreateForTeamDiscussionCommentInOrgResponse, error)
+	ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (ReactionsCreateForTeamDiscussionCommentInOrgRes, error)
 	// ReactionsDeleteForTeamDiscussionComment implements reactions/delete-for-team-discussion-comment operation.
 	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (ReactionsDeleteForTeamDiscussionComment, error)
 	// ReactionsCreateForTeamDiscussionInOrg implements reactions/create-for-team-discussion-in-org operation.
-	ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest, params ReactionsCreateForTeamDiscussionInOrgParams) (ReactionsCreateForTeamDiscussionInOrgResponse, error)
+	ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq, params ReactionsCreateForTeamDiscussionInOrgParams) (ReactionsCreateForTeamDiscussionInOrgRes, error)
 	// ReactionsDeleteForTeamDiscussion implements reactions/delete-for-team-discussion operation.
 	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (ReactionsDeleteForTeamDiscussion, error)
 	// TeamsListPendingInvitationsInOrg implements teams/list-pending-invitations-in-org operation.
 	TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) ([]OrganizationInvitation, error)
 	// TeamsGetMembershipForUserInOrg implements teams/get-membership-for-user-in-org operation.
-	TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (TeamsGetMembershipForUserInOrgResponse, error)
+	TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (TeamsGetMembershipForUserInOrgRes, error)
 	// TeamsAddOrUpdateMembershipForUserInOrg implements teams/add-or-update-membership-for-user-in-org operation.
-	TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgResponse, error)
+	TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error)
 	// TeamsRemoveMembershipForUserInOrg implements teams/remove-membership-for-user-in-org operation.
-	TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (TeamsRemoveMembershipForUserInOrgResponse, error)
+	TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (TeamsRemoveMembershipForUserInOrgRes, error)
 	// TeamsListProjectsInOrg implements teams/list-projects-in-org operation.
 	TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) ([]TeamProject, error)
 	// TeamsCheckPermissionsForProjectInOrg implements teams/check-permissions-for-project-in-org operation.
-	TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgResponse, error)
+	TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgRes, error)
 	// TeamsAddOrUpdateProjectPermissionsInOrg implements teams/add-or-update-project-permissions-in-org operation.
-	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgResponse, error)
+	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
 	// TeamsRemoveProjectInOrg implements teams/remove-project-in-org operation.
 	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (TeamsRemoveProjectInOrg, error)
 	// TeamsListReposInOrg implements teams/list-repos-in-org operation.
 	TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) ([]MinimalRepository, error)
 	// TeamsCheckPermissionsForRepoInOrg implements teams/check-permissions-for-repo-in-org operation.
-	TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (TeamsCheckPermissionsForRepoInOrgResponse, error)
+	TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (TeamsCheckPermissionsForRepoInOrgRes, error)
 	// TeamsAddOrUpdateRepoPermissionsInOrg implements teams/add-or-update-repo-permissions-in-org operation.
-	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrg, error)
+	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrg, error)
 	// TeamsRemoveRepoInOrg implements teams/remove-repo-in-org operation.
 	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (TeamsRemoveRepoInOrg, error)
 	// TeamsListIdpGroupsInOrg implements teams/list-idp-groups-in-org operation.
 	TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (GroupMapping, error)
 	// TeamsCreateOrUpdateIdpGroupConnectionsInOrg implements teams/create-or-update-idp-group-connections-in-org operation.
-	TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (GroupMapping, error)
+	TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (GroupMapping, error)
 	// TeamsListChildInOrg implements teams/list-child-in-org operation.
 	TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) ([]Team, error)
 	// ProjectsGetCard implements projects/get-card operation.
-	ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardResponse, error)
+	ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardRes, error)
 	// ProjectsDeleteCard implements projects/delete-card operation.
-	ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardResponse, error)
+	ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardRes, error)
 	// ProjectsUpdateCard implements projects/update-card operation.
-	ProjectsUpdateCard(ctx context.Context, req *ProjectsUpdateCardApplicationJSONRequest, params ProjectsUpdateCardParams) (ProjectsUpdateCardResponse, error)
+	ProjectsUpdateCard(ctx context.Context, req *ProjectsUpdateCardApplicationJSONReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error)
 	// ProjectsGetColumn implements projects/get-column operation.
-	ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnResponse, error)
+	ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error)
 	// ProjectsDeleteColumn implements projects/delete-column operation.
-	ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnResponse, error)
+	ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnRes, error)
 	// ProjectsUpdateColumn implements projects/update-column operation.
-	ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnApplicationJSONRequest, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnResponse, error)
+	ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnApplicationJSONReq, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnRes, error)
 	// ProjectsMoveColumn implements projects/move-column operation.
-	ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnApplicationJSONRequest, params ProjectsMoveColumnParams) (ProjectsMoveColumnResponse, error)
+	ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnApplicationJSONReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error)
 	// ProjectsGet implements projects/get operation.
-	ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetResponse, error)
+	ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetRes, error)
 	// ProjectsDelete implements projects/delete operation.
-	ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteResponse, error)
+	ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteRes, error)
 	// ProjectsUpdate implements projects/update operation.
-	ProjectsUpdate(ctx context.Context, req *ProjectsUpdateApplicationJSONRequest, params ProjectsUpdateParams) (ProjectsUpdateResponse, error)
+	ProjectsUpdate(ctx context.Context, req *ProjectsUpdateApplicationJSONReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error)
 	// ProjectsListColumns implements projects/list-columns operation.
-	ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsResponse, error)
+	ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsRes, error)
 	// ProjectsCreateColumn implements projects/create-column operation.
-	ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnApplicationJSONRequest, params ProjectsCreateColumnParams) (ProjectsCreateColumnResponse, error)
+	ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnApplicationJSONReq, params ProjectsCreateColumnParams) (ProjectsCreateColumnRes, error)
 	// RateLimitGet implements rate-limit/get operation.
-	RateLimitGet(ctx context.Context) (RateLimitGetResponse, error)
+	RateLimitGet(ctx context.Context) (RateLimitGetRes, error)
 	// ReactionsDeleteLegacy implements reactions/delete-legacy operation.
-	ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyResponse, error)
+	ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error)
 	// ReposGet implements repos/get operation.
-	ReposGet(ctx context.Context, params ReposGetParams) (ReposGetResponse, error)
+	ReposGet(ctx context.Context, params ReposGetParams) (ReposGetRes, error)
 	// ReposDelete implements repos/delete operation.
-	ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteResponse, error)
+	ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteRes, error)
 	// ActionsListArtifactsForRepo implements actions/list-artifacts-for-repo operation.
 	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (ActionsListArtifactsForRepo, error)
 	// ActionsGetArtifact implements actions/get-artifact operation.
@@ -451,7 +451,7 @@ type Server interface {
 	// ActionsGetGithubActionsPermissionsRepository implements actions/get-github-actions-permissions-repository operation.
 	ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (ActionsRepositoryPermissions, error)
 	// ActionsSetGithubActionsPermissionsRepository implements actions/set-github-actions-permissions-repository operation.
-	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest, params ActionsSetGithubActionsPermissionsRepositoryParams) (ActionsSetGithubActionsPermissionsRepository, error)
+	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (ActionsSetGithubActionsPermissionsRepository, error)
 	// ActionsGetAllowedActionsRepository implements actions/get-allowed-actions-repository operation.
 	ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (SelectedActions, error)
 	// ActionsSetAllowedActionsRepository implements actions/set-allowed-actions-repository operation.
@@ -475,7 +475,7 @@ type Server interface {
 	// ActionsGetReviewsForRun implements actions/get-reviews-for-run operation.
 	ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) ([]EnvironmentApprovals, error)
 	// ActionsApproveWorkflowRun implements actions/approve-workflow-run operation.
-	ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunResponse, error)
+	ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunRes, error)
 	// ActionsListWorkflowRunArtifacts implements actions/list-workflow-run-artifacts operation.
 	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (ActionsListWorkflowRunArtifacts, error)
 	// ActionsCancelWorkflowRun implements actions/cancel-workflow-run operation.
@@ -497,219 +497,219 @@ type Server interface {
 	// ActionsGetRepoSecret implements actions/get-repo-secret operation.
 	ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (ActionsSecret, error)
 	// ActionsCreateOrUpdateRepoSecret implements actions/create-or-update-repo-secret operation.
-	ActionsCreateOrUpdateRepoSecret(ctx context.Context, req ActionsCreateOrUpdateRepoSecretApplicationJSONRequest, params ActionsCreateOrUpdateRepoSecretParams) (ActionsCreateOrUpdateRepoSecretResponse, error)
+	ActionsCreateOrUpdateRepoSecret(ctx context.Context, req ActionsCreateOrUpdateRepoSecretApplicationJSONReq, params ActionsCreateOrUpdateRepoSecretParams) (ActionsCreateOrUpdateRepoSecretRes, error)
 	// ActionsDeleteRepoSecret implements actions/delete-repo-secret operation.
 	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (ActionsDeleteRepoSecret, error)
 	// ActionsListRepoWorkflows implements actions/list-repo-workflows operation.
 	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (ActionsListRepoWorkflows, error)
 	// IssuesListAssignees implements issues/list-assignees operation.
-	IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (IssuesListAssigneesResponse, error)
+	IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (IssuesListAssigneesRes, error)
 	// IssuesCheckUserCanBeAssigned implements issues/check-user-can-be-assigned operation.
-	IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedResponse, error)
+	IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error)
 	// ReposListAutolinks implements repos/list-autolinks operation.
 	ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) ([]Autolink, error)
 	// ReposGetAutolink implements repos/get-autolink operation.
-	ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkResponse, error)
+	ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkRes, error)
 	// ReposDeleteAutolink implements repos/delete-autolink operation.
-	ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkResponse, error)
+	ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkRes, error)
 	// ReposEnableAutomatedSecurityFixes implements repos/enable-automated-security-fixes operation.
 	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (ReposEnableAutomatedSecurityFixes, error)
 	// ReposDisableAutomatedSecurityFixes implements repos/disable-automated-security-fixes operation.
 	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (ReposDisableAutomatedSecurityFixes, error)
 	// ReposListBranches implements repos/list-branches operation.
-	ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesResponse, error)
+	ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error)
 	// ReposGetBranch implements repos/get-branch operation.
-	ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchResponse, error)
+	ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchRes, error)
 	// ReposGetBranchProtection implements repos/get-branch-protection operation.
-	ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (ReposGetBranchProtectionResponse, error)
+	ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (ReposGetBranchProtectionRes, error)
 	// ReposUpdateBranchProtection implements repos/update-branch-protection operation.
-	ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionApplicationJSONRequest, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionResponse, error)
+	ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionApplicationJSONReq, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionRes, error)
 	// ReposDeleteBranchProtection implements repos/delete-branch-protection operation.
-	ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionResponse, error)
+	ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionRes, error)
 	// ReposGetAdminBranchProtection implements repos/get-admin-branch-protection operation.
 	ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (ProtectedBranchAdminEnforced, error)
 	// ReposSetAdminBranchProtection implements repos/set-admin-branch-protection operation.
 	ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (ProtectedBranchAdminEnforced, error)
 	// ReposDeleteAdminBranchProtection implements repos/delete-admin-branch-protection operation.
-	ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionResponse, error)
+	ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionRes, error)
 	// ReposGetPullRequestReviewProtection implements repos/get-pull-request-review-protection operation.
 	ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (ProtectedBranchPullRequestReview, error)
 	// ReposDeletePullRequestReviewProtection implements repos/delete-pull-request-review-protection operation.
-	ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionResponse, error)
+	ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionRes, error)
 	// ReposGetCommitSignatureProtection implements repos/get-commit-signature-protection operation.
-	ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (ReposGetCommitSignatureProtectionResponse, error)
+	ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (ReposGetCommitSignatureProtectionRes, error)
 	// ReposCreateCommitSignatureProtection implements repos/create-commit-signature-protection operation.
-	ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (ReposCreateCommitSignatureProtectionResponse, error)
+	ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (ReposCreateCommitSignatureProtectionRes, error)
 	// ReposDeleteCommitSignatureProtection implements repos/delete-commit-signature-protection operation.
-	ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionResponse, error)
+	ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionRes, error)
 	// ReposGetStatusChecksProtection implements repos/get-status-checks-protection operation.
-	ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (ReposGetStatusChecksProtectionResponse, error)
+	ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (ReposGetStatusChecksProtectionRes, error)
 	// ReposRemoveStatusCheckProtection implements repos/remove-status-check-protection operation.
 	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (ReposRemoveStatusCheckProtection, error)
 	// ReposGetAllStatusCheckContexts implements repos/get-all-status-check-contexts operation.
-	ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsResponse, error)
+	ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsRes, error)
 	// ReposGetAccessRestrictions implements repos/get-access-restrictions operation.
-	ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (ReposGetAccessRestrictionsResponse, error)
+	ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (ReposGetAccessRestrictionsRes, error)
 	// ReposDeleteAccessRestrictions implements repos/delete-access-restrictions operation.
 	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (ReposDeleteAccessRestrictions, error)
 	// ReposGetAppsWithAccessToProtectedBranch implements repos/get-apps-with-access-to-protected-branch operation.
-	ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (ReposGetAppsWithAccessToProtectedBranchResponse, error)
+	ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (ReposGetAppsWithAccessToProtectedBranchRes, error)
 	// ReposGetTeamsWithAccessToProtectedBranch implements repos/get-teams-with-access-to-protected-branch operation.
-	ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (ReposGetTeamsWithAccessToProtectedBranchResponse, error)
+	ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (ReposGetTeamsWithAccessToProtectedBranchRes, error)
 	// ReposGetUsersWithAccessToProtectedBranch implements repos/get-users-with-access-to-protected-branch operation.
-	ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (ReposGetUsersWithAccessToProtectedBranchResponse, error)
+	ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (ReposGetUsersWithAccessToProtectedBranchRes, error)
 	// ChecksGet implements checks/get operation.
 	ChecksGet(ctx context.Context, params ChecksGetParams) (CheckRun, error)
 	// ChecksListAnnotations implements checks/list-annotations operation.
 	ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) ([]CheckAnnotation, error)
 	// ChecksCreateSuite implements checks/create-suite operation.
-	ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteApplicationJSONRequest, params ChecksCreateSuiteParams) (ChecksCreateSuiteResponse, error)
+	ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteApplicationJSONReq, params ChecksCreateSuiteParams) (ChecksCreateSuiteRes, error)
 	// ChecksSetSuitesPreferences implements checks/set-suites-preferences operation.
-	ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesApplicationJSONRequest, params ChecksSetSuitesPreferencesParams) (CheckSuitePreference, error)
+	ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesApplicationJSONReq, params ChecksSetSuitesPreferencesParams) (CheckSuitePreference, error)
 	// ChecksGetSuite implements checks/get-suite operation.
 	ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (CheckSuite, error)
 	// ChecksRerequestSuite implements checks/rerequest-suite operation.
 	ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (ChecksRerequestSuite, error)
 	// CodeScanningListAlertInstances implements code-scanning/list-alert-instances operation.
-	CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesResponse, error)
+	CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesRes, error)
 	// CodeScanningListRecentAnalyses implements code-scanning/list-recent-analyses operation.
-	CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesResponse, error)
+	CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesRes, error)
 	// CodeScanningDeleteAnalysis implements code-scanning/delete-analysis operation.
-	CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisResponse, error)
+	CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisRes, error)
 	// CodeScanningUploadSarif implements code-scanning/upload-sarif operation.
-	CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifApplicationJSONRequest, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifResponse, error)
+	CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifApplicationJSONReq, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifRes, error)
 	// CodeScanningGetSarif implements code-scanning/get-sarif operation.
-	CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (CodeScanningGetSarifResponse, error)
+	CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (CodeScanningGetSarifRes, error)
 	// ReposCheckCollaborator implements repos/check-collaborator operation.
-	ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (ReposCheckCollaboratorResponse, error)
+	ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (ReposCheckCollaboratorRes, error)
 	// ReposRemoveCollaborator implements repos/remove-collaborator operation.
 	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (ReposRemoveCollaborator, error)
 	// ReposGetCollaboratorPermissionLevel implements repos/get-collaborator-permission-level operation.
-	ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (ReposGetCollaboratorPermissionLevelResponse, error)
+	ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (ReposGetCollaboratorPermissionLevelRes, error)
 	// ReposListCommitCommentsForRepo implements repos/list-commit-comments-for-repo operation.
 	ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) ([]CommitComment, error)
 	// ReposGetCommitComment implements repos/get-commit-comment operation.
-	ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentResponse, error)
+	ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentRes, error)
 	// ReposDeleteCommitComment implements repos/delete-commit-comment operation.
-	ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentResponse, error)
+	ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentRes, error)
 	// ReposUpdateCommitComment implements repos/update-commit-comment operation.
-	ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentApplicationJSONRequest, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentResponse, error)
+	ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentApplicationJSONReq, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentRes, error)
 	// ReactionsDeleteForCommitComment implements reactions/delete-for-commit-comment operation.
 	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (ReactionsDeleteForCommitComment, error)
 	// ReposListCommits implements repos/list-commits operation.
-	ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsResponse, error)
+	ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsRes, error)
 	// ReposListCommentsForCommit implements repos/list-comments-for-commit operation.
 	ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) ([]CommitComment, error)
 	// ChecksListSuitesForRef implements checks/list-suites-for-ref operation.
 	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (ChecksListSuitesForRef, error)
 	// ReposGetCombinedStatusForRef implements repos/get-combined-status-for-ref operation.
-	ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefResponse, error)
+	ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefRes, error)
 	// ReposListCommitStatusesForRef implements repos/list-commit-statuses-for-ref operation.
-	ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (ReposListCommitStatusesForRefResponse, error)
+	ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (ReposListCommitStatusesForRefRes, error)
 	// ReposGetCommunityProfileMetrics implements repos/get-community-profile-metrics operation.
 	ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (CommunityProfile, error)
 	// ReposCompareCommits implements repos/compare-commits operation.
-	ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsResponse, error)
+	ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsRes, error)
 	// ReposListContributors implements repos/list-contributors operation.
-	ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsResponse, error)
+	ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsRes, error)
 	// ReposDeleteDeployment implements repos/delete-deployment operation.
-	ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentResponse, error)
+	ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error)
 	// ReposListDeploymentStatuses implements repos/list-deployment-statuses operation.
-	ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesResponse, error)
+	ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesRes, error)
 	// ReposGetDeploymentStatus implements repos/get-deployment-status operation.
-	ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusResponse, error)
+	ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusRes, error)
 	// ReposDeleteAnEnvironment implements repos/delete-an-environment operation.
 	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (ReposDeleteAnEnvironment, error)
 	// GitGetCommit implements git/get-commit operation.
-	GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitResponse, error)
+	GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitRes, error)
 	// GitListMatchingRefs implements git/list-matching-refs operation.
 	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) ([]GitRef, error)
 	// GitGetRef implements git/get-ref operation.
-	GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetRefResponse, error)
+	GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetRefRes, error)
 	// GitGetTag implements git/get-tag operation.
-	GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagResponse, error)
+	GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagRes, error)
 	// ReposDeleteWebhook implements repos/delete-webhook operation.
-	ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookResponse, error)
+	ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error)
 	// ReposPingWebhook implements repos/ping-webhook operation.
-	ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookResponse, error)
+	ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error)
 	// ReposTestPushWebhook implements repos/test-push-webhook operation.
-	ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (ReposTestPushWebhookResponse, error)
+	ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (ReposTestPushWebhookRes, error)
 	// MigrationsGetImportStatus implements migrations/get-import-status operation.
-	MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (MigrationsGetImportStatusResponse, error)
+	MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (MigrationsGetImportStatusRes, error)
 	// MigrationsCancelImport implements migrations/cancel-import operation.
 	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (MigrationsCancelImport, error)
 	// MigrationsUpdateImport implements migrations/update-import operation.
-	MigrationsUpdateImport(ctx context.Context, req *MigrationsUpdateImportApplicationJSONRequest, params MigrationsUpdateImportParams) (Import, error)
+	MigrationsUpdateImport(ctx context.Context, req *MigrationsUpdateImportApplicationJSONReq, params MigrationsUpdateImportParams) (Import, error)
 	// MigrationsGetCommitAuthors implements migrations/get-commit-authors operation.
-	MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (MigrationsGetCommitAuthorsResponse, error)
+	MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (MigrationsGetCommitAuthorsRes, error)
 	// MigrationsGetLargeFiles implements migrations/get-large-files operation.
 	MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) ([]PorterLargeFile, error)
 	// InteractionsSetRestrictionsForRepo implements interactions/set-restrictions-for-repo operation.
-	InteractionsSetRestrictionsForRepo(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (InteractionsSetRestrictionsForRepoResponse, error)
+	InteractionsSetRestrictionsForRepo(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (InteractionsSetRestrictionsForRepoRes, error)
 	// InteractionsRemoveRestrictionsForRepo implements interactions/remove-restrictions-for-repo operation.
-	InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoResponse, error)
+	InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error)
 	// ReposListInvitations implements repos/list-invitations operation.
 	ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) ([]RepositoryInvitation, error)
 	// ReposDeleteInvitation implements repos/delete-invitation operation.
 	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (ReposDeleteInvitation, error)
 	// ReposUpdateInvitation implements repos/update-invitation operation.
-	ReposUpdateInvitation(ctx context.Context, req *ReposUpdateInvitationApplicationJSONRequest, params ReposUpdateInvitationParams) (RepositoryInvitation, error)
+	ReposUpdateInvitation(ctx context.Context, req *ReposUpdateInvitationApplicationJSONReq, params ReposUpdateInvitationParams) (RepositoryInvitation, error)
 	// IssuesGetComment implements issues/get-comment operation.
-	IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentResponse, error)
+	IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentRes, error)
 	// IssuesDeleteComment implements issues/delete-comment operation.
 	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (IssuesDeleteComment, error)
 	// ReactionsDeleteForIssueComment implements reactions/delete-for-issue-comment operation.
 	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (ReactionsDeleteForIssueComment, error)
 	// IssuesListComments implements issues/list-comments operation.
-	IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsResponse, error)
+	IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsRes, error)
 	// IssuesListLabelsOnIssue implements issues/list-labels-on-issue operation.
-	IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueResponse, error)
+	IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueRes, error)
 	// IssuesRemoveAllLabels implements issues/remove-all-labels operation.
-	IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsResponse, error)
+	IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsRes, error)
 	// IssuesRemoveLabel implements issues/remove-label operation.
-	IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (IssuesRemoveLabelResponse, error)
+	IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (IssuesRemoveLabelRes, error)
 	// IssuesUnlock implements issues/unlock operation.
-	IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockResponse, error)
+	IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockRes, error)
 	// ReactionsDeleteForIssue implements reactions/delete-for-issue operation.
 	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (ReactionsDeleteForIssue, error)
 	// ReposListDeployKeys implements repos/list-deploy-keys operation.
 	ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) ([]DeployKey, error)
 	// ReposGetDeployKey implements repos/get-deploy-key operation.
-	ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyResponse, error)
+	ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error)
 	// ReposDeleteDeployKey implements repos/delete-deploy-key operation.
 	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (ReposDeleteDeployKey, error)
 	// IssuesListLabelsForRepo implements issues/list-labels-for-repo operation.
-	IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoResponse, error)
+	IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoRes, error)
 	// IssuesGetLabel implements issues/get-label operation.
-	IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelResponse, error)
+	IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelRes, error)
 	// IssuesDeleteLabel implements issues/delete-label operation.
 	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (IssuesDeleteLabel, error)
 	// IssuesUpdateLabel implements issues/update-label operation.
-	IssuesUpdateLabel(ctx context.Context, req *IssuesUpdateLabelApplicationJSONRequest, params IssuesUpdateLabelParams) (Label, error)
+	IssuesUpdateLabel(ctx context.Context, req *IssuesUpdateLabelApplicationJSONReq, params IssuesUpdateLabelParams) (Label, error)
 	// ReposListLanguages implements repos/list-languages operation.
 	ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error)
 	// ReposEnableLfsForRepo implements repos/enable-lfs-for-repo operation.
-	ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoResponse, error)
+	ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoRes, error)
 	// ReposDisableLfsForRepo implements repos/disable-lfs-for-repo operation.
 	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (ReposDisableLfsForRepo, error)
 	// LicensesGetForRepo implements licenses/get-for-repo operation.
 	LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (LicenseContent, error)
 	// ReposMergeUpstream implements repos/merge-upstream operation.
-	ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamApplicationJSONRequest, params ReposMergeUpstreamParams) (ReposMergeUpstreamResponse, error)
+	ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamApplicationJSONReq, params ReposMergeUpstreamParams) (ReposMergeUpstreamRes, error)
 	// IssuesGetMilestone implements issues/get-milestone operation.
-	IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneResponse, error)
+	IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error)
 	// IssuesDeleteMilestone implements issues/delete-milestone operation.
-	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneResponse, error)
+	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error)
 	// IssuesUpdateMilestone implements issues/update-milestone operation.
-	IssuesUpdateMilestone(ctx context.Context, req *IssuesUpdateMilestoneApplicationJSONRequest, params IssuesUpdateMilestoneParams) (Milestone, error)
+	IssuesUpdateMilestone(ctx context.Context, req *IssuesUpdateMilestoneApplicationJSONReq, params IssuesUpdateMilestoneParams) (Milestone, error)
 	// IssuesListLabelsForMilestone implements issues/list-labels-for-milestone operation.
 	IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) ([]Label, error)
 	// ActivityListRepoNotificationsForAuthenticatedUser implements activity/list-repo-notifications-for-authenticated-user operation.
 	ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) ([]Thread, error)
 	// ActivityMarkRepoNotificationsAsRead implements activity/mark-repo-notifications-as-read operation.
-	ActivityMarkRepoNotificationsAsRead(ctx context.Context, req *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadResponse, error)
+	ActivityMarkRepoNotificationsAsRead(ctx context.Context, req *ActivityMarkRepoNotificationsAsReadApplicationJSONReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error)
 	// ReposGetPages implements repos/get-pages operation.
-	ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesResponse, error)
+	ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error)
 	// ReposListPagesBuilds implements repos/list-pages-builds operation.
 	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) ([]PageBuild, error)
 	// ReposRequestPagesBuild implements repos/request-pages-build operation.
@@ -719,83 +719,83 @@ type Server interface {
 	// ReposGetPagesBuild implements repos/get-pages-build operation.
 	ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (PageBuild, error)
 	// ReposGetPagesHealthCheck implements repos/get-pages-health-check operation.
-	ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (ReposGetPagesHealthCheckResponse, error)
+	ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (ReposGetPagesHealthCheckRes, error)
 	// ProjectsCreateForRepo implements projects/create-for-repo operation.
-	ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateForRepoApplicationJSONRequest, params ProjectsCreateForRepoParams) (ProjectsCreateForRepoResponse, error)
+	ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateForRepoApplicationJSONReq, params ProjectsCreateForRepoParams) (ProjectsCreateForRepoRes, error)
 	// PullsGetReviewComment implements pulls/get-review-comment operation.
-	PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentResponse, error)
+	PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentRes, error)
 	// PullsDeleteReviewComment implements pulls/delete-review-comment operation.
-	PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (PullsDeleteReviewCommentResponse, error)
+	PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (PullsDeleteReviewCommentRes, error)
 	// PullsUpdateReviewComment implements pulls/update-review-comment operation.
-	PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentApplicationJSONRequest, params PullsUpdateReviewCommentParams) (PullRequestReviewComment, error)
+	PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentApplicationJSONReq, params PullsUpdateReviewCommentParams) (PullRequestReviewComment, error)
 	// ReactionsDeleteForPullRequestComment implements reactions/delete-for-pull-request-comment operation.
 	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (ReactionsDeleteForPullRequestComment, error)
 	// PullsCreateReplyForReviewComment implements pulls/create-reply-for-review-comment operation.
-	PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentApplicationJSONRequest, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentResponse, error)
+	PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentApplicationJSONReq, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentRes, error)
 	// PullsListCommits implements pulls/list-commits operation.
 	PullsListCommits(ctx context.Context, params PullsListCommitsParams) ([]Commit, error)
 	// PullsCheckIfMerged implements pulls/check-if-merged operation.
-	PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedResponse, error)
+	PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error)
 	// PullsListRequestedReviewers implements pulls/list-requested-reviewers operation.
 	PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (PullRequestReviewRequest, error)
 	// PullsListReviews implements pulls/list-reviews operation.
 	PullsListReviews(ctx context.Context, params PullsListReviewsParams) ([]PullRequestReview, error)
 	// PullsCreateReview implements pulls/create-review operation.
-	PullsCreateReview(ctx context.Context, req *PullsCreateReviewApplicationJSONRequest, params PullsCreateReviewParams) (PullsCreateReviewResponse, error)
+	PullsCreateReview(ctx context.Context, req *PullsCreateReviewApplicationJSONReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error)
 	// PullsGetReview implements pulls/get-review operation.
-	PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewResponse, error)
+	PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewRes, error)
 	// PullsUpdateReview implements pulls/update-review operation.
-	PullsUpdateReview(ctx context.Context, req PullsUpdateReviewApplicationJSONRequest, params PullsUpdateReviewParams) (PullsUpdateReviewResponse, error)
+	PullsUpdateReview(ctx context.Context, req PullsUpdateReviewApplicationJSONReq, params PullsUpdateReviewParams) (PullsUpdateReviewRes, error)
 	// PullsDeletePendingReview implements pulls/delete-pending-review operation.
-	PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewResponse, error)
+	PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewRes, error)
 	// PullsListCommentsForReview implements pulls/list-comments-for-review operation.
-	PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (PullsListCommentsForReviewResponse, error)
+	PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (PullsListCommentsForReviewRes, error)
 	// PullsDismissReview implements pulls/dismiss-review operation.
-	PullsDismissReview(ctx context.Context, req PullsDismissReviewApplicationJSONRequest, params PullsDismissReviewParams) (PullsDismissReviewResponse, error)
+	PullsDismissReview(ctx context.Context, req PullsDismissReviewApplicationJSONReq, params PullsDismissReviewParams) (PullsDismissReviewRes, error)
 	// PullsSubmitReview implements pulls/submit-review operation.
-	PullsSubmitReview(ctx context.Context, req PullsSubmitReviewApplicationJSONRequest, params PullsSubmitReviewParams) (PullsSubmitReviewResponse, error)
+	PullsSubmitReview(ctx context.Context, req PullsSubmitReviewApplicationJSONReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error)
 	// ReposListReleases implements repos/list-releases operation.
-	ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesResponse, error)
+	ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesRes, error)
 	// ReposGetReleaseAsset implements repos/get-release-asset operation.
-	ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (ReposGetReleaseAssetResponse, error)
+	ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (ReposGetReleaseAssetRes, error)
 	// ReposDeleteReleaseAsset implements repos/delete-release-asset operation.
 	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (ReposDeleteReleaseAsset, error)
 	// ReposUpdateReleaseAsset implements repos/update-release-asset operation.
-	ReposUpdateReleaseAsset(ctx context.Context, req *ReposUpdateReleaseAssetApplicationJSONRequest, params ReposUpdateReleaseAssetParams) (ReleaseAsset, error)
+	ReposUpdateReleaseAsset(ctx context.Context, req *ReposUpdateReleaseAssetApplicationJSONReq, params ReposUpdateReleaseAssetParams) (ReleaseAsset, error)
 	// ReposGetLatestRelease implements repos/get-latest-release operation.
 	ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (Release, error)
 	// ReposGetReleaseByTag implements repos/get-release-by-tag operation.
-	ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (ReposGetReleaseByTagResponse, error)
+	ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (ReposGetReleaseByTagRes, error)
 	// ReposGetRelease implements repos/get-release operation.
-	ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (ReposGetReleaseResponse, error)
+	ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (ReposGetReleaseRes, error)
 	// ReposDeleteRelease implements repos/delete-release operation.
 	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (ReposDeleteRelease, error)
 	// ReposUpdateRelease implements repos/update-release operation.
-	ReposUpdateRelease(ctx context.Context, req *ReposUpdateReleaseApplicationJSONRequest, params ReposUpdateReleaseParams) (ReposUpdateReleaseResponse, error)
+	ReposUpdateRelease(ctx context.Context, req *ReposUpdateReleaseApplicationJSONReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error)
 	// ReposListReleaseAssets implements repos/list-release-assets operation.
 	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) ([]ReleaseAsset, error)
 	// SecretScanningGetAlert implements secret-scanning/get-alert operation.
-	SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertResponse, error)
+	SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertRes, error)
 	// SecretScanningUpdateAlert implements secret-scanning/update-alert operation.
-	SecretScanningUpdateAlert(ctx context.Context, req SecretScanningUpdateAlertApplicationJSONRequest, params SecretScanningUpdateAlertParams) (SecretScanningUpdateAlertResponse, error)
+	SecretScanningUpdateAlert(ctx context.Context, req SecretScanningUpdateAlertApplicationJSONReq, params SecretScanningUpdateAlertParams) (SecretScanningUpdateAlertRes, error)
 	// ReposGetCodeFrequencyStats implements repos/get-code-frequency-stats operation.
-	ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (ReposGetCodeFrequencyStatsResponse, error)
+	ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (ReposGetCodeFrequencyStatsRes, error)
 	// ReposGetCommitActivityStats implements repos/get-commit-activity-stats operation.
-	ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsResponse, error)
+	ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsRes, error)
 	// ReposGetContributorsStats implements repos/get-contributors-stats operation.
-	ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsResponse, error)
+	ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsRes, error)
 	// ReposGetParticipationStats implements repos/get-participation-stats operation.
-	ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (ReposGetParticipationStatsResponse, error)
+	ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (ReposGetParticipationStatsRes, error)
 	// ReposGetPunchCardStats implements repos/get-punch-card-stats operation.
-	ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsResponse, error)
+	ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsRes, error)
 	// ReposCreateCommitStatus implements repos/create-commit-status operation.
-	ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusApplicationJSONRequest, params ReposCreateCommitStatusParams) (Status, error)
+	ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusApplicationJSONReq, params ReposCreateCommitStatusParams) (Status, error)
 	// ActivityListWatchersForRepo implements activity/list-watchers-for-repo operation.
 	ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) ([]SimpleUser, error)
 	// ActivityGetRepoSubscription implements activity/get-repo-subscription operation.
-	ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionResponse, error)
+	ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionRes, error)
 	// ActivitySetRepoSubscription implements activity/set-repo-subscription operation.
-	ActivitySetRepoSubscription(ctx context.Context, req *ActivitySetRepoSubscriptionApplicationJSONRequest, params ActivitySetRepoSubscriptionParams) (RepositorySubscription, error)
+	ActivitySetRepoSubscription(ctx context.Context, req *ActivitySetRepoSubscriptionApplicationJSONReq, params ActivitySetRepoSubscriptionParams) (RepositorySubscription, error)
 	// ActivityDeleteRepoSubscription implements activity/delete-repo-subscription operation.
 	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (ActivityDeleteRepoSubscription, error)
 	// ReposListTags implements repos/list-tags operation.
@@ -805,17 +805,17 @@ type Server interface {
 	// ReposListTeams implements repos/list-teams operation.
 	ReposListTeams(ctx context.Context, params ReposListTeamsParams) ([]Team, error)
 	// ReposGetAllTopics implements repos/get-all-topics operation.
-	ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsResponse, error)
+	ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsRes, error)
 	// ReposReplaceAllTopics implements repos/replace-all-topics operation.
-	ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsApplicationJSONRequest, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsResponse, error)
+	ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsApplicationJSONReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error)
 	// ReposGetTopPaths implements repos/get-top-paths operation.
-	ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (ReposGetTopPathsResponse, error)
+	ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (ReposGetTopPathsRes, error)
 	// ReposGetTopReferrers implements repos/get-top-referrers operation.
-	ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (ReposGetTopReferrersResponse, error)
+	ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (ReposGetTopReferrersRes, error)
 	// ReposTransfer implements repos/transfer operation.
-	ReposTransfer(ctx context.Context, req ReposTransferApplicationJSONRequest, params ReposTransferParams) (MinimalRepository, error)
+	ReposTransfer(ctx context.Context, req ReposTransferApplicationJSONReq, params ReposTransferParams) (MinimalRepository, error)
 	// ReposCheckVulnerabilityAlerts implements repos/check-vulnerability-alerts operation.
-	ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (ReposCheckVulnerabilityAlertsResponse, error)
+	ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (ReposCheckVulnerabilityAlertsRes, error)
 	// ReposEnableVulnerabilityAlerts implements repos/enable-vulnerability-alerts operation.
 	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (ReposEnableVulnerabilityAlerts, error)
 	// ReposDisableVulnerabilityAlerts implements repos/disable-vulnerability-alerts operation.
@@ -823,7 +823,7 @@ type Server interface {
 	// ReposDownloadZipballArchive implements repos/download-zipball-archive operation.
 	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (ReposDownloadZipballArchive, error)
 	// ReposCreateUsingTemplate implements repos/create-using-template operation.
-	ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateApplicationJSONRequest, params ReposCreateUsingTemplateParams) (Repository, error)
+	ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateApplicationJSONReq, params ReposCreateUsingTemplateParams) (Repository, error)
 	// ActionsListEnvironmentSecrets implements actions/list-environment-secrets operation.
 	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (ActionsListEnvironmentSecrets, error)
 	// ActionsGetEnvironmentPublicKey implements actions/get-environment-public-key operation.
@@ -831,165 +831,165 @@ type Server interface {
 	// ActionsGetEnvironmentSecret implements actions/get-environment-secret operation.
 	ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (ActionsSecret, error)
 	// ActionsCreateOrUpdateEnvironmentSecret implements actions/create-or-update-environment-secret operation.
-	ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretResponse, error)
+	ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretRes, error)
 	// ActionsDeleteEnvironmentSecret implements actions/delete-environment-secret operation.
 	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (ActionsDeleteEnvironmentSecret, error)
 	// EnterpriseAdminListProvisionedGroupsEnterprise implements enterprise-admin/list-provisioned-groups-enterprise operation.
 	EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (ScimGroupListEnterprise, error)
 	// EnterpriseAdminProvisionAndInviteEnterpriseGroup implements enterprise-admin/provision-and-invite-enterprise-group operation.
-	EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (ScimEnterpriseGroup, error)
+	EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminGetProvisioningInformationForEnterpriseGroup implements enterprise-admin/get-provisioning-information-for-enterprise-group operation.
 	EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup implements enterprise-admin/set-information-for-provisioned-enterprise-group operation.
-	EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (ScimEnterpriseGroup, error)
+	EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminDeleteScimGroupFromEnterprise implements enterprise-admin/delete-scim-group-from-enterprise operation.
 	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (EnterpriseAdminDeleteScimGroupFromEnterprise, error)
 	// EnterpriseAdminListProvisionedIdentitiesEnterprise implements enterprise-admin/list-provisioned-identities-enterprise operation.
 	EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (ScimUserListEnterprise, error)
 	// EnterpriseAdminProvisionAndInviteEnterpriseUser implements enterprise-admin/provision-and-invite-enterprise-user operation.
-	EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (ScimEnterpriseUser, error)
+	EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminGetProvisioningInformationForEnterpriseUser implements enterprise-admin/get-provisioning-information-for-enterprise-user operation.
 	EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminSetInformationForProvisionedEnterpriseUser implements enterprise-admin/set-information-for-provisioned-enterprise-user operation.
-	EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (ScimEnterpriseUser, error)
+	EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// EnterpriseAdminDeleteUserFromEnterprise implements enterprise-admin/delete-user-from-enterprise operation.
 	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (EnterpriseAdminDeleteUserFromEnterprise, error)
 	// EnterpriseAdminUpdateAttributeForEnterpriseUser implements enterprise-admin/update-attribute-for-enterprise-user operation.
-	EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (ScimEnterpriseUser, error)
+	EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// ScimDeleteUserFromOrg implements scim/delete-user-from-org operation.
-	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgResponse, error)
+	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
 	// TeamsGetLegacy implements teams/get-legacy operation.
-	TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyResponse, error)
+	TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyRes, error)
 	// TeamsCreateDiscussionLegacy implements teams/create-discussion-legacy operation.
-	TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyApplicationJSONRequest, params TeamsCreateDiscussionLegacyParams) (TeamDiscussion, error)
+	TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyApplicationJSONReq, params TeamsCreateDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsGetDiscussionLegacy implements teams/get-discussion-legacy operation.
 	TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsDeleteDiscussionLegacy implements teams/delete-discussion-legacy operation.
 	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (TeamsDeleteDiscussionLegacy, error)
 	// TeamsUpdateDiscussionLegacy implements teams/update-discussion-legacy operation.
-	TeamsUpdateDiscussionLegacy(ctx context.Context, req *TeamsUpdateDiscussionLegacyApplicationJSONRequest, params TeamsUpdateDiscussionLegacyParams) (TeamDiscussion, error)
+	TeamsUpdateDiscussionLegacy(ctx context.Context, req *TeamsUpdateDiscussionLegacyApplicationJSONReq, params TeamsUpdateDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsCreateDiscussionCommentLegacy implements teams/create-discussion-comment-legacy operation.
-	TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyApplicationJSONRequest, params TeamsCreateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
+	TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyApplicationJSONReq, params TeamsCreateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// TeamsGetDiscussionCommentLegacy implements teams/get-discussion-comment-legacy operation.
 	TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// TeamsDeleteDiscussionCommentLegacy implements teams/delete-discussion-comment-legacy operation.
 	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (TeamsDeleteDiscussionCommentLegacy, error)
 	// TeamsUpdateDiscussionCommentLegacy implements teams/update-discussion-comment-legacy operation.
-	TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest, params TeamsUpdateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
+	TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyApplicationJSONReq, params TeamsUpdateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// ReactionsCreateForTeamDiscussionCommentLegacy implements reactions/create-for-team-discussion-comment-legacy operation.
-	ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (Reaction, error)
+	ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (Reaction, error)
 	// ReactionsCreateForTeamDiscussionLegacy implements reactions/create-for-team-discussion-legacy operation.
-	ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest, params ReactionsCreateForTeamDiscussionLegacyParams) (Reaction, error)
+	ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq, params ReactionsCreateForTeamDiscussionLegacyParams) (Reaction, error)
 	// TeamsListPendingInvitationsLegacy implements teams/list-pending-invitations-legacy operation.
 	TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) ([]OrganizationInvitation, error)
 	// TeamsGetMemberLegacy implements teams/get-member-legacy operation.
-	TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyResponse, error)
+	TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyRes, error)
 	// TeamsAddMemberLegacy implements teams/add-member-legacy operation.
-	TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyResponse, error)
+	TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyRes, error)
 	// TeamsRemoveMemberLegacy implements teams/remove-member-legacy operation.
-	TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyResponse, error)
+	TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyRes, error)
 	// TeamsGetMembershipForUserLegacy implements teams/get-membership-for-user-legacy operation.
-	TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyResponse, error)
+	TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyRes, error)
 	// TeamsAddOrUpdateMembershipForUserLegacy implements teams/add-or-update-membership-for-user-legacy operation.
-	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyResponse, error)
+	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error)
 	// TeamsRemoveMembershipForUserLegacy implements teams/remove-membership-for-user-legacy operation.
-	TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyResponse, error)
+	TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error)
 	// TeamsListProjectsLegacy implements teams/list-projects-legacy operation.
-	TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyResponse, error)
+	TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyRes, error)
 	// TeamsCheckPermissionsForProjectLegacy implements teams/check-permissions-for-project-legacy operation.
-	TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyResponse, error)
+	TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyRes, error)
 	// TeamsListReposLegacy implements teams/list-repos-legacy operation.
-	TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyResponse, error)
+	TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyRes, error)
 	// TeamsCheckPermissionsForRepoLegacy implements teams/check-permissions-for-repo-legacy operation.
-	TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyResponse, error)
+	TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error)
 	// TeamsRemoveRepoLegacy implements teams/remove-repo-legacy operation.
 	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (TeamsRemoveRepoLegacy, error)
 	// TeamsListIdpGroupsForLegacy implements teams/list-idp-groups-for-legacy operation.
-	TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyResponse, error)
+	TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error)
 	// UsersListBlockedByAuthenticated implements users/list-blocked-by-authenticated operation.
-	UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedResponse, error)
+	UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedRes, error)
 	// UsersCheckBlocked implements users/check-blocked operation.
-	UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedResponse, error)
+	UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedRes, error)
 	// UsersUnblock implements users/unblock operation.
-	UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockResponse, error)
+	UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error)
 	// UsersListEmailsForAuthenticated implements users/list-emails-for-authenticated operation.
-	UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedResponse, error)
+	UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedRes, error)
 	// UsersListFollowersForAuthenticatedUser implements users/list-followers-for-authenticated-user operation.
-	UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserResponse, error)
+	UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserRes, error)
 	// UsersListFollowedByAuthenticated implements users/list-followed-by-authenticated operation.
-	UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedResponse, error)
+	UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedRes, error)
 	// UsersCheckPersonIsFollowedByAuthenticated implements users/check-person-is-followed-by-authenticated operation.
-	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedResponse, error)
+	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error)
 	// UsersFollow implements users/follow operation.
-	UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowResponse, error)
+	UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowRes, error)
 	// UsersUnfollow implements users/unfollow operation.
-	UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowResponse, error)
+	UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowRes, error)
 	// UsersListGpgKeysForAuthenticated implements users/list-gpg-keys-for-authenticated operation.
-	UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedResponse, error)
+	UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error)
 	// UsersGetGpgKeyForAuthenticated implements users/get-gpg-key-for-authenticated operation.
-	UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedResponse, error)
+	UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error)
 	// AppsListInstallationReposForAuthenticatedUser implements apps/list-installation-repos-for-authenticated-user operation.
-	AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserResponse, error)
+	AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserRes, error)
 	// AppsAddRepoToInstallation implements apps/add-repo-to-installation operation.
-	AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationResponse, error)
+	AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationRes, error)
 	// AppsRemoveRepoFromInstallation implements apps/remove-repo-from-installation operation.
-	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationResponse, error)
+	AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error)
 	// InteractionsRemoveRestrictionsForAuthenticatedUser implements interactions/remove-restrictions-for-authenticated-user operation.
 	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (InteractionsRemoveRestrictionsForAuthenticatedUser, error)
 	// UsersListPublicSSHKeysForAuthenticated implements users/list-public-ssh-keys-for-authenticated operation.
-	UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedResponse, error)
+	UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error)
 	// UsersGetPublicSSHKeyForAuthenticated implements users/get-public-ssh-key-for-authenticated operation.
-	UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedResponse, error)
+	UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedRes, error)
 	// UsersDeletePublicSSHKeyForAuthenticated implements users/delete-public-ssh-key-for-authenticated operation.
-	UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedResponse, error)
+	UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedRes, error)
 	// AppsListSubscriptionsForAuthenticatedUser implements apps/list-subscriptions-for-authenticated-user operation.
-	AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserResponse, error)
+	AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserRes, error)
 	// AppsListSubscriptionsForAuthenticatedUserStubbed implements apps/list-subscriptions-for-authenticated-user-stubbed operation.
-	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedResponse, error)
+	AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error)
 	// OrgsGetMembershipForAuthenticatedUser implements orgs/get-membership-for-authenticated-user operation.
-	OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserResponse, error)
+	OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserRes, error)
 	// MigrationsListForAuthenticatedUser implements migrations/list-for-authenticated-user operation.
-	MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserResponse, error)
+	MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error)
 	// MigrationsGetStatusForAuthenticatedUser implements migrations/get-status-for-authenticated-user operation.
-	MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserResponse, error)
+	MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserRes, error)
 	// MigrationsGetArchiveForAuthenticatedUser implements migrations/get-archive-for-authenticated-user operation.
-	MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (MigrationsGetArchiveForAuthenticatedUserResponse, error)
+	MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (MigrationsGetArchiveForAuthenticatedUserRes, error)
 	// MigrationsDeleteArchiveForAuthenticatedUser implements migrations/delete-archive-for-authenticated-user operation.
-	MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserResponse, error)
+	MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserRes, error)
 	// MigrationsUnlockRepoForAuthenticatedUser implements migrations/unlock-repo-for-authenticated-user operation.
-	MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (MigrationsUnlockRepoForAuthenticatedUserResponse, error)
+	MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (MigrationsUnlockRepoForAuthenticatedUserRes, error)
 	// MigrationsListReposForUser implements migrations/list-repos-for-user operation.
-	MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserResponse, error)
+	MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserRes, error)
 	// OrgsListForAuthenticatedUser implements orgs/list-for-authenticated-user operation.
-	OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserResponse, error)
+	OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserRes, error)
 	// ProjectsCreateForAuthenticatedUser implements projects/create-for-authenticated-user operation.
-	ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserApplicationJSONRequest) (ProjectsCreateForAuthenticatedUserResponse, error)
+	ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserApplicationJSONReq) (ProjectsCreateForAuthenticatedUserRes, error)
 	// UsersListPublicEmailsForAuthenticated implements users/list-public-emails-for-authenticated operation.
-	UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedResponse, error)
+	UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedRes, error)
 	// ReposListInvitationsForAuthenticatedUser implements repos/list-invitations-for-authenticated-user operation.
-	ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserResponse, error)
+	ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserRes, error)
 	// ReposDeclineInvitation implements repos/decline-invitation operation.
-	ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationResponse, error)
+	ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationRes, error)
 	// ReposAcceptInvitation implements repos/accept-invitation operation.
-	ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationResponse, error)
+	ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error)
 	// ActivityCheckRepoIsStarredByAuthenticatedUser implements activity/check-repo-is-starred-by-authenticated-user operation.
-	ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserResponse, error)
+	ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error)
 	// ActivityStarRepoForAuthenticatedUser implements activity/star-repo-for-authenticated-user operation.
-	ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserResponse, error)
+	ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserRes, error)
 	// ActivityUnstarRepoForAuthenticatedUser implements activity/unstar-repo-for-authenticated-user operation.
-	ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserResponse, error)
+	ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserRes, error)
 	// ActivityListWatchedReposForAuthenticatedUser implements activity/list-watched-repos-for-authenticated-user operation.
-	ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserResponse, error)
+	ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserRes, error)
 	// TeamsListForAuthenticatedUser implements teams/list-for-authenticated-user operation.
-	TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserResponse, error)
+	TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserRes, error)
 	// UsersList implements users/list operation.
-	UsersList(ctx context.Context, params UsersListParams) (UsersListResponse, error)
+	UsersList(ctx context.Context, params UsersListParams) (UsersListRes, error)
 	// UsersListFollowersForUser implements users/list-followers-for-user operation.
 	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) ([]SimpleUser, error)
 	// UsersListFollowingForUser implements users/list-following-for-user operation.
 	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) ([]SimpleUser, error)
 	// UsersCheckFollowingForUser implements users/check-following-for-user operation.
-	UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserResponse, error)
+	UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserRes, error)
 	// UsersListGpgKeysForUser implements users/list-gpg-keys-for-user operation.
 	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) ([]GpgKey, error)
 	// UsersListPublicKeysForUser implements users/list-public-keys-for-user operation.

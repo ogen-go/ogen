@@ -72,7 +72,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsResponse, err error) {
+func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/"
 
@@ -93,7 +93,7 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 	return result, nil
 }
 
-func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesResponse, err error) {
+func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/"
 
@@ -114,7 +114,7 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 	return result, nil
 }
 
-func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1ComponentStatusResponse, err error) {
+func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1ComponentStatusRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/componentstatuses"
 
@@ -135,7 +135,7 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 	return result, nil
 }
 
-func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res ListCoreV1ConfigMapForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/configmaps"
 
@@ -156,7 +156,7 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 	return result, nil
 }
 
-func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res ListCoreV1EndpointsForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/endpoints"
 
@@ -177,7 +177,7 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 	return result, nil
 }
 
-func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListCoreV1EventForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/events"
 
@@ -198,7 +198,7 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 	return result, nil
 }
 
-func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res ListCoreV1LimitRangeForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/limitranges"
 
@@ -219,7 +219,7 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
-func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceResponse, err error) {
+func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces"
 
@@ -333,7 +333,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 	return result, nil
 }
 
-func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceResponse, err error) {
+func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceRes, err error) {
 	body, contentType, err := encodeCreateCoreV1NamespaceRequest(req)
 	if err != nil {
 		return res, err
@@ -384,7 +384,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 	return result, nil
 }
 
-func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeResponse, err error) {
+func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
 
@@ -498,7 +498,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 	return result, nil
 }
 
-func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeResponse, err error) {
+func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeRes, err error) {
 	body, contentType, err := encodeCreateCoreV1NodeRequest(req)
 	if err != nil {
 		return res, err
@@ -549,7 +549,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 	return result, nil
 }
 
-func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeResponse, err error) {
+func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeRes, err error) {
 	body, contentType, err := encodeDeleteCoreV1CollectionNodeRequest(req)
 	if err != nil {
 		return res, err
@@ -690,7 +690,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req *IoK8sApima
 	return result, nil
 }
 
-func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context) (res ListCoreV1PersistentVolumeClaimForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumeclaims"
 
@@ -711,7 +711,7 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
-func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeResponse, err error) {
+func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
 
@@ -825,7 +825,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	return result, nil
 }
 
-func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeResponse, err error) {
+func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
 	body, contentType, err := encodeCreateCoreV1PersistentVolumeRequest(req)
 	if err != nil {
 		return res, err
@@ -876,7 +876,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 	return result, nil
 }
 
-func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeResponse, err error) {
+func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
 	body, contentType, err := encodeDeleteCoreV1CollectionPersistentVolumeRequest(req)
 	if err != nil {
 		return res, err
@@ -1017,7 +1017,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 	return result, nil
 }
 
-func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCoreV1PodForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/pods"
 
@@ -1038,7 +1038,7 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 	return result, nil
 }
 
-func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res ListCoreV1PodTemplateForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/podtemplates"
 
@@ -1059,7 +1059,7 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 	return result, nil
 }
 
-func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context) (res ListCoreV1ReplicationControllerForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/replicationcontrollers"
 
@@ -1080,7 +1080,7 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
-func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (res ListCoreV1ResourceQuotaForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/resourcequotas"
 
@@ -1101,7 +1101,7 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
-func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res ListCoreV1SecretForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/secrets"
 
@@ -1122,7 +1122,7 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 	return result, nil
 }
 
-func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceAccountForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/serviceaccounts"
 
@@ -1143,7 +1143,7 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
-func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceForAllNamespacesResponse, err error) {
+func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/services"
 
@@ -1164,7 +1164,7 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (res WatchCoreV1ConfigMapListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/configmaps"
 
@@ -1185,7 +1185,7 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (res WatchCoreV1EndpointsListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/endpoints"
 
@@ -1206,7 +1206,7 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res WatchCoreV1EventListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/events"
 
@@ -1227,7 +1227,7 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) (res WatchCoreV1LimitRangeListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/limitranges"
 
@@ -1248,7 +1248,7 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1NamespaceListResponse, err error) {
+func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1NamespaceListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces"
 
@@ -1269,7 +1269,7 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeListResponse, err error) {
+func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/nodes"
 
@@ -1290,7 +1290,7 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumeclaims"
 
@@ -1311,7 +1311,7 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res WatchCoreV1PersistentVolumeListResponse, err error) {
+func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumes"
 
@@ -1332,7 +1332,7 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/pods"
 
@@ -1353,7 +1353,7 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodTemplateListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/podtemplates"
 
@@ -1374,7 +1374,7 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context) (res WatchCoreV1ReplicationControllerListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/replicationcontrollers"
 
@@ -1395,7 +1395,7 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context) (res WatchCoreV1ResourceQuotaListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/resourcequotas"
 
@@ -1416,7 +1416,7 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res WatchCoreV1SecretListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/secrets"
 
@@ -1437,7 +1437,7 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceAccountListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/serviceaccounts"
 
@@ -1458,7 +1458,7 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/services"
 
@@ -1479,7 +1479,7 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 	return result, nil
 }
 
-func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsResponse, err error) {
+func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/"
 
@@ -1500,7 +1500,7 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsResponse
 	return result, nil
 }
 
-func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupResponse, err error) {
+func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/"
 
@@ -1521,7 +1521,7 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 	return result, nil
 }
 
-func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesResponse, err error) {
+func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/"
 
@@ -1542,7 +1542,7 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 	return result, nil
 }
 
-func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationResponse, err error) {
+func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
@@ -1656,7 +1656,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	return result, nil
 }
 
-func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationResponse, err error) {
+func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	body, contentType, err := encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -1707,7 +1707,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 	return result, nil
 }
 
-func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse, err error) {
+func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
 	body, contentType, err := encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -1848,7 +1848,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 	return result, nil
 }
 
-func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationResponse, err error) {
+func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
@@ -1962,7 +1962,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	return result, nil
 }
 
-func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse, err error) {
+func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	body, contentType, err := encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -2013,7 +2013,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 	return result, nil
 }
 
-func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse, err error) {
+func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
 	body, contentType, err := encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -2154,7 +2154,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 	return result, nil
 }
 
-func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse, err error) {
+func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
 
@@ -2175,7 +2175,7 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 	return result, nil
 }
 
-func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse, err error) {
+func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
 
@@ -2196,7 +2196,7 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 	return result, nil
 }
 
-func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupResponse, err error) {
+func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/"
 
@@ -2217,7 +2217,7 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 	return result, nil
 }
 
-func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesResponse, err error) {
+func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/"
 
@@ -2238,7 +2238,7 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 	return result, nil
 }
 
-func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionResponse, err error) {
+func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
@@ -2352,7 +2352,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionResponse, err error) {
+func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
 	body, contentType, err := encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req)
 	if err != nil {
 		return res, err
@@ -2403,7 +2403,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionResponse, err error) {
+func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
 	body, contentType, err := encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req)
 	if err != nil {
 		return res, err
@@ -2544,7 +2544,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 	return result, nil
 }
 
-func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context) (res WatchApiextensionsV1CustomResourceDefinitionListResponse, err error) {
+func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
 
@@ -2565,7 +2565,7 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupResponse, err error) {
+func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/"
 
@@ -2586,7 +2586,7 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 	return result, nil
 }
 
-func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesResponse, err error) {
+func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/"
 
@@ -2607,7 +2607,7 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 	return result, nil
 }
 
-func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceResponse, err error) {
+func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
@@ -2721,7 +2721,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 	return result, nil
 }
 
-func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceResponse, err error) {
+func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceRes, err error) {
 	body, contentType, err := encodeCreateApiregistrationV1APIServiceRequest(req)
 	if err != nil {
 		return res, err
@@ -2772,7 +2772,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 	return result, nil
 }
 
-func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceResponse, err error) {
+func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
 	body, contentType, err := encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req)
 	if err != nil {
 		return res, err
@@ -2913,7 +2913,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res WatchApiregistrationV1APIServiceListResponse, err error) {
+func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
 
@@ -2934,7 +2934,7 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 	return result, nil
 }
 
-func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupResponse, err error) {
+func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/"
 
@@ -2955,7 +2955,7 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRespon
 	return result, nil
 }
 
-func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesResponse, err error) {
+func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/"
 
@@ -2976,7 +2976,7 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 	return result, nil
 }
 
-func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context) (res ListAppsV1ControllerRevisionForAllNamespacesResponse, err error) {
+func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/controllerrevisions"
 
@@ -2997,7 +2997,7 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res ListAppsV1DaemonSetForAllNamespacesResponse, err error) {
+func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/daemonsets"
 
@@ -3018,7 +3018,7 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 	return result, nil
 }
 
-func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res ListAppsV1DeploymentForAllNamespacesResponse, err error) {
+func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/deployments"
 
@@ -3039,7 +3039,7 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
-func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res ListAppsV1ReplicaSetForAllNamespacesResponse, err error) {
+func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/replicasets"
 
@@ -3060,7 +3060,7 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 	return result, nil
 }
 
-func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res ListAppsV1StatefulSetForAllNamespacesResponse, err error) {
+func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/statefulsets"
 
@@ -3081,7 +3081,7 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 	return result, nil
 }
 
-func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context) (res WatchAppsV1ControllerRevisionListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/controllerrevisions"
 
@@ -3102,7 +3102,7 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 	return result, nil
 }
 
-func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1DaemonSetListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/daemonsets"
 
@@ -3123,7 +3123,7 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 	return result, nil
 }
 
-func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) (res WatchAppsV1DeploymentListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/deployments"
 
@@ -3144,7 +3144,7 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 	return result, nil
 }
 
-func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1ReplicaSetListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/replicasets"
 
@@ -3165,7 +3165,7 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 	return result, nil
 }
 
-func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1StatefulSetListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/statefulsets"
 
@@ -3186,7 +3186,7 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 	return result, nil
 }
 
-func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupResponse, err error) {
+func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authentication.k8s.io/"
 
@@ -3207,7 +3207,7 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 	return result, nil
 }
 
-func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesResponse, err error) {
+func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authentication.k8s.io/v1/"
 
@@ -3228,7 +3228,7 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 	return result, nil
 }
 
-func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8sAPIAuthenticationV1TokenReview) (res CreateAuthenticationV1TokenReviewResponse, err error) {
+func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8sAPIAuthenticationV1TokenReview) (res CreateAuthenticationV1TokenReviewRes, err error) {
 	body, contentType, err := encodeCreateAuthenticationV1TokenReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -3256,7 +3256,7 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 	return result, nil
 }
 
-func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupResponse, err error) {
+func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/"
 
@@ -3277,7 +3277,7 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 	return result, nil
 }
 
-func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesResponse, err error) {
+func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/v1/"
 
@@ -3298,7 +3298,7 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 	return result, nil
 }
 
-func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (res CreateAuthorizationV1SelfSubjectAccessReviewResponse, err error) {
+func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
 	body, contentType, err := encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -3326,7 +3326,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewResponse, err error) {
+func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
 	body, contentType, err := encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -3354,7 +3354,7 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SubjectAccessReview) (res CreateAuthorizationV1SubjectAccessReviewResponse, err error) {
+func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SubjectAccessReview) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
 	body, contentType, err := encodeCreateAuthorizationV1SubjectAccessReviewRequest(req)
 	if err != nil {
 		return res, err
@@ -3382,7 +3382,7 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupResponse, err error) {
+func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/"
 
@@ -3403,7 +3403,7 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 	return result, nil
 }
 
-func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesResponse, err error) {
+func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/"
 
@@ -3424,7 +3424,7 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 	return result, nil
 }
 
-func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
+func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/horizontalpodautoscalers"
 
@@ -3445,7 +3445,7 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 	return result, nil
 }
 
-func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
 
@@ -3466,7 +3466,7 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 	return result, nil
 }
 
-func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesResponse, err error) {
+func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/"
 
@@ -3487,7 +3487,7 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 	return result, nil
 }
 
-func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
+func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
 
@@ -3508,7 +3508,7 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 	return result, nil
 }
 
-func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
 
@@ -3529,7 +3529,7 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 	return result, nil
 }
 
-func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesResponse, err error) {
+func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/"
 
@@ -3550,7 +3550,7 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 	return result, nil
 }
 
-func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
+func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
 
@@ -3571,7 +3571,7 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 	return result, nil
 }
 
-func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
+func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
 
@@ -3592,7 +3592,7 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 	return result, nil
 }
 
-func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupResponse, err error) {
+func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/"
 
@@ -3613,7 +3613,7 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupResp
 	return result, nil
 }
 
-func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesResponse, err error) {
+func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/"
 
@@ -3634,7 +3634,7 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 	return result, nil
 }
 
-func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1CronJobForAllNamespacesResponse, err error) {
+func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/cronjobs"
 
@@ -3655,7 +3655,7 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 	return result, nil
 }
 
-func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBatchV1JobForAllNamespacesResponse, err error) {
+func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/jobs"
 
@@ -3676,7 +3676,7 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 	return result, nil
 }
 
-func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1CronJobListForAllNamespacesResponse, err error) {
+func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/cronjobs"
 
@@ -3697,7 +3697,7 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
-func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res WatchBatchV1JobListForAllNamespacesResponse, err error) {
+func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/jobs"
 
@@ -3718,7 +3718,7 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 	return result, nil
 }
 
-func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesResponse, err error) {
+func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/"
 
@@ -3739,7 +3739,7 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 	return result, nil
 }
 
-func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1beta1CronJobForAllNamespacesResponse, err error) {
+func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/cronjobs"
 
@@ -3760,7 +3760,7 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
-func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1beta1CronJobListForAllNamespacesResponse, err error) {
+func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/watch/cronjobs"
 
@@ -3781,7 +3781,7 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupResponse, err error) {
+func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/"
 
@@ -3802,7 +3802,7 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 	return result, nil
 }
 
-func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesResponse, err error) {
+func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/"
 
@@ -3823,7 +3823,7 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 	return result, nil
 }
 
-func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestResponse, err error) {
+func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
@@ -3937,7 +3937,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, req IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestResponse, err error) {
+func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, req IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
 	body, contentType, err := encodeCreateCertificatesV1CertificateSigningRequestRequest(req)
 	if err != nil {
 		return res, err
@@ -3988,7 +3988,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestResponse, err error) {
+func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
 	body, contentType, err := encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req)
 	if err != nil {
 		return res, err
@@ -4129,7 +4129,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 	return result, nil
 }
 
-func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context) (res WatchCertificatesV1CertificateSigningRequestListResponse, err error) {
+func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
 
@@ -4150,7 +4150,7 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupResponse, err error) {
+func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/"
 
@@ -4171,7 +4171,7 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 	return result, nil
 }
 
-func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesResponse, err error) {
+func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/"
 
@@ -4192,7 +4192,7 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 	return result, nil
 }
 
-func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (res ListCoordinationV1LeaseForAllNamespacesResponse, err error) {
+func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/leases"
 
@@ -4213,7 +4213,7 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
-func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context) (res WatchCoordinationV1LeaseListForAllNamespacesResponse, err error) {
+func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/watch/leases"
 
@@ -4234,7 +4234,7 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupResponse, err error) {
+func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/"
 
@@ -4255,7 +4255,7 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 	return result, nil
 }
 
-func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesResponse, err error) {
+func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/"
 
@@ -4276,7 +4276,7 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 	return result, nil
 }
 
-func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1EndpointSliceForAllNamespacesResponse, err error) {
+func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/endpointslices"
 
@@ -4297,7 +4297,7 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesResponse, err error) {
+func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
 
@@ -4318,7 +4318,7 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 	return result, nil
 }
 
-func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesResponse, err error) {
+func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/"
 
@@ -4339,7 +4339,7 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 	return result, nil
 }
 
-func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse, err error) {
+func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
 
@@ -4360,7 +4360,7 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 	return result, nil
 }
 
-func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse, err error) {
+func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
 
@@ -4381,7 +4381,7 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 	return result, nil
 }
 
-func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupResponse, err error) {
+func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/"
 
@@ -4402,7 +4402,7 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 	return result, nil
 }
 
-func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesResponse, err error) {
+func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/"
 
@@ -4423,7 +4423,7 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 	return result, nil
 }
 
-func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res ListEventsV1EventForAllNamespacesResponse, err error) {
+func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/events"
 
@@ -4444,7 +4444,7 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 	return result, nil
 }
 
-func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1EventListForAllNamespacesResponse, err error) {
+func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/watch/events"
 
@@ -4465,7 +4465,7 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 	return result, nil
 }
 
-func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesResponse, err error) {
+func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/"
 
@@ -4486,7 +4486,7 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 	return result, nil
 }
 
-func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (res ListEventsV1beta1EventForAllNamespacesResponse, err error) {
+func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/events"
 
@@ -4507,7 +4507,7 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 	return result, nil
 }
 
-func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1beta1EventListForAllNamespacesResponse, err error) {
+func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/events"
 
@@ -4528,7 +4528,7 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupResponse, err error) {
+func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/"
 
@@ -4549,7 +4549,7 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 	return result, nil
 }
 
-func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesResponse, err error) {
+func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
 
@@ -4570,7 +4570,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 	return result, nil
 }
 
-func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaResponse, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
@@ -4684,7 +4684,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaResponse, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req)
 	if err != nil {
 		return res, err
@@ -4735,7 +4735,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
 	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req)
 	if err != nil {
 		return res, err
@@ -4876,7 +4876,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 	return result, nil
 }
 
-func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
@@ -4990,7 +4990,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -5041,7 +5041,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
 	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -5182,7 +5182,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 	return result, nil
 }
 
-func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListResponse, err error) {
+func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
 
@@ -5203,7 +5203,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse, err error) {
+func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
 
@@ -5224,7 +5224,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 	return result, nil
 }
 
-func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesResponse, err error) {
+func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
 
@@ -5245,7 +5245,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 	return result, nil
 }
 
-func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaResponse, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
@@ -5359,7 +5359,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaResponse, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req)
 	if err != nil {
 		return res, err
@@ -5410,7 +5410,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
 	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req)
 	if err != nil {
 		return res, err
@@ -5551,7 +5551,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 	return result, nil
 }
 
-func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse, err error) {
+func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
@@ -5665,7 +5665,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	return result, nil
 }
 
-func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse, err error) {
+func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -5716,7 +5716,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 	return result, nil
 }
 
-func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse, err error) {
+func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
 	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -5857,7 +5857,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 	return result, nil
 }
 
-func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListResponse, err error) {
+func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
 
@@ -5878,7 +5878,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse, err error) {
+func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
 
@@ -5899,7 +5899,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 	return result, nil
 }
 
-func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupResponse, err error) {
+func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/"
 
@@ -5920,7 +5920,7 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 	return result, nil
 }
 
-func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesResponse, err error) {
+func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/"
 
@@ -5941,7 +5941,7 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 	return result, nil
 }
 
-func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionResponse, err error) {
+func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
@@ -6055,7 +6055,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, req IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionResponse, err error) {
+func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, req IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
 	body, contentType, err := encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req)
 	if err != nil {
 		return res, err
@@ -6106,7 +6106,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionResponse, err error) {
+func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
 	body, contentType, err := encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req)
 	if err != nil {
 		return res, err
@@ -6247,7 +6247,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 	return result, nil
 }
 
-func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context) (res WatchInternalApiserverV1alpha1StorageVersionListResponse, err error) {
+func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
 
@@ -6268,7 +6268,7 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupResponse, err error) {
+func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/"
 
@@ -6289,7 +6289,7 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 	return result, nil
 }
 
-func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesResponse, err error) {
+func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/"
 
@@ -6310,7 +6310,7 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 	return result, nil
 }
 
-func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassResponse, err error) {
+func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
@@ -6424,7 +6424,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	return result, nil
 }
 
-func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassResponse, err error) {
+func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassRes, err error) {
 	body, contentType, err := encodeCreateNetworkingV1IngressClassRequest(req)
 	if err != nil {
 		return res, err
@@ -6475,7 +6475,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 	return result, nil
 }
 
-func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassResponse, err error) {
+func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
 	body, contentType, err := encodeDeleteNetworkingV1CollectionIngressClassRequest(req)
 	if err != nil {
 		return res, err
@@ -6616,7 +6616,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (res ListNetworkingV1IngressForAllNamespacesResponse, err error) {
+func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingresses"
 
@@ -6637,7 +6637,7 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 	return result, nil
 }
 
-func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context) (res ListNetworkingV1NetworkPolicyForAllNamespacesResponse, err error) {
+func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/networkpolicies"
 
@@ -6658,7 +6658,7 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 	return result, nil
 }
 
-func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res WatchNetworkingV1IngressClassListResponse, err error) {
+func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res WatchNetworkingV1IngressClassListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
 
@@ -6679,7 +6679,7 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 	return result, nil
 }
 
-func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1IngressListForAllNamespacesResponse, err error) {
+func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingresses"
 
@@ -6700,7 +6700,7 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 	return result, nil
 }
 
-func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesResponse, err error) {
+func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
 
@@ -6721,7 +6721,7 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 	return result, nil
 }
 
-func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupResponse, err error) {
+func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/"
 
@@ -6742,7 +6742,7 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRespon
 	return result, nil
 }
 
-func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesResponse, err error) {
+func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/"
 
@@ -6763,7 +6763,7 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 	return result, nil
 }
 
-func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassResponse, err error) {
+func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
@@ -6877,7 +6877,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	return result, nil
 }
 
-func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassResponse, err error) {
+func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassRes, err error) {
 	body, contentType, err := encodeCreateNodeV1RuntimeClassRequest(req)
 	if err != nil {
 		return res, err
@@ -6928,7 +6928,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 	return result, nil
 }
 
-func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassResponse, err error) {
+func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
 	body, contentType, err := encodeDeleteNodeV1CollectionRuntimeClassRequest(req)
 	if err != nil {
 		return res, err
@@ -7069,7 +7069,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req *Io
 	return result, nil
 }
 
-func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNodeV1RuntimeClassListResponse, err error) {
+func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNodeV1RuntimeClassListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
 
@@ -7090,7 +7090,7 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 	return result, nil
 }
 
-func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesResponse, err error) {
+func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/"
 
@@ -7111,7 +7111,7 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 	return result, nil
 }
 
-func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassResponse, err error) {
+func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
@@ -7225,7 +7225,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	return result, nil
 }
 
-func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassResponse, err error) {
+func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
 	body, contentType, err := encodeCreateNodeV1alpha1RuntimeClassRequest(req)
 	if err != nil {
 		return res, err
@@ -7276,7 +7276,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 	return result, nil
 }
 
-func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassResponse, err error) {
+func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
 	body, contentType, err := encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req)
 	if err != nil {
 		return res, err
@@ -7417,7 +7417,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 	return result, nil
 }
 
-func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res WatchNodeV1alpha1RuntimeClassListResponse, err error) {
+func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
 
@@ -7438,7 +7438,7 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 	return result, nil
 }
 
-func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesResponse, err error) {
+func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/"
 
@@ -7459,7 +7459,7 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 	return result, nil
 }
 
-func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassResponse, err error) {
+func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
@@ -7573,7 +7573,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 	return result, nil
 }
 
-func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassResponse, err error) {
+func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassRes, err error) {
 	body, contentType, err := encodeCreateNodeV1beta1RuntimeClassRequest(req)
 	if err != nil {
 		return res, err
@@ -7624,7 +7624,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 	return result, nil
 }
 
-func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassResponse, err error) {
+func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
 	body, contentType, err := encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req)
 	if err != nil {
 		return res, err
@@ -7765,7 +7765,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 	return result, nil
 }
 
-func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res WatchNodeV1beta1RuntimeClassListResponse, err error) {
+func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
 
@@ -7786,7 +7786,7 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 	return result, nil
 }
 
-func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupResponse, err error) {
+func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/"
 
@@ -7807,7 +7807,7 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 	return result, nil
 }
 
-func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesResponse, err error) {
+func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/"
 
@@ -7828,7 +7828,7 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 	return result, nil
 }
 
-func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesResponse, err error) {
+func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/poddisruptionbudgets"
 
@@ -7849,7 +7849,7 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 	return result, nil
 }
 
-func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse, err error) {
+func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/watch/poddisruptionbudgets"
 
@@ -7870,7 +7870,7 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 	return result, nil
 }
 
-func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesResponse, err error) {
+func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/"
 
@@ -7891,7 +7891,7 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 	return result, nil
 }
 
-func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse, err error) {
+func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/poddisruptionbudgets"
 
@@ -7912,7 +7912,7 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 	return result, nil
 }
 
-func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyResponse, err error) {
+func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
@@ -8026,7 +8026,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyResponse, err error) {
+func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
 	body, contentType, err := encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req)
 	if err != nil {
 		return res, err
@@ -8077,7 +8077,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 	return result, nil
 }
 
-func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyResponse, err error) {
+func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
 	body, contentType, err := encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req)
 	if err != nil {
 		return res, err
@@ -8218,7 +8218,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse, err error) {
+func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
 
@@ -8239,7 +8239,7 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 	return result, nil
 }
 
-func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (res WatchPolicyV1beta1PodSecurityPolicyListResponse, err error) {
+func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
 
@@ -8260,7 +8260,7 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 	return result, nil
 }
 
-func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupResponse, err error) {
+func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/"
 
@@ -8281,7 +8281,7 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 	return result, nil
 }
 
-func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesResponse, err error) {
+func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/"
 
@@ -8302,7 +8302,7 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 	return result, nil
 }
 
-func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingResponse, err error) {
+func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
@@ -8416,7 +8416,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, req IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingResponse, err error) {
+func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, req IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	body, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req)
 	if err != nil {
 		return res, err
@@ -8467,7 +8467,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse, err error) {
+func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
 	body, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req)
 	if err != nil {
 		return res, err
@@ -8608,7 +8608,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 	return result, nil
 }
 
-func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleResponse, err error) {
+func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
@@ -8722,7 +8722,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	return result, nil
 }
 
-func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleResponse, err error) {
+func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
 	body, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleRequest(req)
 	if err != nil {
 		return res, err
@@ -8773,7 +8773,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 	return result, nil
 }
 
-func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleResponse, err error) {
+func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
 	body, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req)
 	if err != nil {
 		return res, err
@@ -8914,7 +8914,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesResponse, err error) {
+func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
 
@@ -8935,7 +8935,7 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 	return result, nil
 }
 
-func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleForAllNamespacesResponse, err error) {
+func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/roles"
 
@@ -8956,7 +8956,7 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 	return result, nil
 }
 
-func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleBindingListResponse, err error) {
+func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
 
@@ -8977,7 +8977,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 	return result, nil
 }
 
-func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleListResponse, err error) {
+func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
 
@@ -8998,7 +8998,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 	return result, nil
 }
 
-func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse, err error) {
+func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
 
@@ -9019,7 +9019,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 	return result, nil
 }
 
-func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleListForAllNamespacesResponse, err error) {
+func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
 
@@ -9040,7 +9040,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 	return result, nil
 }
 
-func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupResponse, err error) {
+func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/"
 
@@ -9061,7 +9061,7 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 	return result, nil
 }
 
-func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesResponse, err error) {
+func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/"
 
@@ -9082,7 +9082,7 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 	return result, nil
 }
 
-func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassResponse, err error) {
+func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
@@ -9196,7 +9196,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 	return result, nil
 }
 
-func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassResponse, err error) {
+func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassRes, err error) {
 	body, contentType, err := encodeCreateSchedulingV1PriorityClassRequest(req)
 	if err != nil {
 		return res, err
@@ -9247,7 +9247,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 	return result, nil
 }
 
-func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassResponse, err error) {
+func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
 	body, contentType, err := encodeDeleteSchedulingV1CollectionPriorityClassRequest(req)
 	if err != nil {
 		return res, err
@@ -9388,7 +9388,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res WatchSchedulingV1PriorityClassListResponse, err error) {
+func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
 
@@ -9409,7 +9409,7 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 	return result, nil
 }
 
-func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupResponse, err error) {
+func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/"
 
@@ -9430,7 +9430,7 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 	return result, nil
 }
 
-func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesResponse, err error) {
+func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/"
 
@@ -9451,7 +9451,7 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 	return result, nil
 }
 
-func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverResponse, err error) {
+func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
@@ -9565,7 +9565,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverResponse, err error) {
+func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverRes, err error) {
 	body, contentType, err := encodeCreateStorageV1CSIDriverRequest(req)
 	if err != nil {
 		return res, err
@@ -9616,7 +9616,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverResponse, err error) {
+func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
 	body, contentType, err := encodeDeleteStorageV1CollectionCSIDriverRequest(req)
 	if err != nil {
 		return res, err
@@ -9757,7 +9757,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req *Io
 	return result, nil
 }
 
-func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeResponse, err error) {
+func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
@@ -9871,7 +9871,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeResponse, err error) {
+func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
 	body, contentType, err := encodeCreateStorageV1CSINodeRequest(req)
 	if err != nil {
 		return res, err
@@ -9922,7 +9922,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeResponse, err error) {
+func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeRes, err error) {
 	body, contentType, err := encodeDeleteStorageV1CollectionCSINodeRequest(req)
 	if err != nil {
 		return res, err
@@ -10063,7 +10063,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req *IoK8
 	return result, nil
 }
 
-func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassResponse, err error) {
+func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
@@ -10177,7 +10177,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassResponse, err error) {
+func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
 	body, contentType, err := encodeCreateStorageV1StorageClassRequest(req)
 	if err != nil {
 		return res, err
@@ -10228,7 +10228,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassResponse, err error) {
+func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassRes, err error) {
 	body, contentType, err := encodeDeleteStorageV1CollectionStorageClassRequest(req)
 	if err != nil {
 		return res, err
@@ -10369,7 +10369,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 	return result, nil
 }
 
-func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentResponse, err error) {
+func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
@@ -10483,7 +10483,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	return result, nil
 }
 
-func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentResponse, err error) {
+func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
 	body, contentType, err := encodeCreateStorageV1VolumeAttachmentRequest(req)
 	if err != nil {
 		return res, err
@@ -10534,7 +10534,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 	return result, nil
 }
 
-func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentResponse, err error) {
+func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
 	body, contentType, err := encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req)
 	if err != nil {
 		return res, err
@@ -10675,7 +10675,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 	return result, nil
 }
 
-func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStorageV1CSIDriverListResponse, err error) {
+func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStorageV1CSIDriverListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers"
 
@@ -10696,7 +10696,7 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 	return result, nil
 }
 
-func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorageV1CSINodeListResponse, err error) {
+func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorageV1CSINodeListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes"
 
@@ -10717,7 +10717,7 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 	return result, nil
 }
 
-func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchStorageV1StorageClassListResponse, err error) {
+func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchStorageV1StorageClassListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses"
 
@@ -10738,7 +10738,7 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 	return result, nil
 }
 
-func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res WatchStorageV1VolumeAttachmentListResponse, err error) {
+func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
 
@@ -10759,7 +10759,7 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 	return result, nil
 }
 
-func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesResponse, err error) {
+func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/"
 
@@ -10780,7 +10780,7 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 	return result, nil
 }
 
-func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse, err error) {
+func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
 
@@ -10801,7 +10801,7 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 	return result, nil
 }
 
-func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse, err error) {
+func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
 
@@ -10822,7 +10822,7 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 	return result, nil
 }
 
-func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesResponse, err error) {
+func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/"
 
@@ -10843,7 +10843,7 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 	return result, nil
 }
 
-func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse, err error) {
+func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
 
@@ -10864,7 +10864,7 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 	return result, nil
 }
 
-func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse, err error) {
+func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
 
@@ -10906,7 +10906,7 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 	return result, nil
 }
 
-func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionResponse, err error) {
+func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/version/"
 

@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersionsResponse, err error) {
+func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersionsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -75,7 +75,7 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersio
 	}
 }
 
-func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIResourcesResponse, err error) {
+func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -100,7 +100,7 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIR
 	}
 }
 
-func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV1ComponentStatusResponse, err error) {
+func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV1ComponentStatusRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -129,7 +129,7 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV
 	}
 }
 
-func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ConfigMapForAllNamespacesResponse, err error) {
+func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -158,7 +158,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EndpointsForAllNamespacesResponse, err error) {
+func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -187,7 +187,7 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EventForAllNamespacesResponse, err error) {
+func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -216,7 +216,7 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res Lis
 	}
 }
 
-func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (res ListCoreV1LimitRangeForAllNamespacesResponse, err error) {
+func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -245,7 +245,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1NamespaceResponse, err error) {
+func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1NamespaceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -274,7 +274,7 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1Names
 	}
 }
 
-func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1NamespaceResponse, err error) {
+func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1NamespaceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -331,7 +331,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1N
 	}
 }
 
-func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeResponse, err error) {
+func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -360,7 +360,7 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRespon
 	}
 }
 
-func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeResponse, err error) {
+func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -417,7 +417,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeRe
 	}
 }
 
-func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response) (res DeleteCoreV1CollectionNodeResponse, err error) {
+func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response) (res DeleteCoreV1CollectionNodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -442,7 +442,7 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response) (res DeleteCo
 	}
 }
 
-func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PersistentVolumeClaimForAllNamespacesResponse, err error) {
+func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -471,7 +471,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 	}
 }
 
-func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCoreV1PersistentVolumeResponse, err error) {
+func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCoreV1PersistentVolumeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -500,7 +500,7 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCore
 	}
 }
 
-func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res CreateCoreV1PersistentVolumeResponse, err error) {
+func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res CreateCoreV1PersistentVolumeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -557,7 +557,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res Create
 	}
 }
 
-func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response) (res DeleteCoreV1CollectionPersistentVolumeResponse, err error) {
+func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -582,7 +582,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response) (
 	}
 }
 
-func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodForAllNamespacesResponse, err error) {
+func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -611,7 +611,7 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListC
 	}
 }
 
-func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodTemplateForAllNamespacesResponse, err error) {
+func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -640,7 +640,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (r
 	}
 }
 
-func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ReplicationControllerForAllNamespacesResponse, err error) {
+func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -669,7 +669,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 	}
 }
 
-func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ResourceQuotaForAllNamespacesResponse, err error) {
+func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -698,7 +698,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res ListCoreV1SecretForAllNamespacesResponse, err error) {
+func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -727,7 +727,7 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res Li
 	}
 }
 
-func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceAccountForAllNamespacesResponse, err error) {
+func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -756,7 +756,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceForAllNamespacesResponse, err error) {
+func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -785,7 +785,7 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res L
 	}
 }
 
-func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ConfigMapListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -814,7 +814,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EndpointsListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -843,7 +843,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EventListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -872,7 +872,7 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1LimitRangeListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -901,7 +901,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 	}
 }
 
-func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV1NamespaceListResponse, err error) {
+func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV1NamespaceListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -930,7 +930,7 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV
 	}
 }
 
-func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1NodeListResponse, err error) {
+func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1NodeListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -959,7 +959,7 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1Node
 	}
 }
 
-func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -988,7 +988,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeListResponse, err error) {
+func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1017,7 +1017,7 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res Wat
 	}
 }
 
-func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1046,7 +1046,7 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodTemplateListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1075,7 +1075,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 	}
 }
 
-func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ReplicationControllerListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1104,7 +1104,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ResourceQuotaListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1133,7 +1133,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1SecretListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1162,7 +1162,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (r
 	}
 }
 
-func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceAccountListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1191,7 +1191,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 	}
 }
 
-func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceListForAllNamespacesResponse, err error) {
+func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1220,7 +1220,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 	}
 }
 
-func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsResponse, err error) {
+func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1245,7 +1245,7 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRespon
 	}
 }
 
-func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res GetAdmissionregistrationAPIGroupResponse, err error) {
+func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1270,7 +1270,7 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res Ge
 	}
 }
 
-func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (res GetAdmissionregistrationV1APIResourcesResponse, err error) {
+func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1295,7 +1295,7 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 	}
 }
 
-func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1MutatingWebhookConfigurationResponse, err error) {
+func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1324,7 +1324,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 	}
 }
 
-func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationResponse, err error) {
+func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1381,7 +1381,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	}
 }
 
-func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(resp *http.Response) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse, err error) {
+func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(resp *http.Response) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1406,7 +1406,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	}
 }
 
-func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationResponse, err error) {
+func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1435,7 +1435,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	}
 }
 
-func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse, err error) {
+func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1492,7 +1492,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	}
 }
 
-func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(resp *http.Response) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse, err error) {
+func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(resp *http.Response) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1517,7 +1517,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	}
 }
 
-func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse, err error) {
+func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1546,7 +1546,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	}
 }
 
-func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse, err error) {
+func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1575,7 +1575,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	}
 }
 
-func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiextensionsAPIGroupResponse, err error) {
+func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiextensionsAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1600,7 +1600,7 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiexte
 	}
 }
 
-func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetApiextensionsV1APIResourcesResponse, err error) {
+func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetApiextensionsV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1625,7 +1625,7 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetA
 	}
 }
 
-func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res ListApiextensionsV1CustomResourceDefinitionResponse, err error) {
+func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1654,7 +1654,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res CreateApiextensionsV1CustomResourceDefinitionResponse, err error) {
+func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1711,7 +1711,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	}
 }
 
-func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp *http.Response) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionResponse, err error) {
+func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp *http.Response) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1736,7 +1736,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 	}
 }
 
-func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.Response) (res WatchApiextensionsV1CustomResourceDefinitionListResponse, err error) {
+func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.Response) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1765,7 +1765,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 	}
 }
 
-func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApiregistrationAPIGroupResponse, err error) {
+func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApiregistrationAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1790,7 +1790,7 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApire
 	}
 }
 
-func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res GetApiregistrationV1APIResourcesResponse, err error) {
+func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res GetApiregistrationV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1815,7 +1815,7 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res Ge
 	}
 }
 
-func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res ListApiregistrationV1APIServiceResponse, err error) {
+func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res ListApiregistrationV1APIServiceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1844,7 +1844,7 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res Lis
 	}
 }
 
-func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res CreateApiregistrationV1APIServiceResponse, err error) {
+func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res CreateApiregistrationV1APIServiceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1901,7 +1901,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res C
 	}
 }
 
-func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Response) (res DeleteApiregistrationV1CollectionAPIServiceResponse, err error) {
+func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Response) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1926,7 +1926,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 	}
 }
 
-func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (res WatchApiregistrationV1APIServiceListResponse, err error) {
+func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1955,7 +1955,7 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (re
 	}
 }
 
-func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupResponse, err error) {
+func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1980,7 +1980,7 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupResp
 	}
 }
 
-func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIResourcesResponse, err error) {
+func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2005,7 +2005,7 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIR
 	}
 }
 
-func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ControllerRevisionForAllNamespacesResponse, err error) {
+func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2034,7 +2034,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DaemonSetForAllNamespacesResponse, err error) {
+func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2063,7 +2063,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DeploymentForAllNamespacesResponse, err error) {
+func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2092,7 +2092,7 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ReplicaSetForAllNamespacesResponse, err error) {
+func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2121,7 +2121,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1StatefulSetForAllNamespacesResponse, err error) {
+func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2150,7 +2150,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (r
 	}
 }
 
-func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ControllerRevisionListForAllNamespacesResponse, err error) {
+func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2179,7 +2179,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 	}
 }
 
-func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DaemonSetListForAllNamespacesResponse, err error) {
+func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2208,7 +2208,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DeploymentListForAllNamespacesResponse, err error) {
+func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2237,7 +2237,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 	}
 }
 
-func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ReplicaSetListForAllNamespacesResponse, err error) {
+func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2266,7 +2266,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 	}
 }
 
-func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1StatefulSetListForAllNamespacesResponse, err error) {
+func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2295,7 +2295,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 	}
 }
 
-func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthenticationAPIGroupResponse, err error) {
+func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthenticationAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2320,7 +2320,7 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthen
 	}
 }
 
-func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res GetAuthenticationV1APIResourcesResponse, err error) {
+func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res GetAuthenticationV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2345,7 +2345,7 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res Get
 	}
 }
 
-func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res CreateAuthenticationV1TokenReviewResponse, err error) {
+func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res CreateAuthenticationV1TokenReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2402,7 +2402,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res C
 	}
 }
 
-func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthorizationAPIGroupResponse, err error) {
+func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthorizationAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2427,7 +2427,7 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthori
 	}
 }
 
-func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetAuthorizationV1APIResourcesResponse, err error) {
+func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetAuthorizationV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2452,7 +2452,7 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetA
 	}
 }
 
-func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Response) (res CreateAuthorizationV1SelfSubjectAccessReviewResponse, err error) {
+func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Response) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2509,7 +2509,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	}
 }
 
-func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Response) (res CreateAuthorizationV1SelfSubjectRulesReviewResponse, err error) {
+func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Response) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2566,7 +2566,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response) (res CreateAuthorizationV1SubjectAccessReviewResponse, err error) {
+func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2623,7 +2623,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	}
 }
 
-func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscalingAPIGroupResponse, err error) {
+func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscalingAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2648,7 +2648,7 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscali
 	}
 }
 
-func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV1APIResourcesResponse, err error) {
+func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2673,7 +2673,7 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAut
 	}
 }
 
-func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
+func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2702,7 +2702,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	}
 }
 
-func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
+func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2731,7 +2731,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	}
 }
 
-func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta1APIResourcesResponse, err error) {
+func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2756,7 +2756,7 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res G
 	}
 }
 
-func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
+func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2785,7 +2785,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	}
 }
 
-func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
+func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2814,7 +2814,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	}
 }
 
-func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta2APIResourcesResponse, err error) {
+func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2839,7 +2839,7 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res G
 	}
 }
 
-func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
+func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2868,7 +2868,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	}
 }
 
-func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
+func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2897,7 +2897,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	}
 }
 
-func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupResponse, err error) {
+func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2922,7 +2922,7 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRe
 	}
 }
 
-func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1APIResourcesResponse, err error) {
+func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2947,7 +2947,7 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1AP
 	}
 }
 
-func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1CronJobForAllNamespacesResponse, err error) {
+func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2976,7 +2976,7 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1JobForAllNamespacesResponse, err error) {
+func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3005,7 +3005,7 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res List
 	}
 }
 
-func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1CronJobListForAllNamespacesResponse, err error) {
+func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3034,7 +3034,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1JobListForAllNamespacesResponse, err error) {
+func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3063,7 +3063,7 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatchV1beta1APIResourcesResponse, err error) {
+func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatchV1beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3088,7 +3088,7 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatc
 	}
 }
 
-func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1beta1CronJobForAllNamespacesResponse, err error) {
+func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3117,7 +3117,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1beta1CronJobListForAllNamespacesResponse, err error) {
+func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3146,7 +3146,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertificatesAPIGroupResponse, err error) {
+func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertificatesAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3171,7 +3171,7 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertific
 	}
 }
 
-func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCertificatesV1APIResourcesResponse, err error) {
+func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCertificatesV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3196,7 +3196,7 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCe
 	}
 }
 
-func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res ListCertificatesV1CertificateSigningRequestResponse, err error) {
+func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3225,7 +3225,7 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res CreateCertificatesV1CertificateSigningRequestResponse, err error) {
+func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3282,7 +3282,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	}
 }
 
-func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp *http.Response) (res DeleteCertificatesV1CollectionCertificateSigningRequestResponse, err error) {
+func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp *http.Response) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3307,7 +3307,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 	}
 }
 
-func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.Response) (res WatchCertificatesV1CertificateSigningRequestListResponse, err error) {
+func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.Response) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3336,7 +3336,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 	}
 }
 
-func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordinationAPIGroupResponse, err error) {
+func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordinationAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3361,7 +3361,7 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordina
 	}
 }
 
-func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCoordinationV1APIResourcesResponse, err error) {
+func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCoordinationV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3386,7 +3386,7 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCo
 	}
 }
 
-func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) (res ListCoordinationV1LeaseForAllNamespacesResponse, err error) {
+func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3415,7 +3415,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Response) (res WatchCoordinationV1LeaseListForAllNamespacesResponse, err error) {
+func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Response) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3444,7 +3444,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAPIGroupResponse, err error) {
+func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3469,7 +3469,7 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAP
 	}
 }
 
-func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1APIResourcesResponse, err error) {
+func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3494,7 +3494,7 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDisco
 	}
 }
 
-func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1EndpointSliceForAllNamespacesResponse, err error) {
+func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3523,7 +3523,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesResponse, err error) {
+func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3552,7 +3552,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 	}
 }
 
-func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1beta1APIResourcesResponse, err error) {
+func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3577,7 +3577,7 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res Get
 	}
 }
 
-func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse, err error) {
+func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3606,7 +3606,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 	}
 }
 
-func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse, err error) {
+func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3635,7 +3635,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 	}
 }
 
-func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroupResponse, err error) {
+func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3660,7 +3660,7 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroup
 	}
 }
 
-func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1APIResourcesResponse, err error) {
+func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3685,7 +3685,7 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1
 	}
 }
 
-func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1EventForAllNamespacesResponse, err error) {
+func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3714,7 +3714,7 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res L
 	}
 }
 
-func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1EventListForAllNamespacesResponse, err error) {
+func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3743,7 +3743,7 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 	}
 }
 
-func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEventsV1beta1APIResourcesResponse, err error) {
+func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEventsV1beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3768,7 +3768,7 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEve
 	}
 }
 
-func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1beta1EventForAllNamespacesResponse, err error) {
+func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3797,7 +3797,7 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 	}
 }
 
-func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1beta1EventListForAllNamespacesResponse, err error) {
+func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3826,7 +3826,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 	}
 }
 
-func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res GetFlowcontrolApiserverAPIGroupResponse, err error) {
+func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3851,7 +3851,7 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res Get
 	}
 }
 
-func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta1APIResourcesResponse, err error) {
+func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3876,7 +3876,7 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1FlowSchemaResponse, err error) {
+func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3905,7 +3905,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta1FlowSchemaResponse, err error) {
+func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3962,7 +3962,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3987,7 +3987,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse, err error) {
+func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4016,7 +4016,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse, err error) {
+func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4073,7 +4073,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4098,7 +4098,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListResponse, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4127,7 +4127,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4156,7 +4156,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	}
 }
 
-func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta2APIResourcesResponse, err error) {
+func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4181,7 +4181,7 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2FlowSchemaResponse, err error) {
+func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4210,7 +4210,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta2FlowSchemaResponse, err error) {
+func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4267,7 +4267,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4292,7 +4292,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse, err error) {
+func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4321,7 +4321,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse, err error) {
+func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4378,7 +4378,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4403,7 +4403,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListResponse, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4432,7 +4432,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4461,7 +4461,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	}
 }
 
-func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInternalApiserverAPIGroupResponse, err error) {
+func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInternalApiserverAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4486,7 +4486,7 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInt
 	}
 }
 
-func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response) (res GetInternalApiserverV1alpha1APIResourcesResponse, err error) {
+func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4511,7 +4511,7 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 	}
 }
 
-func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res ListInternalApiserverV1alpha1StorageVersionResponse, err error) {
+func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4540,7 +4540,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res CreateInternalApiserverV1alpha1StorageVersionResponse, err error) {
+func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4597,7 +4597,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	}
 }
 
-func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp *http.Response) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionResponse, err error) {
+func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp *http.Response) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4622,7 +4622,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 	}
 }
 
-func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.Response) (res WatchInternalApiserverV1alpha1StorageVersionListResponse, err error) {
+func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.Response) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4651,7 +4651,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 	}
 }
 
-func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworkingAPIGroupResponse, err error) {
+func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworkingAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4676,7 +4676,7 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworking
 	}
 }
 
-func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetworkingV1APIResourcesResponse, err error) {
+func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetworkingV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4701,7 +4701,7 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetw
 	}
 }
 
-func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNetworkingV1IngressClassResponse, err error) {
+func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNetworkingV1IngressClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4730,7 +4730,7 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNe
 	}
 }
 
-func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res CreateNetworkingV1IngressClassResponse, err error) {
+func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res CreateNetworkingV1IngressClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4787,7 +4787,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res Crea
 	}
 }
 
-func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response) (res DeleteNetworkingV1CollectionIngressClassResponse, err error) {
+func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4812,7 +4812,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response)
 	}
 }
 
-func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1IngressForAllNamespacesResponse, err error) {
+func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4841,7 +4841,7 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1NetworkPolicyForAllNamespacesResponse, err error) {
+func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4870,7 +4870,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 	}
 }
 
-func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res WatchNetworkingV1IngressClassListResponse, err error) {
+func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res WatchNetworkingV1IngressClassListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4899,7 +4899,7 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res W
 	}
 }
 
-func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1IngressListForAllNamespacesResponse, err error) {
+func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4928,7 +4928,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesResponse, err error) {
+func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4957,7 +4957,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 	}
 }
 
-func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupResponse, err error) {
+func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4982,7 +4982,7 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupResp
 	}
 }
 
-func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIResourcesResponse, err error) {
+func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5007,7 +5007,7 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIR
 	}
 }
 
-func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1RuntimeClassResponse, err error) {
+func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1RuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5036,7 +5036,7 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1Ru
 	}
 }
 
-func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1RuntimeClassResponse, err error) {
+func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1RuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5093,7 +5093,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNode
 	}
 }
 
-func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1CollectionRuntimeClassResponse, err error) {
+func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5118,7 +5118,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1RuntimeClassListResponse, err error) {
+func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1RuntimeClassListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5147,7 +5147,7 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNo
 	}
 }
 
-func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNodeV1alpha1APIResourcesResponse, err error) {
+func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5172,7 +5172,7 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNode
 	}
 }
 
-func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNodeV1alpha1RuntimeClassResponse, err error) {
+func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5201,7 +5201,7 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNo
 	}
 }
 
-func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1alpha1RuntimeClassResponse, err error) {
+func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5258,7 +5258,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Crea
 	}
 }
 
-func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1alpha1CollectionRuntimeClassResponse, err error) {
+func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5283,7 +5283,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response)
 	}
 }
 
-func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1alpha1RuntimeClassListResponse, err error) {
+func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5312,7 +5312,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res W
 	}
 }
 
-func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV1beta1APIResourcesResponse, err error) {
+func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV1beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5337,7 +5337,7 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV
 	}
 }
 
-func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNodeV1beta1RuntimeClassResponse, err error) {
+func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5366,7 +5366,7 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNod
 	}
 }
 
-func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1beta1RuntimeClassResponse, err error) {
+func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1beta1RuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5423,7 +5423,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res Creat
 	}
 }
 
-func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1beta1CollectionRuntimeClassResponse, err error) {
+func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5448,7 +5448,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1beta1RuntimeClassListResponse, err error) {
+func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5477,7 +5477,7 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res Wa
 	}
 }
 
-func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroupResponse, err error) {
+func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5502,7 +5502,7 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroup
 	}
 }
 
-func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1APIResourcesResponse, err error) {
+func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5527,7 +5527,7 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1
 	}
 }
 
-func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesResponse, err error) {
+func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5556,7 +5556,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 	}
 }
 
-func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse, err error) {
+func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5585,7 +5585,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPolicyV1beta1APIResourcesResponse, err error) {
+func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5610,7 +5610,7 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPol
 	}
 }
 
-func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse, err error) {
+func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5639,7 +5639,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res ListPolicyV1beta1PodSecurityPolicyResponse, err error) {
+func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5668,7 +5668,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res CreatePolicyV1beta1PodSecurityPolicyResponse, err error) {
+func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5725,7 +5725,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (re
 	}
 }
 
-func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Response) (res DeletePolicyV1beta1CollectionPodSecurityPolicyResponse, err error) {
+func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Response) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5750,7 +5750,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 	}
 }
 
-func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse, err error) {
+func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5779,7 +5779,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	}
 }
 
-func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) (res WatchPolicyV1beta1PodSecurityPolicyListResponse, err error) {
+func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5808,7 +5808,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 	}
 }
 
-func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRbacAuthorizationAPIGroupResponse, err error) {
+func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5833,7 +5833,7 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRba
 	}
 }
 
-func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetRbacAuthorizationV1APIResourcesResponse, err error) {
+func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5858,7 +5858,7 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleBindingResponse, err error) {
+func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5887,7 +5887,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 	}
 }
 
-func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res CreateRbacAuthorizationV1ClusterRoleBindingResponse, err error) {
+func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5944,7 +5944,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	}
 }
 
-func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *http.Response) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse, err error) {
+func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *http.Response) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5969,7 +5969,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 	}
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleResponse, err error) {
+func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5998,7 +5998,7 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res CreateRbacAuthorizationV1ClusterRoleResponse, err error) {
+func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6055,7 +6055,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (re
 	}
 }
 
-func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Response) (res DeleteRbacAuthorizationV1CollectionClusterRoleResponse, err error) {
+func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Response) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6080,7 +6080,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 	}
 }
 
-func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesResponse, err error) {
+func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6109,7 +6109,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 	}
 }
 
-func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleForAllNamespacesResponse, err error) {
+func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6138,7 +6138,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 	}
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleBindingListResponse, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6167,7 +6167,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 	}
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleListResponse, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6196,7 +6196,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse, err error) {
+func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6225,7 +6225,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 	}
 }
 
-func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleListForAllNamespacesResponse, err error) {
+func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6254,7 +6254,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 	}
 }
 
-func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetSchedulingAPIGroupResponse, err error) {
+func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetSchedulingAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6279,7 +6279,7 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetScheduling
 	}
 }
 
-func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSchedulingV1APIResourcesResponse, err error) {
+func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSchedulingV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6304,7 +6304,7 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSche
 	}
 }
 
-func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListSchedulingV1PriorityClassResponse, err error) {
+func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListSchedulingV1PriorityClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6333,7 +6333,7 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListS
 	}
 }
 
-func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res CreateSchedulingV1PriorityClassResponse, err error) {
+func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res CreateSchedulingV1PriorityClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6390,7 +6390,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res Cre
 	}
 }
 
-func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response) (res DeleteSchedulingV1CollectionPriorityClassResponse, err error) {
+func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6415,7 +6415,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 	}
 }
 
-func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res WatchSchedulingV1PriorityClassListResponse, err error) {
+func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6444,7 +6444,7 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGroupResponse, err error) {
+func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGroupRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6469,7 +6469,7 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGro
 	}
 }
 
-func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorageV1APIResourcesResponse, err error) {
+func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorageV1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6494,7 +6494,7 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorage
 	}
 }
 
-func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV1CSIDriverResponse, err error) {
+func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV1CSIDriverRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6523,7 +6523,7 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV
 	}
 }
 
-func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStorageV1CSIDriverResponse, err error) {
+func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStorageV1CSIDriverRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6580,7 +6580,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStor
 	}
 }
 
-func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response) (res DeleteStorageV1CollectionCSIDriverResponse, err error) {
+func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6605,7 +6605,7 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1CSINodeResponse, err error) {
+func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1CSINodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6634,7 +6634,7 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1C
 	}
 }
 
-func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorageV1CSINodeResponse, err error) {
+func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorageV1CSINodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6691,7 +6691,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorag
 	}
 }
 
-func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response) (res DeleteStorageV1CollectionCSINodeResponse, err error) {
+func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response) (res DeleteStorageV1CollectionCSINodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6716,7 +6716,7 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response) (res De
 	}
 }
 
-func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStorageV1StorageClassResponse, err error) {
+func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStorageV1StorageClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6745,7 +6745,7 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStora
 	}
 }
 
-func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateStorageV1StorageClassResponse, err error) {
+func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateStorageV1StorageClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6802,7 +6802,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateS
 	}
 }
 
-func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response) (res DeleteStorageV1CollectionStorageClassResponse, err error) {
+func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response) (res DeleteStorageV1CollectionStorageClassRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6827,7 +6827,7 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response) (r
 	}
 }
 
-func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListStorageV1VolumeAttachmentResponse, err error) {
+func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListStorageV1VolumeAttachmentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6856,7 +6856,7 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListS
 	}
 }
 
-func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res CreateStorageV1VolumeAttachmentResponse, err error) {
+func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res CreateStorageV1VolumeAttachmentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6913,7 +6913,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res Cre
 	}
 }
 
-func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response) (res DeleteStorageV1CollectionVolumeAttachmentResponse, err error) {
+func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6938,7 +6938,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 	}
 }
 
-func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchStorageV1CSIDriverListResponse, err error) {
+func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchStorageV1CSIDriverListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6967,7 +6967,7 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchSt
 	}
 }
 
-func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStorageV1CSINodeListResponse, err error) {
+func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStorageV1CSINodeListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6996,7 +6996,7 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStor
 	}
 }
 
-func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res WatchStorageV1StorageClassListResponse, err error) {
+func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res WatchStorageV1StorageClassListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7025,7 +7025,7 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res Watc
 	}
 }
 
-func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res WatchStorageV1VolumeAttachmentListResponse, err error) {
+func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7054,7 +7054,7 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetStorageV1alpha1APIResourcesResponse, err error) {
+func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7079,7 +7079,7 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetS
 	}
 }
 
-func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse, err error) {
+func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7108,7 +7108,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 	}
 }
 
-func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse, err error) {
+func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7137,7 +7137,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	}
 }
 
-func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetStorageV1beta1APIResourcesResponse, err error) {
+func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetStorageV1beta1APIResourcesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7162,7 +7162,7 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetSt
 	}
 }
 
-func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse, err error) {
+func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7191,7 +7191,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse, err error) {
+func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7229,7 +7229,7 @@ func decodeLogFileListHandlerResponse(resp *http.Response) (res LogFileListHandl
 	}
 }
 
-func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionResponse, err error) {
+func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

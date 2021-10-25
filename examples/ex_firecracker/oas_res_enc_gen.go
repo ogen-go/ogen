@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func encodeDescribeInstanceResponse(response DescribeInstanceResponse, w http.ResponseWriter) error {
+func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *InstanceInfo:
 		w.Header().Set("Content-Type", "application/json")
@@ -71,7 +71,7 @@ func encodeDescribeInstanceResponse(response DescribeInstanceResponse, w http.Re
 	}
 }
 
-func encodeCreateSyncActionResponse(response CreateSyncActionResponse, w http.ResponseWriter) error {
+func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CreateSyncActionNoContent:
 		w.WriteHeader(204)
@@ -95,7 +95,7 @@ func encodeCreateSyncActionResponse(response CreateSyncActionResponse, w http.Re
 	}
 }
 
-func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigResponse, w http.ResponseWriter) error {
+func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Balloon:
 		w.Header().Set("Content-Type", "application/json")
@@ -123,7 +123,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigResponse,
 	}
 }
 
-func encodePutBalloonResponse(response PutBalloonResponse, w http.ResponseWriter) error {
+func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutBalloonNoContent:
 		w.WriteHeader(204)
@@ -147,7 +147,7 @@ func encodePutBalloonResponse(response PutBalloonResponse, w http.ResponseWriter
 	}
 }
 
-func encodePatchBalloonResponse(response PatchBalloonResponse, w http.ResponseWriter) error {
+func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PatchBalloonNoContent:
 		w.WriteHeader(204)
@@ -171,7 +171,7 @@ func encodePatchBalloonResponse(response PatchBalloonResponse, w http.ResponseWr
 	}
 }
 
-func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsResponse, w http.ResponseWriter) error {
+func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *BalloonStats:
 		w.Header().Set("Content-Type", "application/json")
@@ -199,7 +199,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsResponse, w
 	}
 }
 
-func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalResponse, w http.ResponseWriter) error {
+func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PatchBalloonStatsIntervalNoContent:
 		w.WriteHeader(204)
@@ -223,7 +223,7 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 	}
 }
 
-func encodePutGuestBootSourceResponse(response PutGuestBootSourceResponse, w http.ResponseWriter) error {
+func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutGuestBootSourceNoContent:
 		w.WriteHeader(204)
@@ -247,7 +247,7 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceResponse, w htt
 	}
 }
 
-func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDResponse, w http.ResponseWriter) error {
+func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutGuestDriveByIDNoContent:
 		w.WriteHeader(204)
@@ -271,7 +271,7 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDResponse, w http.
 	}
 }
 
-func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDResponse, w http.ResponseWriter) error {
+func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PatchGuestDriveByIDNoContent:
 		w.WriteHeader(204)
@@ -295,7 +295,7 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDResponse, w h
 	}
 }
 
-func encodePutLoggerResponse(response PutLoggerResponse, w http.ResponseWriter) error {
+func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutLoggerNoContent:
 		w.WriteHeader(204)
@@ -319,7 +319,7 @@ func encodePutLoggerResponse(response PutLoggerResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeGetMachineConfigurationResponse(response GetMachineConfigurationResponse, w http.ResponseWriter) error {
+func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MachineConfiguration:
 		w.Header().Set("Content-Type", "application/json")
@@ -340,7 +340,7 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRespo
 	}
 }
 
-func encodePutMachineConfigurationResponse(response PutMachineConfigurationResponse, w http.ResponseWriter) error {
+func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutMachineConfigurationNoContent:
 		w.WriteHeader(204)
@@ -364,7 +364,7 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRespo
 	}
 }
 
-func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationResponse, w http.ResponseWriter) error {
+func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PatchMachineConfigurationNoContent:
 		w.WriteHeader(204)
@@ -388,7 +388,7 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 	}
 }
 
-func encodePutMetricsResponse(response PutMetricsResponse, w http.ResponseWriter) error {
+func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutMetricsNoContent:
 		w.WriteHeader(204)
@@ -412,7 +412,7 @@ func encodePutMetricsResponse(response PutMetricsResponse, w http.ResponseWriter
 	}
 }
 
-func encodeMmdsGetResponse(response MmdsGetResponse, w http.ResponseWriter) error {
+func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MmdsGetOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -440,7 +440,7 @@ func encodeMmdsGetResponse(response MmdsGetResponse, w http.ResponseWriter) erro
 	}
 }
 
-func encodeMmdsPutResponse(response MmdsPutResponse, w http.ResponseWriter) error {
+func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MmdsPutNoContent:
 		w.WriteHeader(204)
@@ -464,7 +464,7 @@ func encodeMmdsPutResponse(response MmdsPutResponse, w http.ResponseWriter) erro
 	}
 }
 
-func encodeMmdsPatchResponse(response MmdsPatchResponse, w http.ResponseWriter) error {
+func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MmdsPatchNoContent:
 		w.WriteHeader(204)
@@ -488,7 +488,7 @@ func encodeMmdsPatchResponse(response MmdsPatchResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeMmdsConfigPutResponse(response MmdsConfigPutResponse, w http.ResponseWriter) error {
+func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MmdsConfigPutNoContent:
 		w.WriteHeader(204)
@@ -512,7 +512,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutResponse, w http.Response
 	}
 }
 
-func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfaceByIDResponse, w http.ResponseWriter) error {
+func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfaceByIDRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutGuestNetworkInterfaceByIDNoContent:
 		w.WriteHeader(204)
@@ -536,7 +536,7 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 	}
 }
 
-func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInterfaceByIDResponse, w http.ResponseWriter) error {
+func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInterfaceByIDRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PatchGuestNetworkInterfaceByIDNoContent:
 		w.WriteHeader(204)
@@ -560,7 +560,7 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 	}
 }
 
-func encodeCreateSnapshotResponse(response CreateSnapshotResponse, w http.ResponseWriter) error {
+func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CreateSnapshotNoContent:
 		w.WriteHeader(204)
@@ -584,7 +584,7 @@ func encodeCreateSnapshotResponse(response CreateSnapshotResponse, w http.Respon
 	}
 }
 
-func encodeLoadSnapshotResponse(response LoadSnapshotResponse, w http.ResponseWriter) error {
+func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *LoadSnapshotNoContent:
 		w.WriteHeader(204)
@@ -608,7 +608,7 @@ func encodeLoadSnapshotResponse(response LoadSnapshotResponse, w http.ResponseWr
 	}
 }
 
-func encodePatchVmResponse(response PatchVmResponse, w http.ResponseWriter) error {
+func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PatchVmNoContent:
 		w.WriteHeader(204)
@@ -632,7 +632,7 @@ func encodePatchVmResponse(response PatchVmResponse, w http.ResponseWriter) erro
 	}
 }
 
-func encodeGetExportVmConfigResponse(response GetExportVmConfigResponse, w http.ResponseWriter) error {
+func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *FullVmConfiguration:
 		w.Header().Set("Content-Type", "application/json")
@@ -653,7 +653,7 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigResponse, w http.
 	}
 }
 
-func encodePutGuestVsockResponse(response PutGuestVsockResponse, w http.ResponseWriter) error {
+func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PutGuestVsockNoContent:
 		w.WriteHeader(204)

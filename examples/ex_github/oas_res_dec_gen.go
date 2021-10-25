@@ -88,7 +88,7 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res Integration, e
 	}
 }
 
-func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteInstallationResponse, err error) {
+func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &AppsDeleteInstallationNoContent{}, nil
@@ -109,7 +109,7 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteIn
 	}
 }
 
-func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspendInstallationResponse, err error) {
+func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspendInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &AppsSuspendInstallationNoContent{}, nil
@@ -130,7 +130,7 @@ func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspend
 	}
 }
 
-func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsuspendInstallationResponse, err error) {
+func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsuspendInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &AppsUnsuspendInstallationNoContent{}, nil
@@ -151,7 +151,7 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsus
 	}
 }
 
-func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuthAuthorizationsListGrantsResponse, err error) {
+func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuthAuthorizationsListGrantsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -208,7 +208,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 	}
 }
 
-func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAuthorizationsGetGrantResponse, err error) {
+func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAuthorizationsGetGrantRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -253,7 +253,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 	}
 }
 
-func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAuthAuthorizationsDeleteGrantResponse, err error) {
+func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAuthAuthorizationsDeleteGrantRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OAuthAuthorizationsDeleteGrantNoContent{}, nil
@@ -288,7 +288,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 	}
 }
 
-func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugResponse, err error) {
+func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -343,7 +343,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugResponse
 	}
 }
 
-func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (res OAuthAuthorizationsListAuthorizationsResponse, err error) {
+func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -400,7 +400,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 	}
 }
 
-func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsGetAuthorizationResponse, err error) {
+func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -445,7 +445,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 	}
 }
 
-func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsDeleteAuthorizationResponse, err error) {
+func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OAuthAuthorizationsDeleteAuthorizationNoContent{}, nil
@@ -480,7 +480,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 	}
 }
 
-func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res CodesOfConductGetAllCodesOfConductResponse, err error) {
+func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res CodesOfConductGetAllCodesOfConductRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -501,7 +501,7 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesOfConductGetConductCodeResponse, err error) {
+func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesOfConductGetConductCodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -534,7 +534,7 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesO
 	}
 }
 
-func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetResponse, err error) {
+func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1025,7 +1025,7 @@ func decodeActivityGetFeedsResponse(resp *http.Response) (res Feed, err error) {
 	}
 }
 
-func decodeGistsListResponse(resp *http.Response) (res GistsListResponse, err error) {
+func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1058,7 +1058,7 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListResponse, err er
 	}
 }
 
-func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredResponse, err error) {
+func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1103,7 +1103,7 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 	}
 }
 
-func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteResponse, err error) {
+func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &GistsDeleteNoContent{}, nil
@@ -1138,7 +1138,7 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteResponse, er
 	}
 }
 
-func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListCommentsResponse, err error) {
+func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListCommentsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1183,7 +1183,7 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 	}
 }
 
-func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateCommentResponse, err error) {
+func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateCommentRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -1228,7 +1228,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 	}
 }
 
-func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentResponse, err error) {
+func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1273,7 +1273,7 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentResp
 	}
 }
 
-func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteCommentResponse, err error) {
+func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteCommentRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &GistsDeleteCommentNoContent{}, nil
@@ -1308,7 +1308,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 	}
 }
 
-func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateCommentResponse, err error) {
+func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateCommentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1339,7 +1339,7 @@ func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateComme
 	}
 }
 
-func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsResponse, err error) {
+func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1384,7 +1384,7 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 	}
 }
 
-func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsStarredResponse, err error) {
+func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsStarredRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &GistsCheckIsStarredNoContent{}, nil
@@ -1419,7 +1419,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsSta
 	}
 }
 
-func decodeGistsStarResponse(resp *http.Response) (res GistsStarResponse, err error) {
+func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &GistsStarNoContent{}, nil
@@ -1454,7 +1454,7 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarResponse, err er
 	}
 }
 
-func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarResponse, err error) {
+func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &GistsUnstarNoContent{}, nil
@@ -1489,7 +1489,7 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarResponse, er
 	}
 }
 
-func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreGetAllTemplatesResponse, err error) {
+func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreGetAllTemplatesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1510,7 +1510,7 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreG
 	}
 }
 
-func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTemplateResponse, err error) {
+func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTemplateRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1531,7 +1531,7 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTe
 	}
 }
 
-func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (res AppsListReposAccessibleToInstallationResponse, err error) {
+func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (res AppsListReposAccessibleToInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1585,7 +1585,7 @@ func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res A
 	}
 }
 
-func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res LicensesGetAllCommonlyUsedResponse, err error) {
+func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res LicensesGetAllCommonlyUsedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1606,7 +1606,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res Licenses
 	}
 }
 
-func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetResponse, err error) {
+func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1651,7 +1651,7 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetResponse, er
 	}
 }
 
-func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountResponse, err error) {
+func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1694,7 +1694,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 	}
 }
 
-func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansResponse, err error) {
+func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1737,7 +1737,7 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansResponse
 	}
 }
 
-func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountStubbedResponse, err error) {
+func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1770,7 +1770,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response)
 	}
 }
 
-func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansStubbedResponse, err error) {
+func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansStubbedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1801,7 +1801,7 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 	}
 }
 
-func decodeMetaGetResponse(resp *http.Response) (res MetaGetResponse, err error) {
+func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1822,7 +1822,7 @@ func decodeMetaGetResponse(resp *http.Response) (res MetaGetResponse, err error)
 	}
 }
 
-func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkNotificationsAsReadResponse, err error) {
+func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkNotificationsAsReadRes, err error) {
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -1869,7 +1869,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 	}
 }
 
-func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThreadResponse, err error) {
+func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThreadRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1914,7 +1914,7 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 	}
 }
 
-func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMarkThreadAsReadResponse, err error) {
+func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMarkThreadAsReadRes, err error) {
 	switch resp.StatusCode {
 	case 205:
 		return &ActivityMarkThreadAsReadResetContent{}, nil
@@ -1937,7 +1937,7 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMa
 	}
 }
 
-func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.Response) (res ActivityGetThreadSubscriptionForAuthenticatedUserResponse, err error) {
+func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.Response) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -1982,7 +1982,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	}
 }
 
-func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res ActivitySetThreadSubscriptionResponse, err error) {
+func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res ActivitySetThreadSubscriptionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2027,7 +2027,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 	}
 }
 
-func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res ActivityDeleteThreadSubscriptionResponse, err error) {
+func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res ActivityDeleteThreadSubscriptionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityDeleteThreadSubscriptionNoContent{}, nil
@@ -2062,7 +2062,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 	}
 }
 
-func decodeOrgsListResponse(resp *http.Response) (res OrgsListResponse, err error) {
+func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2083,7 +2083,7 @@ func decodeOrgsListResponse(resp *http.Response) (res OrgsListResponse, err erro
 	}
 }
 
-func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetResponse, err error) {
+func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2565,7 +2565,7 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response) (res OrganizationAct
 	}
 }
 
-func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateOrgSecretResponse, err error) {
+func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -2623,7 +2623,7 @@ func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res
 	}
 }
 
-func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res ActionsAddSelectedRepoToOrgSecretResponse, err error) {
+func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ActionsAddSelectedRepoToOrgSecretNoContent{}, nil
@@ -2634,7 +2634,7 @@ func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res A
 	}
 }
 
-func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (res ActionsRemoveSelectedRepoFromOrgSecretResponse, err error) {
+func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ActionsRemoveSelectedRepoFromOrgSecretNoContent{}, nil
@@ -2645,7 +2645,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (
 	}
 }
 
-func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlockedUsersResponse, err error) {
+func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlockedUsersRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2676,7 +2676,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlocke
 	}
 }
 
-func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlockedUserResponse, err error) {
+func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlockedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsCheckBlockedUserNoContent{}, nil
@@ -2736,7 +2736,7 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []Cre
 	}
 }
 
-func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res OrgsRemoveSamlSSOAuthorizationResponse, err error) {
+func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveSamlSSOAuthorizationNoContent{}, nil
@@ -2757,7 +2757,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res Orgs
 	}
 }
 
-func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListFailedInvitationsResponse, err error) {
+func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListFailedInvitationsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2788,7 +2788,7 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 	}
 }
 
-func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksResponse, err error) {
+func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2819,7 +2819,7 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 	}
 }
 
-func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookResponse, err error) {
+func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2850,7 +2850,7 @@ func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRespon
 	}
 }
 
-func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhookResponse, err error) {
+func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhookRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsDeleteWebhookNoContent{}, nil
@@ -2871,7 +2871,7 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhook
 	}
 }
 
-func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookResponse, err error) {
+func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsPingWebhookNoContent{}, nil
@@ -2901,7 +2901,7 @@ func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (re
 	}
 }
 
-func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsListPendingInvitationsResponse, err error) {
+func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsListPendingInvitationsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2932,7 +2932,7 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 	}
 }
 
-func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInvitationTeamsResponse, err error) {
+func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInvitationTeamsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2963,7 +2963,7 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 	}
 }
 
-func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsCheckMembershipForUserResponse, err error) {
+func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsCheckMembershipForUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsCheckMembershipForUserNoContent{}, nil
@@ -2976,7 +2976,7 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsChec
 	}
 }
 
-func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberResponse, err error) {
+func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveMemberNoContent{}, nil
@@ -2997,7 +2997,7 @@ func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRe
 	}
 }
 
-func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMembershipForUserResponse, err error) {
+func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMembershipForUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3040,7 +3040,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 	}
 }
 
-func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRemoveMembershipForUserResponse, err error) {
+func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRemoveMembershipForUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveMembershipForUserNoContent{}, nil
@@ -3073,7 +3073,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 	}
 }
 
-func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res MigrationsDownloadArchiveForOrgResponse, err error) {
+func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res MigrationsDownloadArchiveForOrgRes, err error) {
 	switch resp.StatusCode {
 	case 302:
 		return &MigrationsDownloadArchiveForOrgFound{}, nil
@@ -3094,7 +3094,7 @@ func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res Mig
 	}
 }
 
-func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res MigrationsDeleteArchiveForOrgResponse, err error) {
+func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res MigrationsDeleteArchiveForOrgRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsDeleteArchiveForOrgNoContent{}, nil
@@ -3115,7 +3115,7 @@ func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res Migra
 	}
 }
 
-func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res MigrationsUnlockRepoForOrgResponse, err error) {
+func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res MigrationsUnlockRepoForOrgRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsUnlockRepoForOrgNoContent{}, nil
@@ -3136,7 +3136,7 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res Migratio
 	}
 }
 
-func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res MigrationsListReposForOrgResponse, err error) {
+func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res MigrationsListReposForOrgRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3167,7 +3167,7 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 	}
 }
 
-func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (res OrgsConvertMemberToOutsideCollaboratorResponse, err error) {
+func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -3202,7 +3202,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (
 	}
 }
 
-func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsRemoveOutsideCollaboratorResponse, err error) {
+func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsRemoveOutsideCollaboratorRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveOutsideCollaboratorNoContent{}, nil
@@ -3223,7 +3223,7 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsR
 	}
 }
 
-func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreateForOrgResponse, err error) {
+func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreateForOrgRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -3332,7 +3332,7 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res []SimpleUser,
 	}
 }
 
-func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res OrgsCheckPublicMembershipForUserResponse, err error) {
+func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res OrgsCheckPublicMembershipForUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsCheckPublicMembershipForUserNoContent{}, nil
@@ -3343,7 +3343,7 @@ func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res Or
 	}
 }
 
-func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsSetPublicMembershipForAuthenticatedUserResponse, err error) {
+func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsSetPublicMembershipForAuthenticatedUserNoContent{}, nil
@@ -3449,7 +3449,7 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res GroupMappi
 	}
 }
 
-func decodeTeamsListResponse(resp *http.Response) (res TeamsListResponse, err error) {
+func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3480,7 +3480,7 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListResponse, err er
 	}
 }
 
-func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameResponse, err error) {
+func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3671,7 +3671,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 	}
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionCommentInOrgResponse, err error) {
+func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3711,7 +3711,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) 
 	}
 }
 
-func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionInOrgResponse, err error) {
+func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3781,7 +3781,7 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res []
 	}
 }
 
-func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res TeamsGetMembershipForUserInOrgResponse, err error) {
+func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res TeamsGetMembershipForUserInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3802,7 +3802,7 @@ func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res Team
 	}
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserInOrgResponse, err error) {
+func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3825,7 +3825,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (
 	}
 }
 
-func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response) (res TeamsRemoveMembershipForUserInOrgResponse, err error) {
+func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsRemoveMembershipForUserInOrgNoContent{}, nil
@@ -3866,7 +3866,7 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res []TeamProjec
 	}
 }
 
-func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectInOrgResponse, err error) {
+func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3887,7 +3887,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (re
 	}
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateProjectPermissionsInOrgResponse, err error) {
+func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsAddOrUpdateProjectPermissionsInOrgNoContent{}, nil
@@ -3947,7 +3947,7 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res []MinimalReposi
 	}
 }
 
-func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoInOrgResponse, err error) {
+func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4056,7 +4056,7 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res []Team, err err
 	}
 }
 
-func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardResponse, err error) {
+func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4113,7 +4113,7 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardResp
 	}
 }
 
-func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCardResponse, err error) {
+func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCardRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ProjectsDeleteCardNoContent{}, nil
@@ -4160,7 +4160,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 	}
 }
 
-func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCardResponse, err error) {
+func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCardRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4229,7 +4229,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 	}
 }
 
-func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumnResponse, err error) {
+func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumnRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4286,7 +4286,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 	}
 }
 
-func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDeleteColumnResponse, err error) {
+func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDeleteColumnRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ProjectsDeleteColumnNoContent{}, nil
@@ -4321,7 +4321,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 	}
 }
 
-func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdateColumnResponse, err error) {
+func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdateColumnRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4366,7 +4366,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 	}
 }
 
-func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColumnResponse, err error) {
+func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColumnRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -4423,7 +4423,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 	}
 }
 
-func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetResponse, err error) {
+func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4468,7 +4468,7 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetResponse, er
 	}
 }
 
-func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteResponse, err error) {
+func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ProjectsDeleteNoContent{}, nil
@@ -4527,7 +4527,7 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRespon
 	}
 }
 
-func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateResponse, err error) {
+func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4598,7 +4598,7 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRespon
 	}
 }
 
-func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListColumnsResponse, err error) {
+func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListColumnsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4643,7 +4643,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 	}
 }
 
-func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreateColumnResponse, err error) {
+func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreateColumnRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -4700,7 +4700,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 	}
 }
 
-func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetResponse, err error) {
+func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4733,7 +4733,7 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetResponse, 
 	}
 }
 
-func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDeleteLegacyResponse, err error) {
+func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDeleteLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReactionsDeleteLegacyNoContent{}, nil
@@ -4792,7 +4792,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 	}
 }
 
-func decodeReposGetResponse(resp *http.Response) (res ReposGetResponse, err error) {
+func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -4847,7 +4847,7 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetResponse, err erro
 	}
 }
 
-func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteResponse, err error) {
+func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteNoContent{}, nil
@@ -5205,7 +5205,7 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []Environme
 	}
 }
 
-func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsApproveWorkflowRunResponse, err error) {
+func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsApproveWorkflowRunRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -5418,7 +5418,7 @@ func decodeActionsGetRepoSecretResponse(resp *http.Response) (res ActionsSecret,
 	}
 }
 
-func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateRepoSecretResponse, err error) {
+func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -5467,7 +5467,7 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res ActionsLis
 	}
 }
 
-func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssigneesResponse, err error) {
+func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssigneesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5498,7 +5498,7 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 	}
 }
 
-func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res IssuesCheckUserCanBeAssignedResponse, err error) {
+func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res IssuesCheckUserCanBeAssignedRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesCheckUserCanBeAssignedNoContent{}, nil
@@ -5549,7 +5549,7 @@ func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, err 
 	}
 }
 
-func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkResponse, err error) {
+func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5580,7 +5580,7 @@ func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRe
 	}
 }
 
-func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAutolinkResponse, err error) {
+func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAutolinkRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteAutolinkNoContent{}, nil
@@ -5619,7 +5619,7 @@ func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranchesResponse, err error) {
+func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranchesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5650,7 +5650,7 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 	}
 }
 
-func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchResponse, err error) {
+func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5705,7 +5705,7 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRespon
 	}
 }
 
-func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBranchProtectionResponse, err error) {
+func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBranchProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5736,7 +5736,7 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBr
 	}
 }
 
-func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUpdateBranchProtectionResponse, err error) {
+func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUpdateBranchProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5791,7 +5791,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 	}
 }
 
-func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDeleteBranchProtectionResponse, err error) {
+func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDeleteBranchProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteBranchProtectionNoContent{}, nil
@@ -5850,7 +5850,7 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res Prote
 	}
 }
 
-func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res ReposDeleteAdminBranchProtectionResponse, err error) {
+func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res ReposDeleteAdminBranchProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteAdminBranchProtectionNoContent{}, nil
@@ -5890,7 +5890,7 @@ func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res
 	}
 }
 
-func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (res ReposDeletePullRequestReviewProtectionResponse, err error) {
+func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (res ReposDeletePullRequestReviewProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeletePullRequestReviewProtectionNoContent{}, nil
@@ -5911,7 +5911,7 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (
 	}
 }
 
-func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res ReposGetCommitSignatureProtectionResponse, err error) {
+func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res ReposGetCommitSignatureProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5942,7 +5942,7 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res R
 	}
 }
 
-func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (res ReposCreateCommitSignatureProtectionResponse, err error) {
+func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (res ReposCreateCommitSignatureProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -5973,7 +5973,7 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (re
 	}
 }
 
-func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (res ReposDeleteCommitSignatureProtectionResponse, err error) {
+func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (res ReposDeleteCommitSignatureProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteCommitSignatureProtectionNoContent{}, nil
@@ -5994,7 +5994,7 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (re
 	}
 }
 
-func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res ReposGetStatusChecksProtectionResponse, err error) {
+func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res ReposGetStatusChecksProtectionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6034,7 +6034,7 @@ func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res Re
 	}
 }
 
-func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res ReposGetAllStatusCheckContextsResponse, err error) {
+func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res ReposGetAllStatusCheckContextsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6065,7 +6065,7 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res Repo
 	}
 }
 
-func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGetAccessRestrictionsResponse, err error) {
+func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGetAccessRestrictionsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6105,7 +6105,7 @@ func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res Repos
 	}
 }
 
-func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetAppsWithAccessToProtectedBranchResponse, err error) {
+func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6136,7 +6136,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) 
 	}
 }
 
-func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetTeamsWithAccessToProtectedBranchResponse, err error) {
+func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6167,7 +6167,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response)
 	}
 }
 
-func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetUsersWithAccessToProtectedBranchResponse, err error) {
+func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6247,7 +6247,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res []CheckAnnota
 	}
 }
 
-func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuiteResponse, err error) {
+func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuiteRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6335,7 +6335,7 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRereques
 	}
 }
 
-func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res CodeScanningListAlertInstancesResponse, err error) {
+func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res CodeScanningListAlertInstancesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6390,7 +6390,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 	}
 }
 
-func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res CodeScanningListRecentAnalysesResponse, err error) {
+func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res CodeScanningListRecentAnalysesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6445,7 +6445,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 	}
 }
 
-func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScanningDeleteAnalysisResponse, err error) {
+func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScanningDeleteAnalysisRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6514,7 +6514,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 	}
 }
 
-func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScanningUploadSarifResponse, err error) {
+func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScanningUploadSarifRes, err error) {
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -6573,7 +6573,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 	}
 }
 
-func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGetSarifResponse, err error) {
+func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGetSarifRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6618,7 +6618,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 	}
 }
 
-func decodeReposCheckCollaboratorResponse(resp *http.Response) (res ReposCheckCollaboratorResponse, err error) {
+func decodeReposCheckCollaboratorResponse(resp *http.Response) (res ReposCheckCollaboratorRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposCheckCollaboratorNoContent{}, nil
@@ -6638,7 +6638,7 @@ func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res ReposRemove
 	}
 }
 
-func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res ReposGetCollaboratorPermissionLevelResponse, err error) {
+func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res ReposGetCollaboratorPermissionLevelRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6699,7 +6699,7 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res []Co
 	}
 }
 
-func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommitCommentResponse, err error) {
+func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommitCommentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6730,7 +6730,7 @@ func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommi
 	}
 }
 
-func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDeleteCommitCommentResponse, err error) {
+func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDeleteCommitCommentRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteCommitCommentNoContent{}, nil
@@ -6751,7 +6751,7 @@ func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDelet
 	}
 }
 
-func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdateCommitCommentResponse, err error) {
+func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdateCommitCommentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6791,7 +6791,7 @@ func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res Rea
 	}
 }
 
-func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsResponse, err error) {
+func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6909,7 +6909,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSu
 	}
 }
 
-func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposGetCombinedStatusForRefResponse, err error) {
+func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposGetCombinedStatusForRefRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6940,7 +6940,7 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposG
 	}
 }
 
-func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res ReposListCommitStatusesForRefResponse, err error) {
+func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res ReposListCommitStatusesForRefRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -6990,7 +6990,7 @@ func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res Com
 	}
 }
 
-func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCommitsResponse, err error) {
+func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCommitsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7033,7 +7033,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 	}
 }
 
-func decodeReposListContributorsResponse(resp *http.Response) (res ReposListContributorsResponse, err error) {
+func decodeReposListContributorsResponse(resp *http.Response) (res ReposListContributorsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7078,7 +7078,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 	}
 }
 
-func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDeploymentResponse, err error) {
+func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDeploymentRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteDeploymentNoContent{}, nil
@@ -7111,7 +7111,7 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDe
 	}
 }
 
-func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposListDeploymentStatusesResponse, err error) {
+func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposListDeploymentStatusesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7142,7 +7142,7 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 	}
 }
 
-func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDeploymentStatusResponse, err error) {
+func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDeploymentStatusRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7194,7 +7194,7 @@ func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res ReposDelet
 	}
 }
 
-func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitResponse, err error) {
+func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7255,7 +7255,7 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res []GitRef, err e
 	}
 }
 
-func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefResponse, err error) {
+func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7286,7 +7286,7 @@ func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefResponse, err er
 	}
 }
 
-func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagResponse, err error) {
+func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7317,7 +7317,7 @@ func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagResponse, err er
 	}
 }
 
-func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebhookResponse, err error) {
+func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebhookRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteWebhookNoContent{}, nil
@@ -7338,7 +7338,7 @@ func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebho
 	}
 }
 
-func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookResponse, err error) {
+func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposPingWebhookNoContent{}, nil
@@ -7359,7 +7359,7 @@ func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRe
 	}
 }
 
-func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushWebhookResponse, err error) {
+func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushWebhookRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposTestPushWebhookNoContent{}, nil
@@ -7380,7 +7380,7 @@ func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushW
 	}
 }
 
-func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res MigrationsGetImportStatusResponse, err error) {
+func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res MigrationsGetImportStatusRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7439,7 +7439,7 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response) (res Import, err 
 	}
 }
 
-func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res MigrationsGetCommitAuthorsResponse, err error) {
+func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res MigrationsGetCommitAuthorsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7500,7 +7500,7 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLar
 	}
 }
 
-func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res InteractionsSetRestrictionsForRepoResponse, err error) {
+func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res InteractionsSetRestrictionsForRepoRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7521,7 +7521,7 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForRepoResponse, err error) {
+func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &InteractionsRemoveRestrictionsForRepoNoContent{}, nil
@@ -7590,7 +7590,7 @@ func decodeReposUpdateInvitationResponse(resp *http.Response) (res RepositoryInv
 	}
 }
 
-func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentResponse, err error) {
+func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7639,7 +7639,7 @@ func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res Reac
 	}
 }
 
-func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommentsResponse, err error) {
+func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommentsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7682,7 +7682,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 	}
 }
 
-func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListLabelsOnIssueResponse, err error) {
+func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListLabelsOnIssueRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7713,7 +7713,7 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 	}
 }
 
-func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveAllLabelsResponse, err error) {
+func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveAllLabelsRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesRemoveAllLabelsNoContent{}, nil
@@ -7734,7 +7734,7 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveA
 	}
 }
 
-func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabelResponse, err error) {
+func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabelRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7777,7 +7777,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 	}
 }
 
-func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockResponse, err error) {
+func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesUnlockNoContent{}, nil
@@ -7849,7 +7849,7 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res []DeployKey, er
 	}
 }
 
-func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKeyResponse, err error) {
+func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKeyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7889,7 +7889,7 @@ func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res ReposDeleteDep
 	}
 }
 
-func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListLabelsForRepoResponse, err error) {
+func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListLabelsForRepoRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7920,7 +7920,7 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 	}
 }
 
-func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelResponse, err error) {
+func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -7998,7 +7998,7 @@ func decodeReposListLanguagesResponse(resp *http.Response) (res Language, err er
 	}
 }
 
-func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLfsForRepoResponse, err error) {
+func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLfsForRepoRes, err error) {
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -8047,7 +8047,7 @@ func decodeLicensesGetForRepoResponse(resp *http.Response) (res LicenseContent, 
 	}
 }
 
-func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstreamResponse, err error) {
+func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstreamRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8070,7 +8070,7 @@ func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstre
 	}
 }
 
-func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilestoneResponse, err error) {
+func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilestoneRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8101,7 +8101,7 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilesto
 	}
 }
 
-func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteMilestoneResponse, err error) {
+func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteMilestoneRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesDeleteMilestoneNoContent{}, nil
@@ -8201,7 +8201,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 	}
 }
 
-func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkRepoNotificationsAsReadResponse, err error) {
+func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
@@ -8222,7 +8222,7 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res
 	}
 }
 
-func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesResponse, err error) {
+func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8340,7 +8340,7 @@ func decodeReposGetPagesBuildResponse(resp *http.Response) (res PageBuild, err e
 	}
 }
 
-func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPagesHealthCheckResponse, err error) {
+func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPagesHealthCheckRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8387,7 +8387,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 	}
 }
 
-func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreateForRepoResponse, err error) {
+func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreateForRepoRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -8466,7 +8466,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 	}
 }
 
-func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetReviewCommentResponse, err error) {
+func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetReviewCommentRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8497,7 +8497,7 @@ func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetRevie
 	}
 }
 
-func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDeleteReviewCommentResponse, err error) {
+func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDeleteReviewCommentRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PullsDeleteReviewCommentNoContent{}, nil
@@ -8546,7 +8546,7 @@ func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (re
 	}
 }
 
-func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res PullsCreateReplyForReviewCommentResponse, err error) {
+func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res PullsCreateReplyForReviewCommentRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -8607,7 +8607,7 @@ func decodePullsListCommitsResponse(resp *http.Response) (res []Commit, err erro
 	}
 }
 
-func decodePullsCheckIfMergedResponse(resp *http.Response) (res PullsCheckIfMergedResponse, err error) {
+func decodePullsCheckIfMergedResponse(resp *http.Response) (res PullsCheckIfMergedRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PullsCheckIfMergedNoContent{}, nil
@@ -8667,7 +8667,7 @@ func decodePullsListReviewsResponse(resp *http.Response) (res []PullRequestRevie
 	}
 }
 
-func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReviewResponse, err error) {
+func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8710,7 +8710,7 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 	}
 }
 
-func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewResponse, err error) {
+func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8741,7 +8741,7 @@ func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRespon
 	}
 }
 
-func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReviewResponse, err error) {
+func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8772,7 +8772,7 @@ func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReview
 	}
 }
 
-func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDeletePendingReviewResponse, err error) {
+func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDeletePendingReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8815,7 +8815,7 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 	}
 }
 
-func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsListCommentsForReviewResponse, err error) {
+func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsListCommentsForReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8846,7 +8846,7 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 	}
 }
 
-func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissReviewResponse, err error) {
+func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8889,7 +8889,7 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 	}
 }
 
-func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReviewResponse, err error) {
+func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReviewRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8944,7 +8944,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 	}
 }
 
-func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleasesResponse, err error) {
+func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleasesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -8975,7 +8975,7 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 	}
 }
 
-func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleaseAssetResponse, err error) {
+func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleaseAssetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9067,7 +9067,7 @@ func decodeReposGetLatestReleaseResponse(resp *http.Response) (res Release, err 
 	}
 }
 
-func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleaseByTagResponse, err error) {
+func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleaseByTagRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9098,7 +9098,7 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleas
 	}
 }
 
-func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseResponse, err error) {
+func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9138,7 +9138,7 @@ func decodeReposDeleteReleaseResponse(resp *http.Response) (res ReposDeleteRelea
 	}
 }
 
-func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateReleaseResponse, err error) {
+func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateReleaseRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9199,7 +9199,7 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res []ReleaseAss
 	}
 }
 
-func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanningGetAlertResponse, err error) {
+func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanningGetAlertRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9232,7 +9232,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanni
 	}
 }
 
-func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretScanningUpdateAlertResponse, err error) {
+func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretScanningUpdateAlertRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9267,7 +9267,7 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretSca
 	}
 }
 
-func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGetCodeFrequencyStatsResponse, err error) {
+func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGetCodeFrequencyStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9300,7 +9300,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGet
 	}
 }
 
-func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGetCommitActivityStatsResponse, err error) {
+func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGetCommitActivityStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9333,7 +9333,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGe
 	}
 }
 
-func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetContributorsStatsResponse, err error) {
+func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetContributorsStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9366,7 +9366,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetC
 	}
 }
 
-func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGetParticipationStatsResponse, err error) {
+func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGetParticipationStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9397,7 +9397,7 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGet
 	}
 }
 
-func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunchCardStatsResponse, err error) {
+func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunchCardStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9467,7 +9467,7 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res []Simpl
 	}
 }
 
-func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res ActivityGetRepoSubscriptionResponse, err error) {
+func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res ActivityGetRepoSubscriptionRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9597,7 +9597,7 @@ func decodeReposListTeamsResponse(resp *http.Response) (res []Team, err error) {
 	}
 }
 
-func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopicsResponse, err error) {
+func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopicsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9640,7 +9640,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 	}
 }
 
-func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceAllTopicsResponse, err error) {
+func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceAllTopicsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9695,7 +9695,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 	}
 }
 
-func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsResponse, err error) {
+func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9726,7 +9726,7 @@ func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRe
 	}
 }
 
-func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopReferrersResponse, err error) {
+func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopReferrersRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -9776,7 +9776,7 @@ func decodeReposTransferResponse(resp *http.Response) (res MinimalRepository, er
 	}
 }
 
-func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response) (res ReposCheckVulnerabilityAlertsResponse, err error) {
+func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response) (res ReposCheckVulnerabilityAlertsRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposCheckVulnerabilityAlertsNoContent{}, nil
@@ -9890,7 +9890,7 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res Actions
 	}
 }
 
-func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateEnvironmentSecretResponse, err error) {
+func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -10109,7 +10109,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 	}
 }
 
-func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUserFromOrgResponse, err error) {
+func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUserFromOrgRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ScimDeleteUserFromOrgNoContent{}, nil
@@ -10148,7 +10148,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 	}
 }
 
-func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyResponse, err error) {
+func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10379,7 +10379,7 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res [
 	}
 }
 
-func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMemberLegacyResponse, err error) {
+func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMemberLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsGetMemberLegacyNoContent{}, nil
@@ -10390,7 +10390,7 @@ func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMember
 	}
 }
 
-func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMemberLegacyResponse, err error) {
+func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMemberLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsAddMemberLegacyNoContent{}, nil
@@ -10415,7 +10415,7 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMember
 	}
 }
 
-func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemoveMemberLegacyResponse, err error) {
+func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemoveMemberLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsRemoveMemberLegacyNoContent{}, nil
@@ -10426,7 +10426,7 @@ func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemove
 	}
 }
 
-func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res TeamsGetMembershipForUserLegacyResponse, err error) {
+func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res TeamsGetMembershipForUserLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10457,7 +10457,7 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res Tea
 	}
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserLegacyResponse, err error) {
+func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10492,7 +10492,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) 
 	}
 }
 
-func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res TeamsRemoveMembershipForUserLegacyResponse, err error) {
+func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsRemoveMembershipForUserLegacyNoContent{}, nil
@@ -10503,7 +10503,7 @@ func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListProjectsLegacyResponse, err error) {
+func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListProjectsLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10534,7 +10534,7 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 	}
 }
 
-func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectLegacyResponse, err error) {
+func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10555,7 +10555,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (r
 	}
 }
 
-func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListReposLegacyResponse, err error) {
+func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListReposLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10586,7 +10586,7 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 	}
 }
 
-func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoLegacyResponse, err error) {
+func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10618,7 +10618,7 @@ func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res TeamsRemoveRe
 	}
 }
 
-func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsListIdpGroupsForLegacyResponse, err error) {
+func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsListIdpGroupsForLegacyRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10661,7 +10661,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 	}
 }
 
-func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res UsersListBlockedByAuthenticatedResponse, err error) {
+func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res UsersListBlockedByAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10730,7 +10730,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 	}
 }
 
-func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlockedResponse, err error) {
+func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlockedRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &UsersCheckBlockedNoContent{}, nil
@@ -10777,7 +10777,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 	}
 }
 
-func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockResponse, err error) {
+func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &UsersUnblockNoContent{}, nil
@@ -10824,7 +10824,7 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockResponse, 
 	}
 }
 
-func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListEmailsForAuthenticatedResponse, err error) {
+func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListEmailsForAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10881,7 +10881,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 	}
 }
 
-func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (res UsersListFollowersForAuthenticatedUserResponse, err error) {
+func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (res UsersListFollowersForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10926,7 +10926,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 	}
 }
 
-func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res UsersListFollowedByAuthenticatedResponse, err error) {
+func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res UsersListFollowedByAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -10971,7 +10971,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 	}
 }
 
-func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response) (res UsersCheckPersonIsFollowedByAuthenticatedResponse, err error) {
+func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &UsersCheckPersonIsFollowedByAuthenticatedNoContent{}, nil
@@ -11018,7 +11018,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	}
 }
 
-func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowResponse, err error) {
+func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &UsersFollowNoContent{}, nil
@@ -11065,7 +11065,7 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowResponse, er
 	}
 }
 
-func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowResponse, err error) {
+func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &UsersUnfollowNoContent{}, nil
@@ -11112,7 +11112,7 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowResponse
 	}
 }
 
-func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res UsersListGpgKeysForAuthenticatedResponse, err error) {
+func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res UsersListGpgKeysForAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11169,7 +11169,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 	}
 }
 
-func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetGpgKeyForAuthenticatedResponse, err error) {
+func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11226,7 +11226,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 	}
 }
 
-func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Response) (res AppsListInstallationReposForAuthenticatedUserResponse, err error) {
+func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Response) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11271,7 +11271,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	}
 }
 
-func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRepoToInstallationResponse, err error) {
+func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRepoToInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &AppsAddRepoToInstallationNoContent{}, nil
@@ -11306,7 +11306,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 	}
 }
 
-func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res AppsRemoveRepoFromInstallationResponse, err error) {
+func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res AppsRemoveRepoFromInstallationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &AppsRemoveRepoFromInstallationNoContent{}, nil
@@ -11350,7 +11350,7 @@ func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http
 	}
 }
 
-func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (res UsersListPublicSSHKeysForAuthenticatedResponse, err error) {
+func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11407,7 +11407,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 	}
 }
 
-func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetPublicSSHKeyForAuthenticatedResponse, err error) {
+func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11464,7 +11464,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 	}
 }
 
-func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersDeletePublicSSHKeyForAuthenticatedResponse, err error) {
+func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &UsersDeletePublicSSHKeyForAuthenticatedNoContent{}, nil
@@ -11511,7 +11511,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	}
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserResponse, err error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11556,7 +11556,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	}
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserStubbedResponse, err error) {
+func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11589,7 +11589,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 	}
 }
 
-func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsGetMembershipForAuthenticatedUserResponse, err error) {
+func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11632,7 +11632,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 	}
 }
 
-func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res MigrationsListForAuthenticatedUserResponse, err error) {
+func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res MigrationsListForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11677,7 +11677,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetStatusForAuthenticatedUserResponse, err error) {
+func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11734,7 +11734,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 	}
 }
 
-func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetArchiveForAuthenticatedUserResponse, err error) {
+func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 302:
 		return &MigrationsGetArchiveForAuthenticatedUserFound{}, nil
@@ -11769,7 +11769,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 	}
 }
 
-func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsDeleteArchiveForAuthenticatedUserResponse, err error) {
+func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsDeleteArchiveForAuthenticatedUserNoContent{}, nil
@@ -11816,7 +11816,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	}
 }
 
-func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response) (res MigrationsUnlockRepoForAuthenticatedUserResponse, err error) {
+func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsUnlockRepoForAuthenticatedUserNoContent{}, nil
@@ -11863,7 +11863,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	}
 }
 
-func decodeMigrationsListReposForUserResponse(resp *http.Response) (res MigrationsListReposForUserResponse, err error) {
+func decodeMigrationsListReposForUserResponse(resp *http.Response) (res MigrationsListReposForUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11894,7 +11894,7 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 	}
 }
 
-func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsListForAuthenticatedUserResponse, err error) {
+func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsListForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -11939,7 +11939,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 	}
 }
 
-func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res ProjectsCreateForAuthenticatedUserResponse, err error) {
+func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res ProjectsCreateForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
@@ -12008,7 +12008,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListPublicEmailsForAuthenticatedResponse, err error) {
+func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -12065,7 +12065,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 	}
 }
 
-func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response) (res ReposListInvitationsForAuthenticatedUserResponse, err error) {
+func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -12122,7 +12122,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 	}
 }
 
-func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDeclineInvitationResponse, err error) {
+func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDeclineInvitationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeclineInvitationNoContent{}, nil
@@ -12169,7 +12169,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 	}
 }
 
-func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptInvitationResponse, err error) {
+func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptInvitationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ReposAcceptInvitationNoContent{}, nil
@@ -12216,7 +12216,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 	}
 }
 
-func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Response) (res ActivityCheckRepoIsStarredByAuthenticatedUserResponse, err error) {
+func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Response) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityCheckRepoIsStarredByAuthenticatedUserNoContent{}, nil
@@ -12263,7 +12263,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	}
 }
 
-func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityStarRepoForAuthenticatedUserResponse, err error) {
+func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityStarRepoForAuthenticatedUserNoContent{}, nil
@@ -12310,7 +12310,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 	}
 }
 
-func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityUnstarRepoForAuthenticatedUserResponse, err error) {
+func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityUnstarRepoForAuthenticatedUserNoContent{}, nil
@@ -12357,7 +12357,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	}
 }
 
-func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Response) (res ActivityListWatchedReposForAuthenticatedUserResponse, err error) {
+func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Response) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -12402,7 +12402,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	}
 }
 
-func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res TeamsListForAuthenticatedUserResponse, err error) {
+func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res TeamsListForAuthenticatedUserRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -12447,7 +12447,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 	}
 }
 
-func decodeUsersListResponse(resp *http.Response) (res UsersListResponse, err error) {
+func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -12528,7 +12528,7 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res []SimpleU
 	}
 }
 
-func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (res UsersCheckFollowingForUserResponse, err error) {
+func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (res UsersCheckFollowingForUserRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &UsersCheckFollowingForUserNoContent{}, nil

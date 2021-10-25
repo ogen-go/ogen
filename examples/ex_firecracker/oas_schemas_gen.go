@@ -57,7 +57,7 @@ type Balloon struct {
 	StatsPollingIntervalS OptInt `json:"stats_polling_interval_s"`
 }
 
-func (*Balloon) describeBalloonConfigResponse() {}
+func (*Balloon) describeBalloonConfigRes() {}
 
 // BalloonStats describes #/components/schemas/BalloonStats.
 type BalloonStats struct {
@@ -77,7 +77,7 @@ type BalloonStats struct {
 	TotalMemory        OptInt64 `json:"total_memory"`
 }
 
-func (*BalloonStats) describeBalloonStatsResponse() {}
+func (*BalloonStats) describeBalloonStatsRes() {}
 
 // BalloonStatsUpdate describes #/components/schemas/BalloonStatsUpdate.
 type BalloonStatsUpdate struct {
@@ -105,11 +105,11 @@ const (
 
 type CreateSnapshotNoContent struct{}
 
-func (*CreateSnapshotNoContent) createSnapshotResponse() {}
+func (*CreateSnapshotNoContent) createSnapshotRes() {}
 
 type CreateSyncActionNoContent struct{}
 
-func (*CreateSyncActionNoContent) createSyncActionResponse() {}
+func (*CreateSyncActionNoContent) createSyncActionRes() {}
 
 // Drive describes #/components/schemas/Drive.
 type Drive struct {
@@ -127,61 +127,61 @@ type Error struct {
 	FaultMessage OptString `json:"fault_message"`
 }
 
-func (*Error) createSnapshotResponse()                 {}
-func (*Error) createSyncActionResponse()               {}
-func (*Error) describeBalloonConfigResponse()          {}
-func (*Error) describeBalloonStatsResponse()           {}
-func (*Error) loadSnapshotResponse()                   {}
-func (*Error) mmdsConfigPutResponse()                  {}
-func (*Error) mmdsGetResponse()                        {}
-func (*Error) mmdsPatchResponse()                      {}
-func (*Error) mmdsPutResponse()                        {}
-func (*Error) patchBalloonResponse()                   {}
-func (*Error) patchBalloonStatsIntervalResponse()      {}
-func (*Error) patchGuestDriveByIDResponse()            {}
-func (*Error) patchGuestNetworkInterfaceByIDResponse() {}
-func (*Error) patchMachineConfigurationResponse()      {}
-func (*Error) patchVmResponse()                        {}
-func (*Error) putBalloonResponse()                     {}
-func (*Error) putGuestBootSourceResponse()             {}
-func (*Error) putGuestDriveByIDResponse()              {}
-func (*Error) putGuestNetworkInterfaceByIDResponse()   {}
-func (*Error) putGuestVsockResponse()                  {}
-func (*Error) putLoggerResponse()                      {}
-func (*Error) putMachineConfigurationResponse()        {}
-func (*Error) putMetricsResponse()                     {}
+func (*Error) createSnapshotRes()                 {}
+func (*Error) createSyncActionRes()               {}
+func (*Error) describeBalloonConfigRes()          {}
+func (*Error) describeBalloonStatsRes()           {}
+func (*Error) loadSnapshotRes()                   {}
+func (*Error) mmdsConfigPutRes()                  {}
+func (*Error) mmdsGetRes()                        {}
+func (*Error) mmdsPatchRes()                      {}
+func (*Error) mmdsPutRes()                        {}
+func (*Error) patchBalloonRes()                   {}
+func (*Error) patchBalloonStatsIntervalRes()      {}
+func (*Error) patchGuestDriveByIDRes()            {}
+func (*Error) patchGuestNetworkInterfaceByIDRes() {}
+func (*Error) patchMachineConfigurationRes()      {}
+func (*Error) patchVmRes()                        {}
+func (*Error) putBalloonRes()                     {}
+func (*Error) putGuestBootSourceRes()             {}
+func (*Error) putGuestDriveByIDRes()              {}
+func (*Error) putGuestNetworkInterfaceByIDRes()   {}
+func (*Error) putGuestVsockRes()                  {}
+func (*Error) putLoggerRes()                      {}
+func (*Error) putMachineConfigurationRes()        {}
+func (*Error) putMetricsRes()                     {}
 
 type ErrorStatusCode struct {
 	StatusCode int   `json:"-"`
 	Response   Error `json:"-"`
 }
 
-func (*ErrorStatusCode) createSnapshotResponse()                 {}
-func (*ErrorStatusCode) createSyncActionResponse()               {}
-func (*ErrorStatusCode) describeBalloonConfigResponse()          {}
-func (*ErrorStatusCode) describeBalloonStatsResponse()           {}
-func (*ErrorStatusCode) describeInstanceResponse()               {}
-func (*ErrorStatusCode) getExportVmConfigResponse()              {}
-func (*ErrorStatusCode) getMachineConfigurationResponse()        {}
-func (*ErrorStatusCode) loadSnapshotResponse()                   {}
-func (*ErrorStatusCode) mmdsConfigPutResponse()                  {}
-func (*ErrorStatusCode) mmdsGetResponse()                        {}
-func (*ErrorStatusCode) mmdsPatchResponse()                      {}
-func (*ErrorStatusCode) mmdsPutResponse()                        {}
-func (*ErrorStatusCode) patchBalloonResponse()                   {}
-func (*ErrorStatusCode) patchBalloonStatsIntervalResponse()      {}
-func (*ErrorStatusCode) patchGuestDriveByIDResponse()            {}
-func (*ErrorStatusCode) patchGuestNetworkInterfaceByIDResponse() {}
-func (*ErrorStatusCode) patchMachineConfigurationResponse()      {}
-func (*ErrorStatusCode) patchVmResponse()                        {}
-func (*ErrorStatusCode) putBalloonResponse()                     {}
-func (*ErrorStatusCode) putGuestBootSourceResponse()             {}
-func (*ErrorStatusCode) putGuestDriveByIDResponse()              {}
-func (*ErrorStatusCode) putGuestNetworkInterfaceByIDResponse()   {}
-func (*ErrorStatusCode) putGuestVsockResponse()                  {}
-func (*ErrorStatusCode) putLoggerResponse()                      {}
-func (*ErrorStatusCode) putMachineConfigurationResponse()        {}
-func (*ErrorStatusCode) putMetricsResponse()                     {}
+func (*ErrorStatusCode) createSnapshotRes()                 {}
+func (*ErrorStatusCode) createSyncActionRes()               {}
+func (*ErrorStatusCode) describeBalloonConfigRes()          {}
+func (*ErrorStatusCode) describeBalloonStatsRes()           {}
+func (*ErrorStatusCode) describeInstanceRes()               {}
+func (*ErrorStatusCode) getExportVmConfigRes()              {}
+func (*ErrorStatusCode) getMachineConfigurationRes()        {}
+func (*ErrorStatusCode) loadSnapshotRes()                   {}
+func (*ErrorStatusCode) mmdsConfigPutRes()                  {}
+func (*ErrorStatusCode) mmdsGetRes()                        {}
+func (*ErrorStatusCode) mmdsPatchRes()                      {}
+func (*ErrorStatusCode) mmdsPutRes()                        {}
+func (*ErrorStatusCode) patchBalloonRes()                   {}
+func (*ErrorStatusCode) patchBalloonStatsIntervalRes()      {}
+func (*ErrorStatusCode) patchGuestDriveByIDRes()            {}
+func (*ErrorStatusCode) patchGuestNetworkInterfaceByIDRes() {}
+func (*ErrorStatusCode) patchMachineConfigurationRes()      {}
+func (*ErrorStatusCode) patchVmRes()                        {}
+func (*ErrorStatusCode) putBalloonRes()                     {}
+func (*ErrorStatusCode) putGuestBootSourceRes()             {}
+func (*ErrorStatusCode) putGuestDriveByIDRes()              {}
+func (*ErrorStatusCode) putGuestNetworkInterfaceByIDRes()   {}
+func (*ErrorStatusCode) putGuestVsockRes()                  {}
+func (*ErrorStatusCode) putLoggerRes()                      {}
+func (*ErrorStatusCode) putMachineConfigurationRes()        {}
+func (*ErrorStatusCode) putMetricsRes()                     {}
 
 // FullVmConfiguration describes #/components/schemas/FullVmConfiguration.
 type FullVmConfiguration struct {
@@ -196,7 +196,7 @@ type FullVmConfiguration struct {
 	VsockDevice   OptVsock                `json:"vsock_device"`
 }
 
-func (*FullVmConfiguration) getExportVmConfigResponse() {}
+func (*FullVmConfiguration) getExportVmConfigRes() {}
 
 // InstanceActionInfo describes #/components/schemas/InstanceActionInfo.
 type InstanceActionInfo struct {
@@ -219,7 +219,7 @@ type InstanceInfo struct {
 	VmmVersion string            `json:"vmm_version"`
 }
 
-func (*InstanceInfo) describeInstanceResponse() {}
+func (*InstanceInfo) describeInstanceRes() {}
 
 type InstanceInfoState string
 
@@ -231,7 +231,7 @@ const (
 
 type LoadSnapshotNoContent struct{}
 
-func (*LoadSnapshotNoContent) loadSnapshotResponse() {}
+func (*LoadSnapshotNoContent) loadSnapshotRes() {}
 
 // Logger describes #/components/schemas/Logger.
 type Logger struct {
@@ -259,7 +259,7 @@ type MachineConfiguration struct {
 	VcpuCount       int            `json:"vcpu_count"`
 }
 
-func (*MachineConfiguration) getMachineConfigurationResponse() {}
+func (*MachineConfiguration) getMachineConfigurationRes() {}
 
 // Metrics describes #/components/schemas/Metrics.
 type Metrics struct {
@@ -273,23 +273,23 @@ type MmdsConfig struct {
 
 type MmdsConfigPutNoContent struct{}
 
-func (*MmdsConfigPutNoContent) mmdsConfigPutResponse() {}
+func (*MmdsConfigPutNoContent) mmdsConfigPutRes() {}
 
 type MmdsGetOK struct{}
 
-func (*MmdsGetOK) mmdsGetResponse() {}
+func (*MmdsGetOK) mmdsGetRes() {}
 
-type MmdsPatchApplicationJSONRequest struct{}
+type MmdsPatchApplicationJSONReq struct{}
 
 type MmdsPatchNoContent struct{}
 
-func (*MmdsPatchNoContent) mmdsPatchResponse() {}
+func (*MmdsPatchNoContent) mmdsPatchRes() {}
 
-type MmdsPutApplicationJSONRequest struct{}
+type MmdsPutApplicationJSONReq struct{}
 
 type MmdsPutNoContent struct{}
 
-func (*MmdsPutNoContent) mmdsPutResponse() {}
+func (*MmdsPutNoContent) mmdsPutRes() {}
 
 // NetworkInterface describes #/components/schemas/NetworkInterface.
 type NetworkInterface struct {
@@ -925,59 +925,59 @@ type PartialNetworkInterface struct {
 
 type PatchBalloonNoContent struct{}
 
-func (*PatchBalloonNoContent) patchBalloonResponse() {}
+func (*PatchBalloonNoContent) patchBalloonRes() {}
 
 type PatchBalloonStatsIntervalNoContent struct{}
 
-func (*PatchBalloonStatsIntervalNoContent) patchBalloonStatsIntervalResponse() {}
+func (*PatchBalloonStatsIntervalNoContent) patchBalloonStatsIntervalRes() {}
 
 type PatchGuestDriveByIDNoContent struct{}
 
-func (*PatchGuestDriveByIDNoContent) patchGuestDriveByIDResponse() {}
+func (*PatchGuestDriveByIDNoContent) patchGuestDriveByIDRes() {}
 
 type PatchGuestNetworkInterfaceByIDNoContent struct{}
 
-func (*PatchGuestNetworkInterfaceByIDNoContent) patchGuestNetworkInterfaceByIDResponse() {}
+func (*PatchGuestNetworkInterfaceByIDNoContent) patchGuestNetworkInterfaceByIDRes() {}
 
 type PatchMachineConfigurationNoContent struct{}
 
-func (*PatchMachineConfigurationNoContent) patchMachineConfigurationResponse() {}
+func (*PatchMachineConfigurationNoContent) patchMachineConfigurationRes() {}
 
 type PatchVmNoContent struct{}
 
-func (*PatchVmNoContent) patchVmResponse() {}
+func (*PatchVmNoContent) patchVmRes() {}
 
 type PutBalloonNoContent struct{}
 
-func (*PutBalloonNoContent) putBalloonResponse() {}
+func (*PutBalloonNoContent) putBalloonRes() {}
 
 type PutGuestBootSourceNoContent struct{}
 
-func (*PutGuestBootSourceNoContent) putGuestBootSourceResponse() {}
+func (*PutGuestBootSourceNoContent) putGuestBootSourceRes() {}
 
 type PutGuestDriveByIDNoContent struct{}
 
-func (*PutGuestDriveByIDNoContent) putGuestDriveByIDResponse() {}
+func (*PutGuestDriveByIDNoContent) putGuestDriveByIDRes() {}
 
 type PutGuestNetworkInterfaceByIDNoContent struct{}
 
-func (*PutGuestNetworkInterfaceByIDNoContent) putGuestNetworkInterfaceByIDResponse() {}
+func (*PutGuestNetworkInterfaceByIDNoContent) putGuestNetworkInterfaceByIDRes() {}
 
 type PutGuestVsockNoContent struct{}
 
-func (*PutGuestVsockNoContent) putGuestVsockResponse() {}
+func (*PutGuestVsockNoContent) putGuestVsockRes() {}
 
 type PutLoggerNoContent struct{}
 
-func (*PutLoggerNoContent) putLoggerResponse() {}
+func (*PutLoggerNoContent) putLoggerRes() {}
 
 type PutMachineConfigurationNoContent struct{}
 
-func (*PutMachineConfigurationNoContent) putMachineConfigurationResponse() {}
+func (*PutMachineConfigurationNoContent) putMachineConfigurationRes() {}
 
 type PutMetricsNoContent struct{}
 
-func (*PutMetricsNoContent) putMetricsResponse() {}
+func (*PutMetricsNoContent) putMetricsRes() {}
 
 // RateLimiter describes #/components/schemas/RateLimiter.
 type RateLimiter struct {

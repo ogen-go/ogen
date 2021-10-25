@@ -50,14 +50,14 @@ var (
 	_ = net.IP{}
 )
 
-func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) Validate() error {
+func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) Validate() error {
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -259,7 +259,7 @@ func (s *ActionsListWorkflowRunArtifacts) Validate() error {
 	}
 	return nil
 }
-func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) Validate() error {
+func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.EnvironmentIds == nil {
 		return &validate.Error{
@@ -274,36 +274,21 @@ func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) Validate()
 	}
 	return nil
 }
-func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) Validate() error {
+func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) Validate() error {
+func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) Validate() error {
-	var failures []validate.FieldError
-	if s.SelectedRepositoryIds == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "selected_repository_ids",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) Validate() error {
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.SelectedRepositoryIds == nil {
 		return &validate.Error{
@@ -318,7 +303,7 @@ func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) Validate() e
 	}
 	return nil
 }
-func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest) Validate() error {
+func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.SelectedRepositoryIds == nil {
 		return &validate.Error{
@@ -333,7 +318,22 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicati
 	}
 	return nil
 }
-func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) Validate() error {
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq) Validate() error {
+	var failures []validate.FieldError
+	if s.SelectedRepositoryIds == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "selected_repository_ids",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Runners == nil {
 		return &validate.Error{
@@ -348,14 +348,14 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) Validat
 	}
 	return nil
 }
-func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) Validate() error {
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *AppsCreateContentAttachmentApplicationJSONRequest) Validate() error {
+func (s *AppsCreateContentAttachmentApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	{
 		// Validate 'body' field.
@@ -386,7 +386,7 @@ func (s *AppsCreateContentAttachmentApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) Validate() error {
+func (s *AppsCreateInstallationAccessTokenApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -423,7 +423,7 @@ func (s *AppsListReposAccessibleToInstallationOK) Validate() error {
 	}
 	return nil
 }
-func (s *AppsScopeTokenApplicationJSONRequest) Validate() error {
+func (s *AppsScopeTokenApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -460,21 +460,21 @@ func (s *ChecksListSuitesForRef) Validate() error {
 	}
 	return nil
 }
-func (s *CodeScanningUpdateAlertApplicationJSONRequest) Validate() error {
+func (s *CodeScanningUpdateAlertApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *CodeScanningUploadSarifApplicationJSONRequest) Validate() error {
+func (s *CodeScanningUploadSarifApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -548,7 +548,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise) Validate() er
 	}
 	return nil
 }
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Schemas == nil {
 		return &validate.Error{
@@ -563,7 +563,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest)
 	}
 	return nil
 }
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Emails == nil {
 		return &validate.Error{
@@ -586,14 +586,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) 
 	}
 	return nil
 }
-func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Schemas == nil {
 		return &validate.Error{
@@ -608,7 +608,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJS
 	}
 	return nil
 }
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Emails == nil {
 		return &validate.Error{
@@ -631,7 +631,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 	}
 	return nil
 }
-func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.SelectedOrganizationIds == nil {
 		return &validate.Error{
@@ -646,7 +646,7 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicati
 	}
 	return nil
 }
-func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.SelectedOrganizationIds == nil {
 		return &validate.Error{
@@ -661,7 +661,7 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseAp
 	}
 	return nil
 }
-func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Runners == nil {
 		return &validate.Error{
@@ -676,7 +676,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONR
 	}
 	return nil
 }
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Operations == nil {
 		return &validate.Error{
@@ -699,7 +699,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) 
 	}
 	return nil
 }
-func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) Validate() error {
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -727,7 +727,7 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
 	}
 	return nil
 }
-func (s *GistsCreateCommentApplicationJSONRequest) Validate() error {
+func (s *GistsCreateCommentApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	{
 		// Validate 'body' field.
@@ -746,7 +746,7 @@ func (s *GistsCreateCommentApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *GistsUpdateCommentApplicationJSONRequest) Validate() error {
+func (s *GistsUpdateCommentApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	{
 		// Validate 'body' field.
@@ -765,14 +765,14 @@ func (s *GistsUpdateCommentApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *GitCreateTagApplicationJSONRequest) Validate() error {
+func (s *GitCreateTagApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *GitCreateTreeApplicationJSONRequest) Validate() error {
+func (s *GitCreateTreeApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Tree == nil {
 		return &validate.Error{
@@ -787,7 +787,7 @@ func (s *GitCreateTreeApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *GitCreateTreeApplicationJSONRequestTreeItem) Validate() error {
+func (s *GitCreateTreeApplicationJSONReqTreeItem) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -813,21 +813,21 @@ func (s *GitRefObject) Validate() error {
 	}
 	return nil
 }
-func (s *IssuesCreateMilestoneApplicationJSONRequest) Validate() error {
+func (s *IssuesCreateMilestoneApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *IssuesLockApplicationJSONRequest) Validate() error {
+func (s *IssuesLockApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *IssuesUpdateMilestoneApplicationJSONRequest) Validate() error {
+func (s *IssuesUpdateMilestoneApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -841,7 +841,7 @@ func (s *JobStepsItem) Validate() error {
 	}
 	return nil
 }
-func (s *MarkdownRenderApplicationJSONRequest) Validate() error {
+func (s *MarkdownRenderApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -862,29 +862,14 @@ func (s *MarketplacePurchaseMarketplacePurchase) Validate() error {
 	}
 	return nil
 }
-func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) Validate() error {
+func (s *MigrationsSetLfsPreferenceApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) Validate() error {
-	var failures []validate.FieldError
-	if s.Repositories == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "repositories",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *MigrationsStartForOrgApplicationJSONRequest) Validate() error {
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Repositories == nil {
 		return &validate.Error{
@@ -899,49 +884,64 @@ func (s *MigrationsStartForOrgApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *MigrationsStartImportApplicationJSONRequest) Validate() error {
+func (s *MigrationsStartForOrgApplicationJSONReq) Validate() error {
+	var failures []validate.FieldError
+	if s.Repositories == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "repositories",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *MigrationsStartImportApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *OrgsCreateInvitationApplicationJSONRequest) Validate() error {
+func (s *OrgsCreateInvitationApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *OrgsSetMembershipForUserApplicationJSONRequest) Validate() error {
+func (s *OrgsSetMembershipForUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *OrgsUpdateApplicationJSONRequest) Validate() error {
+func (s *OrgsUpdateApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) Validate() error {
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ProjectsAddCollaboratorApplicationJSONRequest) Validate() error {
+func (s *ProjectsAddCollaboratorApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ProjectsUpdateApplicationJSONRequest) Validate() error {
+func (s *ProjectsUpdateApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -978,28 +978,28 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validat
 	}
 	return nil
 }
-func (s *PullsCreateReviewApplicationJSONRequest) Validate() error {
+func (s *PullsCreateReviewApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *PullsCreateReviewCommentApplicationJSONRequest) Validate() error {
+func (s *PullsCreateReviewCommentApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *PullsMergeApplicationJSONRequest) Validate() error {
+func (s *PullsMergeApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *PullsRemoveRequestedReviewersApplicationJSONRequest) Validate() error {
+func (s *PullsRemoveRequestedReviewersApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Reviewers == nil {
 		return &validate.Error{
@@ -1014,105 +1014,105 @@ func (s *PullsRemoveRequestedReviewersApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *PullsSubmitReviewApplicationJSONRequest) Validate() error {
+func (s *PullsSubmitReviewApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *PullsUpdateApplicationJSONRequest) Validate() error {
+func (s *PullsUpdateApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForCommitCommentApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForIssueApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForIssueApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForIssueCommentApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForReleaseApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForReleaseApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposAddCollaboratorApplicationJSONRequest) Validate() error {
+func (s *ReposAddCollaboratorApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposCreateCommitStatusApplicationJSONRequest) Validate() error {
+func (s *ReposCreateCommitStatusApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposCreateDeploymentStatusApplicationJSONRequest) Validate() error {
+func (s *ReposCreateDeploymentStatusApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposCreateDispatchEventApplicationJSONRequest) Validate() error {
+func (s *ReposCreateDispatchEventApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	{
 		// Validate 'event_type' field.
@@ -1131,28 +1131,28 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *ReposCreateInOrgApplicationJSONRequest) Validate() error {
+func (s *ReposCreateInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposCreatePagesSiteApplicationJSONRequest) Validate() error {
+func (s *ReposCreatePagesSiteApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposCreatePagesSiteApplicationJSONRequestSource) Validate() error {
+func (s *ReposCreatePagesSiteApplicationJSONReqSource) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposReplaceAllTopicsApplicationJSONRequest) Validate() error {
+func (s *ReposReplaceAllTopicsApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Names == nil {
 		return &validate.Error{
@@ -1167,21 +1167,21 @@ func (s *ReposReplaceAllTopicsApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *ReposUpdateApplicationJSONRequest) Validate() error {
+func (s *ReposUpdateApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposUpdateBranchProtectionApplicationJSONRequest) Validate() error {
+func (s *ReposUpdateBranchProtectionApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) Validate() error {
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) Validate() error {
 	var failures []validate.FieldError
 	if s.Contexts == nil {
 		return &validate.Error{
@@ -1196,7 +1196,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) 
 	}
 	return nil
 }
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) Validate() error {
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRestrictions) Validate() error {
 	var failures []validate.FieldError
 	if s.Teams == nil {
 		return &validate.Error{
@@ -1219,7 +1219,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) Validate
 	}
 	return nil
 }
-func (s *ReposUpdateInvitationApplicationJSONRequest) Validate() error {
+func (s *ReposUpdateInvitationApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -1248,7 +1248,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) Validate() error {
 	}
 	return nil
 }
-func (s *ScimProvisionAndInviteUserApplicationJSONRequest) Validate() error {
+func (s *ScimProvisionAndInviteUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Emails == nil {
 		return &validate.Error{
@@ -1263,7 +1263,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) Validate() error {
+func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Emails == nil {
 		return &validate.Error{
@@ -1293,63 +1293,63 @@ func (s *ScimUserListEnterpriseResourcesItem) Validate() error {
 	}
 	return nil
 }
-func (s *SecretScanningUpdateAlertApplicationJSONRequest) Validate() error {
+func (s *SecretScanningUpdateAlertApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) Validate() error {
+func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) Validate() error {
+func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) Validate() error {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) Validate() error {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) Validate() error {
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) Validate() error {
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsCreateApplicationJSONRequest) Validate() error {
+func (s *TeamsCreateApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) Validate() error {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Groups == nil {
 		return &validate.Error{
@@ -1364,21 +1364,21 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) Val
 	}
 	return nil
 }
-func (s *TeamsUpdateInOrgApplicationJSONRequest) Validate() error {
+func (s *TeamsUpdateInOrgApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *TeamsUpdateLegacyApplicationJSONRequest) Validate() error {
+func (s *TeamsUpdateLegacyApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) Validate() error {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}

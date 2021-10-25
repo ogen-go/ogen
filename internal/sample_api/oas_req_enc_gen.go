@@ -54,11 +54,11 @@ func encodeFoobarPostRequest(req *Pet) (data []byte, contentType string, err err
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePetCreateRequest(req PetCreateRequest) (data []byte, contentType string, err error) {
+func encodePetCreateRequest(req PetCreateReq) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
 	case *Pet:
 		return json.Encode(req), "application/json", nil
-	case *PetCreateTextPlainRequest:
+	case *PetCreateTextPlainReq:
 		return nil, "", fmt.Errorf("text/plain encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)

@@ -94,11 +94,11 @@ func encodePutMetricsRequest(req Metrics) (data []byte, contentType string, err 
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeMmdsPutRequest(req *MmdsPutApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeMmdsPutRequest(req *MmdsPutApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeMmdsPatchRequest(req *MmdsPatchApplicationJSONRequest) (data []byte, contentType string, err error) {
+func encodeMmdsPatchRequest(req *MmdsPatchApplicationJSONReq) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 

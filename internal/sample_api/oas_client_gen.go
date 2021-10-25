@@ -72,7 +72,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetResponse, err error) {
+func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
@@ -137,7 +137,7 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefault, err error
 	return result, nil
 }
 
-func (c *Client) FoobarPost(ctx context.Context, req *Pet) (res FoobarPostResponse, err error) {
+func (c *Client) FoobarPost(ctx context.Context, req *Pet) (res FoobarPostRes, err error) {
 	body, contentType, err := encodeFoobarPostRequest(req)
 	if err != nil {
 		return res, err
@@ -165,7 +165,7 @@ func (c *Client) FoobarPost(ctx context.Context, req *Pet) (res FoobarPostRespon
 	return result, nil
 }
 
-func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetResponse, err error) {
+func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
@@ -221,7 +221,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	return result, nil
 }
 
-func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (res Pet, err error) {
+func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err error) {
 	body, contentType, err := encodePetCreateRequest(req)
 	if err != nil {
 		return res, err

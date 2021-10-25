@@ -59,30 +59,30 @@ type APIOverviewSSHKeyFingerprints struct {
 
 type Accepted struct{}
 
-func (*Accepted) reposEnableLfsForRepoResponse()       {}
-func (*Accepted) reposGetCodeFrequencyStatsResponse()  {}
-func (*Accepted) reposGetCommitActivityStatsResponse() {}
-func (*Accepted) reposGetContributorsStatsResponse()   {}
+func (*Accepted) reposEnableLfsForRepoRes()       {}
+func (*Accepted) reposGetCodeFrequencyStatsRes()  {}
+func (*Accepted) reposGetCommitActivityStatsRes() {}
+func (*Accepted) reposGetContributorsStatsRes()   {}
 
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg struct{}
 
 type ActionsAddSelectedRepoToOrgSecretConflict struct{}
 
-func (*ActionsAddSelectedRepoToOrgSecretConflict) actionsAddSelectedRepoToOrgSecretResponse() {}
+func (*ActionsAddSelectedRepoToOrgSecretConflict) actionsAddSelectedRepoToOrgSecretRes() {}
 
 type ActionsAddSelectedRepoToOrgSecretNoContent struct{}
 
-func (*ActionsAddSelectedRepoToOrgSecretNoContent) actionsAddSelectedRepoToOrgSecretResponse() {}
+func (*ActionsAddSelectedRepoToOrgSecretNoContent) actionsAddSelectedRepoToOrgSecretRes() {}
 
 type ActionsAddSelfHostedRunnerToGroupForOrg struct{}
 
 type ActionsApproveWorkflowRunApplicationJSONForbidden BasicError
 
-func (*ActionsApproveWorkflowRunApplicationJSONForbidden) actionsApproveWorkflowRunResponse() {}
+func (*ActionsApproveWorkflowRunApplicationJSONForbidden) actionsApproveWorkflowRunRes() {}
 
 type ActionsApproveWorkflowRunApplicationJSONNotFound BasicError
 
-func (*ActionsApproveWorkflowRunApplicationJSONNotFound) actionsApproveWorkflowRunResponse() {}
+func (*ActionsApproveWorkflowRunApplicationJSONNotFound) actionsApproveWorkflowRunRes() {}
 
 type ActionsBillingUsageMinutesUsedBreakdown struct {
 	MACOS   OptInt `json:"MACOS"`
@@ -92,61 +92,60 @@ type ActionsBillingUsageMinutesUsedBreakdown struct {
 
 type ActionsCancelWorkflowRun struct{}
 
-type ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest struct {
+type ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq struct {
 	EncryptedValue string `json:"encrypted_value"`
 	KeyID          string `json:"key_id"`
 }
 
 type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
 
-func (*ActionsCreateOrUpdateEnvironmentSecretNoContent) actionsCreateOrUpdateEnvironmentSecretResponse() {
+func (*ActionsCreateOrUpdateEnvironmentSecretNoContent) actionsCreateOrUpdateEnvironmentSecretRes() {}
+
+type ActionsCreateOrUpdateOrgSecretApplicationJSONReq struct {
+	EncryptedValue        OptString                                                  `json:"encrypted_value"`
+	KeyID                 OptString                                                  `json:"key_id"`
+	SelectedRepositoryIds []string                                                   `json:"selected_repository_ids"`
+	Visibility            ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility `json:"visibility"`
 }
 
-type ActionsCreateOrUpdateOrgSecretApplicationJSONRequest struct {
-	EncryptedValue        OptString                                                      `json:"encrypted_value"`
-	KeyID                 OptString                                                      `json:"key_id"`
-	SelectedRepositoryIds []string                                                       `json:"selected_repository_ids"`
-	Visibility            ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility `json:"visibility"`
-}
-
-type ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility string
+type ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility string
 
 const (
-	ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibilityAll      ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility = "all"
-	ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibilityPrivate  ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility = "private"
-	ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibilitySelected ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility = "selected"
+	ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibilityAll      ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility = "all"
+	ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibilityPrivate  ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility = "private"
+	ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibilitySelected ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility = "selected"
 )
 
 type ActionsCreateOrUpdateOrgSecretNoContent struct{}
 
-func (*ActionsCreateOrUpdateOrgSecretNoContent) actionsCreateOrUpdateOrgSecretResponse() {}
+func (*ActionsCreateOrUpdateOrgSecretNoContent) actionsCreateOrUpdateOrgSecretRes() {}
 
-type ActionsCreateOrUpdateRepoSecretApplicationJSONRequest struct {
+type ActionsCreateOrUpdateRepoSecretApplicationJSONReq struct {
 	EncryptedValue OptString `json:"encrypted_value"`
 	KeyID          OptString `json:"key_id"`
 }
 
 type ActionsCreateOrUpdateRepoSecretCreated struct{}
 
-func (*ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretResponse() {}
+func (*ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
 
 type ActionsCreateOrUpdateRepoSecretNoContent struct{}
 
-func (*ActionsCreateOrUpdateRepoSecretNoContent) actionsCreateOrUpdateRepoSecretResponse() {}
+func (*ActionsCreateOrUpdateRepoSecretNoContent) actionsCreateOrUpdateRepoSecretRes() {}
 
-type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest struct {
-	Name                  string                                                                      `json:"name"`
-	Runners               []int                                                                       `json:"runners"`
-	SelectedRepositoryIds []int                                                                       `json:"selected_repository_ids"`
-	Visibility            OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
+type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq struct {
+	Name                  string                                                                  `json:"name"`
+	Runners               []int                                                                   `json:"runners"`
+	SelectedRepositoryIds []int                                                                   `json:"selected_repository_ids"`
+	Visibility            OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility `json:"visibility"`
 }
 
-type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility string
+type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility string
 
 const (
-	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilitySelected ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "selected"
-	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityAll      ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "all"
-	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityPrivate  ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "private"
+	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibilitySelected ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility = "selected"
+	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibilityAll      ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility = "all"
+	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibilityPrivate  ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility = "private"
 )
 
 type ActionsDeleteArtifact struct{}
@@ -248,32 +247,30 @@ type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg struct{}
 
 type ActionsRemoveSelectedRepoFromOrgSecretConflict struct{}
 
-func (*ActionsRemoveSelectedRepoFromOrgSecretConflict) actionsRemoveSelectedRepoFromOrgSecretResponse() {
-}
+func (*ActionsRemoveSelectedRepoFromOrgSecretConflict) actionsRemoveSelectedRepoFromOrgSecretRes() {}
 
 type ActionsRemoveSelectedRepoFromOrgSecretNoContent struct{}
 
-func (*ActionsRemoveSelectedRepoFromOrgSecretNoContent) actionsRemoveSelectedRepoFromOrgSecretResponse() {
-}
+func (*ActionsRemoveSelectedRepoFromOrgSecretNoContent) actionsRemoveSelectedRepoFromOrgSecretRes() {}
 
 type ActionsRemoveSelfHostedRunnerFromGroupForOrg struct{}
 
 type ActionsRetryWorkflow struct{}
 
-type ActionsReviewPendingDeploymentsForRunApplicationJSONRequest struct {
-	Comment        string                                                           `json:"comment"`
-	EnvironmentIds []int                                                            `json:"environment_ids"`
-	State          ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState `json:"state"`
+type ActionsReviewPendingDeploymentsForRunApplicationJSONReq struct {
+	Comment        string                                                       `json:"comment"`
+	EnvironmentIds []int                                                        `json:"environment_ids"`
+	State          ActionsReviewPendingDeploymentsForRunApplicationJSONReqState `json:"state"`
 }
 
-func (*ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) actionsReviewPendingDeploymentsForRunRequest() {
+func (*ActionsReviewPendingDeploymentsForRunApplicationJSONReq) actionsReviewPendingDeploymentsForRunReq() {
 }
 
-type ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState string
+type ActionsReviewPendingDeploymentsForRunApplicationJSONReqState string
 
 const (
-	ActionsReviewPendingDeploymentsForRunApplicationJSONRequestStateApproved ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState = "approved"
-	ActionsReviewPendingDeploymentsForRunApplicationJSONRequestStateRejected ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState = "rejected"
+	ActionsReviewPendingDeploymentsForRunApplicationJSONReqStateApproved ActionsReviewPendingDeploymentsForRunApplicationJSONReqState = "approved"
+	ActionsReviewPendingDeploymentsForRunApplicationJSONReqStateRejected ActionsReviewPendingDeploymentsForRunApplicationJSONReqState = "rejected"
 )
 
 type ActionsSetAllowedActionsOrganization struct{}
@@ -282,233 +279,228 @@ type ActionsSetAllowedActionsRepository struct{}
 
 type ActionsSetGithubActionsPermissionsOrganization struct{}
 
-type ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest struct {
+type ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq struct {
 	AllowedActions      OptAllowedActions   `json:"allowed_actions"`
 	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
 }
 
 type ActionsSetGithubActionsPermissionsRepository struct{}
 
-type ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest struct {
+type ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq struct {
 	AllowedActions OptAllowedActions `json:"allowed_actions"`
 	Enabled        ActionsEnabled    `json:"enabled"`
 }
 
 type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg struct{}
 
-type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest struct {
+type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq struct {
 	SelectedRepositoryIds []int `json:"selected_repository_ids"`
 }
 
 type ActionsSetSelectedReposForOrgSecret struct{}
 
-type ActionsSetSelectedReposForOrgSecretApplicationJSONRequest struct {
+type ActionsSetSelectedReposForOrgSecretApplicationJSONReq struct {
 	SelectedRepositoryIds []int `json:"selected_repository_ids"`
 }
 
 type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization struct{}
 
-type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest struct {
+type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq struct {
 	SelectedRepositoryIds []int `json:"selected_repository_ids"`
 }
 
 type ActionsSetSelfHostedRunnersInGroupForOrg struct{}
 
-type ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest struct {
+type ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq struct {
 	Runners []int `json:"runners"`
 }
 
-type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest struct {
-	Name       string                                                                      `json:"name"`
-	Visibility OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
+type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq struct {
+	Name       string                                                                  `json:"name"`
+	Visibility OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility `json:"visibility"`
 }
 
-type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility string
+type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility string
 
 const (
-	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilitySelected ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "selected"
-	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityAll      ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "all"
-	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityPrivate  ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "private"
+	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibilitySelected ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility = "selected"
+	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibilityAll      ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility = "all"
+	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibilityPrivate  ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility = "private"
 )
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) activityCheckRepoIsStarredByAuthenticatedUserResponse() {
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) activityCheckRepoIsStarredByAuthenticatedUserResponse() {
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserResponse() {
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserNoContent struct{}
 
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) activityCheckRepoIsStarredByAuthenticatedUserResponse() {
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
 type ActivityDeleteRepoSubscription struct{}
 
 type ActivityDeleteThreadSubscriptionApplicationJSONForbidden BasicError
 
-func (*ActivityDeleteThreadSubscriptionApplicationJSONForbidden) activityDeleteThreadSubscriptionResponse() {
+func (*ActivityDeleteThreadSubscriptionApplicationJSONForbidden) activityDeleteThreadSubscriptionRes() {
 }
 
 type ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized BasicError
 
-func (*ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) activityDeleteThreadSubscriptionResponse() {
+func (*ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) activityDeleteThreadSubscriptionRes() {
 }
 
 type ActivityDeleteThreadSubscriptionNoContent struct{}
 
-func (*ActivityDeleteThreadSubscriptionNoContent) activityDeleteThreadSubscriptionResponse() {}
+func (*ActivityDeleteThreadSubscriptionNoContent) activityDeleteThreadSubscriptionRes() {}
 
 type ActivityGetRepoSubscriptionNotFound struct{}
 
-func (*ActivityGetRepoSubscriptionNotFound) activityGetRepoSubscriptionResponse() {}
+func (*ActivityGetRepoSubscriptionNotFound) activityGetRepoSubscriptionRes() {}
 
 type ActivityGetThreadApplicationJSONForbidden BasicError
 
-func (*ActivityGetThreadApplicationJSONForbidden) activityGetThreadResponse() {}
+func (*ActivityGetThreadApplicationJSONForbidden) activityGetThreadRes() {}
 
 type ActivityGetThreadApplicationJSONUnauthorized BasicError
 
-func (*ActivityGetThreadApplicationJSONUnauthorized) activityGetThreadResponse() {}
+func (*ActivityGetThreadApplicationJSONUnauthorized) activityGetThreadRes() {}
 
 type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) activityGetThreadSubscriptionForAuthenticatedUserResponse() {
+func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
 type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserResponse() {
+func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
 type ActivityListNotificationsForAuthenticatedUserOK []Thread
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) activityListWatchedReposForAuthenticatedUserResponse() {
+func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserResponse() {
+func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
 type ActivityListWatchedReposForAuthenticatedUserOK []MinimalRepository
 
-func (*ActivityListWatchedReposForAuthenticatedUserOK) activityListWatchedReposForAuthenticatedUserResponse() {
+func (*ActivityListWatchedReposForAuthenticatedUserOK) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
 type ActivityMarkNotificationsAsReadAccepted struct {
 	Message OptString `json:"message"`
 }
 
-func (*ActivityMarkNotificationsAsReadAccepted) activityMarkNotificationsAsReadResponse() {}
+func (*ActivityMarkNotificationsAsReadAccepted) activityMarkNotificationsAsReadRes() {}
 
 type ActivityMarkNotificationsAsReadApplicationJSONForbidden BasicError
 
-func (*ActivityMarkNotificationsAsReadApplicationJSONForbidden) activityMarkNotificationsAsReadResponse() {
+func (*ActivityMarkNotificationsAsReadApplicationJSONForbidden) activityMarkNotificationsAsReadRes() {
 }
 
-type ActivityMarkNotificationsAsReadApplicationJSONRequest struct {
+type ActivityMarkNotificationsAsReadApplicationJSONReq struct {
 	LastReadAt OptTime `json:"last_read_at"`
 	Read       OptBool `json:"read"`
 }
 
 type ActivityMarkNotificationsAsReadApplicationJSONUnauthorized BasicError
 
-func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkNotificationsAsReadResponse() {
+func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkNotificationsAsReadRes() {
 }
 
 type ActivityMarkNotificationsAsReadResetContent struct{}
 
-func (*ActivityMarkNotificationsAsReadResetContent) activityMarkNotificationsAsReadResponse() {}
+func (*ActivityMarkNotificationsAsReadResetContent) activityMarkNotificationsAsReadRes() {}
 
 type ActivityMarkRepoNotificationsAsReadAccepted struct {
 	Message OptString `json:"message"`
 	URL     OptString `json:"url"`
 }
 
-func (*ActivityMarkRepoNotificationsAsReadAccepted) activityMarkRepoNotificationsAsReadResponse() {}
+func (*ActivityMarkRepoNotificationsAsReadAccepted) activityMarkRepoNotificationsAsReadRes() {}
 
-type ActivityMarkRepoNotificationsAsReadApplicationJSONRequest struct {
+type ActivityMarkRepoNotificationsAsReadApplicationJSONReq struct {
 	LastReadAt OptTime `json:"last_read_at"`
 }
 
 type ActivityMarkRepoNotificationsAsReadResetContent struct{}
 
-func (*ActivityMarkRepoNotificationsAsReadResetContent) activityMarkRepoNotificationsAsReadResponse() {
-}
+func (*ActivityMarkRepoNotificationsAsReadResetContent) activityMarkRepoNotificationsAsReadRes() {}
 
 type ActivityMarkThreadAsReadResetContent struct{}
 
-func (*ActivityMarkThreadAsReadResetContent) activityMarkThreadAsReadResponse() {}
+func (*ActivityMarkThreadAsReadResetContent) activityMarkThreadAsReadRes() {}
 
-type ActivitySetRepoSubscriptionApplicationJSONRequest struct {
+type ActivitySetRepoSubscriptionApplicationJSONReq struct {
 	Ignored    OptBool `json:"ignored"`
 	Subscribed OptBool `json:"subscribed"`
 }
 
 type ActivitySetThreadSubscriptionApplicationJSONForbidden BasicError
 
-func (*ActivitySetThreadSubscriptionApplicationJSONForbidden) activitySetThreadSubscriptionResponse() {
-}
+func (*ActivitySetThreadSubscriptionApplicationJSONForbidden) activitySetThreadSubscriptionRes() {}
 
-type ActivitySetThreadSubscriptionApplicationJSONRequest struct {
+type ActivitySetThreadSubscriptionApplicationJSONReq struct {
 	Ignored OptBool `json:"ignored"`
 }
 
 type ActivitySetThreadSubscriptionApplicationJSONUnauthorized BasicError
 
-func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThreadSubscriptionResponse() {
-}
+func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThreadSubscriptionRes() {}
 
 type ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) activityStarRepoForAuthenticatedUserResponse() {
+func (*ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) activityStarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) activityStarRepoForAuthenticatedUserResponse() {
+func (*ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) activityStarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityStarRepoForAuthenticatedUserResponse() {
+func (*ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityStarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityStarRepoForAuthenticatedUserNoContent struct{}
 
-func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthenticatedUserResponse() {
-}
+func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthenticatedUserRes() {}
 
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) activityUnstarRepoForAuthenticatedUserResponse() {
+func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) activityUnstarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) activityUnstarRepoForAuthenticatedUserResponse() {
+func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) activityUnstarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityUnstarRepoForAuthenticatedUserResponse() {
+func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityUnstarRepoForAuthenticatedUserRes() {
 }
 
 type ActivityUnstarRepoForAuthenticatedUserNoContent struct{}
 
-func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAuthenticatedUserResponse() {
-}
+func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAuthenticatedUserRes() {}
 
 type AppPermissionsActions string
 
@@ -734,93 +726,92 @@ type ApplicationGrantApp struct {
 
 type AppsAddRepoToInstallationApplicationJSONForbidden BasicError
 
-func (*AppsAddRepoToInstallationApplicationJSONForbidden) appsAddRepoToInstallationResponse() {}
+func (*AppsAddRepoToInstallationApplicationJSONForbidden) appsAddRepoToInstallationRes() {}
 
 type AppsAddRepoToInstallationApplicationJSONNotFound BasicError
 
-func (*AppsAddRepoToInstallationApplicationJSONNotFound) appsAddRepoToInstallationResponse() {}
+func (*AppsAddRepoToInstallationApplicationJSONNotFound) appsAddRepoToInstallationRes() {}
 
 type AppsAddRepoToInstallationNoContent struct{}
 
-func (*AppsAddRepoToInstallationNoContent) appsAddRepoToInstallationResponse() {}
+func (*AppsAddRepoToInstallationNoContent) appsAddRepoToInstallationRes() {}
 
-type AppsCheckTokenApplicationJSONRequest struct {
+type AppsCheckTokenApplicationJSONReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-func (*AppsCheckTokenApplicationJSONRequest) appsCheckTokenRequest() {}
+func (*AppsCheckTokenApplicationJSONReq) appsCheckTokenReq() {}
 
-type AppsCreateContentAttachmentApplicationJSONRequest struct {
+type AppsCreateContentAttachmentApplicationJSONReq struct {
 	Body  string `json:"body"`
 	Title string `json:"title"`
 }
 
-func (*AppsCreateContentAttachmentApplicationJSONRequest) appsCreateContentAttachmentRequest() {}
+func (*AppsCreateContentAttachmentApplicationJSONReq) appsCreateContentAttachmentReq() {}
 
-type AppsCreateFromManifestApplicationJSONRequest struct{}
+type AppsCreateFromManifestApplicationJSONReq struct{}
 
-func (*AppsCreateFromManifestApplicationJSONRequest) appsCreateFromManifestRequest() {}
+func (*AppsCreateFromManifestApplicationJSONReq) appsCreateFromManifestReq() {}
 
-type AppsCreateInstallationAccessTokenApplicationJSONRequest struct {
+type AppsCreateInstallationAccessTokenApplicationJSONReq struct {
 	Permissions   OptAppPermissions `json:"permissions"`
 	Repositories  []string          `json:"repositories"`
 	RepositoryIds []int             `json:"repository_ids"`
 }
 
-func (*AppsCreateInstallationAccessTokenApplicationJSONRequest) appsCreateInstallationAccessTokenRequest() {
-}
+func (*AppsCreateInstallationAccessTokenApplicationJSONReq) appsCreateInstallationAccessTokenReq() {}
 
-type AppsDeleteAuthorizationApplicationJSONRequest struct {
+type AppsDeleteAuthorizationApplicationJSONReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-func (*AppsDeleteAuthorizationApplicationJSONRequest) appsDeleteAuthorizationRequest() {}
+func (*AppsDeleteAuthorizationApplicationJSONReq) appsDeleteAuthorizationReq() {}
 
 type AppsDeleteAuthorizationNoContent struct{}
 
 type AppsDeleteInstallationNoContent struct{}
 
-func (*AppsDeleteInstallationNoContent) appsDeleteInstallationResponse() {}
+func (*AppsDeleteInstallationNoContent) appsDeleteInstallationRes() {}
 
-type AppsDeleteTokenApplicationJSONRequest struct {
+type AppsDeleteTokenApplicationJSONReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-func (*AppsDeleteTokenApplicationJSONRequest) appsDeleteTokenRequest() {}
+func (*AppsDeleteTokenApplicationJSONReq) appsDeleteTokenReq() {}
 
 type AppsDeleteTokenNoContent struct{}
 
 type AppsGetBySlugApplicationJSONForbidden BasicError
 
-func (*AppsGetBySlugApplicationJSONForbidden) appsGetBySlugResponse() {}
+func (*AppsGetBySlugApplicationJSONForbidden) appsGetBySlugRes() {}
 
 type AppsGetBySlugApplicationJSONNotFound BasicError
 
-func (*AppsGetBySlugApplicationJSONNotFound) appsGetBySlugResponse() {}
+func (*AppsGetBySlugApplicationJSONNotFound) appsGetBySlugRes() {}
 
 type AppsGetSubscriptionPlanForAccountApplicationJSONNotFound BasicError
 
-func (*AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) appsGetSubscriptionPlanForAccountResponse() {
+func (*AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) appsGetSubscriptionPlanForAccountRes() {
 }
 
 type AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized BasicError
 
-func (*AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) appsGetSubscriptionPlanForAccountResponse() {
+func (*AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) appsGetSubscriptionPlanForAccountRes() {
 }
 
 type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 
-func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedResponse() {
+func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
 }
 
 type AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) appsListInstallationReposForAuthenticatedUserResponse() {
+func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
 type AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) appsListInstallationReposForAuthenticatedUserResponse() {
+func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
 type AppsListInstallationReposForAuthenticatedUserOK struct {
@@ -829,33 +820,33 @@ type AppsListInstallationReposForAuthenticatedUserOK struct {
 	TotalCount          int          `json:"total_count"`
 }
 
-func (*AppsListInstallationReposForAuthenticatedUserOK) appsListInstallationReposForAuthenticatedUserResponse() {
+func (*AppsListInstallationReposForAuthenticatedUserOK) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
 type AppsListPlansApplicationJSONNotFound BasicError
 
-func (*AppsListPlansApplicationJSONNotFound) appsListPlansResponse() {}
+func (*AppsListPlansApplicationJSONNotFound) appsListPlansRes() {}
 
 type AppsListPlansApplicationJSONUnauthorized BasicError
 
-func (*AppsListPlansApplicationJSONUnauthorized) appsListPlansResponse() {}
+func (*AppsListPlansApplicationJSONUnauthorized) appsListPlansRes() {}
 
 type AppsListPlansOK []MarketplaceListingPlan
 
-func (*AppsListPlansOK) appsListPlansResponse() {}
+func (*AppsListPlansOK) appsListPlansRes() {}
 
 type AppsListPlansStubbedOK []MarketplaceListingPlan
 
-func (*AppsListPlansStubbedOK) appsListPlansStubbedResponse() {}
+func (*AppsListPlansStubbedOK) appsListPlansStubbedRes() {}
 
 type AppsListReposAccessibleToInstallationApplicationJSONForbidden BasicError
 
-func (*AppsListReposAccessibleToInstallationApplicationJSONForbidden) appsListReposAccessibleToInstallationResponse() {
+func (*AppsListReposAccessibleToInstallationApplicationJSONForbidden) appsListReposAccessibleToInstallationRes() {
 }
 
 type AppsListReposAccessibleToInstallationApplicationJSONUnauthorized BasicError
 
-func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsListReposAccessibleToInstallationResponse() {
+func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsListReposAccessibleToInstallationRes() {
 }
 
 type AppsListReposAccessibleToInstallationOK struct {
@@ -864,53 +855,50 @@ type AppsListReposAccessibleToInstallationOK struct {
 	TotalCount          int          `json:"total_count"`
 }
 
-func (*AppsListReposAccessibleToInstallationOK) appsListReposAccessibleToInstallationResponse() {}
+func (*AppsListReposAccessibleToInstallationOK) appsListReposAccessibleToInstallationRes() {}
 
 type AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) appsListSubscriptionsForAuthenticatedUserResponse() {
+func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
 type AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserResponse() {
+func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
 type AppsListSubscriptionsForAuthenticatedUserOK []UserMarketplacePurchase
 
-func (*AppsListSubscriptionsForAuthenticatedUserOK) appsListSubscriptionsForAuthenticatedUserResponse() {
-}
+func (*AppsListSubscriptionsForAuthenticatedUserOK) appsListSubscriptionsForAuthenticatedUserRes() {}
 
 type AppsListSubscriptionsForAuthenticatedUserStubbedOK []UserMarketplacePurchase
 
-func (*AppsListSubscriptionsForAuthenticatedUserStubbedOK) appsListSubscriptionsForAuthenticatedUserStubbedResponse() {
+func (*AppsListSubscriptionsForAuthenticatedUserStubbedOK) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
 type AppsListWebhookDeliveriesOK []HookDeliveryItem
 
 type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
 
-func (*AppsRemoveRepoFromInstallationApplicationJSONForbidden) appsRemoveRepoFromInstallationResponse() {
-}
+func (*AppsRemoveRepoFromInstallationApplicationJSONForbidden) appsRemoveRepoFromInstallationRes() {}
 
 type AppsRemoveRepoFromInstallationApplicationJSONNotFound BasicError
 
-func (*AppsRemoveRepoFromInstallationApplicationJSONNotFound) appsRemoveRepoFromInstallationResponse() {
-}
+func (*AppsRemoveRepoFromInstallationApplicationJSONNotFound) appsRemoveRepoFromInstallationRes() {}
 
 type AppsRemoveRepoFromInstallationNoContent struct{}
 
-func (*AppsRemoveRepoFromInstallationNoContent) appsRemoveRepoFromInstallationResponse() {}
+func (*AppsRemoveRepoFromInstallationNoContent) appsRemoveRepoFromInstallationRes() {}
 
-type AppsResetTokenApplicationJSONRequest struct {
+type AppsResetTokenApplicationJSONReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-func (*AppsResetTokenApplicationJSONRequest) appsResetTokenRequest() {}
+func (*AppsResetTokenApplicationJSONReq) appsResetTokenReq() {}
 
 type AppsRevokeInstallationAccessToken struct{}
 
-type AppsScopeTokenApplicationJSONRequest struct {
+type AppsScopeTokenApplicationJSONReq struct {
 	AccessToken   string            `json:"access_token"`
 	Permissions   OptAppPermissions `json:"permissions"`
 	Repositories  []string          `json:"repositories"`
@@ -919,15 +907,15 @@ type AppsScopeTokenApplicationJSONRequest struct {
 	TargetID      OptInt            `json:"target_id"`
 }
 
-func (*AppsScopeTokenApplicationJSONRequest) appsScopeTokenRequest() {}
+func (*AppsScopeTokenApplicationJSONReq) appsScopeTokenReq() {}
 
 type AppsSuspendInstallationNoContent struct{}
 
-func (*AppsSuspendInstallationNoContent) appsSuspendInstallationResponse() {}
+func (*AppsSuspendInstallationNoContent) appsSuspendInstallationRes() {}
 
 type AppsUnsuspendInstallationNoContent struct{}
 
-func (*AppsUnsuspendInstallationNoContent) appsUnsuspendInstallationResponse() {}
+func (*AppsUnsuspendInstallationNoContent) appsUnsuspendInstallationRes() {}
 
 type AuthenticationTokenPermissions struct{}
 
@@ -1132,13 +1120,13 @@ const (
 
 type ChecksCreateSuiteApplicationJSONCreated CheckSuite
 
-func (*ChecksCreateSuiteApplicationJSONCreated) checksCreateSuiteResponse() {}
+func (*ChecksCreateSuiteApplicationJSONCreated) checksCreateSuiteRes() {}
 
 type ChecksCreateSuiteApplicationJSONOK CheckSuite
 
-func (*ChecksCreateSuiteApplicationJSONOK) checksCreateSuiteResponse() {}
+func (*ChecksCreateSuiteApplicationJSONOK) checksCreateSuiteRes() {}
 
-type ChecksCreateSuiteApplicationJSONRequest struct {
+type ChecksCreateSuiteApplicationJSONReq struct {
 	HeadSha string `json:"head_sha"`
 }
 
@@ -1149,11 +1137,11 @@ type ChecksListSuitesForRef struct {
 
 type ChecksRerequestSuite struct{}
 
-type ChecksSetSuitesPreferencesApplicationJSONRequest struct {
-	AutoTriggerChecks []ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem `json:"auto_trigger_checks"`
+type ChecksSetSuitesPreferencesApplicationJSONReq struct {
+	AutoTriggerChecks []ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem `json:"auto_trigger_checks"`
 }
 
-type ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem struct {
+type ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem struct {
 	AppID   int  `json:"app_id"`
 	Setting bool `json:"setting"`
 }
@@ -1164,47 +1152,43 @@ type CodeScanningAlertInstanceMessage struct {
 
 type CodeScanningDeleteAnalysisApplicationJSONBadRequest BasicError
 
-func (*CodeScanningDeleteAnalysisApplicationJSONBadRequest) codeScanningDeleteAnalysisResponse() {}
+func (*CodeScanningDeleteAnalysisApplicationJSONBadRequest) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningDeleteAnalysisApplicationJSONForbidden BasicError
 
-func (*CodeScanningDeleteAnalysisApplicationJSONForbidden) codeScanningDeleteAnalysisResponse() {}
+func (*CodeScanningDeleteAnalysisApplicationJSONForbidden) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
 
-func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisResponse() {}
+func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningGetSarifNotFound struct{}
 
-func (*CodeScanningGetSarifNotFound) codeScanningGetSarifResponse() {}
+func (*CodeScanningGetSarifNotFound) codeScanningGetSarifRes() {}
 
 type CodeScanningListAlertInstancesApplicationJSONForbidden BasicError
 
-func (*CodeScanningListAlertInstancesApplicationJSONForbidden) codeScanningListAlertInstancesResponse() {
-}
+func (*CodeScanningListAlertInstancesApplicationJSONForbidden) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertInstancesApplicationJSONNotFound BasicError
 
-func (*CodeScanningListAlertInstancesApplicationJSONNotFound) codeScanningListAlertInstancesResponse() {
-}
+func (*CodeScanningListAlertInstancesApplicationJSONNotFound) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertInstancesOK []CodeScanningAlertInstance
 
-func (*CodeScanningListAlertInstancesOK) codeScanningListAlertInstancesResponse() {}
+func (*CodeScanningListAlertInstancesOK) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListRecentAnalysesApplicationJSONForbidden BasicError
 
-func (*CodeScanningListRecentAnalysesApplicationJSONForbidden) codeScanningListRecentAnalysesResponse() {
-}
+func (*CodeScanningListRecentAnalysesApplicationJSONForbidden) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningListRecentAnalysesApplicationJSONNotFound BasicError
 
-func (*CodeScanningListRecentAnalysesApplicationJSONNotFound) codeScanningListRecentAnalysesResponse() {
-}
+func (*CodeScanningListRecentAnalysesApplicationJSONNotFound) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningListRecentAnalysesOK []CodeScanningAnalysis
 
-func (*CodeScanningListRecentAnalysesOK) codeScanningListRecentAnalysesResponse() {}
+func (*CodeScanningListRecentAnalysesOK) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningSarifsStatusProcessingStatus string
 
@@ -1213,22 +1197,22 @@ const (
 	CodeScanningSarifsStatusProcessingStatusComplete CodeScanningSarifsStatusProcessingStatus = "complete"
 )
 
-type CodeScanningUpdateAlertApplicationJSONRequest struct {
+type CodeScanningUpdateAlertApplicationJSONReq struct {
 	DismissedReason OptCodeScanningAlertDismissedReason `json:"dismissed_reason"`
 	State           CodeScanningAlertSetState           `json:"state"`
 }
 
-func (*CodeScanningUpdateAlertApplicationJSONRequest) codeScanningUpdateAlertRequest() {}
+func (*CodeScanningUpdateAlertApplicationJSONReq) codeScanningUpdateAlertReq() {}
 
 type CodeScanningUploadSarifApplicationJSONForbidden BasicError
 
-func (*CodeScanningUploadSarifApplicationJSONForbidden) codeScanningUploadSarifResponse() {}
+func (*CodeScanningUploadSarifApplicationJSONForbidden) codeScanningUploadSarifRes() {}
 
 type CodeScanningUploadSarifApplicationJSONNotFound BasicError
 
-func (*CodeScanningUploadSarifApplicationJSONNotFound) codeScanningUploadSarifResponse() {}
+func (*CodeScanningUploadSarifApplicationJSONNotFound) codeScanningUploadSarifRes() {}
 
-type CodeScanningUploadSarifApplicationJSONRequest struct {
+type CodeScanningUploadSarifApplicationJSONReq struct {
 	CheckoutURI OptURL                        `json:"checkout_uri"`
 	CommitSha   CodeScanningAnalysisCommitSha `json:"commit_sha"`
 	Ref         CodeScanningRef               `json:"ref"`
@@ -1239,15 +1223,15 @@ type CodeScanningUploadSarifApplicationJSONRequest struct {
 
 type CodeScanningUploadSarifBadRequest struct{}
 
-func (*CodeScanningUploadSarifBadRequest) codeScanningUploadSarifResponse() {}
+func (*CodeScanningUploadSarifBadRequest) codeScanningUploadSarifRes() {}
 
 type CodeScanningUploadSarifRequestEntityTooLarge struct{}
 
-func (*CodeScanningUploadSarifRequestEntityTooLarge) codeScanningUploadSarifResponse() {}
+func (*CodeScanningUploadSarifRequestEntityTooLarge) codeScanningUploadSarifRes() {}
 
 type CodesOfConductGetAllCodesOfConductOK []CodeOfConduct
 
-func (*CodesOfConductGetAllCodesOfConductOK) codesOfConductGetAllCodesOfConductResponse() {}
+func (*CodesOfConductGetAllCodesOfConductOK) codesOfConductGetAllCodesOfConductRes() {}
 
 type CommitCommit struct {
 	Author       NullableGitUser  `json:"author"`
@@ -1348,24 +1332,24 @@ const (
 
 type EmojisGetOK struct{}
 
-func (*EmojisGetOK) emojisGetResponse() {}
+func (*EmojisGetOK) emojisGetRes() {}
 
 type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise struct{}
 
 type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise struct{}
 
-type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
-	Name                    string                                                                                     `json:"name"`
-	Runners                 []int                                                                                      `json:"runners"`
-	SelectedOrganizationIds []int                                                                                      `json:"selected_organization_ids"`
-	Visibility              OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
+type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq struct {
+	Name                    string                                                                                 `json:"name"`
+	Runners                 []int                                                                                  `json:"runners"`
+	SelectedOrganizationIds []int                                                                                  `json:"selected_organization_ids"`
+	Visibility              OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility `json:"visibility"`
 }
 
-type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility string
+type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility string
 
 const (
-	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilitySelected EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "selected"
-	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilityAll      EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "all"
+	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibilitySelected EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility = "selected"
+	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibilityAll      EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility = "all"
 )
 
 type EnterpriseAdminDeleteScimGroupFromEnterprise struct{}
@@ -1405,35 +1389,35 @@ type EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise struct {
 	TotalCount float64  `json:"total_count"`
 }
 
-type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest struct {
-	DisplayName string                                                                              `json:"displayName"`
-	Members     []EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
-	Schemas     []string                                                                            `json:"schemas"`
+type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq struct {
+	DisplayName string                                                                          `json:"displayName"`
+	Members     []EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem `json:"members"`
+	Schemas     []string                                                                        `json:"schemas"`
 }
 
-type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem struct {
+type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem struct {
 	Value string `json:"value"`
 }
 
-type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest struct {
-	Emails   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem `json:"emails"`
-	Groups   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
-	Name     EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName         `json:"name"`
-	Schemas  []string                                                                          `json:"schemas"`
-	UserName string                                                                            `json:"userName"`
+type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq struct {
+	Emails   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem `json:"emails"`
+	Groups   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem `json:"groups"`
+	Name     EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName         `json:"name"`
+	Schemas  []string                                                                      `json:"schemas"`
+	UserName string                                                                        `json:"userName"`
 }
 
-type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem struct {
+type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem struct {
 	Primary bool   `json:"primary"`
 	Type    string `json:"type"`
 	Value   string `json:"value"`
 }
 
-type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem struct {
+type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem struct {
 	Value OptString `json:"value"`
 }
 
-type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName struct {
+type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName struct {
 	FamilyName string `json:"familyName"`
 	GivenName  string `json:"givenName"`
 }
@@ -1446,79 +1430,79 @@ type EnterpriseAdminSetAllowedActionsEnterprise struct{}
 
 type EnterpriseAdminSetGithubActionsPermissionsEnterprise struct{}
 
-type EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest struct {
+type EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq struct {
 	AllowedActions       OptAllowedActions    `json:"allowed_actions"`
 	EnabledOrganizations EnabledOrganizations `json:"enabled_organizations"`
 }
 
-type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest struct {
-	DisplayName string                                                                                        `json:"displayName"`
-	Members     []EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
-	Schemas     []string                                                                                      `json:"schemas"`
+type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq struct {
+	DisplayName string                                                                                    `json:"displayName"`
+	Members     []EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem `json:"members"`
+	Schemas     []string                                                                                  `json:"schemas"`
 }
 
-type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem struct {
+type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem struct {
 	Value string `json:"value"`
 }
 
-type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest struct {
-	Emails   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem `json:"emails"`
-	Groups   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
-	Name     EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName         `json:"name"`
-	Schemas  []string                                                                                    `json:"schemas"`
-	UserName string                                                                                      `json:"userName"`
+type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq struct {
+	Emails   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem `json:"emails"`
+	Groups   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem `json:"groups"`
+	Name     EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName         `json:"name"`
+	Schemas  []string                                                                                `json:"schemas"`
+	UserName string                                                                                  `json:"userName"`
 }
 
-type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem struct {
+type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem struct {
 	Primary bool   `json:"primary"`
 	Type    string `json:"type"`
 	Value   string `json:"value"`
 }
 
-type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem struct {
+type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem struct {
 	Value OptString `json:"value"`
 }
 
-type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName struct {
+type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName struct {
 	FamilyName string `json:"familyName"`
 	GivenName  string `json:"givenName"`
 }
 
 type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise struct{}
 
-type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest struct {
+type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq struct {
 	SelectedOrganizationIds []int `json:"selected_organization_ids"`
 }
 
 type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise struct{}
 
-type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest struct {
+type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq struct {
 	SelectedOrganizationIds []int `json:"selected_organization_ids"`
 }
 
 type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise struct{}
 
-type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest struct {
+type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq struct {
 	Runners []int `json:"runners"`
 }
 
-type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest struct {
-	Operations []EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem `json:"Operations"`
-	Schemas    []string                                                                              `json:"schemas"`
+type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq struct {
+	Operations []EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem `json:"Operations"`
+	Schemas    []string                                                                          `json:"schemas"`
 }
 
-type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem struct{}
+type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem struct{}
 
-type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
-	Name       OptString                                                                                  `json:"name"`
-	Visibility OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
+type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq struct {
+	Name       OptString                                                                              `json:"name"`
+	Visibility OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility `json:"visibility"`
 }
 
-type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility string
+type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility string
 
 const (
-	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilitySelected EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "selected"
-	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilityAll      EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "all"
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibilitySelected EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility = "selected"
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibilityAll      EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility = "all"
 )
 
 type EnvironmentApprovalsEnvironmentsItem struct {
@@ -1617,7 +1601,7 @@ type ForbiddenGist struct {
 	Message          OptString             `json:"message"`
 }
 
-func (*ForbiddenGist) gistsGetCommentResponse() {}
+func (*ForbiddenGist) gistsGetCommentRes() {}
 
 type ForbiddenGistBlock struct {
 	CreatedAt OptString    `json:"created_at"`
@@ -1627,7 +1611,7 @@ type ForbiddenGistBlock struct {
 
 type Found struct{}
 
-func (*Found) reposGetReleaseAssetResponse() {}
+func (*Found) reposGetReleaseAssetRes() {}
 
 type FullRepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
@@ -1672,117 +1656,117 @@ type GistCommitChangeStatus struct {
 
 type GistsCheckIsStarredNoContent struct{}
 
-func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredResponse() {}
+func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredRes() {}
 
 type GistsCheckIsStarredNotFound struct{}
 
-func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredResponse() {}
+func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
 type GistsCreateCommentApplicationJSONForbidden BasicError
 
-func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentResponse() {}
+func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentRes() {}
 
 type GistsCreateCommentApplicationJSONNotFound BasicError
 
-func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentResponse() {}
+func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentRes() {}
 
-type GistsCreateCommentApplicationJSONRequest struct {
+type GistsCreateCommentApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
 type GistsDeleteApplicationJSONForbidden BasicError
 
-func (*GistsDeleteApplicationJSONForbidden) gistsDeleteResponse() {}
+func (*GistsDeleteApplicationJSONForbidden) gistsDeleteRes() {}
 
 type GistsDeleteApplicationJSONNotFound BasicError
 
-func (*GistsDeleteApplicationJSONNotFound) gistsDeleteResponse() {}
+func (*GistsDeleteApplicationJSONNotFound) gistsDeleteRes() {}
 
 type GistsDeleteCommentApplicationJSONForbidden BasicError
 
-func (*GistsDeleteCommentApplicationJSONForbidden) gistsDeleteCommentResponse() {}
+func (*GistsDeleteCommentApplicationJSONForbidden) gistsDeleteCommentRes() {}
 
 type GistsDeleteCommentApplicationJSONNotFound BasicError
 
-func (*GistsDeleteCommentApplicationJSONNotFound) gistsDeleteCommentResponse() {}
+func (*GistsDeleteCommentApplicationJSONNotFound) gistsDeleteCommentRes() {}
 
 type GistsDeleteCommentNoContent struct{}
 
-func (*GistsDeleteCommentNoContent) gistsDeleteCommentResponse() {}
+func (*GistsDeleteCommentNoContent) gistsDeleteCommentRes() {}
 
 type GistsDeleteNoContent struct{}
 
-func (*GistsDeleteNoContent) gistsDeleteResponse() {}
+func (*GistsDeleteNoContent) gistsDeleteRes() {}
 
 type GistsListCommentsApplicationJSONForbidden BasicError
 
-func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsResponse() {}
+func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsRes() {}
 
 type GistsListCommentsApplicationJSONNotFound BasicError
 
-func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsResponse() {}
+func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsRes() {}
 
 type GistsListCommentsOK []GistComment
 
-func (*GistsListCommentsOK) gistsListCommentsResponse() {}
+func (*GistsListCommentsOK) gistsListCommentsRes() {}
 
 type GistsListCommitsApplicationJSONForbidden BasicError
 
-func (*GistsListCommitsApplicationJSONForbidden) gistsListCommitsResponse() {}
+func (*GistsListCommitsApplicationJSONForbidden) gistsListCommitsRes() {}
 
 type GistsListCommitsApplicationJSONNotFound BasicError
 
-func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsResponse() {}
+func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
 
 type GistsListCommitsOK []GistCommit
 
-func (*GistsListCommitsOK) gistsListCommitsResponse() {}
+func (*GistsListCommitsOK) gistsListCommitsRes() {}
 
 type GistsListForUserOK []BaseGist
 
 type GistsListOK []BaseGist
 
-func (*GistsListOK) gistsListResponse() {}
+func (*GistsListOK) gistsListRes() {}
 
 type GistsListPublicOK []BaseGist
 
 type GistsListStarredApplicationJSONForbidden BasicError
 
-func (*GistsListStarredApplicationJSONForbidden) gistsListStarredResponse() {}
+func (*GistsListStarredApplicationJSONForbidden) gistsListStarredRes() {}
 
 type GistsListStarredApplicationJSONUnauthorized BasicError
 
-func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredResponse() {}
+func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
 
 type GistsListStarredOK []BaseGist
 
-func (*GistsListStarredOK) gistsListStarredResponse() {}
+func (*GistsListStarredOK) gistsListStarredRes() {}
 
 type GistsStarApplicationJSONForbidden BasicError
 
-func (*GistsStarApplicationJSONForbidden) gistsStarResponse() {}
+func (*GistsStarApplicationJSONForbidden) gistsStarRes() {}
 
 type GistsStarApplicationJSONNotFound BasicError
 
-func (*GistsStarApplicationJSONNotFound) gistsStarResponse() {}
+func (*GistsStarApplicationJSONNotFound) gistsStarRes() {}
 
 type GistsStarNoContent struct{}
 
-func (*GistsStarNoContent) gistsStarResponse() {}
+func (*GistsStarNoContent) gistsStarRes() {}
 
 type GistsUnstarApplicationJSONForbidden BasicError
 
-func (*GistsUnstarApplicationJSONForbidden) gistsUnstarResponse() {}
+func (*GistsUnstarApplicationJSONForbidden) gistsUnstarRes() {}
 
 type GistsUnstarApplicationJSONNotFound BasicError
 
-func (*GistsUnstarApplicationJSONNotFound) gistsUnstarResponse() {}
+func (*GistsUnstarApplicationJSONNotFound) gistsUnstarRes() {}
 
 type GistsUnstarNoContent struct{}
 
-func (*GistsUnstarNoContent) gistsUnstarResponse() {}
+func (*GistsUnstarNoContent) gistsUnstarRes() {}
 
-type GistsUpdateCommentApplicationJSONRequest struct {
+type GistsUpdateCommentApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
@@ -1816,99 +1800,99 @@ type GitCommitVerification struct {
 	Verified  bool      `json:"verified"`
 }
 
-type GitCreateBlobApplicationJSONRequest struct {
+type GitCreateBlobApplicationJSONReq struct {
 	Content  string    `json:"content"`
 	Encoding OptString `json:"encoding"`
 }
 
-func (*GitCreateBlobApplicationJSONRequest) gitCreateBlobRequest() {}
+func (*GitCreateBlobApplicationJSONReq) gitCreateBlobReq() {}
 
-type GitCreateCommitApplicationJSONRequest struct {
-	Author    OptGitCreateCommitApplicationJSONRequestAuthor    `json:"author"`
-	Committer OptGitCreateCommitApplicationJSONRequestCommitter `json:"committer"`
-	Message   string                                            `json:"message"`
-	Parents   []string                                          `json:"parents"`
-	Signature OptString                                         `json:"signature"`
-	Tree      string                                            `json:"tree"`
+type GitCreateCommitApplicationJSONReq struct {
+	Author    OptGitCreateCommitApplicationJSONReqAuthor    `json:"author"`
+	Committer OptGitCreateCommitApplicationJSONReqCommitter `json:"committer"`
+	Message   string                                        `json:"message"`
+	Parents   []string                                      `json:"parents"`
+	Signature OptString                                     `json:"signature"`
+	Tree      string                                        `json:"tree"`
 }
 
-func (*GitCreateCommitApplicationJSONRequest) gitCreateCommitRequest() {}
+func (*GitCreateCommitApplicationJSONReq) gitCreateCommitReq() {}
 
-type GitCreateCommitApplicationJSONRequestAuthor struct {
+type GitCreateCommitApplicationJSONReqAuthor struct {
 	Date  OptTime `json:"date"`
 	Email string  `json:"email"`
 	Name  string  `json:"name"`
 }
 
-type GitCreateCommitApplicationJSONRequestCommitter struct {
+type GitCreateCommitApplicationJSONReqCommitter struct {
 	Date  OptTime   `json:"date"`
 	Email OptString `json:"email"`
 	Name  OptString `json:"name"`
 }
 
-type GitCreateRefApplicationJSONRequest struct {
+type GitCreateRefApplicationJSONReq struct {
 	Key OptString `json:"key"`
 	Ref string    `json:"ref"`
 	Sha string    `json:"sha"`
 }
 
-func (*GitCreateRefApplicationJSONRequest) gitCreateRefRequest() {}
+func (*GitCreateRefApplicationJSONReq) gitCreateRefReq() {}
 
-type GitCreateTagApplicationJSONRequest struct {
-	Message string                                      `json:"message"`
-	Object  string                                      `json:"object"`
-	Tag     string                                      `json:"tag"`
-	Tagger  OptGitCreateTagApplicationJSONRequestTagger `json:"tagger"`
-	Type    GitCreateTagApplicationJSONRequestType      `json:"type"`
+type GitCreateTagApplicationJSONReq struct {
+	Message string                                  `json:"message"`
+	Object  string                                  `json:"object"`
+	Tag     string                                  `json:"tag"`
+	Tagger  OptGitCreateTagApplicationJSONReqTagger `json:"tagger"`
+	Type    GitCreateTagApplicationJSONReqType      `json:"type"`
 }
 
-func (*GitCreateTagApplicationJSONRequest) gitCreateTagRequest() {}
+func (*GitCreateTagApplicationJSONReq) gitCreateTagReq() {}
 
-type GitCreateTagApplicationJSONRequestTagger struct {
+type GitCreateTagApplicationJSONReqTagger struct {
 	Date  OptTime `json:"date"`
 	Email string  `json:"email"`
 	Name  string  `json:"name"`
 }
 
-type GitCreateTagApplicationJSONRequestType string
+type GitCreateTagApplicationJSONReqType string
 
 const (
-	GitCreateTagApplicationJSONRequestTypeCommit GitCreateTagApplicationJSONRequestType = "commit"
-	GitCreateTagApplicationJSONRequestTypeTree   GitCreateTagApplicationJSONRequestType = "tree"
-	GitCreateTagApplicationJSONRequestTypeBlob   GitCreateTagApplicationJSONRequestType = "blob"
+	GitCreateTagApplicationJSONReqTypeCommit GitCreateTagApplicationJSONReqType = "commit"
+	GitCreateTagApplicationJSONReqTypeTree   GitCreateTagApplicationJSONReqType = "tree"
+	GitCreateTagApplicationJSONReqTypeBlob   GitCreateTagApplicationJSONReqType = "blob"
 )
 
-type GitCreateTreeApplicationJSONRequest struct {
-	BaseTree OptString                                     `json:"base_tree"`
-	Tree     []GitCreateTreeApplicationJSONRequestTreeItem `json:"tree"`
+type GitCreateTreeApplicationJSONReq struct {
+	BaseTree OptString                                 `json:"base_tree"`
+	Tree     []GitCreateTreeApplicationJSONReqTreeItem `json:"tree"`
 }
 
-func (*GitCreateTreeApplicationJSONRequest) gitCreateTreeRequest() {}
+func (*GitCreateTreeApplicationJSONReq) gitCreateTreeReq() {}
 
-type GitCreateTreeApplicationJSONRequestTreeItem struct {
-	Content OptString                                          `json:"content"`
-	Mode    OptGitCreateTreeApplicationJSONRequestTreeItemMode `json:"mode"`
-	Path    OptString                                          `json:"path"`
-	Sha     OptNilString                                       `json:"sha"`
-	Type    OptGitCreateTreeApplicationJSONRequestTreeItemType `json:"type"`
+type GitCreateTreeApplicationJSONReqTreeItem struct {
+	Content OptString                                      `json:"content"`
+	Mode    OptGitCreateTreeApplicationJSONReqTreeItemMode `json:"mode"`
+	Path    OptString                                      `json:"path"`
+	Sha     OptNilString                                   `json:"sha"`
+	Type    OptGitCreateTreeApplicationJSONReqTreeItemType `json:"type"`
 }
 
-type GitCreateTreeApplicationJSONRequestTreeItemMode string
+type GitCreateTreeApplicationJSONReqTreeItemMode string
 
 const (
-	GitCreateTreeApplicationJSONRequestTreeItemMode100644 GitCreateTreeApplicationJSONRequestTreeItemMode = "100644"
-	GitCreateTreeApplicationJSONRequestTreeItemMode100755 GitCreateTreeApplicationJSONRequestTreeItemMode = "100755"
-	GitCreateTreeApplicationJSONRequestTreeItemMode040000 GitCreateTreeApplicationJSONRequestTreeItemMode = "040000"
-	GitCreateTreeApplicationJSONRequestTreeItemMode160000 GitCreateTreeApplicationJSONRequestTreeItemMode = "160000"
-	GitCreateTreeApplicationJSONRequestTreeItemMode120000 GitCreateTreeApplicationJSONRequestTreeItemMode = "120000"
+	GitCreateTreeApplicationJSONReqTreeItemMode100644 GitCreateTreeApplicationJSONReqTreeItemMode = "100644"
+	GitCreateTreeApplicationJSONReqTreeItemMode100755 GitCreateTreeApplicationJSONReqTreeItemMode = "100755"
+	GitCreateTreeApplicationJSONReqTreeItemMode040000 GitCreateTreeApplicationJSONReqTreeItemMode = "040000"
+	GitCreateTreeApplicationJSONReqTreeItemMode160000 GitCreateTreeApplicationJSONReqTreeItemMode = "160000"
+	GitCreateTreeApplicationJSONReqTreeItemMode120000 GitCreateTreeApplicationJSONReqTreeItemMode = "120000"
 )
 
-type GitCreateTreeApplicationJSONRequestTreeItemType string
+type GitCreateTreeApplicationJSONReqTreeItemType string
 
 const (
-	GitCreateTreeApplicationJSONRequestTreeItemTypeBlob   GitCreateTreeApplicationJSONRequestTreeItemType = "blob"
-	GitCreateTreeApplicationJSONRequestTreeItemTypeTree   GitCreateTreeApplicationJSONRequestTreeItemType = "tree"
-	GitCreateTreeApplicationJSONRequestTreeItemTypeCommit GitCreateTreeApplicationJSONRequestTreeItemType = "commit"
+	GitCreateTreeApplicationJSONReqTreeItemTypeBlob   GitCreateTreeApplicationJSONReqTreeItemType = "blob"
+	GitCreateTreeApplicationJSONReqTreeItemTypeTree   GitCreateTreeApplicationJSONReqTreeItemType = "tree"
+	GitCreateTreeApplicationJSONReqTreeItemTypeCommit GitCreateTreeApplicationJSONReqTreeItemType = "commit"
 )
 
 type GitDeleteRefNoContent struct{}
@@ -1940,16 +1924,16 @@ type GitTreeTreeItem struct {
 	URL  OptString `json:"url"`
 }
 
-type GitUpdateRefApplicationJSONRequest struct {
+type GitUpdateRefApplicationJSONReq struct {
 	Force OptBool `json:"force"`
 	Sha   string  `json:"sha"`
 }
 
-func (*GitUpdateRefApplicationJSONRequest) gitUpdateRefRequest() {}
+func (*GitUpdateRefApplicationJSONReq) gitUpdateRefReq() {}
 
 type GitignoreGetAllTemplatesOK []string
 
-func (*GitignoreGetAllTemplatesOK) gitignoreGetAllTemplatesResponse() {}
+func (*GitignoreGetAllTemplatesOK) gitignoreGetAllTemplatesRes() {}
 
 type GpgKeyEmailsItem struct {
 	Email    OptString `json:"email"`
@@ -2044,56 +2028,54 @@ type InteractionsRemoveRestrictionsForOrg struct{}
 
 type InteractionsRemoveRestrictionsForRepoConflict struct{}
 
-func (*InteractionsRemoveRestrictionsForRepoConflict) interactionsRemoveRestrictionsForRepoResponse() {
-}
+func (*InteractionsRemoveRestrictionsForRepoConflict) interactionsRemoveRestrictionsForRepoRes() {}
 
 type InteractionsRemoveRestrictionsForRepoNoContent struct{}
 
-func (*InteractionsRemoveRestrictionsForRepoNoContent) interactionsRemoveRestrictionsForRepoResponse() {
-}
+func (*InteractionsRemoveRestrictionsForRepoNoContent) interactionsRemoveRestrictionsForRepoRes() {}
 
 type InteractionsSetRestrictionsForRepoConflict struct{}
 
-func (*InteractionsSetRestrictionsForRepoConflict) interactionsSetRestrictionsForRepoResponse() {}
+func (*InteractionsSetRestrictionsForRepoConflict) interactionsSetRestrictionsForRepoRes() {}
 
-type IssuesAddAssigneesApplicationJSONRequest struct {
+type IssuesAddAssigneesApplicationJSONReq struct {
 	Assignees []string `json:"assignees"`
 }
 
-func (*IssuesAddAssigneesApplicationJSONRequest) issuesAddAssigneesRequest() {}
+func (*IssuesAddAssigneesApplicationJSONReq) issuesAddAssigneesReq() {}
 
 type IssuesCheckUserCanBeAssignedNoContent struct{}
 
-func (*IssuesCheckUserCanBeAssignedNoContent) issuesCheckUserCanBeAssignedResponse() {}
+func (*IssuesCheckUserCanBeAssignedNoContent) issuesCheckUserCanBeAssignedRes() {}
 
-type IssuesCreateCommentApplicationJSONRequest struct {
+type IssuesCreateCommentApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-func (*IssuesCreateCommentApplicationJSONRequest) issuesCreateCommentRequest() {}
+func (*IssuesCreateCommentApplicationJSONReq) issuesCreateCommentReq() {}
 
-type IssuesCreateLabelApplicationJSONRequest struct {
+type IssuesCreateLabelApplicationJSONReq struct {
 	Color       OptString `json:"color"`
 	Description OptString `json:"description"`
 	Name        string    `json:"name"`
 }
 
-func (*IssuesCreateLabelApplicationJSONRequest) issuesCreateLabelRequest() {}
+func (*IssuesCreateLabelApplicationJSONReq) issuesCreateLabelReq() {}
 
-type IssuesCreateMilestoneApplicationJSONRequest struct {
-	Description OptString                                           `json:"description"`
-	DueOn       OptTime                                             `json:"due_on"`
-	State       OptIssuesCreateMilestoneApplicationJSONRequestState `json:"state"`
-	Title       string                                              `json:"title"`
+type IssuesCreateMilestoneApplicationJSONReq struct {
+	Description OptString                                       `json:"description"`
+	DueOn       OptTime                                         `json:"due_on"`
+	State       OptIssuesCreateMilestoneApplicationJSONReqState `json:"state"`
+	Title       string                                          `json:"title"`
 }
 
-func (*IssuesCreateMilestoneApplicationJSONRequest) issuesCreateMilestoneRequest() {}
+func (*IssuesCreateMilestoneApplicationJSONReq) issuesCreateMilestoneReq() {}
 
-type IssuesCreateMilestoneApplicationJSONRequestState string
+type IssuesCreateMilestoneApplicationJSONReqState string
 
 const (
-	IssuesCreateMilestoneApplicationJSONRequestStateOpen   IssuesCreateMilestoneApplicationJSONRequestState = "open"
-	IssuesCreateMilestoneApplicationJSONRequestStateClosed IssuesCreateMilestoneApplicationJSONRequestState = "closed"
+	IssuesCreateMilestoneApplicationJSONReqStateOpen   IssuesCreateMilestoneApplicationJSONReqState = "open"
+	IssuesCreateMilestoneApplicationJSONReqStateClosed IssuesCreateMilestoneApplicationJSONReqState = "closed"
 )
 
 type IssuesDeleteComment struct{}
@@ -2102,107 +2084,107 @@ type IssuesDeleteLabel struct{}
 
 type IssuesDeleteMilestoneNoContent struct{}
 
-func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneResponse() {}
+func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneRes() {}
 
 type IssuesListAssigneesOK []SimpleUser
 
-func (*IssuesListAssigneesOK) issuesListAssigneesResponse() {}
+func (*IssuesListAssigneesOK) issuesListAssigneesRes() {}
 
 type IssuesListCommentsApplicationJSONGone BasicError
 
-func (*IssuesListCommentsApplicationJSONGone) issuesListCommentsResponse() {}
+func (*IssuesListCommentsApplicationJSONGone) issuesListCommentsRes() {}
 
 type IssuesListCommentsApplicationJSONNotFound BasicError
 
-func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsResponse() {}
+func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsRes() {}
 
 type IssuesListCommentsOK []IssueComment
 
-func (*IssuesListCommentsOK) issuesListCommentsResponse() {}
+func (*IssuesListCommentsOK) issuesListCommentsRes() {}
 
 type IssuesListLabelsForRepoOK []Label
 
-func (*IssuesListLabelsForRepoOK) issuesListLabelsForRepoResponse() {}
+func (*IssuesListLabelsForRepoOK) issuesListLabelsForRepoRes() {}
 
 type IssuesListLabelsOnIssueOK []Label
 
-func (*IssuesListLabelsOnIssueOK) issuesListLabelsOnIssueResponse() {}
+func (*IssuesListLabelsOnIssueOK) issuesListLabelsOnIssueRes() {}
 
-type IssuesLockApplicationJSONRequest struct {
-	LockReason OptIssuesLockApplicationJSONRequestLockReason `json:"lock_reason"`
+type IssuesLockApplicationJSONReq struct {
+	LockReason OptIssuesLockApplicationJSONReqLockReason `json:"lock_reason"`
 }
 
-func (*IssuesLockApplicationJSONRequest) issuesLockRequest() {}
+func (*IssuesLockApplicationJSONReq) issuesLockReq() {}
 
-type IssuesLockApplicationJSONRequestLockReason string
+type IssuesLockApplicationJSONReqLockReason string
 
 const (
-	IssuesLockApplicationJSONRequestLockReasonOffMinusTopic IssuesLockApplicationJSONRequestLockReason = "off-topic"
-	IssuesLockApplicationJSONRequestLockReasonTooHeated     IssuesLockApplicationJSONRequestLockReason = "too heated"
-	IssuesLockApplicationJSONRequestLockReasonResolved      IssuesLockApplicationJSONRequestLockReason = "resolved"
-	IssuesLockApplicationJSONRequestLockReasonSpam          IssuesLockApplicationJSONRequestLockReason = "spam"
+	IssuesLockApplicationJSONReqLockReasonOffMinusTopic IssuesLockApplicationJSONReqLockReason = "off-topic"
+	IssuesLockApplicationJSONReqLockReasonTooHeated     IssuesLockApplicationJSONReqLockReason = "too heated"
+	IssuesLockApplicationJSONReqLockReasonResolved      IssuesLockApplicationJSONReqLockReason = "resolved"
+	IssuesLockApplicationJSONReqLockReasonSpam          IssuesLockApplicationJSONReqLockReason = "spam"
 )
 
 type IssuesLockNoContent struct{}
 
 type IssuesRemoveAllLabelsNoContent struct{}
 
-func (*IssuesRemoveAllLabelsNoContent) issuesRemoveAllLabelsResponse() {}
+func (*IssuesRemoveAllLabelsNoContent) issuesRemoveAllLabelsRes() {}
 
-type IssuesRemoveAssigneesApplicationJSONRequest struct {
+type IssuesRemoveAssigneesApplicationJSONReq struct {
 	Assignees []string `json:"assignees"`
 }
 
-func (*IssuesRemoveAssigneesApplicationJSONRequest) issuesRemoveAssigneesRequest() {}
+func (*IssuesRemoveAssigneesApplicationJSONReq) issuesRemoveAssigneesReq() {}
 
 type IssuesRemoveLabelApplicationJSONGone BasicError
 
-func (*IssuesRemoveLabelApplicationJSONGone) issuesRemoveLabelResponse() {}
+func (*IssuesRemoveLabelApplicationJSONGone) issuesRemoveLabelRes() {}
 
 type IssuesRemoveLabelApplicationJSONNotFound BasicError
 
-func (*IssuesRemoveLabelApplicationJSONNotFound) issuesRemoveLabelResponse() {}
+func (*IssuesRemoveLabelApplicationJSONNotFound) issuesRemoveLabelRes() {}
 
 type IssuesRemoveLabelOK []Label
 
-func (*IssuesRemoveLabelOK) issuesRemoveLabelResponse() {}
+func (*IssuesRemoveLabelOK) issuesRemoveLabelRes() {}
 
 type IssuesUnlockApplicationJSONForbidden BasicError
 
-func (*IssuesUnlockApplicationJSONForbidden) issuesUnlockResponse() {}
+func (*IssuesUnlockApplicationJSONForbidden) issuesUnlockRes() {}
 
 type IssuesUnlockApplicationJSONNotFound BasicError
 
-func (*IssuesUnlockApplicationJSONNotFound) issuesUnlockResponse() {}
+func (*IssuesUnlockApplicationJSONNotFound) issuesUnlockRes() {}
 
 type IssuesUnlockNoContent struct{}
 
-func (*IssuesUnlockNoContent) issuesUnlockResponse() {}
+func (*IssuesUnlockNoContent) issuesUnlockRes() {}
 
-type IssuesUpdateCommentApplicationJSONRequest struct {
+type IssuesUpdateCommentApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-func (*IssuesUpdateCommentApplicationJSONRequest) issuesUpdateCommentRequest() {}
+func (*IssuesUpdateCommentApplicationJSONReq) issuesUpdateCommentReq() {}
 
-type IssuesUpdateLabelApplicationJSONRequest struct {
+type IssuesUpdateLabelApplicationJSONReq struct {
 	Color       OptString `json:"color"`
 	Description OptString `json:"description"`
 	NewName     OptString `json:"new_name"`
 }
 
-type IssuesUpdateMilestoneApplicationJSONRequest struct {
-	Description OptString                                           `json:"description"`
-	DueOn       OptTime                                             `json:"due_on"`
-	State       OptIssuesUpdateMilestoneApplicationJSONRequestState `json:"state"`
-	Title       OptString                                           `json:"title"`
+type IssuesUpdateMilestoneApplicationJSONReq struct {
+	Description OptString                                       `json:"description"`
+	DueOn       OptTime                                         `json:"due_on"`
+	State       OptIssuesUpdateMilestoneApplicationJSONReqState `json:"state"`
+	Title       OptString                                       `json:"title"`
 }
 
-type IssuesUpdateMilestoneApplicationJSONRequestState string
+type IssuesUpdateMilestoneApplicationJSONReqState string
 
 const (
-	IssuesUpdateMilestoneApplicationJSONRequestStateOpen   IssuesUpdateMilestoneApplicationJSONRequestState = "open"
-	IssuesUpdateMilestoneApplicationJSONRequestStateClosed IssuesUpdateMilestoneApplicationJSONRequestState = "closed"
+	IssuesUpdateMilestoneApplicationJSONReqStateOpen   IssuesUpdateMilestoneApplicationJSONReqState = "open"
+	IssuesUpdateMilestoneApplicationJSONReqStateClosed IssuesUpdateMilestoneApplicationJSONReqState = "closed"
 )
 
 type JobStatus string
@@ -2238,29 +2220,29 @@ type LicenseContentLinks struct {
 
 type LicensesGetAllCommonlyUsedOK []LicenseSimple
 
-func (*LicensesGetAllCommonlyUsedOK) licensesGetAllCommonlyUsedResponse() {}
+func (*LicensesGetAllCommonlyUsedOK) licensesGetAllCommonlyUsedRes() {}
 
 type LicensesGetApplicationJSONForbidden BasicError
 
-func (*LicensesGetApplicationJSONForbidden) licensesGetResponse() {}
+func (*LicensesGetApplicationJSONForbidden) licensesGetRes() {}
 
 type LicensesGetApplicationJSONNotFound BasicError
 
-func (*LicensesGetApplicationJSONNotFound) licensesGetResponse() {}
+func (*LicensesGetApplicationJSONNotFound) licensesGetRes() {}
 
-type MarkdownRenderApplicationJSONRequest struct {
-	Context OptString                                   `json:"context"`
-	Mode    OptMarkdownRenderApplicationJSONRequestMode `json:"mode"`
-	Text    string                                      `json:"text"`
+type MarkdownRenderApplicationJSONReq struct {
+	Context OptString                               `json:"context"`
+	Mode    OptMarkdownRenderApplicationJSONReqMode `json:"mode"`
+	Text    string                                  `json:"text"`
 }
 
-func (*MarkdownRenderApplicationJSONRequest) markdownRenderRequest() {}
+func (*MarkdownRenderApplicationJSONReq) markdownRenderReq() {}
 
-type MarkdownRenderApplicationJSONRequestMode string
+type MarkdownRenderApplicationJSONReqMode string
 
 const (
-	MarkdownRenderApplicationJSONRequestModeMarkdown MarkdownRenderApplicationJSONRequestMode = "markdown"
-	MarkdownRenderApplicationJSONRequestModeGfm      MarkdownRenderApplicationJSONRequestMode = "gfm"
+	MarkdownRenderApplicationJSONReqModeMarkdown MarkdownRenderApplicationJSONReqMode = "markdown"
+	MarkdownRenderApplicationJSONReqModeGfm      MarkdownRenderApplicationJSONReqMode = "gfm"
 )
 
 type MarketplacePurchaseMarketplacePendingChange struct {
@@ -2330,64 +2312,63 @@ type MigrationsCancelImport struct{}
 
 type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsDeleteArchiveForAuthenticatedUserResponse() {
+func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) migrationsDeleteArchiveForAuthenticatedUserResponse() {
+func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsDeleteArchiveForAuthenticatedUserResponse() {
+func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsDeleteArchiveForAuthenticatedUserNoContent struct{}
 
-func (*MigrationsDeleteArchiveForAuthenticatedUserNoContent) migrationsDeleteArchiveForAuthenticatedUserResponse() {
+func (*MigrationsDeleteArchiveForAuthenticatedUserNoContent) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsDeleteArchiveForOrgNoContent struct{}
 
-func (*MigrationsDeleteArchiveForOrgNoContent) migrationsDeleteArchiveForOrgResponse() {}
+func (*MigrationsDeleteArchiveForOrgNoContent) migrationsDeleteArchiveForOrgRes() {}
 
 type MigrationsDownloadArchiveForOrgFound struct{}
 
-func (*MigrationsDownloadArchiveForOrgFound) migrationsDownloadArchiveForOrgResponse() {}
+func (*MigrationsDownloadArchiveForOrgFound) migrationsDownloadArchiveForOrgRes() {}
 
 type MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsGetArchiveForAuthenticatedUserResponse() {
+func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsGetArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetArchiveForAuthenticatedUserResponse() {
+func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetArchiveForAuthenticatedUserRes() {
 }
 
 type MigrationsGetArchiveForAuthenticatedUserFound struct{}
 
-func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAuthenticatedUserResponse() {
-}
+func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAuthenticatedUserRes() {}
 
 type MigrationsGetCommitAuthorsOK []PorterAuthor
 
-func (*MigrationsGetCommitAuthorsOK) migrationsGetCommitAuthorsResponse() {}
+func (*MigrationsGetCommitAuthorsOK) migrationsGetCommitAuthorsRes() {}
 
 type MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) migrationsGetStatusForAuthenticatedUserResponse() {
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
 type MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) migrationsGetStatusForAuthenticatedUserResponse() {
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
 type MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserResponse() {
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
 type MigrationsGetStatusForOrgExcludeItem string
@@ -2398,17 +2379,17 @@ const (
 
 type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*MigrationsListForAuthenticatedUserApplicationJSONForbidden) migrationsListForAuthenticatedUserResponse() {
+func (*MigrationsListForAuthenticatedUserApplicationJSONForbidden) migrationsListForAuthenticatedUserRes() {
 }
 
 type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserResponse() {
+func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserRes() {
 }
 
 type MigrationsListForAuthenticatedUserOK []Migration
 
-func (*MigrationsListForAuthenticatedUserOK) migrationsListForAuthenticatedUserResponse() {}
+func (*MigrationsListForAuthenticatedUserOK) migrationsListForAuthenticatedUserRes() {}
 
 type MigrationsListForOrgExcludeItem string
 
@@ -2418,111 +2399,111 @@ const (
 
 type MigrationsListReposForOrgOK []MinimalRepository
 
-func (*MigrationsListReposForOrgOK) migrationsListReposForOrgResponse() {}
+func (*MigrationsListReposForOrgOK) migrationsListReposForOrgRes() {}
 
 type MigrationsListReposForUserOK []MinimalRepository
 
-func (*MigrationsListReposForUserOK) migrationsListReposForUserResponse() {}
+func (*MigrationsListReposForUserOK) migrationsListReposForUserRes() {}
 
-type MigrationsMapCommitAuthorApplicationJSONRequest struct {
+type MigrationsMapCommitAuthorApplicationJSONReq struct {
 	Email OptString `json:"email"`
 	Name  OptString `json:"name"`
 }
 
-func (*MigrationsMapCommitAuthorApplicationJSONRequest) migrationsMapCommitAuthorRequest() {}
+func (*MigrationsMapCommitAuthorApplicationJSONReq) migrationsMapCommitAuthorReq() {}
 
-type MigrationsSetLfsPreferenceApplicationJSONRequest struct {
-	UseLfs MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs `json:"use_lfs"`
+type MigrationsSetLfsPreferenceApplicationJSONReq struct {
+	UseLfs MigrationsSetLfsPreferenceApplicationJSONReqUseLfs `json:"use_lfs"`
 }
 
-func (*MigrationsSetLfsPreferenceApplicationJSONRequest) migrationsSetLfsPreferenceRequest() {}
+func (*MigrationsSetLfsPreferenceApplicationJSONReq) migrationsSetLfsPreferenceReq() {}
 
-type MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs string
+type MigrationsSetLfsPreferenceApplicationJSONReqUseLfs string
 
 const (
-	MigrationsSetLfsPreferenceApplicationJSONRequestUseLfsOptIn  MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs = "opt_in"
-	MigrationsSetLfsPreferenceApplicationJSONRequestUseLfsOptOut MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs = "opt_out"
+	MigrationsSetLfsPreferenceApplicationJSONReqUseLfsOptIn  MigrationsSetLfsPreferenceApplicationJSONReqUseLfs = "opt_in"
+	MigrationsSetLfsPreferenceApplicationJSONReqUseLfsOptOut MigrationsSetLfsPreferenceApplicationJSONReqUseLfs = "opt_out"
 )
 
-type MigrationsStartForAuthenticatedUserApplicationJSONRequest struct {
-	Exclude              []MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem `json:"exclude"`
-	ExcludeAttachments   OptBool                                                                `json:"exclude_attachments"`
-	ExcludeOwnerProjects OptBool                                                                `json:"exclude_owner_projects"`
-	ExcludeReleases      OptBool                                                                `json:"exclude_releases"`
-	LockRepositories     OptBool                                                                `json:"lock_repositories"`
-	Repositories         []string                                                               `json:"repositories"`
+type MigrationsStartForAuthenticatedUserApplicationJSONReq struct {
+	Exclude              []MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem `json:"exclude"`
+	ExcludeAttachments   OptBool                                                            `json:"exclude_attachments"`
+	ExcludeOwnerProjects OptBool                                                            `json:"exclude_owner_projects"`
+	ExcludeReleases      OptBool                                                            `json:"exclude_releases"`
+	LockRepositories     OptBool                                                            `json:"lock_repositories"`
+	Repositories         []string                                                           `json:"repositories"`
 }
 
-func (*MigrationsStartForAuthenticatedUserApplicationJSONRequest) migrationsStartForAuthenticatedUserRequest() {
+func (*MigrationsStartForAuthenticatedUserApplicationJSONReq) migrationsStartForAuthenticatedUserReq() {
 }
 
-type MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem string
+type MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem string
 
 const (
-	MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItemRepositories MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem = "repositories"
+	MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItemRepositories MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem = "repositories"
 )
 
-type MigrationsStartForOrgApplicationJSONRequest struct {
-	Exclude              []MigrationsStartForOrgApplicationJSONRequestExcludeItem `json:"exclude"`
-	ExcludeAttachments   OptBool                                                  `json:"exclude_attachments"`
-	ExcludeOwnerProjects OptBool                                                  `json:"exclude_owner_projects"`
-	ExcludeReleases      OptBool                                                  `json:"exclude_releases"`
-	LockRepositories     OptBool                                                  `json:"lock_repositories"`
-	Repositories         []string                                                 `json:"repositories"`
+type MigrationsStartForOrgApplicationJSONReq struct {
+	Exclude              []MigrationsStartForOrgApplicationJSONReqExcludeItem `json:"exclude"`
+	ExcludeAttachments   OptBool                                              `json:"exclude_attachments"`
+	ExcludeOwnerProjects OptBool                                              `json:"exclude_owner_projects"`
+	ExcludeReleases      OptBool                                              `json:"exclude_releases"`
+	LockRepositories     OptBool                                              `json:"lock_repositories"`
+	Repositories         []string                                             `json:"repositories"`
 }
 
-func (*MigrationsStartForOrgApplicationJSONRequest) migrationsStartForOrgRequest() {}
+func (*MigrationsStartForOrgApplicationJSONReq) migrationsStartForOrgReq() {}
 
-type MigrationsStartForOrgApplicationJSONRequestExcludeItem string
+type MigrationsStartForOrgApplicationJSONReqExcludeItem string
 
 const (
-	MigrationsStartForOrgApplicationJSONRequestExcludeItemRepositories MigrationsStartForOrgApplicationJSONRequestExcludeItem = "repositories"
+	MigrationsStartForOrgApplicationJSONReqExcludeItemRepositories MigrationsStartForOrgApplicationJSONReqExcludeItem = "repositories"
 )
 
-type MigrationsStartImportApplicationJSONRequest struct {
-	TfvcProject OptString                                         `json:"tfvc_project"`
-	Vcs         OptMigrationsStartImportApplicationJSONRequestVcs `json:"vcs"`
-	VcsPassword OptString                                         `json:"vcs_password"`
-	VcsURL      string                                            `json:"vcs_url"`
-	VcsUsername OptString                                         `json:"vcs_username"`
+type MigrationsStartImportApplicationJSONReq struct {
+	TfvcProject OptString                                     `json:"tfvc_project"`
+	Vcs         OptMigrationsStartImportApplicationJSONReqVcs `json:"vcs"`
+	VcsPassword OptString                                     `json:"vcs_password"`
+	VcsURL      string                                        `json:"vcs_url"`
+	VcsUsername OptString                                     `json:"vcs_username"`
 }
 
-func (*MigrationsStartImportApplicationJSONRequest) migrationsStartImportRequest() {}
+func (*MigrationsStartImportApplicationJSONReq) migrationsStartImportReq() {}
 
-type MigrationsStartImportApplicationJSONRequestVcs string
+type MigrationsStartImportApplicationJSONReqVcs string
 
 const (
-	MigrationsStartImportApplicationJSONRequestVcsSubversion MigrationsStartImportApplicationJSONRequestVcs = "subversion"
-	MigrationsStartImportApplicationJSONRequestVcsGit        MigrationsStartImportApplicationJSONRequestVcs = "git"
-	MigrationsStartImportApplicationJSONRequestVcsMercurial  MigrationsStartImportApplicationJSONRequestVcs = "mercurial"
-	MigrationsStartImportApplicationJSONRequestVcsTfvc       MigrationsStartImportApplicationJSONRequestVcs = "tfvc"
+	MigrationsStartImportApplicationJSONReqVcsSubversion MigrationsStartImportApplicationJSONReqVcs = "subversion"
+	MigrationsStartImportApplicationJSONReqVcsGit        MigrationsStartImportApplicationJSONReqVcs = "git"
+	MigrationsStartImportApplicationJSONReqVcsMercurial  MigrationsStartImportApplicationJSONReqVcs = "mercurial"
+	MigrationsStartImportApplicationJSONReqVcsTfvc       MigrationsStartImportApplicationJSONReqVcs = "tfvc"
 )
 
 type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) migrationsUnlockRepoForAuthenticatedUserResponse() {
+func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) migrationsUnlockRepoForAuthenticatedUserResponse() {
+func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) migrationsUnlockRepoForAuthenticatedUserResponse() {
+func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserNoContent struct{}
 
-func (*MigrationsUnlockRepoForAuthenticatedUserNoContent) migrationsUnlockRepoForAuthenticatedUserResponse() {
+func (*MigrationsUnlockRepoForAuthenticatedUserNoContent) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 type MigrationsUnlockRepoForOrgNoContent struct{}
 
-func (*MigrationsUnlockRepoForOrgNoContent) migrationsUnlockRepoForOrgResponse() {}
+func (*MigrationsUnlockRepoForOrgNoContent) migrationsUnlockRepoForOrgRes() {}
 
-type MigrationsUpdateImportApplicationJSONRequest struct {
+type MigrationsUpdateImportApplicationJSONReq struct {
 	TfvcProject OptString `json:"tfvc_project"`
 	Vcs         OptString `json:"vcs"`
 	VcsPassword OptString `json:"vcs_password"`
@@ -2852,96 +2833,94 @@ func (o NilPageStatus) Get() (v PageStatus, ok bool) {
 	return o.Value, true
 }
 
-// NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews with value set to v.
-func NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews {
-	return NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews{
+// NewNilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews returns new NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews with value set to v.
+func NewNilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews(v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews {
+	return NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews{
 		Value: v,
 	}
 }
 
-// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews is nullable ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews.
-type NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews struct {
-	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews
+// NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews is nullable ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews.
+type NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews struct {
+	Value ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 	Null  bool
 }
 
 // SetTo sets value to v.
-func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) {
+func (o *NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) SetTo(v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) {
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) IsNull() bool {
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) IsNull() bool {
 	return o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews, ok bool) {
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) Get() (v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews, ok bool) {
 	if o.Null {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks with value set to v.
-func NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks {
-	return NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks{
+// NewNilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks returns new NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks with value set to v.
+func NewNilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks(v ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks {
+	return NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks{
 		Value: v,
 	}
 }
 
-// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks is nullable ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks.
-type NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struct {
-	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks
+// NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks is nullable ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks.
+type NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks struct {
+	Value ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks
 	Null  bool
 }
 
 // SetTo sets value to v.
-func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) {
+func (o *NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) SetTo(v ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) {
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) IsNull() bool {
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) IsNull() bool {
 	return o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks, ok bool) {
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) Get() (v ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks, ok bool) {
 	if o.Null {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewNilReposUpdateBranchProtectionApplicationJSONRequestRestrictions returns new NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions with value set to v.
-func NewNilReposUpdateBranchProtectionApplicationJSONRequestRestrictions(v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions {
-	return NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions{
+// NewNilReposUpdateBranchProtectionApplicationJSONReqRestrictions returns new NilReposUpdateBranchProtectionApplicationJSONReqRestrictions with value set to v.
+func NewNilReposUpdateBranchProtectionApplicationJSONReqRestrictions(v ReposUpdateBranchProtectionApplicationJSONReqRestrictions) NilReposUpdateBranchProtectionApplicationJSONReqRestrictions {
+	return NilReposUpdateBranchProtectionApplicationJSONReqRestrictions{
 		Value: v,
 	}
 }
 
-// NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions is nullable ReposUpdateBranchProtectionApplicationJSONRequestRestrictions.
-type NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions struct {
-	Value ReposUpdateBranchProtectionApplicationJSONRequestRestrictions
+// NilReposUpdateBranchProtectionApplicationJSONReqRestrictions is nullable ReposUpdateBranchProtectionApplicationJSONReqRestrictions.
+type NilReposUpdateBranchProtectionApplicationJSONReqRestrictions struct {
+	Value ReposUpdateBranchProtectionApplicationJSONReqRestrictions
 	Null  bool
 }
 
 // SetTo sets value to v.
-func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) {
+func (o *NilReposUpdateBranchProtectionApplicationJSONReqRestrictions) SetTo(v ReposUpdateBranchProtectionApplicationJSONReqRestrictions) {
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) IsNull() bool {
-	return o.Null
-}
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRestrictions) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions, ok bool) {
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRestrictions) Get() (v ReposUpdateBranchProtectionApplicationJSONReqRestrictions, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -3100,97 +3079,97 @@ func (o NilURL) Get() (v url.URL, ok bool) {
 
 type NoContent struct{}
 
-func (*NoContent) reposGetCodeFrequencyStatsResponse()  {}
-func (*NoContent) reposGetCommitActivityStatsResponse() {}
-func (*NoContent) reposGetContributorsStatsResponse()   {}
-func (*NoContent) reposGetPunchCardStatsResponse()      {}
+func (*NoContent) reposGetCodeFrequencyStatsRes()  {}
+func (*NoContent) reposGetCommitActivityStatsRes() {}
+func (*NoContent) reposGetContributorsStatsRes()   {}
+func (*NoContent) reposGetPunchCardStatsRes()      {}
 
 type NotModified struct{}
 
-func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserResponse()     {}
-func (*NotModified) activityDeleteThreadSubscriptionResponse()                  {}
-func (*NotModified) activityGetThreadResponse()                                 {}
-func (*NotModified) activityGetThreadSubscriptionForAuthenticatedUserResponse() {}
-func (*NotModified) activityListWatchedReposForAuthenticatedUserResponse()      {}
-func (*NotModified) activityMarkNotificationsAsReadResponse()                   {}
-func (*NotModified) activityMarkThreadAsReadResponse()                          {}
-func (*NotModified) activitySetThreadSubscriptionResponse()                     {}
-func (*NotModified) activityStarRepoForAuthenticatedUserResponse()              {}
-func (*NotModified) activityUnstarRepoForAuthenticatedUserResponse()            {}
-func (*NotModified) appsAddRepoToInstallationResponse()                         {}
-func (*NotModified) appsListInstallationReposForAuthenticatedUserResponse()     {}
-func (*NotModified) appsListReposAccessibleToInstallationResponse()             {}
-func (*NotModified) appsListSubscriptionsForAuthenticatedUserResponse()         {}
-func (*NotModified) appsListSubscriptionsForAuthenticatedUserStubbedResponse()  {}
-func (*NotModified) appsRemoveRepoFromInstallationResponse()                    {}
-func (*NotModified) codesOfConductGetAllCodesOfConductResponse()                {}
-func (*NotModified) codesOfConductGetConductCodeResponse()                      {}
-func (*NotModified) emojisGetResponse()                                         {}
-func (*NotModified) gistsCheckIsStarredResponse()                               {}
-func (*NotModified) gistsCreateCommentResponse()                                {}
-func (*NotModified) gistsDeleteCommentResponse()                                {}
-func (*NotModified) gistsDeleteResponse()                                       {}
-func (*NotModified) gistsGetCommentResponse()                                   {}
-func (*NotModified) gistsListCommentsResponse()                                 {}
-func (*NotModified) gistsListCommitsResponse()                                  {}
-func (*NotModified) gistsListResponse()                                         {}
-func (*NotModified) gistsListStarredResponse()                                  {}
-func (*NotModified) gistsStarResponse()                                         {}
-func (*NotModified) gistsUnstarResponse()                                       {}
-func (*NotModified) gitignoreGetAllTemplatesResponse()                          {}
-func (*NotModified) gitignoreGetTemplateResponse()                              {}
-func (*NotModified) licensesGetAllCommonlyUsedResponse()                        {}
-func (*NotModified) licensesGetResponse()                                       {}
-func (*NotModified) metaGetResponse()                                           {}
-func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserResponse()       {}
-func (*NotModified) migrationsGetArchiveForAuthenticatedUserResponse()          {}
-func (*NotModified) migrationsGetStatusForAuthenticatedUserResponse()           {}
-func (*NotModified) migrationsListForAuthenticatedUserResponse()                {}
-func (*NotModified) migrationsUnlockRepoForAuthenticatedUserResponse()          {}
-func (*NotModified) oAuthAuthorizationsDeleteAuthorizationResponse()            {}
-func (*NotModified) oAuthAuthorizationsDeleteGrantResponse()                    {}
-func (*NotModified) oAuthAuthorizationsGetAuthorizationResponse()               {}
-func (*NotModified) oAuthAuthorizationsGetGrantResponse()                       {}
-func (*NotModified) oAuthAuthorizationsListAuthorizationsResponse()             {}
-func (*NotModified) oAuthAuthorizationsListGrantsResponse()                     {}
-func (*NotModified) orgsListForAuthenticatedUserResponse()                      {}
-func (*NotModified) orgsListResponse()                                          {}
-func (*NotModified) projectsCreateColumnResponse()                              {}
-func (*NotModified) projectsCreateForAuthenticatedUserResponse()                {}
-func (*NotModified) projectsDeleteCardResponse()                                {}
-func (*NotModified) projectsDeleteColumnResponse()                              {}
-func (*NotModified) projectsDeleteResponse()                                    {}
-func (*NotModified) projectsGetCardResponse()                                   {}
-func (*NotModified) projectsGetColumnResponse()                                 {}
-func (*NotModified) projectsGetResponse()                                       {}
-func (*NotModified) projectsListColumnsResponse()                               {}
-func (*NotModified) projectsMoveColumnResponse()                                {}
-func (*NotModified) projectsUpdateCardResponse()                                {}
-func (*NotModified) projectsUpdateColumnResponse()                              {}
-func (*NotModified) projectsUpdateResponse()                                    {}
-func (*NotModified) rateLimitGetResponse()                                      {}
-func (*NotModified) reactionsDeleteLegacyResponse()                             {}
-func (*NotModified) reposAcceptInvitationResponse()                             {}
-func (*NotModified) reposDeclineInvitationResponse()                            {}
-func (*NotModified) reposListInvitationsForAuthenticatedUserResponse()          {}
-func (*NotModified) scimDeleteUserFromOrgResponse()                             {}
-func (*NotModified) teamsListForAuthenticatedUserResponse()                     {}
-func (*NotModified) usersCheckBlockedResponse()                                 {}
-func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedResponse()         {}
-func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedResponse()           {}
-func (*NotModified) usersFollowResponse()                                       {}
-func (*NotModified) usersGetGpgKeyForAuthenticatedResponse()                    {}
-func (*NotModified) usersGetPublicSSHKeyForAuthenticatedResponse()              {}
-func (*NotModified) usersListBlockedByAuthenticatedResponse()                   {}
-func (*NotModified) usersListEmailsForAuthenticatedResponse()                   {}
-func (*NotModified) usersListFollowedByAuthenticatedResponse()                  {}
-func (*NotModified) usersListFollowersForAuthenticatedUserResponse()            {}
-func (*NotModified) usersListGpgKeysForAuthenticatedResponse()                  {}
-func (*NotModified) usersListPublicEmailsForAuthenticatedResponse()             {}
-func (*NotModified) usersListPublicSSHKeysForAuthenticatedResponse()            {}
-func (*NotModified) usersListResponse()                                         {}
-func (*NotModified) usersUnblockResponse()                                      {}
-func (*NotModified) usersUnfollowResponse()                                     {}
+func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserRes()     {}
+func (*NotModified) activityDeleteThreadSubscriptionRes()                  {}
+func (*NotModified) activityGetThreadRes()                                 {}
+func (*NotModified) activityGetThreadSubscriptionForAuthenticatedUserRes() {}
+func (*NotModified) activityListWatchedReposForAuthenticatedUserRes()      {}
+func (*NotModified) activityMarkNotificationsAsReadRes()                   {}
+func (*NotModified) activityMarkThreadAsReadRes()                          {}
+func (*NotModified) activitySetThreadSubscriptionRes()                     {}
+func (*NotModified) activityStarRepoForAuthenticatedUserRes()              {}
+func (*NotModified) activityUnstarRepoForAuthenticatedUserRes()            {}
+func (*NotModified) appsAddRepoToInstallationRes()                         {}
+func (*NotModified) appsListInstallationReposForAuthenticatedUserRes()     {}
+func (*NotModified) appsListReposAccessibleToInstallationRes()             {}
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserRes()         {}
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserStubbedRes()  {}
+func (*NotModified) appsRemoveRepoFromInstallationRes()                    {}
+func (*NotModified) codesOfConductGetAllCodesOfConductRes()                {}
+func (*NotModified) codesOfConductGetConductCodeRes()                      {}
+func (*NotModified) emojisGetRes()                                         {}
+func (*NotModified) gistsCheckIsStarredRes()                               {}
+func (*NotModified) gistsCreateCommentRes()                                {}
+func (*NotModified) gistsDeleteCommentRes()                                {}
+func (*NotModified) gistsDeleteRes()                                       {}
+func (*NotModified) gistsGetCommentRes()                                   {}
+func (*NotModified) gistsListCommentsRes()                                 {}
+func (*NotModified) gistsListCommitsRes()                                  {}
+func (*NotModified) gistsListRes()                                         {}
+func (*NotModified) gistsListStarredRes()                                  {}
+func (*NotModified) gistsStarRes()                                         {}
+func (*NotModified) gistsUnstarRes()                                       {}
+func (*NotModified) gitignoreGetAllTemplatesRes()                          {}
+func (*NotModified) gitignoreGetTemplateRes()                              {}
+func (*NotModified) licensesGetAllCommonlyUsedRes()                        {}
+func (*NotModified) licensesGetRes()                                       {}
+func (*NotModified) metaGetRes()                                           {}
+func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
+func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
+func (*NotModified) migrationsGetStatusForAuthenticatedUserRes()           {}
+func (*NotModified) migrationsListForAuthenticatedUserRes()                {}
+func (*NotModified) migrationsUnlockRepoForAuthenticatedUserRes()          {}
+func (*NotModified) oAuthAuthorizationsDeleteAuthorizationRes()            {}
+func (*NotModified) oAuthAuthorizationsDeleteGrantRes()                    {}
+func (*NotModified) oAuthAuthorizationsGetAuthorizationRes()               {}
+func (*NotModified) oAuthAuthorizationsGetGrantRes()                       {}
+func (*NotModified) oAuthAuthorizationsListAuthorizationsRes()             {}
+func (*NotModified) oAuthAuthorizationsListGrantsRes()                     {}
+func (*NotModified) orgsListForAuthenticatedUserRes()                      {}
+func (*NotModified) orgsListRes()                                          {}
+func (*NotModified) projectsCreateColumnRes()                              {}
+func (*NotModified) projectsCreateForAuthenticatedUserRes()                {}
+func (*NotModified) projectsDeleteCardRes()                                {}
+func (*NotModified) projectsDeleteColumnRes()                              {}
+func (*NotModified) projectsDeleteRes()                                    {}
+func (*NotModified) projectsGetCardRes()                                   {}
+func (*NotModified) projectsGetColumnRes()                                 {}
+func (*NotModified) projectsGetRes()                                       {}
+func (*NotModified) projectsListColumnsRes()                               {}
+func (*NotModified) projectsMoveColumnRes()                                {}
+func (*NotModified) projectsUpdateCardRes()                                {}
+func (*NotModified) projectsUpdateColumnRes()                              {}
+func (*NotModified) projectsUpdateRes()                                    {}
+func (*NotModified) rateLimitGetRes()                                      {}
+func (*NotModified) reactionsDeleteLegacyRes()                             {}
+func (*NotModified) reposAcceptInvitationRes()                             {}
+func (*NotModified) reposDeclineInvitationRes()                            {}
+func (*NotModified) reposListInvitationsForAuthenticatedUserRes()          {}
+func (*NotModified) scimDeleteUserFromOrgRes()                             {}
+func (*NotModified) teamsListForAuthenticatedUserRes()                     {}
+func (*NotModified) usersCheckBlockedRes()                                 {}
+func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedRes()         {}
+func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedRes()           {}
+func (*NotModified) usersFollowRes()                                       {}
+func (*NotModified) usersGetGpgKeyForAuthenticatedRes()                    {}
+func (*NotModified) usersGetPublicSSHKeyForAuthenticatedRes()              {}
+func (*NotModified) usersListBlockedByAuthenticatedRes()                   {}
+func (*NotModified) usersListEmailsForAuthenticatedRes()                   {}
+func (*NotModified) usersListFollowedByAuthenticatedRes()                  {}
+func (*NotModified) usersListFollowersForAuthenticatedUserRes()            {}
+func (*NotModified) usersListGpgKeysForAuthenticatedRes()                  {}
+func (*NotModified) usersListPublicEmailsForAuthenticatedRes()             {}
+func (*NotModified) usersListPublicSSHKeysForAuthenticatedRes()            {}
+func (*NotModified) usersListRes()                                         {}
+func (*NotModified) usersUnblockRes()                                      {}
+func (*NotModified) usersUnfollowRes()                                     {}
 
 type NullableIntegrationPermissions struct {
 	Checks      OptString `json:"checks"`
@@ -3340,89 +3319,83 @@ type NullableSimpleCommitCommitter struct {
 
 type OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden BasicError
 
-func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) oAuthAuthorizationsDeleteAuthorizationResponse() {
+func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
 
 type OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized BasicError
 
-func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsDeleteAuthorizationResponse() {
+func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
 
 type OAuthAuthorizationsDeleteAuthorizationNoContent struct{}
 
-func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDeleteAuthorizationResponse() {
-}
+func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDeleteAuthorizationRes() {}
 
 type OAuthAuthorizationsDeleteGrantApplicationJSONForbidden BasicError
 
-func (*OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) oAuthAuthorizationsDeleteGrantResponse() {
-}
+func (*OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) oAuthAuthorizationsDeleteGrantRes() {}
 
 type OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized BasicError
 
-func (*OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) oAuthAuthorizationsDeleteGrantResponse() {
+func (*OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) oAuthAuthorizationsDeleteGrantRes() {
 }
 
 type OAuthAuthorizationsDeleteGrantNoContent struct{}
 
-func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantResponse() {}
+func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantRes() {}
 
 type OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden BasicError
 
-func (*OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) oAuthAuthorizationsGetAuthorizationResponse() {
+func (*OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) oAuthAuthorizationsGetAuthorizationRes() {
 }
 
 type OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized BasicError
 
-func (*OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsGetAuthorizationResponse() {
+func (*OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsGetAuthorizationRes() {
 }
 
 type OAuthAuthorizationsGetGrantApplicationJSONForbidden BasicError
 
-func (*OAuthAuthorizationsGetGrantApplicationJSONForbidden) oAuthAuthorizationsGetGrantResponse() {}
+func (*OAuthAuthorizationsGetGrantApplicationJSONForbidden) oAuthAuthorizationsGetGrantRes() {}
 
 type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
 
-func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantResponse() {
-}
+func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantRes() {}
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden BasicError
 
-func (*OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) oAuthAuthorizationsListAuthorizationsResponse() {
+func (*OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound BasicError
 
-func (*OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) oAuthAuthorizationsListAuthorizationsResponse() {
+func (*OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized BasicError
 
-func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsResponse() {
+func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
 type OAuthAuthorizationsListAuthorizationsOK []Authorization
 
-func (*OAuthAuthorizationsListAuthorizationsOK) oAuthAuthorizationsListAuthorizationsResponse() {}
+func (*OAuthAuthorizationsListAuthorizationsOK) oAuthAuthorizationsListAuthorizationsRes() {}
 
 type OAuthAuthorizationsListGrantsApplicationJSONForbidden BasicError
 
-func (*OAuthAuthorizationsListGrantsApplicationJSONForbidden) oAuthAuthorizationsListGrantsResponse() {
-}
+func (*OAuthAuthorizationsListGrantsApplicationJSONForbidden) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsListGrantsApplicationJSONNotFound BasicError
 
-func (*OAuthAuthorizationsListGrantsApplicationJSONNotFound) oAuthAuthorizationsListGrantsResponse() {
-}
+func (*OAuthAuthorizationsListGrantsApplicationJSONNotFound) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsListGrantsApplicationJSONUnauthorized BasicError
 
-func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsResponse() {
-}
+func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsListGrantsOK []ApplicationGrant
 
-func (*OAuthAuthorizationsListGrantsOK) oAuthAuthorizationsListGrantsResponse() {}
+func (*OAuthAuthorizationsListGrantsOK) oAuthAuthorizationsListGrantsRes() {}
 
 // NewOptAPIOverviewSSHKeyFingerprints returns new OptAPIOverviewSSHKeyFingerprints with value set to v.
 func NewOptAPIOverviewSSHKeyFingerprints(v APIOverviewSSHKeyFingerprints) OptAPIOverviewSSHKeyFingerprints {
@@ -3462,80 +3435,80 @@ func (o OptAPIOverviewSSHKeyFingerprints) Get() (v APIOverviewSSHKeyFingerprints
 	return o.Value, true
 }
 
-// NewOptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility returns new OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
-func NewOptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility {
-	return OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility{
+// NewOptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility returns new OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility with value set to v.
+func NewOptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility(v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility {
+	return OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is optional ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
-type OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility struct {
-	Value ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+// OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility is optional ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility.
+type OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility struct {
+	Value ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility
 	Set   bool
 }
 
-// IsSet returns true if OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility was set.
-func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) IsSet() bool {
+// IsSet returns true if OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility was set.
+func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Reset() {
-	var v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+func (o *OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) Reset() {
+	var v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) SetTo(v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) {
+func (o *OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) SetTo(v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Get() (v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility, ok bool) {
+func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) Get() (v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility returns new OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
-func NewOptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility {
-	return OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility{
+// NewOptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility returns new OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility with value set to v.
+func NewOptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility(v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility {
+	return OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is optional ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
-type OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility struct {
-	Value ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+// OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility is optional ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility.
+type OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility struct {
+	Value ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility
 	Set   bool
 }
 
-// IsSet returns true if OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility was set.
-func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) IsSet() bool {
+// IsSet returns true if OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility was set.
+func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Reset() {
-	var v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) Reset() {
+	var v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) SetTo(v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) {
+func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) SetTo(v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Get() (v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility, ok bool) {
+func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) Get() (v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -5594,80 +5567,80 @@ func (o OptDeploymentSimple) Get() (v DeploymentSimple, ok bool) {
 	return o.Value, true
 }
 
-// NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility returns new OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
-func NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility {
-	return OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility{
+// NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility returns new OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility with value set to v.
+func NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility {
+	return OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is optional EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
-type OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility struct {
-	Value EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+// OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility is optional EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility.
+type OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility struct {
+	Value EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility
 	Set   bool
 }
 
-// IsSet returns true if OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility was set.
-func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) IsSet() bool {
+// IsSet returns true if OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility was set.
+func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Reset() {
-	var v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) Reset() {
+	var v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) SetTo(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) {
+func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) SetTo(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Get() (v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility, ok bool) {
+func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) Get() (v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
-func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility {
-	return OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility{
+// NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility with value set to v.
+func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility {
+	return OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is optional EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
-type OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility struct {
-	Value EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+// OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility is optional EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility.
+type OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility struct {
+	Value EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility
 	Set   bool
 }
 
-// IsSet returns true if OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility was set.
-func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) IsSet() bool {
+// IsSet returns true if OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility was set.
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Reset() {
-	var v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) Reset() {
+	var v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) SetTo(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) {
+func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) SetTo(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Get() (v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility, ok bool) {
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) Get() (v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -6130,190 +6103,190 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Get() (v FullR
 	return o.Value, true
 }
 
-// NewOptGitCreateCommitApplicationJSONRequestAuthor returns new OptGitCreateCommitApplicationJSONRequestAuthor with value set to v.
-func NewOptGitCreateCommitApplicationJSONRequestAuthor(v GitCreateCommitApplicationJSONRequestAuthor) OptGitCreateCommitApplicationJSONRequestAuthor {
-	return OptGitCreateCommitApplicationJSONRequestAuthor{
+// NewOptGitCreateCommitApplicationJSONReqAuthor returns new OptGitCreateCommitApplicationJSONReqAuthor with value set to v.
+func NewOptGitCreateCommitApplicationJSONReqAuthor(v GitCreateCommitApplicationJSONReqAuthor) OptGitCreateCommitApplicationJSONReqAuthor {
+	return OptGitCreateCommitApplicationJSONReqAuthor{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptGitCreateCommitApplicationJSONRequestAuthor is optional GitCreateCommitApplicationJSONRequestAuthor.
-type OptGitCreateCommitApplicationJSONRequestAuthor struct {
-	Value GitCreateCommitApplicationJSONRequestAuthor
+// OptGitCreateCommitApplicationJSONReqAuthor is optional GitCreateCommitApplicationJSONReqAuthor.
+type OptGitCreateCommitApplicationJSONReqAuthor struct {
+	Value GitCreateCommitApplicationJSONReqAuthor
 	Set   bool
 }
 
-// IsSet returns true if OptGitCreateCommitApplicationJSONRequestAuthor was set.
-func (o OptGitCreateCommitApplicationJSONRequestAuthor) IsSet() bool { return o.Set }
+// IsSet returns true if OptGitCreateCommitApplicationJSONReqAuthor was set.
+func (o OptGitCreateCommitApplicationJSONReqAuthor) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptGitCreateCommitApplicationJSONRequestAuthor) Reset() {
-	var v GitCreateCommitApplicationJSONRequestAuthor
+func (o *OptGitCreateCommitApplicationJSONReqAuthor) Reset() {
+	var v GitCreateCommitApplicationJSONReqAuthor
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptGitCreateCommitApplicationJSONRequestAuthor) SetTo(v GitCreateCommitApplicationJSONRequestAuthor) {
+func (o *OptGitCreateCommitApplicationJSONReqAuthor) SetTo(v GitCreateCommitApplicationJSONReqAuthor) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptGitCreateCommitApplicationJSONRequestAuthor) Get() (v GitCreateCommitApplicationJSONRequestAuthor, ok bool) {
+func (o OptGitCreateCommitApplicationJSONReqAuthor) Get() (v GitCreateCommitApplicationJSONReqAuthor, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptGitCreateCommitApplicationJSONRequestCommitter returns new OptGitCreateCommitApplicationJSONRequestCommitter with value set to v.
-func NewOptGitCreateCommitApplicationJSONRequestCommitter(v GitCreateCommitApplicationJSONRequestCommitter) OptGitCreateCommitApplicationJSONRequestCommitter {
-	return OptGitCreateCommitApplicationJSONRequestCommitter{
+// NewOptGitCreateCommitApplicationJSONReqCommitter returns new OptGitCreateCommitApplicationJSONReqCommitter with value set to v.
+func NewOptGitCreateCommitApplicationJSONReqCommitter(v GitCreateCommitApplicationJSONReqCommitter) OptGitCreateCommitApplicationJSONReqCommitter {
+	return OptGitCreateCommitApplicationJSONReqCommitter{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptGitCreateCommitApplicationJSONRequestCommitter is optional GitCreateCommitApplicationJSONRequestCommitter.
-type OptGitCreateCommitApplicationJSONRequestCommitter struct {
-	Value GitCreateCommitApplicationJSONRequestCommitter
+// OptGitCreateCommitApplicationJSONReqCommitter is optional GitCreateCommitApplicationJSONReqCommitter.
+type OptGitCreateCommitApplicationJSONReqCommitter struct {
+	Value GitCreateCommitApplicationJSONReqCommitter
 	Set   bool
 }
 
-// IsSet returns true if OptGitCreateCommitApplicationJSONRequestCommitter was set.
-func (o OptGitCreateCommitApplicationJSONRequestCommitter) IsSet() bool { return o.Set }
+// IsSet returns true if OptGitCreateCommitApplicationJSONReqCommitter was set.
+func (o OptGitCreateCommitApplicationJSONReqCommitter) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptGitCreateCommitApplicationJSONRequestCommitter) Reset() {
-	var v GitCreateCommitApplicationJSONRequestCommitter
+func (o *OptGitCreateCommitApplicationJSONReqCommitter) Reset() {
+	var v GitCreateCommitApplicationJSONReqCommitter
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptGitCreateCommitApplicationJSONRequestCommitter) SetTo(v GitCreateCommitApplicationJSONRequestCommitter) {
+func (o *OptGitCreateCommitApplicationJSONReqCommitter) SetTo(v GitCreateCommitApplicationJSONReqCommitter) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptGitCreateCommitApplicationJSONRequestCommitter) Get() (v GitCreateCommitApplicationJSONRequestCommitter, ok bool) {
+func (o OptGitCreateCommitApplicationJSONReqCommitter) Get() (v GitCreateCommitApplicationJSONReqCommitter, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptGitCreateTagApplicationJSONRequestTagger returns new OptGitCreateTagApplicationJSONRequestTagger with value set to v.
-func NewOptGitCreateTagApplicationJSONRequestTagger(v GitCreateTagApplicationJSONRequestTagger) OptGitCreateTagApplicationJSONRequestTagger {
-	return OptGitCreateTagApplicationJSONRequestTagger{
+// NewOptGitCreateTagApplicationJSONReqTagger returns new OptGitCreateTagApplicationJSONReqTagger with value set to v.
+func NewOptGitCreateTagApplicationJSONReqTagger(v GitCreateTagApplicationJSONReqTagger) OptGitCreateTagApplicationJSONReqTagger {
+	return OptGitCreateTagApplicationJSONReqTagger{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptGitCreateTagApplicationJSONRequestTagger is optional GitCreateTagApplicationJSONRequestTagger.
-type OptGitCreateTagApplicationJSONRequestTagger struct {
-	Value GitCreateTagApplicationJSONRequestTagger
+// OptGitCreateTagApplicationJSONReqTagger is optional GitCreateTagApplicationJSONReqTagger.
+type OptGitCreateTagApplicationJSONReqTagger struct {
+	Value GitCreateTagApplicationJSONReqTagger
 	Set   bool
 }
 
-// IsSet returns true if OptGitCreateTagApplicationJSONRequestTagger was set.
-func (o OptGitCreateTagApplicationJSONRequestTagger) IsSet() bool { return o.Set }
+// IsSet returns true if OptGitCreateTagApplicationJSONReqTagger was set.
+func (o OptGitCreateTagApplicationJSONReqTagger) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptGitCreateTagApplicationJSONRequestTagger) Reset() {
-	var v GitCreateTagApplicationJSONRequestTagger
+func (o *OptGitCreateTagApplicationJSONReqTagger) Reset() {
+	var v GitCreateTagApplicationJSONReqTagger
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptGitCreateTagApplicationJSONRequestTagger) SetTo(v GitCreateTagApplicationJSONRequestTagger) {
+func (o *OptGitCreateTagApplicationJSONReqTagger) SetTo(v GitCreateTagApplicationJSONReqTagger) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptGitCreateTagApplicationJSONRequestTagger) Get() (v GitCreateTagApplicationJSONRequestTagger, ok bool) {
+func (o OptGitCreateTagApplicationJSONReqTagger) Get() (v GitCreateTagApplicationJSONReqTagger, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptGitCreateTreeApplicationJSONRequestTreeItemMode returns new OptGitCreateTreeApplicationJSONRequestTreeItemMode with value set to v.
-func NewOptGitCreateTreeApplicationJSONRequestTreeItemMode(v GitCreateTreeApplicationJSONRequestTreeItemMode) OptGitCreateTreeApplicationJSONRequestTreeItemMode {
-	return OptGitCreateTreeApplicationJSONRequestTreeItemMode{
+// NewOptGitCreateTreeApplicationJSONReqTreeItemMode returns new OptGitCreateTreeApplicationJSONReqTreeItemMode with value set to v.
+func NewOptGitCreateTreeApplicationJSONReqTreeItemMode(v GitCreateTreeApplicationJSONReqTreeItemMode) OptGitCreateTreeApplicationJSONReqTreeItemMode {
+	return OptGitCreateTreeApplicationJSONReqTreeItemMode{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptGitCreateTreeApplicationJSONRequestTreeItemMode is optional GitCreateTreeApplicationJSONRequestTreeItemMode.
-type OptGitCreateTreeApplicationJSONRequestTreeItemMode struct {
-	Value GitCreateTreeApplicationJSONRequestTreeItemMode
+// OptGitCreateTreeApplicationJSONReqTreeItemMode is optional GitCreateTreeApplicationJSONReqTreeItemMode.
+type OptGitCreateTreeApplicationJSONReqTreeItemMode struct {
+	Value GitCreateTreeApplicationJSONReqTreeItemMode
 	Set   bool
 }
 
-// IsSet returns true if OptGitCreateTreeApplicationJSONRequestTreeItemMode was set.
-func (o OptGitCreateTreeApplicationJSONRequestTreeItemMode) IsSet() bool { return o.Set }
+// IsSet returns true if OptGitCreateTreeApplicationJSONReqTreeItemMode was set.
+func (o OptGitCreateTreeApplicationJSONReqTreeItemMode) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptGitCreateTreeApplicationJSONRequestTreeItemMode) Reset() {
-	var v GitCreateTreeApplicationJSONRequestTreeItemMode
+func (o *OptGitCreateTreeApplicationJSONReqTreeItemMode) Reset() {
+	var v GitCreateTreeApplicationJSONReqTreeItemMode
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptGitCreateTreeApplicationJSONRequestTreeItemMode) SetTo(v GitCreateTreeApplicationJSONRequestTreeItemMode) {
+func (o *OptGitCreateTreeApplicationJSONReqTreeItemMode) SetTo(v GitCreateTreeApplicationJSONReqTreeItemMode) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptGitCreateTreeApplicationJSONRequestTreeItemMode) Get() (v GitCreateTreeApplicationJSONRequestTreeItemMode, ok bool) {
+func (o OptGitCreateTreeApplicationJSONReqTreeItemMode) Get() (v GitCreateTreeApplicationJSONReqTreeItemMode, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptGitCreateTreeApplicationJSONRequestTreeItemType returns new OptGitCreateTreeApplicationJSONRequestTreeItemType with value set to v.
-func NewOptGitCreateTreeApplicationJSONRequestTreeItemType(v GitCreateTreeApplicationJSONRequestTreeItemType) OptGitCreateTreeApplicationJSONRequestTreeItemType {
-	return OptGitCreateTreeApplicationJSONRequestTreeItemType{
+// NewOptGitCreateTreeApplicationJSONReqTreeItemType returns new OptGitCreateTreeApplicationJSONReqTreeItemType with value set to v.
+func NewOptGitCreateTreeApplicationJSONReqTreeItemType(v GitCreateTreeApplicationJSONReqTreeItemType) OptGitCreateTreeApplicationJSONReqTreeItemType {
+	return OptGitCreateTreeApplicationJSONReqTreeItemType{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptGitCreateTreeApplicationJSONRequestTreeItemType is optional GitCreateTreeApplicationJSONRequestTreeItemType.
-type OptGitCreateTreeApplicationJSONRequestTreeItemType struct {
-	Value GitCreateTreeApplicationJSONRequestTreeItemType
+// OptGitCreateTreeApplicationJSONReqTreeItemType is optional GitCreateTreeApplicationJSONReqTreeItemType.
+type OptGitCreateTreeApplicationJSONReqTreeItemType struct {
+	Value GitCreateTreeApplicationJSONReqTreeItemType
 	Set   bool
 }
 
-// IsSet returns true if OptGitCreateTreeApplicationJSONRequestTreeItemType was set.
-func (o OptGitCreateTreeApplicationJSONRequestTreeItemType) IsSet() bool { return o.Set }
+// IsSet returns true if OptGitCreateTreeApplicationJSONReqTreeItemType was set.
+func (o OptGitCreateTreeApplicationJSONReqTreeItemType) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptGitCreateTreeApplicationJSONRequestTreeItemType) Reset() {
-	var v GitCreateTreeApplicationJSONRequestTreeItemType
+func (o *OptGitCreateTreeApplicationJSONReqTreeItemType) Reset() {
+	var v GitCreateTreeApplicationJSONReqTreeItemType
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptGitCreateTreeApplicationJSONRequestTreeItemType) SetTo(v GitCreateTreeApplicationJSONRequestTreeItemType) {
+func (o *OptGitCreateTreeApplicationJSONReqTreeItemType) SetTo(v GitCreateTreeApplicationJSONReqTreeItemType) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptGitCreateTreeApplicationJSONRequestTreeItemType) Get() (v GitCreateTreeApplicationJSONRequestTreeItemType, ok bool) {
+func (o OptGitCreateTreeApplicationJSONReqTreeItemType) Get() (v GitCreateTreeApplicationJSONReqTreeItemType, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -6434,114 +6407,114 @@ func (o OptInteractionExpiry) Get() (v InteractionExpiry, ok bool) {
 	return o.Value, true
 }
 
-// NewOptIssuesCreateMilestoneApplicationJSONRequestState returns new OptIssuesCreateMilestoneApplicationJSONRequestState with value set to v.
-func NewOptIssuesCreateMilestoneApplicationJSONRequestState(v IssuesCreateMilestoneApplicationJSONRequestState) OptIssuesCreateMilestoneApplicationJSONRequestState {
-	return OptIssuesCreateMilestoneApplicationJSONRequestState{
+// NewOptIssuesCreateMilestoneApplicationJSONReqState returns new OptIssuesCreateMilestoneApplicationJSONReqState with value set to v.
+func NewOptIssuesCreateMilestoneApplicationJSONReqState(v IssuesCreateMilestoneApplicationJSONReqState) OptIssuesCreateMilestoneApplicationJSONReqState {
+	return OptIssuesCreateMilestoneApplicationJSONReqState{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIssuesCreateMilestoneApplicationJSONRequestState is optional IssuesCreateMilestoneApplicationJSONRequestState.
-type OptIssuesCreateMilestoneApplicationJSONRequestState struct {
-	Value IssuesCreateMilestoneApplicationJSONRequestState
+// OptIssuesCreateMilestoneApplicationJSONReqState is optional IssuesCreateMilestoneApplicationJSONReqState.
+type OptIssuesCreateMilestoneApplicationJSONReqState struct {
+	Value IssuesCreateMilestoneApplicationJSONReqState
 	Set   bool
 }
 
-// IsSet returns true if OptIssuesCreateMilestoneApplicationJSONRequestState was set.
-func (o OptIssuesCreateMilestoneApplicationJSONRequestState) IsSet() bool { return o.Set }
+// IsSet returns true if OptIssuesCreateMilestoneApplicationJSONReqState was set.
+func (o OptIssuesCreateMilestoneApplicationJSONReqState) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptIssuesCreateMilestoneApplicationJSONRequestState) Reset() {
-	var v IssuesCreateMilestoneApplicationJSONRequestState
+func (o *OptIssuesCreateMilestoneApplicationJSONReqState) Reset() {
+	var v IssuesCreateMilestoneApplicationJSONReqState
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIssuesCreateMilestoneApplicationJSONRequestState) SetTo(v IssuesCreateMilestoneApplicationJSONRequestState) {
+func (o *OptIssuesCreateMilestoneApplicationJSONReqState) SetTo(v IssuesCreateMilestoneApplicationJSONReqState) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesCreateMilestoneApplicationJSONRequestState) Get() (v IssuesCreateMilestoneApplicationJSONRequestState, ok bool) {
+func (o OptIssuesCreateMilestoneApplicationJSONReqState) Get() (v IssuesCreateMilestoneApplicationJSONReqState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptIssuesLockApplicationJSONRequestLockReason returns new OptIssuesLockApplicationJSONRequestLockReason with value set to v.
-func NewOptIssuesLockApplicationJSONRequestLockReason(v IssuesLockApplicationJSONRequestLockReason) OptIssuesLockApplicationJSONRequestLockReason {
-	return OptIssuesLockApplicationJSONRequestLockReason{
+// NewOptIssuesLockApplicationJSONReqLockReason returns new OptIssuesLockApplicationJSONReqLockReason with value set to v.
+func NewOptIssuesLockApplicationJSONReqLockReason(v IssuesLockApplicationJSONReqLockReason) OptIssuesLockApplicationJSONReqLockReason {
+	return OptIssuesLockApplicationJSONReqLockReason{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIssuesLockApplicationJSONRequestLockReason is optional IssuesLockApplicationJSONRequestLockReason.
-type OptIssuesLockApplicationJSONRequestLockReason struct {
-	Value IssuesLockApplicationJSONRequestLockReason
+// OptIssuesLockApplicationJSONReqLockReason is optional IssuesLockApplicationJSONReqLockReason.
+type OptIssuesLockApplicationJSONReqLockReason struct {
+	Value IssuesLockApplicationJSONReqLockReason
 	Set   bool
 }
 
-// IsSet returns true if OptIssuesLockApplicationJSONRequestLockReason was set.
-func (o OptIssuesLockApplicationJSONRequestLockReason) IsSet() bool { return o.Set }
+// IsSet returns true if OptIssuesLockApplicationJSONReqLockReason was set.
+func (o OptIssuesLockApplicationJSONReqLockReason) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptIssuesLockApplicationJSONRequestLockReason) Reset() {
-	var v IssuesLockApplicationJSONRequestLockReason
+func (o *OptIssuesLockApplicationJSONReqLockReason) Reset() {
+	var v IssuesLockApplicationJSONReqLockReason
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIssuesLockApplicationJSONRequestLockReason) SetTo(v IssuesLockApplicationJSONRequestLockReason) {
+func (o *OptIssuesLockApplicationJSONReqLockReason) SetTo(v IssuesLockApplicationJSONReqLockReason) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesLockApplicationJSONRequestLockReason) Get() (v IssuesLockApplicationJSONRequestLockReason, ok bool) {
+func (o OptIssuesLockApplicationJSONReqLockReason) Get() (v IssuesLockApplicationJSONReqLockReason, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptIssuesUpdateMilestoneApplicationJSONRequestState returns new OptIssuesUpdateMilestoneApplicationJSONRequestState with value set to v.
-func NewOptIssuesUpdateMilestoneApplicationJSONRequestState(v IssuesUpdateMilestoneApplicationJSONRequestState) OptIssuesUpdateMilestoneApplicationJSONRequestState {
-	return OptIssuesUpdateMilestoneApplicationJSONRequestState{
+// NewOptIssuesUpdateMilestoneApplicationJSONReqState returns new OptIssuesUpdateMilestoneApplicationJSONReqState with value set to v.
+func NewOptIssuesUpdateMilestoneApplicationJSONReqState(v IssuesUpdateMilestoneApplicationJSONReqState) OptIssuesUpdateMilestoneApplicationJSONReqState {
+	return OptIssuesUpdateMilestoneApplicationJSONReqState{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIssuesUpdateMilestoneApplicationJSONRequestState is optional IssuesUpdateMilestoneApplicationJSONRequestState.
-type OptIssuesUpdateMilestoneApplicationJSONRequestState struct {
-	Value IssuesUpdateMilestoneApplicationJSONRequestState
+// OptIssuesUpdateMilestoneApplicationJSONReqState is optional IssuesUpdateMilestoneApplicationJSONReqState.
+type OptIssuesUpdateMilestoneApplicationJSONReqState struct {
+	Value IssuesUpdateMilestoneApplicationJSONReqState
 	Set   bool
 }
 
-// IsSet returns true if OptIssuesUpdateMilestoneApplicationJSONRequestState was set.
-func (o OptIssuesUpdateMilestoneApplicationJSONRequestState) IsSet() bool { return o.Set }
+// IsSet returns true if OptIssuesUpdateMilestoneApplicationJSONReqState was set.
+func (o OptIssuesUpdateMilestoneApplicationJSONReqState) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptIssuesUpdateMilestoneApplicationJSONRequestState) Reset() {
-	var v IssuesUpdateMilestoneApplicationJSONRequestState
+func (o *OptIssuesUpdateMilestoneApplicationJSONReqState) Reset() {
+	var v IssuesUpdateMilestoneApplicationJSONReqState
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIssuesUpdateMilestoneApplicationJSONRequestState) SetTo(v IssuesUpdateMilestoneApplicationJSONRequestState) {
+func (o *OptIssuesUpdateMilestoneApplicationJSONReqState) SetTo(v IssuesUpdateMilestoneApplicationJSONReqState) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesUpdateMilestoneApplicationJSONRequestState) Get() (v IssuesUpdateMilestoneApplicationJSONRequestState, ok bool) {
+func (o OptIssuesUpdateMilestoneApplicationJSONReqState) Get() (v IssuesUpdateMilestoneApplicationJSONReqState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -6586,38 +6559,38 @@ func (o OptLinkWithType) Get() (v LinkWithType, ok bool) {
 	return o.Value, true
 }
 
-// NewOptMarkdownRenderApplicationJSONRequestMode returns new OptMarkdownRenderApplicationJSONRequestMode with value set to v.
-func NewOptMarkdownRenderApplicationJSONRequestMode(v MarkdownRenderApplicationJSONRequestMode) OptMarkdownRenderApplicationJSONRequestMode {
-	return OptMarkdownRenderApplicationJSONRequestMode{
+// NewOptMarkdownRenderApplicationJSONReqMode returns new OptMarkdownRenderApplicationJSONReqMode with value set to v.
+func NewOptMarkdownRenderApplicationJSONReqMode(v MarkdownRenderApplicationJSONReqMode) OptMarkdownRenderApplicationJSONReqMode {
+	return OptMarkdownRenderApplicationJSONReqMode{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptMarkdownRenderApplicationJSONRequestMode is optional MarkdownRenderApplicationJSONRequestMode.
-type OptMarkdownRenderApplicationJSONRequestMode struct {
-	Value MarkdownRenderApplicationJSONRequestMode
+// OptMarkdownRenderApplicationJSONReqMode is optional MarkdownRenderApplicationJSONReqMode.
+type OptMarkdownRenderApplicationJSONReqMode struct {
+	Value MarkdownRenderApplicationJSONReqMode
 	Set   bool
 }
 
-// IsSet returns true if OptMarkdownRenderApplicationJSONRequestMode was set.
-func (o OptMarkdownRenderApplicationJSONRequestMode) IsSet() bool { return o.Set }
+// IsSet returns true if OptMarkdownRenderApplicationJSONReqMode was set.
+func (o OptMarkdownRenderApplicationJSONReqMode) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptMarkdownRenderApplicationJSONRequestMode) Reset() {
-	var v MarkdownRenderApplicationJSONRequestMode
+func (o *OptMarkdownRenderApplicationJSONReqMode) Reset() {
+	var v MarkdownRenderApplicationJSONReqMode
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptMarkdownRenderApplicationJSONRequestMode) SetTo(v MarkdownRenderApplicationJSONRequestMode) {
+func (o *OptMarkdownRenderApplicationJSONReqMode) SetTo(v MarkdownRenderApplicationJSONReqMode) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptMarkdownRenderApplicationJSONRequestMode) Get() (v MarkdownRenderApplicationJSONRequestMode, ok bool) {
+func (o OptMarkdownRenderApplicationJSONReqMode) Get() (v MarkdownRenderApplicationJSONReqMode, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -6700,38 +6673,38 @@ func (o OptMergedUpstreamMergeType) Get() (v MergedUpstreamMergeType, ok bool) {
 	return o.Value, true
 }
 
-// NewOptMigrationsStartImportApplicationJSONRequestVcs returns new OptMigrationsStartImportApplicationJSONRequestVcs with value set to v.
-func NewOptMigrationsStartImportApplicationJSONRequestVcs(v MigrationsStartImportApplicationJSONRequestVcs) OptMigrationsStartImportApplicationJSONRequestVcs {
-	return OptMigrationsStartImportApplicationJSONRequestVcs{
+// NewOptMigrationsStartImportApplicationJSONReqVcs returns new OptMigrationsStartImportApplicationJSONReqVcs with value set to v.
+func NewOptMigrationsStartImportApplicationJSONReqVcs(v MigrationsStartImportApplicationJSONReqVcs) OptMigrationsStartImportApplicationJSONReqVcs {
+	return OptMigrationsStartImportApplicationJSONReqVcs{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptMigrationsStartImportApplicationJSONRequestVcs is optional MigrationsStartImportApplicationJSONRequestVcs.
-type OptMigrationsStartImportApplicationJSONRequestVcs struct {
-	Value MigrationsStartImportApplicationJSONRequestVcs
+// OptMigrationsStartImportApplicationJSONReqVcs is optional MigrationsStartImportApplicationJSONReqVcs.
+type OptMigrationsStartImportApplicationJSONReqVcs struct {
+	Value MigrationsStartImportApplicationJSONReqVcs
 	Set   bool
 }
 
-// IsSet returns true if OptMigrationsStartImportApplicationJSONRequestVcs was set.
-func (o OptMigrationsStartImportApplicationJSONRequestVcs) IsSet() bool { return o.Set }
+// IsSet returns true if OptMigrationsStartImportApplicationJSONReqVcs was set.
+func (o OptMigrationsStartImportApplicationJSONReqVcs) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptMigrationsStartImportApplicationJSONRequestVcs) Reset() {
-	var v MigrationsStartImportApplicationJSONRequestVcs
+func (o *OptMigrationsStartImportApplicationJSONReqVcs) Reset() {
+	var v MigrationsStartImportApplicationJSONReqVcs
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptMigrationsStartImportApplicationJSONRequestVcs) SetTo(v MigrationsStartImportApplicationJSONRequestVcs) {
+func (o *OptMigrationsStartImportApplicationJSONReqVcs) SetTo(v MigrationsStartImportApplicationJSONReqVcs) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptMigrationsStartImportApplicationJSONRequestVcs) Get() (v MigrationsStartImportApplicationJSONRequestVcs, ok bool) {
+func (o OptMigrationsStartImportApplicationJSONReqVcs) Get() (v MigrationsStartImportApplicationJSONReqVcs, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -7199,44 +7172,44 @@ func (o OptNilPullRequestReviewCommentStartSide) Get() (v PullRequestReviewComme
 	return o.Value, true
 }
 
-// NewOptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis returns new OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis with value set to v.
-func NewOptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis(v ReposUpdateApplicationJSONRequestSecurityAndAnalysis) OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis {
-	return OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis{
+// NewOptNilReposUpdateApplicationJSONReqSecurityAndAnalysis returns new OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis with value set to v.
+func NewOptNilReposUpdateApplicationJSONReqSecurityAndAnalysis(v ReposUpdateApplicationJSONReqSecurityAndAnalysis) OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis {
+	return OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis is optional nullable ReposUpdateApplicationJSONRequestSecurityAndAnalysis.
-type OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis struct {
-	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysis
+// OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis is optional nullable ReposUpdateApplicationJSONReqSecurityAndAnalysis.
+type OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis struct {
+	Value ReposUpdateApplicationJSONReqSecurityAndAnalysis
 	Set   bool
 	Null  bool
 }
 
-// IsSet returns true if OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis was set.
-func (o OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) IsSet() bool { return o.Set }
+// IsSet returns true if OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis was set.
+func (o OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) Reset() {
-	var v ReposUpdateApplicationJSONRequestSecurityAndAnalysis
+func (o *OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis) Reset() {
+	var v ReposUpdateApplicationJSONReqSecurityAndAnalysis
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) SetTo(v ReposUpdateApplicationJSONRequestSecurityAndAnalysis) {
+func (o *OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis) SetTo(v ReposUpdateApplicationJSONReqSecurityAndAnalysis) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) IsNull() bool { return o.Null }
+func (o OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) Get() (v ReposUpdateApplicationJSONRequestSecurityAndAnalysis, ok bool) {
+func (o OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis) Get() (v ReposUpdateApplicationJSONReqSecurityAndAnalysis, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -7861,154 +7834,154 @@ func (o OptOrganizationFullPlan) Get() (v OrganizationFullPlan, ok bool) {
 	return o.Value, true
 }
 
-// NewOptOrgsCreateInvitationApplicationJSONRequestRole returns new OptOrgsCreateInvitationApplicationJSONRequestRole with value set to v.
-func NewOptOrgsCreateInvitationApplicationJSONRequestRole(v OrgsCreateInvitationApplicationJSONRequestRole) OptOrgsCreateInvitationApplicationJSONRequestRole {
-	return OptOrgsCreateInvitationApplicationJSONRequestRole{
+// NewOptOrgsCreateInvitationApplicationJSONReqRole returns new OptOrgsCreateInvitationApplicationJSONReqRole with value set to v.
+func NewOptOrgsCreateInvitationApplicationJSONReqRole(v OrgsCreateInvitationApplicationJSONReqRole) OptOrgsCreateInvitationApplicationJSONReqRole {
+	return OptOrgsCreateInvitationApplicationJSONReqRole{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptOrgsCreateInvitationApplicationJSONRequestRole is optional OrgsCreateInvitationApplicationJSONRequestRole.
-type OptOrgsCreateInvitationApplicationJSONRequestRole struct {
-	Value OrgsCreateInvitationApplicationJSONRequestRole
+// OptOrgsCreateInvitationApplicationJSONReqRole is optional OrgsCreateInvitationApplicationJSONReqRole.
+type OptOrgsCreateInvitationApplicationJSONReqRole struct {
+	Value OrgsCreateInvitationApplicationJSONReqRole
 	Set   bool
 }
 
-// IsSet returns true if OptOrgsCreateInvitationApplicationJSONRequestRole was set.
-func (o OptOrgsCreateInvitationApplicationJSONRequestRole) IsSet() bool { return o.Set }
+// IsSet returns true if OptOrgsCreateInvitationApplicationJSONReqRole was set.
+func (o OptOrgsCreateInvitationApplicationJSONReqRole) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptOrgsCreateInvitationApplicationJSONRequestRole) Reset() {
-	var v OrgsCreateInvitationApplicationJSONRequestRole
+func (o *OptOrgsCreateInvitationApplicationJSONReqRole) Reset() {
+	var v OrgsCreateInvitationApplicationJSONReqRole
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptOrgsCreateInvitationApplicationJSONRequestRole) SetTo(v OrgsCreateInvitationApplicationJSONRequestRole) {
+func (o *OptOrgsCreateInvitationApplicationJSONReqRole) SetTo(v OrgsCreateInvitationApplicationJSONReqRole) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsCreateInvitationApplicationJSONRequestRole) Get() (v OrgsCreateInvitationApplicationJSONRequestRole, ok bool) {
+func (o OptOrgsCreateInvitationApplicationJSONReqRole) Get() (v OrgsCreateInvitationApplicationJSONReqRole, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptOrgsSetMembershipForUserApplicationJSONRequestRole returns new OptOrgsSetMembershipForUserApplicationJSONRequestRole with value set to v.
-func NewOptOrgsSetMembershipForUserApplicationJSONRequestRole(v OrgsSetMembershipForUserApplicationJSONRequestRole) OptOrgsSetMembershipForUserApplicationJSONRequestRole {
-	return OptOrgsSetMembershipForUserApplicationJSONRequestRole{
+// NewOptOrgsSetMembershipForUserApplicationJSONReqRole returns new OptOrgsSetMembershipForUserApplicationJSONReqRole with value set to v.
+func NewOptOrgsSetMembershipForUserApplicationJSONReqRole(v OrgsSetMembershipForUserApplicationJSONReqRole) OptOrgsSetMembershipForUserApplicationJSONReqRole {
+	return OptOrgsSetMembershipForUserApplicationJSONReqRole{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptOrgsSetMembershipForUserApplicationJSONRequestRole is optional OrgsSetMembershipForUserApplicationJSONRequestRole.
-type OptOrgsSetMembershipForUserApplicationJSONRequestRole struct {
-	Value OrgsSetMembershipForUserApplicationJSONRequestRole
+// OptOrgsSetMembershipForUserApplicationJSONReqRole is optional OrgsSetMembershipForUserApplicationJSONReqRole.
+type OptOrgsSetMembershipForUserApplicationJSONReqRole struct {
+	Value OrgsSetMembershipForUserApplicationJSONReqRole
 	Set   bool
 }
 
-// IsSet returns true if OptOrgsSetMembershipForUserApplicationJSONRequestRole was set.
-func (o OptOrgsSetMembershipForUserApplicationJSONRequestRole) IsSet() bool { return o.Set }
+// IsSet returns true if OptOrgsSetMembershipForUserApplicationJSONReqRole was set.
+func (o OptOrgsSetMembershipForUserApplicationJSONReqRole) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptOrgsSetMembershipForUserApplicationJSONRequestRole) Reset() {
-	var v OrgsSetMembershipForUserApplicationJSONRequestRole
+func (o *OptOrgsSetMembershipForUserApplicationJSONReqRole) Reset() {
+	var v OrgsSetMembershipForUserApplicationJSONReqRole
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptOrgsSetMembershipForUserApplicationJSONRequestRole) SetTo(v OrgsSetMembershipForUserApplicationJSONRequestRole) {
+func (o *OptOrgsSetMembershipForUserApplicationJSONReqRole) SetTo(v OrgsSetMembershipForUserApplicationJSONReqRole) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsSetMembershipForUserApplicationJSONRequestRole) Get() (v OrgsSetMembershipForUserApplicationJSONRequestRole, ok bool) {
+func (o OptOrgsSetMembershipForUserApplicationJSONReqRole) Get() (v OrgsSetMembershipForUserApplicationJSONReqRole, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission returns new OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission with value set to v.
-func NewOptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission {
-	return OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission{
+// NewOptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission returns new OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission with value set to v.
+func NewOptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission(v OrgsUpdateApplicationJSONReqDefaultRepositoryPermission) OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission {
+	return OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission is optional OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission.
-type OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission struct {
-	Value OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission
+// OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission is optional OrgsUpdateApplicationJSONReqDefaultRepositoryPermission.
+type OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission struct {
+	Value OrgsUpdateApplicationJSONReqDefaultRepositoryPermission
 	Set   bool
 }
 
-// IsSet returns true if OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission was set.
-func (o OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) IsSet() bool { return o.Set }
+// IsSet returns true if OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission was set.
+func (o OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) Reset() {
-	var v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission
+func (o *OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission) Reset() {
+	var v OrgsUpdateApplicationJSONReqDefaultRepositoryPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) SetTo(v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) {
+func (o *OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission) SetTo(v OrgsUpdateApplicationJSONReqDefaultRepositoryPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) Get() (v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission, ok bool) {
+func (o OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission) Get() (v OrgsUpdateApplicationJSONReqDefaultRepositoryPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType returns new OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType with value set to v.
-func NewOptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType {
-	return OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType{
+// NewOptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType returns new OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType with value set to v.
+func NewOptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType(v OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType {
+	return OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType is optional OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType.
-type OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType struct {
-	Value OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType
+// OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType is optional OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType.
+type OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType struct {
+	Value OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType
 	Set   bool
 }
 
-// IsSet returns true if OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType was set.
-func (o OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) IsSet() bool {
+// IsSet returns true if OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType was set.
+func (o OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) Reset() {
-	var v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType
+func (o *OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) Reset() {
+	var v OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) SetTo(v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) {
+func (o *OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) SetTo(v OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) Get() (v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType, ok bool) {
+func (o OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) Get() (v OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -8205,76 +8178,76 @@ func (o OptProjectOrganizationPermission) Get() (v ProjectOrganizationPermission
 	return o.Value, true
 }
 
-// NewOptProjectsAddCollaboratorApplicationJSONRequestPermission returns new OptProjectsAddCollaboratorApplicationJSONRequestPermission with value set to v.
-func NewOptProjectsAddCollaboratorApplicationJSONRequestPermission(v ProjectsAddCollaboratorApplicationJSONRequestPermission) OptProjectsAddCollaboratorApplicationJSONRequestPermission {
-	return OptProjectsAddCollaboratorApplicationJSONRequestPermission{
+// NewOptProjectsAddCollaboratorApplicationJSONReqPermission returns new OptProjectsAddCollaboratorApplicationJSONReqPermission with value set to v.
+func NewOptProjectsAddCollaboratorApplicationJSONReqPermission(v ProjectsAddCollaboratorApplicationJSONReqPermission) OptProjectsAddCollaboratorApplicationJSONReqPermission {
+	return OptProjectsAddCollaboratorApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptProjectsAddCollaboratorApplicationJSONRequestPermission is optional ProjectsAddCollaboratorApplicationJSONRequestPermission.
-type OptProjectsAddCollaboratorApplicationJSONRequestPermission struct {
-	Value ProjectsAddCollaboratorApplicationJSONRequestPermission
+// OptProjectsAddCollaboratorApplicationJSONReqPermission is optional ProjectsAddCollaboratorApplicationJSONReqPermission.
+type OptProjectsAddCollaboratorApplicationJSONReqPermission struct {
+	Value ProjectsAddCollaboratorApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptProjectsAddCollaboratorApplicationJSONRequestPermission was set.
-func (o OptProjectsAddCollaboratorApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+// IsSet returns true if OptProjectsAddCollaboratorApplicationJSONReqPermission was set.
+func (o OptProjectsAddCollaboratorApplicationJSONReqPermission) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptProjectsAddCollaboratorApplicationJSONRequestPermission) Reset() {
-	var v ProjectsAddCollaboratorApplicationJSONRequestPermission
+func (o *OptProjectsAddCollaboratorApplicationJSONReqPermission) Reset() {
+	var v ProjectsAddCollaboratorApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptProjectsAddCollaboratorApplicationJSONRequestPermission) SetTo(v ProjectsAddCollaboratorApplicationJSONRequestPermission) {
+func (o *OptProjectsAddCollaboratorApplicationJSONReqPermission) SetTo(v ProjectsAddCollaboratorApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptProjectsAddCollaboratorApplicationJSONRequestPermission) Get() (v ProjectsAddCollaboratorApplicationJSONRequestPermission, ok bool) {
+func (o OptProjectsAddCollaboratorApplicationJSONReqPermission) Get() (v ProjectsAddCollaboratorApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptProjectsUpdateApplicationJSONRequestOrganizationPermission returns new OptProjectsUpdateApplicationJSONRequestOrganizationPermission with value set to v.
-func NewOptProjectsUpdateApplicationJSONRequestOrganizationPermission(v ProjectsUpdateApplicationJSONRequestOrganizationPermission) OptProjectsUpdateApplicationJSONRequestOrganizationPermission {
-	return OptProjectsUpdateApplicationJSONRequestOrganizationPermission{
+// NewOptProjectsUpdateApplicationJSONReqOrganizationPermission returns new OptProjectsUpdateApplicationJSONReqOrganizationPermission with value set to v.
+func NewOptProjectsUpdateApplicationJSONReqOrganizationPermission(v ProjectsUpdateApplicationJSONReqOrganizationPermission) OptProjectsUpdateApplicationJSONReqOrganizationPermission {
+	return OptProjectsUpdateApplicationJSONReqOrganizationPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptProjectsUpdateApplicationJSONRequestOrganizationPermission is optional ProjectsUpdateApplicationJSONRequestOrganizationPermission.
-type OptProjectsUpdateApplicationJSONRequestOrganizationPermission struct {
-	Value ProjectsUpdateApplicationJSONRequestOrganizationPermission
+// OptProjectsUpdateApplicationJSONReqOrganizationPermission is optional ProjectsUpdateApplicationJSONReqOrganizationPermission.
+type OptProjectsUpdateApplicationJSONReqOrganizationPermission struct {
+	Value ProjectsUpdateApplicationJSONReqOrganizationPermission
 	Set   bool
 }
 
-// IsSet returns true if OptProjectsUpdateApplicationJSONRequestOrganizationPermission was set.
-func (o OptProjectsUpdateApplicationJSONRequestOrganizationPermission) IsSet() bool { return o.Set }
+// IsSet returns true if OptProjectsUpdateApplicationJSONReqOrganizationPermission was set.
+func (o OptProjectsUpdateApplicationJSONReqOrganizationPermission) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptProjectsUpdateApplicationJSONRequestOrganizationPermission) Reset() {
-	var v ProjectsUpdateApplicationJSONRequestOrganizationPermission
+func (o *OptProjectsUpdateApplicationJSONReqOrganizationPermission) Reset() {
+	var v ProjectsUpdateApplicationJSONReqOrganizationPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptProjectsUpdateApplicationJSONRequestOrganizationPermission) SetTo(v ProjectsUpdateApplicationJSONRequestOrganizationPermission) {
+func (o *OptProjectsUpdateApplicationJSONReqOrganizationPermission) SetTo(v ProjectsUpdateApplicationJSONReqOrganizationPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptProjectsUpdateApplicationJSONRequestOrganizationPermission) Get() (v ProjectsUpdateApplicationJSONRequestOrganizationPermission, ok bool) {
+func (o OptProjectsUpdateApplicationJSONReqOrganizationPermission) Get() (v ProjectsUpdateApplicationJSONReqOrganizationPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -8737,190 +8710,190 @@ func (o OptPullRequestReviewCommentSide) Get() (v PullRequestReviewCommentSide, 
 	return o.Value, true
 }
 
-// NewOptPullsCreateReviewApplicationJSONRequestEvent returns new OptPullsCreateReviewApplicationJSONRequestEvent with value set to v.
-func NewOptPullsCreateReviewApplicationJSONRequestEvent(v PullsCreateReviewApplicationJSONRequestEvent) OptPullsCreateReviewApplicationJSONRequestEvent {
-	return OptPullsCreateReviewApplicationJSONRequestEvent{
+// NewOptPullsCreateReviewApplicationJSONReqEvent returns new OptPullsCreateReviewApplicationJSONReqEvent with value set to v.
+func NewOptPullsCreateReviewApplicationJSONReqEvent(v PullsCreateReviewApplicationJSONReqEvent) OptPullsCreateReviewApplicationJSONReqEvent {
+	return OptPullsCreateReviewApplicationJSONReqEvent{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptPullsCreateReviewApplicationJSONRequestEvent is optional PullsCreateReviewApplicationJSONRequestEvent.
-type OptPullsCreateReviewApplicationJSONRequestEvent struct {
-	Value PullsCreateReviewApplicationJSONRequestEvent
+// OptPullsCreateReviewApplicationJSONReqEvent is optional PullsCreateReviewApplicationJSONReqEvent.
+type OptPullsCreateReviewApplicationJSONReqEvent struct {
+	Value PullsCreateReviewApplicationJSONReqEvent
 	Set   bool
 }
 
-// IsSet returns true if OptPullsCreateReviewApplicationJSONRequestEvent was set.
-func (o OptPullsCreateReviewApplicationJSONRequestEvent) IsSet() bool { return o.Set }
+// IsSet returns true if OptPullsCreateReviewApplicationJSONReqEvent was set.
+func (o OptPullsCreateReviewApplicationJSONReqEvent) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptPullsCreateReviewApplicationJSONRequestEvent) Reset() {
-	var v PullsCreateReviewApplicationJSONRequestEvent
+func (o *OptPullsCreateReviewApplicationJSONReqEvent) Reset() {
+	var v PullsCreateReviewApplicationJSONReqEvent
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptPullsCreateReviewApplicationJSONRequestEvent) SetTo(v PullsCreateReviewApplicationJSONRequestEvent) {
+func (o *OptPullsCreateReviewApplicationJSONReqEvent) SetTo(v PullsCreateReviewApplicationJSONReqEvent) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptPullsCreateReviewApplicationJSONRequestEvent) Get() (v PullsCreateReviewApplicationJSONRequestEvent, ok bool) {
+func (o OptPullsCreateReviewApplicationJSONReqEvent) Get() (v PullsCreateReviewApplicationJSONReqEvent, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptPullsCreateReviewCommentApplicationJSONRequestSide returns new OptPullsCreateReviewCommentApplicationJSONRequestSide with value set to v.
-func NewOptPullsCreateReviewCommentApplicationJSONRequestSide(v PullsCreateReviewCommentApplicationJSONRequestSide) OptPullsCreateReviewCommentApplicationJSONRequestSide {
-	return OptPullsCreateReviewCommentApplicationJSONRequestSide{
+// NewOptPullsCreateReviewCommentApplicationJSONReqSide returns new OptPullsCreateReviewCommentApplicationJSONReqSide with value set to v.
+func NewOptPullsCreateReviewCommentApplicationJSONReqSide(v PullsCreateReviewCommentApplicationJSONReqSide) OptPullsCreateReviewCommentApplicationJSONReqSide {
+	return OptPullsCreateReviewCommentApplicationJSONReqSide{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptPullsCreateReviewCommentApplicationJSONRequestSide is optional PullsCreateReviewCommentApplicationJSONRequestSide.
-type OptPullsCreateReviewCommentApplicationJSONRequestSide struct {
-	Value PullsCreateReviewCommentApplicationJSONRequestSide
+// OptPullsCreateReviewCommentApplicationJSONReqSide is optional PullsCreateReviewCommentApplicationJSONReqSide.
+type OptPullsCreateReviewCommentApplicationJSONReqSide struct {
+	Value PullsCreateReviewCommentApplicationJSONReqSide
 	Set   bool
 }
 
-// IsSet returns true if OptPullsCreateReviewCommentApplicationJSONRequestSide was set.
-func (o OptPullsCreateReviewCommentApplicationJSONRequestSide) IsSet() bool { return o.Set }
+// IsSet returns true if OptPullsCreateReviewCommentApplicationJSONReqSide was set.
+func (o OptPullsCreateReviewCommentApplicationJSONReqSide) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptPullsCreateReviewCommentApplicationJSONRequestSide) Reset() {
-	var v PullsCreateReviewCommentApplicationJSONRequestSide
+func (o *OptPullsCreateReviewCommentApplicationJSONReqSide) Reset() {
+	var v PullsCreateReviewCommentApplicationJSONReqSide
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptPullsCreateReviewCommentApplicationJSONRequestSide) SetTo(v PullsCreateReviewCommentApplicationJSONRequestSide) {
+func (o *OptPullsCreateReviewCommentApplicationJSONReqSide) SetTo(v PullsCreateReviewCommentApplicationJSONReqSide) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptPullsCreateReviewCommentApplicationJSONRequestSide) Get() (v PullsCreateReviewCommentApplicationJSONRequestSide, ok bool) {
+func (o OptPullsCreateReviewCommentApplicationJSONReqSide) Get() (v PullsCreateReviewCommentApplicationJSONReqSide, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptPullsCreateReviewCommentApplicationJSONRequestStartSide returns new OptPullsCreateReviewCommentApplicationJSONRequestStartSide with value set to v.
-func NewOptPullsCreateReviewCommentApplicationJSONRequestStartSide(v PullsCreateReviewCommentApplicationJSONRequestStartSide) OptPullsCreateReviewCommentApplicationJSONRequestStartSide {
-	return OptPullsCreateReviewCommentApplicationJSONRequestStartSide{
+// NewOptPullsCreateReviewCommentApplicationJSONReqStartSide returns new OptPullsCreateReviewCommentApplicationJSONReqStartSide with value set to v.
+func NewOptPullsCreateReviewCommentApplicationJSONReqStartSide(v PullsCreateReviewCommentApplicationJSONReqStartSide) OptPullsCreateReviewCommentApplicationJSONReqStartSide {
+	return OptPullsCreateReviewCommentApplicationJSONReqStartSide{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptPullsCreateReviewCommentApplicationJSONRequestStartSide is optional PullsCreateReviewCommentApplicationJSONRequestStartSide.
-type OptPullsCreateReviewCommentApplicationJSONRequestStartSide struct {
-	Value PullsCreateReviewCommentApplicationJSONRequestStartSide
+// OptPullsCreateReviewCommentApplicationJSONReqStartSide is optional PullsCreateReviewCommentApplicationJSONReqStartSide.
+type OptPullsCreateReviewCommentApplicationJSONReqStartSide struct {
+	Value PullsCreateReviewCommentApplicationJSONReqStartSide
 	Set   bool
 }
 
-// IsSet returns true if OptPullsCreateReviewCommentApplicationJSONRequestStartSide was set.
-func (o OptPullsCreateReviewCommentApplicationJSONRequestStartSide) IsSet() bool { return o.Set }
+// IsSet returns true if OptPullsCreateReviewCommentApplicationJSONReqStartSide was set.
+func (o OptPullsCreateReviewCommentApplicationJSONReqStartSide) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptPullsCreateReviewCommentApplicationJSONRequestStartSide) Reset() {
-	var v PullsCreateReviewCommentApplicationJSONRequestStartSide
+func (o *OptPullsCreateReviewCommentApplicationJSONReqStartSide) Reset() {
+	var v PullsCreateReviewCommentApplicationJSONReqStartSide
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptPullsCreateReviewCommentApplicationJSONRequestStartSide) SetTo(v PullsCreateReviewCommentApplicationJSONRequestStartSide) {
+func (o *OptPullsCreateReviewCommentApplicationJSONReqStartSide) SetTo(v PullsCreateReviewCommentApplicationJSONReqStartSide) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptPullsCreateReviewCommentApplicationJSONRequestStartSide) Get() (v PullsCreateReviewCommentApplicationJSONRequestStartSide, ok bool) {
+func (o OptPullsCreateReviewCommentApplicationJSONReqStartSide) Get() (v PullsCreateReviewCommentApplicationJSONReqStartSide, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptPullsMergeApplicationJSONRequestMergeMethod returns new OptPullsMergeApplicationJSONRequestMergeMethod with value set to v.
-func NewOptPullsMergeApplicationJSONRequestMergeMethod(v PullsMergeApplicationJSONRequestMergeMethod) OptPullsMergeApplicationJSONRequestMergeMethod {
-	return OptPullsMergeApplicationJSONRequestMergeMethod{
+// NewOptPullsMergeApplicationJSONReqMergeMethod returns new OptPullsMergeApplicationJSONReqMergeMethod with value set to v.
+func NewOptPullsMergeApplicationJSONReqMergeMethod(v PullsMergeApplicationJSONReqMergeMethod) OptPullsMergeApplicationJSONReqMergeMethod {
+	return OptPullsMergeApplicationJSONReqMergeMethod{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptPullsMergeApplicationJSONRequestMergeMethod is optional PullsMergeApplicationJSONRequestMergeMethod.
-type OptPullsMergeApplicationJSONRequestMergeMethod struct {
-	Value PullsMergeApplicationJSONRequestMergeMethod
+// OptPullsMergeApplicationJSONReqMergeMethod is optional PullsMergeApplicationJSONReqMergeMethod.
+type OptPullsMergeApplicationJSONReqMergeMethod struct {
+	Value PullsMergeApplicationJSONReqMergeMethod
 	Set   bool
 }
 
-// IsSet returns true if OptPullsMergeApplicationJSONRequestMergeMethod was set.
-func (o OptPullsMergeApplicationJSONRequestMergeMethod) IsSet() bool { return o.Set }
+// IsSet returns true if OptPullsMergeApplicationJSONReqMergeMethod was set.
+func (o OptPullsMergeApplicationJSONReqMergeMethod) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptPullsMergeApplicationJSONRequestMergeMethod) Reset() {
-	var v PullsMergeApplicationJSONRequestMergeMethod
+func (o *OptPullsMergeApplicationJSONReqMergeMethod) Reset() {
+	var v PullsMergeApplicationJSONReqMergeMethod
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptPullsMergeApplicationJSONRequestMergeMethod) SetTo(v PullsMergeApplicationJSONRequestMergeMethod) {
+func (o *OptPullsMergeApplicationJSONReqMergeMethod) SetTo(v PullsMergeApplicationJSONReqMergeMethod) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptPullsMergeApplicationJSONRequestMergeMethod) Get() (v PullsMergeApplicationJSONRequestMergeMethod, ok bool) {
+func (o OptPullsMergeApplicationJSONReqMergeMethod) Get() (v PullsMergeApplicationJSONReqMergeMethod, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptPullsUpdateApplicationJSONRequestState returns new OptPullsUpdateApplicationJSONRequestState with value set to v.
-func NewOptPullsUpdateApplicationJSONRequestState(v PullsUpdateApplicationJSONRequestState) OptPullsUpdateApplicationJSONRequestState {
-	return OptPullsUpdateApplicationJSONRequestState{
+// NewOptPullsUpdateApplicationJSONReqState returns new OptPullsUpdateApplicationJSONReqState with value set to v.
+func NewOptPullsUpdateApplicationJSONReqState(v PullsUpdateApplicationJSONReqState) OptPullsUpdateApplicationJSONReqState {
+	return OptPullsUpdateApplicationJSONReqState{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptPullsUpdateApplicationJSONRequestState is optional PullsUpdateApplicationJSONRequestState.
-type OptPullsUpdateApplicationJSONRequestState struct {
-	Value PullsUpdateApplicationJSONRequestState
+// OptPullsUpdateApplicationJSONReqState is optional PullsUpdateApplicationJSONReqState.
+type OptPullsUpdateApplicationJSONReqState struct {
+	Value PullsUpdateApplicationJSONReqState
 	Set   bool
 }
 
-// IsSet returns true if OptPullsUpdateApplicationJSONRequestState was set.
-func (o OptPullsUpdateApplicationJSONRequestState) IsSet() bool { return o.Set }
+// IsSet returns true if OptPullsUpdateApplicationJSONReqState was set.
+func (o OptPullsUpdateApplicationJSONReqState) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptPullsUpdateApplicationJSONRequestState) Reset() {
-	var v PullsUpdateApplicationJSONRequestState
+func (o *OptPullsUpdateApplicationJSONReqState) Reset() {
+	var v PullsUpdateApplicationJSONReqState
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptPullsUpdateApplicationJSONRequestState) SetTo(v PullsUpdateApplicationJSONRequestState) {
+func (o *OptPullsUpdateApplicationJSONReqState) SetTo(v PullsUpdateApplicationJSONReqState) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptPullsUpdateApplicationJSONRequestState) Get() (v PullsUpdateApplicationJSONRequestState, ok bool) {
+func (o OptPullsUpdateApplicationJSONReqState) Get() (v PullsUpdateApplicationJSONReqState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -9003,540 +8976,538 @@ func (o OptReactionRollup) Get() (v ReactionRollup, ok bool) {
 	return o.Value, true
 }
 
-// NewOptReposAddCollaboratorApplicationJSONRequestPermission returns new OptReposAddCollaboratorApplicationJSONRequestPermission with value set to v.
-func NewOptReposAddCollaboratorApplicationJSONRequestPermission(v ReposAddCollaboratorApplicationJSONRequestPermission) OptReposAddCollaboratorApplicationJSONRequestPermission {
-	return OptReposAddCollaboratorApplicationJSONRequestPermission{
+// NewOptReposAddCollaboratorApplicationJSONReqPermission returns new OptReposAddCollaboratorApplicationJSONReqPermission with value set to v.
+func NewOptReposAddCollaboratorApplicationJSONReqPermission(v ReposAddCollaboratorApplicationJSONReqPermission) OptReposAddCollaboratorApplicationJSONReqPermission {
+	return OptReposAddCollaboratorApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposAddCollaboratorApplicationJSONRequestPermission is optional ReposAddCollaboratorApplicationJSONRequestPermission.
-type OptReposAddCollaboratorApplicationJSONRequestPermission struct {
-	Value ReposAddCollaboratorApplicationJSONRequestPermission
+// OptReposAddCollaboratorApplicationJSONReqPermission is optional ReposAddCollaboratorApplicationJSONReqPermission.
+type OptReposAddCollaboratorApplicationJSONReqPermission struct {
+	Value ReposAddCollaboratorApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptReposAddCollaboratorApplicationJSONRequestPermission was set.
-func (o OptReposAddCollaboratorApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposAddCollaboratorApplicationJSONReqPermission was set.
+func (o OptReposAddCollaboratorApplicationJSONReqPermission) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposAddCollaboratorApplicationJSONRequestPermission) Reset() {
-	var v ReposAddCollaboratorApplicationJSONRequestPermission
+func (o *OptReposAddCollaboratorApplicationJSONReqPermission) Reset() {
+	var v ReposAddCollaboratorApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposAddCollaboratorApplicationJSONRequestPermission) SetTo(v ReposAddCollaboratorApplicationJSONRequestPermission) {
+func (o *OptReposAddCollaboratorApplicationJSONReqPermission) SetTo(v ReposAddCollaboratorApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposAddCollaboratorApplicationJSONRequestPermission) Get() (v ReposAddCollaboratorApplicationJSONRequestPermission, ok bool) {
+func (o OptReposAddCollaboratorApplicationJSONReqPermission) Get() (v ReposAddCollaboratorApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposCreateDeploymentStatusApplicationJSONRequestEnvironment returns new OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment with value set to v.
-func NewOptReposCreateDeploymentStatusApplicationJSONRequestEnvironment(v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment {
-	return OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment{
+// NewOptReposCreateDeploymentStatusApplicationJSONReqEnvironment returns new OptReposCreateDeploymentStatusApplicationJSONReqEnvironment with value set to v.
+func NewOptReposCreateDeploymentStatusApplicationJSONReqEnvironment(v ReposCreateDeploymentStatusApplicationJSONReqEnvironment) OptReposCreateDeploymentStatusApplicationJSONReqEnvironment {
+	return OptReposCreateDeploymentStatusApplicationJSONReqEnvironment{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment is optional ReposCreateDeploymentStatusApplicationJSONRequestEnvironment.
-type OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment struct {
-	Value ReposCreateDeploymentStatusApplicationJSONRequestEnvironment
+// OptReposCreateDeploymentStatusApplicationJSONReqEnvironment is optional ReposCreateDeploymentStatusApplicationJSONReqEnvironment.
+type OptReposCreateDeploymentStatusApplicationJSONReqEnvironment struct {
+	Value ReposCreateDeploymentStatusApplicationJSONReqEnvironment
 	Set   bool
 }
 
-// IsSet returns true if OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment was set.
-func (o OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposCreateDeploymentStatusApplicationJSONReqEnvironment was set.
+func (o OptReposCreateDeploymentStatusApplicationJSONReqEnvironment) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) Reset() {
-	var v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment
+func (o *OptReposCreateDeploymentStatusApplicationJSONReqEnvironment) Reset() {
+	var v ReposCreateDeploymentStatusApplicationJSONReqEnvironment
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) SetTo(v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) {
+func (o *OptReposCreateDeploymentStatusApplicationJSONReqEnvironment) SetTo(v ReposCreateDeploymentStatusApplicationJSONReqEnvironment) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) Get() (v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment, ok bool) {
+func (o OptReposCreateDeploymentStatusApplicationJSONReqEnvironment) Get() (v ReposCreateDeploymentStatusApplicationJSONReqEnvironment, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposCreateInOrgApplicationJSONRequestVisibility returns new OptReposCreateInOrgApplicationJSONRequestVisibility with value set to v.
-func NewOptReposCreateInOrgApplicationJSONRequestVisibility(v ReposCreateInOrgApplicationJSONRequestVisibility) OptReposCreateInOrgApplicationJSONRequestVisibility {
-	return OptReposCreateInOrgApplicationJSONRequestVisibility{
+// NewOptReposCreateInOrgApplicationJSONReqVisibility returns new OptReposCreateInOrgApplicationJSONReqVisibility with value set to v.
+func NewOptReposCreateInOrgApplicationJSONReqVisibility(v ReposCreateInOrgApplicationJSONReqVisibility) OptReposCreateInOrgApplicationJSONReqVisibility {
+	return OptReposCreateInOrgApplicationJSONReqVisibility{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposCreateInOrgApplicationJSONRequestVisibility is optional ReposCreateInOrgApplicationJSONRequestVisibility.
-type OptReposCreateInOrgApplicationJSONRequestVisibility struct {
-	Value ReposCreateInOrgApplicationJSONRequestVisibility
+// OptReposCreateInOrgApplicationJSONReqVisibility is optional ReposCreateInOrgApplicationJSONReqVisibility.
+type OptReposCreateInOrgApplicationJSONReqVisibility struct {
+	Value ReposCreateInOrgApplicationJSONReqVisibility
 	Set   bool
 }
 
-// IsSet returns true if OptReposCreateInOrgApplicationJSONRequestVisibility was set.
-func (o OptReposCreateInOrgApplicationJSONRequestVisibility) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposCreateInOrgApplicationJSONReqVisibility was set.
+func (o OptReposCreateInOrgApplicationJSONReqVisibility) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposCreateInOrgApplicationJSONRequestVisibility) Reset() {
-	var v ReposCreateInOrgApplicationJSONRequestVisibility
+func (o *OptReposCreateInOrgApplicationJSONReqVisibility) Reset() {
+	var v ReposCreateInOrgApplicationJSONReqVisibility
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposCreateInOrgApplicationJSONRequestVisibility) SetTo(v ReposCreateInOrgApplicationJSONRequestVisibility) {
+func (o *OptReposCreateInOrgApplicationJSONReqVisibility) SetTo(v ReposCreateInOrgApplicationJSONReqVisibility) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposCreateInOrgApplicationJSONRequestVisibility) Get() (v ReposCreateInOrgApplicationJSONRequestVisibility, ok bool) {
+func (o OptReposCreateInOrgApplicationJSONReqVisibility) Get() (v ReposCreateInOrgApplicationJSONReqVisibility, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor returns new OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor with value set to v.
-func NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor(v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor {
-	return OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor{
+// NewOptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor returns new OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor with value set to v.
+func NewOptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor(v ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor {
+	return OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor is optional ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor.
-type OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor struct {
-	Value ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor
+// OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor is optional ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor.
+type OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor struct {
+	Value ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor
 	Set   bool
 }
 
-// IsSet returns true if OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor was set.
-func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor was set.
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) Reset() {
-	var v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) Reset() {
+	var v ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) SetTo(v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) {
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) SetTo(v ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) Get() (v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor, ok bool) {
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) Get() (v ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter returns new OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter with value set to v.
-func NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter(v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter {
-	return OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter{
+// NewOptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter returns new OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter with value set to v.
+func NewOptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter(v ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter {
+	return OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter is optional ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter.
-type OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter struct {
-	Value ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter
+// OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter is optional ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter.
+type OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter struct {
+	Value ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter
 	Set   bool
 }
 
-// IsSet returns true if OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter was set.
-func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter was set.
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) Reset() {
-	var v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) Reset() {
+	var v ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) SetTo(v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) {
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) SetTo(v ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) Get() (v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter, ok bool) {
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) Get() (v ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposCreatePagesSiteApplicationJSONRequestSourcePath returns new OptReposCreatePagesSiteApplicationJSONRequestSourcePath with value set to v.
-func NewOptReposCreatePagesSiteApplicationJSONRequestSourcePath(v ReposCreatePagesSiteApplicationJSONRequestSourcePath) OptReposCreatePagesSiteApplicationJSONRequestSourcePath {
-	return OptReposCreatePagesSiteApplicationJSONRequestSourcePath{
+// NewOptReposCreatePagesSiteApplicationJSONReqSourcePath returns new OptReposCreatePagesSiteApplicationJSONReqSourcePath with value set to v.
+func NewOptReposCreatePagesSiteApplicationJSONReqSourcePath(v ReposCreatePagesSiteApplicationJSONReqSourcePath) OptReposCreatePagesSiteApplicationJSONReqSourcePath {
+	return OptReposCreatePagesSiteApplicationJSONReqSourcePath{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposCreatePagesSiteApplicationJSONRequestSourcePath is optional ReposCreatePagesSiteApplicationJSONRequestSourcePath.
-type OptReposCreatePagesSiteApplicationJSONRequestSourcePath struct {
-	Value ReposCreatePagesSiteApplicationJSONRequestSourcePath
+// OptReposCreatePagesSiteApplicationJSONReqSourcePath is optional ReposCreatePagesSiteApplicationJSONReqSourcePath.
+type OptReposCreatePagesSiteApplicationJSONReqSourcePath struct {
+	Value ReposCreatePagesSiteApplicationJSONReqSourcePath
 	Set   bool
 }
 
-// IsSet returns true if OptReposCreatePagesSiteApplicationJSONRequestSourcePath was set.
-func (o OptReposCreatePagesSiteApplicationJSONRequestSourcePath) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposCreatePagesSiteApplicationJSONReqSourcePath was set.
+func (o OptReposCreatePagesSiteApplicationJSONReqSourcePath) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposCreatePagesSiteApplicationJSONRequestSourcePath) Reset() {
-	var v ReposCreatePagesSiteApplicationJSONRequestSourcePath
+func (o *OptReposCreatePagesSiteApplicationJSONReqSourcePath) Reset() {
+	var v ReposCreatePagesSiteApplicationJSONReqSourcePath
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposCreatePagesSiteApplicationJSONRequestSourcePath) SetTo(v ReposCreatePagesSiteApplicationJSONRequestSourcePath) {
+func (o *OptReposCreatePagesSiteApplicationJSONReqSourcePath) SetTo(v ReposCreatePagesSiteApplicationJSONReqSourcePath) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposCreatePagesSiteApplicationJSONRequestSourcePath) Get() (v ReposCreatePagesSiteApplicationJSONRequestSourcePath, ok bool) {
+func (o OptReposCreatePagesSiteApplicationJSONReqSourcePath) Get() (v ReposCreatePagesSiteApplicationJSONReqSourcePath, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposDeleteFileApplicationJSONRequestAuthor returns new OptReposDeleteFileApplicationJSONRequestAuthor with value set to v.
-func NewOptReposDeleteFileApplicationJSONRequestAuthor(v ReposDeleteFileApplicationJSONRequestAuthor) OptReposDeleteFileApplicationJSONRequestAuthor {
-	return OptReposDeleteFileApplicationJSONRequestAuthor{
+// NewOptReposDeleteFileApplicationJSONReqAuthor returns new OptReposDeleteFileApplicationJSONReqAuthor with value set to v.
+func NewOptReposDeleteFileApplicationJSONReqAuthor(v ReposDeleteFileApplicationJSONReqAuthor) OptReposDeleteFileApplicationJSONReqAuthor {
+	return OptReposDeleteFileApplicationJSONReqAuthor{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposDeleteFileApplicationJSONRequestAuthor is optional ReposDeleteFileApplicationJSONRequestAuthor.
-type OptReposDeleteFileApplicationJSONRequestAuthor struct {
-	Value ReposDeleteFileApplicationJSONRequestAuthor
+// OptReposDeleteFileApplicationJSONReqAuthor is optional ReposDeleteFileApplicationJSONReqAuthor.
+type OptReposDeleteFileApplicationJSONReqAuthor struct {
+	Value ReposDeleteFileApplicationJSONReqAuthor
 	Set   bool
 }
 
-// IsSet returns true if OptReposDeleteFileApplicationJSONRequestAuthor was set.
-func (o OptReposDeleteFileApplicationJSONRequestAuthor) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposDeleteFileApplicationJSONReqAuthor was set.
+func (o OptReposDeleteFileApplicationJSONReqAuthor) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposDeleteFileApplicationJSONRequestAuthor) Reset() {
-	var v ReposDeleteFileApplicationJSONRequestAuthor
+func (o *OptReposDeleteFileApplicationJSONReqAuthor) Reset() {
+	var v ReposDeleteFileApplicationJSONReqAuthor
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposDeleteFileApplicationJSONRequestAuthor) SetTo(v ReposDeleteFileApplicationJSONRequestAuthor) {
+func (o *OptReposDeleteFileApplicationJSONReqAuthor) SetTo(v ReposDeleteFileApplicationJSONReqAuthor) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposDeleteFileApplicationJSONRequestAuthor) Get() (v ReposDeleteFileApplicationJSONRequestAuthor, ok bool) {
+func (o OptReposDeleteFileApplicationJSONReqAuthor) Get() (v ReposDeleteFileApplicationJSONReqAuthor, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposDeleteFileApplicationJSONRequestCommitter returns new OptReposDeleteFileApplicationJSONRequestCommitter with value set to v.
-func NewOptReposDeleteFileApplicationJSONRequestCommitter(v ReposDeleteFileApplicationJSONRequestCommitter) OptReposDeleteFileApplicationJSONRequestCommitter {
-	return OptReposDeleteFileApplicationJSONRequestCommitter{
+// NewOptReposDeleteFileApplicationJSONReqCommitter returns new OptReposDeleteFileApplicationJSONReqCommitter with value set to v.
+func NewOptReposDeleteFileApplicationJSONReqCommitter(v ReposDeleteFileApplicationJSONReqCommitter) OptReposDeleteFileApplicationJSONReqCommitter {
+	return OptReposDeleteFileApplicationJSONReqCommitter{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposDeleteFileApplicationJSONRequestCommitter is optional ReposDeleteFileApplicationJSONRequestCommitter.
-type OptReposDeleteFileApplicationJSONRequestCommitter struct {
-	Value ReposDeleteFileApplicationJSONRequestCommitter
+// OptReposDeleteFileApplicationJSONReqCommitter is optional ReposDeleteFileApplicationJSONReqCommitter.
+type OptReposDeleteFileApplicationJSONReqCommitter struct {
+	Value ReposDeleteFileApplicationJSONReqCommitter
 	Set   bool
 }
 
-// IsSet returns true if OptReposDeleteFileApplicationJSONRequestCommitter was set.
-func (o OptReposDeleteFileApplicationJSONRequestCommitter) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposDeleteFileApplicationJSONReqCommitter was set.
+func (o OptReposDeleteFileApplicationJSONReqCommitter) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposDeleteFileApplicationJSONRequestCommitter) Reset() {
-	var v ReposDeleteFileApplicationJSONRequestCommitter
+func (o *OptReposDeleteFileApplicationJSONReqCommitter) Reset() {
+	var v ReposDeleteFileApplicationJSONReqCommitter
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposDeleteFileApplicationJSONRequestCommitter) SetTo(v ReposDeleteFileApplicationJSONRequestCommitter) {
+func (o *OptReposDeleteFileApplicationJSONReqCommitter) SetTo(v ReposDeleteFileApplicationJSONReqCommitter) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposDeleteFileApplicationJSONRequestCommitter) Get() (v ReposDeleteFileApplicationJSONRequestCommitter, ok bool) {
+func (o OptReposDeleteFileApplicationJSONReqCommitter) Get() (v ReposDeleteFileApplicationJSONReqCommitter, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity returns new OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity with value set to v.
-func NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity {
-	return OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity{
+// NewOptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity returns new OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity with value set to v.
+func NewOptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity(v ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity {
+	return OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity is optional ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity.
-type OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity struct {
-	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity
+// OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity is optional ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity.
+type OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity struct {
+	Value ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity
 	Set   bool
 }
 
-// IsSet returns true if OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity was set.
-func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) IsSet() bool {
+// IsSet returns true if OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity was set.
+func (o OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) Reset() {
-	var v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity
+func (o *OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) Reset() {
+	var v ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) SetTo(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) {
+func (o *OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) SetTo(v ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) Get() (v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity, ok bool) {
+func (o OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) Get() (v ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning returns new OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning with value set to v.
-func NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning {
-	return OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning{
+// NewOptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning returns new OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning with value set to v.
+func NewOptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning(v ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning {
+	return OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning is optional ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning.
-type OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning struct {
-	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning
+// OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning is optional ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning.
+type OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning struct {
+	Value ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning
 	Set   bool
 }
 
-// IsSet returns true if OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning was set.
-func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) IsSet() bool {
+// IsSet returns true if OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning was set.
+func (o OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) Reset() {
+	var v ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) SetTo(v ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) Get() (v ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateApplicationJSONReqVisibility returns new OptReposUpdateApplicationJSONReqVisibility with value set to v.
+func NewOptReposUpdateApplicationJSONReqVisibility(v ReposUpdateApplicationJSONReqVisibility) OptReposUpdateApplicationJSONReqVisibility {
+	return OptReposUpdateApplicationJSONReqVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateApplicationJSONReqVisibility is optional ReposUpdateApplicationJSONReqVisibility.
+type OptReposUpdateApplicationJSONReqVisibility struct {
+	Value ReposUpdateApplicationJSONReqVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateApplicationJSONReqVisibility was set.
+func (o OptReposUpdateApplicationJSONReqVisibility) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposUpdateApplicationJSONReqVisibility) Reset() {
+	var v ReposUpdateApplicationJSONReqVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposUpdateApplicationJSONReqVisibility) SetTo(v ReposUpdateApplicationJSONReqVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposUpdateApplicationJSONReqVisibility) Get() (v ReposUpdateApplicationJSONReqVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions returns new OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions with value set to v.
+func NewOptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions(v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions {
+	return OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions is optional ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions.
+type OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions struct {
+	Value ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions
+	Set   bool
+}
+
+// IsSet returns true if OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions was set.
+func (o OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Reset() {
-	var v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning
+func (o *OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) Reset() {
+	var v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) SetTo(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) {
+func (o *OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) SetTo(v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Get() (v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning, ok bool) {
+func (o OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) Get() (v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposUpdateApplicationJSONRequestVisibility returns new OptReposUpdateApplicationJSONRequestVisibility with value set to v.
-func NewOptReposUpdateApplicationJSONRequestVisibility(v ReposUpdateApplicationJSONRequestVisibility) OptReposUpdateApplicationJSONRequestVisibility {
-	return OptReposUpdateApplicationJSONRequestVisibility{
+// NewOptReposUpdateInvitationApplicationJSONReqPermissions returns new OptReposUpdateInvitationApplicationJSONReqPermissions with value set to v.
+func NewOptReposUpdateInvitationApplicationJSONReqPermissions(v ReposUpdateInvitationApplicationJSONReqPermissions) OptReposUpdateInvitationApplicationJSONReqPermissions {
+	return OptReposUpdateInvitationApplicationJSONReqPermissions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposUpdateApplicationJSONRequestVisibility is optional ReposUpdateApplicationJSONRequestVisibility.
-type OptReposUpdateApplicationJSONRequestVisibility struct {
-	Value ReposUpdateApplicationJSONRequestVisibility
+// OptReposUpdateInvitationApplicationJSONReqPermissions is optional ReposUpdateInvitationApplicationJSONReqPermissions.
+type OptReposUpdateInvitationApplicationJSONReqPermissions struct {
+	Value ReposUpdateInvitationApplicationJSONReqPermissions
 	Set   bool
 }
 
-// IsSet returns true if OptReposUpdateApplicationJSONRequestVisibility was set.
-func (o OptReposUpdateApplicationJSONRequestVisibility) IsSet() bool { return o.Set }
+// IsSet returns true if OptReposUpdateInvitationApplicationJSONReqPermissions was set.
+func (o OptReposUpdateInvitationApplicationJSONReqPermissions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptReposUpdateApplicationJSONRequestVisibility) Reset() {
-	var v ReposUpdateApplicationJSONRequestVisibility
+func (o *OptReposUpdateInvitationApplicationJSONReqPermissions) Reset() {
+	var v ReposUpdateInvitationApplicationJSONReqPermissions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposUpdateApplicationJSONRequestVisibility) SetTo(v ReposUpdateApplicationJSONRequestVisibility) {
+func (o *OptReposUpdateInvitationApplicationJSONReqPermissions) SetTo(v ReposUpdateInvitationApplicationJSONReqPermissions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposUpdateApplicationJSONRequestVisibility) Get() (v ReposUpdateApplicationJSONRequestVisibility, ok bool) {
+func (o OptReposUpdateInvitationApplicationJSONReqPermissions) Get() (v ReposUpdateInvitationApplicationJSONReqPermissions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions returns new OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions with value set to v.
-func NewOptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions {
-	return OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions{
+// NewOptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions returns new OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions with value set to v.
+func NewOptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions(v ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions {
+	return OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions is optional ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions.
-type OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions struct {
-	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions
+// OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions is optional ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions.
+type OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions struct {
+	Value ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions
 	Set   bool
 }
 
-// IsSet returns true if OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions was set.
-func (o OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) IsSet() bool {
+// IsSet returns true if OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions was set.
+func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) Reset() {
-	var v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions
+func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) Reset() {
+	var v ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) {
+func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) SetTo(v ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptReposUpdateInvitationApplicationJSONRequestPermissions returns new OptReposUpdateInvitationApplicationJSONRequestPermissions with value set to v.
-func NewOptReposUpdateInvitationApplicationJSONRequestPermissions(v ReposUpdateInvitationApplicationJSONRequestPermissions) OptReposUpdateInvitationApplicationJSONRequestPermissions {
-	return OptReposUpdateInvitationApplicationJSONRequestPermissions{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptReposUpdateInvitationApplicationJSONRequestPermissions is optional ReposUpdateInvitationApplicationJSONRequestPermissions.
-type OptReposUpdateInvitationApplicationJSONRequestPermissions struct {
-	Value ReposUpdateInvitationApplicationJSONRequestPermissions
-	Set   bool
-}
-
-// IsSet returns true if OptReposUpdateInvitationApplicationJSONRequestPermissions was set.
-func (o OptReposUpdateInvitationApplicationJSONRequestPermissions) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptReposUpdateInvitationApplicationJSONRequestPermissions) Reset() {
-	var v ReposUpdateInvitationApplicationJSONRequestPermissions
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptReposUpdateInvitationApplicationJSONRequestPermissions) SetTo(v ReposUpdateInvitationApplicationJSONRequestPermissions) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptReposUpdateInvitationApplicationJSONRequestPermissions) Get() (v ReposUpdateInvitationApplicationJSONRequestPermissions, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions returns new OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions with value set to v.
-func NewOptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions(v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions {
-	return OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions is optional ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions.
-type OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions struct {
-	Value ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions
-	Set   bool
-}
-
-// IsSet returns true if OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions was set.
-func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) IsSet() bool {
-	return o.Set
-}
-
-// Reset unsets value.
-func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) Reset() {
-	var v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) SetTo(v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) Get() (v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions, ok bool) {
+func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) Get() (v ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -10303,468 +10274,464 @@ func (o OptTeamRepositoryPermissions) Get() (v TeamRepositoryPermissions, ok boo
 	return o.Value, true
 }
 
-// NewOptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole returns new OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole with value set to v.
-func NewOptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole {
-	return OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole{
+// NewOptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole returns new OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole with value set to v.
+func NewOptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole(v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole {
+	return OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole is optional TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole.
-type OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole struct {
-	Value TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole
+// OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole is optional TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole.
+type OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole struct {
+	Value TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole was set.
-func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) IsSet() bool {
+// IsSet returns true if OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole was set.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) Reset() {
+	var v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) SetTo(v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) Get() (v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole returns new OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole with value set to v.
+func NewOptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole(v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole {
+	return OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole is optional TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole.
+type OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole struct {
+	Value TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole was set.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) Reset() {
+	var v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) SetTo(v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) Get() (v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission returns new OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission with value set to v.
+func NewOptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission(v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission {
+	return OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission is optional TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission.
+type OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission struct {
+	Value TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission
+	Set   bool
+}
+
+// IsSet returns true if OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission was set.
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) Reset() {
-	var v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole
+func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) Reset() {
+	var v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) SetTo(v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) {
+func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) SetTo(v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) Get() (v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole, ok bool) {
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) Get() (v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole returns new OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole with value set to v.
-func NewOptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole {
-	return OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole{
+// NewOptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission returns new OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission with value set to v.
+func NewOptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission(v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission {
+	return OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole is optional TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole.
-type OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole struct {
-	Value TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole
+// OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission is optional TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission.
+type OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission struct {
+	Value TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole was set.
-func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) IsSet() bool {
+// IsSet returns true if OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission was set.
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) Reset() {
-	var v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole
+func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) Reset() {
+	var v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) SetTo(v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) {
+func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) SetTo(v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) Get() (v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole, ok bool) {
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) Get() (v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission with value set to v.
-func NewOptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission {
-	return OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission{
+// NewOptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission returns new OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission with value set to v.
+func NewOptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission(v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission {
+	return OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission is optional TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission.
-type OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission struct {
-	Value TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission
+// OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission is optional TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission.
+type OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission struct {
+	Value TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission was set.
-func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) IsSet() bool {
+// IsSet returns true if OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission was set.
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) Reset() {
-	var v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission
+func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) Reset() {
+	var v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) {
+func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) SetTo(v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission, ok bool) {
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) Get() (v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission with value set to v.
-func NewOptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission {
-	return OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission{
+// NewOptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission returns new OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission with value set to v.
+func NewOptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission(v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission {
+	return OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission is optional TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission.
-type OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission struct {
-	Value TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission
+// OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission is optional TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission.
+type OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission struct {
+	Value TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission was set.
-func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) IsSet() bool {
+// IsSet returns true if OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission was set.
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) Reset() {
-	var v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission
+func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) Reset() {
+	var v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) {
+func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) SetTo(v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission, ok bool) {
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) Get() (v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission with value set to v.
-func NewOptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission {
-	return OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission{
+// NewOptTeamsCreateApplicationJSONReqPermission returns new OptTeamsCreateApplicationJSONReqPermission with value set to v.
+func NewOptTeamsCreateApplicationJSONReqPermission(v TeamsCreateApplicationJSONReqPermission) OptTeamsCreateApplicationJSONReqPermission {
+	return OptTeamsCreateApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission is optional TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission.
-type OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission struct {
-	Value TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission
+// OptTeamsCreateApplicationJSONReqPermission is optional TeamsCreateApplicationJSONReqPermission.
+type OptTeamsCreateApplicationJSONReqPermission struct {
+	Value TeamsCreateApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission was set.
-func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptTeamsCreateApplicationJSONReqPermission was set.
+func (o OptTeamsCreateApplicationJSONReqPermission) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) Reset() {
-	var v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission
+func (o *OptTeamsCreateApplicationJSONReqPermission) Reset() {
+	var v TeamsCreateApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) {
+func (o *OptTeamsCreateApplicationJSONReqPermission) SetTo(v TeamsCreateApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission, ok bool) {
+func (o OptTeamsCreateApplicationJSONReqPermission) Get() (v TeamsCreateApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission with value set to v.
-func NewOptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission {
-	return OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission{
+// NewOptTeamsCreateApplicationJSONReqPrivacy returns new OptTeamsCreateApplicationJSONReqPrivacy with value set to v.
+func NewOptTeamsCreateApplicationJSONReqPrivacy(v TeamsCreateApplicationJSONReqPrivacy) OptTeamsCreateApplicationJSONReqPrivacy {
+	return OptTeamsCreateApplicationJSONReqPrivacy{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission is optional TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission.
-type OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission struct {
-	Value TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission
+// OptTeamsCreateApplicationJSONReqPrivacy is optional TeamsCreateApplicationJSONReqPrivacy.
+type OptTeamsCreateApplicationJSONReqPrivacy struct {
+	Value TeamsCreateApplicationJSONReqPrivacy
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission was set.
-func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptTeamsCreateApplicationJSONReqPrivacy was set.
+func (o OptTeamsCreateApplicationJSONReqPrivacy) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) Reset() {
-	var v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission
+func (o *OptTeamsCreateApplicationJSONReqPrivacy) Reset() {
+	var v TeamsCreateApplicationJSONReqPrivacy
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) {
+func (o *OptTeamsCreateApplicationJSONReqPrivacy) SetTo(v TeamsCreateApplicationJSONReqPrivacy) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission, ok bool) {
+func (o OptTeamsCreateApplicationJSONReqPrivacy) Get() (v TeamsCreateApplicationJSONReqPrivacy, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsCreateApplicationJSONRequestPermission returns new OptTeamsCreateApplicationJSONRequestPermission with value set to v.
-func NewOptTeamsCreateApplicationJSONRequestPermission(v TeamsCreateApplicationJSONRequestPermission) OptTeamsCreateApplicationJSONRequestPermission {
-	return OptTeamsCreateApplicationJSONRequestPermission{
+// NewOptTeamsUpdateInOrgApplicationJSONReqPermission returns new OptTeamsUpdateInOrgApplicationJSONReqPermission with value set to v.
+func NewOptTeamsUpdateInOrgApplicationJSONReqPermission(v TeamsUpdateInOrgApplicationJSONReqPermission) OptTeamsUpdateInOrgApplicationJSONReqPermission {
+	return OptTeamsUpdateInOrgApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsCreateApplicationJSONRequestPermission is optional TeamsCreateApplicationJSONRequestPermission.
-type OptTeamsCreateApplicationJSONRequestPermission struct {
-	Value TeamsCreateApplicationJSONRequestPermission
+// OptTeamsUpdateInOrgApplicationJSONReqPermission is optional TeamsUpdateInOrgApplicationJSONReqPermission.
+type OptTeamsUpdateInOrgApplicationJSONReqPermission struct {
+	Value TeamsUpdateInOrgApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsCreateApplicationJSONRequestPermission was set.
-func (o OptTeamsCreateApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+// IsSet returns true if OptTeamsUpdateInOrgApplicationJSONReqPermission was set.
+func (o OptTeamsUpdateInOrgApplicationJSONReqPermission) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptTeamsCreateApplicationJSONRequestPermission) Reset() {
-	var v TeamsCreateApplicationJSONRequestPermission
+func (o *OptTeamsUpdateInOrgApplicationJSONReqPermission) Reset() {
+	var v TeamsUpdateInOrgApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsCreateApplicationJSONRequestPermission) SetTo(v TeamsCreateApplicationJSONRequestPermission) {
+func (o *OptTeamsUpdateInOrgApplicationJSONReqPermission) SetTo(v TeamsUpdateInOrgApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsCreateApplicationJSONRequestPermission) Get() (v TeamsCreateApplicationJSONRequestPermission, ok bool) {
+func (o OptTeamsUpdateInOrgApplicationJSONReqPermission) Get() (v TeamsUpdateInOrgApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsCreateApplicationJSONRequestPrivacy returns new OptTeamsCreateApplicationJSONRequestPrivacy with value set to v.
-func NewOptTeamsCreateApplicationJSONRequestPrivacy(v TeamsCreateApplicationJSONRequestPrivacy) OptTeamsCreateApplicationJSONRequestPrivacy {
-	return OptTeamsCreateApplicationJSONRequestPrivacy{
+// NewOptTeamsUpdateInOrgApplicationJSONReqPrivacy returns new OptTeamsUpdateInOrgApplicationJSONReqPrivacy with value set to v.
+func NewOptTeamsUpdateInOrgApplicationJSONReqPrivacy(v TeamsUpdateInOrgApplicationJSONReqPrivacy) OptTeamsUpdateInOrgApplicationJSONReqPrivacy {
+	return OptTeamsUpdateInOrgApplicationJSONReqPrivacy{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsCreateApplicationJSONRequestPrivacy is optional TeamsCreateApplicationJSONRequestPrivacy.
-type OptTeamsCreateApplicationJSONRequestPrivacy struct {
-	Value TeamsCreateApplicationJSONRequestPrivacy
+// OptTeamsUpdateInOrgApplicationJSONReqPrivacy is optional TeamsUpdateInOrgApplicationJSONReqPrivacy.
+type OptTeamsUpdateInOrgApplicationJSONReqPrivacy struct {
+	Value TeamsUpdateInOrgApplicationJSONReqPrivacy
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsCreateApplicationJSONRequestPrivacy was set.
-func (o OptTeamsCreateApplicationJSONRequestPrivacy) IsSet() bool { return o.Set }
+// IsSet returns true if OptTeamsUpdateInOrgApplicationJSONReqPrivacy was set.
+func (o OptTeamsUpdateInOrgApplicationJSONReqPrivacy) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptTeamsCreateApplicationJSONRequestPrivacy) Reset() {
-	var v TeamsCreateApplicationJSONRequestPrivacy
+func (o *OptTeamsUpdateInOrgApplicationJSONReqPrivacy) Reset() {
+	var v TeamsUpdateInOrgApplicationJSONReqPrivacy
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsCreateApplicationJSONRequestPrivacy) SetTo(v TeamsCreateApplicationJSONRequestPrivacy) {
+func (o *OptTeamsUpdateInOrgApplicationJSONReqPrivacy) SetTo(v TeamsUpdateInOrgApplicationJSONReqPrivacy) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsCreateApplicationJSONRequestPrivacy) Get() (v TeamsCreateApplicationJSONRequestPrivacy, ok bool) {
+func (o OptTeamsUpdateInOrgApplicationJSONReqPrivacy) Get() (v TeamsUpdateInOrgApplicationJSONReqPrivacy, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsUpdateInOrgApplicationJSONRequestPermission returns new OptTeamsUpdateInOrgApplicationJSONRequestPermission with value set to v.
-func NewOptTeamsUpdateInOrgApplicationJSONRequestPermission(v TeamsUpdateInOrgApplicationJSONRequestPermission) OptTeamsUpdateInOrgApplicationJSONRequestPermission {
-	return OptTeamsUpdateInOrgApplicationJSONRequestPermission{
+// NewOptTeamsUpdateLegacyApplicationJSONReqPermission returns new OptTeamsUpdateLegacyApplicationJSONReqPermission with value set to v.
+func NewOptTeamsUpdateLegacyApplicationJSONReqPermission(v TeamsUpdateLegacyApplicationJSONReqPermission) OptTeamsUpdateLegacyApplicationJSONReqPermission {
+	return OptTeamsUpdateLegacyApplicationJSONReqPermission{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsUpdateInOrgApplicationJSONRequestPermission is optional TeamsUpdateInOrgApplicationJSONRequestPermission.
-type OptTeamsUpdateInOrgApplicationJSONRequestPermission struct {
-	Value TeamsUpdateInOrgApplicationJSONRequestPermission
+// OptTeamsUpdateLegacyApplicationJSONReqPermission is optional TeamsUpdateLegacyApplicationJSONReqPermission.
+type OptTeamsUpdateLegacyApplicationJSONReqPermission struct {
+	Value TeamsUpdateLegacyApplicationJSONReqPermission
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsUpdateInOrgApplicationJSONRequestPermission was set.
-func (o OptTeamsUpdateInOrgApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+// IsSet returns true if OptTeamsUpdateLegacyApplicationJSONReqPermission was set.
+func (o OptTeamsUpdateLegacyApplicationJSONReqPermission) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptTeamsUpdateInOrgApplicationJSONRequestPermission) Reset() {
-	var v TeamsUpdateInOrgApplicationJSONRequestPermission
+func (o *OptTeamsUpdateLegacyApplicationJSONReqPermission) Reset() {
+	var v TeamsUpdateLegacyApplicationJSONReqPermission
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsUpdateInOrgApplicationJSONRequestPermission) SetTo(v TeamsUpdateInOrgApplicationJSONRequestPermission) {
+func (o *OptTeamsUpdateLegacyApplicationJSONReqPermission) SetTo(v TeamsUpdateLegacyApplicationJSONReqPermission) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsUpdateInOrgApplicationJSONRequestPermission) Get() (v TeamsUpdateInOrgApplicationJSONRequestPermission, ok bool) {
+func (o OptTeamsUpdateLegacyApplicationJSONReqPermission) Get() (v TeamsUpdateLegacyApplicationJSONReqPermission, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// NewOptTeamsUpdateInOrgApplicationJSONRequestPrivacy returns new OptTeamsUpdateInOrgApplicationJSONRequestPrivacy with value set to v.
-func NewOptTeamsUpdateInOrgApplicationJSONRequestPrivacy(v TeamsUpdateInOrgApplicationJSONRequestPrivacy) OptTeamsUpdateInOrgApplicationJSONRequestPrivacy {
-	return OptTeamsUpdateInOrgApplicationJSONRequestPrivacy{
+// NewOptTeamsUpdateLegacyApplicationJSONReqPrivacy returns new OptTeamsUpdateLegacyApplicationJSONReqPrivacy with value set to v.
+func NewOptTeamsUpdateLegacyApplicationJSONReqPrivacy(v TeamsUpdateLegacyApplicationJSONReqPrivacy) OptTeamsUpdateLegacyApplicationJSONReqPrivacy {
+	return OptTeamsUpdateLegacyApplicationJSONReqPrivacy{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTeamsUpdateInOrgApplicationJSONRequestPrivacy is optional TeamsUpdateInOrgApplicationJSONRequestPrivacy.
-type OptTeamsUpdateInOrgApplicationJSONRequestPrivacy struct {
-	Value TeamsUpdateInOrgApplicationJSONRequestPrivacy
+// OptTeamsUpdateLegacyApplicationJSONReqPrivacy is optional TeamsUpdateLegacyApplicationJSONReqPrivacy.
+type OptTeamsUpdateLegacyApplicationJSONReqPrivacy struct {
+	Value TeamsUpdateLegacyApplicationJSONReqPrivacy
 	Set   bool
 }
 
-// IsSet returns true if OptTeamsUpdateInOrgApplicationJSONRequestPrivacy was set.
-func (o OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) IsSet() bool { return o.Set }
+// IsSet returns true if OptTeamsUpdateLegacyApplicationJSONReqPrivacy was set.
+func (o OptTeamsUpdateLegacyApplicationJSONReqPrivacy) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) Reset() {
-	var v TeamsUpdateInOrgApplicationJSONRequestPrivacy
+func (o *OptTeamsUpdateLegacyApplicationJSONReqPrivacy) Reset() {
+	var v TeamsUpdateLegacyApplicationJSONReqPrivacy
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) SetTo(v TeamsUpdateInOrgApplicationJSONRequestPrivacy) {
+func (o *OptTeamsUpdateLegacyApplicationJSONReqPrivacy) SetTo(v TeamsUpdateLegacyApplicationJSONReqPrivacy) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) Get() (v TeamsUpdateInOrgApplicationJSONRequestPrivacy, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptTeamsUpdateLegacyApplicationJSONRequestPermission returns new OptTeamsUpdateLegacyApplicationJSONRequestPermission with value set to v.
-func NewOptTeamsUpdateLegacyApplicationJSONRequestPermission(v TeamsUpdateLegacyApplicationJSONRequestPermission) OptTeamsUpdateLegacyApplicationJSONRequestPermission {
-	return OptTeamsUpdateLegacyApplicationJSONRequestPermission{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTeamsUpdateLegacyApplicationJSONRequestPermission is optional TeamsUpdateLegacyApplicationJSONRequestPermission.
-type OptTeamsUpdateLegacyApplicationJSONRequestPermission struct {
-	Value TeamsUpdateLegacyApplicationJSONRequestPermission
-	Set   bool
-}
-
-// IsSet returns true if OptTeamsUpdateLegacyApplicationJSONRequestPermission was set.
-func (o OptTeamsUpdateLegacyApplicationJSONRequestPermission) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTeamsUpdateLegacyApplicationJSONRequestPermission) Reset() {
-	var v TeamsUpdateLegacyApplicationJSONRequestPermission
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTeamsUpdateLegacyApplicationJSONRequestPermission) SetTo(v TeamsUpdateLegacyApplicationJSONRequestPermission) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsUpdateLegacyApplicationJSONRequestPermission) Get() (v TeamsUpdateLegacyApplicationJSONRequestPermission, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptTeamsUpdateLegacyApplicationJSONRequestPrivacy returns new OptTeamsUpdateLegacyApplicationJSONRequestPrivacy with value set to v.
-func NewOptTeamsUpdateLegacyApplicationJSONRequestPrivacy(v TeamsUpdateLegacyApplicationJSONRequestPrivacy) OptTeamsUpdateLegacyApplicationJSONRequestPrivacy {
-	return OptTeamsUpdateLegacyApplicationJSONRequestPrivacy{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTeamsUpdateLegacyApplicationJSONRequestPrivacy is optional TeamsUpdateLegacyApplicationJSONRequestPrivacy.
-type OptTeamsUpdateLegacyApplicationJSONRequestPrivacy struct {
-	Value TeamsUpdateLegacyApplicationJSONRequestPrivacy
-	Set   bool
-}
-
-// IsSet returns true if OptTeamsUpdateLegacyApplicationJSONRequestPrivacy was set.
-func (o OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) Reset() {
-	var v TeamsUpdateLegacyApplicationJSONRequestPrivacy
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) SetTo(v TeamsUpdateLegacyApplicationJSONRequestPrivacy) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) Get() (v TeamsUpdateLegacyApplicationJSONRequestPrivacy, ok bool) {
+func (o OptTeamsUpdateLegacyApplicationJSONReqPrivacy) Get() (v TeamsUpdateLegacyApplicationJSONReqPrivacy, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -11047,230 +11014,226 @@ type OrgsCancelInvitationNoContent struct{}
 
 type OrgsCheckBlockedUserNoContent struct{}
 
-func (*OrgsCheckBlockedUserNoContent) orgsCheckBlockedUserResponse() {}
+func (*OrgsCheckBlockedUserNoContent) orgsCheckBlockedUserRes() {}
 
 type OrgsCheckMembershipForUserFound struct{}
 
-func (*OrgsCheckMembershipForUserFound) orgsCheckMembershipForUserResponse() {}
+func (*OrgsCheckMembershipForUserFound) orgsCheckMembershipForUserRes() {}
 
 type OrgsCheckMembershipForUserNoContent struct{}
 
-func (*OrgsCheckMembershipForUserNoContent) orgsCheckMembershipForUserResponse() {}
+func (*OrgsCheckMembershipForUserNoContent) orgsCheckMembershipForUserRes() {}
 
 type OrgsCheckMembershipForUserNotFound struct{}
 
-func (*OrgsCheckMembershipForUserNotFound) orgsCheckMembershipForUserResponse() {}
+func (*OrgsCheckMembershipForUserNotFound) orgsCheckMembershipForUserRes() {}
 
 type OrgsCheckPublicMembershipForUserNoContent struct{}
 
-func (*OrgsCheckPublicMembershipForUserNoContent) orgsCheckPublicMembershipForUserResponse() {}
+func (*OrgsCheckPublicMembershipForUserNoContent) orgsCheckPublicMembershipForUserRes() {}
 
 type OrgsCheckPublicMembershipForUserNotFound struct{}
 
-func (*OrgsCheckPublicMembershipForUserNotFound) orgsCheckPublicMembershipForUserResponse() {}
+func (*OrgsCheckPublicMembershipForUserNotFound) orgsCheckPublicMembershipForUserRes() {}
 
 type OrgsConvertMemberToOutsideCollaboratorAccepted struct{}
 
-func (*OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorResponse() {
-}
+func (*OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
 
 type OrgsConvertMemberToOutsideCollaboratorForbidden struct{}
 
-func (*OrgsConvertMemberToOutsideCollaboratorForbidden) orgsConvertMemberToOutsideCollaboratorResponse() {
-}
+func (*OrgsConvertMemberToOutsideCollaboratorForbidden) orgsConvertMemberToOutsideCollaboratorRes() {}
 
 type OrgsConvertMemberToOutsideCollaboratorNoContent struct{}
 
-func (*OrgsConvertMemberToOutsideCollaboratorNoContent) orgsConvertMemberToOutsideCollaboratorResponse() {
+func (*OrgsConvertMemberToOutsideCollaboratorNoContent) orgsConvertMemberToOutsideCollaboratorRes() {}
+
+type OrgsCreateInvitationApplicationJSONReq struct {
+	Email     OptString                                     `json:"email"`
+	InviteeID OptInt                                        `json:"invitee_id"`
+	Role      OptOrgsCreateInvitationApplicationJSONReqRole `json:"role"`
+	TeamIds   []int                                         `json:"team_ids"`
 }
 
-type OrgsCreateInvitationApplicationJSONRequest struct {
-	Email     OptString                                         `json:"email"`
-	InviteeID OptInt                                            `json:"invitee_id"`
-	Role      OptOrgsCreateInvitationApplicationJSONRequestRole `json:"role"`
-	TeamIds   []int                                             `json:"team_ids"`
-}
+func (*OrgsCreateInvitationApplicationJSONReq) orgsCreateInvitationReq() {}
 
-func (*OrgsCreateInvitationApplicationJSONRequest) orgsCreateInvitationRequest() {}
-
-type OrgsCreateInvitationApplicationJSONRequestRole string
+type OrgsCreateInvitationApplicationJSONReqRole string
 
 const (
-	OrgsCreateInvitationApplicationJSONRequestRoleAdmin          OrgsCreateInvitationApplicationJSONRequestRole = "admin"
-	OrgsCreateInvitationApplicationJSONRequestRoleDirectMember   OrgsCreateInvitationApplicationJSONRequestRole = "direct_member"
-	OrgsCreateInvitationApplicationJSONRequestRoleBillingManager OrgsCreateInvitationApplicationJSONRequestRole = "billing_manager"
+	OrgsCreateInvitationApplicationJSONReqRoleAdmin          OrgsCreateInvitationApplicationJSONReqRole = "admin"
+	OrgsCreateInvitationApplicationJSONReqRoleDirectMember   OrgsCreateInvitationApplicationJSONReqRole = "direct_member"
+	OrgsCreateInvitationApplicationJSONReqRoleBillingManager OrgsCreateInvitationApplicationJSONReqRole = "billing_manager"
 )
 
 type OrgsDeleteWebhookNoContent struct{}
 
-func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookResponse() {}
+func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookRes() {}
 
 type OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) orgsGetMembershipForAuthenticatedUserResponse() {
+func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) orgsGetMembershipForAuthenticatedUserRes() {
 }
 
 type OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) orgsGetMembershipForAuthenticatedUserResponse() {
+func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) orgsGetMembershipForAuthenticatedUserRes() {
 }
 
 type OrgsGetMembershipForUserApplicationJSONForbidden BasicError
 
-func (*OrgsGetMembershipForUserApplicationJSONForbidden) orgsGetMembershipForUserResponse() {}
+func (*OrgsGetMembershipForUserApplicationJSONForbidden) orgsGetMembershipForUserRes() {}
 
 type OrgsGetMembershipForUserApplicationJSONNotFound BasicError
 
-func (*OrgsGetMembershipForUserApplicationJSONNotFound) orgsGetMembershipForUserResponse() {}
+func (*OrgsGetMembershipForUserApplicationJSONNotFound) orgsGetMembershipForUserRes() {}
 
 type OrgsListBlockedUsersOK []SimpleUser
 
-func (*OrgsListBlockedUsersOK) orgsListBlockedUsersResponse() {}
+func (*OrgsListBlockedUsersOK) orgsListBlockedUsersRes() {}
 
 type OrgsListFailedInvitationsOK []OrganizationInvitation
 
-func (*OrgsListFailedInvitationsOK) orgsListFailedInvitationsResponse() {}
+func (*OrgsListFailedInvitationsOK) orgsListFailedInvitationsRes() {}
 
 type OrgsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*OrgsListForAuthenticatedUserApplicationJSONForbidden) orgsListForAuthenticatedUserResponse() {}
+func (*OrgsListForAuthenticatedUserApplicationJSONForbidden) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserResponse() {
-}
+func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListForAuthenticatedUserOK []OrganizationSimple
 
-func (*OrgsListForAuthenticatedUserOK) orgsListForAuthenticatedUserResponse() {}
+func (*OrgsListForAuthenticatedUserOK) orgsListForAuthenticatedUserRes() {}
 
 type OrgsListInvitationTeamsOK []Team
 
-func (*OrgsListInvitationTeamsOK) orgsListInvitationTeamsResponse() {}
+func (*OrgsListInvitationTeamsOK) orgsListInvitationTeamsRes() {}
 
 type OrgsListOK []OrganizationSimple
 
-func (*OrgsListOK) orgsListResponse() {}
+func (*OrgsListOK) orgsListRes() {}
 
 type OrgsListPendingInvitationsOK []OrganizationInvitation
 
-func (*OrgsListPendingInvitationsOK) orgsListPendingInvitationsResponse() {}
+func (*OrgsListPendingInvitationsOK) orgsListPendingInvitationsRes() {}
 
 type OrgsListWebhookDeliveriesOK []HookDeliveryItem
 
 type OrgsListWebhooksOK []OrgHook
 
-func (*OrgsListWebhooksOK) orgsListWebhooksResponse() {}
+func (*OrgsListWebhooksOK) orgsListWebhooksRes() {}
 
 type OrgsPingWebhookNoContent struct{}
 
-func (*OrgsPingWebhookNoContent) orgsPingWebhookResponse() {}
+func (*OrgsPingWebhookNoContent) orgsPingWebhookRes() {}
 
 type OrgsRemoveMemberNoContent struct{}
 
-func (*OrgsRemoveMemberNoContent) orgsRemoveMemberResponse() {}
+func (*OrgsRemoveMemberNoContent) orgsRemoveMemberRes() {}
 
 type OrgsRemoveMembershipForUserApplicationJSONForbidden BasicError
 
-func (*OrgsRemoveMembershipForUserApplicationJSONForbidden) orgsRemoveMembershipForUserResponse() {}
+func (*OrgsRemoveMembershipForUserApplicationJSONForbidden) orgsRemoveMembershipForUserRes() {}
 
 type OrgsRemoveMembershipForUserApplicationJSONNotFound BasicError
 
-func (*OrgsRemoveMembershipForUserApplicationJSONNotFound) orgsRemoveMembershipForUserResponse() {}
+func (*OrgsRemoveMembershipForUserApplicationJSONNotFound) orgsRemoveMembershipForUserRes() {}
 
 type OrgsRemoveMembershipForUserNoContent struct{}
 
-func (*OrgsRemoveMembershipForUserNoContent) orgsRemoveMembershipForUserResponse() {}
+func (*OrgsRemoveMembershipForUserNoContent) orgsRemoveMembershipForUserRes() {}
 
 type OrgsRemoveOutsideCollaboratorNoContent struct{}
 
-func (*OrgsRemoveOutsideCollaboratorNoContent) orgsRemoveOutsideCollaboratorResponse() {}
+func (*OrgsRemoveOutsideCollaboratorNoContent) orgsRemoveOutsideCollaboratorRes() {}
 
 type OrgsRemoveOutsideCollaboratorUnprocessableEntity struct {
 	DocumentationURL OptString `json:"documentation_url"`
 	Message          OptString `json:"message"`
 }
 
-func (*OrgsRemoveOutsideCollaboratorUnprocessableEntity) orgsRemoveOutsideCollaboratorResponse() {}
+func (*OrgsRemoveOutsideCollaboratorUnprocessableEntity) orgsRemoveOutsideCollaboratorRes() {}
 
 type OrgsRemovePublicMembershipForAuthenticatedUser struct{}
 
 type OrgsRemoveSamlSSOAuthorizationNoContent struct{}
 
-func (*OrgsRemoveSamlSSOAuthorizationNoContent) orgsRemoveSamlSSOAuthorizationResponse() {}
+func (*OrgsRemoveSamlSSOAuthorizationNoContent) orgsRemoveSamlSSOAuthorizationRes() {}
 
-type OrgsSetMembershipForUserApplicationJSONRequest struct {
-	Role OptOrgsSetMembershipForUserApplicationJSONRequestRole `json:"role"`
+type OrgsSetMembershipForUserApplicationJSONReq struct {
+	Role OptOrgsSetMembershipForUserApplicationJSONReqRole `json:"role"`
 }
 
-func (*OrgsSetMembershipForUserApplicationJSONRequest) orgsSetMembershipForUserRequest() {}
+func (*OrgsSetMembershipForUserApplicationJSONReq) orgsSetMembershipForUserReq() {}
 
-type OrgsSetMembershipForUserApplicationJSONRequestRole string
+type OrgsSetMembershipForUserApplicationJSONReqRole string
 
 const (
-	OrgsSetMembershipForUserApplicationJSONRequestRoleAdmin  OrgsSetMembershipForUserApplicationJSONRequestRole = "admin"
-	OrgsSetMembershipForUserApplicationJSONRequestRoleMember OrgsSetMembershipForUserApplicationJSONRequestRole = "member"
+	OrgsSetMembershipForUserApplicationJSONReqRoleAdmin  OrgsSetMembershipForUserApplicationJSONReqRole = "admin"
+	OrgsSetMembershipForUserApplicationJSONReqRoleMember OrgsSetMembershipForUserApplicationJSONReqRole = "member"
 )
 
 type OrgsSetPublicMembershipForAuthenticatedUserNoContent struct{}
 
-func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMembershipForAuthenticatedUserResponse() {
+func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMembershipForAuthenticatedUserRes() {
 }
 
 type OrgsUnblockUser struct{}
 
-type OrgsUpdateApplicationJSONRequest struct {
-	BillingEmail                         OptString                                                               `json:"billing_email"`
-	Blog                                 OptString                                                               `json:"blog"`
-	Company                              OptString                                                               `json:"company"`
-	DefaultRepositoryPermission          OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission          `json:"default_repository_permission"`
-	Description                          OptString                                                               `json:"description"`
-	Email                                OptString                                                               `json:"email"`
-	HasOrganizationProjects              OptBool                                                                 `json:"has_organization_projects"`
-	HasRepositoryProjects                OptBool                                                                 `json:"has_repository_projects"`
-	Location                             OptString                                                               `json:"location"`
-	MembersAllowedRepositoryCreationType OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType `json:"members_allowed_repository_creation_type"`
-	MembersCanCreateInternalRepositories OptBool                                                                 `json:"members_can_create_internal_repositories"`
-	MembersCanCreatePages                OptBool                                                                 `json:"members_can_create_pages"`
-	MembersCanCreatePrivatePages         OptBool                                                                 `json:"members_can_create_private_pages"`
-	MembersCanCreatePrivateRepositories  OptBool                                                                 `json:"members_can_create_private_repositories"`
-	MembersCanCreatePublicPages          OptBool                                                                 `json:"members_can_create_public_pages"`
-	MembersCanCreatePublicRepositories   OptBool                                                                 `json:"members_can_create_public_repositories"`
-	MembersCanCreateRepositories         OptBool                                                                 `json:"members_can_create_repositories"`
-	Name                                 OptString                                                               `json:"name"`
-	TwitterUsername                      OptString                                                               `json:"twitter_username"`
+type OrgsUpdateApplicationJSONReq struct {
+	BillingEmail                         OptString                                                           `json:"billing_email"`
+	Blog                                 OptString                                                           `json:"blog"`
+	Company                              OptString                                                           `json:"company"`
+	DefaultRepositoryPermission          OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission          `json:"default_repository_permission"`
+	Description                          OptString                                                           `json:"description"`
+	Email                                OptString                                                           `json:"email"`
+	HasOrganizationProjects              OptBool                                                             `json:"has_organization_projects"`
+	HasRepositoryProjects                OptBool                                                             `json:"has_repository_projects"`
+	Location                             OptString                                                           `json:"location"`
+	MembersAllowedRepositoryCreationType OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType `json:"members_allowed_repository_creation_type"`
+	MembersCanCreateInternalRepositories OptBool                                                             `json:"members_can_create_internal_repositories"`
+	MembersCanCreatePages                OptBool                                                             `json:"members_can_create_pages"`
+	MembersCanCreatePrivatePages         OptBool                                                             `json:"members_can_create_private_pages"`
+	MembersCanCreatePrivateRepositories  OptBool                                                             `json:"members_can_create_private_repositories"`
+	MembersCanCreatePublicPages          OptBool                                                             `json:"members_can_create_public_pages"`
+	MembersCanCreatePublicRepositories   OptBool                                                             `json:"members_can_create_public_repositories"`
+	MembersCanCreateRepositories         OptBool                                                             `json:"members_can_create_repositories"`
+	Name                                 OptString                                                           `json:"name"`
+	TwitterUsername                      OptString                                                           `json:"twitter_username"`
 }
 
-func (*OrgsUpdateApplicationJSONRequest) orgsUpdateRequest() {}
+func (*OrgsUpdateApplicationJSONReq) orgsUpdateReq() {}
 
-type OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission string
+type OrgsUpdateApplicationJSONReqDefaultRepositoryPermission string
 
 const (
-	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionRead  OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "read"
-	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionWrite OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "write"
-	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionAdmin OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "admin"
-	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionNone  OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "none"
+	OrgsUpdateApplicationJSONReqDefaultRepositoryPermissionRead  OrgsUpdateApplicationJSONReqDefaultRepositoryPermission = "read"
+	OrgsUpdateApplicationJSONReqDefaultRepositoryPermissionWrite OrgsUpdateApplicationJSONReqDefaultRepositoryPermission = "write"
+	OrgsUpdateApplicationJSONReqDefaultRepositoryPermissionAdmin OrgsUpdateApplicationJSONReqDefaultRepositoryPermission = "admin"
+	OrgsUpdateApplicationJSONReqDefaultRepositoryPermissionNone  OrgsUpdateApplicationJSONReqDefaultRepositoryPermission = "none"
 )
 
-type OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType string
+type OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType string
 
 const (
-	OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationTypeAll     OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType = "all"
-	OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationTypePrivate OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType = "private"
-	OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationTypeNone    OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType = "none"
+	OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationTypeAll     OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType = "all"
+	OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationTypePrivate OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType = "private"
+	OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationTypeNone    OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType = "none"
 )
 
-type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest struct {
-	State OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState `json:"state"`
+type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq struct {
+	State OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqState `json:"state"`
 }
 
-func (*OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) orgsUpdateMembershipForAuthenticatedUserRequest() {
+func (*OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq) orgsUpdateMembershipForAuthenticatedUserReq() {
 }
 
-type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState string
+type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqState string
 
 const (
-	OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestStateActive OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState = "active"
+	OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqStateActive OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqState = "active"
 )
 
 type PageBuildError struct {
@@ -11377,16 +11340,16 @@ type PreviewHeaderMissing struct {
 	Message          string `json:"message"`
 }
 
-func (*PreviewHeaderMissing) appsGetBySlugResponse()                      {}
-func (*PreviewHeaderMissing) orgsListBlockedUsersResponse()               {}
-func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserResponse() {}
-func (*PreviewHeaderMissing) reactionsDeleteLegacyResponse()              {}
-func (*PreviewHeaderMissing) reposGetAllTopicsResponse()                  {}
-func (*PreviewHeaderMissing) reposGetBranchResponse()                     {}
-func (*PreviewHeaderMissing) reposGetDeploymentStatusResponse()           {}
-func (*PreviewHeaderMissing) reposGetReleaseAssetResponse()               {}
-func (*PreviewHeaderMissing) reposReplaceAllTopicsResponse()              {}
-func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedResponse()    {}
+func (*PreviewHeaderMissing) appsGetBySlugRes()                      {}
+func (*PreviewHeaderMissing) orgsListBlockedUsersRes()               {}
+func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserRes() {}
+func (*PreviewHeaderMissing) reactionsDeleteLegacyRes()              {}
+func (*PreviewHeaderMissing) reposGetAllTopicsRes()                  {}
+func (*PreviewHeaderMissing) reposGetBranchRes()                     {}
+func (*PreviewHeaderMissing) reposGetDeploymentStatusRes()           {}
+func (*PreviewHeaderMissing) reposGetReleaseAssetRes()               {}
+func (*PreviewHeaderMissing) reposReplaceAllTopicsRes()              {}
+func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedRes()    {}
 
 type PrivateUserPlan struct {
 	Collaborators int    `json:"collaborators"`
@@ -11404,110 +11367,110 @@ const (
 	ProjectOrganizationPermissionNone  ProjectOrganizationPermission = "none"
 )
 
-type ProjectsAddCollaboratorApplicationJSONRequest struct {
-	Permission OptProjectsAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
+type ProjectsAddCollaboratorApplicationJSONReq struct {
+	Permission OptProjectsAddCollaboratorApplicationJSONReqPermission `json:"permission"`
 }
 
-func (*ProjectsAddCollaboratorApplicationJSONRequest) projectsAddCollaboratorRequest() {}
+func (*ProjectsAddCollaboratorApplicationJSONReq) projectsAddCollaboratorReq() {}
 
-type ProjectsAddCollaboratorApplicationJSONRequestPermission string
+type ProjectsAddCollaboratorApplicationJSONReqPermission string
 
 const (
-	ProjectsAddCollaboratorApplicationJSONRequestPermissionRead  ProjectsAddCollaboratorApplicationJSONRequestPermission = "read"
-	ProjectsAddCollaboratorApplicationJSONRequestPermissionWrite ProjectsAddCollaboratorApplicationJSONRequestPermission = "write"
-	ProjectsAddCollaboratorApplicationJSONRequestPermissionAdmin ProjectsAddCollaboratorApplicationJSONRequestPermission = "admin"
+	ProjectsAddCollaboratorApplicationJSONReqPermissionRead  ProjectsAddCollaboratorApplicationJSONReqPermission = "read"
+	ProjectsAddCollaboratorApplicationJSONReqPermissionWrite ProjectsAddCollaboratorApplicationJSONReqPermission = "write"
+	ProjectsAddCollaboratorApplicationJSONReqPermissionAdmin ProjectsAddCollaboratorApplicationJSONReqPermission = "admin"
 )
 
 type ProjectsAddCollaboratorNoContent struct{}
 
 type ProjectsCreateColumnApplicationJSONForbidden BasicError
 
-func (*ProjectsCreateColumnApplicationJSONForbidden) projectsCreateColumnResponse() {}
+func (*ProjectsCreateColumnApplicationJSONForbidden) projectsCreateColumnRes() {}
 
-type ProjectsCreateColumnApplicationJSONRequest struct {
+type ProjectsCreateColumnApplicationJSONReq struct {
 	Name string `json:"name"`
 }
 
 type ProjectsCreateColumnApplicationJSONUnauthorized BasicError
 
-func (*ProjectsCreateColumnApplicationJSONUnauthorized) projectsCreateColumnResponse() {}
+func (*ProjectsCreateColumnApplicationJSONUnauthorized) projectsCreateColumnRes() {}
 
 type ProjectsCreateForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) projectsCreateForAuthenticatedUserResponse() {
+func (*ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) projectsCreateForAuthenticatedUserRes() {
 }
 
-type ProjectsCreateForAuthenticatedUserApplicationJSONRequest struct {
+type ProjectsCreateForAuthenticatedUserApplicationJSONReq struct {
 	Body OptNilString `json:"body"`
 	Name string       `json:"name"`
 }
 
 type ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) projectsCreateForAuthenticatedUserResponse() {
+func (*ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) projectsCreateForAuthenticatedUserRes() {
 }
 
 type ProjectsCreateForOrgApplicationJSONForbidden BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONForbidden) projectsCreateForOrgResponse() {}
+func (*ProjectsCreateForOrgApplicationJSONForbidden) projectsCreateForOrgRes() {}
 
 type ProjectsCreateForOrgApplicationJSONGone BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONGone) projectsCreateForOrgResponse() {}
+func (*ProjectsCreateForOrgApplicationJSONGone) projectsCreateForOrgRes() {}
 
 type ProjectsCreateForOrgApplicationJSONNotFound BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONNotFound) projectsCreateForOrgResponse() {}
+func (*ProjectsCreateForOrgApplicationJSONNotFound) projectsCreateForOrgRes() {}
 
-type ProjectsCreateForOrgApplicationJSONRequest struct {
+type ProjectsCreateForOrgApplicationJSONReq struct {
 	Body OptString `json:"body"`
 	Name string    `json:"name"`
 }
 
 type ProjectsCreateForOrgApplicationJSONUnauthorized BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONUnauthorized) projectsCreateForOrgResponse() {}
+func (*ProjectsCreateForOrgApplicationJSONUnauthorized) projectsCreateForOrgRes() {}
 
 type ProjectsCreateForRepoApplicationJSONForbidden BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONForbidden) projectsCreateForRepoResponse() {}
+func (*ProjectsCreateForRepoApplicationJSONForbidden) projectsCreateForRepoRes() {}
 
 type ProjectsCreateForRepoApplicationJSONGone BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONGone) projectsCreateForRepoResponse() {}
+func (*ProjectsCreateForRepoApplicationJSONGone) projectsCreateForRepoRes() {}
 
 type ProjectsCreateForRepoApplicationJSONNotFound BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONNotFound) projectsCreateForRepoResponse() {}
+func (*ProjectsCreateForRepoApplicationJSONNotFound) projectsCreateForRepoRes() {}
 
-type ProjectsCreateForRepoApplicationJSONRequest struct {
+type ProjectsCreateForRepoApplicationJSONReq struct {
 	Body OptString `json:"body"`
 	Name string    `json:"name"`
 }
 
 type ProjectsCreateForRepoApplicationJSONUnauthorized BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONUnauthorized) projectsCreateForRepoResponse() {}
+func (*ProjectsCreateForRepoApplicationJSONUnauthorized) projectsCreateForRepoRes() {}
 
 type ProjectsDeleteApplicationJSONGone BasicError
 
-func (*ProjectsDeleteApplicationJSONGone) projectsDeleteResponse() {}
+func (*ProjectsDeleteApplicationJSONGone) projectsDeleteRes() {}
 
 type ProjectsDeleteApplicationJSONNotFound BasicError
 
-func (*ProjectsDeleteApplicationJSONNotFound) projectsDeleteResponse() {}
+func (*ProjectsDeleteApplicationJSONNotFound) projectsDeleteRes() {}
 
 type ProjectsDeleteApplicationJSONUnauthorized BasicError
 
-func (*ProjectsDeleteApplicationJSONUnauthorized) projectsDeleteResponse() {}
+func (*ProjectsDeleteApplicationJSONUnauthorized) projectsDeleteRes() {}
 
 type ProjectsDeleteCardApplicationJSONNotFound BasicError
 
-func (*ProjectsDeleteCardApplicationJSONNotFound) projectsDeleteCardResponse() {}
+func (*ProjectsDeleteCardApplicationJSONNotFound) projectsDeleteCardRes() {}
 
 type ProjectsDeleteCardApplicationJSONUnauthorized BasicError
 
-func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardResponse() {}
+func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardRes() {}
 
 type ProjectsDeleteCardForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
@@ -11515,23 +11478,23 @@ type ProjectsDeleteCardForbidden struct {
 	Message          OptString `json:"message"`
 }
 
-func (*ProjectsDeleteCardForbidden) projectsDeleteCardResponse() {}
+func (*ProjectsDeleteCardForbidden) projectsDeleteCardRes() {}
 
 type ProjectsDeleteCardNoContent struct{}
 
-func (*ProjectsDeleteCardNoContent) projectsDeleteCardResponse() {}
+func (*ProjectsDeleteCardNoContent) projectsDeleteCardRes() {}
 
 type ProjectsDeleteColumnApplicationJSONForbidden BasicError
 
-func (*ProjectsDeleteColumnApplicationJSONForbidden) projectsDeleteColumnResponse() {}
+func (*ProjectsDeleteColumnApplicationJSONForbidden) projectsDeleteColumnRes() {}
 
 type ProjectsDeleteColumnApplicationJSONUnauthorized BasicError
 
-func (*ProjectsDeleteColumnApplicationJSONUnauthorized) projectsDeleteColumnResponse() {}
+func (*ProjectsDeleteColumnApplicationJSONUnauthorized) projectsDeleteColumnRes() {}
 
 type ProjectsDeleteColumnNoContent struct{}
 
-func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnResponse() {}
+func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnRes() {}
 
 type ProjectsDeleteForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
@@ -11539,62 +11502,62 @@ type ProjectsDeleteForbidden struct {
 	Message          OptString `json:"message"`
 }
 
-func (*ProjectsDeleteForbidden) projectsDeleteResponse() {}
+func (*ProjectsDeleteForbidden) projectsDeleteRes() {}
 
 type ProjectsDeleteNoContent struct{}
 
-func (*ProjectsDeleteNoContent) projectsDeleteResponse() {}
+func (*ProjectsDeleteNoContent) projectsDeleteRes() {}
 
 type ProjectsGetApplicationJSONForbidden BasicError
 
-func (*ProjectsGetApplicationJSONForbidden) projectsGetResponse() {}
+func (*ProjectsGetApplicationJSONForbidden) projectsGetRes() {}
 
 type ProjectsGetApplicationJSONUnauthorized BasicError
 
-func (*ProjectsGetApplicationJSONUnauthorized) projectsGetResponse() {}
+func (*ProjectsGetApplicationJSONUnauthorized) projectsGetRes() {}
 
 type ProjectsGetCardApplicationJSONForbidden BasicError
 
-func (*ProjectsGetCardApplicationJSONForbidden) projectsGetCardResponse() {}
+func (*ProjectsGetCardApplicationJSONForbidden) projectsGetCardRes() {}
 
 type ProjectsGetCardApplicationJSONNotFound BasicError
 
-func (*ProjectsGetCardApplicationJSONNotFound) projectsGetCardResponse() {}
+func (*ProjectsGetCardApplicationJSONNotFound) projectsGetCardRes() {}
 
 type ProjectsGetCardApplicationJSONUnauthorized BasicError
 
-func (*ProjectsGetCardApplicationJSONUnauthorized) projectsGetCardResponse() {}
+func (*ProjectsGetCardApplicationJSONUnauthorized) projectsGetCardRes() {}
 
 type ProjectsGetColumnApplicationJSONForbidden BasicError
 
-func (*ProjectsGetColumnApplicationJSONForbidden) projectsGetColumnResponse() {}
+func (*ProjectsGetColumnApplicationJSONForbidden) projectsGetColumnRes() {}
 
 type ProjectsGetColumnApplicationJSONNotFound BasicError
 
-func (*ProjectsGetColumnApplicationJSONNotFound) projectsGetColumnResponse() {}
+func (*ProjectsGetColumnApplicationJSONNotFound) projectsGetColumnRes() {}
 
 type ProjectsGetColumnApplicationJSONUnauthorized BasicError
 
-func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnResponse() {}
+func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnRes() {}
 
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
-func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsResponse() {}
+func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsRes() {}
 
 type ProjectsListColumnsApplicationJSONUnauthorized BasicError
 
-func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsResponse() {}
+func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsRes() {}
 
 type ProjectsListColumnsOK []ProjectColumn
 
-func (*ProjectsListColumnsOK) projectsListColumnsResponse() {}
+func (*ProjectsListColumnsOK) projectsListColumnsRes() {}
 
-type ProjectsMoveCardApplicationJSONRequest struct {
+type ProjectsMoveCardApplicationJSONReq struct {
 	ColumnID OptInt `json:"column_id"`
 	Position string `json:"position"`
 }
 
-func (*ProjectsMoveCardApplicationJSONRequest) projectsMoveCardRequest() {}
+func (*ProjectsMoveCardApplicationJSONReq) projectsMoveCardReq() {}
 
 type ProjectsMoveCardCreated struct{}
 
@@ -11613,75 +11576,75 @@ type ProjectsMoveCardForbiddenErrorsItem struct {
 
 type ProjectsMoveColumnApplicationJSONForbidden BasicError
 
-func (*ProjectsMoveColumnApplicationJSONForbidden) projectsMoveColumnResponse() {}
+func (*ProjectsMoveColumnApplicationJSONForbidden) projectsMoveColumnRes() {}
 
-type ProjectsMoveColumnApplicationJSONRequest struct {
+type ProjectsMoveColumnApplicationJSONReq struct {
 	Position string `json:"position"`
 }
 
 type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
 
-func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnResponse() {}
+func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
 
 type ProjectsMoveColumnCreated struct{}
 
-func (*ProjectsMoveColumnCreated) projectsMoveColumnResponse() {}
+func (*ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
 
 type ProjectsRemoveCollaboratorNoContent struct{}
 
 type ProjectsUpdateApplicationJSONGone BasicError
 
-func (*ProjectsUpdateApplicationJSONGone) projectsUpdateResponse() {}
+func (*ProjectsUpdateApplicationJSONGone) projectsUpdateRes() {}
 
-type ProjectsUpdateApplicationJSONRequest struct {
-	Body                   OptNilString                                                  `json:"body"`
-	Name                   OptString                                                     `json:"name"`
-	OrganizationPermission OptProjectsUpdateApplicationJSONRequestOrganizationPermission `json:"organization_permission"`
-	Private                OptBool                                                       `json:"private"`
-	State                  OptString                                                     `json:"state"`
+type ProjectsUpdateApplicationJSONReq struct {
+	Body                   OptNilString                                              `json:"body"`
+	Name                   OptString                                                 `json:"name"`
+	OrganizationPermission OptProjectsUpdateApplicationJSONReqOrganizationPermission `json:"organization_permission"`
+	Private                OptBool                                                   `json:"private"`
+	State                  OptString                                                 `json:"state"`
 }
 
-type ProjectsUpdateApplicationJSONRequestOrganizationPermission string
+type ProjectsUpdateApplicationJSONReqOrganizationPermission string
 
 const (
-	ProjectsUpdateApplicationJSONRequestOrganizationPermissionRead  ProjectsUpdateApplicationJSONRequestOrganizationPermission = "read"
-	ProjectsUpdateApplicationJSONRequestOrganizationPermissionWrite ProjectsUpdateApplicationJSONRequestOrganizationPermission = "write"
-	ProjectsUpdateApplicationJSONRequestOrganizationPermissionAdmin ProjectsUpdateApplicationJSONRequestOrganizationPermission = "admin"
-	ProjectsUpdateApplicationJSONRequestOrganizationPermissionNone  ProjectsUpdateApplicationJSONRequestOrganizationPermission = "none"
+	ProjectsUpdateApplicationJSONReqOrganizationPermissionRead  ProjectsUpdateApplicationJSONReqOrganizationPermission = "read"
+	ProjectsUpdateApplicationJSONReqOrganizationPermissionWrite ProjectsUpdateApplicationJSONReqOrganizationPermission = "write"
+	ProjectsUpdateApplicationJSONReqOrganizationPermissionAdmin ProjectsUpdateApplicationJSONReqOrganizationPermission = "admin"
+	ProjectsUpdateApplicationJSONReqOrganizationPermissionNone  ProjectsUpdateApplicationJSONReqOrganizationPermission = "none"
 )
 
 type ProjectsUpdateApplicationJSONUnauthorized BasicError
 
-func (*ProjectsUpdateApplicationJSONUnauthorized) projectsUpdateResponse() {}
+func (*ProjectsUpdateApplicationJSONUnauthorized) projectsUpdateRes() {}
 
 type ProjectsUpdateCardApplicationJSONForbidden BasicError
 
-func (*ProjectsUpdateCardApplicationJSONForbidden) projectsUpdateCardResponse() {}
+func (*ProjectsUpdateCardApplicationJSONForbidden) projectsUpdateCardRes() {}
 
 type ProjectsUpdateCardApplicationJSONNotFound BasicError
 
-func (*ProjectsUpdateCardApplicationJSONNotFound) projectsUpdateCardResponse() {}
+func (*ProjectsUpdateCardApplicationJSONNotFound) projectsUpdateCardRes() {}
 
-type ProjectsUpdateCardApplicationJSONRequest struct {
+type ProjectsUpdateCardApplicationJSONReq struct {
 	Archived OptBool      `json:"archived"`
 	Note     OptNilString `json:"note"`
 }
 
 type ProjectsUpdateCardApplicationJSONUnauthorized BasicError
 
-func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardResponse() {}
+func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardRes() {}
 
 type ProjectsUpdateColumnApplicationJSONForbidden BasicError
 
-func (*ProjectsUpdateColumnApplicationJSONForbidden) projectsUpdateColumnResponse() {}
+func (*ProjectsUpdateColumnApplicationJSONForbidden) projectsUpdateColumnRes() {}
 
-type ProjectsUpdateColumnApplicationJSONRequest struct {
+type ProjectsUpdateColumnApplicationJSONReq struct {
 	Name string `json:"name"`
 }
 
 type ProjectsUpdateColumnApplicationJSONUnauthorized BasicError
 
-func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnResponse() {}
+func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnRes() {}
 
 type ProjectsUpdateForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
@@ -11689,11 +11652,11 @@ type ProjectsUpdateForbidden struct {
 	Message          OptString `json:"message"`
 }
 
-func (*ProjectsUpdateForbidden) projectsUpdateResponse() {}
+func (*ProjectsUpdateForbidden) projectsUpdateRes() {}
 
 type ProjectsUpdateNotFound struct{}
 
-func (*ProjectsUpdateNotFound) projectsUpdateResponse() {}
+func (*ProjectsUpdateNotFound) projectsUpdateRes() {}
 
 type ProtectedBranchAllowDeletions struct {
 	Enabled bool `json:"enabled"`
@@ -11816,13 +11779,13 @@ type PullRequestReviewLinksPullRequest struct {
 
 type PullsCheckIfMergedNoContent struct{}
 
-func (*PullsCheckIfMergedNoContent) pullsCheckIfMergedResponse() {}
+func (*PullsCheckIfMergedNoContent) pullsCheckIfMergedRes() {}
 
 type PullsCheckIfMergedNotFound struct{}
 
-func (*PullsCheckIfMergedNotFound) pullsCheckIfMergedResponse() {}
+func (*PullsCheckIfMergedNotFound) pullsCheckIfMergedRes() {}
 
-type PullsCreateApplicationJSONRequest struct {
+type PullsCreateApplicationJSONReq struct {
 	Base                string    `json:"base"`
 	Body                OptString `json:"body"`
 	Draft               OptBool   `json:"draft"`
@@ -11832,20 +11795,20 @@ type PullsCreateApplicationJSONRequest struct {
 	Title               OptString `json:"title"`
 }
 
-func (*PullsCreateApplicationJSONRequest) pullsCreateRequest() {}
+func (*PullsCreateApplicationJSONReq) pullsCreateReq() {}
 
-type PullsCreateReplyForReviewCommentApplicationJSONRequest struct {
+type PullsCreateReplyForReviewCommentApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-type PullsCreateReviewApplicationJSONRequest struct {
-	Body     OptString                                             `json:"body"`
-	Comments []PullsCreateReviewApplicationJSONRequestCommentsItem `json:"comments"`
-	CommitID OptString                                             `json:"commit_id"`
-	Event    OptPullsCreateReviewApplicationJSONRequestEvent       `json:"event"`
+type PullsCreateReviewApplicationJSONReq struct {
+	Body     OptString                                         `json:"body"`
+	Comments []PullsCreateReviewApplicationJSONReqCommentsItem `json:"comments"`
+	CommitID OptString                                         `json:"commit_id"`
+	Event    OptPullsCreateReviewApplicationJSONReqEvent       `json:"event"`
 }
 
-type PullsCreateReviewApplicationJSONRequestCommentsItem struct {
+type PullsCreateReviewApplicationJSONReqCommentsItem struct {
 	Body      string    `json:"body"`
 	Line      OptInt    `json:"line"`
 	Path      string    `json:"path"`
@@ -11855,73 +11818,73 @@ type PullsCreateReviewApplicationJSONRequestCommentsItem struct {
 	StartSide OptString `json:"start_side"`
 }
 
-type PullsCreateReviewApplicationJSONRequestEvent string
+type PullsCreateReviewApplicationJSONReqEvent string
 
 const (
-	PullsCreateReviewApplicationJSONRequestEventAPPROVE        PullsCreateReviewApplicationJSONRequestEvent = "APPROVE"
-	PullsCreateReviewApplicationJSONRequestEventREQUESTCHANGES PullsCreateReviewApplicationJSONRequestEvent = "REQUEST_CHANGES"
-	PullsCreateReviewApplicationJSONRequestEventCOMMENT        PullsCreateReviewApplicationJSONRequestEvent = "COMMENT"
+	PullsCreateReviewApplicationJSONReqEventAPPROVE        PullsCreateReviewApplicationJSONReqEvent = "APPROVE"
+	PullsCreateReviewApplicationJSONReqEventREQUESTCHANGES PullsCreateReviewApplicationJSONReqEvent = "REQUEST_CHANGES"
+	PullsCreateReviewApplicationJSONReqEventCOMMENT        PullsCreateReviewApplicationJSONReqEvent = "COMMENT"
 )
 
-type PullsCreateReviewCommentApplicationJSONRequest struct {
-	Body      string                                                     `json:"body"`
-	CommitID  OptString                                                  `json:"commit_id"`
-	InReplyTo OptInt                                                     `json:"in_reply_to"`
-	Line      OptInt                                                     `json:"line"`
-	Path      OptString                                                  `json:"path"`
-	Position  OptInt                                                     `json:"position"`
-	Side      OptPullsCreateReviewCommentApplicationJSONRequestSide      `json:"side"`
-	StartLine OptInt                                                     `json:"start_line"`
-	StartSide OptPullsCreateReviewCommentApplicationJSONRequestStartSide `json:"start_side"`
+type PullsCreateReviewCommentApplicationJSONReq struct {
+	Body      string                                                 `json:"body"`
+	CommitID  OptString                                              `json:"commit_id"`
+	InReplyTo OptInt                                                 `json:"in_reply_to"`
+	Line      OptInt                                                 `json:"line"`
+	Path      OptString                                              `json:"path"`
+	Position  OptInt                                                 `json:"position"`
+	Side      OptPullsCreateReviewCommentApplicationJSONReqSide      `json:"side"`
+	StartLine OptInt                                                 `json:"start_line"`
+	StartSide OptPullsCreateReviewCommentApplicationJSONReqStartSide `json:"start_side"`
 }
 
-func (*PullsCreateReviewCommentApplicationJSONRequest) pullsCreateReviewCommentRequest() {}
+func (*PullsCreateReviewCommentApplicationJSONReq) pullsCreateReviewCommentReq() {}
 
-type PullsCreateReviewCommentApplicationJSONRequestSide string
+type PullsCreateReviewCommentApplicationJSONReqSide string
 
 const (
-	PullsCreateReviewCommentApplicationJSONRequestSideLEFT  PullsCreateReviewCommentApplicationJSONRequestSide = "LEFT"
-	PullsCreateReviewCommentApplicationJSONRequestSideRIGHT PullsCreateReviewCommentApplicationJSONRequestSide = "RIGHT"
+	PullsCreateReviewCommentApplicationJSONReqSideLEFT  PullsCreateReviewCommentApplicationJSONReqSide = "LEFT"
+	PullsCreateReviewCommentApplicationJSONReqSideRIGHT PullsCreateReviewCommentApplicationJSONReqSide = "RIGHT"
 )
 
-type PullsCreateReviewCommentApplicationJSONRequestStartSide string
+type PullsCreateReviewCommentApplicationJSONReqStartSide string
 
 const (
-	PullsCreateReviewCommentApplicationJSONRequestStartSideLEFT  PullsCreateReviewCommentApplicationJSONRequestStartSide = "LEFT"
-	PullsCreateReviewCommentApplicationJSONRequestStartSideRIGHT PullsCreateReviewCommentApplicationJSONRequestStartSide = "RIGHT"
-	PullsCreateReviewCommentApplicationJSONRequestStartSideSide  PullsCreateReviewCommentApplicationJSONRequestStartSide = "side"
+	PullsCreateReviewCommentApplicationJSONReqStartSideLEFT  PullsCreateReviewCommentApplicationJSONReqStartSide = "LEFT"
+	PullsCreateReviewCommentApplicationJSONReqStartSideRIGHT PullsCreateReviewCommentApplicationJSONReqStartSide = "RIGHT"
+	PullsCreateReviewCommentApplicationJSONReqStartSideSide  PullsCreateReviewCommentApplicationJSONReqStartSide = "side"
 )
 
 type PullsDeleteReviewCommentNoContent struct{}
 
-func (*PullsDeleteReviewCommentNoContent) pullsDeleteReviewCommentResponse() {}
+func (*PullsDeleteReviewCommentNoContent) pullsDeleteReviewCommentRes() {}
 
-type PullsDismissReviewApplicationJSONRequest struct {
+type PullsDismissReviewApplicationJSONReq struct {
 	Event   OptString `json:"event"`
 	Message string    `json:"message"`
 }
 
 type PullsListCommentsForReviewOK []ReviewComment
 
-func (*PullsListCommentsForReviewOK) pullsListCommentsForReviewResponse() {}
+func (*PullsListCommentsForReviewOK) pullsListCommentsForReviewRes() {}
 
 type PullsListFilesOK []DiffEntry
 
-type PullsMergeApplicationJSONRequest struct {
-	CommitMessage OptString                                      `json:"commit_message"`
-	CommitTitle   OptString                                      `json:"commit_title"`
-	MergeMethod   OptPullsMergeApplicationJSONRequestMergeMethod `json:"merge_method"`
-	Sha           OptString                                      `json:"sha"`
+type PullsMergeApplicationJSONReq struct {
+	CommitMessage OptString                                  `json:"commit_message"`
+	CommitTitle   OptString                                  `json:"commit_title"`
+	MergeMethod   OptPullsMergeApplicationJSONReqMergeMethod `json:"merge_method"`
+	Sha           OptString                                  `json:"sha"`
 }
 
-func (*PullsMergeApplicationJSONRequest) pullsMergeRequest() {}
+func (*PullsMergeApplicationJSONReq) pullsMergeReq() {}
 
-type PullsMergeApplicationJSONRequestMergeMethod string
+type PullsMergeApplicationJSONReqMergeMethod string
 
 const (
-	PullsMergeApplicationJSONRequestMergeMethodMerge  PullsMergeApplicationJSONRequestMergeMethod = "merge"
-	PullsMergeApplicationJSONRequestMergeMethodSquash PullsMergeApplicationJSONRequestMergeMethod = "squash"
-	PullsMergeApplicationJSONRequestMergeMethodRebase PullsMergeApplicationJSONRequestMergeMethod = "rebase"
+	PullsMergeApplicationJSONReqMergeMethodMerge  PullsMergeApplicationJSONReqMergeMethod = "merge"
+	PullsMergeApplicationJSONReqMergeMethodSquash PullsMergeApplicationJSONReqMergeMethod = "squash"
+	PullsMergeApplicationJSONReqMergeMethodRebase PullsMergeApplicationJSONReqMergeMethod = "rebase"
 )
 
 type PullsMergeConflict struct {
@@ -11934,49 +11897,49 @@ type PullsMergeMethodNotAllowed struct {
 	Message          OptString `json:"message"`
 }
 
-type PullsRemoveRequestedReviewersApplicationJSONRequest struct {
+type PullsRemoveRequestedReviewersApplicationJSONReq struct {
 	Reviewers     []string `json:"reviewers"`
 	TeamReviewers []string `json:"team_reviewers"`
 }
 
-func (*PullsRemoveRequestedReviewersApplicationJSONRequest) pullsRemoveRequestedReviewersRequest() {}
+func (*PullsRemoveRequestedReviewersApplicationJSONReq) pullsRemoveRequestedReviewersReq() {}
 
 type PullsSubmitReviewApplicationJSONForbidden BasicError
 
-func (*PullsSubmitReviewApplicationJSONForbidden) pullsSubmitReviewResponse() {}
+func (*PullsSubmitReviewApplicationJSONForbidden) pullsSubmitReviewRes() {}
 
 type PullsSubmitReviewApplicationJSONNotFound BasicError
 
-func (*PullsSubmitReviewApplicationJSONNotFound) pullsSubmitReviewResponse() {}
+func (*PullsSubmitReviewApplicationJSONNotFound) pullsSubmitReviewRes() {}
 
-type PullsSubmitReviewApplicationJSONRequest struct {
-	Body  OptString                                    `json:"body"`
-	Event PullsSubmitReviewApplicationJSONRequestEvent `json:"event"`
+type PullsSubmitReviewApplicationJSONReq struct {
+	Body  OptString                                `json:"body"`
+	Event PullsSubmitReviewApplicationJSONReqEvent `json:"event"`
 }
 
-type PullsSubmitReviewApplicationJSONRequestEvent string
+type PullsSubmitReviewApplicationJSONReqEvent string
 
 const (
-	PullsSubmitReviewApplicationJSONRequestEventAPPROVE        PullsSubmitReviewApplicationJSONRequestEvent = "APPROVE"
-	PullsSubmitReviewApplicationJSONRequestEventREQUESTCHANGES PullsSubmitReviewApplicationJSONRequestEvent = "REQUEST_CHANGES"
-	PullsSubmitReviewApplicationJSONRequestEventCOMMENT        PullsSubmitReviewApplicationJSONRequestEvent = "COMMENT"
+	PullsSubmitReviewApplicationJSONReqEventAPPROVE        PullsSubmitReviewApplicationJSONReqEvent = "APPROVE"
+	PullsSubmitReviewApplicationJSONReqEventREQUESTCHANGES PullsSubmitReviewApplicationJSONReqEvent = "REQUEST_CHANGES"
+	PullsSubmitReviewApplicationJSONReqEventCOMMENT        PullsSubmitReviewApplicationJSONReqEvent = "COMMENT"
 )
 
-type PullsUpdateApplicationJSONRequest struct {
-	Base                OptString                                 `json:"base"`
-	Body                OptString                                 `json:"body"`
-	MaintainerCanModify OptBool                                   `json:"maintainer_can_modify"`
-	State               OptPullsUpdateApplicationJSONRequestState `json:"state"`
-	Title               OptString                                 `json:"title"`
+type PullsUpdateApplicationJSONReq struct {
+	Base                OptString                             `json:"base"`
+	Body                OptString                             `json:"body"`
+	MaintainerCanModify OptBool                               `json:"maintainer_can_modify"`
+	State               OptPullsUpdateApplicationJSONReqState `json:"state"`
+	Title               OptString                             `json:"title"`
 }
 
-func (*PullsUpdateApplicationJSONRequest) pullsUpdateRequest() {}
+func (*PullsUpdateApplicationJSONReq) pullsUpdateReq() {}
 
-type PullsUpdateApplicationJSONRequestState string
+type PullsUpdateApplicationJSONReqState string
 
 const (
-	PullsUpdateApplicationJSONRequestStateOpen   PullsUpdateApplicationJSONRequestState = "open"
-	PullsUpdateApplicationJSONRequestStateClosed PullsUpdateApplicationJSONRequestState = "closed"
+	PullsUpdateApplicationJSONReqStateOpen   PullsUpdateApplicationJSONReqState = "open"
+	PullsUpdateApplicationJSONReqStateClosed PullsUpdateApplicationJSONReqState = "closed"
 )
 
 type PullsUpdateBranchAccepted struct {
@@ -11984,17 +11947,17 @@ type PullsUpdateBranchAccepted struct {
 	URL     OptString `json:"url"`
 }
 
-type PullsUpdateBranchApplicationJSONRequest struct {
+type PullsUpdateBranchApplicationJSONReq struct {
 	ExpectedHeadSha OptString `json:"expected_head_sha"`
 }
 
-func (*PullsUpdateBranchApplicationJSONRequest) pullsUpdateBranchRequest() {}
+func (*PullsUpdateBranchApplicationJSONReq) pullsUpdateBranchReq() {}
 
-type PullsUpdateReviewApplicationJSONRequest struct {
+type PullsUpdateReviewApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-type PullsUpdateReviewCommentApplicationJSONRequest struct {
+type PullsUpdateReviewCommentApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
@@ -12021,188 +11984,186 @@ const (
 	ReactionContentEyes     ReactionContent = "eyes"
 )
 
-type ReactionsCreateForCommitCommentApplicationJSONRequest struct {
-	Content ReactionsCreateForCommitCommentApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForCommitCommentApplicationJSONReq struct {
+	Content ReactionsCreateForCommitCommentApplicationJSONReqContent `json:"content"`
 }
 
-func (*ReactionsCreateForCommitCommentApplicationJSONRequest) reactionsCreateForCommitCommentRequest() {
-}
+func (*ReactionsCreateForCommitCommentApplicationJSONReq) reactionsCreateForCommitCommentReq() {}
 
-type ReactionsCreateForCommitCommentApplicationJSONRequestContent string
+type ReactionsCreateForCommitCommentApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentPlus1    ReactionsCreateForCommitCommentApplicationJSONRequestContent = "+1"
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentMinus1   ReactionsCreateForCommitCommentApplicationJSONRequestContent = "-1"
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentLaugh    ReactionsCreateForCommitCommentApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentConfused ReactionsCreateForCommitCommentApplicationJSONRequestContent = "confused"
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentHeart    ReactionsCreateForCommitCommentApplicationJSONRequestContent = "heart"
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentHooray   ReactionsCreateForCommitCommentApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentRocket   ReactionsCreateForCommitCommentApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForCommitCommentApplicationJSONRequestContentEyes     ReactionsCreateForCommitCommentApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentPlus1    ReactionsCreateForCommitCommentApplicationJSONReqContent = "+1"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentMinus1   ReactionsCreateForCommitCommentApplicationJSONReqContent = "-1"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentLaugh    ReactionsCreateForCommitCommentApplicationJSONReqContent = "laugh"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentConfused ReactionsCreateForCommitCommentApplicationJSONReqContent = "confused"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentHeart    ReactionsCreateForCommitCommentApplicationJSONReqContent = "heart"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentHooray   ReactionsCreateForCommitCommentApplicationJSONReqContent = "hooray"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentRocket   ReactionsCreateForCommitCommentApplicationJSONReqContent = "rocket"
+	ReactionsCreateForCommitCommentApplicationJSONReqContentEyes     ReactionsCreateForCommitCommentApplicationJSONReqContent = "eyes"
 )
 
-type ReactionsCreateForIssueApplicationJSONRequest struct {
-	Content ReactionsCreateForIssueApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForIssueApplicationJSONReq struct {
+	Content ReactionsCreateForIssueApplicationJSONReqContent `json:"content"`
 }
 
-func (*ReactionsCreateForIssueApplicationJSONRequest) reactionsCreateForIssueRequest() {}
+func (*ReactionsCreateForIssueApplicationJSONReq) reactionsCreateForIssueReq() {}
 
-type ReactionsCreateForIssueApplicationJSONRequestContent string
+type ReactionsCreateForIssueApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForIssueApplicationJSONRequestContentPlus1    ReactionsCreateForIssueApplicationJSONRequestContent = "+1"
-	ReactionsCreateForIssueApplicationJSONRequestContentMinus1   ReactionsCreateForIssueApplicationJSONRequestContent = "-1"
-	ReactionsCreateForIssueApplicationJSONRequestContentLaugh    ReactionsCreateForIssueApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForIssueApplicationJSONRequestContentConfused ReactionsCreateForIssueApplicationJSONRequestContent = "confused"
-	ReactionsCreateForIssueApplicationJSONRequestContentHeart    ReactionsCreateForIssueApplicationJSONRequestContent = "heart"
-	ReactionsCreateForIssueApplicationJSONRequestContentHooray   ReactionsCreateForIssueApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForIssueApplicationJSONRequestContentRocket   ReactionsCreateForIssueApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForIssueApplicationJSONRequestContentEyes     ReactionsCreateForIssueApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForIssueApplicationJSONReqContentPlus1    ReactionsCreateForIssueApplicationJSONReqContent = "+1"
+	ReactionsCreateForIssueApplicationJSONReqContentMinus1   ReactionsCreateForIssueApplicationJSONReqContent = "-1"
+	ReactionsCreateForIssueApplicationJSONReqContentLaugh    ReactionsCreateForIssueApplicationJSONReqContent = "laugh"
+	ReactionsCreateForIssueApplicationJSONReqContentConfused ReactionsCreateForIssueApplicationJSONReqContent = "confused"
+	ReactionsCreateForIssueApplicationJSONReqContentHeart    ReactionsCreateForIssueApplicationJSONReqContent = "heart"
+	ReactionsCreateForIssueApplicationJSONReqContentHooray   ReactionsCreateForIssueApplicationJSONReqContent = "hooray"
+	ReactionsCreateForIssueApplicationJSONReqContentRocket   ReactionsCreateForIssueApplicationJSONReqContent = "rocket"
+	ReactionsCreateForIssueApplicationJSONReqContentEyes     ReactionsCreateForIssueApplicationJSONReqContent = "eyes"
 )
 
-type ReactionsCreateForIssueCommentApplicationJSONRequest struct {
-	Content ReactionsCreateForIssueCommentApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForIssueCommentApplicationJSONReq struct {
+	Content ReactionsCreateForIssueCommentApplicationJSONReqContent `json:"content"`
 }
 
-func (*ReactionsCreateForIssueCommentApplicationJSONRequest) reactionsCreateForIssueCommentRequest() {
-}
+func (*ReactionsCreateForIssueCommentApplicationJSONReq) reactionsCreateForIssueCommentReq() {}
 
-type ReactionsCreateForIssueCommentApplicationJSONRequestContent string
+type ReactionsCreateForIssueCommentApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentPlus1    ReactionsCreateForIssueCommentApplicationJSONRequestContent = "+1"
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentMinus1   ReactionsCreateForIssueCommentApplicationJSONRequestContent = "-1"
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentLaugh    ReactionsCreateForIssueCommentApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentConfused ReactionsCreateForIssueCommentApplicationJSONRequestContent = "confused"
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentHeart    ReactionsCreateForIssueCommentApplicationJSONRequestContent = "heart"
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentHooray   ReactionsCreateForIssueCommentApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentRocket   ReactionsCreateForIssueCommentApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForIssueCommentApplicationJSONRequestContentEyes     ReactionsCreateForIssueCommentApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentPlus1    ReactionsCreateForIssueCommentApplicationJSONReqContent = "+1"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentMinus1   ReactionsCreateForIssueCommentApplicationJSONReqContent = "-1"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentLaugh    ReactionsCreateForIssueCommentApplicationJSONReqContent = "laugh"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentConfused ReactionsCreateForIssueCommentApplicationJSONReqContent = "confused"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentHeart    ReactionsCreateForIssueCommentApplicationJSONReqContent = "heart"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentHooray   ReactionsCreateForIssueCommentApplicationJSONReqContent = "hooray"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentRocket   ReactionsCreateForIssueCommentApplicationJSONReqContent = "rocket"
+	ReactionsCreateForIssueCommentApplicationJSONReqContentEyes     ReactionsCreateForIssueCommentApplicationJSONReqContent = "eyes"
 )
 
-type ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest struct {
-	Content ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForPullRequestReviewCommentApplicationJSONReq struct {
+	Content ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent `json:"content"`
 }
 
-func (*ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) reactionsCreateForPullRequestReviewCommentRequest() {
+func (*ReactionsCreateForPullRequestReviewCommentApplicationJSONReq) reactionsCreateForPullRequestReviewCommentReq() {
 }
 
-type ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent string
+type ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentPlus1    ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "+1"
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentMinus1   ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "-1"
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentLaugh    ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentConfused ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "confused"
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentHeart    ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "heart"
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentHooray   ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentRocket   ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentEyes     ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentPlus1    ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "+1"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentMinus1   ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "-1"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentLaugh    ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "laugh"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentConfused ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "confused"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentHeart    ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "heart"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentHooray   ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "hooray"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentRocket   ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "rocket"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContentEyes     ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent = "eyes"
 )
 
-type ReactionsCreateForReleaseApplicationJSONRequest struct {
-	Content ReactionsCreateForReleaseApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForReleaseApplicationJSONReq struct {
+	Content ReactionsCreateForReleaseApplicationJSONReqContent `json:"content"`
 }
 
-func (*ReactionsCreateForReleaseApplicationJSONRequest) reactionsCreateForReleaseRequest() {}
+func (*ReactionsCreateForReleaseApplicationJSONReq) reactionsCreateForReleaseReq() {}
 
-type ReactionsCreateForReleaseApplicationJSONRequestContent string
+type ReactionsCreateForReleaseApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForReleaseApplicationJSONRequestContentPlus1  ReactionsCreateForReleaseApplicationJSONRequestContent = "+1"
-	ReactionsCreateForReleaseApplicationJSONRequestContentLaugh  ReactionsCreateForReleaseApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForReleaseApplicationJSONRequestContentHeart  ReactionsCreateForReleaseApplicationJSONRequestContent = "heart"
-	ReactionsCreateForReleaseApplicationJSONRequestContentHooray ReactionsCreateForReleaseApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForReleaseApplicationJSONRequestContentRocket ReactionsCreateForReleaseApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForReleaseApplicationJSONRequestContentEyes   ReactionsCreateForReleaseApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForReleaseApplicationJSONReqContentPlus1  ReactionsCreateForReleaseApplicationJSONReqContent = "+1"
+	ReactionsCreateForReleaseApplicationJSONReqContentLaugh  ReactionsCreateForReleaseApplicationJSONReqContent = "laugh"
+	ReactionsCreateForReleaseApplicationJSONReqContentHeart  ReactionsCreateForReleaseApplicationJSONReqContent = "heart"
+	ReactionsCreateForReleaseApplicationJSONReqContentHooray ReactionsCreateForReleaseApplicationJSONReqContent = "hooray"
+	ReactionsCreateForReleaseApplicationJSONReqContentRocket ReactionsCreateForReleaseApplicationJSONReqContent = "rocket"
+	ReactionsCreateForReleaseApplicationJSONReqContentEyes   ReactionsCreateForReleaseApplicationJSONReqContent = "eyes"
 )
 
 type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated Reaction
 
-func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionCommentInOrgResponse() {
+func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK Reaction
 
-func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionCommentInOrgResponse() {
+func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
 
-type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest struct {
-	Content ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq struct {
+	Content ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent `json:"content"`
 }
 
-type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent string
+type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "+1"
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "-1"
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "confused"
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "heart"
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentPlus1    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "+1"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentMinus1   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "-1"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentLaugh    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "laugh"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentConfused ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "confused"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentHeart    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "heart"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentHooray   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "hooray"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentRocket   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "rocket"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContentEyes     ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent = "eyes"
 )
 
-type ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest struct {
-	Content ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq struct {
+	Content ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent `json:"content"`
 }
 
-type ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent string
+type ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "+1"
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "-1"
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "confused"
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "heart"
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentPlus1    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "+1"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentMinus1   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "-1"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentLaugh    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "laugh"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentConfused ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "confused"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentHeart    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "heart"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentHooray   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "hooray"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentRocket   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "rocket"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContentEyes     ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent = "eyes"
 )
 
 type ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated Reaction
 
-func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionInOrgResponse() {
+func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionInOrgRes() {
 }
 
 type ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK Reaction
 
-func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionInOrgResponse() {
+func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionInOrgRes() {
 }
 
-type ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest struct {
-	Content ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq struct {
+	Content ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent `json:"content"`
 }
 
-type ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent string
+type ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "+1"
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "-1"
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "confused"
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "heart"
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentPlus1    ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "+1"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentMinus1   ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "-1"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentLaugh    ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "laugh"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentConfused ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "confused"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentHeart    ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "heart"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentHooray   ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "hooray"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentRocket   ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "rocket"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContentEyes     ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent = "eyes"
 )
 
-type ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest struct {
-	Content ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent `json:"content"`
+type ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq struct {
+	Content ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent `json:"content"`
 }
 
-type ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent string
+type ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent string
 
 const (
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "+1"
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "-1"
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "laugh"
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "confused"
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "heart"
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "hooray"
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "rocket"
-	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "eyes"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentPlus1    ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "+1"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentMinus1   ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "-1"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentLaugh    ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "laugh"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentConfused ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "confused"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentHeart    ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "heart"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentHooray   ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "hooray"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentRocket   ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "rocket"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContentEyes     ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent = "eyes"
 )
 
 type ReactionsDeleteForCommitComment struct{}
@@ -12219,19 +12180,19 @@ type ReactionsDeleteForTeamDiscussionComment struct{}
 
 type ReactionsDeleteLegacyApplicationJSONForbidden BasicError
 
-func (*ReactionsDeleteLegacyApplicationJSONForbidden) reactionsDeleteLegacyResponse() {}
+func (*ReactionsDeleteLegacyApplicationJSONForbidden) reactionsDeleteLegacyRes() {}
 
 type ReactionsDeleteLegacyApplicationJSONGone BasicError
 
-func (*ReactionsDeleteLegacyApplicationJSONGone) reactionsDeleteLegacyResponse() {}
+func (*ReactionsDeleteLegacyApplicationJSONGone) reactionsDeleteLegacyRes() {}
 
 type ReactionsDeleteLegacyApplicationJSONUnauthorized BasicError
 
-func (*ReactionsDeleteLegacyApplicationJSONUnauthorized) reactionsDeleteLegacyResponse() {}
+func (*ReactionsDeleteLegacyApplicationJSONUnauthorized) reactionsDeleteLegacyRes() {}
 
 type ReactionsDeleteLegacyNoContent struct{}
 
-func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyResponse() {}
+func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyRes() {}
 
 type ReleaseAssetState string
 
@@ -12242,147 +12203,147 @@ const (
 
 type ReposAcceptInvitationApplicationJSONConflict BasicError
 
-func (*ReposAcceptInvitationApplicationJSONConflict) reposAcceptInvitationResponse() {}
+func (*ReposAcceptInvitationApplicationJSONConflict) reposAcceptInvitationRes() {}
 
 type ReposAcceptInvitationApplicationJSONForbidden BasicError
 
-func (*ReposAcceptInvitationApplicationJSONForbidden) reposAcceptInvitationResponse() {}
+func (*ReposAcceptInvitationApplicationJSONForbidden) reposAcceptInvitationRes() {}
 
 type ReposAcceptInvitationApplicationJSONNotFound BasicError
 
-func (*ReposAcceptInvitationApplicationJSONNotFound) reposAcceptInvitationResponse() {}
+func (*ReposAcceptInvitationApplicationJSONNotFound) reposAcceptInvitationRes() {}
 
 type ReposAcceptInvitationNoContent struct{}
 
-func (*ReposAcceptInvitationNoContent) reposAcceptInvitationResponse() {}
+func (*ReposAcceptInvitationNoContent) reposAcceptInvitationRes() {}
 
-type ReposAddCollaboratorApplicationJSONRequest struct {
-	Permission  OptReposAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
-	Permissions OptString                                               `json:"permissions"`
+type ReposAddCollaboratorApplicationJSONReq struct {
+	Permission  OptReposAddCollaboratorApplicationJSONReqPermission `json:"permission"`
+	Permissions OptString                                           `json:"permissions"`
 }
 
-func (*ReposAddCollaboratorApplicationJSONRequest) reposAddCollaboratorRequest() {}
+func (*ReposAddCollaboratorApplicationJSONReq) reposAddCollaboratorReq() {}
 
-type ReposAddCollaboratorApplicationJSONRequestPermission string
+type ReposAddCollaboratorApplicationJSONReqPermission string
 
 const (
-	ReposAddCollaboratorApplicationJSONRequestPermissionPull     ReposAddCollaboratorApplicationJSONRequestPermission = "pull"
-	ReposAddCollaboratorApplicationJSONRequestPermissionPush     ReposAddCollaboratorApplicationJSONRequestPermission = "push"
-	ReposAddCollaboratorApplicationJSONRequestPermissionAdmin    ReposAddCollaboratorApplicationJSONRequestPermission = "admin"
-	ReposAddCollaboratorApplicationJSONRequestPermissionMaintain ReposAddCollaboratorApplicationJSONRequestPermission = "maintain"
-	ReposAddCollaboratorApplicationJSONRequestPermissionTriage   ReposAddCollaboratorApplicationJSONRequestPermission = "triage"
+	ReposAddCollaboratorApplicationJSONReqPermissionPull     ReposAddCollaboratorApplicationJSONReqPermission = "pull"
+	ReposAddCollaboratorApplicationJSONReqPermissionPush     ReposAddCollaboratorApplicationJSONReqPermission = "push"
+	ReposAddCollaboratorApplicationJSONReqPermissionAdmin    ReposAddCollaboratorApplicationJSONReqPermission = "admin"
+	ReposAddCollaboratorApplicationJSONReqPermissionMaintain ReposAddCollaboratorApplicationJSONReqPermission = "maintain"
+	ReposAddCollaboratorApplicationJSONReqPermissionTriage   ReposAddCollaboratorApplicationJSONReqPermission = "triage"
 )
 
 type ReposAddCollaboratorNoContent struct{}
 
 type ReposCheckCollaboratorNoContent struct{}
 
-func (*ReposCheckCollaboratorNoContent) reposCheckCollaboratorResponse() {}
+func (*ReposCheckCollaboratorNoContent) reposCheckCollaboratorRes() {}
 
 type ReposCheckCollaboratorNotFound struct{}
 
-func (*ReposCheckCollaboratorNotFound) reposCheckCollaboratorResponse() {}
+func (*ReposCheckCollaboratorNotFound) reposCheckCollaboratorRes() {}
 
 type ReposCheckVulnerabilityAlertsNoContent struct{}
 
-func (*ReposCheckVulnerabilityAlertsNoContent) reposCheckVulnerabilityAlertsResponse() {}
+func (*ReposCheckVulnerabilityAlertsNoContent) reposCheckVulnerabilityAlertsRes() {}
 
 type ReposCheckVulnerabilityAlertsNotFound struct{}
 
-func (*ReposCheckVulnerabilityAlertsNotFound) reposCheckVulnerabilityAlertsResponse() {}
+func (*ReposCheckVulnerabilityAlertsNotFound) reposCheckVulnerabilityAlertsRes() {}
 
 type ReposCompareCommitsApplicationJSONInternalServerError BasicError
 
-func (*ReposCompareCommitsApplicationJSONInternalServerError) reposCompareCommitsResponse() {}
+func (*ReposCompareCommitsApplicationJSONInternalServerError) reposCompareCommitsRes() {}
 
 type ReposCompareCommitsApplicationJSONNotFound BasicError
 
-func (*ReposCompareCommitsApplicationJSONNotFound) reposCompareCommitsResponse() {}
+func (*ReposCompareCommitsApplicationJSONNotFound) reposCompareCommitsRes() {}
 
-type ReposCreateAutolinkApplicationJSONRequest struct {
+type ReposCreateAutolinkApplicationJSONReq struct {
 	KeyPrefix   string `json:"key_prefix"`
 	URLTemplate string `json:"url_template"`
 }
 
-func (*ReposCreateAutolinkApplicationJSONRequest) reposCreateAutolinkRequest() {}
+func (*ReposCreateAutolinkApplicationJSONReq) reposCreateAutolinkReq() {}
 
-type ReposCreateCommitCommentApplicationJSONRequest struct {
+type ReposCreateCommitCommentApplicationJSONReq struct {
 	Body     string    `json:"body"`
 	Line     OptInt    `json:"line"`
 	Path     OptString `json:"path"`
 	Position OptInt    `json:"position"`
 }
 
-func (*ReposCreateCommitCommentApplicationJSONRequest) reposCreateCommitCommentRequest() {}
+func (*ReposCreateCommitCommentApplicationJSONReq) reposCreateCommitCommentReq() {}
 
-type ReposCreateCommitStatusApplicationJSONRequest struct {
-	Context     OptString                                          `json:"context"`
-	Description OptString                                          `json:"description"`
-	State       ReposCreateCommitStatusApplicationJSONRequestState `json:"state"`
-	TargetURL   OptString                                          `json:"target_url"`
+type ReposCreateCommitStatusApplicationJSONReq struct {
+	Context     OptString                                      `json:"context"`
+	Description OptString                                      `json:"description"`
+	State       ReposCreateCommitStatusApplicationJSONReqState `json:"state"`
+	TargetURL   OptString                                      `json:"target_url"`
 }
 
-type ReposCreateCommitStatusApplicationJSONRequestState string
+type ReposCreateCommitStatusApplicationJSONReqState string
 
 const (
-	ReposCreateCommitStatusApplicationJSONRequestStateError   ReposCreateCommitStatusApplicationJSONRequestState = "error"
-	ReposCreateCommitStatusApplicationJSONRequestStateFailure ReposCreateCommitStatusApplicationJSONRequestState = "failure"
-	ReposCreateCommitStatusApplicationJSONRequestStatePending ReposCreateCommitStatusApplicationJSONRequestState = "pending"
-	ReposCreateCommitStatusApplicationJSONRequestStateSuccess ReposCreateCommitStatusApplicationJSONRequestState = "success"
+	ReposCreateCommitStatusApplicationJSONReqStateError   ReposCreateCommitStatusApplicationJSONReqState = "error"
+	ReposCreateCommitStatusApplicationJSONReqStateFailure ReposCreateCommitStatusApplicationJSONReqState = "failure"
+	ReposCreateCommitStatusApplicationJSONReqStatePending ReposCreateCommitStatusApplicationJSONReqState = "pending"
+	ReposCreateCommitStatusApplicationJSONReqStateSuccess ReposCreateCommitStatusApplicationJSONReqState = "success"
 )
 
-type ReposCreateDeployKeyApplicationJSONRequest struct {
+type ReposCreateDeployKeyApplicationJSONReq struct {
 	Key      string    `json:"key"`
 	ReadOnly OptBool   `json:"read_only"`
 	Title    OptString `json:"title"`
 }
 
-func (*ReposCreateDeployKeyApplicationJSONRequest) reposCreateDeployKeyRequest() {}
+func (*ReposCreateDeployKeyApplicationJSONReq) reposCreateDeployKeyReq() {}
 
-type ReposCreateDeploymentStatusApplicationJSONRequest struct {
-	AutoInactive   OptBool                                                         `json:"auto_inactive"`
-	Description    OptString                                                       `json:"description"`
-	Environment    OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment `json:"environment"`
-	EnvironmentURL OptString                                                       `json:"environment_url"`
-	LogURL         OptString                                                       `json:"log_url"`
-	State          ReposCreateDeploymentStatusApplicationJSONRequestState          `json:"state"`
-	TargetURL      OptString                                                       `json:"target_url"`
+type ReposCreateDeploymentStatusApplicationJSONReq struct {
+	AutoInactive   OptBool                                                     `json:"auto_inactive"`
+	Description    OptString                                                   `json:"description"`
+	Environment    OptReposCreateDeploymentStatusApplicationJSONReqEnvironment `json:"environment"`
+	EnvironmentURL OptString                                                   `json:"environment_url"`
+	LogURL         OptString                                                   `json:"log_url"`
+	State          ReposCreateDeploymentStatusApplicationJSONReqState          `json:"state"`
+	TargetURL      OptString                                                   `json:"target_url"`
 }
 
-func (*ReposCreateDeploymentStatusApplicationJSONRequest) reposCreateDeploymentStatusRequest() {}
+func (*ReposCreateDeploymentStatusApplicationJSONReq) reposCreateDeploymentStatusReq() {}
 
-type ReposCreateDeploymentStatusApplicationJSONRequestEnvironment string
-
-const (
-	ReposCreateDeploymentStatusApplicationJSONRequestEnvironmentProduction ReposCreateDeploymentStatusApplicationJSONRequestEnvironment = "production"
-	ReposCreateDeploymentStatusApplicationJSONRequestEnvironmentStaging    ReposCreateDeploymentStatusApplicationJSONRequestEnvironment = "staging"
-	ReposCreateDeploymentStatusApplicationJSONRequestEnvironmentQa         ReposCreateDeploymentStatusApplicationJSONRequestEnvironment = "qa"
-)
-
-type ReposCreateDeploymentStatusApplicationJSONRequestState string
+type ReposCreateDeploymentStatusApplicationJSONReqEnvironment string
 
 const (
-	ReposCreateDeploymentStatusApplicationJSONRequestStateError      ReposCreateDeploymentStatusApplicationJSONRequestState = "error"
-	ReposCreateDeploymentStatusApplicationJSONRequestStateFailure    ReposCreateDeploymentStatusApplicationJSONRequestState = "failure"
-	ReposCreateDeploymentStatusApplicationJSONRequestStateInactive   ReposCreateDeploymentStatusApplicationJSONRequestState = "inactive"
-	ReposCreateDeploymentStatusApplicationJSONRequestStateInProgress ReposCreateDeploymentStatusApplicationJSONRequestState = "in_progress"
-	ReposCreateDeploymentStatusApplicationJSONRequestStateQueued     ReposCreateDeploymentStatusApplicationJSONRequestState = "queued"
-	ReposCreateDeploymentStatusApplicationJSONRequestStatePending    ReposCreateDeploymentStatusApplicationJSONRequestState = "pending"
-	ReposCreateDeploymentStatusApplicationJSONRequestStateSuccess    ReposCreateDeploymentStatusApplicationJSONRequestState = "success"
+	ReposCreateDeploymentStatusApplicationJSONReqEnvironmentProduction ReposCreateDeploymentStatusApplicationJSONReqEnvironment = "production"
+	ReposCreateDeploymentStatusApplicationJSONReqEnvironmentStaging    ReposCreateDeploymentStatusApplicationJSONReqEnvironment = "staging"
+	ReposCreateDeploymentStatusApplicationJSONReqEnvironmentQa         ReposCreateDeploymentStatusApplicationJSONReqEnvironment = "qa"
 )
 
-type ReposCreateDispatchEventApplicationJSONRequest struct {
-	ClientPayload *ReposCreateDispatchEventApplicationJSONRequestClientPayload `json:"client_payload"`
-	EventType     string                                                       `json:"event_type"`
+type ReposCreateDeploymentStatusApplicationJSONReqState string
+
+const (
+	ReposCreateDeploymentStatusApplicationJSONReqStateError      ReposCreateDeploymentStatusApplicationJSONReqState = "error"
+	ReposCreateDeploymentStatusApplicationJSONReqStateFailure    ReposCreateDeploymentStatusApplicationJSONReqState = "failure"
+	ReposCreateDeploymentStatusApplicationJSONReqStateInactive   ReposCreateDeploymentStatusApplicationJSONReqState = "inactive"
+	ReposCreateDeploymentStatusApplicationJSONReqStateInProgress ReposCreateDeploymentStatusApplicationJSONReqState = "in_progress"
+	ReposCreateDeploymentStatusApplicationJSONReqStateQueued     ReposCreateDeploymentStatusApplicationJSONReqState = "queued"
+	ReposCreateDeploymentStatusApplicationJSONReqStatePending    ReposCreateDeploymentStatusApplicationJSONReqState = "pending"
+	ReposCreateDeploymentStatusApplicationJSONReqStateSuccess    ReposCreateDeploymentStatusApplicationJSONReqState = "success"
+)
+
+type ReposCreateDispatchEventApplicationJSONReq struct {
+	ClientPayload *ReposCreateDispatchEventApplicationJSONReqClientPayload `json:"client_payload"`
+	EventType     string                                                   `json:"event_type"`
 }
 
-func (*ReposCreateDispatchEventApplicationJSONRequest) reposCreateDispatchEventRequest() {}
+func (*ReposCreateDispatchEventApplicationJSONReq) reposCreateDispatchEventReq() {}
 
-type ReposCreateDispatchEventApplicationJSONRequestClientPayload struct{}
+type ReposCreateDispatchEventApplicationJSONReqClientPayload struct{}
 
 type ReposCreateDispatchEventNoContent struct{}
 
-type ReposCreateForAuthenticatedUserApplicationJSONRequest struct {
+type ReposCreateForAuthenticatedUserApplicationJSONReq struct {
 	AllowAutoMerge      OptBool   `json:"allow_auto_merge"`
 	AllowMergeCommit    OptBool   `json:"allow_merge_commit"`
 	AllowRebaseMerge    OptBool   `json:"allow_rebase_merge"`
@@ -12403,90 +12364,88 @@ type ReposCreateForAuthenticatedUserApplicationJSONRequest struct {
 	TeamID              OptInt    `json:"team_id"`
 }
 
-func (*ReposCreateForAuthenticatedUserApplicationJSONRequest) reposCreateForAuthenticatedUserRequest() {
-}
+func (*ReposCreateForAuthenticatedUserApplicationJSONReq) reposCreateForAuthenticatedUserReq() {}
 
-type ReposCreateForkApplicationJSONRequest struct {
+type ReposCreateForkApplicationJSONReq struct {
 	Organization OptString `json:"organization"`
 }
 
-func (*ReposCreateForkApplicationJSONRequest) reposCreateForkRequest() {}
+func (*ReposCreateForkApplicationJSONReq) reposCreateForkReq() {}
 
-type ReposCreateInOrgApplicationJSONRequest struct {
-	AllowAutoMerge      OptBool                                             `json:"allow_auto_merge"`
-	AllowMergeCommit    OptBool                                             `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptBool                                             `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptBool                                             `json:"allow_squash_merge"`
-	AutoInit            OptBool                                             `json:"auto_init"`
-	DeleteBranchOnMerge OptBool                                             `json:"delete_branch_on_merge"`
-	Description         OptString                                           `json:"description"`
-	GitignoreTemplate   OptString                                           `json:"gitignore_template"`
-	HasIssues           OptBool                                             `json:"has_issues"`
-	HasProjects         OptBool                                             `json:"has_projects"`
-	HasWiki             OptBool                                             `json:"has_wiki"`
-	Homepage            OptString                                           `json:"homepage"`
-	IsTemplate          OptBool                                             `json:"is_template"`
-	LicenseTemplate     OptString                                           `json:"license_template"`
-	Name                string                                              `json:"name"`
-	Private             OptBool                                             `json:"private"`
-	TeamID              OptInt                                              `json:"team_id"`
-	Visibility          OptReposCreateInOrgApplicationJSONRequestVisibility `json:"visibility"`
+type ReposCreateInOrgApplicationJSONReq struct {
+	AllowAutoMerge      OptBool                                         `json:"allow_auto_merge"`
+	AllowMergeCommit    OptBool                                         `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptBool                                         `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptBool                                         `json:"allow_squash_merge"`
+	AutoInit            OptBool                                         `json:"auto_init"`
+	DeleteBranchOnMerge OptBool                                         `json:"delete_branch_on_merge"`
+	Description         OptString                                       `json:"description"`
+	GitignoreTemplate   OptString                                       `json:"gitignore_template"`
+	HasIssues           OptBool                                         `json:"has_issues"`
+	HasProjects         OptBool                                         `json:"has_projects"`
+	HasWiki             OptBool                                         `json:"has_wiki"`
+	Homepage            OptString                                       `json:"homepage"`
+	IsTemplate          OptBool                                         `json:"is_template"`
+	LicenseTemplate     OptString                                       `json:"license_template"`
+	Name                string                                          `json:"name"`
+	Private             OptBool                                         `json:"private"`
+	TeamID              OptInt                                          `json:"team_id"`
+	Visibility          OptReposCreateInOrgApplicationJSONReqVisibility `json:"visibility"`
 }
 
-func (*ReposCreateInOrgApplicationJSONRequest) reposCreateInOrgRequest() {}
+func (*ReposCreateInOrgApplicationJSONReq) reposCreateInOrgReq() {}
 
-type ReposCreateInOrgApplicationJSONRequestVisibility string
+type ReposCreateInOrgApplicationJSONReqVisibility string
 
 const (
-	ReposCreateInOrgApplicationJSONRequestVisibilityPublic     ReposCreateInOrgApplicationJSONRequestVisibility = "public"
-	ReposCreateInOrgApplicationJSONRequestVisibilityPrivate    ReposCreateInOrgApplicationJSONRequestVisibility = "private"
-	ReposCreateInOrgApplicationJSONRequestVisibilityVisibility ReposCreateInOrgApplicationJSONRequestVisibility = "visibility"
-	ReposCreateInOrgApplicationJSONRequestVisibilityInternal   ReposCreateInOrgApplicationJSONRequestVisibility = "internal"
+	ReposCreateInOrgApplicationJSONReqVisibilityPublic     ReposCreateInOrgApplicationJSONReqVisibility = "public"
+	ReposCreateInOrgApplicationJSONReqVisibilityPrivate    ReposCreateInOrgApplicationJSONReqVisibility = "private"
+	ReposCreateInOrgApplicationJSONReqVisibilityVisibility ReposCreateInOrgApplicationJSONReqVisibility = "visibility"
+	ReposCreateInOrgApplicationJSONReqVisibilityInternal   ReposCreateInOrgApplicationJSONReqVisibility = "internal"
 )
 
-type ReposCreateOrUpdateFileContentsApplicationJSONRequest struct {
-	Author    OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor    `json:"author"`
-	Branch    OptString                                                         `json:"branch"`
-	Committer OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter `json:"committer"`
-	Content   string                                                            `json:"content"`
-	Message   string                                                            `json:"message"`
-	Sha       OptString                                                         `json:"sha"`
+type ReposCreateOrUpdateFileContentsApplicationJSONReq struct {
+	Author    OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor    `json:"author"`
+	Branch    OptString                                                     `json:"branch"`
+	Committer OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter `json:"committer"`
+	Content   string                                                        `json:"content"`
+	Message   string                                                        `json:"message"`
+	Sha       OptString                                                     `json:"sha"`
 }
 
-func (*ReposCreateOrUpdateFileContentsApplicationJSONRequest) reposCreateOrUpdateFileContentsRequest() {
-}
+func (*ReposCreateOrUpdateFileContentsApplicationJSONReq) reposCreateOrUpdateFileContentsReq() {}
 
-type ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor struct {
+type ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor struct {
 	Date  OptString `json:"date"`
 	Email string    `json:"email"`
 	Name  string    `json:"name"`
 }
 
-type ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter struct {
+type ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter struct {
 	Date  OptString `json:"date"`
 	Email string    `json:"email"`
 	Name  string    `json:"name"`
 }
 
-type ReposCreatePagesSiteApplicationJSONRequest struct {
-	Source ReposCreatePagesSiteApplicationJSONRequestSource `json:"source"`
+type ReposCreatePagesSiteApplicationJSONReq struct {
+	Source ReposCreatePagesSiteApplicationJSONReqSource `json:"source"`
 }
 
-func (*ReposCreatePagesSiteApplicationJSONRequest) reposCreatePagesSiteRequest() {}
+func (*ReposCreatePagesSiteApplicationJSONReq) reposCreatePagesSiteReq() {}
 
-type ReposCreatePagesSiteApplicationJSONRequestSource struct {
-	Branch string                                                  `json:"branch"`
-	Path   OptReposCreatePagesSiteApplicationJSONRequestSourcePath `json:"path"`
+type ReposCreatePagesSiteApplicationJSONReqSource struct {
+	Branch string                                              `json:"branch"`
+	Path   OptReposCreatePagesSiteApplicationJSONReqSourcePath `json:"path"`
 }
 
-type ReposCreatePagesSiteApplicationJSONRequestSourcePath string
+type ReposCreatePagesSiteApplicationJSONReqSourcePath string
 
 const (
-	ReposCreatePagesSiteApplicationJSONRequestSourcePathSlash     ReposCreatePagesSiteApplicationJSONRequestSourcePath = "/"
-	ReposCreatePagesSiteApplicationJSONRequestSourcePathSlashDocs ReposCreatePagesSiteApplicationJSONRequestSourcePath = "/docs"
+	ReposCreatePagesSiteApplicationJSONReqSourcePathSlash     ReposCreatePagesSiteApplicationJSONReqSourcePath = "/"
+	ReposCreatePagesSiteApplicationJSONReqSourcePathSlashDocs ReposCreatePagesSiteApplicationJSONReqSourcePath = "/docs"
 )
 
-type ReposCreateReleaseApplicationJSONRequest struct {
+type ReposCreateReleaseApplicationJSONReq struct {
 	Body                   OptString `json:"body"`
 	DiscussionCategoryName OptString `json:"discussion_category_name"`
 	Draft                  OptBool   `json:"draft"`
@@ -12496,9 +12455,9 @@ type ReposCreateReleaseApplicationJSONRequest struct {
 	TargetCommitish        OptString `json:"target_commitish"`
 }
 
-func (*ReposCreateReleaseApplicationJSONRequest) reposCreateReleaseRequest() {}
+func (*ReposCreateReleaseApplicationJSONReq) reposCreateReleaseReq() {}
 
-type ReposCreateUsingTemplateApplicationJSONRequest struct {
+type ReposCreateUsingTemplateApplicationJSONReq struct {
 	Description        OptString `json:"description"`
 	IncludeAllBranches OptBool   `json:"include_all_branches"`
 	Name               string    `json:"name"`
@@ -12508,75 +12467,74 @@ type ReposCreateUsingTemplateApplicationJSONRequest struct {
 
 type ReposDeclineInvitationApplicationJSONConflict BasicError
 
-func (*ReposDeclineInvitationApplicationJSONConflict) reposDeclineInvitationResponse() {}
+func (*ReposDeclineInvitationApplicationJSONConflict) reposDeclineInvitationRes() {}
 
 type ReposDeclineInvitationApplicationJSONForbidden BasicError
 
-func (*ReposDeclineInvitationApplicationJSONForbidden) reposDeclineInvitationResponse() {}
+func (*ReposDeclineInvitationApplicationJSONForbidden) reposDeclineInvitationRes() {}
 
 type ReposDeclineInvitationApplicationJSONNotFound BasicError
 
-func (*ReposDeclineInvitationApplicationJSONNotFound) reposDeclineInvitationResponse() {}
+func (*ReposDeclineInvitationApplicationJSONNotFound) reposDeclineInvitationRes() {}
 
 type ReposDeclineInvitationNoContent struct{}
 
-func (*ReposDeclineInvitationNoContent) reposDeclineInvitationResponse() {}
+func (*ReposDeclineInvitationNoContent) reposDeclineInvitationRes() {}
 
 type ReposDeleteAccessRestrictions struct{}
 
 type ReposDeleteAdminBranchProtectionNoContent struct{}
 
-func (*ReposDeleteAdminBranchProtectionNoContent) reposDeleteAdminBranchProtectionResponse() {}
+func (*ReposDeleteAdminBranchProtectionNoContent) reposDeleteAdminBranchProtectionRes() {}
 
 type ReposDeleteAnEnvironment struct{}
 
 type ReposDeleteApplicationJSONNotFound BasicError
 
-func (*ReposDeleteApplicationJSONNotFound) reposDeleteResponse() {}
+func (*ReposDeleteApplicationJSONNotFound) reposDeleteRes() {}
 
 type ReposDeleteApplicationJSONTemporaryRedirect BasicError
 
-func (*ReposDeleteApplicationJSONTemporaryRedirect) reposDeleteResponse() {}
+func (*ReposDeleteApplicationJSONTemporaryRedirect) reposDeleteRes() {}
 
 type ReposDeleteAutolinkNoContent struct{}
 
-func (*ReposDeleteAutolinkNoContent) reposDeleteAutolinkResponse() {}
+func (*ReposDeleteAutolinkNoContent) reposDeleteAutolinkRes() {}
 
 type ReposDeleteBranchProtectionNoContent struct{}
 
-func (*ReposDeleteBranchProtectionNoContent) reposDeleteBranchProtectionResponse() {}
+func (*ReposDeleteBranchProtectionNoContent) reposDeleteBranchProtectionRes() {}
 
 type ReposDeleteCommitCommentNoContent struct{}
 
-func (*ReposDeleteCommitCommentNoContent) reposDeleteCommitCommentResponse() {}
+func (*ReposDeleteCommitCommentNoContent) reposDeleteCommitCommentRes() {}
 
 type ReposDeleteCommitSignatureProtectionNoContent struct{}
 
-func (*ReposDeleteCommitSignatureProtectionNoContent) reposDeleteCommitSignatureProtectionResponse() {
-}
+func (*ReposDeleteCommitSignatureProtectionNoContent) reposDeleteCommitSignatureProtectionRes() {}
 
 type ReposDeleteDeployKey struct{}
 
 type ReposDeleteDeploymentNoContent struct{}
 
-func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentResponse() {}
+func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentRes() {}
 
-type ReposDeleteFileApplicationJSONRequest struct {
-	Author    OptReposDeleteFileApplicationJSONRequestAuthor    `json:"author"`
-	Branch    OptString                                         `json:"branch"`
-	Committer OptReposDeleteFileApplicationJSONRequestCommitter `json:"committer"`
-	Message   string                                            `json:"message"`
-	Sha       string                                            `json:"sha"`
+type ReposDeleteFileApplicationJSONReq struct {
+	Author    OptReposDeleteFileApplicationJSONReqAuthor    `json:"author"`
+	Branch    OptString                                     `json:"branch"`
+	Committer OptReposDeleteFileApplicationJSONReqCommitter `json:"committer"`
+	Message   string                                        `json:"message"`
+	Sha       string                                        `json:"sha"`
 }
 
-func (*ReposDeleteFileApplicationJSONRequest) reposDeleteFileRequest() {}
+func (*ReposDeleteFileApplicationJSONReq) reposDeleteFileReq() {}
 
-type ReposDeleteFileApplicationJSONRequestAuthor struct {
+type ReposDeleteFileApplicationJSONReqAuthor struct {
 	Email OptString `json:"email"`
 	Name  OptString `json:"name"`
 }
 
-type ReposDeleteFileApplicationJSONRequestCommitter struct {
+type ReposDeleteFileApplicationJSONReqCommitter struct {
 	Email OptString `json:"email"`
 	Name  OptString `json:"name"`
 }
@@ -12586,20 +12544,19 @@ type ReposDeleteForbidden struct {
 	Message          OptString `json:"message"`
 }
 
-func (*ReposDeleteForbidden) reposDeleteResponse() {}
+func (*ReposDeleteForbidden) reposDeleteRes() {}
 
 type ReposDeleteInvitation struct{}
 
 type ReposDeleteNoContent struct{}
 
-func (*ReposDeleteNoContent) reposDeleteResponse() {}
+func (*ReposDeleteNoContent) reposDeleteRes() {}
 
 type ReposDeletePagesSiteNoContent struct{}
 
 type ReposDeletePullRequestReviewProtectionNoContent struct{}
 
-func (*ReposDeletePullRequestReviewProtectionNoContent) reposDeletePullRequestReviewProtectionResponse() {
-}
+func (*ReposDeletePullRequestReviewProtectionNoContent) reposDeletePullRequestReviewProtectionRes() {}
 
 type ReposDeleteRelease struct{}
 
@@ -12607,7 +12564,7 @@ type ReposDeleteReleaseAsset struct{}
 
 type ReposDeleteWebhookNoContent struct{}
 
-func (*ReposDeleteWebhookNoContent) reposDeleteWebhookResponse() {}
+func (*ReposDeleteWebhookNoContent) reposDeleteWebhookRes() {}
 
 type ReposDisableAutomatedSecurityFixes struct{}
 
@@ -12623,165 +12580,162 @@ type ReposEnableAutomatedSecurityFixes struct{}
 
 type ReposEnableLfsForRepoForbidden struct{}
 
-func (*ReposEnableLfsForRepoForbidden) reposEnableLfsForRepoResponse() {}
+func (*ReposEnableLfsForRepoForbidden) reposEnableLfsForRepoRes() {}
 
 type ReposEnableVulnerabilityAlerts struct{}
 
 type ReposGetAllStatusCheckContextsOK []string
 
-func (*ReposGetAllStatusCheckContextsOK) reposGetAllStatusCheckContextsResponse() {}
+func (*ReposGetAllStatusCheckContextsOK) reposGetAllStatusCheckContextsRes() {}
 
 type ReposGetApplicationJSONForbidden BasicError
 
-func (*ReposGetApplicationJSONForbidden) reposGetResponse() {}
+func (*ReposGetApplicationJSONForbidden) reposGetRes() {}
 
 type ReposGetApplicationJSONMovedPermanently BasicError
 
-func (*ReposGetApplicationJSONMovedPermanently) reposGetResponse() {}
+func (*ReposGetApplicationJSONMovedPermanently) reposGetRes() {}
 
 type ReposGetApplicationJSONNotFound BasicError
 
-func (*ReposGetApplicationJSONNotFound) reposGetResponse() {}
+func (*ReposGetApplicationJSONNotFound) reposGetRes() {}
 
 type ReposGetAppsWithAccessToProtectedBranchOK []Integration
 
-func (*ReposGetAppsWithAccessToProtectedBranchOK) reposGetAppsWithAccessToProtectedBranchResponse() {}
+func (*ReposGetAppsWithAccessToProtectedBranchOK) reposGetAppsWithAccessToProtectedBranchRes() {}
 
 type ReposGetBranchApplicationJSONMovedPermanently BasicError
 
-func (*ReposGetBranchApplicationJSONMovedPermanently) reposGetBranchResponse() {}
+func (*ReposGetBranchApplicationJSONMovedPermanently) reposGetBranchRes() {}
 
 type ReposGetBranchApplicationJSONNotFound BasicError
 
-func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchResponse() {}
+func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchRes() {}
 
 type ReposGetCodeFrequencyStatsOK []CodeFrequencyStat
 
-func (*ReposGetCodeFrequencyStatsOK) reposGetCodeFrequencyStatsResponse() {}
+func (*ReposGetCodeFrequencyStatsOK) reposGetCodeFrequencyStatsRes() {}
 
 type ReposGetCommitActivityStatsOK []CommitActivity
 
-func (*ReposGetCommitActivityStatsOK) reposGetCommitActivityStatsResponse() {}
+func (*ReposGetCommitActivityStatsOK) reposGetCommitActivityStatsRes() {}
 
 type ReposGetContributorsStatsOK []ContributorActivity
 
-func (*ReposGetContributorsStatsOK) reposGetContributorsStatsResponse() {}
+func (*ReposGetContributorsStatsOK) reposGetContributorsStatsRes() {}
 
 type ReposGetPagesHealthCheckBadRequest struct{}
 
-func (*ReposGetPagesHealthCheckBadRequest) reposGetPagesHealthCheckResponse() {}
+func (*ReposGetPagesHealthCheckBadRequest) reposGetPagesHealthCheckRes() {}
 
 type ReposGetPagesHealthCheckUnprocessableEntity struct{}
 
-func (*ReposGetPagesHealthCheckUnprocessableEntity) reposGetPagesHealthCheckResponse() {}
+func (*ReposGetPagesHealthCheckUnprocessableEntity) reposGetPagesHealthCheckRes() {}
 
 type ReposGetPunchCardStatsOK []CodeFrequencyStat
 
-func (*ReposGetPunchCardStatsOK) reposGetPunchCardStatsResponse() {}
+func (*ReposGetPunchCardStatsOK) reposGetPunchCardStatsRes() {}
 
 type ReposGetTeamsWithAccessToProtectedBranchOK []Team
 
-func (*ReposGetTeamsWithAccessToProtectedBranchOK) reposGetTeamsWithAccessToProtectedBranchResponse() {
-}
+func (*ReposGetTeamsWithAccessToProtectedBranchOK) reposGetTeamsWithAccessToProtectedBranchRes() {}
 
 type ReposGetTopPathsOK []ContentTraffic
 
-func (*ReposGetTopPathsOK) reposGetTopPathsResponse() {}
+func (*ReposGetTopPathsOK) reposGetTopPathsRes() {}
 
 type ReposGetTopReferrersOK []ReferrerTraffic
 
-func (*ReposGetTopReferrersOK) reposGetTopReferrersResponse() {}
+func (*ReposGetTopReferrersOK) reposGetTopReferrersRes() {}
 
 type ReposGetUsersWithAccessToProtectedBranchOK []SimpleUser
 
-func (*ReposGetUsersWithAccessToProtectedBranchOK) reposGetUsersWithAccessToProtectedBranchResponse() {
-}
+func (*ReposGetUsersWithAccessToProtectedBranchOK) reposGetUsersWithAccessToProtectedBranchRes() {}
 
 type ReposListBranchesForHeadCommitOK []BranchShort
 
 type ReposListBranchesOK []ShortBranch
 
-func (*ReposListBranchesOK) reposListBranchesResponse() {}
+func (*ReposListBranchesOK) reposListBranchesRes() {}
 
 type ReposListCommitStatusesForRefOK []Status
 
-func (*ReposListCommitStatusesForRefOK) reposListCommitStatusesForRefResponse() {}
+func (*ReposListCommitStatusesForRefOK) reposListCommitStatusesForRefRes() {}
 
 type ReposListCommitsApplicationJSONBadRequest BasicError
 
-func (*ReposListCommitsApplicationJSONBadRequest) reposListCommitsResponse() {}
+func (*ReposListCommitsApplicationJSONBadRequest) reposListCommitsRes() {}
 
 type ReposListCommitsApplicationJSONConflict BasicError
 
-func (*ReposListCommitsApplicationJSONConflict) reposListCommitsResponse() {}
+func (*ReposListCommitsApplicationJSONConflict) reposListCommitsRes() {}
 
 type ReposListCommitsApplicationJSONInternalServerError BasicError
 
-func (*ReposListCommitsApplicationJSONInternalServerError) reposListCommitsResponse() {}
+func (*ReposListCommitsApplicationJSONInternalServerError) reposListCommitsRes() {}
 
 type ReposListCommitsApplicationJSONNotFound BasicError
 
-func (*ReposListCommitsApplicationJSONNotFound) reposListCommitsResponse() {}
+func (*ReposListCommitsApplicationJSONNotFound) reposListCommitsRes() {}
 
 type ReposListCommitsOK []Commit
 
-func (*ReposListCommitsOK) reposListCommitsResponse() {}
+func (*ReposListCommitsOK) reposListCommitsRes() {}
 
 type ReposListContributorsApplicationJSONForbidden BasicError
 
-func (*ReposListContributorsApplicationJSONForbidden) reposListContributorsResponse() {}
+func (*ReposListContributorsApplicationJSONForbidden) reposListContributorsRes() {}
 
 type ReposListContributorsApplicationJSONNotFound BasicError
 
-func (*ReposListContributorsApplicationJSONNotFound) reposListContributorsResponse() {}
+func (*ReposListContributorsApplicationJSONNotFound) reposListContributorsRes() {}
 
 type ReposListContributorsNoContent struct{}
 
-func (*ReposListContributorsNoContent) reposListContributorsResponse() {}
+func (*ReposListContributorsNoContent) reposListContributorsRes() {}
 
 type ReposListContributorsOK []Contributor
 
-func (*ReposListContributorsOK) reposListContributorsResponse() {}
+func (*ReposListContributorsOK) reposListContributorsRes() {}
 
 type ReposListDeploymentStatusesOK []DeploymentStatus
 
-func (*ReposListDeploymentStatusesOK) reposListDeploymentStatusesResponse() {}
+func (*ReposListDeploymentStatusesOK) reposListDeploymentStatusesRes() {}
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) reposListInvitationsForAuthenticatedUserResponse() {
+func (*ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) reposListInvitationsForAuthenticatedUserResponse() {
+func (*ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserResponse() {
+func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 type ReposListInvitationsForAuthenticatedUserOK []RepositoryInvitation
 
-func (*ReposListInvitationsForAuthenticatedUserOK) reposListInvitationsForAuthenticatedUserResponse() {
-}
+func (*ReposListInvitationsForAuthenticatedUserOK) reposListInvitationsForAuthenticatedUserRes() {}
 
 type ReposListPublicOK []MinimalRepository
 
 type ReposListReleasesOK []Release
 
-func (*ReposListReleasesOK) reposListReleasesResponse() {}
+func (*ReposListReleasesOK) reposListReleasesRes() {}
 
 type ReposListWebhookDeliveriesOK []HookDeliveryItem
 
-type ReposMergeApplicationJSONRequest struct {
+type ReposMergeApplicationJSONReq struct {
 	Base          string    `json:"base"`
 	CommitMessage OptString `json:"commit_message"`
 	Head          string    `json:"head"`
 }
 
-func (*ReposMergeApplicationJSONRequest) reposMergeRequest() {}
+func (*ReposMergeApplicationJSONReq) reposMergeReq() {}
 
 type ReposMergeConflict struct{}
 
@@ -12789,166 +12743,166 @@ type ReposMergeNoContent struct{}
 
 type ReposMergeNotFound struct{}
 
-type ReposMergeUpstreamApplicationJSONRequest struct {
+type ReposMergeUpstreamApplicationJSONReq struct {
 	Branch string `json:"branch"`
 }
 
 type ReposMergeUpstreamConflict struct{}
 
-func (*ReposMergeUpstreamConflict) reposMergeUpstreamResponse() {}
+func (*ReposMergeUpstreamConflict) reposMergeUpstreamRes() {}
 
 type ReposMergeUpstreamUnprocessableEntity struct{}
 
-func (*ReposMergeUpstreamUnprocessableEntity) reposMergeUpstreamResponse() {}
+func (*ReposMergeUpstreamUnprocessableEntity) reposMergeUpstreamRes() {}
 
 type ReposPingWebhookNoContent struct{}
 
-func (*ReposPingWebhookNoContent) reposPingWebhookResponse() {}
+func (*ReposPingWebhookNoContent) reposPingWebhookRes() {}
 
 type ReposRemoveCollaborator struct{}
 
 type ReposRemoveStatusCheckProtection struct{}
 
-type ReposRenameBranchApplicationJSONRequest struct {
+type ReposRenameBranchApplicationJSONReq struct {
 	NewName string `json:"new_name"`
 }
 
-func (*ReposRenameBranchApplicationJSONRequest) reposRenameBranchRequest() {}
+func (*ReposRenameBranchApplicationJSONReq) reposRenameBranchReq() {}
 
-type ReposReplaceAllTopicsApplicationJSONRequest struct {
+type ReposReplaceAllTopicsApplicationJSONReq struct {
 	Names []string `json:"names"`
 }
 
 type ReposTestPushWebhookNoContent struct{}
 
-func (*ReposTestPushWebhookNoContent) reposTestPushWebhookResponse() {}
+func (*ReposTestPushWebhookNoContent) reposTestPushWebhookRes() {}
 
-type ReposTransferApplicationJSONRequest struct {
+type ReposTransferApplicationJSONReq struct {
 	NewOwner string `json:"new_owner"`
 	TeamIds  []int  `json:"team_ids"`
 }
 
-type ReposUpdateApplicationJSONRequest struct {
-	AllowAutoMerge      OptBool                                                    `json:"allow_auto_merge"`
-	AllowForking        OptBool                                                    `json:"allow_forking"`
-	AllowMergeCommit    OptBool                                                    `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptBool                                                    `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptBool                                                    `json:"allow_squash_merge"`
-	Archived            OptBool                                                    `json:"archived"`
-	DefaultBranch       OptString                                                  `json:"default_branch"`
-	DeleteBranchOnMerge OptBool                                                    `json:"delete_branch_on_merge"`
-	Description         OptString                                                  `json:"description"`
-	HasIssues           OptBool                                                    `json:"has_issues"`
-	HasProjects         OptBool                                                    `json:"has_projects"`
-	HasWiki             OptBool                                                    `json:"has_wiki"`
-	Homepage            OptString                                                  `json:"homepage"`
-	IsTemplate          OptBool                                                    `json:"is_template"`
-	Name                OptString                                                  `json:"name"`
-	Private             OptBool                                                    `json:"private"`
-	SecurityAndAnalysis OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis `json:"security_and_analysis"`
-	Visibility          OptReposUpdateApplicationJSONRequestVisibility             `json:"visibility"`
+type ReposUpdateApplicationJSONReq struct {
+	AllowAutoMerge      OptBool                                                `json:"allow_auto_merge"`
+	AllowForking        OptBool                                                `json:"allow_forking"`
+	AllowMergeCommit    OptBool                                                `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptBool                                                `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptBool                                                `json:"allow_squash_merge"`
+	Archived            OptBool                                                `json:"archived"`
+	DefaultBranch       OptString                                              `json:"default_branch"`
+	DeleteBranchOnMerge OptBool                                                `json:"delete_branch_on_merge"`
+	Description         OptString                                              `json:"description"`
+	HasIssues           OptBool                                                `json:"has_issues"`
+	HasProjects         OptBool                                                `json:"has_projects"`
+	HasWiki             OptBool                                                `json:"has_wiki"`
+	Homepage            OptString                                              `json:"homepage"`
+	IsTemplate          OptBool                                                `json:"is_template"`
+	Name                OptString                                              `json:"name"`
+	Private             OptBool                                                `json:"private"`
+	SecurityAndAnalysis OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis `json:"security_and_analysis"`
+	Visibility          OptReposUpdateApplicationJSONReqVisibility             `json:"visibility"`
 }
 
-func (*ReposUpdateApplicationJSONRequest) reposUpdateRequest() {}
+func (*ReposUpdateApplicationJSONReq) reposUpdateReq() {}
 
-type ReposUpdateApplicationJSONRequestSecurityAndAnalysis struct {
-	AdvancedSecurity OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
-	SecretScanning   OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
+type ReposUpdateApplicationJSONReqSecurityAndAnalysis struct {
+	AdvancedSecurity OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
+	SecretScanning   OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
 }
 
-type ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity struct {
+type ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity struct {
 	Status OptString `json:"status"`
 }
 
-type ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning struct {
+type ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning struct {
 	Status OptString `json:"status"`
 }
 
-type ReposUpdateApplicationJSONRequestVisibility string
+type ReposUpdateApplicationJSONReqVisibility string
 
 const (
-	ReposUpdateApplicationJSONRequestVisibilityPublic     ReposUpdateApplicationJSONRequestVisibility = "public"
-	ReposUpdateApplicationJSONRequestVisibilityPrivate    ReposUpdateApplicationJSONRequestVisibility = "private"
-	ReposUpdateApplicationJSONRequestVisibilityVisibility ReposUpdateApplicationJSONRequestVisibility = "visibility"
-	ReposUpdateApplicationJSONRequestVisibilityInternal   ReposUpdateApplicationJSONRequestVisibility = "internal"
+	ReposUpdateApplicationJSONReqVisibilityPublic     ReposUpdateApplicationJSONReqVisibility = "public"
+	ReposUpdateApplicationJSONReqVisibilityPrivate    ReposUpdateApplicationJSONReqVisibility = "private"
+	ReposUpdateApplicationJSONReqVisibilityVisibility ReposUpdateApplicationJSONReqVisibility = "visibility"
+	ReposUpdateApplicationJSONReqVisibilityInternal   ReposUpdateApplicationJSONReqVisibility = "internal"
 )
 
 type ReposUpdateBranchProtectionApplicationJSONForbidden BasicError
 
-func (*ReposUpdateBranchProtectionApplicationJSONForbidden) reposUpdateBranchProtectionResponse() {}
+func (*ReposUpdateBranchProtectionApplicationJSONForbidden) reposUpdateBranchProtectionRes() {}
 
 type ReposUpdateBranchProtectionApplicationJSONNotFound BasicError
 
-func (*ReposUpdateBranchProtectionApplicationJSONNotFound) reposUpdateBranchProtectionResponse() {}
+func (*ReposUpdateBranchProtectionApplicationJSONNotFound) reposUpdateBranchProtectionRes() {}
 
-type ReposUpdateBranchProtectionApplicationJSONRequest struct {
-	AllowDeletions                 OptBool                                                                        `json:"allow_deletions"`
-	AllowForcePushes               OptNilBool                                                                     `json:"allow_force_pushes"`
-	EnforceAdmins                  NilBool                                                                        `json:"enforce_admins"`
-	RequiredConversationResolution OptBool                                                                        `json:"required_conversation_resolution"`
-	RequiredLinearHistory          OptBool                                                                        `json:"required_linear_history"`
-	RequiredPullRequestReviews     NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews `json:"required_pull_request_reviews"`
-	RequiredStatusChecks           NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks       `json:"required_status_checks"`
-	Restrictions                   NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions               `json:"restrictions"`
+type ReposUpdateBranchProtectionApplicationJSONReq struct {
+	AllowDeletions                 OptBool                                                                    `json:"allow_deletions"`
+	AllowForcePushes               OptNilBool                                                                 `json:"allow_force_pushes"`
+	EnforceAdmins                  NilBool                                                                    `json:"enforce_admins"`
+	RequiredConversationResolution OptBool                                                                    `json:"required_conversation_resolution"`
+	RequiredLinearHistory          OptBool                                                                    `json:"required_linear_history"`
+	RequiredPullRequestReviews     NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews `json:"required_pull_request_reviews"`
+	RequiredStatusChecks           NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks       `json:"required_status_checks"`
+	Restrictions                   NilReposUpdateBranchProtectionApplicationJSONReqRestrictions               `json:"restrictions"`
 }
 
-type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews struct {
-	DismissStaleReviews          OptBool                                                                                             `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      OptBool                                                                                             `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptInt                                                                                              `json:"required_approving_review_count"`
+type ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews struct {
+	DismissStaleReviews          OptBool                                                                                         `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      OptBool                                                                                         `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount OptInt                                                                                          `json:"required_approving_review_count"`
 }
 
-type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions struct {
+type ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions struct {
 	Teams []string `json:"teams"`
 	Users []string `json:"users"`
 }
 
-type ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struct {
+type ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks struct {
 	Contexts []string `json:"contexts"`
 	Strict   bool     `json:"strict"`
 }
 
-type ReposUpdateBranchProtectionApplicationJSONRequestRestrictions struct {
+type ReposUpdateBranchProtectionApplicationJSONReqRestrictions struct {
 	Apps  []string `json:"apps"`
 	Teams []string `json:"teams"`
 	Users []string `json:"users"`
 }
 
-type ReposUpdateCommitCommentApplicationJSONRequest struct {
+type ReposUpdateCommitCommentApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-type ReposUpdateInvitationApplicationJSONRequest struct {
-	Permissions OptReposUpdateInvitationApplicationJSONRequestPermissions `json:"permissions"`
+type ReposUpdateInvitationApplicationJSONReq struct {
+	Permissions OptReposUpdateInvitationApplicationJSONReqPermissions `json:"permissions"`
 }
 
-type ReposUpdateInvitationApplicationJSONRequestPermissions string
+type ReposUpdateInvitationApplicationJSONReqPermissions string
 
 const (
-	ReposUpdateInvitationApplicationJSONRequestPermissionsRead     ReposUpdateInvitationApplicationJSONRequestPermissions = "read"
-	ReposUpdateInvitationApplicationJSONRequestPermissionsWrite    ReposUpdateInvitationApplicationJSONRequestPermissions = "write"
-	ReposUpdateInvitationApplicationJSONRequestPermissionsMaintain ReposUpdateInvitationApplicationJSONRequestPermissions = "maintain"
-	ReposUpdateInvitationApplicationJSONRequestPermissionsTriage   ReposUpdateInvitationApplicationJSONRequestPermissions = "triage"
-	ReposUpdateInvitationApplicationJSONRequestPermissionsAdmin    ReposUpdateInvitationApplicationJSONRequestPermissions = "admin"
+	ReposUpdateInvitationApplicationJSONReqPermissionsRead     ReposUpdateInvitationApplicationJSONReqPermissions = "read"
+	ReposUpdateInvitationApplicationJSONReqPermissionsWrite    ReposUpdateInvitationApplicationJSONReqPermissions = "write"
+	ReposUpdateInvitationApplicationJSONReqPermissionsMaintain ReposUpdateInvitationApplicationJSONReqPermissions = "maintain"
+	ReposUpdateInvitationApplicationJSONReqPermissionsTriage   ReposUpdateInvitationApplicationJSONReqPermissions = "triage"
+	ReposUpdateInvitationApplicationJSONReqPermissionsAdmin    ReposUpdateInvitationApplicationJSONReqPermissions = "admin"
 )
 
-type ReposUpdatePullRequestReviewProtectionApplicationJSONRequest struct {
-	DismissStaleReviews          OptBool                                                                              `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      OptBool                                                                              `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptInt                                                                               `json:"required_approving_review_count"`
+type ReposUpdatePullRequestReviewProtectionApplicationJSONReq struct {
+	DismissStaleReviews          OptBool                                                                          `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      OptBool                                                                          `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount OptInt                                                                           `json:"required_approving_review_count"`
 }
 
-func (*ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) reposUpdatePullRequestReviewProtectionRequest() {
+func (*ReposUpdatePullRequestReviewProtectionApplicationJSONReq) reposUpdatePullRequestReviewProtectionReq() {
 }
 
-type ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions struct {
+type ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions struct {
 	Teams []string `json:"teams"`
 	Users []string `json:"users"`
 }
 
-type ReposUpdateReleaseApplicationJSONRequest struct {
+type ReposUpdateReleaseApplicationJSONReq struct {
 	Body                   OptString `json:"body"`
 	DiscussionCategoryName OptString `json:"discussion_category_name"`
 	Draft                  OptBool   `json:"draft"`
@@ -12958,19 +12912,18 @@ type ReposUpdateReleaseApplicationJSONRequest struct {
 	TargetCommitish        OptString `json:"target_commitish"`
 }
 
-type ReposUpdateReleaseAssetApplicationJSONRequest struct {
+type ReposUpdateReleaseAssetApplicationJSONReq struct {
 	Label OptString `json:"label"`
 	Name  OptString `json:"name"`
 	State OptString `json:"state"`
 }
 
-type ReposUpdateStatusCheckProtectionApplicationJSONRequest struct {
+type ReposUpdateStatusCheckProtectionApplicationJSONReq struct {
 	Contexts []string `json:"contexts"`
 	Strict   OptBool  `json:"strict"`
 }
 
-func (*ReposUpdateStatusCheckProtectionApplicationJSONRequest) reposUpdateStatusCheckProtectionRequest() {
-}
+func (*ReposUpdateStatusCheckProtectionApplicationJSONReq) reposUpdateStatusCheckProtectionReq() {}
 
 type RepositoryInvitationPermissions string
 
@@ -13138,23 +13091,23 @@ const (
 
 type ScimDeleteUserFromOrgApplicationJSONForbidden ScimError
 
-func (*ScimDeleteUserFromOrgApplicationJSONForbidden) scimDeleteUserFromOrgResponse() {}
+func (*ScimDeleteUserFromOrgApplicationJSONForbidden) scimDeleteUserFromOrgRes() {}
 
 type ScimDeleteUserFromOrgApplicationJSONNotFound ScimError
 
-func (*ScimDeleteUserFromOrgApplicationJSONNotFound) scimDeleteUserFromOrgResponse() {}
+func (*ScimDeleteUserFromOrgApplicationJSONNotFound) scimDeleteUserFromOrgRes() {}
 
 type ScimDeleteUserFromOrgApplicationScimJSONForbidden ScimError
 
-func (*ScimDeleteUserFromOrgApplicationScimJSONForbidden) scimDeleteUserFromOrgResponse() {}
+func (*ScimDeleteUserFromOrgApplicationScimJSONForbidden) scimDeleteUserFromOrgRes() {}
 
 type ScimDeleteUserFromOrgApplicationScimJSONNotFound ScimError
 
-func (*ScimDeleteUserFromOrgApplicationScimJSONNotFound) scimDeleteUserFromOrgResponse() {}
+func (*ScimDeleteUserFromOrgApplicationScimJSONNotFound) scimDeleteUserFromOrgRes() {}
 
 type ScimDeleteUserFromOrgNoContent struct{}
 
-func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgResponse() {}
+func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgRes() {}
 
 type ScimEnterpriseGroupMembersItem struct {
 	Display OptString `json:"display"`
@@ -13213,52 +13166,52 @@ type ScimGroupListEnterpriseResourcesItemMeta struct {
 	ResourceType OptString `json:"resourceType"`
 }
 
-type ScimProvisionAndInviteUserApplicationJSONRequest struct {
-	Active      OptBool                                                      `json:"active"`
-	DisplayName OptString                                                    `json:"displayName"`
-	Emails      []ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem `json:"emails"`
-	ExternalId  OptString                                                    `json:"externalId"`
-	Groups      []string                                                     `json:"groups"`
-	Name        ScimProvisionAndInviteUserApplicationJSONRequestName         `json:"name"`
-	Schemas     []string                                                     `json:"schemas"`
-	UserName    string                                                       `json:"userName"`
+type ScimProvisionAndInviteUserApplicationJSONReq struct {
+	Active      OptBool                                                  `json:"active"`
+	DisplayName OptString                                                `json:"displayName"`
+	Emails      []ScimProvisionAndInviteUserApplicationJSONReqEmailsItem `json:"emails"`
+	ExternalId  OptString                                                `json:"externalId"`
+	Groups      []string                                                 `json:"groups"`
+	Name        ScimProvisionAndInviteUserApplicationJSONReqName         `json:"name"`
+	Schemas     []string                                                 `json:"schemas"`
+	UserName    string                                                   `json:"userName"`
 }
 
-func (*ScimProvisionAndInviteUserApplicationJSONRequest) scimProvisionAndInviteUserRequest() {}
+func (*ScimProvisionAndInviteUserApplicationJSONReq) scimProvisionAndInviteUserReq() {}
 
-type ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem struct {
+type ScimProvisionAndInviteUserApplicationJSONReqEmailsItem struct {
 	Primary OptBool   `json:"primary"`
 	Type    OptString `json:"type"`
 	Value   string    `json:"value"`
 }
 
-type ScimProvisionAndInviteUserApplicationJSONRequestName struct {
+type ScimProvisionAndInviteUserApplicationJSONReqName struct {
 	FamilyName string    `json:"familyName"`
 	Formatted  OptString `json:"formatted"`
 	GivenName  string    `json:"givenName"`
 }
 
-type ScimSetInformationForProvisionedUserApplicationJSONRequest struct {
-	Active      OptBool                                                                `json:"active"`
-	DisplayName OptString                                                              `json:"displayName"`
-	Emails      []ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem `json:"emails"`
-	ExternalId  OptString                                                              `json:"externalId"`
-	Groups      []string                                                               `json:"groups"`
-	Name        ScimSetInformationForProvisionedUserApplicationJSONRequestName         `json:"name"`
-	Schemas     []string                                                               `json:"schemas"`
-	UserName    string                                                                 `json:"userName"`
+type ScimSetInformationForProvisionedUserApplicationJSONReq struct {
+	Active      OptBool                                                            `json:"active"`
+	DisplayName OptString                                                          `json:"displayName"`
+	Emails      []ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem `json:"emails"`
+	ExternalId  OptString                                                          `json:"externalId"`
+	Groups      []string                                                           `json:"groups"`
+	Name        ScimSetInformationForProvisionedUserApplicationJSONReqName         `json:"name"`
+	Schemas     []string                                                           `json:"schemas"`
+	UserName    string                                                             `json:"userName"`
 }
 
-func (*ScimSetInformationForProvisionedUserApplicationJSONRequest) scimSetInformationForProvisionedUserRequest() {
+func (*ScimSetInformationForProvisionedUserApplicationJSONReq) scimSetInformationForProvisionedUserReq() {
 }
 
-type ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem struct {
+type ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem struct {
 	Primary OptBool   `json:"primary"`
 	Type    OptString `json:"type"`
 	Value   string    `json:"value"`
 }
 
-type ScimSetInformationForProvisionedUserApplicationJSONRequestName struct {
+type ScimSetInformationForProvisionedUserApplicationJSONReqName struct {
 	FamilyName string    `json:"familyName"`
 	Formatted  OptString `json:"formatted"`
 	GivenName  string    `json:"givenName"`
@@ -13300,20 +13253,20 @@ type ScimUserListEnterpriseResourcesItemName struct {
 
 type SecretScanningGetAlertNotFound struct{}
 
-func (*SecretScanningGetAlertNotFound) secretScanningGetAlertResponse() {}
+func (*SecretScanningGetAlertNotFound) secretScanningGetAlertRes() {}
 
-type SecretScanningUpdateAlertApplicationJSONRequest struct {
+type SecretScanningUpdateAlertApplicationJSONReq struct {
 	Resolution OptSecretScanningAlertResolution `json:"resolution"`
 	State      SecretScanningAlertState         `json:"state"`
 }
 
 type SecretScanningUpdateAlertNotFound struct{}
 
-func (*SecretScanningUpdateAlertNotFound) secretScanningUpdateAlertResponse() {}
+func (*SecretScanningUpdateAlertNotFound) secretScanningUpdateAlertRes() {}
 
 type SecretScanningUpdateAlertUnprocessableEntity struct{}
 
-func (*SecretScanningUpdateAlertUnprocessableEntity) secretScanningUpdateAlertResponse() {}
+func (*SecretScanningUpdateAlertUnprocessableEntity) secretScanningUpdateAlertRes() {}
 
 type ServiceUnavailable struct {
 	Code             OptString `json:"code"`
@@ -13321,13 +13274,13 @@ type ServiceUnavailable struct {
 	Message          OptString `json:"message"`
 }
 
-func (*ServiceUnavailable) codeScanningDeleteAnalysisResponse()     {}
-func (*ServiceUnavailable) codeScanningGetSarifResponse()           {}
-func (*ServiceUnavailable) codeScanningListAlertInstancesResponse() {}
-func (*ServiceUnavailable) codeScanningListRecentAnalysesResponse() {}
-func (*ServiceUnavailable) codeScanningUploadSarifResponse()        {}
-func (*ServiceUnavailable) secretScanningGetAlertResponse()         {}
-func (*ServiceUnavailable) secretScanningUpdateAlertResponse()      {}
+func (*ServiceUnavailable) codeScanningDeleteAnalysisRes()     {}
+func (*ServiceUnavailable) codeScanningGetSarifRes()           {}
+func (*ServiceUnavailable) codeScanningListAlertInstancesRes() {}
+func (*ServiceUnavailable) codeScanningListRecentAnalysesRes() {}
+func (*ServiceUnavailable) codeScanningUploadSarifRes()        {}
+func (*ServiceUnavailable) secretScanningGetAlertRes()         {}
+func (*ServiceUnavailable) secretScanningUpdateAlertRes()      {}
 
 type ShortBranchCommit struct {
 	Sha string  `json:"sha"`
@@ -13394,68 +13347,67 @@ type TeamRepositoryPermissions struct {
 
 type TeamsAddMemberLegacyNoContent struct{}
 
-func (*TeamsAddMemberLegacyNoContent) teamsAddMemberLegacyResponse() {}
+func (*TeamsAddMemberLegacyNoContent) teamsAddMemberLegacyRes() {}
 
 type TeamsAddMemberLegacyNotFound struct{}
 
-func (*TeamsAddMemberLegacyNotFound) teamsAddMemberLegacyResponse() {}
+func (*TeamsAddMemberLegacyNotFound) teamsAddMemberLegacyRes() {}
 
 type TeamsAddMemberLegacyUnprocessableEntity struct{}
 
-func (*TeamsAddMemberLegacyUnprocessableEntity) teamsAddMemberLegacyResponse() {}
+func (*TeamsAddMemberLegacyUnprocessableEntity) teamsAddMemberLegacyRes() {}
 
-type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest struct {
-	Role OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole `json:"role"`
+type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq struct {
+	Role OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole `json:"role"`
 }
 
-type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole string
+type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole string
 
 const (
-	TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRoleMember     TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole = "member"
-	TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRoleMaintainer TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole = "maintainer"
+	TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRoleMember     TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole = "member"
+	TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRoleMaintainer TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole = "maintainer"
 )
 
 type TeamsAddOrUpdateMembershipForUserInOrgForbidden struct{}
 
-func (*TeamsAddOrUpdateMembershipForUserInOrgForbidden) teamsAddOrUpdateMembershipForUserInOrgResponse() {
-}
+func (*TeamsAddOrUpdateMembershipForUserInOrgForbidden) teamsAddOrUpdateMembershipForUserInOrgRes() {}
 
 type TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity struct{}
 
-func (*TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) teamsAddOrUpdateMembershipForUserInOrgResponse() {
+func (*TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) teamsAddOrUpdateMembershipForUserInOrgRes() {
 }
 
-type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest struct {
-	Role OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole `json:"role"`
+type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq struct {
+	Role OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole `json:"role"`
 }
 
-type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole string
+type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole string
 
 const (
-	TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRoleMember     TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole = "member"
-	TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRoleMaintainer TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole = "maintainer"
+	TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRoleMember     TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole = "member"
+	TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRoleMaintainer TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole = "maintainer"
 )
 
 type TeamsAddOrUpdateMembershipForUserLegacyForbidden struct{}
 
-func (*TeamsAddOrUpdateMembershipForUserLegacyForbidden) teamsAddOrUpdateMembershipForUserLegacyResponse() {
+func (*TeamsAddOrUpdateMembershipForUserLegacyForbidden) teamsAddOrUpdateMembershipForUserLegacyRes() {
 }
 
 type TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity struct{}
 
-func (*TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) teamsAddOrUpdateMembershipForUserLegacyResponse() {
+func (*TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) teamsAddOrUpdateMembershipForUserLegacyRes() {
 }
 
-type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest struct {
-	Permission OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
+type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq struct {
+	Permission OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission `json:"permission"`
 }
 
-type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission string
+type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission string
 
 const (
-	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissionRead  TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission = "read"
-	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissionWrite TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission = "write"
-	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissionAdmin TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission = "admin"
+	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermissionRead  TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission = "read"
+	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermissionWrite TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission = "write"
+	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission = "admin"
 )
 
 type TeamsAddOrUpdateProjectPermissionsInOrgForbidden struct {
@@ -13463,27 +13415,27 @@ type TeamsAddOrUpdateProjectPermissionsInOrgForbidden struct {
 	Message          OptString `json:"message"`
 }
 
-func (*TeamsAddOrUpdateProjectPermissionsInOrgForbidden) teamsAddOrUpdateProjectPermissionsInOrgResponse() {
+func (*TeamsAddOrUpdateProjectPermissionsInOrgForbidden) teamsAddOrUpdateProjectPermissionsInOrgRes() {
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgNoContent struct{}
 
-func (*TeamsAddOrUpdateProjectPermissionsInOrgNoContent) teamsAddOrUpdateProjectPermissionsInOrgResponse() {
+func (*TeamsAddOrUpdateProjectPermissionsInOrgNoContent) teamsAddOrUpdateProjectPermissionsInOrgRes() {
 }
 
-type TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest struct {
-	Permission OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
+type TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq struct {
+	Permission OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission `json:"permission"`
 }
 
-func (*TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) teamsAddOrUpdateProjectPermissionsLegacyRequest() {
+func (*TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq) teamsAddOrUpdateProjectPermissionsLegacyReq() {
 }
 
-type TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission string
+type TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission string
 
 const (
-	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermissionRead  TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission = "read"
-	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermissionWrite TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission = "write"
-	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermissionAdmin TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission = "admin"
+	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermissionRead  TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission = "read"
+	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermissionWrite TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission = "write"
+	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission = "admin"
 )
 
 type TeamsAddOrUpdateProjectPermissionsLegacyForbidden struct {
@@ -13495,128 +13447,127 @@ type TeamsAddOrUpdateProjectPermissionsLegacyNoContent struct{}
 
 type TeamsAddOrUpdateRepoPermissionsInOrg struct{}
 
-type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest struct {
-	Permission OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
+type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq struct {
+	Permission OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission `json:"permission"`
 }
 
-type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission string
+type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission string
 
 const (
-	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionPull     TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "pull"
-	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionPush     TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "push"
-	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionAdmin    TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "admin"
-	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionMaintain TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "maintain"
-	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionTriage   TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "triage"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermissionPull     TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission = "pull"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermissionPush     TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission = "push"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermissionAdmin    TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission = "admin"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermissionMaintain TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission = "maintain"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermissionTriage   TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission = "triage"
 )
 
-type TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest struct {
-	Permission OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
+type TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq struct {
+	Permission OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission `json:"permission"`
 }
 
-func (*TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) teamsAddOrUpdateRepoPermissionsLegacyRequest() {
+func (*TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq) teamsAddOrUpdateRepoPermissionsLegacyReq() {
 }
 
-type TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission string
+type TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission string
 
 const (
-	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermissionPull  TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission = "pull"
-	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermissionPush  TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission = "push"
-	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermissionAdmin TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission = "admin"
+	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermissionPull  TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission = "pull"
+	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermissionPush  TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission = "push"
+	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermissionAdmin TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission = "admin"
 )
 
 type TeamsAddOrUpdateRepoPermissionsLegacyNoContent struct{}
 
 type TeamsCheckPermissionsForProjectInOrgNotFound struct{}
 
-func (*TeamsCheckPermissionsForProjectInOrgNotFound) teamsCheckPermissionsForProjectInOrgResponse() {}
+func (*TeamsCheckPermissionsForProjectInOrgNotFound) teamsCheckPermissionsForProjectInOrgRes() {}
 
 type TeamsCheckPermissionsForProjectLegacyNotFound struct{}
 
-func (*TeamsCheckPermissionsForProjectLegacyNotFound) teamsCheckPermissionsForProjectLegacyResponse() {
-}
+func (*TeamsCheckPermissionsForProjectLegacyNotFound) teamsCheckPermissionsForProjectLegacyRes() {}
 
 type TeamsCheckPermissionsForRepoInOrgNoContent struct{}
 
-func (*TeamsCheckPermissionsForRepoInOrgNoContent) teamsCheckPermissionsForRepoInOrgResponse() {}
+func (*TeamsCheckPermissionsForRepoInOrgNoContent) teamsCheckPermissionsForRepoInOrgRes() {}
 
 type TeamsCheckPermissionsForRepoInOrgNotFound struct{}
 
-func (*TeamsCheckPermissionsForRepoInOrgNotFound) teamsCheckPermissionsForRepoInOrgResponse() {}
+func (*TeamsCheckPermissionsForRepoInOrgNotFound) teamsCheckPermissionsForRepoInOrgRes() {}
 
 type TeamsCheckPermissionsForRepoLegacyNoContent struct{}
 
-func (*TeamsCheckPermissionsForRepoLegacyNoContent) teamsCheckPermissionsForRepoLegacyResponse() {}
+func (*TeamsCheckPermissionsForRepoLegacyNoContent) teamsCheckPermissionsForRepoLegacyRes() {}
 
 type TeamsCheckPermissionsForRepoLegacyNotFound struct{}
 
-func (*TeamsCheckPermissionsForRepoLegacyNotFound) teamsCheckPermissionsForRepoLegacyResponse() {}
+func (*TeamsCheckPermissionsForRepoLegacyNotFound) teamsCheckPermissionsForRepoLegacyRes() {}
 
-type TeamsCreateApplicationJSONRequest struct {
-	Description  OptString                                      `json:"description"`
-	Maintainers  []string                                       `json:"maintainers"`
-	Name         string                                         `json:"name"`
-	ParentTeamID OptInt                                         `json:"parent_team_id"`
-	Permission   OptTeamsCreateApplicationJSONRequestPermission `json:"permission"`
-	Privacy      OptTeamsCreateApplicationJSONRequestPrivacy    `json:"privacy"`
-	RepoNames    []string                                       `json:"repo_names"`
+type TeamsCreateApplicationJSONReq struct {
+	Description  OptString                                  `json:"description"`
+	Maintainers  []string                                   `json:"maintainers"`
+	Name         string                                     `json:"name"`
+	ParentTeamID OptInt                                     `json:"parent_team_id"`
+	Permission   OptTeamsCreateApplicationJSONReqPermission `json:"permission"`
+	Privacy      OptTeamsCreateApplicationJSONReqPrivacy    `json:"privacy"`
+	RepoNames    []string                                   `json:"repo_names"`
 }
 
-func (*TeamsCreateApplicationJSONRequest) teamsCreateRequest() {}
+func (*TeamsCreateApplicationJSONReq) teamsCreateReq() {}
 
-type TeamsCreateApplicationJSONRequestPermission string
-
-const (
-	TeamsCreateApplicationJSONRequestPermissionPull  TeamsCreateApplicationJSONRequestPermission = "pull"
-	TeamsCreateApplicationJSONRequestPermissionPush  TeamsCreateApplicationJSONRequestPermission = "push"
-	TeamsCreateApplicationJSONRequestPermissionAdmin TeamsCreateApplicationJSONRequestPermission = "admin"
-)
-
-type TeamsCreateApplicationJSONRequestPrivacy string
+type TeamsCreateApplicationJSONReqPermission string
 
 const (
-	TeamsCreateApplicationJSONRequestPrivacySecret TeamsCreateApplicationJSONRequestPrivacy = "secret"
-	TeamsCreateApplicationJSONRequestPrivacyClosed TeamsCreateApplicationJSONRequestPrivacy = "closed"
+	TeamsCreateApplicationJSONReqPermissionPull  TeamsCreateApplicationJSONReqPermission = "pull"
+	TeamsCreateApplicationJSONReqPermissionPush  TeamsCreateApplicationJSONReqPermission = "push"
+	TeamsCreateApplicationJSONReqPermissionAdmin TeamsCreateApplicationJSONReqPermission = "admin"
 )
 
-type TeamsCreateDiscussionCommentInOrgApplicationJSONRequest struct {
+type TeamsCreateApplicationJSONReqPrivacy string
+
+const (
+	TeamsCreateApplicationJSONReqPrivacySecret TeamsCreateApplicationJSONReqPrivacy = "secret"
+	TeamsCreateApplicationJSONReqPrivacyClosed TeamsCreateApplicationJSONReqPrivacy = "closed"
+)
+
+type TeamsCreateDiscussionCommentInOrgApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-type TeamsCreateDiscussionCommentLegacyApplicationJSONRequest struct {
+type TeamsCreateDiscussionCommentLegacyApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-type TeamsCreateDiscussionInOrgApplicationJSONRequest struct {
+type TeamsCreateDiscussionInOrgApplicationJSONReq struct {
 	Body    string  `json:"body"`
 	Private OptBool `json:"private"`
 	Title   string  `json:"title"`
 }
 
-type TeamsCreateDiscussionLegacyApplicationJSONRequest struct {
+type TeamsCreateDiscussionLegacyApplicationJSONReq struct {
 	Body    string  `json:"body"`
 	Private OptBool `json:"private"`
 	Title   string  `json:"title"`
 }
 
-type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest struct {
-	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem `json:"groups"`
+type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq struct {
+	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem `json:"groups"`
 }
 
-type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem struct {
+type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem struct {
 	GroupDescription string `json:"group_description"`
 	GroupID          string `json:"group_id"`
 	GroupName        string `json:"group_name"`
 }
 
-type TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest struct {
-	Groups   []TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem `json:"groups"`
-	SyncedAt OptString                                                                      `json:"synced_at"`
+type TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq struct {
+	Groups   []TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem `json:"groups"`
+	SyncedAt OptString                                                                  `json:"synced_at"`
 }
 
-func (*TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) teamsCreateOrUpdateIdpGroupConnectionsLegacyRequest() {
+func (*TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) teamsCreateOrUpdateIdpGroupConnectionsLegacyReq() {
 }
 
-type TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem struct {
+type TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem struct {
 	Description      OptString `json:"description"`
 	GroupDescription string    `json:"group_description"`
 	GroupID          string    `json:"group_id"`
@@ -13639,75 +13590,73 @@ type TeamsDeleteLegacyNoContent struct{}
 
 type TeamsGetMemberLegacyNoContent struct{}
 
-func (*TeamsGetMemberLegacyNoContent) teamsGetMemberLegacyResponse() {}
+func (*TeamsGetMemberLegacyNoContent) teamsGetMemberLegacyRes() {}
 
 type TeamsGetMemberLegacyNotFound struct{}
 
-func (*TeamsGetMemberLegacyNotFound) teamsGetMemberLegacyResponse() {}
+func (*TeamsGetMemberLegacyNotFound) teamsGetMemberLegacyRes() {}
 
 type TeamsGetMembershipForUserInOrgNotFound struct{}
 
-func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgResponse() {}
+func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes() {}
 
 type TeamsListChildLegacyOK []Team
 
 type TeamsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*TeamsListForAuthenticatedUserApplicationJSONForbidden) teamsListForAuthenticatedUserResponse() {
-}
+func (*TeamsListForAuthenticatedUserApplicationJSONForbidden) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserResponse() {
-}
+func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListForAuthenticatedUserOK []TeamFull
 
-func (*TeamsListForAuthenticatedUserOK) teamsListForAuthenticatedUserResponse() {}
+func (*TeamsListForAuthenticatedUserOK) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListIdpGroupsForLegacyApplicationJSONForbidden BasicError
 
-func (*TeamsListIdpGroupsForLegacyApplicationJSONForbidden) teamsListIdpGroupsForLegacyResponse() {}
+func (*TeamsListIdpGroupsForLegacyApplicationJSONForbidden) teamsListIdpGroupsForLegacyRes() {}
 
 type TeamsListIdpGroupsForLegacyApplicationJSONNotFound BasicError
 
-func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyResponse() {}
+func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyRes() {}
 
 type TeamsListOK []Team
 
-func (*TeamsListOK) teamsListResponse() {}
+func (*TeamsListOK) teamsListRes() {}
 
 type TeamsListProjectsLegacyOK []TeamProject
 
-func (*TeamsListProjectsLegacyOK) teamsListProjectsLegacyResponse() {}
+func (*TeamsListProjectsLegacyOK) teamsListProjectsLegacyRes() {}
 
 type TeamsListReposLegacyOK []MinimalRepository
 
-func (*TeamsListReposLegacyOK) teamsListReposLegacyResponse() {}
+func (*TeamsListReposLegacyOK) teamsListReposLegacyRes() {}
 
 type TeamsRemoveMemberLegacyNoContent struct{}
 
-func (*TeamsRemoveMemberLegacyNoContent) teamsRemoveMemberLegacyResponse() {}
+func (*TeamsRemoveMemberLegacyNoContent) teamsRemoveMemberLegacyRes() {}
 
 type TeamsRemoveMemberLegacyNotFound struct{}
 
-func (*TeamsRemoveMemberLegacyNotFound) teamsRemoveMemberLegacyResponse() {}
+func (*TeamsRemoveMemberLegacyNotFound) teamsRemoveMemberLegacyRes() {}
 
 type TeamsRemoveMembershipForUserInOrgForbidden struct{}
 
-func (*TeamsRemoveMembershipForUserInOrgForbidden) teamsRemoveMembershipForUserInOrgResponse() {}
+func (*TeamsRemoveMembershipForUserInOrgForbidden) teamsRemoveMembershipForUserInOrgRes() {}
 
 type TeamsRemoveMembershipForUserInOrgNoContent struct{}
 
-func (*TeamsRemoveMembershipForUserInOrgNoContent) teamsRemoveMembershipForUserInOrgResponse() {}
+func (*TeamsRemoveMembershipForUserInOrgNoContent) teamsRemoveMembershipForUserInOrgRes() {}
 
 type TeamsRemoveMembershipForUserLegacyForbidden struct{}
 
-func (*TeamsRemoveMembershipForUserLegacyForbidden) teamsRemoveMembershipForUserLegacyResponse() {}
+func (*TeamsRemoveMembershipForUserLegacyForbidden) teamsRemoveMembershipForUserLegacyRes() {}
 
 type TeamsRemoveMembershipForUserLegacyNoContent struct{}
 
-func (*TeamsRemoveMembershipForUserLegacyNoContent) teamsRemoveMembershipForUserLegacyResponse() {}
+func (*TeamsRemoveMembershipForUserLegacyNoContent) teamsRemoveMembershipForUserLegacyRes() {}
 
 type TeamsRemoveProjectInOrg struct{}
 
@@ -13717,70 +13666,70 @@ type TeamsRemoveRepoInOrg struct{}
 
 type TeamsRemoveRepoLegacy struct{}
 
-type TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest struct {
+type TeamsUpdateDiscussionCommentInOrgApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-type TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest struct {
+type TeamsUpdateDiscussionCommentLegacyApplicationJSONReq struct {
 	Body string `json:"body"`
 }
 
-type TeamsUpdateDiscussionInOrgApplicationJSONRequest struct {
+type TeamsUpdateDiscussionInOrgApplicationJSONReq struct {
 	Body  OptString `json:"body"`
 	Title OptString `json:"title"`
 }
 
-type TeamsUpdateDiscussionLegacyApplicationJSONRequest struct {
+type TeamsUpdateDiscussionLegacyApplicationJSONReq struct {
 	Body  OptString `json:"body"`
 	Title OptString `json:"title"`
 }
 
-type TeamsUpdateInOrgApplicationJSONRequest struct {
-	Description  OptString                                           `json:"description"`
-	Name         OptString                                           `json:"name"`
-	ParentTeamID OptNilInt                                           `json:"parent_team_id"`
-	Permission   OptTeamsUpdateInOrgApplicationJSONRequestPermission `json:"permission"`
-	Privacy      OptTeamsUpdateInOrgApplicationJSONRequestPrivacy    `json:"privacy"`
+type TeamsUpdateInOrgApplicationJSONReq struct {
+	Description  OptString                                       `json:"description"`
+	Name         OptString                                       `json:"name"`
+	ParentTeamID OptNilInt                                       `json:"parent_team_id"`
+	Permission   OptTeamsUpdateInOrgApplicationJSONReqPermission `json:"permission"`
+	Privacy      OptTeamsUpdateInOrgApplicationJSONReqPrivacy    `json:"privacy"`
 }
 
-type TeamsUpdateInOrgApplicationJSONRequestPermission string
+type TeamsUpdateInOrgApplicationJSONReqPermission string
 
 const (
-	TeamsUpdateInOrgApplicationJSONRequestPermissionPull  TeamsUpdateInOrgApplicationJSONRequestPermission = "pull"
-	TeamsUpdateInOrgApplicationJSONRequestPermissionPush  TeamsUpdateInOrgApplicationJSONRequestPermission = "push"
-	TeamsUpdateInOrgApplicationJSONRequestPermissionAdmin TeamsUpdateInOrgApplicationJSONRequestPermission = "admin"
+	TeamsUpdateInOrgApplicationJSONReqPermissionPull  TeamsUpdateInOrgApplicationJSONReqPermission = "pull"
+	TeamsUpdateInOrgApplicationJSONReqPermissionPush  TeamsUpdateInOrgApplicationJSONReqPermission = "push"
+	TeamsUpdateInOrgApplicationJSONReqPermissionAdmin TeamsUpdateInOrgApplicationJSONReqPermission = "admin"
 )
 
-type TeamsUpdateInOrgApplicationJSONRequestPrivacy string
+type TeamsUpdateInOrgApplicationJSONReqPrivacy string
 
 const (
-	TeamsUpdateInOrgApplicationJSONRequestPrivacySecret TeamsUpdateInOrgApplicationJSONRequestPrivacy = "secret"
-	TeamsUpdateInOrgApplicationJSONRequestPrivacyClosed TeamsUpdateInOrgApplicationJSONRequestPrivacy = "closed"
+	TeamsUpdateInOrgApplicationJSONReqPrivacySecret TeamsUpdateInOrgApplicationJSONReqPrivacy = "secret"
+	TeamsUpdateInOrgApplicationJSONReqPrivacyClosed TeamsUpdateInOrgApplicationJSONReqPrivacy = "closed"
 )
 
-type TeamsUpdateLegacyApplicationJSONRequest struct {
-	Description  OptString                                            `json:"description"`
-	Name         string                                               `json:"name"`
-	ParentTeamID OptNilInt                                            `json:"parent_team_id"`
-	Permission   OptTeamsUpdateLegacyApplicationJSONRequestPermission `json:"permission"`
-	Privacy      OptTeamsUpdateLegacyApplicationJSONRequestPrivacy    `json:"privacy"`
+type TeamsUpdateLegacyApplicationJSONReq struct {
+	Description  OptString                                        `json:"description"`
+	Name         string                                           `json:"name"`
+	ParentTeamID OptNilInt                                        `json:"parent_team_id"`
+	Permission   OptTeamsUpdateLegacyApplicationJSONReqPermission `json:"permission"`
+	Privacy      OptTeamsUpdateLegacyApplicationJSONReqPrivacy    `json:"privacy"`
 }
 
-func (*TeamsUpdateLegacyApplicationJSONRequest) teamsUpdateLegacyRequest() {}
+func (*TeamsUpdateLegacyApplicationJSONReq) teamsUpdateLegacyReq() {}
 
-type TeamsUpdateLegacyApplicationJSONRequestPermission string
+type TeamsUpdateLegacyApplicationJSONReqPermission string
 
 const (
-	TeamsUpdateLegacyApplicationJSONRequestPermissionPull  TeamsUpdateLegacyApplicationJSONRequestPermission = "pull"
-	TeamsUpdateLegacyApplicationJSONRequestPermissionPush  TeamsUpdateLegacyApplicationJSONRequestPermission = "push"
-	TeamsUpdateLegacyApplicationJSONRequestPermissionAdmin TeamsUpdateLegacyApplicationJSONRequestPermission = "admin"
+	TeamsUpdateLegacyApplicationJSONReqPermissionPull  TeamsUpdateLegacyApplicationJSONReqPermission = "pull"
+	TeamsUpdateLegacyApplicationJSONReqPermissionPush  TeamsUpdateLegacyApplicationJSONReqPermission = "push"
+	TeamsUpdateLegacyApplicationJSONReqPermissionAdmin TeamsUpdateLegacyApplicationJSONReqPermission = "admin"
 )
 
-type TeamsUpdateLegacyApplicationJSONRequestPrivacy string
+type TeamsUpdateLegacyApplicationJSONReqPrivacy string
 
 const (
-	TeamsUpdateLegacyApplicationJSONRequestPrivacySecret TeamsUpdateLegacyApplicationJSONRequestPrivacy = "secret"
-	TeamsUpdateLegacyApplicationJSONRequestPrivacyClosed TeamsUpdateLegacyApplicationJSONRequestPrivacy = "closed"
+	TeamsUpdateLegacyApplicationJSONReqPrivacySecret TeamsUpdateLegacyApplicationJSONReqPrivacy = "secret"
+	TeamsUpdateLegacyApplicationJSONReqPrivacyClosed TeamsUpdateLegacyApplicationJSONReqPrivacy = "closed"
 )
 
 type ThreadSubject struct {
@@ -13794,307 +13743,302 @@ type UsersBlockNoContent struct{}
 
 type UsersCheckBlockedApplicationJSONForbidden BasicError
 
-func (*UsersCheckBlockedApplicationJSONForbidden) usersCheckBlockedResponse() {}
+func (*UsersCheckBlockedApplicationJSONForbidden) usersCheckBlockedRes() {}
 
 type UsersCheckBlockedApplicationJSONNotFound BasicError
 
-func (*UsersCheckBlockedApplicationJSONNotFound) usersCheckBlockedResponse() {}
+func (*UsersCheckBlockedApplicationJSONNotFound) usersCheckBlockedRes() {}
 
 type UsersCheckBlockedApplicationJSONUnauthorized BasicError
 
-func (*UsersCheckBlockedApplicationJSONUnauthorized) usersCheckBlockedResponse() {}
+func (*UsersCheckBlockedApplicationJSONUnauthorized) usersCheckBlockedRes() {}
 
 type UsersCheckBlockedNoContent struct{}
 
-func (*UsersCheckBlockedNoContent) usersCheckBlockedResponse() {}
+func (*UsersCheckBlockedNoContent) usersCheckBlockedRes() {}
 
 type UsersCheckFollowingForUserNoContent struct{}
 
-func (*UsersCheckFollowingForUserNoContent) usersCheckFollowingForUserResponse() {}
+func (*UsersCheckFollowingForUserNoContent) usersCheckFollowingForUserRes() {}
 
 type UsersCheckFollowingForUserNotFound struct{}
 
-func (*UsersCheckFollowingForUserNotFound) usersCheckFollowingForUserResponse() {}
+func (*UsersCheckFollowingForUserNotFound) usersCheckFollowingForUserRes() {}
 
 type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) usersCheckPersonIsFollowedByAuthenticatedResponse() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
 type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) usersCheckPersonIsFollowedByAuthenticatedResponse() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
 type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) usersCheckPersonIsFollowedByAuthenticatedResponse() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
 type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 
-func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedResponse() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-type UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest struct {
+type UsersCreateGpgKeyForAuthenticatedApplicationJSONReq struct {
 	ArmoredPublicKey string `json:"armored_public_key"`
 }
 
-func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) usersCreateGpgKeyForAuthenticatedRequest() {
-}
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONReq) usersCreateGpgKeyForAuthenticatedReq() {}
 
-type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest struct {
+type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq struct {
 	Key   string    `json:"key"`
 	Title OptString `json:"title"`
 }
 
-func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) usersCreatePublicSSHKeyForAuthenticatedRequest() {
+func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq) usersCreatePublicSSHKeyForAuthenticatedReq() {
 }
 
 type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersDeletePublicSSHKeyForAuthenticatedResponse() {
+func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersDeletePublicSSHKeyForAuthenticatedResponse() {
+func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersDeletePublicSSHKeyForAuthenticatedResponse() {
+func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedNoContent struct{}
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKeyForAuthenticatedResponse() {
+func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersFollowApplicationJSONForbidden BasicError
 
-func (*UsersFollowApplicationJSONForbidden) usersFollowResponse() {}
+func (*UsersFollowApplicationJSONForbidden) usersFollowRes() {}
 
 type UsersFollowApplicationJSONNotFound BasicError
 
-func (*UsersFollowApplicationJSONNotFound) usersFollowResponse() {}
+func (*UsersFollowApplicationJSONNotFound) usersFollowRes() {}
 
 type UsersFollowApplicationJSONUnauthorized BasicError
 
-func (*UsersFollowApplicationJSONUnauthorized) usersFollowResponse() {}
+func (*UsersFollowApplicationJSONUnauthorized) usersFollowRes() {}
 
 type UsersFollowNoContent struct{}
 
-func (*UsersFollowNoContent) usersFollowResponse() {}
+func (*UsersFollowNoContent) usersFollowRes() {}
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) usersGetGpgKeyForAuthenticatedResponse() {
-}
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) usersGetGpgKeyForAuthenticatedRes() {}
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) usersGetGpgKeyForAuthenticatedResponse() {
-}
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) usersGetGpgKeyForAuthenticatedRes() {}
 
 type UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedResponse() {
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedRes() {
 }
 
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersGetPublicSSHKeyForAuthenticatedResponse() {
+func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersGetPublicSSHKeyForAuthenticatedResponse() {
+func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersGetPublicSSHKeyForAuthenticatedResponse() {
+func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersGetPublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersListBlockedByAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersListBlockedByAuthenticatedApplicationJSONForbidden) usersListBlockedByAuthenticatedResponse() {
+func (*UsersListBlockedByAuthenticatedApplicationJSONForbidden) usersListBlockedByAuthenticatedRes() {
 }
 
 type UsersListBlockedByAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersListBlockedByAuthenticatedApplicationJSONNotFound) usersListBlockedByAuthenticatedResponse() {
-}
+func (*UsersListBlockedByAuthenticatedApplicationJSONNotFound) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListBlockedByAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBlockedByAuthenticatedResponse() {
+func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBlockedByAuthenticatedRes() {
 }
 
 type UsersListBlockedByAuthenticatedOK []SimpleUser
 
-func (*UsersListBlockedByAuthenticatedOK) usersListBlockedByAuthenticatedResponse() {}
+func (*UsersListBlockedByAuthenticatedOK) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListEmailsForAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersListEmailsForAuthenticatedApplicationJSONForbidden) usersListEmailsForAuthenticatedResponse() {
+func (*UsersListEmailsForAuthenticatedApplicationJSONForbidden) usersListEmailsForAuthenticatedRes() {
 }
 
 type UsersListEmailsForAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersListEmailsForAuthenticatedApplicationJSONNotFound) usersListEmailsForAuthenticatedResponse() {
-}
+func (*UsersListEmailsForAuthenticatedApplicationJSONNotFound) usersListEmailsForAuthenticatedRes() {}
 
 type UsersListEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedResponse() {
+func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedRes() {
 }
 
 type UsersListEmailsForAuthenticatedOK []Email
 
-func (*UsersListEmailsForAuthenticatedOK) usersListEmailsForAuthenticatedResponse() {}
+func (*UsersListEmailsForAuthenticatedOK) usersListEmailsForAuthenticatedRes() {}
 
 type UsersListFollowedByAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersListFollowedByAuthenticatedApplicationJSONForbidden) usersListFollowedByAuthenticatedResponse() {
+func (*UsersListFollowedByAuthenticatedApplicationJSONForbidden) usersListFollowedByAuthenticatedRes() {
 }
 
 type UsersListFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedResponse() {
+func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedRes() {
 }
 
 type UsersListFollowedByAuthenticatedOK []SimpleUser
 
-func (*UsersListFollowedByAuthenticatedOK) usersListFollowedByAuthenticatedResponse() {}
+func (*UsersListFollowedByAuthenticatedOK) usersListFollowedByAuthenticatedRes() {}
 
 type UsersListFollowersForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) usersListFollowersForAuthenticatedUserResponse() {
+func (*UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) usersListFollowersForAuthenticatedUserRes() {
 }
 
 type UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserResponse() {
+func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserRes() {
 }
 
 type UsersListFollowersForAuthenticatedUserOK []SimpleUser
 
-func (*UsersListFollowersForAuthenticatedUserOK) usersListFollowersForAuthenticatedUserResponse() {}
+func (*UsersListFollowersForAuthenticatedUserOK) usersListFollowersForAuthenticatedUserRes() {}
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) usersListGpgKeysForAuthenticatedResponse() {
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) usersListGpgKeysForAuthenticatedRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) usersListGpgKeysForAuthenticatedResponse() {
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) usersListGpgKeysForAuthenticatedRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedResponse() {
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedRes() {
 }
 
 type UsersListGpgKeysForAuthenticatedOK []GpgKey
 
-func (*UsersListGpgKeysForAuthenticatedOK) usersListGpgKeysForAuthenticatedResponse() {}
+func (*UsersListGpgKeysForAuthenticatedOK) usersListGpgKeysForAuthenticatedRes() {}
 
 type UsersListOK []SimpleUser
 
-func (*UsersListOK) usersListResponse() {}
+func (*UsersListOK) usersListRes() {}
 
 type UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) usersListPublicEmailsForAuthenticatedResponse() {
+func (*UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) usersListPublicEmailsForAuthenticatedResponse() {
+func (*UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedResponse() {
+func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
 }
 
 type UsersListPublicEmailsForAuthenticatedOK []Email
 
-func (*UsersListPublicEmailsForAuthenticatedOK) usersListPublicEmailsForAuthenticatedResponse() {}
+func (*UsersListPublicEmailsForAuthenticatedOK) usersListPublicEmailsForAuthenticatedRes() {}
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden BasicError
 
-func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) usersListPublicSSHKeysForAuthenticatedResponse() {
+func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound BasicError
 
-func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) usersListPublicSSHKeysForAuthenticatedResponse() {
+func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized BasicError
 
-func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedResponse() {
+func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
 type UsersListPublicSSHKeysForAuthenticatedOK []Key
 
-func (*UsersListPublicSSHKeysForAuthenticatedOK) usersListPublicSSHKeysForAuthenticatedResponse() {}
+func (*UsersListPublicSSHKeysForAuthenticatedOK) usersListPublicSSHKeysForAuthenticatedRes() {}
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest struct {
-	Visibility UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility `json:"visibility"`
+type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq struct {
+	Visibility UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility `json:"visibility"`
 }
 
-func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) usersSetPrimaryEmailVisibilityForAuthenticatedRequest() {
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq) usersSetPrimaryEmailVisibilityForAuthenticatedReq() {
 }
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility string
+type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility string
 
 const (
-	UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibilityPublic  UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility = "public"
-	UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibilityPrivate UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility = "private"
+	UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibilityPublic  UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility = "public"
+	UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibilityPrivate UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility = "private"
 )
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedOK []Email
 
 type UsersUnblockApplicationJSONForbidden BasicError
 
-func (*UsersUnblockApplicationJSONForbidden) usersUnblockResponse() {}
+func (*UsersUnblockApplicationJSONForbidden) usersUnblockRes() {}
 
 type UsersUnblockApplicationJSONNotFound BasicError
 
-func (*UsersUnblockApplicationJSONNotFound) usersUnblockResponse() {}
+func (*UsersUnblockApplicationJSONNotFound) usersUnblockRes() {}
 
 type UsersUnblockApplicationJSONUnauthorized BasicError
 
-func (*UsersUnblockApplicationJSONUnauthorized) usersUnblockResponse() {}
+func (*UsersUnblockApplicationJSONUnauthorized) usersUnblockRes() {}
 
 type UsersUnblockNoContent struct{}
 
-func (*UsersUnblockNoContent) usersUnblockResponse() {}
+func (*UsersUnblockNoContent) usersUnblockRes() {}
 
 type UsersUnfollowApplicationJSONForbidden BasicError
 
-func (*UsersUnfollowApplicationJSONForbidden) usersUnfollowResponse() {}
+func (*UsersUnfollowApplicationJSONForbidden) usersUnfollowRes() {}
 
 type UsersUnfollowApplicationJSONNotFound BasicError
 
-func (*UsersUnfollowApplicationJSONNotFound) usersUnfollowResponse() {}
+func (*UsersUnfollowApplicationJSONNotFound) usersUnfollowRes() {}
 
 type UsersUnfollowApplicationJSONUnauthorized BasicError
 
-func (*UsersUnfollowApplicationJSONUnauthorized) usersUnfollowResponse() {}
+func (*UsersUnfollowApplicationJSONUnauthorized) usersUnfollowRes() {}
 
 type UsersUnfollowNoContent struct{}
 
-func (*UsersUnfollowNoContent) usersUnfollowResponse() {}
+func (*UsersUnfollowNoContent) usersUnfollowRes() {}
 
-type UsersUpdateAuthenticatedApplicationJSONRequest struct {
+type UsersUpdateAuthenticatedApplicationJSONReq struct {
 	Bio             OptString    `json:"bio"`
 	Blog            OptString    `json:"blog"`
 	Company         OptString    `json:"company"`
@@ -14105,7 +14049,7 @@ type UsersUpdateAuthenticatedApplicationJSONRequest struct {
 	TwitterUsername OptNilString `json:"twitter_username"`
 }
 
-func (*UsersUpdateAuthenticatedApplicationJSONRequest) usersUpdateAuthenticatedRequest() {}
+func (*UsersUpdateAuthenticatedApplicationJSONReq) usersUpdateAuthenticatedReq() {}
 
 type WorkflowRunUsageBillable struct {
 	MACOS   OptWorkflowRunUsageBillableMACOS   `json:"MACOS"`
@@ -14219,7 +14163,7 @@ type APIOverview struct {
 	Web                              []string                         `json:"web"`
 }
 
-func (*APIOverview) metaGetResponse() {}
+func (*APIOverview) metaGetRes() {}
 
 // AppPermissions describes #/components/schemas/app-permissions.
 type AppPermissions struct {
@@ -14267,7 +14211,7 @@ type ApplicationGrant struct {
 	User      OptNullableSimpleUser `json:"user"`
 }
 
-func (*ApplicationGrant) oAuthAuthorizationsGetGrantResponse() {}
+func (*ApplicationGrant) oAuthAuthorizationsGetGrantRes() {}
 
 // Artifact describes #/components/schemas/artifact.
 type Artifact struct {
@@ -14325,7 +14269,7 @@ type Authorization struct {
 	User           OptNullableSimpleUser         `json:"user"`
 }
 
-func (*Authorization) oAuthAuthorizationsGetAuthorizationResponse() {}
+func (*Authorization) oAuthAuthorizationsGetAuthorizationRes() {}
 
 // Autolink describes #/components/schemas/autolink.
 type Autolink struct {
@@ -14334,7 +14278,7 @@ type Autolink struct {
 	URLTemplate string `json:"url_template"`
 }
 
-func (*Autolink) reposGetAutolinkResponse() {}
+func (*Autolink) reposGetAutolinkRes() {}
 
 // BaseGist describes #/components/schemas/base-gist.
 type BaseGist struct {
@@ -14368,110 +14312,110 @@ type BasicError struct {
 	URL              OptString `json:"url"`
 }
 
-func (*BasicError) activityGetRepoSubscriptionResponse()                      {}
-func (*BasicError) activityMarkThreadAsReadResponse()                         {}
-func (*BasicError) appsDeleteInstallationResponse()                           {}
-func (*BasicError) appsGetSubscriptionPlanForAccountStubbedResponse()         {}
-func (*BasicError) appsListPlansStubbedResponse()                             {}
-func (*BasicError) appsListSubscriptionsForAuthenticatedUserStubbedResponse() {}
-func (*BasicError) appsSuspendInstallationResponse()                          {}
-func (*BasicError) appsUnsuspendInstallationResponse()                        {}
-func (*BasicError) codeScanningGetSarifResponse()                             {}
-func (*BasicError) codesOfConductGetConductCodeResponse()                     {}
-func (*BasicError) gistsCheckIsStarredResponse()                              {}
-func (*BasicError) gistsGetCommentResponse()                                  {}
-func (*BasicError) gistsListResponse()                                        {}
-func (*BasicError) gistsUpdateCommentResponse()                               {}
-func (*BasicError) gitGetCommitResponse()                                     {}
-func (*BasicError) gitGetRefResponse()                                        {}
-func (*BasicError) gitGetTagResponse()                                        {}
-func (*BasicError) issuesCheckUserCanBeAssignedResponse()                     {}
-func (*BasicError) issuesDeleteMilestoneResponse()                            {}
-func (*BasicError) issuesGetCommentResponse()                                 {}
-func (*BasicError) issuesGetLabelResponse()                                   {}
-func (*BasicError) issuesGetMilestoneResponse()                               {}
-func (*BasicError) issuesListAssigneesResponse()                              {}
-func (*BasicError) issuesListLabelsForRepoResponse()                          {}
-func (*BasicError) issuesListLabelsOnIssueResponse()                          {}
-func (*BasicError) issuesRemoveAllLabelsResponse()                            {}
-func (*BasicError) migrationsDeleteArchiveForOrgResponse()                    {}
-func (*BasicError) migrationsDownloadArchiveForOrgResponse()                  {}
-func (*BasicError) migrationsGetCommitAuthorsResponse()                       {}
-func (*BasicError) migrationsGetImportStatusResponse()                        {}
-func (*BasicError) migrationsListReposForOrgResponse()                        {}
-func (*BasicError) migrationsListReposForUserResponse()                       {}
-func (*BasicError) migrationsUnlockRepoForOrgResponse()                       {}
-func (*BasicError) orgsCheckBlockedUserResponse()                             {}
-func (*BasicError) orgsConvertMemberToOutsideCollaboratorResponse()           {}
-func (*BasicError) orgsDeleteWebhookResponse()                                {}
-func (*BasicError) orgsGetResponse()                                          {}
-func (*BasicError) orgsGetWebhookResponse()                                   {}
-func (*BasicError) orgsListFailedInvitationsResponse()                        {}
-func (*BasicError) orgsListInvitationTeamsResponse()                          {}
-func (*BasicError) orgsListPendingInvitationsResponse()                       {}
-func (*BasicError) orgsListWebhooksResponse()                                 {}
-func (*BasicError) orgsPingWebhookResponse()                                  {}
-func (*BasicError) orgsRemoveMemberResponse()                                 {}
-func (*BasicError) orgsRemoveSamlSSOAuthorizationResponse()                   {}
-func (*BasicError) orgsSetPublicMembershipForAuthenticatedUserResponse()      {}
-func (*BasicError) pullsCreateReplyForReviewCommentResponse()                 {}
-func (*BasicError) pullsCreateReviewResponse()                                {}
-func (*BasicError) pullsDeletePendingReviewResponse()                         {}
-func (*BasicError) pullsDeleteReviewCommentResponse()                         {}
-func (*BasicError) pullsDismissReviewResponse()                               {}
-func (*BasicError) pullsGetReviewCommentResponse()                            {}
-func (*BasicError) pullsGetReviewResponse()                                   {}
-func (*BasicError) pullsListCommentsForReviewResponse()                       {}
-func (*BasicError) rateLimitGetResponse()                                     {}
-func (*BasicError) reposCreateCommitSignatureProtectionResponse()             {}
-func (*BasicError) reposDeleteAdminBranchProtectionResponse()                 {}
-func (*BasicError) reposDeleteAutolinkResponse()                              {}
-func (*BasicError) reposDeleteBranchProtectionResponse()                      {}
-func (*BasicError) reposDeleteCommitCommentResponse()                         {}
-func (*BasicError) reposDeleteCommitSignatureProtectionResponse()             {}
-func (*BasicError) reposDeleteDeploymentResponse()                            {}
-func (*BasicError) reposDeletePullRequestReviewProtectionResponse()           {}
-func (*BasicError) reposDeleteWebhookResponse()                               {}
-func (*BasicError) reposGetAccessRestrictionsResponse()                       {}
-func (*BasicError) reposGetAllStatusCheckContextsResponse()                   {}
-func (*BasicError) reposGetAllTopicsResponse()                                {}
-func (*BasicError) reposGetAppsWithAccessToProtectedBranchResponse()          {}
-func (*BasicError) reposGetAutolinkResponse()                                 {}
-func (*BasicError) reposGetBranchProtectionResponse()                         {}
-func (*BasicError) reposGetCollaboratorPermissionLevelResponse()              {}
-func (*BasicError) reposGetCombinedStatusForRefResponse()                     {}
-func (*BasicError) reposGetCommitCommentResponse()                            {}
-func (*BasicError) reposGetCommitSignatureProtectionResponse()                {}
-func (*BasicError) reposGetDeployKeyResponse()                                {}
-func (*BasicError) reposGetDeploymentStatusResponse()                         {}
-func (*BasicError) reposGetPagesHealthCheckResponse()                         {}
-func (*BasicError) reposGetPagesResponse()                                    {}
-func (*BasicError) reposGetParticipationStatsResponse()                       {}
-func (*BasicError) reposGetReleaseAssetResponse()                             {}
-func (*BasicError) reposGetReleaseByTagResponse()                             {}
-func (*BasicError) reposGetReleaseResponse()                                  {}
-func (*BasicError) reposGetStatusChecksProtectionResponse()                   {}
-func (*BasicError) reposGetTeamsWithAccessToProtectedBranchResponse()         {}
-func (*BasicError) reposGetTopPathsResponse()                                 {}
-func (*BasicError) reposGetTopReferrersResponse()                             {}
-func (*BasicError) reposGetUsersWithAccessToProtectedBranchResponse()         {}
-func (*BasicError) reposListBranchesResponse()                                {}
-func (*BasicError) reposListCommitStatusesForRefResponse()                    {}
-func (*BasicError) reposListDeploymentStatusesResponse()                      {}
-func (*BasicError) reposListReleasesResponse()                                {}
-func (*BasicError) reposPingWebhookResponse()                                 {}
-func (*BasicError) reposReplaceAllTopicsResponse()                            {}
-func (*BasicError) reposTestPushWebhookResponse()                             {}
-func (*BasicError) reposUpdateCommitCommentResponse()                         {}
-func (*BasicError) reposUpdateReleaseResponse()                               {}
-func (*BasicError) teamsAddMemberLegacyResponse()                             {}
-func (*BasicError) teamsAddOrUpdateMembershipForUserLegacyResponse()          {}
-func (*BasicError) teamsGetByNameResponse()                                   {}
-func (*BasicError) teamsGetLegacyResponse()                                   {}
-func (*BasicError) teamsGetMembershipForUserLegacyResponse()                  {}
-func (*BasicError) teamsListProjectsLegacyResponse()                          {}
-func (*BasicError) teamsListReposLegacyResponse()                             {}
-func (*BasicError) teamsListResponse()                                        {}
+func (*BasicError) activityGetRepoSubscriptionRes()                      {}
+func (*BasicError) activityMarkThreadAsReadRes()                         {}
+func (*BasicError) appsDeleteInstallationRes()                           {}
+func (*BasicError) appsGetSubscriptionPlanForAccountStubbedRes()         {}
+func (*BasicError) appsListPlansStubbedRes()                             {}
+func (*BasicError) appsListSubscriptionsForAuthenticatedUserStubbedRes() {}
+func (*BasicError) appsSuspendInstallationRes()                          {}
+func (*BasicError) appsUnsuspendInstallationRes()                        {}
+func (*BasicError) codeScanningGetSarifRes()                             {}
+func (*BasicError) codesOfConductGetConductCodeRes()                     {}
+func (*BasicError) gistsCheckIsStarredRes()                              {}
+func (*BasicError) gistsGetCommentRes()                                  {}
+func (*BasicError) gistsListRes()                                        {}
+func (*BasicError) gistsUpdateCommentRes()                               {}
+func (*BasicError) gitGetCommitRes()                                     {}
+func (*BasicError) gitGetRefRes()                                        {}
+func (*BasicError) gitGetTagRes()                                        {}
+func (*BasicError) issuesCheckUserCanBeAssignedRes()                     {}
+func (*BasicError) issuesDeleteMilestoneRes()                            {}
+func (*BasicError) issuesGetCommentRes()                                 {}
+func (*BasicError) issuesGetLabelRes()                                   {}
+func (*BasicError) issuesGetMilestoneRes()                               {}
+func (*BasicError) issuesListAssigneesRes()                              {}
+func (*BasicError) issuesListLabelsForRepoRes()                          {}
+func (*BasicError) issuesListLabelsOnIssueRes()                          {}
+func (*BasicError) issuesRemoveAllLabelsRes()                            {}
+func (*BasicError) migrationsDeleteArchiveForOrgRes()                    {}
+func (*BasicError) migrationsDownloadArchiveForOrgRes()                  {}
+func (*BasicError) migrationsGetCommitAuthorsRes()                       {}
+func (*BasicError) migrationsGetImportStatusRes()                        {}
+func (*BasicError) migrationsListReposForOrgRes()                        {}
+func (*BasicError) migrationsListReposForUserRes()                       {}
+func (*BasicError) migrationsUnlockRepoForOrgRes()                       {}
+func (*BasicError) orgsCheckBlockedUserRes()                             {}
+func (*BasicError) orgsConvertMemberToOutsideCollaboratorRes()           {}
+func (*BasicError) orgsDeleteWebhookRes()                                {}
+func (*BasicError) orgsGetRes()                                          {}
+func (*BasicError) orgsGetWebhookRes()                                   {}
+func (*BasicError) orgsListFailedInvitationsRes()                        {}
+func (*BasicError) orgsListInvitationTeamsRes()                          {}
+func (*BasicError) orgsListPendingInvitationsRes()                       {}
+func (*BasicError) orgsListWebhooksRes()                                 {}
+func (*BasicError) orgsPingWebhookRes()                                  {}
+func (*BasicError) orgsRemoveMemberRes()                                 {}
+func (*BasicError) orgsRemoveSamlSSOAuthorizationRes()                   {}
+func (*BasicError) orgsSetPublicMembershipForAuthenticatedUserRes()      {}
+func (*BasicError) pullsCreateReplyForReviewCommentRes()                 {}
+func (*BasicError) pullsCreateReviewRes()                                {}
+func (*BasicError) pullsDeletePendingReviewRes()                         {}
+func (*BasicError) pullsDeleteReviewCommentRes()                         {}
+func (*BasicError) pullsDismissReviewRes()                               {}
+func (*BasicError) pullsGetReviewCommentRes()                            {}
+func (*BasicError) pullsGetReviewRes()                                   {}
+func (*BasicError) pullsListCommentsForReviewRes()                       {}
+func (*BasicError) rateLimitGetRes()                                     {}
+func (*BasicError) reposCreateCommitSignatureProtectionRes()             {}
+func (*BasicError) reposDeleteAdminBranchProtectionRes()                 {}
+func (*BasicError) reposDeleteAutolinkRes()                              {}
+func (*BasicError) reposDeleteBranchProtectionRes()                      {}
+func (*BasicError) reposDeleteCommitCommentRes()                         {}
+func (*BasicError) reposDeleteCommitSignatureProtectionRes()             {}
+func (*BasicError) reposDeleteDeploymentRes()                            {}
+func (*BasicError) reposDeletePullRequestReviewProtectionRes()           {}
+func (*BasicError) reposDeleteWebhookRes()                               {}
+func (*BasicError) reposGetAccessRestrictionsRes()                       {}
+func (*BasicError) reposGetAllStatusCheckContextsRes()                   {}
+func (*BasicError) reposGetAllTopicsRes()                                {}
+func (*BasicError) reposGetAppsWithAccessToProtectedBranchRes()          {}
+func (*BasicError) reposGetAutolinkRes()                                 {}
+func (*BasicError) reposGetBranchProtectionRes()                         {}
+func (*BasicError) reposGetCollaboratorPermissionLevelRes()              {}
+func (*BasicError) reposGetCombinedStatusForRefRes()                     {}
+func (*BasicError) reposGetCommitCommentRes()                            {}
+func (*BasicError) reposGetCommitSignatureProtectionRes()                {}
+func (*BasicError) reposGetDeployKeyRes()                                {}
+func (*BasicError) reposGetDeploymentStatusRes()                         {}
+func (*BasicError) reposGetPagesHealthCheckRes()                         {}
+func (*BasicError) reposGetPagesRes()                                    {}
+func (*BasicError) reposGetParticipationStatsRes()                       {}
+func (*BasicError) reposGetReleaseAssetRes()                             {}
+func (*BasicError) reposGetReleaseByTagRes()                             {}
+func (*BasicError) reposGetReleaseRes()                                  {}
+func (*BasicError) reposGetStatusChecksProtectionRes()                   {}
+func (*BasicError) reposGetTeamsWithAccessToProtectedBranchRes()         {}
+func (*BasicError) reposGetTopPathsRes()                                 {}
+func (*BasicError) reposGetTopReferrersRes()                             {}
+func (*BasicError) reposGetUsersWithAccessToProtectedBranchRes()         {}
+func (*BasicError) reposListBranchesRes()                                {}
+func (*BasicError) reposListCommitStatusesForRefRes()                    {}
+func (*BasicError) reposListDeploymentStatusesRes()                      {}
+func (*BasicError) reposListReleasesRes()                                {}
+func (*BasicError) reposPingWebhookRes()                                 {}
+func (*BasicError) reposReplaceAllTopicsRes()                            {}
+func (*BasicError) reposTestPushWebhookRes()                             {}
+func (*BasicError) reposUpdateCommitCommentRes()                         {}
+func (*BasicError) reposUpdateReleaseRes()                               {}
+func (*BasicError) teamsAddMemberLegacyRes()                             {}
+func (*BasicError) teamsAddOrUpdateMembershipForUserLegacyRes()          {}
+func (*BasicError) teamsGetByNameRes()                                   {}
+func (*BasicError) teamsGetLegacyRes()                                   {}
+func (*BasicError) teamsGetMembershipForUserLegacyRes()                  {}
+func (*BasicError) teamsListProjectsLegacyRes()                          {}
+func (*BasicError) teamsListReposLegacyRes()                             {}
+func (*BasicError) teamsListRes()                                        {}
 
 // Blob describes #/components/schemas/blob.
 type Blob struct {
@@ -14501,7 +14445,7 @@ type BranchProtection struct {
 	URL                            OptString                                         `json:"url"`
 }
 
-func (*BranchProtection) reposGetBranchProtectionResponse() {}
+func (*BranchProtection) reposGetBranchProtectionRes() {}
 
 // BranchRestrictionPolicy describes #/components/schemas/branch-restriction-policy.
 type BranchRestrictionPolicy struct {
@@ -14514,7 +14458,7 @@ type BranchRestrictionPolicy struct {
 	UsersURL url.URL                            `json:"users_url"`
 }
 
-func (*BranchRestrictionPolicy) reposGetAccessRestrictionsResponse() {}
+func (*BranchRestrictionPolicy) reposGetAccessRestrictionsRes() {}
 
 // BranchShort describes #/components/schemas/branch-short.
 type BranchShort struct {
@@ -14535,7 +14479,7 @@ type BranchWithProtection struct {
 	RequiredApprovingReviewCount OptInt                    `json:"required_approving_review_count"`
 }
 
-func (*BranchWithProtection) reposGetBranchResponse() {}
+func (*BranchWithProtection) reposGetBranchRes() {}
 
 // CheckAnnotation describes #/components/schemas/check-annotation.
 type CheckAnnotation struct {
@@ -14610,7 +14554,7 @@ type CodeOfConduct struct {
 	URL     url.URL   `json:"url"`
 }
 
-func (*CodeOfConduct) codesOfConductGetConductCodeResponse() {}
+func (*CodeOfConduct) codesOfConductGetConductCodeRes() {}
 
 // CodeOfConductSimple describes #/components/schemas/code-of-conduct-simple.
 type CodeOfConductSimple struct {
@@ -14712,7 +14656,7 @@ type CodeScanningAnalysisDeletion struct {
 	NextAnalysisURL  NilURL `json:"next_analysis_url"`
 }
 
-func (*CodeScanningAnalysisDeletion) codeScanningDeleteAnalysisResponse() {}
+func (*CodeScanningAnalysisDeletion) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningAnalysisEnvironment string
 
@@ -14743,7 +14687,7 @@ type CodeScanningSarifsReceipt struct {
 	URL OptURL                       `json:"url"`
 }
 
-func (*CodeScanningSarifsReceipt) codeScanningUploadSarifResponse() {}
+func (*CodeScanningSarifsReceipt) codeScanningUploadSarifRes() {}
 
 // CodeScanningSarifsStatus describes #/components/schemas/code-scanning-sarifs-status.
 type CodeScanningSarifsStatus struct {
@@ -14751,7 +14695,7 @@ type CodeScanningSarifsStatus struct {
 	ProcessingStatus OptCodeScanningSarifsStatusProcessingStatus `json:"processing_status"`
 }
 
-func (*CodeScanningSarifsStatus) codeScanningGetSarifResponse() {}
+func (*CodeScanningSarifsStatus) codeScanningGetSarifRes() {}
 
 // CombinedBillingUsage describes #/components/schemas/combined-billing-usage.
 type CombinedBillingUsage struct {
@@ -14771,7 +14715,7 @@ type CombinedCommitStatus struct {
 	URL        url.URL              `json:"url"`
 }
 
-func (*CombinedCommitStatus) reposGetCombinedStatusForRefResponse() {}
+func (*CombinedCommitStatus) reposGetCombinedStatusForRefRes() {}
 
 // Commit describes #/components/schemas/commit.
 type Commit struct {
@@ -14813,8 +14757,8 @@ type CommitComment struct {
 	User              NullableSimpleUser `json:"user"`
 }
 
-func (*CommitComment) reposGetCommitCommentResponse()    {}
-func (*CommitComment) reposUpdateCommitCommentResponse() {}
+func (*CommitComment) reposGetCommitCommentRes()    {}
+func (*CommitComment) reposUpdateCommitCommentRes() {}
 
 // CommitComparison describes #/components/schemas/commit-comparison.
 type CommitComparison struct {
@@ -14833,7 +14777,7 @@ type CommitComparison struct {
 	URL             url.URL                `json:"url"`
 }
 
-func (*CommitComparison) reposCompareCommitsResponse() {}
+func (*CommitComparison) reposCompareCommitsRes() {}
 
 // CommunityProfile describes #/components/schemas/community-profile.
 type CommunityProfile struct {
@@ -14937,7 +14881,7 @@ type DeployKey struct {
 	Verified  bool   `json:"verified"`
 }
 
-func (*DeployKey) reposGetDeployKeyResponse() {}
+func (*DeployKey) reposGetDeployKeyRes() {}
 
 // DeploymentSimple describes #/components/schemas/deployment-simple.
 type DeploymentSimple struct {
@@ -14976,7 +14920,7 @@ type DeploymentStatus struct {
 	UpdatedAt             time.Time              `json:"updated_at"`
 }
 
-func (*DeploymentStatus) reposGetDeploymentStatusResponse() {}
+func (*DeploymentStatus) reposGetDeploymentStatusRes() {}
 
 // DiffEntry describes #/components/schemas/diff-entry.
 type DiffEntry struct {
@@ -15004,10 +14948,10 @@ type Email struct {
 // EmptyObject describes #/components/schemas/empty-object.
 type EmptyObject struct{}
 
-func (*EmptyObject) actionsApproveWorkflowRunResponse()              {}
-func (*EmptyObject) actionsCreateOrUpdateEnvironmentSecretResponse() {}
-func (*EmptyObject) actionsCreateOrUpdateOrgSecretResponse()         {}
-func (*EmptyObject) reposGetPagesHealthCheckResponse()               {}
+func (*EmptyObject) actionsApproveWorkflowRunRes()              {}
+func (*EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
+func (*EmptyObject) actionsCreateOrUpdateOrgSecretRes()         {}
+func (*EmptyObject) reposGetPagesHealthCheckRes()               {}
 
 type EnabledOrganizations string
 
@@ -15150,7 +15094,7 @@ type FullRepository struct {
 	WatchersCount          int                                     `json:"watchers_count"`
 }
 
-func (*FullRepository) reposGetResponse() {}
+func (*FullRepository) reposGetRes() {}
 
 // GistComment describes #/components/schemas/gist-comment.
 type GistComment struct {
@@ -15164,9 +15108,9 @@ type GistComment struct {
 	User              NullableSimpleUser `json:"user"`
 }
 
-func (*GistComment) gistsCreateCommentResponse() {}
-func (*GistComment) gistsGetCommentResponse()    {}
-func (*GistComment) gistsUpdateCommentResponse() {}
+func (*GistComment) gistsCreateCommentRes() {}
+func (*GistComment) gistsGetCommentRes()    {}
+func (*GistComment) gistsUpdateCommentRes() {}
 
 // GistCommit describes #/components/schemas/gist-commit.
 type GistCommit struct {
@@ -15191,7 +15135,7 @@ type GitCommit struct {
 	Verification GitCommitVerification  `json:"verification"`
 }
 
-func (*GitCommit) gitGetCommitResponse() {}
+func (*GitCommit) gitGetCommitRes() {}
 
 // GitRef describes #/components/schemas/git-ref.
 type GitRef struct {
@@ -15201,7 +15145,7 @@ type GitRef struct {
 	URL    url.URL      `json:"url"`
 }
 
-func (*GitRef) gitGetRefResponse() {}
+func (*GitRef) gitGetRefRes() {}
 
 // GitTag describes #/components/schemas/git-tag.
 type GitTag struct {
@@ -15215,7 +15159,7 @@ type GitTag struct {
 	Verification OptVerification `json:"verification"`
 }
 
-func (*GitTag) gitGetTagResponse() {}
+func (*GitTag) gitGetTagRes() {}
 
 // GitTree describes #/components/schemas/git-tree.
 type GitTree struct {
@@ -15231,7 +15175,7 @@ type GitignoreTemplate struct {
 	Source string `json:"source"`
 }
 
-func (*GitignoreTemplate) gitignoreGetTemplateResponse() {}
+func (*GitignoreTemplate) gitignoreGetTemplateRes() {}
 
 // GpgKey describes #/components/schemas/gpg-key.
 type GpgKey struct {
@@ -15250,14 +15194,14 @@ type GpgKey struct {
 	Subkeys           []GpgKeySubkeysItem `json:"subkeys"`
 }
 
-func (*GpgKey) usersGetGpgKeyForAuthenticatedResponse() {}
+func (*GpgKey) usersGetGpgKeyForAuthenticatedRes() {}
 
 // GroupMapping describes #/components/schemas/group-mapping.
 type GroupMapping struct {
 	Groups []GroupMappingGroupsItem `json:"groups"`
 }
 
-func (*GroupMapping) teamsListIdpGroupsForLegacyResponse() {}
+func (*GroupMapping) teamsListIdpGroupsForLegacyRes() {}
 
 // HookDelivery describes #/components/schemas/hook-delivery.
 type HookDelivery struct {
@@ -15319,7 +15263,7 @@ type Import struct {
 	VcsURL          string                     `json:"vcs_url"`
 }
 
-func (*Import) migrationsGetImportStatusResponse() {}
+func (*Import) migrationsGetImportStatusRes() {}
 
 // InstallationToken describes #/components/schemas/installation-token.
 type InstallationToken struct {
@@ -15354,7 +15298,7 @@ type Integration struct {
 	WebhookSecret      OptNilString           `json:"webhook_secret"`
 }
 
-func (*Integration) appsGetBySlugResponse() {}
+func (*Integration) appsGetBySlugRes() {}
 
 type InteractionExpiry string
 
@@ -15380,8 +15324,8 @@ type InteractionLimit struct {
 	Limit  InteractionGroup     `json:"limit"`
 }
 
-func (*InteractionLimit) interactionsSetRestrictionsForAuthenticatedUserRequest() {}
-func (*InteractionLimit) interactionsSetRestrictionsForOrgRequest()               {}
+func (*InteractionLimit) interactionsSetRestrictionsForAuthenticatedUserReq() {}
+func (*InteractionLimit) interactionsSetRestrictionsForOrgReq()               {}
 
 // InteractionLimitResponse describes #/components/schemas/interaction-limit-response.
 type InteractionLimitResponse struct {
@@ -15390,7 +15334,7 @@ type InteractionLimitResponse struct {
 	Origin    string           `json:"origin"`
 }
 
-func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoResponse() {}
+func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoRes() {}
 
 // IssueComment describes #/components/schemas/issue-comment.
 type IssueComment struct {
@@ -15410,7 +15354,7 @@ type IssueComment struct {
 	User                  NullableSimpleUser     `json:"user"`
 }
 
-func (*IssueComment) issuesGetCommentResponse() {}
+func (*IssueComment) issuesGetCommentRes() {}
 
 // Job describes #/components/schemas/job.
 type Job struct {
@@ -15441,7 +15385,7 @@ type Key struct {
 	Verified  bool      `json:"verified"`
 }
 
-func (*Key) usersGetPublicSSHKeyForAuthenticatedResponse() {}
+func (*Key) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
 // KeySimple describes #/components/schemas/key-simple.
 type KeySimple struct {
@@ -15460,7 +15404,7 @@ type Label struct {
 	URL         url.URL   `json:"url"`
 }
 
-func (*Label) issuesGetLabelResponse() {}
+func (*Label) issuesGetLabelRes() {}
 
 // Language describes #/components/schemas/language.
 type Language struct{}
@@ -15482,7 +15426,7 @@ type License struct {
 	URL            NilURL    `json:"url"`
 }
 
-func (*License) licensesGetResponse() {}
+func (*License) licensesGetRes() {}
 
 // LicenseContent describes #/components/schemas/license-content.
 type LicenseContent struct {
@@ -15562,8 +15506,8 @@ type MarketplacePurchase struct {
 	URL                      string                                            `json:"url"`
 }
 
-func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountResponse()        {}
-func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountStubbedResponse() {}
+func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountRes()        {}
+func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountStubbedRes() {}
 
 // MergedUpstream describes #/components/schemas/merged-upstream.
 type MergedUpstream struct {
@@ -15572,7 +15516,7 @@ type MergedUpstream struct {
 	Message    OptString                  `json:"message"`
 }
 
-func (*MergedUpstream) reposMergeUpstreamResponse() {}
+func (*MergedUpstream) reposMergeUpstreamRes() {}
 
 // Migration describes #/components/schemas/migration.
 type Migration struct {
@@ -15595,7 +15539,7 @@ type Migration struct {
 	UpdatedAt            time.Time          `json:"updated_at"`
 }
 
-func (*Migration) migrationsGetStatusForAuthenticatedUserResponse() {}
+func (*Migration) migrationsGetStatusForAuthenticatedUserRes() {}
 
 // Milestone describes #/components/schemas/milestone.
 type Milestone struct {
@@ -15617,7 +15561,7 @@ type Milestone struct {
 	UpdatedAt    time.Time          `json:"updated_at"`
 }
 
-func (*Milestone) issuesGetMilestoneResponse() {}
+func (*Milestone) issuesGetMilestoneRes() {}
 
 // MinimalRepository describes #/components/schemas/minimal-repository.
 type MinimalRepository struct {
@@ -15930,7 +15874,7 @@ type OrgHook struct {
 	UpdatedAt     time.Time     `json:"updated_at"`
 }
 
-func (*OrgHook) orgsGetWebhookResponse() {}
+func (*OrgHook) orgsGetWebhookRes() {}
 
 // OrgMembership describes #/components/schemas/org-membership.
 type OrgMembership struct {
@@ -15943,8 +15887,8 @@ type OrgMembership struct {
 	User            NullableSimpleUser          `json:"user"`
 }
 
-func (*OrgMembership) orgsGetMembershipForAuthenticatedUserResponse() {}
-func (*OrgMembership) orgsGetMembershipForUserResponse()              {}
+func (*OrgMembership) orgsGetMembershipForAuthenticatedUserRes() {}
+func (*OrgMembership) orgsGetMembershipForUserRes()              {}
 
 // OrganizationActionsSecret describes #/components/schemas/organization-actions-secret.
 type OrganizationActionsSecret struct {
@@ -16005,7 +15949,7 @@ type OrganizationFull struct {
 	UpdatedAt                            time.Time               `json:"updated_at"`
 }
 
-func (*OrganizationFull) orgsGetResponse() {}
+func (*OrganizationFull) orgsGetRes() {}
 
 // OrganizationInvitation describes #/components/schemas/organization-invitation.
 type OrganizationInvitation struct {
@@ -16060,7 +16004,7 @@ type Page struct {
 	URL                       url.URL                        `json:"url"`
 }
 
-func (*Page) reposGetPagesResponse() {}
+func (*Page) reposGetPagesRes() {}
 
 // PageBuild describes #/components/schemas/page-build.
 type PageBuild struct {
@@ -16086,7 +16030,7 @@ type PagesHealthCheck struct {
 	Domain    OptPagesHealthCheckDomain       `json:"domain"`
 }
 
-func (*PagesHealthCheck) reposGetPagesHealthCheckResponse() {}
+func (*PagesHealthCheck) reposGetPagesHealthCheckRes() {}
 
 // PagesHTTPSCertificate describes #/components/schemas/pages-https-certificate.
 type PagesHTTPSCertificate struct {
@@ -16108,7 +16052,7 @@ type ParticipationStats struct {
 	Owner []int `json:"owner"`
 }
 
-func (*ParticipationStats) reposGetParticipationStatsResponse() {}
+func (*ParticipationStats) reposGetParticipationStatsRes() {}
 
 // PorterAuthor describes #/components/schemas/porter-author.
 type PorterAuthor struct {
@@ -16194,11 +16138,11 @@ type Project struct {
 	UpdatedAt              time.Time                        `json:"updated_at"`
 }
 
-func (*Project) projectsCreateForAuthenticatedUserResponse() {}
-func (*Project) projectsCreateForOrgResponse()               {}
-func (*Project) projectsCreateForRepoResponse()              {}
-func (*Project) projectsGetResponse()                        {}
-func (*Project) projectsUpdateResponse()                     {}
+func (*Project) projectsCreateForAuthenticatedUserRes() {}
+func (*Project) projectsCreateForOrgRes()               {}
+func (*Project) projectsCreateForRepoRes()              {}
+func (*Project) projectsGetRes()                        {}
+func (*Project) projectsUpdateRes()                     {}
 
 // ProjectCard describes #/components/schemas/project-card.
 type ProjectCard struct {
@@ -16217,8 +16161,8 @@ type ProjectCard struct {
 	UpdatedAt  time.Time          `json:"updated_at"`
 }
 
-func (*ProjectCard) projectsGetCardResponse()    {}
-func (*ProjectCard) projectsUpdateCardResponse() {}
+func (*ProjectCard) projectsGetCardRes()    {}
+func (*ProjectCard) projectsUpdateCardRes() {}
 
 // ProjectColumn describes #/components/schemas/project-column.
 type ProjectColumn struct {
@@ -16232,9 +16176,9 @@ type ProjectColumn struct {
 	UpdatedAt  time.Time `json:"updated_at"`
 }
 
-func (*ProjectColumn) projectsCreateColumnResponse() {}
-func (*ProjectColumn) projectsGetColumnResponse()    {}
-func (*ProjectColumn) projectsUpdateColumnResponse() {}
+func (*ProjectColumn) projectsCreateColumnRes() {}
+func (*ProjectColumn) projectsGetColumnRes()    {}
+func (*ProjectColumn) projectsUpdateColumnRes() {}
 
 // ProtectedBranch describes #/components/schemas/protected-branch.
 type ProtectedBranch struct {
@@ -16250,7 +16194,7 @@ type ProtectedBranch struct {
 	URL                            url.URL                                          `json:"url"`
 }
 
-func (*ProtectedBranch) reposUpdateBranchProtectionResponse() {}
+func (*ProtectedBranch) reposUpdateBranchProtectionRes() {}
 
 // ProtectedBranchAdminEnforced describes #/components/schemas/protected-branch-admin-enforced.
 type ProtectedBranchAdminEnforced struct {
@@ -16258,8 +16202,8 @@ type ProtectedBranchAdminEnforced struct {
 	URL     url.URL `json:"url"`
 }
 
-func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionResponse() {}
-func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionResponse()    {}
+func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionRes() {}
+func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionRes()    {}
 
 // ProtectedBranchPullRequestReview describes #/components/schemas/protected-branch-pull-request-review.
 type ProtectedBranchPullRequestReview struct {
@@ -16303,12 +16247,12 @@ type PullRequestReview struct {
 	User              NullableSimpleUser     `json:"user"`
 }
 
-func (*PullRequestReview) pullsCreateReviewResponse()        {}
-func (*PullRequestReview) pullsDeletePendingReviewResponse() {}
-func (*PullRequestReview) pullsDismissReviewResponse()       {}
-func (*PullRequestReview) pullsGetReviewResponse()           {}
-func (*PullRequestReview) pullsSubmitReviewResponse()        {}
-func (*PullRequestReview) pullsUpdateReviewResponse()        {}
+func (*PullRequestReview) pullsCreateReviewRes()        {}
+func (*PullRequestReview) pullsDeletePendingReviewRes() {}
+func (*PullRequestReview) pullsDismissReviewRes()       {}
+func (*PullRequestReview) pullsGetReviewRes()           {}
+func (*PullRequestReview) pullsSubmitReviewRes()        {}
+func (*PullRequestReview) pullsUpdateReviewRes()        {}
 
 // PullRequestReviewComment describes #/components/schemas/pull-request-review-comment.
 type PullRequestReviewComment struct {
@@ -16342,8 +16286,8 @@ type PullRequestReviewComment struct {
 	User                SimpleUser                              `json:"user"`
 }
 
-func (*PullRequestReviewComment) pullsCreateReplyForReviewCommentResponse() {}
-func (*PullRequestReviewComment) pullsGetReviewCommentResponse()            {}
+func (*PullRequestReviewComment) pullsCreateReplyForReviewCommentRes() {}
+func (*PullRequestReviewComment) pullsGetReviewCommentRes()            {}
 
 // PullRequestReviewRequest describes #/components/schemas/pull-request-review-request.
 type PullRequestReviewRequest struct {
@@ -16365,7 +16309,7 @@ type RateLimitOverview struct {
 	Resources RateLimitOverviewResources `json:"resources"`
 }
 
-func (*RateLimitOverview) rateLimitGetResponse() {}
+func (*RateLimitOverview) rateLimitGetRes() {}
 
 // Reaction describes #/components/schemas/reaction.
 type Reaction struct {
@@ -16424,9 +16368,9 @@ type Release struct {
 	ZipballURL      NilURL            `json:"zipball_url"`
 }
 
-func (*Release) reposGetReleaseByTagResponse() {}
-func (*Release) reposGetReleaseResponse()      {}
-func (*Release) reposUpdateReleaseResponse()   {}
+func (*Release) reposGetReleaseByTagRes() {}
+func (*Release) reposGetReleaseRes()      {}
+func (*Release) reposUpdateReleaseRes()   {}
 
 // ReleaseAsset describes #/components/schemas/release-asset.
 type ReleaseAsset struct {
@@ -16445,7 +16389,7 @@ type ReleaseAsset struct {
 	Uploader           NullableSimpleUser `json:"uploader"`
 }
 
-func (*ReleaseAsset) reposGetReleaseAssetResponse() {}
+func (*ReleaseAsset) reposGetReleaseAssetRes() {}
 
 // Repository describes #/components/schemas/repository.
 type Repository struct {
@@ -16547,7 +16491,7 @@ type RepositoryCollaboratorPermission struct {
 	User       NullableSimpleUser `json:"user"`
 }
 
-func (*RepositoryCollaboratorPermission) reposGetCollaboratorPermissionLevelResponse() {}
+func (*RepositoryCollaboratorPermission) reposGetCollaboratorPermissionLevelRes() {}
 
 // RepositoryInvitation describes #/components/schemas/repository-invitation.
 type RepositoryInvitation struct {
@@ -16573,7 +16517,7 @@ type RepositorySubscription struct {
 	URL           url.URL   `json:"url"`
 }
 
-func (*RepositorySubscription) activityGetRepoSubscriptionResponse() {}
+func (*RepositorySubscription) activityGetRepoSubscriptionRes() {}
 
 // ReviewComment describes #/components/schemas/review-comment.
 type ReviewComment struct {
@@ -16684,8 +16628,8 @@ type ScimError struct {
 	Status           OptInt       `json:"status"`
 }
 
-func (*ScimError) codeScanningDeleteAnalysisResponse() {}
-func (*ScimError) reposListCommitsResponse()           {}
+func (*ScimError) codeScanningDeleteAnalysisRes() {}
+func (*ScimError) reposListCommitsRes()           {}
 
 // ScimGroupListEnterprise describes #/components/schemas/scim-group-list-enterprise.
 type ScimGroupListEnterprise struct {
@@ -16720,8 +16664,8 @@ type SecretScanningAlert struct {
 	URL          *AlertURL                        `json:"url"`
 }
 
-func (*SecretScanningAlert) secretScanningGetAlertResponse()    {}
-func (*SecretScanningAlert) secretScanningUpdateAlertResponse() {}
+func (*SecretScanningAlert) secretScanningGetAlertRes()    {}
+func (*SecretScanningAlert) secretScanningUpdateAlertRes() {}
 
 type SecretScanningAlertResolution string
 
@@ -16836,7 +16780,7 @@ type StatusCheckPolicy struct {
 	URL         url.URL  `json:"url"`
 }
 
-func (*StatusCheckPolicy) reposGetStatusChecksProtectionResponse() {}
+func (*StatusCheckPolicy) reposGetStatusChecksProtectionRes() {}
 
 // Tag describes #/components/schemas/tag.
 type Tag struct {
@@ -16925,8 +16869,8 @@ type TeamFull struct {
 	UpdatedAt       time.Time             `json:"updated_at"`
 }
 
-func (*TeamFull) teamsGetByNameResponse() {}
-func (*TeamFull) teamsGetLegacyResponse() {}
+func (*TeamFull) teamsGetByNameRes() {}
+func (*TeamFull) teamsGetLegacyRes() {}
 
 // TeamMembership describes #/components/schemas/team-membership.
 type TeamMembership struct {
@@ -16935,10 +16879,10 @@ type TeamMembership struct {
 	URL   url.URL             `json:"url"`
 }
 
-func (*TeamMembership) teamsAddOrUpdateMembershipForUserInOrgResponse()  {}
-func (*TeamMembership) teamsAddOrUpdateMembershipForUserLegacyResponse() {}
-func (*TeamMembership) teamsGetMembershipForUserInOrgResponse()          {}
-func (*TeamMembership) teamsGetMembershipForUserLegacyResponse()         {}
+func (*TeamMembership) teamsAddOrUpdateMembershipForUserInOrgRes()  {}
+func (*TeamMembership) teamsAddOrUpdateMembershipForUserLegacyRes() {}
+func (*TeamMembership) teamsGetMembershipForUserInOrgRes()          {}
+func (*TeamMembership) teamsGetMembershipForUserLegacyRes()         {}
 
 // TeamProject describes #/components/schemas/team-project.
 type TeamProject struct {
@@ -16960,8 +16904,8 @@ type TeamProject struct {
 	UpdatedAt              string                 `json:"updated_at"`
 }
 
-func (*TeamProject) teamsCheckPermissionsForProjectInOrgResponse()  {}
-func (*TeamProject) teamsCheckPermissionsForProjectLegacyResponse() {}
+func (*TeamProject) teamsCheckPermissionsForProjectInOrgRes()  {}
+func (*TeamProject) teamsCheckPermissionsForProjectLegacyRes() {}
 
 // TeamRepository describes #/components/schemas/team-repository.
 type TeamRepository struct {
@@ -17055,8 +16999,8 @@ type TeamRepository struct {
 	WatchersCount       int                          `json:"watchers_count"`
 }
 
-func (*TeamRepository) teamsCheckPermissionsForRepoInOrgResponse()  {}
-func (*TeamRepository) teamsCheckPermissionsForRepoLegacyResponse() {}
+func (*TeamRepository) teamsCheckPermissionsForRepoInOrgRes()  {}
+func (*TeamRepository) teamsCheckPermissionsForRepoLegacyRes() {}
 
 // Thread describes #/components/schemas/thread.
 type Thread struct {
@@ -17071,7 +17015,7 @@ type Thread struct {
 	UpdatedAt       string            `json:"updated_at"`
 }
 
-func (*Thread) activityGetThreadResponse() {}
+func (*Thread) activityGetThreadRes() {}
 
 // ThreadSubscription describes #/components/schemas/thread-subscription.
 type ThreadSubscription struct {
@@ -17084,16 +17028,16 @@ type ThreadSubscription struct {
 	URL           url.URL   `json:"url"`
 }
 
-func (*ThreadSubscription) activityGetThreadSubscriptionForAuthenticatedUserResponse() {}
-func (*ThreadSubscription) activitySetThreadSubscriptionResponse()                     {}
+func (*ThreadSubscription) activityGetThreadSubscriptionForAuthenticatedUserRes() {}
+func (*ThreadSubscription) activitySetThreadSubscriptionRes()                     {}
 
 // Topic describes #/components/schemas/topic.
 type Topic struct {
 	Names []string `json:"names"`
 }
 
-func (*Topic) reposGetAllTopicsResponse()     {}
-func (*Topic) reposReplaceAllTopicsResponse() {}
+func (*Topic) reposGetAllTopicsRes()     {}
+func (*Topic) reposReplaceAllTopicsRes() {}
 
 // UserMarketplacePurchase describes #/components/schemas/user-marketplace-purchase.
 type UserMarketplacePurchase struct {
@@ -17114,21 +17058,21 @@ type ValidationErrorSimple struct {
 	Message          string   `json:"message"`
 }
 
-func (*ValidationErrorSimple) projectsCreateColumnResponse()               {}
-func (*ValidationErrorSimple) projectsCreateForAuthenticatedUserResponse() {}
-func (*ValidationErrorSimple) projectsCreateForOrgResponse()               {}
-func (*ValidationErrorSimple) projectsCreateForRepoResponse()              {}
-func (*ValidationErrorSimple) projectsMoveColumnResponse()                 {}
-func (*ValidationErrorSimple) projectsUpdateCardResponse()                 {}
-func (*ValidationErrorSimple) projectsUpdateResponse()                     {}
-func (*ValidationErrorSimple) pullsCreateReviewResponse()                  {}
-func (*ValidationErrorSimple) pullsDeletePendingReviewResponse()           {}
-func (*ValidationErrorSimple) pullsDismissReviewResponse()                 {}
-func (*ValidationErrorSimple) pullsSubmitReviewResponse()                  {}
-func (*ValidationErrorSimple) pullsUpdateReviewResponse()                  {}
-func (*ValidationErrorSimple) reposDeleteDeploymentResponse()              {}
-func (*ValidationErrorSimple) reposReplaceAllTopicsResponse()              {}
-func (*ValidationErrorSimple) reposUpdateBranchProtectionResponse()        {}
+func (*ValidationErrorSimple) projectsCreateColumnRes()               {}
+func (*ValidationErrorSimple) projectsCreateForAuthenticatedUserRes() {}
+func (*ValidationErrorSimple) projectsCreateForOrgRes()               {}
+func (*ValidationErrorSimple) projectsCreateForRepoRes()              {}
+func (*ValidationErrorSimple) projectsMoveColumnRes()                 {}
+func (*ValidationErrorSimple) projectsUpdateCardRes()                 {}
+func (*ValidationErrorSimple) projectsUpdateRes()                     {}
+func (*ValidationErrorSimple) pullsCreateReviewRes()                  {}
+func (*ValidationErrorSimple) pullsDeletePendingReviewRes()           {}
+func (*ValidationErrorSimple) pullsDismissReviewRes()                 {}
+func (*ValidationErrorSimple) pullsSubmitReviewRes()                  {}
+func (*ValidationErrorSimple) pullsUpdateReviewRes()                  {}
+func (*ValidationErrorSimple) reposDeleteDeploymentRes()              {}
+func (*ValidationErrorSimple) reposReplaceAllTopicsRes()              {}
+func (*ValidationErrorSimple) reposUpdateBranchProtectionRes()        {}
 
 // Verification describes #/components/schemas/verification.
 type Verification struct {

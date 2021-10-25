@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceResponse, err error) {
+func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -80,7 +80,7 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRe
 	}
 }
 
-func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionResponse, err error) {
+func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &CreateSyncActionNoContent{}, nil
@@ -112,7 +112,7 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 	}
 }
 
-func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBalloonConfigResponse, err error) {
+func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBalloonConfigRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -154,7 +154,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 	}
 }
 
-func decodePutBalloonResponse(resp *http.Response) (res PutBalloonResponse, err error) {
+func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutBalloonNoContent{}, nil
@@ -186,7 +186,7 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonResponse, err 
 	}
 }
 
-func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonResponse, err error) {
+func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PatchBalloonNoContent{}, nil
@@ -218,7 +218,7 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonResponse, 
 	}
 }
 
-func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloonStatsResponse, err error) {
+func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloonStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -260,7 +260,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 	}
 }
 
-func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBalloonStatsIntervalResponse, err error) {
+func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBalloonStatsIntervalRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PatchBalloonStatsIntervalNoContent{}, nil
@@ -292,7 +292,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 	}
 }
 
-func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSourceResponse, err error) {
+func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSourceRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutGuestBootSourceNoContent{}, nil
@@ -324,7 +324,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 	}
 }
 
-func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByIDResponse, err error) {
+func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutGuestDriveByIDNoContent{}, nil
@@ -356,7 +356,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 	}
 }
 
-func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDriveByIDResponse, err error) {
+func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDriveByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PatchGuestDriveByIDNoContent{}, nil
@@ -388,7 +388,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 	}
 }
 
-func decodePutLoggerResponse(resp *http.Response) (res PutLoggerResponse, err error) {
+func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutLoggerNoContent{}, nil
@@ -420,7 +420,7 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerResponse, err er
 	}
 }
 
-func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineConfigurationResponse, err error) {
+func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -450,7 +450,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineC
 	}
 }
 
-func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineConfigurationResponse, err error) {
+func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutMachineConfigurationNoContent{}, nil
@@ -482,7 +482,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 	}
 }
 
-func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMachineConfigurationResponse, err error) {
+func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PatchMachineConfigurationNoContent{}, nil
@@ -514,7 +514,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 	}
 }
 
-func decodePutMetricsResponse(resp *http.Response) (res PutMetricsResponse, err error) {
+func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutMetricsNoContent{}, nil
@@ -546,7 +546,7 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsResponse, err 
 	}
 }
 
-func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetResponse, err error) {
+func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -588,7 +588,7 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetResponse, err error)
 	}
 }
 
-func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutResponse, err error) {
+func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &MmdsPutNoContent{}, nil
@@ -620,7 +620,7 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutResponse, err error)
 	}
 }
 
-func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchResponse, err error) {
+func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &MmdsPatchNoContent{}, nil
@@ -652,7 +652,7 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchResponse, err er
 	}
 }
 
-func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutResponse, err error) {
+func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &MmdsConfigPutNoContent{}, nil
@@ -684,7 +684,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutResponse
 	}
 }
 
-func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGuestNetworkInterfaceByIDResponse, err error) {
+func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutGuestNetworkInterfaceByIDNoContent{}, nil
@@ -716,7 +716,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 	}
 }
 
-func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PatchGuestNetworkInterfaceByIDResponse, err error) {
+func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PatchGuestNetworkInterfaceByIDNoContent{}, nil
@@ -748,7 +748,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 	}
 }
 
-func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotResponse, err error) {
+func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &CreateSnapshotNoContent{}, nil
@@ -780,7 +780,7 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRespon
 	}
 }
 
-func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotResponse, err error) {
+func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &LoadSnapshotNoContent{}, nil
@@ -812,7 +812,7 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotResponse, 
 	}
 }
 
-func decodePatchVmResponse(resp *http.Response) (res PatchVmResponse, err error) {
+func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PatchVmNoContent{}, nil
@@ -844,7 +844,7 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmResponse, err error)
 	}
 }
 
-func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfigResponse, err error) {
+func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfigRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -874,7 +874,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfig
 	}
 }
 
-func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockResponse, err error) {
+func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PutGuestVsockNoContent{}, nil

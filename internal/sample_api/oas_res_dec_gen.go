@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetResponse, err error) {
+func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -78,7 +78,7 @@ func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDefault, err err
 	}
 }
 
-func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err error) {
+func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -110,7 +110,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err 
 	}
 }
 
-func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
+func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

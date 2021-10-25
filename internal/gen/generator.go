@@ -18,6 +18,20 @@ type Generator struct {
 	interfaces    map[string]*ast.Interface
 }
 
+func (g *Generator) hasSchema(name string) bool {
+	_, ok := g.schemas[name]
+	return ok
+}
+
+func (g *Generator) freeSchemaName(names []string) (string, error) {
+	for _, name := range names {
+		if !g.hasSchema(name) {
+			return name, nil
+		}
+	}
+	return "", xerrors.Errorf("all of good names %v are taken", names)
+}
+
 type Options struct {
 	SpecificMethodPath      string
 	IgnoreUnspecifiedParams bool
@@ -41,6 +55,9 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	g.simplify()
-	g.fix()
+	if err := g.fix(); err != nil {
+		return nil, xerrors.Errorf("fix: %w", err)
+	}
+
 	return g, nil
 }

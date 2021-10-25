@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {
+func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -72,7 +72,7 @@ func encodeFoobarPutResponse(response FoobarPutDefault, w http.ResponseWriter) e
 	return nil
 }
 
-func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
+func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -96,7 +96,7 @@ func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	}
 }
 
-func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
+func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")

@@ -489,7 +489,7 @@ func (s *ActionsCancelWorkflowRun) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -502,16 +502,16 @@ func (s ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) WriteJSON(
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest json value to io.Writer.
-func (s ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq json value to io.Writer.
+func (s ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest json value from io.Reader.
-func (s *ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq json value from io.Reader.
+func (s *ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -525,8 +525,8 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) ReadJSONF
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest from json stream.
-func (s *ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq from json stream.
+func (s *ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "encrypted_value":
@@ -587,7 +587,7 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsCreateOrUpdateOrgSecretApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -619,16 +619,16 @@ func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) WriteJSON(j *json.
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsCreateOrUpdateOrgSecretApplicationJSONRequest json value to io.Writer.
-func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsCreateOrUpdateOrgSecretApplicationJSONReq json value to io.Writer.
+func (s ActionsCreateOrUpdateOrgSecretApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsCreateOrUpdateOrgSecretApplicationJSONRequest json value from io.Reader.
-func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsCreateOrUpdateOrgSecretApplicationJSONReq json value from io.Reader.
+func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -642,8 +642,8 @@ func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) ReadJSONFrom(r io
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsCreateOrUpdateOrgSecretApplicationJSONRequest from json stream.
-func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsCreateOrUpdateOrgSecretApplicationJSONReq from json stream.
+func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "encrypted_value":
@@ -679,13 +679,13 @@ func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility from json stream.
-func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility from json stream.
+func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ActionsCreateOrUpdateOrgSecretApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -733,7 +733,7 @@ func (s *ActionsCreateOrUpdateOrgSecretNoContent) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsCreateOrUpdateRepoSecretApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -750,16 +750,16 @@ func (s ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsCreateOrUpdateRepoSecretApplicationJSONRequest json value to io.Writer.
-func (s ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsCreateOrUpdateRepoSecretApplicationJSONReq json value to io.Writer.
+func (s ActionsCreateOrUpdateRepoSecretApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsCreateOrUpdateRepoSecretApplicationJSONRequest json value from io.Reader.
-func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsCreateOrUpdateRepoSecretApplicationJSONReq json value from io.Reader.
+func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -773,8 +773,8 @@ func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsCreateOrUpdateRepoSecretApplicationJSONRequest from json stream.
-func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsCreateOrUpdateRepoSecretApplicationJSONReq from json stream.
+func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "encrypted_value":
@@ -886,7 +886,7 @@ func (s *ActionsCreateOrUpdateRepoSecretNoContent) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -925,16 +925,16 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest json value to io.Writer.
-func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq json value to io.Writer.
+func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest json value from io.Reader.
-func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq json value from io.Reader.
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -948,8 +948,8 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest from json stream.
-func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq from json stream.
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -979,13 +979,13 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json stream.
-func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility from json stream.
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -2669,7 +2669,7 @@ func (s *ActionsRetryWorkflow) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsReviewPendingDeploymentsForRunApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2692,16 +2692,16 @@ func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) WriteJSON(j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsReviewPendingDeploymentsForRunApplicationJSONRequest json value to io.Writer.
-func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsReviewPendingDeploymentsForRunApplicationJSONReq json value to io.Writer.
+func (s ActionsReviewPendingDeploymentsForRunApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsReviewPendingDeploymentsForRunApplicationJSONRequest json value from io.Reader.
-func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsReviewPendingDeploymentsForRunApplicationJSONReq json value from io.Reader.
+func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2715,8 +2715,8 @@ func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) ReadJSONFr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsReviewPendingDeploymentsForRunApplicationJSONRequest from json stream.
-func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsReviewPendingDeploymentsForRunApplicationJSONReq from json stream.
+func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "comment":
@@ -2741,13 +2741,13 @@ func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (s ActionsReviewPendingDeploymentsForRunApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState from json stream.
-func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
-	*s = ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState(i.ReadString())
+// ReadJSON reads ActionsReviewPendingDeploymentsForRunApplicationJSONReqState from json stream.
+func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
+	*s = ActionsReviewPendingDeploymentsForRunApplicationJSONReqState(i.ReadString())
 	return i.Error
 }
 
@@ -2881,7 +2881,7 @@ func (s *ActionsSetGithubActionsPermissionsOrganization) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2896,16 +2896,16 @@ func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) Wr
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest json value to io.Writer.
-func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq json value to io.Writer.
+func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest json value from io.Reader.
-func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq json value from io.Reader.
+func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2919,8 +2919,8 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) R
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest from json stream.
-func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq from json stream.
+func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
@@ -2988,7 +2988,7 @@ func (s *ActionsSetGithubActionsPermissionsRepository) ReadJSON(i *json.Iterator
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3001,16 +3001,16 @@ func (s ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) Writ
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest json value to io.Writer.
-func (s ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq json value to io.Writer.
+func (s ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest json value from io.Reader.
-func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq json value from io.Reader.
+func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3024,8 +3024,8 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest from json stream.
-func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq from json stream.
+func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
@@ -3091,7 +3091,7 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3108,16 +3108,16 @@ func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) 
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest json value to io.Writer.
-func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq json value to io.Writer.
+func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest json value from io.Reader.
-func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq json value from io.Reader.
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3131,8 +3131,8 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest)
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest from json stream.
-func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq from json stream.
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "selected_repository_ids":
@@ -3191,7 +3191,7 @@ func (s *ActionsSetSelectedReposForOrgSecret) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsSetSelectedReposForOrgSecretApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3208,16 +3208,16 @@ func (s ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) WriteJSON(j *
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsSetSelectedReposForOrgSecretApplicationJSONRequest json value to io.Writer.
-func (s ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsSetSelectedReposForOrgSecretApplicationJSONReq json value to io.Writer.
+func (s ActionsSetSelectedReposForOrgSecretApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsSetSelectedReposForOrgSecretApplicationJSONRequest json value from io.Reader.
-func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsSetSelectedReposForOrgSecretApplicationJSONReq json value from io.Reader.
+func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3231,8 +3231,8 @@ func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) ReadJSONFrom
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsSetSelectedReposForOrgSecretApplicationJSONRequest from json stream.
-func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsSetSelectedReposForOrgSecretApplicationJSONReq from json stream.
+func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "selected_repository_ids":
@@ -3291,7 +3291,7 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3308,16 +3308,16 @@ func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicatio
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest json value to io.Writer.
-func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq json value to io.Writer.
+func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest json value from io.Reader.
-func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq json value from io.Reader.
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3331,8 +3331,8 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicati
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest from json stream.
-func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq from json stream.
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "selected_repository_ids":
@@ -3391,7 +3391,7 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrg) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3408,16 +3408,16 @@ func (s ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest json value to io.Writer.
-func (s ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq json value to io.Writer.
+func (s ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest json value from io.Reader.
-func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq json value from io.Reader.
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3431,8 +3431,8 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest from json stream.
-func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq from json stream.
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "runners":
@@ -3448,7 +3448,7 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3463,16 +3463,16 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest json value to io.Writer.
-func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq json value to io.Writer.
+func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest json value from io.Reader.
-func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq json value from io.Reader.
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3486,8 +3486,8 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest from json stream.
-func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq from json stream.
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -3509,13 +3509,13 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json stream.
-func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility from json stream.
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -3884,7 +3884,7 @@ func (ActivityMarkNotificationsAsReadApplicationJSONForbidden) WriteJSONTo(w io.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityMarkNotificationsAsReadApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActivityMarkNotificationsAsReadApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3901,16 +3901,16 @@ func (s ActivityMarkNotificationsAsReadApplicationJSONRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActivityMarkNotificationsAsReadApplicationJSONRequest json value to io.Writer.
-func (s ActivityMarkNotificationsAsReadApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActivityMarkNotificationsAsReadApplicationJSONReq json value to io.Writer.
+func (s ActivityMarkNotificationsAsReadApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActivityMarkNotificationsAsReadApplicationJSONRequest json value from io.Reader.
-func (s *ActivityMarkNotificationsAsReadApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActivityMarkNotificationsAsReadApplicationJSONReq json value from io.Reader.
+func (s *ActivityMarkNotificationsAsReadApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3924,8 +3924,8 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActivityMarkNotificationsAsReadApplicationJSONRequest from json stream.
-func (s *ActivityMarkNotificationsAsReadApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActivityMarkNotificationsAsReadApplicationJSONReq from json stream.
+func (s *ActivityMarkNotificationsAsReadApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "last_read_at":
@@ -4072,7 +4072,7 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActivityMarkRepoNotificationsAsReadApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4084,16 +4084,16 @@ func (s ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) WriteJSON(j *
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActivityMarkRepoNotificationsAsReadApplicationJSONRequest json value to io.Writer.
-func (s ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActivityMarkRepoNotificationsAsReadApplicationJSONReq json value to io.Writer.
+func (s ActivityMarkRepoNotificationsAsReadApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActivityMarkRepoNotificationsAsReadApplicationJSONRequest json value from io.Reader.
-func (s *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActivityMarkRepoNotificationsAsReadApplicationJSONReq json value from io.Reader.
+func (s *ActivityMarkRepoNotificationsAsReadApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4107,8 +4107,8 @@ func (s *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) ReadJSONFrom
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActivityMarkRepoNotificationsAsReadApplicationJSONRequest from json stream.
-func (s *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActivityMarkRepoNotificationsAsReadApplicationJSONReq from json stream.
+func (s *ActivityMarkRepoNotificationsAsReadApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "last_read_at":
@@ -4213,7 +4213,7 @@ func (s *ActivityMarkThreadAsReadResetContent) ReadJSON(i *json.Iterator) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivitySetRepoSubscriptionApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActivitySetRepoSubscriptionApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4230,16 +4230,16 @@ func (s ActivitySetRepoSubscriptionApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActivitySetRepoSubscriptionApplicationJSONRequest json value to io.Writer.
-func (s ActivitySetRepoSubscriptionApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActivitySetRepoSubscriptionApplicationJSONReq json value to io.Writer.
+func (s ActivitySetRepoSubscriptionApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActivitySetRepoSubscriptionApplicationJSONRequest json value from io.Reader.
-func (s *ActivitySetRepoSubscriptionApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActivitySetRepoSubscriptionApplicationJSONReq json value from io.Reader.
+func (s *ActivitySetRepoSubscriptionApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4253,8 +4253,8 @@ func (s *ActivitySetRepoSubscriptionApplicationJSONRequest) ReadJSONFrom(r io.Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActivitySetRepoSubscriptionApplicationJSONRequest from json stream.
-func (s *ActivitySetRepoSubscriptionApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActivitySetRepoSubscriptionApplicationJSONReq from json stream.
+func (s *ActivitySetRepoSubscriptionApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ignored":
@@ -4291,7 +4291,7 @@ func (ActivitySetThreadSubscriptionApplicationJSONForbidden) WriteJSONTo(w io.Wr
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ActivitySetThreadSubscriptionApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ActivitySetThreadSubscriptionApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4303,16 +4303,16 @@ func (s ActivitySetThreadSubscriptionApplicationJSONRequest) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ActivitySetThreadSubscriptionApplicationJSONRequest json value to io.Writer.
-func (s ActivitySetThreadSubscriptionApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ActivitySetThreadSubscriptionApplicationJSONReq json value to io.Writer.
+func (s ActivitySetThreadSubscriptionApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ActivitySetThreadSubscriptionApplicationJSONRequest json value from io.Reader.
-func (s *ActivitySetThreadSubscriptionApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ActivitySetThreadSubscriptionApplicationJSONReq json value from io.Reader.
+func (s *ActivitySetThreadSubscriptionApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4326,8 +4326,8 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONRequest) ReadJSONFrom(r io.
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ActivitySetThreadSubscriptionApplicationJSONRequest from json stream.
-func (s *ActivitySetThreadSubscriptionApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ActivitySetThreadSubscriptionApplicationJSONReq from json stream.
+func (s *ActivitySetThreadSubscriptionApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ignored":
@@ -4969,7 +4969,7 @@ func (s *AppsAddRepoToInstallationNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsCheckTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsCheckTokenApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4979,16 +4979,16 @@ func (s AppsCheckTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsCheckTokenApplicationJSONRequest json value to io.Writer.
-func (s AppsCheckTokenApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsCheckTokenApplicationJSONReq json value to io.Writer.
+func (s AppsCheckTokenApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsCheckTokenApplicationJSONRequest json value from io.Reader.
-func (s *AppsCheckTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsCheckTokenApplicationJSONReq json value from io.Reader.
+func (s *AppsCheckTokenApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5002,8 +5002,8 @@ func (s *AppsCheckTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsCheckTokenApplicationJSONRequest from json stream.
-func (s *AppsCheckTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsCheckTokenApplicationJSONReq from json stream.
+func (s *AppsCheckTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "access_token":
@@ -5018,7 +5018,7 @@ func (s *AppsCheckTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsCreateContentAttachmentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsCreateContentAttachmentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5031,16 +5031,16 @@ func (s AppsCreateContentAttachmentApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsCreateContentAttachmentApplicationJSONRequest json value to io.Writer.
-func (s AppsCreateContentAttachmentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsCreateContentAttachmentApplicationJSONReq json value to io.Writer.
+func (s AppsCreateContentAttachmentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsCreateContentAttachmentApplicationJSONRequest json value from io.Reader.
-func (s *AppsCreateContentAttachmentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsCreateContentAttachmentApplicationJSONReq json value from io.Reader.
+func (s *AppsCreateContentAttachmentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5054,8 +5054,8 @@ func (s *AppsCreateContentAttachmentApplicationJSONRequest) ReadJSONFrom(r io.Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsCreateContentAttachmentApplicationJSONRequest from json stream.
-func (s *AppsCreateContentAttachmentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsCreateContentAttachmentApplicationJSONReq from json stream.
+func (s *AppsCreateContentAttachmentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -5073,23 +5073,23 @@ func (s *AppsCreateContentAttachmentApplicationJSONRequest) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsCreateFromManifestApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsCreateFromManifestApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsCreateFromManifestApplicationJSONRequest json value to io.Writer.
-func (s AppsCreateFromManifestApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsCreateFromManifestApplicationJSONReq json value to io.Writer.
+func (s AppsCreateFromManifestApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsCreateFromManifestApplicationJSONRequest json value from io.Reader.
-func (s *AppsCreateFromManifestApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsCreateFromManifestApplicationJSONReq json value from io.Reader.
+func (s *AppsCreateFromManifestApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5103,8 +5103,8 @@ func (s *AppsCreateFromManifestApplicationJSONRequest) ReadJSONFrom(r io.Reader)
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsCreateFromManifestApplicationJSONRequest from json stream.
-func (s *AppsCreateFromManifestApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsCreateFromManifestApplicationJSONReq from json stream.
+func (s *AppsCreateFromManifestApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -5116,7 +5116,7 @@ func (s *AppsCreateFromManifestApplicationJSONRequest) ReadJSON(i *json.Iterator
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsCreateInstallationAccessTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsCreateInstallationAccessTokenApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5152,16 +5152,16 @@ func (s AppsCreateInstallationAccessTokenApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsCreateInstallationAccessTokenApplicationJSONRequest json value to io.Writer.
-func (s AppsCreateInstallationAccessTokenApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsCreateInstallationAccessTokenApplicationJSONReq json value to io.Writer.
+func (s AppsCreateInstallationAccessTokenApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsCreateInstallationAccessTokenApplicationJSONRequest json value from io.Reader.
-func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsCreateInstallationAccessTokenApplicationJSONReq json value from io.Reader.
+func (s *AppsCreateInstallationAccessTokenApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5175,8 +5175,8 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) ReadJSONFrom(r
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsCreateInstallationAccessTokenApplicationJSONRequest from json stream.
-func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsCreateInstallationAccessTokenApplicationJSONReq from json stream.
+func (s *AppsCreateInstallationAccessTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permissions":
@@ -5203,7 +5203,7 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsDeleteAuthorizationApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsDeleteAuthorizationApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5213,16 +5213,16 @@ func (s AppsDeleteAuthorizationApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsDeleteAuthorizationApplicationJSONRequest json value to io.Writer.
-func (s AppsDeleteAuthorizationApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsDeleteAuthorizationApplicationJSONReq json value to io.Writer.
+func (s AppsDeleteAuthorizationApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsDeleteAuthorizationApplicationJSONRequest json value from io.Reader.
-func (s *AppsDeleteAuthorizationApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsDeleteAuthorizationApplicationJSONReq json value from io.Reader.
+func (s *AppsDeleteAuthorizationApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5236,8 +5236,8 @@ func (s *AppsDeleteAuthorizationApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsDeleteAuthorizationApplicationJSONRequest from json stream.
-func (s *AppsDeleteAuthorizationApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsDeleteAuthorizationApplicationJSONReq from json stream.
+func (s *AppsDeleteAuthorizationApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "access_token":
@@ -5338,7 +5338,7 @@ func (s *AppsDeleteInstallationNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsDeleteTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsDeleteTokenApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5348,16 +5348,16 @@ func (s AppsDeleteTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsDeleteTokenApplicationJSONRequest json value to io.Writer.
-func (s AppsDeleteTokenApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsDeleteTokenApplicationJSONReq json value to io.Writer.
+func (s AppsDeleteTokenApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsDeleteTokenApplicationJSONRequest json value from io.Reader.
-func (s *AppsDeleteTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsDeleteTokenApplicationJSONReq json value from io.Reader.
+func (s *AppsDeleteTokenApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5371,8 +5371,8 @@ func (s *AppsDeleteTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsDeleteTokenApplicationJSONRequest from json stream.
-func (s *AppsDeleteTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsDeleteTokenApplicationJSONReq from json stream.
+func (s *AppsDeleteTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "access_token":
@@ -5826,7 +5826,7 @@ func (s *AppsRemoveRepoFromInstallationNoContent) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsResetTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsResetTokenApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5836,16 +5836,16 @@ func (s AppsResetTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsResetTokenApplicationJSONRequest json value to io.Writer.
-func (s AppsResetTokenApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsResetTokenApplicationJSONReq json value to io.Writer.
+func (s AppsResetTokenApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsResetTokenApplicationJSONRequest json value from io.Reader.
-func (s *AppsResetTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsResetTokenApplicationJSONReq json value from io.Reader.
+func (s *AppsResetTokenApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5859,8 +5859,8 @@ func (s *AppsResetTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsResetTokenApplicationJSONRequest from json stream.
-func (s *AppsResetTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsResetTokenApplicationJSONReq from json stream.
+func (s *AppsResetTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "access_token":
@@ -5918,7 +5918,7 @@ func (s *AppsRevokeInstallationAccessToken) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AppsScopeTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AppsScopeTokenApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5967,16 +5967,16 @@ func (s AppsScopeTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AppsScopeTokenApplicationJSONRequest json value to io.Writer.
-func (s AppsScopeTokenApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AppsScopeTokenApplicationJSONReq json value to io.Writer.
+func (s AppsScopeTokenApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AppsScopeTokenApplicationJSONRequest json value from io.Reader.
-func (s *AppsScopeTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AppsScopeTokenApplicationJSONReq json value from io.Reader.
+func (s *AppsScopeTokenApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -5990,8 +5990,8 @@ func (s *AppsScopeTokenApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AppsScopeTokenApplicationJSONRequest from json stream.
-func (s *AppsScopeTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AppsScopeTokenApplicationJSONReq from json stream.
+func (s *AppsScopeTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "access_token":
@@ -8135,7 +8135,7 @@ func (ChecksCreateSuiteApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { ret
 func (ChecksCreateSuiteApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksCreateSuiteApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ChecksCreateSuiteApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8145,16 +8145,16 @@ func (s ChecksCreateSuiteApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ChecksCreateSuiteApplicationJSONRequest json value to io.Writer.
-func (s ChecksCreateSuiteApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ChecksCreateSuiteApplicationJSONReq json value to io.Writer.
+func (s ChecksCreateSuiteApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ChecksCreateSuiteApplicationJSONRequest json value from io.Reader.
-func (s *ChecksCreateSuiteApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ChecksCreateSuiteApplicationJSONReq json value from io.Reader.
+func (s *ChecksCreateSuiteApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8168,8 +8168,8 @@ func (s *ChecksCreateSuiteApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ChecksCreateSuiteApplicationJSONRequest from json stream.
-func (s *ChecksCreateSuiteApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ChecksCreateSuiteApplicationJSONReq from json stream.
+func (s *ChecksCreateSuiteApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "head_sha":
@@ -8290,7 +8290,7 @@ func (s *ChecksRerequestSuite) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksSetSuitesPreferencesApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ChecksSetSuitesPreferencesApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8309,16 +8309,16 @@ func (s ChecksSetSuitesPreferencesApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ChecksSetSuitesPreferencesApplicationJSONRequest json value to io.Writer.
-func (s ChecksSetSuitesPreferencesApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ChecksSetSuitesPreferencesApplicationJSONReq json value to io.Writer.
+func (s ChecksSetSuitesPreferencesApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ChecksSetSuitesPreferencesApplicationJSONRequest json value from io.Reader.
-func (s *ChecksSetSuitesPreferencesApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ChecksSetSuitesPreferencesApplicationJSONReq json value from io.Reader.
+func (s *ChecksSetSuitesPreferencesApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8332,8 +8332,8 @@ func (s *ChecksSetSuitesPreferencesApplicationJSONRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ChecksSetSuitesPreferencesApplicationJSONRequest from json stream.
-func (s *ChecksSetSuitesPreferencesApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ChecksSetSuitesPreferencesApplicationJSONReq from json stream.
+func (s *ChecksSetSuitesPreferencesApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "auto_trigger_checks":
@@ -8349,7 +8349,7 @@ func (s *ChecksSetSuitesPreferencesApplicationJSONRequest) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem) WriteJSON(j *json.Stream) {
+func (s ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8362,16 +8362,16 @@ func (s ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem) W
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem json value to io.Writer.
-func (s ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem json value to io.Writer.
+func (s ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem json value from io.Reader.
-func (s *ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem json value from io.Reader.
+func (s *ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8385,8 +8385,8 @@ func (s *ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem from json stream.
-func (s *ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem from json stream.
+func (s *ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "app_id":
@@ -8588,7 +8588,7 @@ func (s *CodeScanningSarifsStatusProcessingStatus) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s CodeScanningUpdateAlertApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8603,16 +8603,16 @@ func (s CodeScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes CodeScanningUpdateAlertApplicationJSONRequest json value to io.Writer.
-func (s CodeScanningUpdateAlertApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes CodeScanningUpdateAlertApplicationJSONReq json value to io.Writer.
+func (s CodeScanningUpdateAlertApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads CodeScanningUpdateAlertApplicationJSONRequest json value from io.Reader.
-func (s *CodeScanningUpdateAlertApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads CodeScanningUpdateAlertApplicationJSONReq json value from io.Reader.
+func (s *CodeScanningUpdateAlertApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8626,8 +8626,8 @@ func (s *CodeScanningUpdateAlertApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads CodeScanningUpdateAlertApplicationJSONRequest from json stream.
-func (s *CodeScanningUpdateAlertApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads CodeScanningUpdateAlertApplicationJSONReq from json stream.
+func (s *CodeScanningUpdateAlertApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "dismissed_reason":
@@ -8662,7 +8662,7 @@ func (CodeScanningUploadSarifApplicationJSONNotFound) ReadJSONFrom(r io.Reader) 
 func (CodeScanningUploadSarifApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s CodeScanningUploadSarifApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s CodeScanningUploadSarifApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8687,16 +8687,16 @@ func (s CodeScanningUploadSarifApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes CodeScanningUploadSarifApplicationJSONRequest json value to io.Writer.
-func (s CodeScanningUploadSarifApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes CodeScanningUploadSarifApplicationJSONReq json value to io.Writer.
+func (s CodeScanningUploadSarifApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads CodeScanningUploadSarifApplicationJSONRequest json value from io.Reader.
-func (s *CodeScanningUploadSarifApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads CodeScanningUploadSarifApplicationJSONReq json value from io.Reader.
+func (s *CodeScanningUploadSarifApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8710,8 +8710,8 @@ func (s *CodeScanningUploadSarifApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads CodeScanningUploadSarifApplicationJSONRequest from json stream.
-func (s *CodeScanningUploadSarifApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads CodeScanningUploadSarifApplicationJSONReq from json stream.
+func (s *CodeScanningUploadSarifApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "checkout_uri":
@@ -9769,7 +9769,7 @@ func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9808,16 +9808,16 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRe
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9831,8 +9831,8 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq from json stream.
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -9862,13 +9862,13 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json stream.
-func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility from json stream.
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -10454,7 +10454,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10486,16 +10486,16 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) 
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10509,8 +10509,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest)
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq from json stream.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "displayName":
@@ -10533,7 +10533,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10543,16 +10543,16 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMe
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem json value to io.Writer.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem json value to io.Writer.
+func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem json value from io.Reader.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem json value from io.Reader.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10566,8 +10566,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestM
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem from json stream.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem from json stream.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "value":
@@ -10582,7 +10582,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestM
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10627,16 +10627,16 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) W
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10650,8 +10650,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq from json stream.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "emails":
@@ -10684,7 +10684,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10700,16 +10700,16 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEma
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem json value to io.Writer.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem json value to io.Writer.
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem json value from io.Reader.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem json value from io.Reader.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10723,8 +10723,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEm
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem from json stream.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem from json stream.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "primary":
@@ -10745,7 +10745,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEm
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10757,16 +10757,16 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGro
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem json value to io.Writer.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem json value to io.Writer.
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem json value from io.Reader.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem json value from io.Reader.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10780,8 +10780,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem from json stream.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem from json stream.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "value":
@@ -10800,7 +10800,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGr
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10813,16 +10813,16 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestNam
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName json value to io.Writer.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName json value to io.Writer.
+func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName json value from io.Reader.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName json value from io.Reader.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10836,8 +10836,8 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestNa
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName from json stream.
-func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName from json stream.
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqName) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "familyName":
@@ -11027,7 +11027,7 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterprise) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11042,16 +11042,16 @@ func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReque
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11065,8 +11065,8 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequ
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq from json stream.
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
@@ -11091,7 +11091,7 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequ
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11123,16 +11123,16 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11146,8 +11146,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJS
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq from json stream.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "displayName":
@@ -11170,7 +11170,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11180,16 +11180,16 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem json value to io.Writer.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem json value to io.Writer.
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem json value from io.Reader.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem json value from io.Reader.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11203,8 +11203,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJS
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem from json stream.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem from json stream.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "value":
@@ -11219,7 +11219,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11264,16 +11264,16 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11287,8 +11287,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq from json stream.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "emails":
@@ -11321,7 +11321,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11337,16 +11337,16 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem json value to io.Writer.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem json value to io.Writer.
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem json value from io.Reader.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem json value from io.Reader.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11360,8 +11360,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem from json stream.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem from json stream.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "primary":
@@ -11382,7 +11382,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11394,16 +11394,16 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem json value to io.Writer.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem json value to io.Writer.
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem json value from io.Reader.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem json value from io.Reader.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11417,8 +11417,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem from json stream.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem from json stream.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "value":
@@ -11437,7 +11437,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11450,16 +11450,16 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName json value to io.Writer.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName json value to io.Writer.
+func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName json value from io.Reader.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName json value from io.Reader.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11473,8 +11473,8 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName from json stream.
-func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName from json stream.
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqName) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "familyName":
@@ -11535,7 +11535,7 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11552,16 +11552,16 @@ func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicatio
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11575,8 +11575,8 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicati
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq from json stream.
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "selected_organization_ids":
@@ -11635,7 +11635,7 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11652,16 +11652,16 @@ func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApp
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11675,8 +11675,8 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseAp
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq from json stream.
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "selected_organization_ids":
@@ -11735,7 +11735,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11752,16 +11752,16 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRe
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11775,8 +11775,8 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONR
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq from json stream.
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "runners":
@@ -11792,7 +11792,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONR
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11819,16 +11819,16 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) W
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11842,8 +11842,8 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq from json stream.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "Operations":
@@ -11863,23 +11863,23 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem json value to io.Writer.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem json value to io.Writer.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem json value from io.Reader.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem json value from io.Reader.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11893,8 +11893,8 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOp
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem from json stream.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem from json stream.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -11906,7 +11906,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOp
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11923,16 +11923,16 @@ func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRe
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest json value to io.Writer.
-func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq json value to io.Writer.
+func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest json value from io.Reader.
-func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq json value from io.Reader.
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -11946,8 +11946,8 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest from json stream.
-func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq from json stream.
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -11973,13 +11973,13 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json stream.
-func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility from json stream.
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -13723,7 +13723,7 @@ func (GistsCreateCommentApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error
 func (GistsCreateCommentApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsCreateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GistsCreateCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -13733,16 +13733,16 @@ func (s GistsCreateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GistsCreateCommentApplicationJSONRequest json value to io.Writer.
-func (s GistsCreateCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GistsCreateCommentApplicationJSONReq json value to io.Writer.
+func (s GistsCreateCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GistsCreateCommentApplicationJSONRequest json value from io.Reader.
-func (s *GistsCreateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GistsCreateCommentApplicationJSONReq json value from io.Reader.
+func (s *GistsCreateCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -13756,8 +13756,8 @@ func (s *GistsCreateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GistsCreateCommentApplicationJSONRequest from json stream.
-func (s *GistsCreateCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GistsCreateCommentApplicationJSONReq from json stream.
+func (s *GistsCreateCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -14044,7 +14044,7 @@ func (s *GistsUnstarNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GistsUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GistsUpdateCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14054,16 +14054,16 @@ func (s GistsUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GistsUpdateCommentApplicationJSONRequest json value to io.Writer.
-func (s GistsUpdateCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GistsUpdateCommentApplicationJSONReq json value to io.Writer.
+func (s GistsUpdateCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GistsUpdateCommentApplicationJSONRequest json value from io.Reader.
-func (s *GistsUpdateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GistsUpdateCommentApplicationJSONReq json value from io.Reader.
+func (s *GistsUpdateCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14077,8 +14077,8 @@ func (s *GistsUpdateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GistsUpdateCommentApplicationJSONRequest from json stream.
-func (s *GistsUpdateCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GistsUpdateCommentApplicationJSONReq from json stream.
+func (s *GistsUpdateCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -14429,7 +14429,7 @@ func (s *GitCommitVerification) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateBlobApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GitCreateBlobApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14444,16 +14444,16 @@ func (s GitCreateBlobApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateBlobApplicationJSONRequest json value to io.Writer.
-func (s GitCreateBlobApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateBlobApplicationJSONReq json value to io.Writer.
+func (s GitCreateBlobApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateBlobApplicationJSONRequest json value from io.Reader.
-func (s *GitCreateBlobApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateBlobApplicationJSONReq json value from io.Reader.
+func (s *GitCreateBlobApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14467,8 +14467,8 @@ func (s *GitCreateBlobApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateBlobApplicationJSONRequest from json stream.
-func (s *GitCreateBlobApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateBlobApplicationJSONReq from json stream.
+func (s *GitCreateBlobApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -14490,7 +14490,7 @@ func (s *GitCreateBlobApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateCommitApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GitCreateCommitApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14530,16 +14530,16 @@ func (s GitCreateCommitApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateCommitApplicationJSONRequest json value to io.Writer.
-func (s GitCreateCommitApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateCommitApplicationJSONReq json value to io.Writer.
+func (s GitCreateCommitApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateCommitApplicationJSONRequest json value from io.Reader.
-func (s *GitCreateCommitApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateCommitApplicationJSONReq json value from io.Reader.
+func (s *GitCreateCommitApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14553,8 +14553,8 @@ func (s *GitCreateCommitApplicationJSONRequest) ReadJSONFrom(r io.Reader) error 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateCommitApplicationJSONRequest from json stream.
-func (s *GitCreateCommitApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateCommitApplicationJSONReq from json stream.
+func (s *GitCreateCommitApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author":
@@ -14597,7 +14597,7 @@ func (s *GitCreateCommitApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateCommitApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+func (s GitCreateCommitApplicationJSONReqAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14615,16 +14615,16 @@ func (s GitCreateCommitApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateCommitApplicationJSONRequestAuthor json value to io.Writer.
-func (s GitCreateCommitApplicationJSONRequestAuthor) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateCommitApplicationJSONReqAuthor json value to io.Writer.
+func (s GitCreateCommitApplicationJSONReqAuthor) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateCommitApplicationJSONRequestAuthor json value from io.Reader.
-func (s *GitCreateCommitApplicationJSONRequestAuthor) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateCommitApplicationJSONReqAuthor json value from io.Reader.
+func (s *GitCreateCommitApplicationJSONReqAuthor) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14638,8 +14638,8 @@ func (s *GitCreateCommitApplicationJSONRequestAuthor) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateCommitApplicationJSONRequestAuthor from json stream.
-func (s *GitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateCommitApplicationJSONReqAuthor from json stream.
+func (s *GitCreateCommitApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "date":
@@ -14664,7 +14664,7 @@ func (s *GitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateCommitApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+func (s GitCreateCommitApplicationJSONReqCommitter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14686,16 +14686,16 @@ func (s GitCreateCommitApplicationJSONRequestCommitter) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateCommitApplicationJSONRequestCommitter json value to io.Writer.
-func (s GitCreateCommitApplicationJSONRequestCommitter) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateCommitApplicationJSONReqCommitter json value to io.Writer.
+func (s GitCreateCommitApplicationJSONReqCommitter) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateCommitApplicationJSONRequestCommitter json value from io.Reader.
-func (s *GitCreateCommitApplicationJSONRequestCommitter) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateCommitApplicationJSONReqCommitter json value from io.Reader.
+func (s *GitCreateCommitApplicationJSONReqCommitter) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14709,8 +14709,8 @@ func (s *GitCreateCommitApplicationJSONRequestCommitter) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateCommitApplicationJSONRequestCommitter from json stream.
-func (s *GitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateCommitApplicationJSONReqCommitter from json stream.
+func (s *GitCreateCommitApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "date":
@@ -14743,7 +14743,7 @@ func (s *GitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateRefApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GitCreateRefApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14761,16 +14761,16 @@ func (s GitCreateRefApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateRefApplicationJSONRequest json value to io.Writer.
-func (s GitCreateRefApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateRefApplicationJSONReq json value to io.Writer.
+func (s GitCreateRefApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateRefApplicationJSONRequest json value from io.Reader.
-func (s *GitCreateRefApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateRefApplicationJSONReq json value from io.Reader.
+func (s *GitCreateRefApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14784,8 +14784,8 @@ func (s *GitCreateRefApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateRefApplicationJSONRequest from json stream.
-func (s *GitCreateRefApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateRefApplicationJSONReq from json stream.
+func (s *GitCreateRefApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "key":
@@ -14810,7 +14810,7 @@ func (s *GitCreateRefApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateTagApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GitCreateTagApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14834,16 +14834,16 @@ func (s GitCreateTagApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateTagApplicationJSONRequest json value to io.Writer.
-func (s GitCreateTagApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateTagApplicationJSONReq json value to io.Writer.
+func (s GitCreateTagApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateTagApplicationJSONRequest json value from io.Reader.
-func (s *GitCreateTagApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateTagApplicationJSONReq json value from io.Reader.
+func (s *GitCreateTagApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14857,8 +14857,8 @@ func (s *GitCreateTagApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateTagApplicationJSONRequest from json stream.
-func (s *GitCreateTagApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateTagApplicationJSONReq from json stream.
+func (s *GitCreateTagApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message":
@@ -14892,7 +14892,7 @@ func (s *GitCreateTagApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateTagApplicationJSONRequestTagger) WriteJSON(j *json.Stream) {
+func (s GitCreateTagApplicationJSONReqTagger) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14910,16 +14910,16 @@ func (s GitCreateTagApplicationJSONRequestTagger) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateTagApplicationJSONRequestTagger json value to io.Writer.
-func (s GitCreateTagApplicationJSONRequestTagger) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateTagApplicationJSONReqTagger json value to io.Writer.
+func (s GitCreateTagApplicationJSONReqTagger) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateTagApplicationJSONRequestTagger json value from io.Reader.
-func (s *GitCreateTagApplicationJSONRequestTagger) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateTagApplicationJSONReqTagger json value from io.Reader.
+func (s *GitCreateTagApplicationJSONReqTagger) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -14933,8 +14933,8 @@ func (s *GitCreateTagApplicationJSONRequestTagger) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateTagApplicationJSONRequestTagger from json stream.
-func (s *GitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateTagApplicationJSONReqTagger from json stream.
+func (s *GitCreateTagApplicationJSONReqTagger) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "date":
@@ -14959,18 +14959,18 @@ func (s *GitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateTagApplicationJSONRequestType) WriteJSON(j *json.Stream) {
+func (s GitCreateTagApplicationJSONReqType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads GitCreateTagApplicationJSONRequestType from json stream.
-func (s *GitCreateTagApplicationJSONRequestType) ReadJSON(i *json.Iterator) error {
-	*s = GitCreateTagApplicationJSONRequestType(i.ReadString())
+// ReadJSON reads GitCreateTagApplicationJSONReqType from json stream.
+func (s *GitCreateTagApplicationJSONReqType) ReadJSON(i *json.Iterator) error {
+	*s = GitCreateTagApplicationJSONReqType(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateTreeApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GitCreateTreeApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14992,16 +14992,16 @@ func (s GitCreateTreeApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateTreeApplicationJSONRequest json value to io.Writer.
-func (s GitCreateTreeApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateTreeApplicationJSONReq json value to io.Writer.
+func (s GitCreateTreeApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateTreeApplicationJSONRequest json value from io.Reader.
-func (s *GitCreateTreeApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateTreeApplicationJSONReq json value from io.Reader.
+func (s *GitCreateTreeApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -15015,8 +15015,8 @@ func (s *GitCreateTreeApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateTreeApplicationJSONRequest from json stream.
-func (s *GitCreateTreeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateTreeApplicationJSONReq from json stream.
+func (s *GitCreateTreeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "base_tree":
@@ -15039,7 +15039,7 @@ func (s *GitCreateTreeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateTreeApplicationJSONRequestTreeItem) WriteJSON(j *json.Stream) {
+func (s GitCreateTreeApplicationJSONReqTreeItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -15071,16 +15071,16 @@ func (s GitCreateTreeApplicationJSONRequestTreeItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitCreateTreeApplicationJSONRequestTreeItem json value to io.Writer.
-func (s GitCreateTreeApplicationJSONRequestTreeItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitCreateTreeApplicationJSONReqTreeItem json value to io.Writer.
+func (s GitCreateTreeApplicationJSONReqTreeItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitCreateTreeApplicationJSONRequestTreeItem json value from io.Reader.
-func (s *GitCreateTreeApplicationJSONRequestTreeItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitCreateTreeApplicationJSONReqTreeItem json value from io.Reader.
+func (s *GitCreateTreeApplicationJSONReqTreeItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -15094,8 +15094,8 @@ func (s *GitCreateTreeApplicationJSONRequestTreeItem) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitCreateTreeApplicationJSONRequestTreeItem from json stream.
-func (s *GitCreateTreeApplicationJSONRequestTreeItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitCreateTreeApplicationJSONReqTreeItem from json stream.
+func (s *GitCreateTreeApplicationJSONReqTreeItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -15142,24 +15142,24 @@ func (s *GitCreateTreeApplicationJSONRequestTreeItem) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateTreeApplicationJSONRequestTreeItemMode) WriteJSON(j *json.Stream) {
+func (s GitCreateTreeApplicationJSONReqTreeItemMode) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads GitCreateTreeApplicationJSONRequestTreeItemMode from json stream.
-func (s *GitCreateTreeApplicationJSONRequestTreeItemMode) ReadJSON(i *json.Iterator) error {
-	*s = GitCreateTreeApplicationJSONRequestTreeItemMode(i.ReadString())
+// ReadJSON reads GitCreateTreeApplicationJSONReqTreeItemMode from json stream.
+func (s *GitCreateTreeApplicationJSONReqTreeItemMode) ReadJSON(i *json.Iterator) error {
+	*s = GitCreateTreeApplicationJSONReqTreeItemMode(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitCreateTreeApplicationJSONRequestTreeItemType) WriteJSON(j *json.Stream) {
+func (s GitCreateTreeApplicationJSONReqTreeItemType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads GitCreateTreeApplicationJSONRequestTreeItemType from json stream.
-func (s *GitCreateTreeApplicationJSONRequestTreeItemType) ReadJSON(i *json.Iterator) error {
-	*s = GitCreateTreeApplicationJSONRequestTreeItemType(i.ReadString())
+// ReadJSON reads GitCreateTreeApplicationJSONReqTreeItemType from json stream.
+func (s *GitCreateTreeApplicationJSONReqTreeItemType) ReadJSON(i *json.Iterator) error {
+	*s = GitCreateTreeApplicationJSONReqTreeItemType(i.ReadString())
 	return i.Error
 }
 
@@ -15515,7 +15515,7 @@ func (s *GitTreeTreeItem) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GitUpdateRefApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GitUpdateRefApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -15530,16 +15530,16 @@ func (s GitUpdateRefApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GitUpdateRefApplicationJSONRequest json value to io.Writer.
-func (s GitUpdateRefApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GitUpdateRefApplicationJSONReq json value to io.Writer.
+func (s GitUpdateRefApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GitUpdateRefApplicationJSONRequest json value from io.Reader.
-func (s *GitUpdateRefApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GitUpdateRefApplicationJSONReq json value from io.Reader.
+func (s *GitUpdateRefApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -15553,8 +15553,8 @@ func (s *GitUpdateRefApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GitUpdateRefApplicationJSONRequest from json stream.
-func (s *GitUpdateRefApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GitUpdateRefApplicationJSONReq from json stream.
+func (s *GitUpdateRefApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "force":
@@ -16583,7 +16583,7 @@ func (s *InteractionsSetRestrictionsForRepoConflict) ReadJSON(i *json.Iterator) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesAddAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesAddAssigneesApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -16602,16 +16602,16 @@ func (s IssuesAddAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesAddAssigneesApplicationJSONRequest json value to io.Writer.
-func (s IssuesAddAssigneesApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesAddAssigneesApplicationJSONReq json value to io.Writer.
+func (s IssuesAddAssigneesApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesAddAssigneesApplicationJSONRequest json value from io.Reader.
-func (s *IssuesAddAssigneesApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesAddAssigneesApplicationJSONReq json value from io.Reader.
+func (s *IssuesAddAssigneesApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -16625,8 +16625,8 @@ func (s *IssuesAddAssigneesApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesAddAssigneesApplicationJSONRequest from json stream.
-func (s *IssuesAddAssigneesApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesAddAssigneesApplicationJSONReq from json stream.
+func (s *IssuesAddAssigneesApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "assignees":
@@ -16685,7 +16685,7 @@ func (s *IssuesCheckUserCanBeAssignedNoContent) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesCreateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesCreateCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -16695,16 +16695,16 @@ func (s IssuesCreateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesCreateCommentApplicationJSONRequest json value to io.Writer.
-func (s IssuesCreateCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesCreateCommentApplicationJSONReq json value to io.Writer.
+func (s IssuesCreateCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesCreateCommentApplicationJSONRequest json value from io.Reader.
-func (s *IssuesCreateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesCreateCommentApplicationJSONReq json value from io.Reader.
+func (s *IssuesCreateCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -16718,8 +16718,8 @@ func (s *IssuesCreateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) er
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesCreateCommentApplicationJSONRequest from json stream.
-func (s *IssuesCreateCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesCreateCommentApplicationJSONReq from json stream.
+func (s *IssuesCreateCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -16734,7 +16734,7 @@ func (s *IssuesCreateCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesCreateLabelApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesCreateLabelApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -16754,16 +16754,16 @@ func (s IssuesCreateLabelApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesCreateLabelApplicationJSONRequest json value to io.Writer.
-func (s IssuesCreateLabelApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesCreateLabelApplicationJSONReq json value to io.Writer.
+func (s IssuesCreateLabelApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesCreateLabelApplicationJSONRequest json value from io.Reader.
-func (s *IssuesCreateLabelApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesCreateLabelApplicationJSONReq json value from io.Reader.
+func (s *IssuesCreateLabelApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -16777,8 +16777,8 @@ func (s *IssuesCreateLabelApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesCreateLabelApplicationJSONRequest from json stream.
-func (s *IssuesCreateLabelApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesCreateLabelApplicationJSONReq from json stream.
+func (s *IssuesCreateLabelApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "color":
@@ -16807,7 +16807,7 @@ func (s *IssuesCreateLabelApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesCreateMilestoneApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesCreateMilestoneApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -16832,16 +16832,16 @@ func (s IssuesCreateMilestoneApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesCreateMilestoneApplicationJSONRequest json value to io.Writer.
-func (s IssuesCreateMilestoneApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesCreateMilestoneApplicationJSONReq json value to io.Writer.
+func (s IssuesCreateMilestoneApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesCreateMilestoneApplicationJSONRequest json value from io.Reader.
-func (s *IssuesCreateMilestoneApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesCreateMilestoneApplicationJSONReq json value from io.Reader.
+func (s *IssuesCreateMilestoneApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -16855,8 +16855,8 @@ func (s *IssuesCreateMilestoneApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesCreateMilestoneApplicationJSONRequest from json stream.
-func (s *IssuesCreateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesCreateMilestoneApplicationJSONReq from json stream.
+func (s *IssuesCreateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
@@ -16892,13 +16892,13 @@ func (s *IssuesCreateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesCreateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (s IssuesCreateMilestoneApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads IssuesCreateMilestoneApplicationJSONRequestState from json stream.
-func (s *IssuesCreateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
-	*s = IssuesCreateMilestoneApplicationJSONRequestState(i.ReadString())
+// ReadJSON reads IssuesCreateMilestoneApplicationJSONReqState from json stream.
+func (s *IssuesCreateMilestoneApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
+	*s = IssuesCreateMilestoneApplicationJSONReqState(i.ReadString())
 	return i.Error
 }
 
@@ -17062,7 +17062,7 @@ func (IssuesListLabelsOnIssueOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (IssuesListLabelsOnIssueOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesLockApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesLockApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17074,16 +17074,16 @@ func (s IssuesLockApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesLockApplicationJSONRequest json value to io.Writer.
-func (s IssuesLockApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesLockApplicationJSONReq json value to io.Writer.
+func (s IssuesLockApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesLockApplicationJSONRequest json value from io.Reader.
-func (s *IssuesLockApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesLockApplicationJSONReq json value from io.Reader.
+func (s *IssuesLockApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -17097,8 +17097,8 @@ func (s *IssuesLockApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesLockApplicationJSONRequest from json stream.
-func (s *IssuesLockApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesLockApplicationJSONReq from json stream.
+func (s *IssuesLockApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "lock_reason":
@@ -17117,13 +17117,13 @@ func (s *IssuesLockApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesLockApplicationJSONRequestLockReason) WriteJSON(j *json.Stream) {
+func (s IssuesLockApplicationJSONReqLockReason) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads IssuesLockApplicationJSONRequestLockReason from json stream.
-func (s *IssuesLockApplicationJSONRequestLockReason) ReadJSON(i *json.Iterator) error {
-	*s = IssuesLockApplicationJSONRequestLockReason(i.ReadString())
+// ReadJSON reads IssuesLockApplicationJSONReqLockReason from json stream.
+func (s *IssuesLockApplicationJSONReqLockReason) ReadJSON(i *json.Iterator) error {
+	*s = IssuesLockApplicationJSONReqLockReason(i.ReadString())
 	return i.Error
 }
 
@@ -17214,7 +17214,7 @@ func (s *IssuesRemoveAllLabelsNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesRemoveAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesRemoveAssigneesApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17233,16 +17233,16 @@ func (s IssuesRemoveAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesRemoveAssigneesApplicationJSONRequest json value to io.Writer.
-func (s IssuesRemoveAssigneesApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesRemoveAssigneesApplicationJSONReq json value to io.Writer.
+func (s IssuesRemoveAssigneesApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesRemoveAssigneesApplicationJSONRequest json value from io.Reader.
-func (s *IssuesRemoveAssigneesApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesRemoveAssigneesApplicationJSONReq json value from io.Reader.
+func (s *IssuesRemoveAssigneesApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -17256,8 +17256,8 @@ func (s *IssuesRemoveAssigneesApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesRemoveAssigneesApplicationJSONRequest from json stream.
-func (s *IssuesRemoveAssigneesApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesRemoveAssigneesApplicationJSONReq from json stream.
+func (s *IssuesRemoveAssigneesApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "assignees":
@@ -17341,7 +17341,7 @@ func (s *IssuesUnlockNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesUpdateCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17351,16 +17351,16 @@ func (s IssuesUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesUpdateCommentApplicationJSONRequest json value to io.Writer.
-func (s IssuesUpdateCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesUpdateCommentApplicationJSONReq json value to io.Writer.
+func (s IssuesUpdateCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesUpdateCommentApplicationJSONRequest json value from io.Reader.
-func (s *IssuesUpdateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesUpdateCommentApplicationJSONReq json value from io.Reader.
+func (s *IssuesUpdateCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -17374,8 +17374,8 @@ func (s *IssuesUpdateCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) er
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesUpdateCommentApplicationJSONRequest from json stream.
-func (s *IssuesUpdateCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesUpdateCommentApplicationJSONReq from json stream.
+func (s *IssuesUpdateCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -17390,7 +17390,7 @@ func (s *IssuesUpdateCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesUpdateLabelApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesUpdateLabelApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17412,16 +17412,16 @@ func (s IssuesUpdateLabelApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesUpdateLabelApplicationJSONRequest json value to io.Writer.
-func (s IssuesUpdateLabelApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesUpdateLabelApplicationJSONReq json value to io.Writer.
+func (s IssuesUpdateLabelApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesUpdateLabelApplicationJSONRequest json value from io.Reader.
-func (s *IssuesUpdateLabelApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesUpdateLabelApplicationJSONReq json value from io.Reader.
+func (s *IssuesUpdateLabelApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -17435,8 +17435,8 @@ func (s *IssuesUpdateLabelApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesUpdateLabelApplicationJSONRequest from json stream.
-func (s *IssuesUpdateLabelApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesUpdateLabelApplicationJSONReq from json stream.
+func (s *IssuesUpdateLabelApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "color":
@@ -17469,7 +17469,7 @@ func (s *IssuesUpdateLabelApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesUpdateMilestoneApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s IssuesUpdateMilestoneApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17496,16 +17496,16 @@ func (s IssuesUpdateMilestoneApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes IssuesUpdateMilestoneApplicationJSONRequest json value to io.Writer.
-func (s IssuesUpdateMilestoneApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes IssuesUpdateMilestoneApplicationJSONReq json value to io.Writer.
+func (s IssuesUpdateMilestoneApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads IssuesUpdateMilestoneApplicationJSONRequest json value from io.Reader.
-func (s *IssuesUpdateMilestoneApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads IssuesUpdateMilestoneApplicationJSONReq json value from io.Reader.
+func (s *IssuesUpdateMilestoneApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -17519,8 +17519,8 @@ func (s *IssuesUpdateMilestoneApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads IssuesUpdateMilestoneApplicationJSONRequest from json stream.
-func (s *IssuesUpdateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads IssuesUpdateMilestoneApplicationJSONReq from json stream.
+func (s *IssuesUpdateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
@@ -17560,13 +17560,13 @@ func (s *IssuesUpdateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s IssuesUpdateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (s IssuesUpdateMilestoneApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads IssuesUpdateMilestoneApplicationJSONRequestState from json stream.
-func (s *IssuesUpdateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
-	*s = IssuesUpdateMilestoneApplicationJSONRequestState(i.ReadString())
+// ReadJSON reads IssuesUpdateMilestoneApplicationJSONReqState from json stream.
+func (s *IssuesUpdateMilestoneApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
+	*s = IssuesUpdateMilestoneApplicationJSONReqState(i.ReadString())
 	return i.Error
 }
 
@@ -17777,7 +17777,7 @@ func (LicensesGetApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { ret
 func (LicensesGetApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s MarkdownRenderApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MarkdownRenderApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -17797,16 +17797,16 @@ func (s MarkdownRenderApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MarkdownRenderApplicationJSONRequest json value to io.Writer.
-func (s MarkdownRenderApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MarkdownRenderApplicationJSONReq json value to io.Writer.
+func (s MarkdownRenderApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MarkdownRenderApplicationJSONRequest json value from io.Reader.
-func (s *MarkdownRenderApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MarkdownRenderApplicationJSONReq json value from io.Reader.
+func (s *MarkdownRenderApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -17820,8 +17820,8 @@ func (s *MarkdownRenderApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MarkdownRenderApplicationJSONRequest from json stream.
-func (s *MarkdownRenderApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MarkdownRenderApplicationJSONReq from json stream.
+func (s *MarkdownRenderApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "context":
@@ -17850,13 +17850,13 @@ func (s *MarkdownRenderApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MarkdownRenderApplicationJSONRequestMode) WriteJSON(j *json.Stream) {
+func (s MarkdownRenderApplicationJSONReqMode) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads MarkdownRenderApplicationJSONRequestMode from json stream.
-func (s *MarkdownRenderApplicationJSONRequestMode) ReadJSON(i *json.Iterator) error {
-	*s = MarkdownRenderApplicationJSONRequestMode(i.ReadString())
+// ReadJSON reads MarkdownRenderApplicationJSONReqMode from json stream.
+func (s *MarkdownRenderApplicationJSONReqMode) ReadJSON(i *json.Iterator) error {
+	*s = MarkdownRenderApplicationJSONReqMode(i.ReadString())
 	return i.Error
 }
 
@@ -18731,7 +18731,7 @@ func (MigrationsListReposForUserOK) ReadJSONFrom(r io.Reader) error  { return ni
 func (MigrationsListReposForUserOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsMapCommitAuthorApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MigrationsMapCommitAuthorApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -18748,16 +18748,16 @@ func (s MigrationsMapCommitAuthorApplicationJSONRequest) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MigrationsMapCommitAuthorApplicationJSONRequest json value to io.Writer.
-func (s MigrationsMapCommitAuthorApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MigrationsMapCommitAuthorApplicationJSONReq json value to io.Writer.
+func (s MigrationsMapCommitAuthorApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MigrationsMapCommitAuthorApplicationJSONRequest json value from io.Reader.
-func (s *MigrationsMapCommitAuthorApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MigrationsMapCommitAuthorApplicationJSONReq json value from io.Reader.
+func (s *MigrationsMapCommitAuthorApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -18771,8 +18771,8 @@ func (s *MigrationsMapCommitAuthorApplicationJSONRequest) ReadJSONFrom(r io.Read
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MigrationsMapCommitAuthorApplicationJSONRequest from json stream.
-func (s *MigrationsMapCommitAuthorApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MigrationsMapCommitAuthorApplicationJSONReq from json stream.
+func (s *MigrationsMapCommitAuthorApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "email":
@@ -18798,7 +18798,7 @@ func (s *MigrationsMapCommitAuthorApplicationJSONRequest) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsSetLfsPreferenceApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MigrationsSetLfsPreferenceApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -18808,16 +18808,16 @@ func (s MigrationsSetLfsPreferenceApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MigrationsSetLfsPreferenceApplicationJSONRequest json value to io.Writer.
-func (s MigrationsSetLfsPreferenceApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MigrationsSetLfsPreferenceApplicationJSONReq json value to io.Writer.
+func (s MigrationsSetLfsPreferenceApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MigrationsSetLfsPreferenceApplicationJSONRequest json value from io.Reader.
-func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MigrationsSetLfsPreferenceApplicationJSONReq json value from io.Reader.
+func (s *MigrationsSetLfsPreferenceApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -18831,8 +18831,8 @@ func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MigrationsSetLfsPreferenceApplicationJSONRequest from json stream.
-func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MigrationsSetLfsPreferenceApplicationJSONReq from json stream.
+func (s *MigrationsSetLfsPreferenceApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "use_lfs":
@@ -18850,18 +18850,18 @@ func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs) WriteJSON(j *json.Stream) {
+func (s MigrationsSetLfsPreferenceApplicationJSONReqUseLfs) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs from json stream.
-func (s *MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs) ReadJSON(i *json.Iterator) error {
-	*s = MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs(i.ReadString())
+// ReadJSON reads MigrationsSetLfsPreferenceApplicationJSONReqUseLfs from json stream.
+func (s *MigrationsSetLfsPreferenceApplicationJSONReqUseLfs) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsSetLfsPreferenceApplicationJSONReqUseLfs(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MigrationsStartForAuthenticatedUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -18910,16 +18910,16 @@ func (s MigrationsStartForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MigrationsStartForAuthenticatedUserApplicationJSONRequest json value to io.Writer.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MigrationsStartForAuthenticatedUserApplicationJSONReq json value to io.Writer.
+func (s MigrationsStartForAuthenticatedUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MigrationsStartForAuthenticatedUserApplicationJSONRequest json value from io.Reader.
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MigrationsStartForAuthenticatedUserApplicationJSONReq json value from io.Reader.
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -18933,8 +18933,8 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) ReadJSONFrom
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MigrationsStartForAuthenticatedUserApplicationJSONRequest from json stream.
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MigrationsStartForAuthenticatedUserApplicationJSONReq from json stream.
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "exclude":
@@ -18982,18 +18982,18 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem) WriteJSON(j *json.Stream) {
+func (s MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem from json stream.
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem) ReadJSON(i *json.Iterator) error {
-	*s = MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem(i.ReadString())
+// ReadJSON reads MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem from json stream.
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsStartForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MigrationsStartForOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -19042,16 +19042,16 @@ func (s MigrationsStartForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MigrationsStartForOrgApplicationJSONRequest json value to io.Writer.
-func (s MigrationsStartForOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MigrationsStartForOrgApplicationJSONReq json value to io.Writer.
+func (s MigrationsStartForOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MigrationsStartForOrgApplicationJSONRequest json value from io.Reader.
-func (s *MigrationsStartForOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MigrationsStartForOrgApplicationJSONReq json value from io.Reader.
+func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -19065,8 +19065,8 @@ func (s *MigrationsStartForOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MigrationsStartForOrgApplicationJSONRequest from json stream.
-func (s *MigrationsStartForOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MigrationsStartForOrgApplicationJSONReq from json stream.
+func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "exclude":
@@ -19114,18 +19114,18 @@ func (s *MigrationsStartForOrgApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsStartForOrgApplicationJSONRequestExcludeItem) WriteJSON(j *json.Stream) {
+func (s MigrationsStartForOrgApplicationJSONReqExcludeItem) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads MigrationsStartForOrgApplicationJSONRequestExcludeItem from json stream.
-func (s *MigrationsStartForOrgApplicationJSONRequestExcludeItem) ReadJSON(i *json.Iterator) error {
-	*s = MigrationsStartForOrgApplicationJSONRequestExcludeItem(i.ReadString())
+// ReadJSON reads MigrationsStartForOrgApplicationJSONReqExcludeItem from json stream.
+func (s *MigrationsStartForOrgApplicationJSONReqExcludeItem) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsStartForOrgApplicationJSONReqExcludeItem(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsStartImportApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MigrationsStartImportApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -19155,16 +19155,16 @@ func (s MigrationsStartImportApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MigrationsStartImportApplicationJSONRequest json value to io.Writer.
-func (s MigrationsStartImportApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MigrationsStartImportApplicationJSONReq json value to io.Writer.
+func (s MigrationsStartImportApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MigrationsStartImportApplicationJSONRequest json value from io.Reader.
-func (s *MigrationsStartImportApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MigrationsStartImportApplicationJSONReq json value from io.Reader.
+func (s *MigrationsStartImportApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -19178,8 +19178,8 @@ func (s *MigrationsStartImportApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MigrationsStartImportApplicationJSONRequest from json stream.
-func (s *MigrationsStartImportApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MigrationsStartImportApplicationJSONReq from json stream.
+func (s *MigrationsStartImportApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "tfvc_project":
@@ -19222,13 +19222,13 @@ func (s *MigrationsStartImportApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsStartImportApplicationJSONRequestVcs) WriteJSON(j *json.Stream) {
+func (s MigrationsStartImportApplicationJSONReqVcs) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads MigrationsStartImportApplicationJSONRequestVcs from json stream.
-func (s *MigrationsStartImportApplicationJSONRequestVcs) ReadJSON(i *json.Iterator) error {
-	*s = MigrationsStartImportApplicationJSONRequestVcs(i.ReadString())
+// ReadJSON reads MigrationsStartImportApplicationJSONReqVcs from json stream.
+func (s *MigrationsStartImportApplicationJSONReqVcs) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsStartImportApplicationJSONReqVcs(i.ReadString())
 	return i.Error
 }
 
@@ -19353,7 +19353,7 @@ func (s *MigrationsUnlockRepoForOrgNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MigrationsUpdateImportApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s MigrationsUpdateImportApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -19380,16 +19380,16 @@ func (s MigrationsUpdateImportApplicationJSONRequest) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes MigrationsUpdateImportApplicationJSONRequest json value to io.Writer.
-func (s MigrationsUpdateImportApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes MigrationsUpdateImportApplicationJSONReq json value to io.Writer.
+func (s MigrationsUpdateImportApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads MigrationsUpdateImportApplicationJSONRequest json value from io.Reader.
-func (s *MigrationsUpdateImportApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads MigrationsUpdateImportApplicationJSONReq json value from io.Reader.
+func (s *MigrationsUpdateImportApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -19403,8 +19403,8 @@ func (s *MigrationsUpdateImportApplicationJSONRequest) ReadJSONFrom(r io.Reader)
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads MigrationsUpdateImportApplicationJSONRequest from json stream.
-func (s *MigrationsUpdateImportApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MigrationsUpdateImportApplicationJSONReq from json stream.
+func (s *MigrationsUpdateImportApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "tfvc_project":
@@ -19948,8 +19948,8 @@ func (o *NilPageStatus) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews to json stream.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews to json stream.
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -19957,8 +19957,8 @@ func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestR
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews from json iterator.
-func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews from json iterator.
+func (o *NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Null = false
@@ -19967,19 +19967,19 @@ func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequest
 		}
 		return i.Error
 	case json.NilValue:
-		var v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews
+		var v ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 		o.Value = v
 		o.Null = true
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks to json stream.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks to json stream.
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -19987,8 +19987,8 @@ func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks from json iterator.
-func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks from json iterator.
+func (o *NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Null = false
@@ -19997,19 +19997,19 @@ func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusCheck
 		}
 		return i.Error
 	case json.NilValue:
-		var v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks
+		var v ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks
 		o.Value = v
 		o.Null = true
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRestrictions to json stream.
-func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONReqRestrictions to json stream.
+func (o NilReposUpdateBranchProtectionApplicationJSONReqRestrictions) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -20017,8 +20017,8 @@ func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) WriteJ
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRestrictions from json iterator.
-func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONReqRestrictions from json iterator.
+func (o *NilReposUpdateBranchProtectionApplicationJSONReqRestrictions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Null = false
@@ -20027,13 +20027,13 @@ func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) ReadJ
 		}
 		return i.Error
 	case json.NilValue:
-		var v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions
+		var v ReposUpdateBranchProtectionApplicationJSONReqRestrictions
 		o.Value = v
 		o.Null = true
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONReqRestrictions", i.WhatIsNext())
 	}
 	return nil
 }
@@ -22234,38 +22234,38 @@ func (o *OptAPIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility to json stream.
-func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility to json stream.
+func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json iterator.
-func (o *OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility from json iterator.
+func (o *OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
+		o.Value = ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility to json stream.
-func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility to json stream.
+func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json iterator.
-func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility from json iterator.
+func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
+		o.Value = ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReqVisibility", i.WhatIsNext())
 	}
 	return nil
 }
@@ -23276,38 +23276,38 @@ func (o *OptDeploymentSimple) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility to json stream.
-func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility to json stream.
+func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json iterator.
-func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility from json iterator.
+func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
+		o.Value = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility to json stream.
-func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility to json stream.
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json iterator.
-func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility from json iterator.
+func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
+		o.Value = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReqVisibility", i.WhatIsNext())
 	}
 	return nil
 }
@@ -23546,13 +23546,13 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(i *j
 	return nil
 }
 
-// WriteJSON writes json value of GitCreateCommitApplicationJSONRequestAuthor to json stream.
-func (o OptGitCreateCommitApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of GitCreateCommitApplicationJSONReqAuthor to json stream.
+func (o OptGitCreateCommitApplicationJSONReqAuthor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of GitCreateCommitApplicationJSONRequestAuthor from json iterator.
-func (o *OptGitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of GitCreateCommitApplicationJSONReqAuthor from json iterator.
+func (o *OptGitCreateCommitApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -23561,18 +23561,18 @@ func (o *OptGitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptGitCreateCommitApplicationJSONRequestAuthor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateCommitApplicationJSONReqAuthor", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of GitCreateCommitApplicationJSONRequestCommitter to json stream.
-func (o OptGitCreateCommitApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of GitCreateCommitApplicationJSONReqCommitter to json stream.
+func (o OptGitCreateCommitApplicationJSONReqCommitter) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of GitCreateCommitApplicationJSONRequestCommitter from json iterator.
-func (o *OptGitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of GitCreateCommitApplicationJSONReqCommitter from json iterator.
+func (o *OptGitCreateCommitApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -23581,18 +23581,18 @@ func (o *OptGitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptGitCreateCommitApplicationJSONRequestCommitter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateCommitApplicationJSONReqCommitter", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of GitCreateTagApplicationJSONRequestTagger to json stream.
-func (o OptGitCreateTagApplicationJSONRequestTagger) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of GitCreateTagApplicationJSONReqTagger to json stream.
+func (o OptGitCreateTagApplicationJSONReqTagger) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of GitCreateTagApplicationJSONRequestTagger from json iterator.
-func (o *OptGitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of GitCreateTagApplicationJSONReqTagger from json iterator.
+func (o *OptGitCreateTagApplicationJSONReqTagger) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -23601,43 +23601,43 @@ func (o *OptGitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptGitCreateTagApplicationJSONRequestTagger", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateTagApplicationJSONReqTagger", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of GitCreateTreeApplicationJSONRequestTreeItemMode to json stream.
-func (o OptGitCreateTreeApplicationJSONRequestTreeItemMode) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of GitCreateTreeApplicationJSONReqTreeItemMode to json stream.
+func (o OptGitCreateTreeApplicationJSONReqTreeItemMode) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of GitCreateTreeApplicationJSONRequestTreeItemMode from json iterator.
-func (o *OptGitCreateTreeApplicationJSONRequestTreeItemMode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of GitCreateTreeApplicationJSONReqTreeItemMode from json iterator.
+func (o *OptGitCreateTreeApplicationJSONReqTreeItemMode) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = GitCreateTreeApplicationJSONRequestTreeItemMode(i.ReadString())
+		o.Value = GitCreateTreeApplicationJSONReqTreeItemMode(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptGitCreateTreeApplicationJSONRequestTreeItemMode", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateTreeApplicationJSONReqTreeItemMode", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of GitCreateTreeApplicationJSONRequestTreeItemType to json stream.
-func (o OptGitCreateTreeApplicationJSONRequestTreeItemType) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of GitCreateTreeApplicationJSONReqTreeItemType to json stream.
+func (o OptGitCreateTreeApplicationJSONReqTreeItemType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of GitCreateTreeApplicationJSONRequestTreeItemType from json iterator.
-func (o *OptGitCreateTreeApplicationJSONRequestTreeItemType) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of GitCreateTreeApplicationJSONReqTreeItemType from json iterator.
+func (o *OptGitCreateTreeApplicationJSONReqTreeItemType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = GitCreateTreeApplicationJSONRequestTreeItemType(i.ReadString())
+		o.Value = GitCreateTreeApplicationJSONReqTreeItemType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptGitCreateTreeApplicationJSONRequestTreeItemType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateTreeApplicationJSONReqTreeItemType", i.WhatIsNext())
 	}
 	return nil
 }
@@ -23696,56 +23696,56 @@ func (o *OptInteractionExpiry) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of IssuesCreateMilestoneApplicationJSONRequestState to json stream.
-func (o OptIssuesCreateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of IssuesCreateMilestoneApplicationJSONReqState to json stream.
+func (o OptIssuesCreateMilestoneApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of IssuesCreateMilestoneApplicationJSONRequestState from json iterator.
-func (o *OptIssuesCreateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of IssuesCreateMilestoneApplicationJSONReqState from json iterator.
+func (o *OptIssuesCreateMilestoneApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = IssuesCreateMilestoneApplicationJSONRequestState(i.ReadString())
+		o.Value = IssuesCreateMilestoneApplicationJSONReqState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIssuesCreateMilestoneApplicationJSONRequestState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssuesCreateMilestoneApplicationJSONReqState", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of IssuesLockApplicationJSONRequestLockReason to json stream.
-func (o OptIssuesLockApplicationJSONRequestLockReason) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of IssuesLockApplicationJSONReqLockReason to json stream.
+func (o OptIssuesLockApplicationJSONReqLockReason) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of IssuesLockApplicationJSONRequestLockReason from json iterator.
-func (o *OptIssuesLockApplicationJSONRequestLockReason) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of IssuesLockApplicationJSONReqLockReason from json iterator.
+func (o *OptIssuesLockApplicationJSONReqLockReason) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = IssuesLockApplicationJSONRequestLockReason(i.ReadString())
+		o.Value = IssuesLockApplicationJSONReqLockReason(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIssuesLockApplicationJSONRequestLockReason", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssuesLockApplicationJSONReqLockReason", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of IssuesUpdateMilestoneApplicationJSONRequestState to json stream.
-func (o OptIssuesUpdateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of IssuesUpdateMilestoneApplicationJSONReqState to json stream.
+func (o OptIssuesUpdateMilestoneApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of IssuesUpdateMilestoneApplicationJSONRequestState from json iterator.
-func (o *OptIssuesUpdateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of IssuesUpdateMilestoneApplicationJSONReqState from json iterator.
+func (o *OptIssuesUpdateMilestoneApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = IssuesUpdateMilestoneApplicationJSONRequestState(i.ReadString())
+		o.Value = IssuesUpdateMilestoneApplicationJSONReqState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIssuesUpdateMilestoneApplicationJSONRequestState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssuesUpdateMilestoneApplicationJSONReqState", i.WhatIsNext())
 	}
 	return nil
 }
@@ -23770,20 +23770,20 @@ func (o *OptLinkWithType) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of MarkdownRenderApplicationJSONRequestMode to json stream.
-func (o OptMarkdownRenderApplicationJSONRequestMode) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of MarkdownRenderApplicationJSONReqMode to json stream.
+func (o OptMarkdownRenderApplicationJSONReqMode) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of MarkdownRenderApplicationJSONRequestMode from json iterator.
-func (o *OptMarkdownRenderApplicationJSONRequestMode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of MarkdownRenderApplicationJSONReqMode from json iterator.
+func (o *OptMarkdownRenderApplicationJSONReqMode) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = MarkdownRenderApplicationJSONRequestMode(i.ReadString())
+		o.Value = MarkdownRenderApplicationJSONReqMode(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMarkdownRenderApplicationJSONRequestMode", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptMarkdownRenderApplicationJSONReqMode", i.WhatIsNext())
 	}
 	return nil
 }
@@ -23826,20 +23826,20 @@ func (o *OptMergedUpstreamMergeType) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of MigrationsStartImportApplicationJSONRequestVcs to json stream.
-func (o OptMigrationsStartImportApplicationJSONRequestVcs) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of MigrationsStartImportApplicationJSONReqVcs to json stream.
+func (o OptMigrationsStartImportApplicationJSONReqVcs) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of MigrationsStartImportApplicationJSONRequestVcs from json iterator.
-func (o *OptMigrationsStartImportApplicationJSONRequestVcs) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of MigrationsStartImportApplicationJSONReqVcs from json iterator.
+func (o *OptMigrationsStartImportApplicationJSONReqVcs) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = MigrationsStartImportApplicationJSONRequestVcs(i.ReadString())
+		o.Value = MigrationsStartImportApplicationJSONReqVcs(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMigrationsStartImportApplicationJSONRequestVcs", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptMigrationsStartImportApplicationJSONReqVcs", i.WhatIsNext())
 	}
 	return nil
 }
@@ -24144,8 +24144,8 @@ func (o *OptNilPullRequestReviewCommentStartSide) ReadJSON(i *json.Iterator) err
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysis to json stream.
-func (o OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateApplicationJSONReqSecurityAndAnalysis to json stream.
+func (o OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -24153,8 +24153,8 @@ func (o OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j 
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysis from json iterator.
-func (o *OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateApplicationJSONReqSecurityAndAnalysis from json iterator.
+func (o *OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -24164,14 +24164,14 @@ func (o *OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i 
 		}
 		return i.Error
 	case json.NilValue:
-		var v ReposUpdateApplicationJSONRequestSecurityAndAnalysis
+		var v ReposUpdateApplicationJSONReqSecurityAndAnalysis
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilReposUpdateApplicationJSONReqSecurityAndAnalysis", i.WhatIsNext())
 	}
 	return nil
 }
@@ -24536,74 +24536,74 @@ func (o *OptOrganizationFullPlan) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of OrgsCreateInvitationApplicationJSONRequestRole to json stream.
-func (o OptOrgsCreateInvitationApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of OrgsCreateInvitationApplicationJSONReqRole to json stream.
+func (o OptOrgsCreateInvitationApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of OrgsCreateInvitationApplicationJSONRequestRole from json iterator.
-func (o *OptOrgsCreateInvitationApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of OrgsCreateInvitationApplicationJSONReqRole from json iterator.
+func (o *OptOrgsCreateInvitationApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = OrgsCreateInvitationApplicationJSONRequestRole(i.ReadString())
+		o.Value = OrgsCreateInvitationApplicationJSONReqRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptOrgsCreateInvitationApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsCreateInvitationApplicationJSONReqRole", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of OrgsSetMembershipForUserApplicationJSONRequestRole to json stream.
-func (o OptOrgsSetMembershipForUserApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of OrgsSetMembershipForUserApplicationJSONReqRole to json stream.
+func (o OptOrgsSetMembershipForUserApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of OrgsSetMembershipForUserApplicationJSONRequestRole from json iterator.
-func (o *OptOrgsSetMembershipForUserApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of OrgsSetMembershipForUserApplicationJSONReqRole from json iterator.
+func (o *OptOrgsSetMembershipForUserApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = OrgsSetMembershipForUserApplicationJSONRequestRole(i.ReadString())
+		o.Value = OrgsSetMembershipForUserApplicationJSONReqRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptOrgsSetMembershipForUserApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsSetMembershipForUserApplicationJSONReqRole", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission to json stream.
-func (o OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of OrgsUpdateApplicationJSONReqDefaultRepositoryPermission to json stream.
+func (o OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission from json iterator.
-func (o *OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of OrgsUpdateApplicationJSONReqDefaultRepositoryPermission from json iterator.
+func (o *OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(i.ReadString())
+		o.Value = OrgsUpdateApplicationJSONReqDefaultRepositoryPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsUpdateApplicationJSONReqDefaultRepositoryPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType to json stream.
-func (o OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType to json stream.
+func (o OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType from json iterator.
-func (o *OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType from json iterator.
+func (o *OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(i.ReadString())
+		o.Value = OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType", i.WhatIsNext())
 	}
 	return nil
 }
@@ -24706,38 +24706,38 @@ func (o *OptProjectOrganizationPermission) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of ProjectsAddCollaboratorApplicationJSONRequestPermission to json stream.
-func (o OptProjectsAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ProjectsAddCollaboratorApplicationJSONReqPermission to json stream.
+func (o OptProjectsAddCollaboratorApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ProjectsAddCollaboratorApplicationJSONRequestPermission from json iterator.
-func (o *OptProjectsAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ProjectsAddCollaboratorApplicationJSONReqPermission from json iterator.
+func (o *OptProjectsAddCollaboratorApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ProjectsAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
+		o.Value = ProjectsAddCollaboratorApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptProjectsAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProjectsAddCollaboratorApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ProjectsUpdateApplicationJSONRequestOrganizationPermission to json stream.
-func (o OptProjectsUpdateApplicationJSONRequestOrganizationPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ProjectsUpdateApplicationJSONReqOrganizationPermission to json stream.
+func (o OptProjectsUpdateApplicationJSONReqOrganizationPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ProjectsUpdateApplicationJSONRequestOrganizationPermission from json iterator.
-func (o *OptProjectsUpdateApplicationJSONRequestOrganizationPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ProjectsUpdateApplicationJSONReqOrganizationPermission from json iterator.
+func (o *OptProjectsUpdateApplicationJSONReqOrganizationPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ProjectsUpdateApplicationJSONRequestOrganizationPermission(i.ReadString())
+		o.Value = ProjectsUpdateApplicationJSONReqOrganizationPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptProjectsUpdateApplicationJSONRequestOrganizationPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProjectsUpdateApplicationJSONReqOrganizationPermission", i.WhatIsNext())
 	}
 	return nil
 }
@@ -24980,92 +24980,92 @@ func (o *OptPullRequestReviewCommentSide) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of PullsCreateReviewApplicationJSONRequestEvent to json stream.
-func (o OptPullsCreateReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of PullsCreateReviewApplicationJSONReqEvent to json stream.
+func (o OptPullsCreateReviewApplicationJSONReqEvent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of PullsCreateReviewApplicationJSONRequestEvent from json iterator.
-func (o *OptPullsCreateReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of PullsCreateReviewApplicationJSONReqEvent from json iterator.
+func (o *OptPullsCreateReviewApplicationJSONReqEvent) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = PullsCreateReviewApplicationJSONRequestEvent(i.ReadString())
+		o.Value = PullsCreateReviewApplicationJSONReqEvent(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewApplicationJSONRequestEvent", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewApplicationJSONReqEvent", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONRequestSide to json stream.
-func (o OptPullsCreateReviewCommentApplicationJSONRequestSide) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONReqSide to json stream.
+func (o OptPullsCreateReviewCommentApplicationJSONReqSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONRequestSide from json iterator.
-func (o *OptPullsCreateReviewCommentApplicationJSONRequestSide) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONReqSide from json iterator.
+func (o *OptPullsCreateReviewCommentApplicationJSONReqSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = PullsCreateReviewCommentApplicationJSONRequestSide(i.ReadString())
+		o.Value = PullsCreateReviewCommentApplicationJSONReqSide(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewCommentApplicationJSONRequestSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewCommentApplicationJSONReqSide", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONRequestStartSide to json stream.
-func (o OptPullsCreateReviewCommentApplicationJSONRequestStartSide) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONReqStartSide to json stream.
+func (o OptPullsCreateReviewCommentApplicationJSONReqStartSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONRequestStartSide from json iterator.
-func (o *OptPullsCreateReviewCommentApplicationJSONRequestStartSide) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONReqStartSide from json iterator.
+func (o *OptPullsCreateReviewCommentApplicationJSONReqStartSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = PullsCreateReviewCommentApplicationJSONRequestStartSide(i.ReadString())
+		o.Value = PullsCreateReviewCommentApplicationJSONReqStartSide(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewCommentApplicationJSONRequestStartSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewCommentApplicationJSONReqStartSide", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of PullsMergeApplicationJSONRequestMergeMethod to json stream.
-func (o OptPullsMergeApplicationJSONRequestMergeMethod) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of PullsMergeApplicationJSONReqMergeMethod to json stream.
+func (o OptPullsMergeApplicationJSONReqMergeMethod) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of PullsMergeApplicationJSONRequestMergeMethod from json iterator.
-func (o *OptPullsMergeApplicationJSONRequestMergeMethod) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of PullsMergeApplicationJSONReqMergeMethod from json iterator.
+func (o *OptPullsMergeApplicationJSONReqMergeMethod) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = PullsMergeApplicationJSONRequestMergeMethod(i.ReadString())
+		o.Value = PullsMergeApplicationJSONReqMergeMethod(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPullsMergeApplicationJSONRequestMergeMethod", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsMergeApplicationJSONReqMergeMethod", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of PullsUpdateApplicationJSONRequestState to json stream.
-func (o OptPullsUpdateApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of PullsUpdateApplicationJSONReqState to json stream.
+func (o OptPullsUpdateApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of PullsUpdateApplicationJSONRequestState from json iterator.
-func (o *OptPullsUpdateApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of PullsUpdateApplicationJSONReqState from json iterator.
+func (o *OptPullsUpdateApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = PullsUpdateApplicationJSONRequestState(i.ReadString())
+		o.Value = PullsUpdateApplicationJSONReqState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPullsUpdateApplicationJSONRequestState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsUpdateApplicationJSONReqState", i.WhatIsNext())
 	}
 	return nil
 }
@@ -25110,67 +25110,67 @@ func (o *OptReactionRollup) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of ReposAddCollaboratorApplicationJSONRequestPermission to json stream.
-func (o OptReposAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposAddCollaboratorApplicationJSONReqPermission to json stream.
+func (o OptReposAddCollaboratorApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ReposAddCollaboratorApplicationJSONRequestPermission from json iterator.
-func (o *OptReposAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposAddCollaboratorApplicationJSONReqPermission from json iterator.
+func (o *OptReposAddCollaboratorApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ReposAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
+		o.Value = ReposAddCollaboratorApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposAddCollaboratorApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment to json stream.
-func (o OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposCreateDeploymentStatusApplicationJSONReqEnvironment to json stream.
+func (o OptReposCreateDeploymentStatusApplicationJSONReqEnvironment) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment from json iterator.
-func (o *OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposCreateDeploymentStatusApplicationJSONReqEnvironment from json iterator.
+func (o *OptReposCreateDeploymentStatusApplicationJSONReqEnvironment) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ReposCreateDeploymentStatusApplicationJSONRequestEnvironment(i.ReadString())
+		o.Value = ReposCreateDeploymentStatusApplicationJSONReqEnvironment(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateDeploymentStatusApplicationJSONReqEnvironment", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposCreateInOrgApplicationJSONRequestVisibility to json stream.
-func (o OptReposCreateInOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposCreateInOrgApplicationJSONReqVisibility to json stream.
+func (o OptReposCreateInOrgApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ReposCreateInOrgApplicationJSONRequestVisibility from json iterator.
-func (o *OptReposCreateInOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposCreateInOrgApplicationJSONReqVisibility from json iterator.
+func (o *OptReposCreateInOrgApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ReposCreateInOrgApplicationJSONRequestVisibility(i.ReadString())
+		o.Value = ReposCreateInOrgApplicationJSONReqVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposCreateInOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateInOrgApplicationJSONReqVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor to json stream.
-func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor to json stream.
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor from json iterator.
-func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor from json iterator.
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25179,18 +25179,18 @@ func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSO
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateOrUpdateFileContentsApplicationJSONReqAuthor", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter to json stream.
-func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter to json stream.
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter from json iterator.
-func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter from json iterator.
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25199,36 +25199,36 @@ func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) Read
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateOrUpdateFileContentsApplicationJSONReqCommitter", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposCreatePagesSiteApplicationJSONRequestSourcePath to json stream.
-func (o OptReposCreatePagesSiteApplicationJSONRequestSourcePath) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposCreatePagesSiteApplicationJSONReqSourcePath to json stream.
+func (o OptReposCreatePagesSiteApplicationJSONReqSourcePath) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ReposCreatePagesSiteApplicationJSONRequestSourcePath from json iterator.
-func (o *OptReposCreatePagesSiteApplicationJSONRequestSourcePath) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposCreatePagesSiteApplicationJSONReqSourcePath from json iterator.
+func (o *OptReposCreatePagesSiteApplicationJSONReqSourcePath) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ReposCreatePagesSiteApplicationJSONRequestSourcePath(i.ReadString())
+		o.Value = ReposCreatePagesSiteApplicationJSONReqSourcePath(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposCreatePagesSiteApplicationJSONRequestSourcePath", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreatePagesSiteApplicationJSONReqSourcePath", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposDeleteFileApplicationJSONRequestAuthor to json stream.
-func (o OptReposDeleteFileApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposDeleteFileApplicationJSONReqAuthor to json stream.
+func (o OptReposDeleteFileApplicationJSONReqAuthor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposDeleteFileApplicationJSONRequestAuthor from json iterator.
-func (o *OptReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposDeleteFileApplicationJSONReqAuthor from json iterator.
+func (o *OptReposDeleteFileApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25237,18 +25237,18 @@ func (o *OptReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposDeleteFileApplicationJSONRequestAuthor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposDeleteFileApplicationJSONReqAuthor", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposDeleteFileApplicationJSONRequestCommitter to json stream.
-func (o OptReposDeleteFileApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposDeleteFileApplicationJSONReqCommitter to json stream.
+func (o OptReposDeleteFileApplicationJSONReqCommitter) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposDeleteFileApplicationJSONRequestCommitter from json iterator.
-func (o *OptReposDeleteFileApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposDeleteFileApplicationJSONReqCommitter from json iterator.
+func (o *OptReposDeleteFileApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25257,18 +25257,18 @@ func (o *OptReposDeleteFileApplicationJSONRequestCommitter) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposDeleteFileApplicationJSONRequestCommitter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposDeleteFileApplicationJSONReqCommitter", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity to json stream.
-func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity to json stream.
+func (o OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity from json iterator.
-func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity from json iterator.
+func (o *OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25277,18 +25277,18 @@ func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning to json stream.
-func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning to json stream.
+func (o OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning from json iterator.
-func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning from json iterator.
+func (o *OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25297,36 +25297,36 @@ func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateApplicationJSONRequestVisibility to json stream.
-func (o OptReposUpdateApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateApplicationJSONReqVisibility to json stream.
+func (o OptReposUpdateApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ReposUpdateApplicationJSONRequestVisibility from json iterator.
-func (o *OptReposUpdateApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateApplicationJSONReqVisibility from json iterator.
+func (o *OptReposUpdateApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ReposUpdateApplicationJSONRequestVisibility(i.ReadString())
+		o.Value = ReposUpdateApplicationJSONReqVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONReqVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions to json stream.
-func (o OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions to json stream.
+func (o OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions from json iterator.
-func (o *OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions from json iterator.
+func (o *OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25335,36 +25335,36 @@ func (o *OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequest
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdateInvitationApplicationJSONRequestPermissions to json stream.
-func (o OptReposUpdateInvitationApplicationJSONRequestPermissions) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdateInvitationApplicationJSONReqPermissions to json stream.
+func (o OptReposUpdateInvitationApplicationJSONReqPermissions) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of ReposUpdateInvitationApplicationJSONRequestPermissions from json iterator.
-func (o *OptReposUpdateInvitationApplicationJSONRequestPermissions) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdateInvitationApplicationJSONReqPermissions from json iterator.
+func (o *OptReposUpdateInvitationApplicationJSONReqPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = ReposUpdateInvitationApplicationJSONRequestPermissions(i.ReadString())
+		o.Value = ReposUpdateInvitationApplicationJSONReqPermissions(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposUpdateInvitationApplicationJSONRequestPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateInvitationApplicationJSONReqPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions to json stream.
-func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions to json stream.
+func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
-// ReadJSON reads json value of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions from json iterator.
-func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions from json iterator.
+func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -25373,7 +25373,7 @@ func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissa
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions", i.WhatIsNext())
 	}
 	return nil
 }
@@ -25766,218 +25766,218 @@ func (o *OptTeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-// WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole to json stream.
-func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole to json stream.
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole from json iterator.
-func (o *OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole from json iterator.
+func (o *OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(i.ReadString())
+		o.Value = TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole to json stream.
-func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole to json stream.
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole from json iterator.
-func (o *OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole from json iterator.
+func (o *OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(i.ReadString())
+		o.Value = TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission to json stream.
-func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission to json stream.
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission from json iterator.
-func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission from json iterator.
+func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
+		o.Value = TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission to json stream.
-func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission to json stream.
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission from json iterator.
-func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission from json iterator.
+func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
+		o.Value = TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission to json stream.
-func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission to json stream.
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission from json iterator.
-func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission from json iterator.
+func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
+		o.Value = TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission to json stream.
-func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission to json stream.
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission from json iterator.
-func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission from json iterator.
+func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
+		o.Value = TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsCreateApplicationJSONRequestPermission to json stream.
-func (o OptTeamsCreateApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsCreateApplicationJSONReqPermission to json stream.
+func (o OptTeamsCreateApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsCreateApplicationJSONRequestPermission from json iterator.
-func (o *OptTeamsCreateApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsCreateApplicationJSONReqPermission from json iterator.
+func (o *OptTeamsCreateApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsCreateApplicationJSONRequestPermission(i.ReadString())
+		o.Value = TeamsCreateApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsCreateApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsCreateApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsCreateApplicationJSONRequestPrivacy to json stream.
-func (o OptTeamsCreateApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsCreateApplicationJSONReqPrivacy to json stream.
+func (o OptTeamsCreateApplicationJSONReqPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsCreateApplicationJSONRequestPrivacy from json iterator.
-func (o *OptTeamsCreateApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsCreateApplicationJSONReqPrivacy from json iterator.
+func (o *OptTeamsCreateApplicationJSONReqPrivacy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsCreateApplicationJSONRequestPrivacy(i.ReadString())
+		o.Value = TeamsCreateApplicationJSONReqPrivacy(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsCreateApplicationJSONRequestPrivacy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsCreateApplicationJSONReqPrivacy", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONRequestPermission to json stream.
-func (o OptTeamsUpdateInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONReqPermission to json stream.
+func (o OptTeamsUpdateInOrgApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONRequestPermission from json iterator.
-func (o *OptTeamsUpdateInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONReqPermission from json iterator.
+func (o *OptTeamsUpdateInOrgApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsUpdateInOrgApplicationJSONRequestPermission(i.ReadString())
+		o.Value = TeamsUpdateInOrgApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateInOrgApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONRequestPrivacy to json stream.
-func (o OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONReqPrivacy to json stream.
+func (o OptTeamsUpdateInOrgApplicationJSONReqPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONRequestPrivacy from json iterator.
-func (o *OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONReqPrivacy from json iterator.
+func (o *OptTeamsUpdateInOrgApplicationJSONReqPrivacy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsUpdateInOrgApplicationJSONRequestPrivacy(i.ReadString())
+		o.Value = TeamsUpdateInOrgApplicationJSONReqPrivacy(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateInOrgApplicationJSONRequestPrivacy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateInOrgApplicationJSONReqPrivacy", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONRequestPermission to json stream.
-func (o OptTeamsUpdateLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONReqPermission to json stream.
+func (o OptTeamsUpdateLegacyApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONRequestPermission from json iterator.
-func (o *OptTeamsUpdateLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONReqPermission from json iterator.
+func (o *OptTeamsUpdateLegacyApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsUpdateLegacyApplicationJSONRequestPermission(i.ReadString())
+		o.Value = TeamsUpdateLegacyApplicationJSONReqPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateLegacyApplicationJSONReqPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
-// WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONRequestPrivacy to json stream.
-func (o OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+// WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONReqPrivacy to json stream.
+func (o OptTeamsUpdateLegacyApplicationJSONReqPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
-// ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONRequestPrivacy from json iterator.
-func (o *OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONReqPrivacy from json iterator.
+func (o *OptTeamsUpdateLegacyApplicationJSONReqPrivacy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
-		o.Value = TeamsUpdateLegacyApplicationJSONRequestPrivacy(i.ReadString())
+		o.Value = TeamsUpdateLegacyApplicationJSONReqPrivacy(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateLegacyApplicationJSONRequestPrivacy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateLegacyApplicationJSONReqPrivacy", i.WhatIsNext())
 	}
 	return nil
 }
@@ -26838,7 +26838,7 @@ func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCreateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s OrgsCreateInvitationApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -26872,16 +26872,16 @@ func (s OrgsCreateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes OrgsCreateInvitationApplicationJSONRequest json value to io.Writer.
-func (s OrgsCreateInvitationApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes OrgsCreateInvitationApplicationJSONReq json value to io.Writer.
+func (s OrgsCreateInvitationApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads OrgsCreateInvitationApplicationJSONRequest json value from io.Reader.
-func (s *OrgsCreateInvitationApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads OrgsCreateInvitationApplicationJSONReq json value from io.Reader.
+func (s *OrgsCreateInvitationApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -26895,8 +26895,8 @@ func (s *OrgsCreateInvitationApplicationJSONRequest) ReadJSONFrom(r io.Reader) e
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads OrgsCreateInvitationApplicationJSONRequest from json stream.
-func (s *OrgsCreateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads OrgsCreateInvitationApplicationJSONReq from json stream.
+func (s *OrgsCreateInvitationApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "email":
@@ -26933,13 +26933,13 @@ func (s *OrgsCreateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsCreateInvitationApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (s OrgsCreateInvitationApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads OrgsCreateInvitationApplicationJSONRequestRole from json stream.
-func (s *OrgsCreateInvitationApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
-	*s = OrgsCreateInvitationApplicationJSONRequestRole(i.ReadString())
+// ReadJSON reads OrgsCreateInvitationApplicationJSONReqRole from json stream.
+func (s *OrgsCreateInvitationApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
+	*s = OrgsCreateInvitationApplicationJSONReqRole(i.ReadString())
 	return i.Error
 }
 
@@ -27422,7 +27422,7 @@ func (s *OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsSetMembershipForUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s OrgsSetMembershipForUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -27434,16 +27434,16 @@ func (s OrgsSetMembershipForUserApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes OrgsSetMembershipForUserApplicationJSONRequest json value to io.Writer.
-func (s OrgsSetMembershipForUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes OrgsSetMembershipForUserApplicationJSONReq json value to io.Writer.
+func (s OrgsSetMembershipForUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads OrgsSetMembershipForUserApplicationJSONRequest json value from io.Reader.
-func (s *OrgsSetMembershipForUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads OrgsSetMembershipForUserApplicationJSONReq json value from io.Reader.
+func (s *OrgsSetMembershipForUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -27457,8 +27457,8 @@ func (s *OrgsSetMembershipForUserApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads OrgsSetMembershipForUserApplicationJSONRequest from json stream.
-func (s *OrgsSetMembershipForUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads OrgsSetMembershipForUserApplicationJSONReq from json stream.
+func (s *OrgsSetMembershipForUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "role":
@@ -27477,13 +27477,13 @@ func (s *OrgsSetMembershipForUserApplicationJSONRequest) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsSetMembershipForUserApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (s OrgsSetMembershipForUserApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads OrgsSetMembershipForUserApplicationJSONRequestRole from json stream.
-func (s *OrgsSetMembershipForUserApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
-	*s = OrgsSetMembershipForUserApplicationJSONRequestRole(i.ReadString())
+// ReadJSON reads OrgsSetMembershipForUserApplicationJSONReqRole from json stream.
+func (s *OrgsSetMembershipForUserApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
+	*s = OrgsSetMembershipForUserApplicationJSONReqRole(i.ReadString())
 	return i.Error
 }
 
@@ -27574,7 +27574,7 @@ func (s *OrgsUnblockUser) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s OrgsUpdateApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -27676,16 +27676,16 @@ func (s OrgsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes OrgsUpdateApplicationJSONRequest json value to io.Writer.
-func (s OrgsUpdateApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes OrgsUpdateApplicationJSONReq json value to io.Writer.
+func (s OrgsUpdateApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads OrgsUpdateApplicationJSONRequest json value from io.Reader.
-func (s *OrgsUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads OrgsUpdateApplicationJSONReq json value from io.Reader.
+func (s *OrgsUpdateApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -27699,8 +27699,8 @@ func (s *OrgsUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads OrgsUpdateApplicationJSONRequest from json stream.
-func (s *OrgsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads OrgsUpdateApplicationJSONReq from json stream.
+func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "billing_email":
@@ -27845,29 +27845,29 @@ func (s *OrgsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
+func (s OrgsUpdateApplicationJSONReqDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission from json stream.
-func (s *OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
-	*s = OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(i.ReadString())
+// ReadJSON reads OrgsUpdateApplicationJSONReqDefaultRepositoryPermission from json stream.
+func (s *OrgsUpdateApplicationJSONReqDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
+	*s = OrgsUpdateApplicationJSONReqDefaultRepositoryPermission(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
+func (s OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType from json stream.
-func (s *OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
-	*s = OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(i.ReadString())
+// ReadJSON reads OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType from json stream.
+func (s *OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
+	*s = OrgsUpdateApplicationJSONReqMembersAllowedRepositoryCreationType(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -27877,16 +27877,16 @@ func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest json value to io.Writer.
-func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq json value to io.Writer.
+func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest json value from io.Reader.
-func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq json value from io.Reader.
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -27900,8 +27900,8 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest from json stream.
-func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq from json stream.
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "state":
@@ -27919,13 +27919,13 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState from json stream.
-func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
-	*s = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState(i.ReadString())
+// ReadJSON reads OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqState from json stream.
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
+	*s = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONReqState(i.ReadString())
 	return i.Error
 }
 
@@ -28906,7 +28906,7 @@ func (s *ProjectOrganizationPermission) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsAddCollaboratorApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -28918,16 +28918,16 @@ func (s ProjectsAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsAddCollaboratorApplicationJSONRequest json value to io.Writer.
-func (s ProjectsAddCollaboratorApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsAddCollaboratorApplicationJSONReq json value to io.Writer.
+func (s ProjectsAddCollaboratorApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsAddCollaboratorApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsAddCollaboratorApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsAddCollaboratorApplicationJSONReq json value from io.Reader.
+func (s *ProjectsAddCollaboratorApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -28941,8 +28941,8 @@ func (s *ProjectsAddCollaboratorApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsAddCollaboratorApplicationJSONRequest from json stream.
-func (s *ProjectsAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsAddCollaboratorApplicationJSONReq from json stream.
+func (s *ProjectsAddCollaboratorApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
@@ -28961,13 +28961,13 @@ func (s *ProjectsAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterato
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s ProjectsAddCollaboratorApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ProjectsAddCollaboratorApplicationJSONRequestPermission from json stream.
-func (s *ProjectsAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = ProjectsAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads ProjectsAddCollaboratorApplicationJSONReqPermission from json stream.
+func (s *ProjectsAddCollaboratorApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = ProjectsAddCollaboratorApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
@@ -29020,7 +29020,7 @@ func (ProjectsCreateColumnApplicationJSONForbidden) ReadJSONFrom(r io.Reader) er
 func (ProjectsCreateColumnApplicationJSONForbidden) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsCreateColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsCreateColumnApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -29030,16 +29030,16 @@ func (s ProjectsCreateColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsCreateColumnApplicationJSONRequest json value to io.Writer.
-func (s ProjectsCreateColumnApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsCreateColumnApplicationJSONReq json value to io.Writer.
+func (s ProjectsCreateColumnApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsCreateColumnApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsCreateColumnApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsCreateColumnApplicationJSONReq json value from io.Reader.
+func (s *ProjectsCreateColumnApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -29053,8 +29053,8 @@ func (s *ProjectsCreateColumnApplicationJSONRequest) ReadJSONFrom(r io.Reader) e
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsCreateColumnApplicationJSONRequest from json stream.
-func (s *ProjectsCreateColumnApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsCreateColumnApplicationJSONReq from json stream.
+func (s *ProjectsCreateColumnApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -29085,7 +29085,7 @@ func (ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) WriteJSONTo(w 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsCreateForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsCreateForAuthenticatedUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -29100,16 +29100,16 @@ func (s ProjectsCreateForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsCreateForAuthenticatedUserApplicationJSONRequest json value to io.Writer.
-func (s ProjectsCreateForAuthenticatedUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsCreateForAuthenticatedUserApplicationJSONReq json value to io.Writer.
+func (s ProjectsCreateForAuthenticatedUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsCreateForAuthenticatedUserApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsCreateForAuthenticatedUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsCreateForAuthenticatedUserApplicationJSONReq json value from io.Reader.
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -29123,8 +29123,8 @@ func (s *ProjectsCreateForAuthenticatedUserApplicationJSONRequest) ReadJSONFrom(
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsCreateForAuthenticatedUserApplicationJSONRequest from json stream.
-func (s *ProjectsCreateForAuthenticatedUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsCreateForAuthenticatedUserApplicationJSONReq from json stream.
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -29172,7 +29172,7 @@ func (ProjectsCreateForOrgApplicationJSONNotFound) ReadJSONFrom(r io.Reader) err
 func (ProjectsCreateForOrgApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsCreateForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsCreateForOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -29187,16 +29187,16 @@ func (s ProjectsCreateForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsCreateForOrgApplicationJSONRequest json value to io.Writer.
-func (s ProjectsCreateForOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsCreateForOrgApplicationJSONReq json value to io.Writer.
+func (s ProjectsCreateForOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsCreateForOrgApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsCreateForOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsCreateForOrgApplicationJSONReq json value from io.Reader.
+func (s *ProjectsCreateForOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -29210,8 +29210,8 @@ func (s *ProjectsCreateForOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) e
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsCreateForOrgApplicationJSONRequest from json stream.
-func (s *ProjectsCreateForOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsCreateForOrgApplicationJSONReq from json stream.
+func (s *ProjectsCreateForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -29253,7 +29253,7 @@ func (ProjectsCreateForRepoApplicationJSONNotFound) ReadJSONFrom(r io.Reader) er
 func (ProjectsCreateForRepoApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsCreateForRepoApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsCreateForRepoApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -29268,16 +29268,16 @@ func (s ProjectsCreateForRepoApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsCreateForRepoApplicationJSONRequest json value to io.Writer.
-func (s ProjectsCreateForRepoApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsCreateForRepoApplicationJSONReq json value to io.Writer.
+func (s ProjectsCreateForRepoApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsCreateForRepoApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsCreateForRepoApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsCreateForRepoApplicationJSONReq json value from io.Reader.
+func (s *ProjectsCreateForRepoApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -29291,8 +29291,8 @@ func (s *ProjectsCreateForRepoApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsCreateForRepoApplicationJSONRequest from json stream.
-func (s *ProjectsCreateForRepoApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsCreateForRepoApplicationJSONReq from json stream.
+func (s *ProjectsCreateForRepoApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -29704,7 +29704,7 @@ func (ProjectsListColumnsOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ProjectsListColumnsOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveCardApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsMoveCardApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -29719,16 +29719,16 @@ func (s ProjectsMoveCardApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsMoveCardApplicationJSONRequest json value to io.Writer.
-func (s ProjectsMoveCardApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsMoveCardApplicationJSONReq json value to io.Writer.
+func (s ProjectsMoveCardApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsMoveCardApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsMoveCardApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsMoveCardApplicationJSONReq json value from io.Reader.
+func (s *ProjectsMoveCardApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -29742,8 +29742,8 @@ func (s *ProjectsMoveCardApplicationJSONRequest) ReadJSONFrom(r io.Reader) error
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsMoveCardApplicationJSONRequest from json stream.
-func (s *ProjectsMoveCardApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsMoveCardApplicationJSONReq from json stream.
+func (s *ProjectsMoveCardApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "column_id":
@@ -29987,7 +29987,7 @@ func (ProjectsMoveColumnApplicationJSONForbidden) ReadJSONFrom(r io.Reader) erro
 func (ProjectsMoveColumnApplicationJSONForbidden) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsMoveColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsMoveColumnApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -29997,16 +29997,16 @@ func (s ProjectsMoveColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsMoveColumnApplicationJSONRequest json value to io.Writer.
-func (s ProjectsMoveColumnApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsMoveColumnApplicationJSONReq json value to io.Writer.
+func (s ProjectsMoveColumnApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsMoveColumnApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsMoveColumnApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsMoveColumnApplicationJSONReq json value from io.Reader.
+func (s *ProjectsMoveColumnApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -30020,8 +30020,8 @@ func (s *ProjectsMoveColumnApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsMoveColumnApplicationJSONRequest from json stream.
-func (s *ProjectsMoveColumnApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsMoveColumnApplicationJSONReq from json stream.
+func (s *ProjectsMoveColumnApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "position":
@@ -30132,7 +30132,7 @@ func (ProjectsUpdateApplicationJSONGone) ReadJSONFrom(r io.Reader) error  { retu
 func (ProjectsUpdateApplicationJSONGone) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsUpdateApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -30164,16 +30164,16 @@ func (s ProjectsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsUpdateApplicationJSONRequest json value to io.Writer.
-func (s ProjectsUpdateApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsUpdateApplicationJSONReq json value to io.Writer.
+func (s ProjectsUpdateApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsUpdateApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsUpdateApplicationJSONReq json value from io.Reader.
+func (s *ProjectsUpdateApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -30187,8 +30187,8 @@ func (s *ProjectsUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsUpdateApplicationJSONRequest from json stream.
-func (s *ProjectsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsUpdateApplicationJSONReq from json stream.
+func (s *ProjectsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -30235,13 +30235,13 @@ func (s *ProjectsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateApplicationJSONRequestOrganizationPermission) WriteJSON(j *json.Stream) {
+func (s ProjectsUpdateApplicationJSONReqOrganizationPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ProjectsUpdateApplicationJSONRequestOrganizationPermission from json stream.
-func (s *ProjectsUpdateApplicationJSONRequestOrganizationPermission) ReadJSON(i *json.Iterator) error {
-	*s = ProjectsUpdateApplicationJSONRequestOrganizationPermission(i.ReadString())
+// ReadJSON reads ProjectsUpdateApplicationJSONReqOrganizationPermission from json stream.
+func (s *ProjectsUpdateApplicationJSONReqOrganizationPermission) ReadJSON(i *json.Iterator) error {
+	*s = ProjectsUpdateApplicationJSONReqOrganizationPermission(i.ReadString())
 	return i.Error
 }
 
@@ -30261,7 +30261,7 @@ func (ProjectsUpdateCardApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error
 func (ProjectsUpdateCardApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateCardApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsUpdateCardApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -30278,16 +30278,16 @@ func (s ProjectsUpdateCardApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsUpdateCardApplicationJSONRequest json value to io.Writer.
-func (s ProjectsUpdateCardApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsUpdateCardApplicationJSONReq json value to io.Writer.
+func (s ProjectsUpdateCardApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsUpdateCardApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsUpdateCardApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsUpdateCardApplicationJSONReq json value from io.Reader.
+func (s *ProjectsUpdateCardApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -30301,8 +30301,8 @@ func (s *ProjectsUpdateCardApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsUpdateCardApplicationJSONRequest from json stream.
-func (s *ProjectsUpdateCardApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsUpdateCardApplicationJSONReq from json stream.
+func (s *ProjectsUpdateCardApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "archived":
@@ -30338,7 +30338,7 @@ func (ProjectsUpdateColumnApplicationJSONForbidden) ReadJSONFrom(r io.Reader) er
 func (ProjectsUpdateColumnApplicationJSONForbidden) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ProjectsUpdateColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ProjectsUpdateColumnApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -30348,16 +30348,16 @@ func (s ProjectsUpdateColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ProjectsUpdateColumnApplicationJSONRequest json value to io.Writer.
-func (s ProjectsUpdateColumnApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ProjectsUpdateColumnApplicationJSONReq json value to io.Writer.
+func (s ProjectsUpdateColumnApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ProjectsUpdateColumnApplicationJSONRequest json value from io.Reader.
-func (s *ProjectsUpdateColumnApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ProjectsUpdateColumnApplicationJSONReq json value from io.Reader.
+func (s *ProjectsUpdateColumnApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -30371,8 +30371,8 @@ func (s *ProjectsUpdateColumnApplicationJSONRequest) ReadJSONFrom(r io.Reader) e
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ProjectsUpdateColumnApplicationJSONRequest from json stream.
-func (s *ProjectsUpdateColumnApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ProjectsUpdateColumnApplicationJSONReq from json stream.
+func (s *ProjectsUpdateColumnApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -31906,7 +31906,7 @@ func (s *PullsCheckIfMergedNotFound) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsCreateApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -31944,16 +31944,16 @@ func (s PullsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsCreateApplicationJSONRequest json value to io.Writer.
-func (s PullsCreateApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsCreateApplicationJSONReq json value to io.Writer.
+func (s PullsCreateApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsCreateApplicationJSONRequest json value from io.Reader.
-func (s *PullsCreateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsCreateApplicationJSONReq json value from io.Reader.
+func (s *PullsCreateApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -31967,8 +31967,8 @@ func (s *PullsCreateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsCreateApplicationJSONRequest from json stream.
-func (s *PullsCreateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsCreateApplicationJSONReq from json stream.
+func (s *PullsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "base":
@@ -32021,7 +32021,7 @@ func (s *PullsCreateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateReplyForReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsCreateReplyForReviewCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32031,16 +32031,16 @@ func (s PullsCreateReplyForReviewCommentApplicationJSONRequest) WriteJSON(j *jso
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsCreateReplyForReviewCommentApplicationJSONRequest json value to io.Writer.
-func (s PullsCreateReplyForReviewCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsCreateReplyForReviewCommentApplicationJSONReq json value to io.Writer.
+func (s PullsCreateReplyForReviewCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsCreateReplyForReviewCommentApplicationJSONRequest json value from io.Reader.
-func (s *PullsCreateReplyForReviewCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsCreateReplyForReviewCommentApplicationJSONReq json value from io.Reader.
+func (s *PullsCreateReplyForReviewCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32054,8 +32054,8 @@ func (s *PullsCreateReplyForReviewCommentApplicationJSONRequest) ReadJSONFrom(r 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsCreateReplyForReviewCommentApplicationJSONRequest from json stream.
-func (s *PullsCreateReplyForReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsCreateReplyForReviewCommentApplicationJSONReq from json stream.
+func (s *PullsCreateReplyForReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -32070,7 +32070,7 @@ func (s *PullsCreateReplyForReviewCommentApplicationJSONRequest) ReadJSON(i *jso
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsCreateReviewApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32104,16 +32104,16 @@ func (s PullsCreateReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsCreateReviewApplicationJSONRequest json value to io.Writer.
-func (s PullsCreateReviewApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsCreateReviewApplicationJSONReq json value to io.Writer.
+func (s PullsCreateReviewApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsCreateReviewApplicationJSONRequest json value from io.Reader.
-func (s *PullsCreateReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsCreateReviewApplicationJSONReq json value from io.Reader.
+func (s *PullsCreateReviewApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32127,8 +32127,8 @@ func (s *PullsCreateReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsCreateReviewApplicationJSONRequest from json stream.
-func (s *PullsCreateReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsCreateReviewApplicationJSONReq from json stream.
+func (s *PullsCreateReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -32165,7 +32165,7 @@ func (s *PullsCreateReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateReviewApplicationJSONRequestCommentsItem) WriteJSON(j *json.Stream) {
+func (s PullsCreateReviewApplicationJSONReqCommentsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32203,16 +32203,16 @@ func (s PullsCreateReviewApplicationJSONRequestCommentsItem) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsCreateReviewApplicationJSONRequestCommentsItem json value to io.Writer.
-func (s PullsCreateReviewApplicationJSONRequestCommentsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsCreateReviewApplicationJSONReqCommentsItem json value to io.Writer.
+func (s PullsCreateReviewApplicationJSONReqCommentsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsCreateReviewApplicationJSONRequestCommentsItem json value from io.Reader.
-func (s *PullsCreateReviewApplicationJSONRequestCommentsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsCreateReviewApplicationJSONReqCommentsItem json value from io.Reader.
+func (s *PullsCreateReviewApplicationJSONReqCommentsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32226,8 +32226,8 @@ func (s *PullsCreateReviewApplicationJSONRequestCommentsItem) ReadJSONFrom(r io.
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsCreateReviewApplicationJSONRequestCommentsItem from json stream.
-func (s *PullsCreateReviewApplicationJSONRequestCommentsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsCreateReviewApplicationJSONReqCommentsItem from json stream.
+func (s *PullsCreateReviewApplicationJSONReqCommentsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -32280,18 +32280,18 @@ func (s *PullsCreateReviewApplicationJSONRequestCommentsItem) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
+func (s PullsCreateReviewApplicationJSONReqEvent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PullsCreateReviewApplicationJSONRequestEvent from json stream.
-func (s *PullsCreateReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
-	*s = PullsCreateReviewApplicationJSONRequestEvent(i.ReadString())
+// ReadJSON reads PullsCreateReviewApplicationJSONReqEvent from json stream.
+func (s *PullsCreateReviewApplicationJSONReqEvent) ReadJSON(i *json.Iterator) error {
+	*s = PullsCreateReviewApplicationJSONReqEvent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsCreateReviewCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32341,16 +32341,16 @@ func (s PullsCreateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsCreateReviewCommentApplicationJSONRequest json value to io.Writer.
-func (s PullsCreateReviewCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsCreateReviewCommentApplicationJSONReq json value to io.Writer.
+func (s PullsCreateReviewCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsCreateReviewCommentApplicationJSONRequest json value from io.Reader.
-func (s *PullsCreateReviewCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsCreateReviewCommentApplicationJSONReq json value from io.Reader.
+func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32364,8 +32364,8 @@ func (s *PullsCreateReviewCommentApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsCreateReviewCommentApplicationJSONRequest from json stream.
-func (s *PullsCreateReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsCreateReviewCommentApplicationJSONReq from json stream.
+func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -32436,24 +32436,24 @@ func (s *PullsCreateReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateReviewCommentApplicationJSONRequestSide) WriteJSON(j *json.Stream) {
+func (s PullsCreateReviewCommentApplicationJSONReqSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PullsCreateReviewCommentApplicationJSONRequestSide from json stream.
-func (s *PullsCreateReviewCommentApplicationJSONRequestSide) ReadJSON(i *json.Iterator) error {
-	*s = PullsCreateReviewCommentApplicationJSONRequestSide(i.ReadString())
+// ReadJSON reads PullsCreateReviewCommentApplicationJSONReqSide from json stream.
+func (s *PullsCreateReviewCommentApplicationJSONReqSide) ReadJSON(i *json.Iterator) error {
+	*s = PullsCreateReviewCommentApplicationJSONReqSide(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsCreateReviewCommentApplicationJSONRequestStartSide) WriteJSON(j *json.Stream) {
+func (s PullsCreateReviewCommentApplicationJSONReqStartSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PullsCreateReviewCommentApplicationJSONRequestStartSide from json stream.
-func (s *PullsCreateReviewCommentApplicationJSONRequestStartSide) ReadJSON(i *json.Iterator) error {
-	*s = PullsCreateReviewCommentApplicationJSONRequestStartSide(i.ReadString())
+// ReadJSON reads PullsCreateReviewCommentApplicationJSONReqStartSide from json stream.
+func (s *PullsCreateReviewCommentApplicationJSONReqStartSide) ReadJSON(i *json.Iterator) error {
+	*s = PullsCreateReviewCommentApplicationJSONReqStartSide(i.ReadString())
 	return i.Error
 }
 
@@ -32501,7 +32501,7 @@ func (s *PullsDeleteReviewCommentNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsDismissReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsDismissReviewApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32516,16 +32516,16 @@ func (s PullsDismissReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsDismissReviewApplicationJSONRequest json value to io.Writer.
-func (s PullsDismissReviewApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsDismissReviewApplicationJSONReq json value to io.Writer.
+func (s PullsDismissReviewApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsDismissReviewApplicationJSONRequest json value from io.Reader.
-func (s *PullsDismissReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsDismissReviewApplicationJSONReq json value from io.Reader.
+func (s *PullsDismissReviewApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32539,8 +32539,8 @@ func (s *PullsDismissReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsDismissReviewApplicationJSONRequest from json stream.
-func (s *PullsDismissReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsDismissReviewApplicationJSONReq from json stream.
+func (s *PullsDismissReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "event":
@@ -32572,7 +32572,7 @@ func (PullsListFilesOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (PullsListFilesOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsMergeApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsMergeApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32599,16 +32599,16 @@ func (s PullsMergeApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsMergeApplicationJSONRequest json value to io.Writer.
-func (s PullsMergeApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsMergeApplicationJSONReq json value to io.Writer.
+func (s PullsMergeApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsMergeApplicationJSONRequest json value from io.Reader.
-func (s *PullsMergeApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsMergeApplicationJSONReq json value from io.Reader.
+func (s *PullsMergeApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32622,8 +32622,8 @@ func (s *PullsMergeApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsMergeApplicationJSONRequest from json stream.
-func (s *PullsMergeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsMergeApplicationJSONReq from json stream.
+func (s *PullsMergeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "commit_message":
@@ -32663,13 +32663,13 @@ func (s *PullsMergeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsMergeApplicationJSONRequestMergeMethod) WriteJSON(j *json.Stream) {
+func (s PullsMergeApplicationJSONReqMergeMethod) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PullsMergeApplicationJSONRequestMergeMethod from json stream.
-func (s *PullsMergeApplicationJSONRequestMergeMethod) ReadJSON(i *json.Iterator) error {
-	*s = PullsMergeApplicationJSONRequestMergeMethod(i.ReadString())
+// ReadJSON reads PullsMergeApplicationJSONReqMergeMethod from json stream.
+func (s *PullsMergeApplicationJSONReqMergeMethod) ReadJSON(i *json.Iterator) error {
+	*s = PullsMergeApplicationJSONReqMergeMethod(i.ReadString())
 	return i.Error
 }
 
@@ -32808,7 +32808,7 @@ func (s *PullsMergeMethodNotAllowed) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsRemoveRequestedReviewersApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsRemoveRequestedReviewersApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32837,16 +32837,16 @@ func (s PullsRemoveRequestedReviewersApplicationJSONRequest) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsRemoveRequestedReviewersApplicationJSONRequest json value to io.Writer.
-func (s PullsRemoveRequestedReviewersApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsRemoveRequestedReviewersApplicationJSONReq json value to io.Writer.
+func (s PullsRemoveRequestedReviewersApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsRemoveRequestedReviewersApplicationJSONRequest json value from io.Reader.
-func (s *PullsRemoveRequestedReviewersApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsRemoveRequestedReviewersApplicationJSONReq json value from io.Reader.
+func (s *PullsRemoveRequestedReviewersApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32860,8 +32860,8 @@ func (s *PullsRemoveRequestedReviewersApplicationJSONRequest) ReadJSONFrom(r io.
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsRemoveRequestedReviewersApplicationJSONRequest from json stream.
-func (s *PullsRemoveRequestedReviewersApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsRemoveRequestedReviewersApplicationJSONReq from json stream.
+func (s *PullsRemoveRequestedReviewersApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "reviewers":
@@ -32891,7 +32891,7 @@ func (PullsSubmitReviewApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error 
 func (PullsSubmitReviewApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsSubmitReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsSubmitReviewApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32906,16 +32906,16 @@ func (s PullsSubmitReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsSubmitReviewApplicationJSONRequest json value to io.Writer.
-func (s PullsSubmitReviewApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsSubmitReviewApplicationJSONReq json value to io.Writer.
+func (s PullsSubmitReviewApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsSubmitReviewApplicationJSONRequest json value from io.Reader.
-func (s *PullsSubmitReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsSubmitReviewApplicationJSONReq json value from io.Reader.
+func (s *PullsSubmitReviewApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -32929,8 +32929,8 @@ func (s *PullsSubmitReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsSubmitReviewApplicationJSONRequest from json stream.
-func (s *PullsSubmitReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsSubmitReviewApplicationJSONReq from json stream.
+func (s *PullsSubmitReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -32955,18 +32955,18 @@ func (s *PullsSubmitReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsSubmitReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
+func (s PullsSubmitReviewApplicationJSONReqEvent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PullsSubmitReviewApplicationJSONRequestEvent from json stream.
-func (s *PullsSubmitReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
-	*s = PullsSubmitReviewApplicationJSONRequestEvent(i.ReadString())
+// ReadJSON reads PullsSubmitReviewApplicationJSONReqEvent from json stream.
+func (s *PullsSubmitReviewApplicationJSONReqEvent) ReadJSON(i *json.Iterator) error {
+	*s = PullsSubmitReviewApplicationJSONReqEvent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsUpdateApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -32998,16 +32998,16 @@ func (s PullsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsUpdateApplicationJSONRequest json value to io.Writer.
-func (s PullsUpdateApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsUpdateApplicationJSONReq json value to io.Writer.
+func (s PullsUpdateApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsUpdateApplicationJSONRequest json value from io.Reader.
-func (s *PullsUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsUpdateApplicationJSONReq json value from io.Reader.
+func (s *PullsUpdateApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33021,8 +33021,8 @@ func (s *PullsUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsUpdateApplicationJSONRequest from json stream.
-func (s *PullsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsUpdateApplicationJSONReq from json stream.
+func (s *PullsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "base":
@@ -33069,13 +33069,13 @@ func (s *PullsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsUpdateApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (s PullsUpdateApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PullsUpdateApplicationJSONRequestState from json stream.
-func (s *PullsUpdateApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
-	*s = PullsUpdateApplicationJSONRequestState(i.ReadString())
+// ReadJSON reads PullsUpdateApplicationJSONReqState from json stream.
+func (s *PullsUpdateApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
+	*s = PullsUpdateApplicationJSONReqState(i.ReadString())
 	return i.Error
 }
 
@@ -33147,7 +33147,7 @@ func (s *PullsUpdateBranchAccepted) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsUpdateBranchApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsUpdateBranchApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33159,16 +33159,16 @@ func (s PullsUpdateBranchApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsUpdateBranchApplicationJSONRequest json value to io.Writer.
-func (s PullsUpdateBranchApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsUpdateBranchApplicationJSONReq json value to io.Writer.
+func (s PullsUpdateBranchApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsUpdateBranchApplicationJSONRequest json value from io.Reader.
-func (s *PullsUpdateBranchApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsUpdateBranchApplicationJSONReq json value from io.Reader.
+func (s *PullsUpdateBranchApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33182,8 +33182,8 @@ func (s *PullsUpdateBranchApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsUpdateBranchApplicationJSONRequest from json stream.
-func (s *PullsUpdateBranchApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsUpdateBranchApplicationJSONReq from json stream.
+func (s *PullsUpdateBranchApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "expected_head_sha":
@@ -33202,7 +33202,7 @@ func (s *PullsUpdateBranchApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsUpdateReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsUpdateReviewApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33212,16 +33212,16 @@ func (s PullsUpdateReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsUpdateReviewApplicationJSONRequest json value to io.Writer.
-func (s PullsUpdateReviewApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsUpdateReviewApplicationJSONReq json value to io.Writer.
+func (s PullsUpdateReviewApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsUpdateReviewApplicationJSONRequest json value from io.Reader.
-func (s *PullsUpdateReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsUpdateReviewApplicationJSONReq json value from io.Reader.
+func (s *PullsUpdateReviewApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33235,8 +33235,8 @@ func (s *PullsUpdateReviewApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsUpdateReviewApplicationJSONRequest from json stream.
-func (s *PullsUpdateReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsUpdateReviewApplicationJSONReq from json stream.
+func (s *PullsUpdateReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -33251,7 +33251,7 @@ func (s *PullsUpdateReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PullsUpdateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s PullsUpdateReviewCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33261,16 +33261,16 @@ func (s PullsUpdateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PullsUpdateReviewCommentApplicationJSONRequest json value to io.Writer.
-func (s PullsUpdateReviewCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PullsUpdateReviewCommentApplicationJSONReq json value to io.Writer.
+func (s PullsUpdateReviewCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PullsUpdateReviewCommentApplicationJSONRequest json value from io.Reader.
-func (s *PullsUpdateReviewCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PullsUpdateReviewCommentApplicationJSONReq json value from io.Reader.
+func (s *PullsUpdateReviewCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33284,8 +33284,8 @@ func (s *PullsUpdateReviewCommentApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PullsUpdateReviewCommentApplicationJSONRequest from json stream.
-func (s *PullsUpdateReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PullsUpdateReviewCommentApplicationJSONReq from json stream.
+func (s *PullsUpdateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -33432,7 +33432,7 @@ func (s *ReactionContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForCommitCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForCommitCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33442,16 +33442,16 @@ func (s ReactionsCreateForCommitCommentApplicationJSONRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForCommitCommentApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForCommitCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForCommitCommentApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForCommitCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForCommitCommentApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForCommitCommentApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForCommitCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33465,8 +33465,8 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForCommitCommentApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForCommitCommentApplicationJSONReq from json stream.
+func (s *ReactionsCreateForCommitCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33484,18 +33484,18 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForCommitCommentApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForCommitCommentApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForCommitCommentApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForCommitCommentApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForCommitCommentApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForCommitCommentApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForCommitCommentApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForCommitCommentApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForIssueApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForIssueApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33505,16 +33505,16 @@ func (s ReactionsCreateForIssueApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForIssueApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForIssueApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForIssueApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForIssueApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForIssueApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForIssueApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForIssueApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForIssueApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33528,8 +33528,8 @@ func (s *ReactionsCreateForIssueApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForIssueApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForIssueApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForIssueApplicationJSONReq from json stream.
+func (s *ReactionsCreateForIssueApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33547,18 +33547,18 @@ func (s *ReactionsCreateForIssueApplicationJSONRequest) ReadJSON(i *json.Iterato
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForIssueApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForIssueApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForIssueApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForIssueApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForIssueApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForIssueApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForIssueApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForIssueApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForIssueCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForIssueCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33568,16 +33568,16 @@ func (s ReactionsCreateForIssueCommentApplicationJSONRequest) WriteJSON(j *json.
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForIssueCommentApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForIssueCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForIssueCommentApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForIssueCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForIssueCommentApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForIssueCommentApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForIssueCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33591,8 +33591,8 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) ReadJSONFrom(r io
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForIssueCommentApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForIssueCommentApplicationJSONReq from json stream.
+func (s *ReactionsCreateForIssueCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33610,18 +33610,18 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForIssueCommentApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForIssueCommentApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForIssueCommentApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForIssueCommentApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForIssueCommentApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForIssueCommentApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForIssueCommentApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForIssueCommentApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33631,16 +33631,16 @@ func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) WriteJ
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForPullRequestReviewCommentApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForPullRequestReviewCommentApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33654,8 +33654,8 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) ReadJ
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForPullRequestReviewCommentApplicationJSONReq from json stream.
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33673,18 +33673,18 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) ReadJ
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForPullRequestReviewCommentApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForReleaseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForReleaseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33694,16 +33694,16 @@ func (s ReactionsCreateForReleaseApplicationJSONRequest) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForReleaseApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForReleaseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForReleaseApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForReleaseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForReleaseApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForReleaseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForReleaseApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForReleaseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33717,8 +33717,8 @@ func (s *ReactionsCreateForReleaseApplicationJSONRequest) ReadJSONFrom(r io.Read
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForReleaseApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForReleaseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForReleaseApplicationJSONReq from json stream.
+func (s *ReactionsCreateForReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33736,13 +33736,13 @@ func (s *ReactionsCreateForReleaseApplicationJSONRequest) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForReleaseApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForReleaseApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForReleaseApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForReleaseApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForReleaseApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForReleaseApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForReleaseApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForReleaseApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
@@ -33769,7 +33769,7 @@ func (ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) WriteJSONTo
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33779,16 +33779,16 @@ func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) Writ
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33802,8 +33802,8 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq from json stream.
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33821,18 +33821,18 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33842,16 +33842,16 @@ func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) Wri
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33865,8 +33865,8 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq from json stream.
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33884,13 +33884,13 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) Re
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
@@ -33917,7 +33917,7 @@ func (ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) WriteJSONTo(w io.W
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33927,16 +33927,16 @@ func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) WriteJSON(j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -33950,8 +33950,8 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) ReadJSONFr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq from json stream.
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -33969,18 +33969,18 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionInOrgApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -33990,16 +33990,16 @@ func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) WriteJSON(
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest json value to io.Writer.
-func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq json value to io.Writer.
+func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest json value from io.Reader.
-func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq json value from io.Reader.
+func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -34013,8 +34013,8 @@ func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) ReadJSONF
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest from json stream.
-func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq from json stream.
+func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
@@ -34032,13 +34032,13 @@ func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent from json stream.
-func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
-	*s = ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent(i.ReadString())
+// ReadJSON reads ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionLegacyApplicationJSONReqContent(i.ReadString())
 	return i.Error
 }
 
@@ -34428,7 +34428,7 @@ func (s *ReposAcceptInvitationNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposAddCollaboratorApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -34445,16 +34445,16 @@ func (s ReposAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposAddCollaboratorApplicationJSONRequest json value to io.Writer.
-func (s ReposAddCollaboratorApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposAddCollaboratorApplicationJSONReq json value to io.Writer.
+func (s ReposAddCollaboratorApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposAddCollaboratorApplicationJSONRequest json value from io.Reader.
-func (s *ReposAddCollaboratorApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposAddCollaboratorApplicationJSONReq json value from io.Reader.
+func (s *ReposAddCollaboratorApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -34468,8 +34468,8 @@ func (s *ReposAddCollaboratorApplicationJSONRequest) ReadJSONFrom(r io.Reader) e
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposAddCollaboratorApplicationJSONRequest from json stream.
-func (s *ReposAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposAddCollaboratorApplicationJSONReq from json stream.
+func (s *ReposAddCollaboratorApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
@@ -34495,13 +34495,13 @@ func (s *ReposAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s ReposAddCollaboratorApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposAddCollaboratorApplicationJSONRequestPermission from json stream.
-func (s *ReposAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = ReposAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads ReposAddCollaboratorApplicationJSONReqPermission from json stream.
+func (s *ReposAddCollaboratorApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = ReposAddCollaboratorApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
@@ -34737,7 +34737,7 @@ func (ReposCompareCommitsApplicationJSONNotFound) ReadJSONFrom(r io.Reader) erro
 func (ReposCompareCommitsApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateAutolinkApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateAutolinkApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -34750,16 +34750,16 @@ func (s ReposCreateAutolinkApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateAutolinkApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateAutolinkApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateAutolinkApplicationJSONReq json value to io.Writer.
+func (s ReposCreateAutolinkApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateAutolinkApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateAutolinkApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateAutolinkApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateAutolinkApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -34773,8 +34773,8 @@ func (s *ReposCreateAutolinkApplicationJSONRequest) ReadJSONFrom(r io.Reader) er
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateAutolinkApplicationJSONRequest from json stream.
-func (s *ReposCreateAutolinkApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateAutolinkApplicationJSONReq from json stream.
+func (s *ReposCreateAutolinkApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "key_prefix":
@@ -34792,7 +34792,7 @@ func (s *ReposCreateAutolinkApplicationJSONRequest) ReadJSON(i *json.Iterator) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateCommitCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateCommitCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -34817,16 +34817,16 @@ func (s ReposCreateCommitCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateCommitCommentApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateCommitCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateCommitCommentApplicationJSONReq json value to io.Writer.
+func (s ReposCreateCommitCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateCommitCommentApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateCommitCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateCommitCommentApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateCommitCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -34840,8 +34840,8 @@ func (s *ReposCreateCommitCommentApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateCommitCommentApplicationJSONRequest from json stream.
-func (s *ReposCreateCommitCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateCommitCommentApplicationJSONReq from json stream.
+func (s *ReposCreateCommitCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -34877,7 +34877,7 @@ func (s *ReposCreateCommitCommentApplicationJSONRequest) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateCommitStatusApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateCommitStatusApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -34902,16 +34902,16 @@ func (s ReposCreateCommitStatusApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateCommitStatusApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateCommitStatusApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateCommitStatusApplicationJSONReq json value to io.Writer.
+func (s ReposCreateCommitStatusApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateCommitStatusApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateCommitStatusApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateCommitStatusApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateCommitStatusApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -34925,8 +34925,8 @@ func (s *ReposCreateCommitStatusApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateCommitStatusApplicationJSONRequest from json stream.
-func (s *ReposCreateCommitStatusApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateCommitStatusApplicationJSONReq from json stream.
+func (s *ReposCreateCommitStatusApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "context":
@@ -34965,18 +34965,18 @@ func (s *ReposCreateCommitStatusApplicationJSONRequest) ReadJSON(i *json.Iterato
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateCommitStatusApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (s ReposCreateCommitStatusApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposCreateCommitStatusApplicationJSONRequestState from json stream.
-func (s *ReposCreateCommitStatusApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
-	*s = ReposCreateCommitStatusApplicationJSONRequestState(i.ReadString())
+// ReadJSON reads ReposCreateCommitStatusApplicationJSONReqState from json stream.
+func (s *ReposCreateCommitStatusApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateCommitStatusApplicationJSONReqState(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateDeployKeyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateDeployKeyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -34996,16 +34996,16 @@ func (s ReposCreateDeployKeyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateDeployKeyApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateDeployKeyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateDeployKeyApplicationJSONReq json value to io.Writer.
+func (s ReposCreateDeployKeyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateDeployKeyApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateDeployKeyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateDeployKeyApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateDeployKeyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35019,8 +35019,8 @@ func (s *ReposCreateDeployKeyApplicationJSONRequest) ReadJSONFrom(r io.Reader) e
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateDeployKeyApplicationJSONRequest from json stream.
-func (s *ReposCreateDeployKeyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateDeployKeyApplicationJSONReq from json stream.
+func (s *ReposCreateDeployKeyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "key":
@@ -35049,7 +35049,7 @@ func (s *ReposCreateDeployKeyApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateDeploymentStatusApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateDeploymentStatusApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -35089,16 +35089,16 @@ func (s ReposCreateDeploymentStatusApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateDeploymentStatusApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateDeploymentStatusApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateDeploymentStatusApplicationJSONReq json value to io.Writer.
+func (s ReposCreateDeploymentStatusApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateDeploymentStatusApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateDeploymentStatusApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateDeploymentStatusApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35112,8 +35112,8 @@ func (s *ReposCreateDeploymentStatusApplicationJSONRequest) ReadJSONFrom(r io.Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONRequest from json stream.
-func (s *ReposCreateDeploymentStatusApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONReq from json stream.
+func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "auto_inactive":
@@ -35173,29 +35173,29 @@ func (s *ReposCreateDeploymentStatusApplicationJSONRequest) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) WriteJSON(j *json.Stream) {
+func (s ReposCreateDeploymentStatusApplicationJSONReqEnvironment) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONRequestEnvironment from json stream.
-func (s *ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) ReadJSON(i *json.Iterator) error {
-	*s = ReposCreateDeploymentStatusApplicationJSONRequestEnvironment(i.ReadString())
+// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONReqEnvironment from json stream.
+func (s *ReposCreateDeploymentStatusApplicationJSONReqEnvironment) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateDeploymentStatusApplicationJSONReqEnvironment(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateDeploymentStatusApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (s ReposCreateDeploymentStatusApplicationJSONReqState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONRequestState from json stream.
-func (s *ReposCreateDeploymentStatusApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
-	*s = ReposCreateDeploymentStatusApplicationJSONRequestState(i.ReadString())
+// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONReqState from json stream.
+func (s *ReposCreateDeploymentStatusApplicationJSONReqState) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateDeploymentStatusApplicationJSONReqState(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateDispatchEventApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateDispatchEventApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -35205,16 +35205,16 @@ func (s ReposCreateDispatchEventApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateDispatchEventApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateDispatchEventApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateDispatchEventApplicationJSONReq json value to io.Writer.
+func (s ReposCreateDispatchEventApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateDispatchEventApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateDispatchEventApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateDispatchEventApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateDispatchEventApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35228,8 +35228,8 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateDispatchEventApplicationJSONRequest from json stream.
-func (s *ReposCreateDispatchEventApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateDispatchEventApplicationJSONReq from json stream.
+func (s *ReposCreateDispatchEventApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "event_type":
@@ -35244,23 +35244,23 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateDispatchEventApplicationJSONRequestClientPayload) WriteJSON(j *json.Stream) {
+func (s ReposCreateDispatchEventApplicationJSONReqClientPayload) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateDispatchEventApplicationJSONRequestClientPayload json value to io.Writer.
-func (s ReposCreateDispatchEventApplicationJSONRequestClientPayload) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateDispatchEventApplicationJSONReqClientPayload json value to io.Writer.
+func (s ReposCreateDispatchEventApplicationJSONReqClientPayload) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateDispatchEventApplicationJSONRequestClientPayload json value from io.Reader.
-func (s *ReposCreateDispatchEventApplicationJSONRequestClientPayload) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateDispatchEventApplicationJSONReqClientPayload json value from io.Reader.
+func (s *ReposCreateDispatchEventApplicationJSONReqClientPayload) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35274,8 +35274,8 @@ func (s *ReposCreateDispatchEventApplicationJSONRequestClientPayload) ReadJSONFr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateDispatchEventApplicationJSONRequestClientPayload from json stream.
-func (s *ReposCreateDispatchEventApplicationJSONRequestClientPayload) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateDispatchEventApplicationJSONReqClientPayload from json stream.
+func (s *ReposCreateDispatchEventApplicationJSONReqClientPayload) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -35330,7 +35330,7 @@ func (s *ReposCreateDispatchEventNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateForAuthenticatedUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -35425,16 +35425,16 @@ func (s ReposCreateForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateForAuthenticatedUserApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateForAuthenticatedUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateForAuthenticatedUserApplicationJSONReq json value to io.Writer.
+func (s ReposCreateForAuthenticatedUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateForAuthenticatedUserApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateForAuthenticatedUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateForAuthenticatedUserApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35448,8 +35448,8 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateForAuthenticatedUserApplicationJSONRequest from json stream.
-func (s *ReposCreateForAuthenticatedUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateForAuthenticatedUserApplicationJSONReq from json stream.
+func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_auto_merge":
@@ -35583,7 +35583,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONRequest) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateForkApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateForkApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -35595,16 +35595,16 @@ func (s ReposCreateForkApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateForkApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateForkApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateForkApplicationJSONReq json value to io.Writer.
+func (s ReposCreateForkApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateForkApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateForkApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateForkApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateForkApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35618,8 +35618,8 @@ func (s *ReposCreateForkApplicationJSONRequest) ReadJSONFrom(r io.Reader) error 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateForkApplicationJSONRequest from json stream.
-func (s *ReposCreateForkApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateForkApplicationJSONReq from json stream.
+func (s *ReposCreateForkApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "organization":
@@ -35638,7 +35638,7 @@ func (s *ReposCreateForkApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -35733,16 +35733,16 @@ func (s ReposCreateInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateInOrgApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateInOrgApplicationJSONReq json value to io.Writer.
+func (s ReposCreateInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateInOrgApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateInOrgApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35756,8 +35756,8 @@ func (s *ReposCreateInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateInOrgApplicationJSONRequest from json stream.
-func (s *ReposCreateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateInOrgApplicationJSONReq from json stream.
+func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_auto_merge":
@@ -35891,18 +35891,18 @@ func (s *ReposCreateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateInOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s ReposCreateInOrgApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposCreateInOrgApplicationJSONRequestVisibility from json stream.
-func (s *ReposCreateInOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = ReposCreateInOrgApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads ReposCreateInOrgApplicationJSONReqVisibility from json stream.
+func (s *ReposCreateInOrgApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateInOrgApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateOrUpdateFileContentsApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -35935,16 +35935,16 @@ func (s ReposCreateOrUpdateFileContentsApplicationJSONRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateOrUpdateFileContentsApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateOrUpdateFileContentsApplicationJSONReq json value to io.Writer.
+func (s ReposCreateOrUpdateFileContentsApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateOrUpdateFileContentsApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateOrUpdateFileContentsApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -35958,8 +35958,8 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateOrUpdateFileContentsApplicationJSONRequest from json stream.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateOrUpdateFileContentsApplicationJSONReq from json stream.
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author":
@@ -36005,7 +36005,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequest) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+func (s ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -36023,16 +36023,16 @@ func (s ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) WriteJSON(j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor json value to io.Writer.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor json value to io.Writer.
+func (s ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor json value from io.Reader.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor json value from io.Reader.
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -36046,8 +36046,8 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSONFr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor from json stream.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor from json stream.
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "date":
@@ -36072,7 +36072,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+func (s ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -36090,16 +36090,16 @@ func (s ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter json value to io.Writer.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter json value to io.Writer.
+func (s ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter json value from io.Reader.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter json value from io.Reader.
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -36113,8 +36113,8 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter from json stream.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter from json stream.
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "date":
@@ -36139,7 +36139,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreatePagesSiteApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreatePagesSiteApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -36149,16 +36149,16 @@ func (s ReposCreatePagesSiteApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreatePagesSiteApplicationJSONRequest json value to io.Writer.
-func (s ReposCreatePagesSiteApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreatePagesSiteApplicationJSONReq json value to io.Writer.
+func (s ReposCreatePagesSiteApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreatePagesSiteApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreatePagesSiteApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreatePagesSiteApplicationJSONReq json value from io.Reader.
+func (s *ReposCreatePagesSiteApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -36172,8 +36172,8 @@ func (s *ReposCreatePagesSiteApplicationJSONRequest) ReadJSONFrom(r io.Reader) e
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreatePagesSiteApplicationJSONRequest from json stream.
-func (s *ReposCreatePagesSiteApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreatePagesSiteApplicationJSONReq from json stream.
+func (s *ReposCreatePagesSiteApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "source":
@@ -36191,7 +36191,7 @@ func (s *ReposCreatePagesSiteApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreatePagesSiteApplicationJSONRequestSource) WriteJSON(j *json.Stream) {
+func (s ReposCreatePagesSiteApplicationJSONReqSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -36206,16 +36206,16 @@ func (s ReposCreatePagesSiteApplicationJSONRequestSource) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreatePagesSiteApplicationJSONRequestSource json value to io.Writer.
-func (s ReposCreatePagesSiteApplicationJSONRequestSource) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreatePagesSiteApplicationJSONReqSource json value to io.Writer.
+func (s ReposCreatePagesSiteApplicationJSONReqSource) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreatePagesSiteApplicationJSONRequestSource json value from io.Reader.
-func (s *ReposCreatePagesSiteApplicationJSONRequestSource) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreatePagesSiteApplicationJSONReqSource json value from io.Reader.
+func (s *ReposCreatePagesSiteApplicationJSONReqSource) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -36229,8 +36229,8 @@ func (s *ReposCreatePagesSiteApplicationJSONRequestSource) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreatePagesSiteApplicationJSONRequestSource from json stream.
-func (s *ReposCreatePagesSiteApplicationJSONRequestSource) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreatePagesSiteApplicationJSONReqSource from json stream.
+func (s *ReposCreatePagesSiteApplicationJSONReqSource) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "branch":
@@ -36252,18 +36252,18 @@ func (s *ReposCreatePagesSiteApplicationJSONRequestSource) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreatePagesSiteApplicationJSONRequestSourcePath) WriteJSON(j *json.Stream) {
+func (s ReposCreatePagesSiteApplicationJSONReqSourcePath) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposCreatePagesSiteApplicationJSONRequestSourcePath from json stream.
-func (s *ReposCreatePagesSiteApplicationJSONRequestSourcePath) ReadJSON(i *json.Iterator) error {
-	*s = ReposCreatePagesSiteApplicationJSONRequestSourcePath(i.ReadString())
+// ReadJSON reads ReposCreatePagesSiteApplicationJSONReqSourcePath from json stream.
+func (s *ReposCreatePagesSiteApplicationJSONReqSourcePath) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreatePagesSiteApplicationJSONReqSourcePath(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateReleaseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateReleaseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -36303,16 +36303,16 @@ func (s ReposCreateReleaseApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateReleaseApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateReleaseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateReleaseApplicationJSONReq json value to io.Writer.
+func (s ReposCreateReleaseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateReleaseApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateReleaseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateReleaseApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateReleaseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -36326,8 +36326,8 @@ func (s *ReposCreateReleaseApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateReleaseApplicationJSONRequest from json stream.
-func (s *ReposCreateReleaseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateReleaseApplicationJSONReq from json stream.
+func (s *ReposCreateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -36384,7 +36384,7 @@ func (s *ReposCreateReleaseApplicationJSONRequest) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposCreateUsingTemplateApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposCreateUsingTemplateApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -36414,16 +36414,16 @@ func (s ReposCreateUsingTemplateApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposCreateUsingTemplateApplicationJSONRequest json value to io.Writer.
-func (s ReposCreateUsingTemplateApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposCreateUsingTemplateApplicationJSONReq json value to io.Writer.
+func (s ReposCreateUsingTemplateApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposCreateUsingTemplateApplicationJSONRequest json value from io.Reader.
-func (s *ReposCreateUsingTemplateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposCreateUsingTemplateApplicationJSONReq json value from io.Reader.
+func (s *ReposCreateUsingTemplateApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -36437,8 +36437,8 @@ func (s *ReposCreateUsingTemplateApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposCreateUsingTemplateApplicationJSONRequest from json stream.
-func (s *ReposCreateUsingTemplateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposCreateUsingTemplateApplicationJSONReq from json stream.
+func (s *ReposCreateUsingTemplateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
@@ -36936,7 +36936,7 @@ func (s *ReposDeleteDeploymentNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteFileApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposDeleteFileApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -36964,16 +36964,16 @@ func (s ReposDeleteFileApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposDeleteFileApplicationJSONRequest json value to io.Writer.
-func (s ReposDeleteFileApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposDeleteFileApplicationJSONReq json value to io.Writer.
+func (s ReposDeleteFileApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposDeleteFileApplicationJSONRequest json value from io.Reader.
-func (s *ReposDeleteFileApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposDeleteFileApplicationJSONReq json value from io.Reader.
+func (s *ReposDeleteFileApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -36987,8 +36987,8 @@ func (s *ReposDeleteFileApplicationJSONRequest) ReadJSONFrom(r io.Reader) error 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposDeleteFileApplicationJSONRequest from json stream.
-func (s *ReposDeleteFileApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposDeleteFileApplicationJSONReq from json stream.
+func (s *ReposDeleteFileApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author":
@@ -37027,7 +37027,7 @@ func (s *ReposDeleteFileApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteFileApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+func (s ReposDeleteFileApplicationJSONReqAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -37044,16 +37044,16 @@ func (s ReposDeleteFileApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposDeleteFileApplicationJSONRequestAuthor json value to io.Writer.
-func (s ReposDeleteFileApplicationJSONRequestAuthor) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposDeleteFileApplicationJSONReqAuthor json value to io.Writer.
+func (s ReposDeleteFileApplicationJSONReqAuthor) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposDeleteFileApplicationJSONRequestAuthor json value from io.Reader.
-func (s *ReposDeleteFileApplicationJSONRequestAuthor) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposDeleteFileApplicationJSONReqAuthor json value from io.Reader.
+func (s *ReposDeleteFileApplicationJSONReqAuthor) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -37067,8 +37067,8 @@ func (s *ReposDeleteFileApplicationJSONRequestAuthor) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposDeleteFileApplicationJSONRequestAuthor from json stream.
-func (s *ReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposDeleteFileApplicationJSONReqAuthor from json stream.
+func (s *ReposDeleteFileApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "email":
@@ -37094,7 +37094,7 @@ func (s *ReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposDeleteFileApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+func (s ReposDeleteFileApplicationJSONReqCommitter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -37111,16 +37111,16 @@ func (s ReposDeleteFileApplicationJSONRequestCommitter) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposDeleteFileApplicationJSONRequestCommitter json value to io.Writer.
-func (s ReposDeleteFileApplicationJSONRequestCommitter) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposDeleteFileApplicationJSONReqCommitter json value to io.Writer.
+func (s ReposDeleteFileApplicationJSONReqCommitter) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposDeleteFileApplicationJSONRequestCommitter json value from io.Reader.
-func (s *ReposDeleteFileApplicationJSONRequestCommitter) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposDeleteFileApplicationJSONReqCommitter json value from io.Reader.
+func (s *ReposDeleteFileApplicationJSONReqCommitter) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -37134,8 +37134,8 @@ func (s *ReposDeleteFileApplicationJSONRequestCommitter) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposDeleteFileApplicationJSONRequestCommitter from json stream.
-func (s *ReposDeleteFileApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposDeleteFileApplicationJSONReqCommitter from json stream.
+func (s *ReposDeleteFileApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "email":
@@ -38193,7 +38193,7 @@ func (ReposListWebhookDeliveriesOK) ReadJSONFrom(r io.Reader) error  { return ni
 func (ReposListWebhookDeliveriesOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposMergeApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposMergeApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -38211,16 +38211,16 @@ func (s ReposMergeApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposMergeApplicationJSONRequest json value to io.Writer.
-func (s ReposMergeApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposMergeApplicationJSONReq json value to io.Writer.
+func (s ReposMergeApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposMergeApplicationJSONRequest json value from io.Reader.
-func (s *ReposMergeApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposMergeApplicationJSONReq json value from io.Reader.
+func (s *ReposMergeApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -38234,8 +38234,8 @@ func (s *ReposMergeApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposMergeApplicationJSONRequest from json stream.
-func (s *ReposMergeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposMergeApplicationJSONReq from json stream.
+func (s *ReposMergeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "base":
@@ -38389,7 +38389,7 @@ func (s *ReposMergeNotFound) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposMergeUpstreamApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposMergeUpstreamApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -38399,16 +38399,16 @@ func (s ReposMergeUpstreamApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposMergeUpstreamApplicationJSONRequest json value to io.Writer.
-func (s ReposMergeUpstreamApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposMergeUpstreamApplicationJSONReq json value to io.Writer.
+func (s ReposMergeUpstreamApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposMergeUpstreamApplicationJSONRequest json value from io.Reader.
-func (s *ReposMergeUpstreamApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposMergeUpstreamApplicationJSONReq json value from io.Reader.
+func (s *ReposMergeUpstreamApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -38422,8 +38422,8 @@ func (s *ReposMergeUpstreamApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposMergeUpstreamApplicationJSONRequest from json stream.
-func (s *ReposMergeUpstreamApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposMergeUpstreamApplicationJSONReq from json stream.
+func (s *ReposMergeUpstreamApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "branch":
@@ -38653,7 +38653,7 @@ func (s *ReposRemoveStatusCheckProtection) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposRenameBranchApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposRenameBranchApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -38663,16 +38663,16 @@ func (s ReposRenameBranchApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposRenameBranchApplicationJSONRequest json value to io.Writer.
-func (s ReposRenameBranchApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposRenameBranchApplicationJSONReq json value to io.Writer.
+func (s ReposRenameBranchApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposRenameBranchApplicationJSONRequest json value from io.Reader.
-func (s *ReposRenameBranchApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposRenameBranchApplicationJSONReq json value from io.Reader.
+func (s *ReposRenameBranchApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -38686,8 +38686,8 @@ func (s *ReposRenameBranchApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposRenameBranchApplicationJSONRequest from json stream.
-func (s *ReposRenameBranchApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposRenameBranchApplicationJSONReq from json stream.
+func (s *ReposRenameBranchApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "new_name":
@@ -38702,7 +38702,7 @@ func (s *ReposRenameBranchApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposReplaceAllTopicsApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposReplaceAllTopicsApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -38719,16 +38719,16 @@ func (s ReposReplaceAllTopicsApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposReplaceAllTopicsApplicationJSONRequest json value to io.Writer.
-func (s ReposReplaceAllTopicsApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposReplaceAllTopicsApplicationJSONReq json value to io.Writer.
+func (s ReposReplaceAllTopicsApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposReplaceAllTopicsApplicationJSONRequest json value from io.Reader.
-func (s *ReposReplaceAllTopicsApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposReplaceAllTopicsApplicationJSONReq json value from io.Reader.
+func (s *ReposReplaceAllTopicsApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -38742,8 +38742,8 @@ func (s *ReposReplaceAllTopicsApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposReplaceAllTopicsApplicationJSONRequest from json stream.
-func (s *ReposReplaceAllTopicsApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposReplaceAllTopicsApplicationJSONReq from json stream.
+func (s *ReposReplaceAllTopicsApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "names":
@@ -38802,7 +38802,7 @@ func (s *ReposTestPushWebhookNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposTransferApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposTransferApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -38824,16 +38824,16 @@ func (s ReposTransferApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposTransferApplicationJSONRequest json value to io.Writer.
-func (s ReposTransferApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposTransferApplicationJSONReq json value to io.Writer.
+func (s ReposTransferApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposTransferApplicationJSONRequest json value from io.Reader.
-func (s *ReposTransferApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposTransferApplicationJSONReq json value from io.Reader.
+func (s *ReposTransferApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -38847,8 +38847,8 @@ func (s *ReposTransferApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposTransferApplicationJSONRequest from json stream.
-func (s *ReposTransferApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposTransferApplicationJSONReq from json stream.
+func (s *ReposTransferApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "new_owner":
@@ -38867,7 +38867,7 @@ func (s *ReposTransferApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdateApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -38964,16 +38964,16 @@ func (s ReposUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdateApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateApplicationJSONReq json value to io.Writer.
+func (s ReposUpdateApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdateApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -38987,8 +38987,8 @@ func (s *ReposUpdateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateApplicationJSONRequest from json stream.
-func (s *ReposUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateApplicationJSONReq from json stream.
+func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_auto_merge":
@@ -39126,7 +39126,7 @@ func (s *ReposUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j *json.Stream) {
+func (s ReposUpdateApplicationJSONReqSecurityAndAnalysis) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39143,16 +39143,16 @@ func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j *json.
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateApplicationJSONRequestSecurityAndAnalysis json value to io.Writer.
-func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateApplicationJSONReqSecurityAndAnalysis json value to io.Writer.
+func (s ReposUpdateApplicationJSONReqSecurityAndAnalysis) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateApplicationJSONRequestSecurityAndAnalysis json value from io.Reader.
-func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateApplicationJSONReqSecurityAndAnalysis json value from io.Reader.
+func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysis) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39166,8 +39166,8 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSONFrom(r io
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateApplicationJSONRequestSecurityAndAnalysis from json stream.
-func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateApplicationJSONReqSecurityAndAnalysis from json stream.
+func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "advanced_security":
@@ -39193,7 +39193,7 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
+func (s ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39205,16 +39205,16 @@ func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) Wr
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity json value to io.Writer.
-func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity json value to io.Writer.
+func (s ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity json value from io.Reader.
-func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity json value from io.Reader.
+func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39228,8 +39228,8 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) R
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity from json stream.
-func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity from json stream.
+func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "status":
@@ -39248,7 +39248,7 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
+func (s ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39260,16 +39260,16 @@ func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Writ
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning json value to io.Writer.
-func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning json value to io.Writer.
+func (s ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning json value from io.Reader.
-func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning json value from io.Reader.
+func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39283,8 +39283,8 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning from json stream.
-func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning from json stream.
+func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "status":
@@ -39303,13 +39303,13 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s ReposUpdateApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposUpdateApplicationJSONRequestVisibility from json stream.
-func (s *ReposUpdateApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = ReposUpdateApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads ReposUpdateApplicationJSONReqVisibility from json stream.
+func (s *ReposUpdateApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ReposUpdateApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -39330,7 +39330,7 @@ func (ReposUpdateBranchProtectionApplicationJSONNotFound) ReadJSONFrom(r io.Read
 func (ReposUpdateBranchProtectionApplicationJSONNotFound) WriteJSONTo(w io.Writer) error  { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateBranchProtectionApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdateBranchProtectionApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39369,16 +39369,16 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdateBranchProtectionApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONReq json value to io.Writer.
+func (s ReposUpdateBranchProtectionApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdateBranchProtectionApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39392,8 +39392,8 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequest) ReadJSONFrom(r io.Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONRequest from json stream.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONReq from json stream.
+func (s *ReposUpdateBranchProtectionApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_deletions":
@@ -39457,7 +39457,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequest) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
+func (s ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39484,16 +39484,16 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRevi
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews json value to io.Writer.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews json value to io.Writer.
+func (s ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews json value from io.Reader.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews json value from io.Reader.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39507,8 +39507,8 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRev
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews from json stream.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews from json stream.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "dismiss_stale_reviews":
@@ -39548,7 +39548,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRev
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
+func (s ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39579,16 +39579,16 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRevi
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions json value to io.Writer.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions json value to io.Writer.
+func (s ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions json value from io.Reader.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions json value from io.Reader.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39602,8 +39602,8 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRev
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions from json stream.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions from json stream.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "teams":
@@ -39623,7 +39623,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRev
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) WriteJSON(j *json.Stream) {
+func (s ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39643,16 +39643,16 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) W
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks json value to io.Writer.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks json value to io.Writer.
+func (s ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks json value from io.Reader.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks json value from io.Reader.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39666,8 +39666,8 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks from json stream.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks from json stream.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "contexts":
@@ -39686,7 +39686,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) WriteJSON(j *json.Stream) {
+func (s ReposUpdateBranchProtectionApplicationJSONReqRestrictions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39725,16 +39725,16 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) WriteJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONRequestRestrictions json value to io.Writer.
-func (s ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateBranchProtectionApplicationJSONReqRestrictions json value to io.Writer.
+func (s ReposUpdateBranchProtectionApplicationJSONReqRestrictions) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONRequestRestrictions json value from io.Reader.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateBranchProtectionApplicationJSONReqRestrictions json value from io.Reader.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRestrictions) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39748,8 +39748,8 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) ReadJSON
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONRequestRestrictions from json stream.
-func (s *ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateBranchProtectionApplicationJSONReqRestrictions from json stream.
+func (s *ReposUpdateBranchProtectionApplicationJSONReqRestrictions) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "apps":
@@ -39773,7 +39773,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateCommitCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdateCommitCommentApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39783,16 +39783,16 @@ func (s ReposUpdateCommitCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateCommitCommentApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdateCommitCommentApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateCommitCommentApplicationJSONReq json value to io.Writer.
+func (s ReposUpdateCommitCommentApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateCommitCommentApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdateCommitCommentApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateCommitCommentApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdateCommitCommentApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39806,8 +39806,8 @@ func (s *ReposUpdateCommitCommentApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateCommitCommentApplicationJSONRequest from json stream.
-func (s *ReposUpdateCommitCommentApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateCommitCommentApplicationJSONReq from json stream.
+func (s *ReposUpdateCommitCommentApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -39822,7 +39822,7 @@ func (s *ReposUpdateCommitCommentApplicationJSONRequest) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdateInvitationApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39834,16 +39834,16 @@ func (s ReposUpdateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateInvitationApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdateInvitationApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateInvitationApplicationJSONReq json value to io.Writer.
+func (s ReposUpdateInvitationApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateInvitationApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdateInvitationApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateInvitationApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdateInvitationApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39857,8 +39857,8 @@ func (s *ReposUpdateInvitationApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateInvitationApplicationJSONRequest from json stream.
-func (s *ReposUpdateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateInvitationApplicationJSONReq from json stream.
+func (s *ReposUpdateInvitationApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permissions":
@@ -39877,18 +39877,18 @@ func (s *ReposUpdateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateInvitationApplicationJSONRequestPermissions) WriteJSON(j *json.Stream) {
+func (s ReposUpdateInvitationApplicationJSONReqPermissions) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads ReposUpdateInvitationApplicationJSONRequestPermissions from json stream.
-func (s *ReposUpdateInvitationApplicationJSONRequestPermissions) ReadJSON(i *json.Iterator) error {
-	*s = ReposUpdateInvitationApplicationJSONRequestPermissions(i.ReadString())
+// ReadJSON reads ReposUpdateInvitationApplicationJSONReqPermissions from json stream.
+func (s *ReposUpdateInvitationApplicationJSONReqPermissions) ReadJSON(i *json.Iterator) error {
+	*s = ReposUpdateInvitationApplicationJSONReqPermissions(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdatePullRequestReviewProtectionApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -39915,16 +39915,16 @@ func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) WriteJSON(
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdatePullRequestReviewProtectionApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdatePullRequestReviewProtectionApplicationJSONReq json value to io.Writer.
+func (s ReposUpdatePullRequestReviewProtectionApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdatePullRequestReviewProtectionApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdatePullRequestReviewProtectionApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -39938,8 +39938,8 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) ReadJSONF
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdatePullRequestReviewProtectionApplicationJSONRequest from json stream.
-func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdatePullRequestReviewProtectionApplicationJSONReq from json stream.
+func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "dismiss_stale_reviews":
@@ -39979,7 +39979,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) WriteJSON(j *json.Stream) {
+func (s ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -40010,16 +40010,16 @@ func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRes
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions json value to io.Writer.
-func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions json value to io.Writer.
+func (s ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions json value from io.Reader.
-func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions json value from io.Reader.
+func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -40033,8 +40033,8 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRe
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions from json stream.
-func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions from json stream.
+func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "teams":
@@ -40054,7 +40054,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRe
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateReleaseApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdateReleaseApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -40096,16 +40096,16 @@ func (s ReposUpdateReleaseApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateReleaseApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdateReleaseApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateReleaseApplicationJSONReq json value to io.Writer.
+func (s ReposUpdateReleaseApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateReleaseApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdateReleaseApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateReleaseApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -40119,8 +40119,8 @@ func (s *ReposUpdateReleaseApplicationJSONRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateReleaseApplicationJSONRequest from json stream.
-func (s *ReposUpdateReleaseApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateReleaseApplicationJSONReq from json stream.
+func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -40181,7 +40181,7 @@ func (s *ReposUpdateReleaseApplicationJSONRequest) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateReleaseAssetApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdateReleaseAssetApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -40203,16 +40203,16 @@ func (s ReposUpdateReleaseAssetApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateReleaseAssetApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdateReleaseAssetApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateReleaseAssetApplicationJSONReq json value to io.Writer.
+func (s ReposUpdateReleaseAssetApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateReleaseAssetApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdateReleaseAssetApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateReleaseAssetApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdateReleaseAssetApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -40226,8 +40226,8 @@ func (s *ReposUpdateReleaseAssetApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateReleaseAssetApplicationJSONRequest from json stream.
-func (s *ReposUpdateReleaseAssetApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateReleaseAssetApplicationJSONReq from json stream.
+func (s *ReposUpdateReleaseAssetApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "label":
@@ -40260,7 +40260,7 @@ func (s *ReposUpdateReleaseAssetApplicationJSONRequest) ReadJSON(i *json.Iterato
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ReposUpdateStatusCheckProtectionApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ReposUpdateStatusCheckProtectionApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -40284,16 +40284,16 @@ func (s ReposUpdateStatusCheckProtectionApplicationJSONRequest) WriteJSON(j *jso
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ReposUpdateStatusCheckProtectionApplicationJSONRequest json value to io.Writer.
-func (s ReposUpdateStatusCheckProtectionApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ReposUpdateStatusCheckProtectionApplicationJSONReq json value to io.Writer.
+func (s ReposUpdateStatusCheckProtectionApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ReposUpdateStatusCheckProtectionApplicationJSONRequest json value from io.Reader.
-func (s *ReposUpdateStatusCheckProtectionApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ReposUpdateStatusCheckProtectionApplicationJSONReq json value from io.Reader.
+func (s *ReposUpdateStatusCheckProtectionApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -40307,8 +40307,8 @@ func (s *ReposUpdateStatusCheckProtectionApplicationJSONRequest) ReadJSONFrom(r 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ReposUpdateStatusCheckProtectionApplicationJSONRequest from json stream.
-func (s *ReposUpdateStatusCheckProtectionApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ReposUpdateStatusCheckProtectionApplicationJSONReq from json stream.
+func (s *ReposUpdateStatusCheckProtectionApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "contexts":
@@ -42800,7 +42800,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimProvisionAndInviteUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ScimProvisionAndInviteUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -42862,16 +42862,16 @@ func (s ScimProvisionAndInviteUserApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ScimProvisionAndInviteUserApplicationJSONRequest json value to io.Writer.
-func (s ScimProvisionAndInviteUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ScimProvisionAndInviteUserApplicationJSONReq json value to io.Writer.
+func (s ScimProvisionAndInviteUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ScimProvisionAndInviteUserApplicationJSONRequest json value from io.Reader.
-func (s *ScimProvisionAndInviteUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ScimProvisionAndInviteUserApplicationJSONReq json value from io.Reader.
+func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -42885,8 +42885,8 @@ func (s *ScimProvisionAndInviteUserApplicationJSONRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ScimProvisionAndInviteUserApplicationJSONRequest from json stream.
-func (s *ScimProvisionAndInviteUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ScimProvisionAndInviteUserApplicationJSONReq from json stream.
+func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "active":
@@ -42940,7 +42940,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONRequest) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem) WriteJSON(j *json.Stream) {
+func (s ScimProvisionAndInviteUserApplicationJSONReqEmailsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -42960,16 +42960,16 @@ func (s ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem) WriteJSON(j 
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem json value to io.Writer.
-func (s ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ScimProvisionAndInviteUserApplicationJSONReqEmailsItem json value to io.Writer.
+func (s ScimProvisionAndInviteUserApplicationJSONReqEmailsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem json value from io.Reader.
-func (s *ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ScimProvisionAndInviteUserApplicationJSONReqEmailsItem json value from io.Reader.
+func (s *ScimProvisionAndInviteUserApplicationJSONReqEmailsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -42983,8 +42983,8 @@ func (s *ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem) ReadJSONFro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem from json stream.
-func (s *ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ScimProvisionAndInviteUserApplicationJSONReqEmailsItem from json stream.
+func (s *ScimProvisionAndInviteUserApplicationJSONReqEmailsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "primary":
@@ -43013,7 +43013,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimProvisionAndInviteUserApplicationJSONRequestName) WriteJSON(j *json.Stream) {
+func (s ScimProvisionAndInviteUserApplicationJSONReqName) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -43031,16 +43031,16 @@ func (s ScimProvisionAndInviteUserApplicationJSONRequestName) WriteJSON(j *json.
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ScimProvisionAndInviteUserApplicationJSONRequestName json value to io.Writer.
-func (s ScimProvisionAndInviteUserApplicationJSONRequestName) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ScimProvisionAndInviteUserApplicationJSONReqName json value to io.Writer.
+func (s ScimProvisionAndInviteUserApplicationJSONReqName) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ScimProvisionAndInviteUserApplicationJSONRequestName json value from io.Reader.
-func (s *ScimProvisionAndInviteUserApplicationJSONRequestName) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ScimProvisionAndInviteUserApplicationJSONReqName json value from io.Reader.
+func (s *ScimProvisionAndInviteUserApplicationJSONReqName) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -43054,8 +43054,8 @@ func (s *ScimProvisionAndInviteUserApplicationJSONRequestName) ReadJSONFrom(r io
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ScimProvisionAndInviteUserApplicationJSONRequestName from json stream.
-func (s *ScimProvisionAndInviteUserApplicationJSONRequestName) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ScimProvisionAndInviteUserApplicationJSONReqName from json stream.
+func (s *ScimProvisionAndInviteUserApplicationJSONReqName) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "familyName":
@@ -43080,7 +43080,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONRequestName) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimSetInformationForProvisionedUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s ScimSetInformationForProvisionedUserApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -43142,16 +43142,16 @@ func (s ScimSetInformationForProvisionedUserApplicationJSONRequest) WriteJSON(j 
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ScimSetInformationForProvisionedUserApplicationJSONRequest json value to io.Writer.
-func (s ScimSetInformationForProvisionedUserApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ScimSetInformationForProvisionedUserApplicationJSONReq json value to io.Writer.
+func (s ScimSetInformationForProvisionedUserApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ScimSetInformationForProvisionedUserApplicationJSONRequest json value from io.Reader.
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ScimSetInformationForProvisionedUserApplicationJSONReq json value from io.Reader.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -43165,8 +43165,8 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) ReadJSONFro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ScimSetInformationForProvisionedUserApplicationJSONRequest from json stream.
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ScimSetInformationForProvisionedUserApplicationJSONReq from json stream.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "active":
@@ -43220,7 +43220,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem) WriteJSON(j *json.Stream) {
+func (s ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -43240,16 +43240,16 @@ func (s ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem) Wr
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem json value to io.Writer.
-func (s ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem json value to io.Writer.
+func (s ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem json value from io.Reader.
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem json value from io.Reader.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -43263,8 +43263,8 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem) R
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem from json stream.
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem from json stream.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "primary":
@@ -43293,7 +43293,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ScimSetInformationForProvisionedUserApplicationJSONRequestName) WriteJSON(j *json.Stream) {
+func (s ScimSetInformationForProvisionedUserApplicationJSONReqName) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -43311,16 +43311,16 @@ func (s ScimSetInformationForProvisionedUserApplicationJSONRequestName) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ScimSetInformationForProvisionedUserApplicationJSONRequestName json value to io.Writer.
-func (s ScimSetInformationForProvisionedUserApplicationJSONRequestName) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes ScimSetInformationForProvisionedUserApplicationJSONReqName json value to io.Writer.
+func (s ScimSetInformationForProvisionedUserApplicationJSONReqName) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ScimSetInformationForProvisionedUserApplicationJSONRequestName json value from io.Reader.
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequestName) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads ScimSetInformationForProvisionedUserApplicationJSONReqName json value from io.Reader.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONReqName) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -43334,8 +43334,8 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONRequestName) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ScimSetInformationForProvisionedUserApplicationJSONRequestName from json stream.
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequestName) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ScimSetInformationForProvisionedUserApplicationJSONReqName from json stream.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONReqName) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "familyName":
@@ -43850,7 +43850,7 @@ func (s *SecretScanningGetAlertNotFound) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SecretScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s SecretScanningUpdateAlertApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -43865,16 +43865,16 @@ func (s SecretScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SecretScanningUpdateAlertApplicationJSONRequest json value to io.Writer.
-func (s SecretScanningUpdateAlertApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SecretScanningUpdateAlertApplicationJSONReq json value to io.Writer.
+func (s SecretScanningUpdateAlertApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SecretScanningUpdateAlertApplicationJSONRequest json value from io.Reader.
-func (s *SecretScanningUpdateAlertApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SecretScanningUpdateAlertApplicationJSONReq json value from io.Reader.
+func (s *SecretScanningUpdateAlertApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -43888,8 +43888,8 @@ func (s *SecretScanningUpdateAlertApplicationJSONRequest) ReadJSONFrom(r io.Read
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SecretScanningUpdateAlertApplicationJSONRequest from json stream.
-func (s *SecretScanningUpdateAlertApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SecretScanningUpdateAlertApplicationJSONReq from json stream.
+func (s *SecretScanningUpdateAlertApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "resolution":
@@ -44690,7 +44690,7 @@ func (s *TeamsAddMemberLegacyUnprocessableEntity) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -44702,16 +44702,16 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) WriteJSON(
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -44725,8 +44725,8 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) ReadJSONF
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "role":
@@ -44745,13 +44745,13 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
-	*s = TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(i.ReadString())
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReqRole(i.ReadString())
 	return i.Error
 }
 
@@ -44842,7 +44842,7 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -44854,16 +44854,16 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) WriteJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -44877,8 +44877,8 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) ReadJSON
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "role":
@@ -44897,13 +44897,13 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole from json stream.
-func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
-	*s = TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(i.ReadString())
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReqRole(i.ReadString())
 	return i.Error
 }
 
@@ -44994,7 +44994,7 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -45006,16 +45006,16 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) WriteJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -45029,8 +45029,8 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) ReadJSON
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
@@ -45049,13 +45049,13 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
@@ -45170,7 +45170,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -45182,16 +45182,16 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -45205,8 +45205,8 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
@@ -45225,13 +45225,13 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission from json stream.
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
@@ -45389,7 +45389,7 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrg) ReadJSON(i *json.Iterator) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -45401,16 +45401,16 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) WriteJSON(j 
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -45424,8 +45424,8 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) ReadJSONFro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest from json stream.
-func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
@@ -45444,18 +45444,18 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission from json stream.
-func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -45467,16 +45467,16 @@ func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) WriteJSON(j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -45490,8 +45490,8 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) ReadJSONFr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest from json stream.
-func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
@@ -45510,13 +45510,13 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission from json stream.
-func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
@@ -45822,7 +45822,7 @@ func (s *TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSON(i *json.Iterator) 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsCreateApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -45876,16 +45876,16 @@ func (s TeamsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateApplicationJSONRequest json value to io.Writer.
-func (s TeamsCreateApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateApplicationJSONReq json value to io.Writer.
+func (s TeamsCreateApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateApplicationJSONRequest json value from io.Reader.
-func (s *TeamsCreateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateApplicationJSONReq json value from io.Reader.
+func (s *TeamsCreateApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -45899,8 +45899,8 @@ func (s *TeamsCreateApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateApplicationJSONRequest from json stream.
-func (s *TeamsCreateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateApplicationJSONReq from json stream.
+func (s *TeamsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
@@ -45951,29 +45951,29 @@ func (s *TeamsCreateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s TeamsCreateApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsCreateApplicationJSONRequestPermission from json stream.
-func (s *TeamsCreateApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = TeamsCreateApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads TeamsCreateApplicationJSONReqPermission from json stream.
+func (s *TeamsCreateApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsCreateApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+func (s TeamsCreateApplicationJSONReqPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsCreateApplicationJSONRequestPrivacy from json stream.
-func (s *TeamsCreateApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
-	*s = TeamsCreateApplicationJSONRequestPrivacy(i.ReadString())
+// ReadJSON reads TeamsCreateApplicationJSONReqPrivacy from json stream.
+func (s *TeamsCreateApplicationJSONReqPrivacy) ReadJSON(i *json.Iterator) error {
+	*s = TeamsCreateApplicationJSONReqPrivacy(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsCreateDiscussionCommentInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -45983,16 +45983,16 @@ func (s TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateDiscussionCommentInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateDiscussionCommentInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsCreateDiscussionCommentInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateDiscussionCommentInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateDiscussionCommentInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsCreateDiscussionCommentInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46006,8 +46006,8 @@ func (s *TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) ReadJSONFrom(r
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateDiscussionCommentInOrgApplicationJSONRequest from json stream.
-func (s *TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateDiscussionCommentInOrgApplicationJSONReq from json stream.
+func (s *TeamsCreateDiscussionCommentInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -46022,7 +46022,7 @@ func (s *TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsCreateDiscussionCommentLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -46032,16 +46032,16 @@ func (s TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateDiscussionCommentLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateDiscussionCommentLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsCreateDiscussionCommentLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateDiscussionCommentLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateDiscussionCommentLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsCreateDiscussionCommentLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46055,8 +46055,8 @@ func (s *TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) ReadJSONFrom(
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateDiscussionCommentLegacyApplicationJSONRequest from json stream.
-func (s *TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateDiscussionCommentLegacyApplicationJSONReq from json stream.
+func (s *TeamsCreateDiscussionCommentLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -46071,7 +46071,7 @@ func (s *TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateDiscussionInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsCreateDiscussionInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -46089,16 +46089,16 @@ func (s TeamsCreateDiscussionInOrgApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateDiscussionInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsCreateDiscussionInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateDiscussionInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsCreateDiscussionInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateDiscussionInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsCreateDiscussionInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateDiscussionInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsCreateDiscussionInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46112,8 +46112,8 @@ func (s *TeamsCreateDiscussionInOrgApplicationJSONRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateDiscussionInOrgApplicationJSONRequest from json stream.
-func (s *TeamsCreateDiscussionInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateDiscussionInOrgApplicationJSONReq from json stream.
+func (s *TeamsCreateDiscussionInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -46138,7 +46138,7 @@ func (s *TeamsCreateDiscussionInOrgApplicationJSONRequest) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateDiscussionLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsCreateDiscussionLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -46156,16 +46156,16 @@ func (s TeamsCreateDiscussionLegacyApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateDiscussionLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsCreateDiscussionLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateDiscussionLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsCreateDiscussionLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateDiscussionLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsCreateDiscussionLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateDiscussionLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsCreateDiscussionLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46179,8 +46179,8 @@ func (s *TeamsCreateDiscussionLegacyApplicationJSONRequest) ReadJSONFrom(r io.Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateDiscussionLegacyApplicationJSONRequest from json stream.
-func (s *TeamsCreateDiscussionLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateDiscussionLegacyApplicationJSONReq from json stream.
+func (s *TeamsCreateDiscussionLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -46205,7 +46205,7 @@ func (s *TeamsCreateDiscussionLegacyApplicationJSONRequest) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -46224,16 +46224,16 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) Write
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46247,8 +46247,8 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) Read
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest from json stream.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq from json stream.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "groups":
@@ -46264,7 +46264,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) Read
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem) WriteJSON(j *json.Stream) {
+func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -46280,16 +46280,16 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsI
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem json value to io.Writer.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem json value to io.Writer.
+func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem json value from io.Reader.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem json value from io.Reader.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46303,8 +46303,8 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroups
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem from json stream.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem from json stream.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "group_description":
@@ -46325,7 +46325,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroups
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -46347,16 +46347,16 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) Writ
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46370,8 +46370,8 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest from json stream.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq from json stream.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "groups":
@@ -46394,7 +46394,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) Rea
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem) WriteJSON(j *json.Stream) {
+func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -46425,16 +46425,16 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroups
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem json value to io.Writer.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem json value to io.Writer.
+func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem json value from io.Reader.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem json value from io.Reader.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -46448,8 +46448,8 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroup
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem from json stream.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem from json stream.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
@@ -47371,7 +47371,7 @@ func (s *TeamsRemoveRepoLegacy) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateDiscussionCommentInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -47381,16 +47381,16 @@ func (s TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsUpdateDiscussionCommentInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsUpdateDiscussionCommentInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsUpdateDiscussionCommentInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsUpdateDiscussionCommentInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -47404,8 +47404,8 @@ func (s *TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) ReadJSONFrom(r
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest from json stream.
-func (s *TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsUpdateDiscussionCommentInOrgApplicationJSONReq from json stream.
+func (s *TeamsUpdateDiscussionCommentInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -47420,7 +47420,7 @@ func (s *TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateDiscussionCommentLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -47430,16 +47430,16 @@ func (s TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsUpdateDiscussionCommentLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsUpdateDiscussionCommentLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsUpdateDiscussionCommentLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsUpdateDiscussionCommentLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -47453,8 +47453,8 @@ func (s *TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) ReadJSONFrom(
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest from json stream.
-func (s *TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsUpdateDiscussionCommentLegacyApplicationJSONReq from json stream.
+func (s *TeamsUpdateDiscussionCommentLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -47469,7 +47469,7 @@ func (s *TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) ReadJSON(i *j
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateDiscussionInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateDiscussionInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -47486,16 +47486,16 @@ func (s TeamsUpdateDiscussionInOrgApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsUpdateDiscussionInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsUpdateDiscussionInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsUpdateDiscussionInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsUpdateDiscussionInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsUpdateDiscussionInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsUpdateDiscussionInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsUpdateDiscussionInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsUpdateDiscussionInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -47509,8 +47509,8 @@ func (s *TeamsUpdateDiscussionInOrgApplicationJSONRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsUpdateDiscussionInOrgApplicationJSONRequest from json stream.
-func (s *TeamsUpdateDiscussionInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsUpdateDiscussionInOrgApplicationJSONReq from json stream.
+func (s *TeamsUpdateDiscussionInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -47536,7 +47536,7 @@ func (s *TeamsUpdateDiscussionInOrgApplicationJSONRequest) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateDiscussionLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateDiscussionLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -47553,16 +47553,16 @@ func (s TeamsUpdateDiscussionLegacyApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsUpdateDiscussionLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsUpdateDiscussionLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsUpdateDiscussionLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsUpdateDiscussionLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsUpdateDiscussionLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsUpdateDiscussionLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsUpdateDiscussionLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsUpdateDiscussionLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -47576,8 +47576,8 @@ func (s *TeamsUpdateDiscussionLegacyApplicationJSONRequest) ReadJSONFrom(r io.Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsUpdateDiscussionLegacyApplicationJSONRequest from json stream.
-func (s *TeamsUpdateDiscussionLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsUpdateDiscussionLegacyApplicationJSONReq from json stream.
+func (s *TeamsUpdateDiscussionLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "body":
@@ -47603,7 +47603,7 @@ func (s *TeamsUpdateDiscussionLegacyApplicationJSONRequest) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateInOrgApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -47635,16 +47635,16 @@ func (s TeamsUpdateInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsUpdateInOrgApplicationJSONRequest json value to io.Writer.
-func (s TeamsUpdateInOrgApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsUpdateInOrgApplicationJSONReq json value to io.Writer.
+func (s TeamsUpdateInOrgApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsUpdateInOrgApplicationJSONRequest json value from io.Reader.
-func (s *TeamsUpdateInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsUpdateInOrgApplicationJSONReq json value from io.Reader.
+func (s *TeamsUpdateInOrgApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -47658,8 +47658,8 @@ func (s *TeamsUpdateInOrgApplicationJSONRequest) ReadJSONFrom(r io.Reader) error
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsUpdateInOrgApplicationJSONRequest from json stream.
-func (s *TeamsUpdateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsUpdateInOrgApplicationJSONReq from json stream.
+func (s *TeamsUpdateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
@@ -47706,29 +47706,29 @@ func (s *TeamsUpdateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateInOrgApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsUpdateInOrgApplicationJSONRequestPermission from json stream.
-func (s *TeamsUpdateInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = TeamsUpdateInOrgApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads TeamsUpdateInOrgApplicationJSONReqPermission from json stream.
+func (s *TeamsUpdateInOrgApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateInOrgApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateInOrgApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateInOrgApplicationJSONReqPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsUpdateInOrgApplicationJSONRequestPrivacy from json stream.
-func (s *TeamsUpdateInOrgApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
-	*s = TeamsUpdateInOrgApplicationJSONRequestPrivacy(i.ReadString())
+// ReadJSON reads TeamsUpdateInOrgApplicationJSONReqPrivacy from json stream.
+func (s *TeamsUpdateInOrgApplicationJSONReqPrivacy) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateInOrgApplicationJSONReqPrivacy(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateLegacyApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -47758,16 +47758,16 @@ func (s TeamsUpdateLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes TeamsUpdateLegacyApplicationJSONRequest json value to io.Writer.
-func (s TeamsUpdateLegacyApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes TeamsUpdateLegacyApplicationJSONReq json value to io.Writer.
+func (s TeamsUpdateLegacyApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads TeamsUpdateLegacyApplicationJSONRequest json value from io.Reader.
-func (s *TeamsUpdateLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads TeamsUpdateLegacyApplicationJSONReq json value from io.Reader.
+func (s *TeamsUpdateLegacyApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -47781,8 +47781,8 @@ func (s *TeamsUpdateLegacyApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads TeamsUpdateLegacyApplicationJSONRequest from json stream.
-func (s *TeamsUpdateLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads TeamsUpdateLegacyApplicationJSONReq from json stream.
+func (s *TeamsUpdateLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
@@ -47825,24 +47825,24 @@ func (s *TeamsUpdateLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateLegacyApplicationJSONReqPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsUpdateLegacyApplicationJSONRequestPermission from json stream.
-func (s *TeamsUpdateLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
-	*s = TeamsUpdateLegacyApplicationJSONRequestPermission(i.ReadString())
+// ReadJSON reads TeamsUpdateLegacyApplicationJSONReqPermission from json stream.
+func (s *TeamsUpdateLegacyApplicationJSONReqPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateLegacyApplicationJSONReqPermission(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s TeamsUpdateLegacyApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+func (s TeamsUpdateLegacyApplicationJSONReqPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads TeamsUpdateLegacyApplicationJSONRequestPrivacy from json stream.
-func (s *TeamsUpdateLegacyApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
-	*s = TeamsUpdateLegacyApplicationJSONRequestPrivacy(i.ReadString())
+// ReadJSON reads TeamsUpdateLegacyApplicationJSONReqPrivacy from json stream.
+func (s *TeamsUpdateLegacyApplicationJSONReqPrivacy) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateLegacyApplicationJSONReqPrivacy(i.ReadString())
 	return i.Error
 }
 
@@ -48178,7 +48178,7 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -48188,16 +48188,16 @@ func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest json value to io.Writer.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes UsersCreateGpgKeyForAuthenticatedApplicationJSONReq json value to io.Writer.
+func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest json value from io.Reader.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads UsersCreateGpgKeyForAuthenticatedApplicationJSONReq json value from io.Reader.
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -48211,8 +48211,8 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) ReadJSONFrom(r
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest from json stream.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UsersCreateGpgKeyForAuthenticatedApplicationJSONReq from json stream.
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "armored_public_key":
@@ -48227,7 +48227,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) ReadJSON(i *js
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -48242,16 +48242,16 @@ func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) WriteJSON
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest json value to io.Writer.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq json value to io.Writer.
+func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest json value from io.Reader.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq json value from io.Reader.
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -48265,8 +48265,8 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) ReadJSON
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest from json stream.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq from json stream.
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "key":
@@ -48780,7 +48780,7 @@ func (UsersListPublicSSHKeysForAuthenticatedOK) ReadJSONFrom(r io.Reader) error 
 func (UsersListPublicSSHKeysForAuthenticatedOK) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -48790,16 +48790,16 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) Wr
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest json value to io.Writer.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq json value to io.Writer.
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest json value from io.Reader.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq json value from io.Reader.
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -48813,8 +48813,8 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) R
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest from json stream.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq from json stream.
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "visibility":
@@ -48832,13 +48832,13 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) R
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility from json stream.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility(i.ReadString())
+// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility from json stream.
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility) ReadJSON(i *json.Iterator) error {
+	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONReqVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -48964,7 +48964,7 @@ func (s *UsersUnfollowNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UsersUpdateAuthenticatedApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s UsersUpdateAuthenticatedApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -49011,16 +49011,16 @@ func (s UsersUpdateAuthenticatedApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes UsersUpdateAuthenticatedApplicationJSONRequest json value to io.Writer.
-func (s UsersUpdateAuthenticatedApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes UsersUpdateAuthenticatedApplicationJSONReq json value to io.Writer.
+func (s UsersUpdateAuthenticatedApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads UsersUpdateAuthenticatedApplicationJSONRequest json value from io.Reader.
-func (s *UsersUpdateAuthenticatedApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads UsersUpdateAuthenticatedApplicationJSONReq json value from io.Reader.
+func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -49034,8 +49034,8 @@ func (s *UsersUpdateAuthenticatedApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads UsersUpdateAuthenticatedApplicationJSONRequest from json stream.
-func (s *UsersUpdateAuthenticatedApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UsersUpdateAuthenticatedApplicationJSONReq from json stream.
+func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "bio":

@@ -566,7 +566,7 @@ func Enum(name string, typ PrimitiveType, rawValues []json.RawMessage) (*Schema,
 	}, nil
 }
 
-func Iface(name string) *Interface {
+func NewInterface(name string) *Interface {
 	return &Interface{
 		Name:            name,
 		Methods:         map[string]struct{}{},

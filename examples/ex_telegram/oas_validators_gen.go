@@ -50,21 +50,21 @@ var (
 	_ = net.IP{}
 )
 
-func (s *AnswerShippingQueryPostApplicationJSONRequest) Validate() error {
+func (s *AnswerShippingQueryPostApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) Validate() error {
+func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *AnswerShippingQueryPostMultipartFormDataRequest) Validate() error {
+func (s *AnswerShippingQueryPostMultipartFormDataReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -144,21 +144,21 @@ func (s *GetStickerSetPostOK) Validate() error {
 	}
 	return nil
 }
-func (s *GetUpdatesPostApplicationJSONRequest) Validate() error {
+func (s *GetUpdatesPostApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *GetUpdatesPostApplicationXWwwFormUrlencodedRequest) Validate() error {
+func (s *GetUpdatesPostApplicationXWwwFormUrlencodedReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *GetUpdatesPostMultipartFormDataRequest) Validate() error {
+func (s *GetUpdatesPostMultipartFormDataReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -180,21 +180,21 @@ func (s *GetUpdatesPostOK) Validate() error {
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostApplicationJSONRequest) Validate() error {
+func (s *GetUserProfilePhotosPostApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) Validate() error {
+func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostMultipartFormDataRequest) Validate() error {
+func (s *GetUserProfilePhotosPostMultipartFormDataReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -297,21 +297,21 @@ func (s *PollAnswer) Validate() error {
 	}
 	return nil
 }
-func (s *SendGamePostApplicationJSONRequest) Validate() error {
+func (s *SendGamePostApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendGamePostApplicationXWwwFormUrlencodedRequest) Validate() error {
+func (s *SendGamePostApplicationXWwwFormUrlencodedReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendGamePostMultipartFormDataRequest) Validate() error {
+func (s *SendGamePostMultipartFormDataReq) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -325,7 +325,7 @@ func (s *SendGamePostOK) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostApplicationJSONRequest) Validate() error {
+func (s *SendInvoicePostApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Prices == nil {
 		return &validate.Error{
@@ -340,7 +340,7 @@ func (s *SendInvoicePostApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostApplicationXWwwFormUrlencodedRequest) Validate() error {
+func (s *SendInvoicePostApplicationXWwwFormUrlencodedReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Prices == nil {
 		return &validate.Error{
@@ -355,7 +355,7 @@ func (s *SendInvoicePostApplicationXWwwFormUrlencodedRequest) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostMultipartFormDataRequest) Validate() error {
+func (s *SendInvoicePostMultipartFormDataReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Prices == nil {
 		return &validate.Error{
@@ -377,7 +377,7 @@ func (s *SendInvoicePostOK) Validate() error {
 	}
 	return nil
 }
-func (s *SetMyCommandsPostApplicationJSONRequest) Validate() error {
+func (s *SetMyCommandsPostApplicationJSONReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Commands == nil {
 		return &validate.Error{
@@ -392,7 +392,7 @@ func (s *SetMyCommandsPostApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) Validate() error {
+func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Commands == nil {
 		return &validate.Error{
@@ -407,7 +407,7 @@ func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) Validate() error
 	}
 	return nil
 }
-func (s *SetMyCommandsPostMultipartFormDataRequest) Validate() error {
+func (s *SetMyCommandsPostMultipartFormDataReq) Validate() error {
 	var failures []validate.FieldError
 	if s.Commands == nil {
 		return &validate.Error{

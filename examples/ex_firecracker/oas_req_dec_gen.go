@@ -222,10 +222,10 @@ func decodePutMetricsRequest(r *http.Request) (req Metrics, err error) {
 	}
 }
 
-func decodeMmdsPutRequest(r *http.Request) (req *MmdsPutApplicationJSONRequest, err error) {
+func decodeMmdsPutRequest(r *http.Request) (req *MmdsPutApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request MmdsPutApplicationJSONRequest
+		var request MmdsPutApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
@@ -236,10 +236,10 @@ func decodeMmdsPutRequest(r *http.Request) (req *MmdsPutApplicationJSONRequest, 
 	}
 }
 
-func decodeMmdsPatchRequest(r *http.Request) (req *MmdsPatchApplicationJSONRequest, err error) {
+func decodeMmdsPatchRequest(r *http.Request) (req *MmdsPatchApplicationJSONReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request MmdsPatchApplicationJSONRequest
+		var request MmdsPatchApplicationJSONReq
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}

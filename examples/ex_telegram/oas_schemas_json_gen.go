@@ -172,7 +172,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerCallbackQueryPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AnswerCallbackQueryPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -202,16 +202,16 @@ func (s AnswerCallbackQueryPostApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerCallbackQueryPostApplicationJSONRequest json value to io.Writer.
-func (s AnswerCallbackQueryPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerCallbackQueryPostApplicationJSONReq json value to io.Writer.
+func (s AnswerCallbackQueryPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerCallbackQueryPostApplicationJSONRequest json value from io.Reader.
-func (s *AnswerCallbackQueryPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerCallbackQueryPostApplicationJSONReq json value from io.Reader.
+func (s *AnswerCallbackQueryPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -225,8 +225,8 @@ func (s *AnswerCallbackQueryPostApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerCallbackQueryPostApplicationJSONRequest from json stream.
-func (s *AnswerCallbackQueryPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerCallbackQueryPostApplicationJSONReq from json stream.
+func (s *AnswerCallbackQueryPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_time":
@@ -269,7 +269,7 @@ func (s *AnswerCallbackQueryPostApplicationJSONRequest) ReadJSON(i *json.Iterato
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -299,16 +299,16 @@ func (s AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -322,8 +322,8 @@ func (s *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSONFr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_time":
@@ -366,7 +366,7 @@ func (s *AnswerCallbackQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerCallbackQueryPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s AnswerCallbackQueryPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -396,16 +396,16 @@ func (s AnswerCallbackQueryPostMultipartFormDataRequest) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerCallbackQueryPostMultipartFormDataRequest json value to io.Writer.
-func (s AnswerCallbackQueryPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerCallbackQueryPostMultipartFormDataReq json value to io.Writer.
+func (s AnswerCallbackQueryPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerCallbackQueryPostMultipartFormDataRequest json value from io.Reader.
-func (s *AnswerCallbackQueryPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerCallbackQueryPostMultipartFormDataReq json value from io.Reader.
+func (s *AnswerCallbackQueryPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -419,8 +419,8 @@ func (s *AnswerCallbackQueryPostMultipartFormDataRequest) ReadJSONFrom(r io.Read
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerCallbackQueryPostMultipartFormDataRequest from json stream.
-func (s *AnswerCallbackQueryPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerCallbackQueryPostMultipartFormDataReq from json stream.
+func (s *AnswerCallbackQueryPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_time":
@@ -518,7 +518,7 @@ func (s *AnswerCallbackQueryPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerPreCheckoutQueryPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AnswerPreCheckoutQueryPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -536,16 +536,16 @@ func (s AnswerPreCheckoutQueryPostApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerPreCheckoutQueryPostApplicationJSONRequest json value to io.Writer.
-func (s AnswerPreCheckoutQueryPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerPreCheckoutQueryPostApplicationJSONReq json value to io.Writer.
+func (s AnswerPreCheckoutQueryPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerPreCheckoutQueryPostApplicationJSONRequest json value from io.Reader.
-func (s *AnswerPreCheckoutQueryPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerPreCheckoutQueryPostApplicationJSONReq json value from io.Reader.
+func (s *AnswerPreCheckoutQueryPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -559,8 +559,8 @@ func (s *AnswerPreCheckoutQueryPostApplicationJSONRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerPreCheckoutQueryPostApplicationJSONRequest from json stream.
-func (s *AnswerPreCheckoutQueryPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerPreCheckoutQueryPostApplicationJSONReq from json stream.
+func (s *AnswerPreCheckoutQueryPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
@@ -585,7 +585,7 @@ func (s *AnswerPreCheckoutQueryPostApplicationJSONRequest) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -603,16 +603,16 @@ func (s AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSO
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -626,8 +626,8 @@ func (s *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSO
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
@@ -652,7 +652,7 @@ func (s *AnswerPreCheckoutQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerPreCheckoutQueryPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s AnswerPreCheckoutQueryPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -670,16 +670,16 @@ func (s AnswerPreCheckoutQueryPostMultipartFormDataRequest) WriteJSON(j *json.St
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerPreCheckoutQueryPostMultipartFormDataRequest json value to io.Writer.
-func (s AnswerPreCheckoutQueryPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerPreCheckoutQueryPostMultipartFormDataReq json value to io.Writer.
+func (s AnswerPreCheckoutQueryPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerPreCheckoutQueryPostMultipartFormDataRequest json value from io.Reader.
-func (s *AnswerPreCheckoutQueryPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerPreCheckoutQueryPostMultipartFormDataReq json value from io.Reader.
+func (s *AnswerPreCheckoutQueryPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -693,8 +693,8 @@ func (s *AnswerPreCheckoutQueryPostMultipartFormDataRequest) ReadJSONFrom(r io.R
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerPreCheckoutQueryPostMultipartFormDataRequest from json stream.
-func (s *AnswerPreCheckoutQueryPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerPreCheckoutQueryPostMultipartFormDataReq from json stream.
+func (s *AnswerPreCheckoutQueryPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
@@ -774,7 +774,7 @@ func (s *AnswerPreCheckoutQueryPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerShippingQueryPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s AnswerShippingQueryPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -804,16 +804,16 @@ func (s AnswerShippingQueryPostApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerShippingQueryPostApplicationJSONRequest json value to io.Writer.
-func (s AnswerShippingQueryPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerShippingQueryPostApplicationJSONReq json value to io.Writer.
+func (s AnswerShippingQueryPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerShippingQueryPostApplicationJSONRequest json value from io.Reader.
-func (s *AnswerShippingQueryPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerShippingQueryPostApplicationJSONReq json value from io.Reader.
+func (s *AnswerShippingQueryPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -827,8 +827,8 @@ func (s *AnswerShippingQueryPostApplicationJSONRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerShippingQueryPostApplicationJSONRequest from json stream.
-func (s *AnswerShippingQueryPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerShippingQueryPostApplicationJSONReq from json stream.
+func (s *AnswerShippingQueryPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
@@ -857,7 +857,7 @@ func (s *AnswerShippingQueryPostApplicationJSONRequest) ReadJSON(i *json.Iterato
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -887,16 +887,16 @@ func (s AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -910,8 +910,8 @@ func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSONFr
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
@@ -940,7 +940,7 @@ func (s *AnswerShippingQueryPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerShippingQueryPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s AnswerShippingQueryPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -970,16 +970,16 @@ func (s AnswerShippingQueryPostMultipartFormDataRequest) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes AnswerShippingQueryPostMultipartFormDataRequest json value to io.Writer.
-func (s AnswerShippingQueryPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes AnswerShippingQueryPostMultipartFormDataReq json value to io.Writer.
+func (s AnswerShippingQueryPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads AnswerShippingQueryPostMultipartFormDataRequest json value from io.Reader.
-func (s *AnswerShippingQueryPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads AnswerShippingQueryPostMultipartFormDataReq json value from io.Reader.
+func (s *AnswerShippingQueryPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -993,8 +993,8 @@ func (s *AnswerShippingQueryPostMultipartFormDataRequest) ReadJSONFrom(r io.Read
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads AnswerShippingQueryPostMultipartFormDataRequest from json stream.
-func (s *AnswerShippingQueryPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerShippingQueryPostMultipartFormDataReq from json stream.
+func (s *AnswerShippingQueryPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
@@ -2130,7 +2130,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStickerFromSetPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s DeleteStickerFromSetPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2140,16 +2140,16 @@ func (s DeleteStickerFromSetPostApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes DeleteStickerFromSetPostApplicationJSONRequest json value to io.Writer.
-func (s DeleteStickerFromSetPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes DeleteStickerFromSetPostApplicationJSONReq json value to io.Writer.
+func (s DeleteStickerFromSetPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads DeleteStickerFromSetPostApplicationJSONRequest json value from io.Reader.
-func (s *DeleteStickerFromSetPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads DeleteStickerFromSetPostApplicationJSONReq json value from io.Reader.
+func (s *DeleteStickerFromSetPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2163,8 +2163,8 @@ func (s *DeleteStickerFromSetPostApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads DeleteStickerFromSetPostApplicationJSONRequest from json stream.
-func (s *DeleteStickerFromSetPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteStickerFromSetPostApplicationJSONReq from json stream.
+func (s *DeleteStickerFromSetPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "sticker":
@@ -2179,7 +2179,7 @@ func (s *DeleteStickerFromSetPostApplicationJSONRequest) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2189,16 +2189,16 @@ func (s DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest) WriteJSON(
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2212,8 +2212,8 @@ func (s *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest) ReadJSONF
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "sticker":
@@ -2228,7 +2228,7 @@ func (s *DeleteStickerFromSetPostApplicationXWwwFormUrlencodedRequest) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStickerFromSetPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s DeleteStickerFromSetPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2238,16 +2238,16 @@ func (s DeleteStickerFromSetPostMultipartFormDataRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes DeleteStickerFromSetPostMultipartFormDataRequest json value to io.Writer.
-func (s DeleteStickerFromSetPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes DeleteStickerFromSetPostMultipartFormDataReq json value to io.Writer.
+func (s DeleteStickerFromSetPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads DeleteStickerFromSetPostMultipartFormDataRequest json value from io.Reader.
-func (s *DeleteStickerFromSetPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads DeleteStickerFromSetPostMultipartFormDataReq json value from io.Reader.
+func (s *DeleteStickerFromSetPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2261,8 +2261,8 @@ func (s *DeleteStickerFromSetPostMultipartFormDataRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads DeleteStickerFromSetPostMultipartFormDataRequest from json stream.
-func (s *DeleteStickerFromSetPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteStickerFromSetPostMultipartFormDataReq from json stream.
+func (s *DeleteStickerFromSetPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "sticker":
@@ -2332,7 +2332,7 @@ func (s *DeleteStickerFromSetPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteWebhookPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s DeleteWebhookPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2344,16 +2344,16 @@ func (s DeleteWebhookPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes DeleteWebhookPostApplicationJSONRequest json value to io.Writer.
-func (s DeleteWebhookPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes DeleteWebhookPostApplicationJSONReq json value to io.Writer.
+func (s DeleteWebhookPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads DeleteWebhookPostApplicationJSONRequest json value from io.Reader.
-func (s *DeleteWebhookPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads DeleteWebhookPostApplicationJSONReq json value from io.Reader.
+func (s *DeleteWebhookPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2367,8 +2367,8 @@ func (s *DeleteWebhookPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads DeleteWebhookPostApplicationJSONRequest from json stream.
-func (s *DeleteWebhookPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteWebhookPostApplicationJSONReq from json stream.
+func (s *DeleteWebhookPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "drop_pending_updates":
@@ -2387,7 +2387,7 @@ func (s *DeleteWebhookPostApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteWebhookPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s DeleteWebhookPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2399,16 +2399,16 @@ func (s DeleteWebhookPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes DeleteWebhookPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s DeleteWebhookPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes DeleteWebhookPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s DeleteWebhookPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads DeleteWebhookPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *DeleteWebhookPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads DeleteWebhookPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *DeleteWebhookPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2422,8 +2422,8 @@ func (s *DeleteWebhookPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads DeleteWebhookPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *DeleteWebhookPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteWebhookPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *DeleteWebhookPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "drop_pending_updates":
@@ -2442,7 +2442,7 @@ func (s *DeleteWebhookPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteWebhookPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s DeleteWebhookPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2454,16 +2454,16 @@ func (s DeleteWebhookPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes DeleteWebhookPostMultipartFormDataRequest json value to io.Writer.
-func (s DeleteWebhookPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes DeleteWebhookPostMultipartFormDataReq json value to io.Writer.
+func (s DeleteWebhookPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads DeleteWebhookPostMultipartFormDataRequest json value from io.Reader.
-func (s *DeleteWebhookPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads DeleteWebhookPostMultipartFormDataReq json value from io.Reader.
+func (s *DeleteWebhookPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -2477,8 +2477,8 @@ func (s *DeleteWebhookPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) er
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads DeleteWebhookPostMultipartFormDataRequest from json stream.
-func (s *DeleteWebhookPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteWebhookPostMultipartFormDataReq from json stream.
+func (s *DeleteWebhookPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "drop_pending_updates":
@@ -3312,7 +3312,7 @@ func (s *GameHighScore) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFilePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GetFilePostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3322,16 +3322,16 @@ func (s GetFilePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetFilePostApplicationJSONRequest json value to io.Writer.
-func (s GetFilePostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetFilePostApplicationJSONReq json value to io.Writer.
+func (s GetFilePostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetFilePostApplicationJSONRequest json value from io.Reader.
-func (s *GetFilePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetFilePostApplicationJSONReq json value from io.Reader.
+func (s *GetFilePostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3345,8 +3345,8 @@ func (s *GetFilePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetFilePostApplicationJSONRequest from json stream.
-func (s *GetFilePostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetFilePostApplicationJSONReq from json stream.
+func (s *GetFilePostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "file_id":
@@ -3361,7 +3361,7 @@ func (s *GetFilePostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFilePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s GetFilePostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3371,16 +3371,16 @@ func (s GetFilePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetFilePostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s GetFilePostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetFilePostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s GetFilePostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetFilePostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *GetFilePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetFilePostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *GetFilePostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3394,8 +3394,8 @@ func (s *GetFilePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Read
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetFilePostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *GetFilePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetFilePostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *GetFilePostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "file_id":
@@ -3410,7 +3410,7 @@ func (s *GetFilePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFilePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s GetFilePostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3420,16 +3420,16 @@ func (s GetFilePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetFilePostMultipartFormDataRequest json value to io.Writer.
-func (s GetFilePostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetFilePostMultipartFormDataReq json value to io.Writer.
+func (s GetFilePostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetFilePostMultipartFormDataRequest json value from io.Reader.
-func (s *GetFilePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetFilePostMultipartFormDataReq json value from io.Reader.
+func (s *GetFilePostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3443,8 +3443,8 @@ func (s *GetFilePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetFilePostMultipartFormDataRequest from json stream.
-func (s *GetFilePostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetFilePostMultipartFormDataReq from json stream.
+func (s *GetFilePostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "file_id":
@@ -3517,7 +3517,7 @@ func (s *GetFilePostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetGameHighScoresPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GetGameHighScoresPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3542,16 +3542,16 @@ func (s GetGameHighScoresPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetGameHighScoresPostApplicationJSONRequest json value to io.Writer.
-func (s GetGameHighScoresPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetGameHighScoresPostApplicationJSONReq json value to io.Writer.
+func (s GetGameHighScoresPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetGameHighScoresPostApplicationJSONRequest json value from io.Reader.
-func (s *GetGameHighScoresPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetGameHighScoresPostApplicationJSONReq json value from io.Reader.
+func (s *GetGameHighScoresPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3565,8 +3565,8 @@ func (s *GetGameHighScoresPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetGameHighScoresPostApplicationJSONRequest from json stream.
-func (s *GetGameHighScoresPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetGameHighScoresPostApplicationJSONReq from json stream.
+func (s *GetGameHighScoresPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
@@ -3602,7 +3602,7 @@ func (s *GetGameHighScoresPostApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s GetGameHighScoresPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3627,16 +3627,16 @@ func (s GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetGameHighScoresPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s GetGameHighScoresPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetGameHighScoresPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *GetGameHighScoresPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3650,8 +3650,8 @@ func (s *GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetGameHighScoresPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *GetGameHighScoresPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
@@ -3687,7 +3687,7 @@ func (s *GetGameHighScoresPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetGameHighScoresPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s GetGameHighScoresPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3712,16 +3712,16 @@ func (s GetGameHighScoresPostMultipartFormDataRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetGameHighScoresPostMultipartFormDataRequest json value to io.Writer.
-func (s GetGameHighScoresPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetGameHighScoresPostMultipartFormDataReq json value to io.Writer.
+func (s GetGameHighScoresPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetGameHighScoresPostMultipartFormDataRequest json value from io.Reader.
-func (s *GetGameHighScoresPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetGameHighScoresPostMultipartFormDataReq json value from io.Reader.
+func (s *GetGameHighScoresPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3735,8 +3735,8 @@ func (s *GetGameHighScoresPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetGameHighScoresPostMultipartFormDataRequest from json stream.
-func (s *GetGameHighScoresPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetGameHighScoresPostMultipartFormDataReq from json stream.
+func (s *GetGameHighScoresPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
@@ -3956,7 +3956,7 @@ func (s *GetMyCommandsPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStickerSetPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GetStickerSetPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3966,16 +3966,16 @@ func (s GetStickerSetPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetStickerSetPostApplicationJSONRequest json value to io.Writer.
-func (s GetStickerSetPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetStickerSetPostApplicationJSONReq json value to io.Writer.
+func (s GetStickerSetPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetStickerSetPostApplicationJSONRequest json value from io.Reader.
-func (s *GetStickerSetPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetStickerSetPostApplicationJSONReq json value from io.Reader.
+func (s *GetStickerSetPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -3989,8 +3989,8 @@ func (s *GetStickerSetPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetStickerSetPostApplicationJSONRequest from json stream.
-func (s *GetStickerSetPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetStickerSetPostApplicationJSONReq from json stream.
+func (s *GetStickerSetPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -4005,7 +4005,7 @@ func (s *GetStickerSetPostApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStickerSetPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s GetStickerSetPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4015,16 +4015,16 @@ func (s GetStickerSetPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetStickerSetPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s GetStickerSetPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetStickerSetPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s GetStickerSetPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetStickerSetPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *GetStickerSetPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetStickerSetPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *GetStickerSetPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4038,8 +4038,8 @@ func (s *GetStickerSetPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetStickerSetPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *GetStickerSetPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetStickerSetPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *GetStickerSetPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -4054,7 +4054,7 @@ func (s *GetStickerSetPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStickerSetPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s GetStickerSetPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4064,16 +4064,16 @@ func (s GetStickerSetPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetStickerSetPostMultipartFormDataRequest json value to io.Writer.
-func (s GetStickerSetPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetStickerSetPostMultipartFormDataReq json value to io.Writer.
+func (s GetStickerSetPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetStickerSetPostMultipartFormDataRequest json value from io.Reader.
-func (s *GetStickerSetPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetStickerSetPostMultipartFormDataReq json value from io.Reader.
+func (s *GetStickerSetPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4087,8 +4087,8 @@ func (s *GetStickerSetPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) er
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetStickerSetPostMultipartFormDataRequest from json stream.
-func (s *GetStickerSetPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetStickerSetPostMultipartFormDataReq from json stream.
+func (s *GetStickerSetPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
@@ -4161,7 +4161,7 @@ func (s *GetStickerSetPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUpdatesPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GetUpdatesPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4195,16 +4195,16 @@ func (s GetUpdatesPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetUpdatesPostApplicationJSONRequest json value to io.Writer.
-func (s GetUpdatesPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetUpdatesPostApplicationJSONReq json value to io.Writer.
+func (s GetUpdatesPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetUpdatesPostApplicationJSONRequest json value from io.Reader.
-func (s *GetUpdatesPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetUpdatesPostApplicationJSONReq json value from io.Reader.
+func (s *GetUpdatesPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4218,8 +4218,8 @@ func (s *GetUpdatesPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetUpdatesPostApplicationJSONRequest from json stream.
-func (s *GetUpdatesPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUpdatesPostApplicationJSONReq from json stream.
+func (s *GetUpdatesPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_updates":
@@ -4256,7 +4256,7 @@ func (s *GetUpdatesPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUpdatesPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s GetUpdatesPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4290,16 +4290,16 @@ func (s GetUpdatesPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.St
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetUpdatesPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s GetUpdatesPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetUpdatesPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s GetUpdatesPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetUpdatesPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *GetUpdatesPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetUpdatesPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *GetUpdatesPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4313,8 +4313,8 @@ func (s *GetUpdatesPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.R
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetUpdatesPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *GetUpdatesPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUpdatesPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *GetUpdatesPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_updates":
@@ -4351,7 +4351,7 @@ func (s *GetUpdatesPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUpdatesPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s GetUpdatesPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4385,16 +4385,16 @@ func (s GetUpdatesPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetUpdatesPostMultipartFormDataRequest json value to io.Writer.
-func (s GetUpdatesPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetUpdatesPostMultipartFormDataReq json value to io.Writer.
+func (s GetUpdatesPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetUpdatesPostMultipartFormDataRequest json value from io.Reader.
-func (s *GetUpdatesPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetUpdatesPostMultipartFormDataReq json value from io.Reader.
+func (s *GetUpdatesPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4408,8 +4408,8 @@ func (s *GetUpdatesPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetUpdatesPostMultipartFormDataRequest from json stream.
-func (s *GetUpdatesPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUpdatesPostMultipartFormDataReq from json stream.
+func (s *GetUpdatesPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_updates":
@@ -4509,7 +4509,7 @@ func (s *GetUpdatesPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUserProfilePhotosPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s GetUserProfilePhotosPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4529,16 +4529,16 @@ func (s GetUserProfilePhotosPostApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetUserProfilePhotosPostApplicationJSONRequest json value to io.Writer.
-func (s GetUserProfilePhotosPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetUserProfilePhotosPostApplicationJSONReq json value to io.Writer.
+func (s GetUserProfilePhotosPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetUserProfilePhotosPostApplicationJSONRequest json value from io.Reader.
-func (s *GetUserProfilePhotosPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetUserProfilePhotosPostApplicationJSONReq json value from io.Reader.
+func (s *GetUserProfilePhotosPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4552,8 +4552,8 @@ func (s *GetUserProfilePhotosPostApplicationJSONRequest) ReadJSONFrom(r io.Reade
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetUserProfilePhotosPostApplicationJSONRequest from json stream.
-func (s *GetUserProfilePhotosPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUserProfilePhotosPostApplicationJSONReq from json stream.
+func (s *GetUserProfilePhotosPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limit":
@@ -4582,7 +4582,7 @@ func (s *GetUserProfilePhotosPostApplicationJSONRequest) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4602,16 +4602,16 @@ func (s GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) WriteJSON(
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4625,8 +4625,8 @@ func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) ReadJSONF
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limit":
@@ -4655,7 +4655,7 @@ func (s *GetUserProfilePhotosPostApplicationXWwwFormUrlencodedRequest) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUserProfilePhotosPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s GetUserProfilePhotosPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4675,16 +4675,16 @@ func (s GetUserProfilePhotosPostMultipartFormDataRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes GetUserProfilePhotosPostMultipartFormDataRequest json value to io.Writer.
-func (s GetUserProfilePhotosPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes GetUserProfilePhotosPostMultipartFormDataReq json value to io.Writer.
+func (s GetUserProfilePhotosPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads GetUserProfilePhotosPostMultipartFormDataRequest json value from io.Reader.
-func (s *GetUserProfilePhotosPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads GetUserProfilePhotosPostMultipartFormDataReq json value from io.Reader.
+func (s *GetUserProfilePhotosPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -4698,8 +4698,8 @@ func (s *GetUserProfilePhotosPostMultipartFormDataRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads GetUserProfilePhotosPostMultipartFormDataRequest from json stream.
-func (s *GetUserProfilePhotosPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUserProfilePhotosPostMultipartFormDataReq from json stream.
+func (s *GetUserProfilePhotosPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limit":
@@ -7955,7 +7955,7 @@ func (s *ResponseParameters) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendGamePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s SendGamePostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -7988,16 +7988,16 @@ func (s SendGamePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SendGamePostApplicationJSONRequest json value to io.Writer.
-func (s SendGamePostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SendGamePostApplicationJSONReq json value to io.Writer.
+func (s SendGamePostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SendGamePostApplicationJSONRequest json value from io.Reader.
-func (s *SendGamePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SendGamePostApplicationJSONReq json value from io.Reader.
+func (s *SendGamePostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8011,8 +8011,8 @@ func (s *SendGamePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SendGamePostApplicationJSONRequest from json stream.
-func (s *SendGamePostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendGamePostApplicationJSONReq from json stream.
+func (s *SendGamePostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
@@ -8058,7 +8058,7 @@ func (s *SendGamePostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendGamePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s SendGamePostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8091,16 +8091,16 @@ func (s SendGamePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stre
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SendGamePostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s SendGamePostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SendGamePostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s SendGamePostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SendGamePostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *SendGamePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SendGamePostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *SendGamePostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8114,8 +8114,8 @@ func (s *SendGamePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Rea
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SendGamePostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *SendGamePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendGamePostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *SendGamePostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
@@ -8161,7 +8161,7 @@ func (s *SendGamePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iter
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendGamePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s SendGamePostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8194,16 +8194,16 @@ func (s SendGamePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SendGamePostMultipartFormDataRequest json value to io.Writer.
-func (s SendGamePostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SendGamePostMultipartFormDataReq json value to io.Writer.
+func (s SendGamePostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SendGamePostMultipartFormDataRequest json value from io.Reader.
-func (s *SendGamePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SendGamePostMultipartFormDataReq json value from io.Reader.
+func (s *SendGamePostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8217,8 +8217,8 @@ func (s *SendGamePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SendGamePostMultipartFormDataRequest from json stream.
-func (s *SendGamePostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendGamePostMultipartFormDataReq from json stream.
+func (s *SendGamePostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
@@ -8322,7 +8322,7 @@ func (s *SendGamePostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendInvoicePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s SendInvoicePostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8440,16 +8440,16 @@ func (s SendInvoicePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SendInvoicePostApplicationJSONRequest json value to io.Writer.
-func (s SendInvoicePostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SendInvoicePostApplicationJSONReq json value to io.Writer.
+func (s SendInvoicePostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SendInvoicePostApplicationJSONRequest json value from io.Reader.
-func (s *SendInvoicePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SendInvoicePostApplicationJSONReq json value from io.Reader.
+func (s *SendInvoicePostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8463,8 +8463,8 @@ func (s *SendInvoicePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SendInvoicePostApplicationJSONRequest from json stream.
-func (s *SendInvoicePostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendInvoicePostApplicationJSONReq from json stream.
+func (s *SendInvoicePostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
@@ -8613,7 +8613,7 @@ func (s *SendInvoicePostApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendInvoicePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s SendInvoicePostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8731,16 +8731,16 @@ func (s SendInvoicePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SendInvoicePostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s SendInvoicePostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SendInvoicePostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s SendInvoicePostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SendInvoicePostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *SendInvoicePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SendInvoicePostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *SendInvoicePostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -8754,8 +8754,8 @@ func (s *SendInvoicePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SendInvoicePostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *SendInvoicePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendInvoicePostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *SendInvoicePostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
@@ -8904,7 +8904,7 @@ func (s *SendInvoicePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendInvoicePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s SendInvoicePostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9022,16 +9022,16 @@ func (s SendInvoicePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SendInvoicePostMultipartFormDataRequest json value to io.Writer.
-func (s SendInvoicePostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SendInvoicePostMultipartFormDataReq json value to io.Writer.
+func (s SendInvoicePostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SendInvoicePostMultipartFormDataRequest json value from io.Reader.
-func (s *SendInvoicePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SendInvoicePostMultipartFormDataReq json value from io.Reader.
+func (s *SendInvoicePostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9045,8 +9045,8 @@ func (s *SendInvoicePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SendInvoicePostMultipartFormDataRequest from json stream.
-func (s *SendInvoicePostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendInvoicePostMultipartFormDataReq from json stream.
+func (s *SendInvoicePostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
@@ -9253,7 +9253,7 @@ func (s *SendInvoicePostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetGameScorePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s SetGameScorePostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9291,16 +9291,16 @@ func (s SetGameScorePostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetGameScorePostApplicationJSONRequest json value to io.Writer.
-func (s SetGameScorePostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetGameScorePostApplicationJSONReq json value to io.Writer.
+func (s SetGameScorePostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetGameScorePostApplicationJSONRequest json value from io.Reader.
-func (s *SetGameScorePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetGameScorePostApplicationJSONReq json value from io.Reader.
+func (s *SetGameScorePostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9314,8 +9314,8 @@ func (s *SetGameScorePostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetGameScorePostApplicationJSONRequest from json stream.
-func (s *SetGameScorePostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetGameScorePostApplicationJSONReq from json stream.
+func (s *SetGameScorePostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
@@ -9368,7 +9368,7 @@ func (s *SetGameScorePostApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetGameScorePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s SetGameScorePostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9406,16 +9406,16 @@ func (s SetGameScorePostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetGameScorePostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s SetGameScorePostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetGameScorePostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s SetGameScorePostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetGameScorePostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *SetGameScorePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetGameScorePostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *SetGameScorePostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9429,8 +9429,8 @@ func (s *SetGameScorePostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetGameScorePostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *SetGameScorePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetGameScorePostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *SetGameScorePostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
@@ -9483,7 +9483,7 @@ func (s *SetGameScorePostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetGameScorePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s SetGameScorePostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9521,16 +9521,16 @@ func (s SetGameScorePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetGameScorePostMultipartFormDataRequest json value to io.Writer.
-func (s SetGameScorePostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetGameScorePostMultipartFormDataReq json value to io.Writer.
+func (s SetGameScorePostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetGameScorePostMultipartFormDataRequest json value from io.Reader.
-func (s *SetGameScorePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetGameScorePostMultipartFormDataReq json value from io.Reader.
+func (s *SetGameScorePostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9544,8 +9544,8 @@ func (s *SetGameScorePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetGameScorePostMultipartFormDataRequest from json stream.
-func (s *SetGameScorePostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetGameScorePostMultipartFormDataReq from json stream.
+func (s *SetGameScorePostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
@@ -9598,7 +9598,7 @@ func (s *SetGameScorePostMultipartFormDataRequest) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetMyCommandsPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s SetMyCommandsPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9615,16 +9615,16 @@ func (s SetMyCommandsPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetMyCommandsPostApplicationJSONRequest json value to io.Writer.
-func (s SetMyCommandsPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetMyCommandsPostApplicationJSONReq json value to io.Writer.
+func (s SetMyCommandsPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetMyCommandsPostApplicationJSONRequest json value from io.Reader.
-func (s *SetMyCommandsPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetMyCommandsPostApplicationJSONReq json value from io.Reader.
+func (s *SetMyCommandsPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9638,8 +9638,8 @@ func (s *SetMyCommandsPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) erro
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetMyCommandsPostApplicationJSONRequest from json stream.
-func (s *SetMyCommandsPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetMyCommandsPostApplicationJSONReq from json stream.
+func (s *SetMyCommandsPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "commands":
@@ -9655,7 +9655,7 @@ func (s *SetMyCommandsPostApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s SetMyCommandsPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9672,16 +9672,16 @@ func (s SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetMyCommandsPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetMyCommandsPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s SetMyCommandsPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetMyCommandsPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetMyCommandsPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9695,8 +9695,8 @@ func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r i
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetMyCommandsPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetMyCommandsPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "commands":
@@ -9712,7 +9712,7 @@ func (s *SetMyCommandsPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetMyCommandsPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s SetMyCommandsPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9729,16 +9729,16 @@ func (s SetMyCommandsPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetMyCommandsPostMultipartFormDataRequest json value to io.Writer.
-func (s SetMyCommandsPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetMyCommandsPostMultipartFormDataReq json value to io.Writer.
+func (s SetMyCommandsPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetMyCommandsPostMultipartFormDataRequest json value from io.Reader.
-func (s *SetMyCommandsPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetMyCommandsPostMultipartFormDataReq json value from io.Reader.
+func (s *SetMyCommandsPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9752,8 +9752,8 @@ func (s *SetMyCommandsPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) er
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetMyCommandsPostMultipartFormDataRequest from json stream.
-func (s *SetMyCommandsPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetMyCommandsPostMultipartFormDataReq from json stream.
+func (s *SetMyCommandsPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "commands":
@@ -9824,7 +9824,7 @@ func (s *SetMyCommandsPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetStickerPositionInSetPostApplicationJSONRequest) WriteJSON(j *json.Stream) {
+func (s SetStickerPositionInSetPostApplicationJSONReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9837,16 +9837,16 @@ func (s SetStickerPositionInSetPostApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetStickerPositionInSetPostApplicationJSONRequest json value to io.Writer.
-func (s SetStickerPositionInSetPostApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetStickerPositionInSetPostApplicationJSONReq json value to io.Writer.
+func (s SetStickerPositionInSetPostApplicationJSONReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetStickerPositionInSetPostApplicationJSONRequest json value from io.Reader.
-func (s *SetStickerPositionInSetPostApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetStickerPositionInSetPostApplicationJSONReq json value from io.Reader.
+func (s *SetStickerPositionInSetPostApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9860,8 +9860,8 @@ func (s *SetStickerPositionInSetPostApplicationJSONRequest) ReadJSONFrom(r io.Re
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetStickerPositionInSetPostApplicationJSONRequest from json stream.
-func (s *SetStickerPositionInSetPostApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetStickerPositionInSetPostApplicationJSONReq from json stream.
+func (s *SetStickerPositionInSetPostApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "position":
@@ -9879,7 +9879,7 @@ func (s *SetStickerPositionInSetPostApplicationJSONRequest) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest) WriteJSON(j *json.Stream) {
+func (s SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9892,16 +9892,16 @@ func (s SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest) WriteJS
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest json value to io.Writer.
-func (s SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq json value to io.Writer.
+func (s SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest json value from io.Reader.
-func (s *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq json value from io.Reader.
+func (s *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9915,8 +9915,8 @@ func (s *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest) ReadJS
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest from json stream.
-func (s *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq from json stream.
+func (s *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "position":
@@ -9934,7 +9934,7 @@ func (s *SetStickerPositionInSetPostApplicationXWwwFormUrlencodedRequest) ReadJS
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetStickerPositionInSetPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s SetStickerPositionInSetPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9947,16 +9947,16 @@ func (s SetStickerPositionInSetPostMultipartFormDataRequest) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetStickerPositionInSetPostMultipartFormDataRequest json value to io.Writer.
-func (s SetStickerPositionInSetPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetStickerPositionInSetPostMultipartFormDataReq json value to io.Writer.
+func (s SetStickerPositionInSetPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetStickerPositionInSetPostMultipartFormDataRequest json value from io.Reader.
-func (s *SetStickerPositionInSetPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetStickerPositionInSetPostMultipartFormDataReq json value from io.Reader.
+func (s *SetStickerPositionInSetPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -9970,8 +9970,8 @@ func (s *SetStickerPositionInSetPostMultipartFormDataRequest) ReadJSONFrom(r io.
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetStickerPositionInSetPostMultipartFormDataRequest from json stream.
-func (s *SetStickerPositionInSetPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetStickerPositionInSetPostMultipartFormDataReq from json stream.
+func (s *SetStickerPositionInSetPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "position":
@@ -10044,7 +10044,7 @@ func (s *SetStickerPositionInSetPostOK) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetWebhookPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s SetWebhookPostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10086,16 +10086,16 @@ func (s SetWebhookPostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes SetWebhookPostMultipartFormDataRequest json value to io.Writer.
-func (s SetWebhookPostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes SetWebhookPostMultipartFormDataReq json value to io.Writer.
+func (s SetWebhookPostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads SetWebhookPostMultipartFormDataRequest json value from io.Reader.
-func (s *SetWebhookPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads SetWebhookPostMultipartFormDataReq json value from io.Reader.
+func (s *SetWebhookPostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10109,8 +10109,8 @@ func (s *SetWebhookPostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads SetWebhookPostMultipartFormDataRequest from json stream.
-func (s *SetWebhookPostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetWebhookPostMultipartFormDataReq from json stream.
+func (s *SetWebhookPostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_updates":
@@ -10934,7 +10934,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UploadStickerFilePostMultipartFormDataRequest) WriteJSON(j *json.Stream) {
+func (s UploadStickerFilePostMultipartFormDataReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10945,16 +10945,16 @@ func (s UploadStickerFilePostMultipartFormDataRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes UploadStickerFilePostMultipartFormDataRequest json value to io.Writer.
-func (s UploadStickerFilePostMultipartFormDataRequest) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes UploadStickerFilePostMultipartFormDataReq json value to io.Writer.
+func (s UploadStickerFilePostMultipartFormDataReq) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads UploadStickerFilePostMultipartFormDataRequest json value from io.Reader.
-func (s *UploadStickerFilePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads UploadStickerFilePostMultipartFormDataReq json value from io.Reader.
+func (s *UploadStickerFilePostMultipartFormDataReq) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -10968,8 +10968,8 @@ func (s *UploadStickerFilePostMultipartFormDataRequest) ReadJSONFrom(r io.Reader
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads UploadStickerFilePostMultipartFormDataRequest from json stream.
-func (s *UploadStickerFilePostMultipartFormDataRequest) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UploadStickerFilePostMultipartFormDataReq from json stream.
+func (s *UploadStickerFilePostMultipartFormDataReq) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "png_sticker":

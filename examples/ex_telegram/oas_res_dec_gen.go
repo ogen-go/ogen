@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeAnswerCallbackQueryPostResponse(resp *http.Response) (res AnswerCallbackQueryPostResponse, err error) {
+func decodeAnswerCallbackQueryPostResponse(resp *http.Response) (res AnswerCallbackQueryPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -80,7 +80,7 @@ func decodeAnswerCallbackQueryPostResponse(resp *http.Response) (res AnswerCallb
 	}
 }
 
-func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response) (res AnswerPreCheckoutQueryPostResponse, err error) {
+func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response) (res AnswerPreCheckoutQueryPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -110,7 +110,7 @@ func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response) (res AnswerPr
 	}
 }
 
-func decodeAnswerShippingQueryPostResponse(resp *http.Response) (res AnswerShippingQueryPostResponse, err error) {
+func decodeAnswerShippingQueryPostResponse(resp *http.Response) (res AnswerShippingQueryPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -140,7 +140,7 @@ func decodeAnswerShippingQueryPostResponse(resp *http.Response) (res AnswerShipp
 	}
 }
 
-func decodeClosePostResponse(resp *http.Response) (res ClosePostResponse, err error) {
+func decodeClosePostResponse(resp *http.Response) (res ClosePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -170,7 +170,7 @@ func decodeClosePostResponse(resp *http.Response) (res ClosePostResponse, err er
 	}
 }
 
-func decodeDeleteStickerFromSetPostResponse(resp *http.Response) (res DeleteStickerFromSetPostResponse, err error) {
+func decodeDeleteStickerFromSetPostResponse(resp *http.Response) (res DeleteStickerFromSetPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -200,7 +200,7 @@ func decodeDeleteStickerFromSetPostResponse(resp *http.Response) (res DeleteStic
 	}
 }
 
-func decodeDeleteWebhookPostResponse(resp *http.Response) (res DeleteWebhookPostResponse, err error) {
+func decodeDeleteWebhookPostResponse(resp *http.Response) (res DeleteWebhookPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -230,7 +230,7 @@ func decodeDeleteWebhookPostResponse(resp *http.Response) (res DeleteWebhookPost
 	}
 }
 
-func decodeGetFilePostResponse(resp *http.Response) (res GetFilePostResponse, err error) {
+func decodeGetFilePostResponse(resp *http.Response) (res GetFilePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -260,7 +260,7 @@ func decodeGetFilePostResponse(resp *http.Response) (res GetFilePostResponse, er
 	}
 }
 
-func decodeGetGameHighScoresPostResponse(resp *http.Response) (res GetGameHighScoresPostResponse, err error) {
+func decodeGetGameHighScoresPostResponse(resp *http.Response) (res GetGameHighScoresPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -290,7 +290,7 @@ func decodeGetGameHighScoresPostResponse(resp *http.Response) (res GetGameHighSc
 	}
 }
 
-func decodeGetMePostResponse(resp *http.Response) (res GetMePostResponse, err error) {
+func decodeGetMePostResponse(resp *http.Response) (res GetMePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -320,7 +320,7 @@ func decodeGetMePostResponse(resp *http.Response) (res GetMePostResponse, err er
 	}
 }
 
-func decodeGetMyCommandsPostResponse(resp *http.Response) (res GetMyCommandsPostResponse, err error) {
+func decodeGetMyCommandsPostResponse(resp *http.Response) (res GetMyCommandsPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -350,7 +350,7 @@ func decodeGetMyCommandsPostResponse(resp *http.Response) (res GetMyCommandsPost
 	}
 }
 
-func decodeGetStickerSetPostResponse(resp *http.Response) (res GetStickerSetPostResponse, err error) {
+func decodeGetStickerSetPostResponse(resp *http.Response) (res GetStickerSetPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -380,7 +380,7 @@ func decodeGetStickerSetPostResponse(resp *http.Response) (res GetStickerSetPost
 	}
 }
 
-func decodeGetUpdatesPostResponse(resp *http.Response) (res GetUpdatesPostResponse, err error) {
+func decodeGetUpdatesPostResponse(resp *http.Response) (res GetUpdatesPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -410,7 +410,7 @@ func decodeGetUpdatesPostResponse(resp *http.Response) (res GetUpdatesPostRespon
 	}
 }
 
-func decodeGetUserProfilePhotosPostResponse(resp *http.Response) (res GetUserProfilePhotosPostResponse, err error) {
+func decodeGetUserProfilePhotosPostResponse(resp *http.Response) (res GetUserProfilePhotosPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -440,7 +440,7 @@ func decodeGetUserProfilePhotosPostResponse(resp *http.Response) (res GetUserPro
 	}
 }
 
-func decodeGetWebhookInfoPostResponse(resp *http.Response) (res GetWebhookInfoPostResponse, err error) {
+func decodeGetWebhookInfoPostResponse(resp *http.Response) (res GetWebhookInfoPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -470,7 +470,7 @@ func decodeGetWebhookInfoPostResponse(resp *http.Response) (res GetWebhookInfoPo
 	}
 }
 
-func decodeLogOutPostResponse(resp *http.Response) (res LogOutPostResponse, err error) {
+func decodeLogOutPostResponse(resp *http.Response) (res LogOutPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -500,7 +500,7 @@ func decodeLogOutPostResponse(resp *http.Response) (res LogOutPostResponse, err 
 	}
 }
 
-func decodeSendGamePostResponse(resp *http.Response) (res SendGamePostResponse, err error) {
+func decodeSendGamePostResponse(resp *http.Response) (res SendGamePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -530,7 +530,7 @@ func decodeSendGamePostResponse(resp *http.Response) (res SendGamePostResponse, 
 	}
 }
 
-func decodeSendInvoicePostResponse(resp *http.Response) (res SendInvoicePostResponse, err error) {
+func decodeSendInvoicePostResponse(resp *http.Response) (res SendInvoicePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -560,7 +560,7 @@ func decodeSendInvoicePostResponse(resp *http.Response) (res SendInvoicePostResp
 	}
 }
 
-func decodeSetMyCommandsPostResponse(resp *http.Response) (res SetMyCommandsPostResponse, err error) {
+func decodeSetMyCommandsPostResponse(resp *http.Response) (res SetMyCommandsPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -590,7 +590,7 @@ func decodeSetMyCommandsPostResponse(resp *http.Response) (res SetMyCommandsPost
 	}
 }
 
-func decodeSetStickerPositionInSetPostResponse(resp *http.Response) (res SetStickerPositionInSetPostResponse, err error) {
+func decodeSetStickerPositionInSetPostResponse(resp *http.Response) (res SetStickerPositionInSetPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -620,7 +620,7 @@ func decodeSetStickerPositionInSetPostResponse(resp *http.Response) (res SetStic
 	}
 }
 
-func decodeSetWebhookPostResponse(resp *http.Response) (res SetWebhookPostResponse, err error) {
+func decodeSetWebhookPostResponse(resp *http.Response) (res SetWebhookPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -650,7 +650,7 @@ func decodeSetWebhookPostResponse(resp *http.Response) (res SetWebhookPostRespon
 	}
 }
 
-func decodeUploadStickerFilePostResponse(resp *http.Response) (res UploadStickerFilePostResponse, err error) {
+func decodeUploadStickerFilePostResponse(resp *http.Response) (res UploadStickerFilePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

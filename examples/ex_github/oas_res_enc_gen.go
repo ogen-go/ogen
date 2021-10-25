@@ -68,7 +68,7 @@ func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWri
 	return nil
 }
 
-func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationResponse, w http.ResponseWriter) error {
+func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsDeleteInstallationNoContent:
 		w.WriteHeader(204)
@@ -85,7 +85,7 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRespons
 	}
 }
 
-func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationResponse, w http.ResponseWriter) error {
+func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsSuspendInstallationNoContent:
 		w.WriteHeader(204)
@@ -102,7 +102,7 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRespo
 	}
 }
 
-func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationResponse, w http.ResponseWriter) error {
+func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsUnsuspendInstallationNoContent:
 		w.WriteHeader(204)
@@ -119,7 +119,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 	}
 }
 
-func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsResponse, w http.ResponseWriter) error {
+func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListGrantsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -157,7 +157,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	}
 }
 
-func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGrantResponse, w http.ResponseWriter) error {
+func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGrantRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ApplicationGrant:
 		w.Header().Set("Content-Type", "application/json")
@@ -188,7 +188,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	}
 }
 
-func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDeleteGrantResponse, w http.ResponseWriter) error {
+func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDeleteGrantRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteGrantNoContent:
 		w.WriteHeader(204)
@@ -215,7 +215,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	}
 }
 
-func encodeAppsGetBySlugResponse(response AppsGetBySlugResponse, w http.ResponseWriter) error {
+func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Integration:
 		w.Header().Set("Content-Type", "application/json")
@@ -250,7 +250,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugResponse, w http.Response
 	}
 }
 
-func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsResponse, w http.ResponseWriter) error {
+func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListAuthorizationsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -288,7 +288,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	}
 }
 
-func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizationsGetAuthorizationResponse, w http.ResponseWriter) error {
+func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizationsGetAuthorizationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
@@ -319,7 +319,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	}
 }
 
-func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationResponse, w http.ResponseWriter) error {
+func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteAuthorizationNoContent:
 		w.WriteHeader(204)
@@ -346,7 +346,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	}
 }
 
-func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductResponse, w http.ResponseWriter) error {
+func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodesOfConductGetAllCodesOfConductOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -363,7 +363,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 	}
 }
 
-func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConductCodeResponse, w http.ResponseWriter) error {
+func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConductCodeRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeOfConduct:
 		w.Header().Set("Content-Type", "application/json")
@@ -387,7 +387,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 	}
 }
 
-func encodeEmojisGetResponse(response EmojisGetResponse, w http.ResponseWriter) error {
+func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *EmojisGetOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -640,7 +640,7 @@ func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeGistsListResponse(response GistsListResponse, w http.ResponseWriter) error {
+func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsListOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -664,7 +664,7 @@ func encodeGistsListResponse(response GistsListResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeGistsListStarredResponse(response GistsListStarredResponse, w http.ResponseWriter) error {
+func encodeGistsListStarredResponse(response GistsListStarredRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsListStarredOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -695,7 +695,7 @@ func encodeGistsListStarredResponse(response GistsListStarredResponse, w http.Re
 	}
 }
 
-func encodeGistsDeleteResponse(response GistsDeleteResponse, w http.ResponseWriter) error {
+func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsDeleteNoContent:
 		w.WriteHeader(204)
@@ -722,7 +722,7 @@ func encodeGistsDeleteResponse(response GistsDeleteResponse, w http.ResponseWrit
 	}
 }
 
-func encodeGistsListCommentsResponse(response GistsListCommentsResponse, w http.ResponseWriter) error {
+func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsListCommentsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -753,7 +753,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsResponse, w http.
 	}
 }
 
-func encodeGistsCreateCommentResponse(response GistsCreateCommentResponse, w http.ResponseWriter) error {
+func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -784,7 +784,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentResponse, w htt
 	}
 }
 
-func encodeGistsGetCommentResponse(response GistsGetCommentResponse, w http.ResponseWriter) error {
+func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -815,7 +815,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentResponse, w http.Resp
 	}
 }
 
-func encodeGistsDeleteCommentResponse(response GistsDeleteCommentResponse, w http.ResponseWriter) error {
+func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsDeleteCommentNoContent:
 		w.WriteHeader(204)
@@ -842,7 +842,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentResponse, w htt
 	}
 }
 
-func encodeGistsUpdateCommentResponse(response GistsUpdateCommentResponse, w http.ResponseWriter) error {
+func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -863,7 +863,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentResponse, w htt
 	}
 }
 
-func encodeGistsListCommitsResponse(response GistsListCommitsResponse, w http.ResponseWriter) error {
+func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsListCommitsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -894,7 +894,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsResponse, w http.Re
 	}
 }
 
-func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredResponse, w http.ResponseWriter) error {
+func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsCheckIsStarredNoContent:
 		w.WriteHeader(204)
@@ -921,7 +921,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredResponse, w h
 	}
 }
 
-func encodeGistsStarResponse(response GistsStarResponse, w http.ResponseWriter) error {
+func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsStarNoContent:
 		w.WriteHeader(204)
@@ -948,7 +948,7 @@ func encodeGistsStarResponse(response GistsStarResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeGistsUnstarResponse(response GistsUnstarResponse, w http.ResponseWriter) error {
+func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GistsUnstarNoContent:
 		w.WriteHeader(204)
@@ -975,7 +975,7 @@ func encodeGistsUnstarResponse(response GistsUnstarResponse, w http.ResponseWrit
 	}
 }
 
-func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesResponse, w http.ResponseWriter) error {
+func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GitignoreGetAllTemplatesOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -992,7 +992,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 	}
 }
 
-func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateResponse, w http.ResponseWriter) error {
+func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GitignoreTemplate:
 		w.Header().Set("Content-Type", "application/json")
@@ -1009,7 +1009,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateResponse, w
 	}
 }
 
-func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationResponse, w http.ResponseWriter) error {
+func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsListReposAccessibleToInstallationOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1045,7 +1045,7 @@ func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstalla
 	return nil
 }
 
-func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedResponse, w http.ResponseWriter) error {
+func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *LicensesGetAllCommonlyUsedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1062,7 +1062,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 	}
 }
 
-func encodeLicensesGetResponse(response LicensesGetResponse, w http.ResponseWriter) error {
+func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *License:
 		w.Header().Set("Content-Type", "application/json")
@@ -1093,7 +1093,7 @@ func encodeLicensesGetResponse(response LicensesGetResponse, w http.ResponseWrit
 	}
 }
 
-func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountResponse, w http.ResponseWriter) error {
+func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
@@ -1121,7 +1121,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	}
 }
 
-func encodeAppsListPlansResponse(response AppsListPlansResponse, w http.ResponseWriter) error {
+func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsListPlansOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1149,7 +1149,7 @@ func encodeAppsListPlansResponse(response AppsListPlansResponse, w http.Response
 	}
 }
 
-func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubscriptionPlanForAccountStubbedResponse, w http.ResponseWriter) error {
+func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubscriptionPlanForAccountStubbedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
@@ -1173,7 +1173,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 	}
 }
 
-func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedResponse, w http.ResponseWriter) error {
+func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsListPlansStubbedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1194,7 +1194,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedResponse, w
 	}
 }
 
-func encodeMetaGetResponse(response MetaGetResponse, w http.ResponseWriter) error {
+func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *APIOverview:
 		w.Header().Set("Content-Type", "application/json")
@@ -1211,7 +1211,7 @@ func encodeMetaGetResponse(response MetaGetResponse, w http.ResponseWriter) erro
 	}
 }
 
-func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotificationsAsReadResponse, w http.ResponseWriter) error {
+func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotificationsAsReadRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityMarkNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
@@ -1245,7 +1245,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	}
 }
 
-func encodeActivityGetThreadResponse(response ActivityGetThreadResponse, w http.ResponseWriter) error {
+func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Thread:
 		w.Header().Set("Content-Type", "application/json")
@@ -1276,7 +1276,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadResponse, w http.
 	}
 }
 
-func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadResponse, w http.ResponseWriter) error {
+func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityMarkThreadAsReadResetContent:
 		w.WriteHeader(205)
@@ -1296,7 +1296,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 	}
 }
 
-func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response ActivityGetThreadSubscriptionForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response ActivityGetThreadSubscriptionForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
@@ -1327,7 +1327,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	}
 }
 
-func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubscriptionResponse, w http.ResponseWriter) error {
+func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubscriptionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
@@ -1358,7 +1358,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	}
 }
 
-func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThreadSubscriptionResponse, w http.ResponseWriter) error {
+func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThreadSubscriptionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityDeleteThreadSubscriptionNoContent:
 		w.WriteHeader(204)
@@ -1385,7 +1385,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	}
 }
 
-func encodeOrgsListResponse(response OrgsListResponse, w http.ResponseWriter) error {
+func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1402,7 +1402,7 @@ func encodeOrgsListResponse(response OrgsListResponse, w http.ResponseWriter) er
 	}
 }
 
-func encodeOrgsGetResponse(response OrgsGetResponse, w http.ResponseWriter) error {
+func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrganizationFull:
 		w.Header().Set("Content-Type", "application/json")
@@ -1650,7 +1650,7 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 	return nil
 }
 
-func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretResponse, w http.ResponseWriter) error {
+func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
@@ -1686,7 +1686,7 @@ func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelect
 	return nil
 }
 
-func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelectedRepoToOrgSecretResponse, w http.ResponseWriter) error {
+func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelectedRepoToOrgSecretRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActionsAddSelectedRepoToOrgSecretNoContent:
 		w.WriteHeader(204)
@@ -1699,7 +1699,7 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 	}
 }
 
-func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemoveSelectedRepoFromOrgSecretResponse, w http.ResponseWriter) error {
+func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemoveSelectedRepoFromOrgSecretRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActionsRemoveSelectedRepoFromOrgSecretNoContent:
 		w.WriteHeader(204)
@@ -1712,7 +1712,7 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 	}
 }
 
-func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersResponse, w http.ResponseWriter) error {
+func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListBlockedUsersOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1733,7 +1733,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersResponse, w
 	}
 }
 
-func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserResponse, w http.ResponseWriter) error {
+func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsCheckBlockedUserNoContent:
 		w.WriteHeader(204)
@@ -1773,7 +1773,7 @@ func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorizat
 	return nil
 }
 
-func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuthorizationResponse, w http.ResponseWriter) error {
+func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuthorizationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsRemoveSamlSSOAuthorizationNoContent:
 		w.WriteHeader(204)
@@ -1790,7 +1790,7 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 	}
 }
 
-func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsResponse, w http.ResponseWriter) error {
+func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListFailedInvitationsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1811,7 +1811,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	}
 }
 
-func encodeOrgsListWebhooksResponse(response OrgsListWebhooksResponse, w http.ResponseWriter) error {
+func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListWebhooksOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1832,7 +1832,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksResponse, w http.Re
 	}
 }
 
-func encodeOrgsGetWebhookResponse(response OrgsGetWebhookResponse, w http.ResponseWriter) error {
+func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgHook:
 		w.Header().Set("Content-Type", "application/json")
@@ -1853,7 +1853,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookResponse, w http.Respon
 	}
 }
 
-func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookResponse, w http.ResponseWriter) error {
+func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsDeleteWebhookNoContent:
 		w.WriteHeader(204)
@@ -1870,7 +1870,7 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookResponse, w http.
 	}
 }
 
-func encodeOrgsPingWebhookResponse(response OrgsPingWebhookResponse, w http.ResponseWriter) error {
+func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsPingWebhookNoContent:
 		w.WriteHeader(204)
@@ -1892,7 +1892,7 @@ func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRem
 	return nil
 }
 
-func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitationsResponse, w http.ResponseWriter) error {
+func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitationsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListPendingInvitationsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1913,7 +1913,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	}
 }
 
-func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsResponse, w http.ResponseWriter) error {
+func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListInvitationTeamsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1934,7 +1934,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRespo
 	}
 }
 
-func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUserResponse, w http.ResponseWriter) error {
+func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsCheckMembershipForUserNoContent:
 		w.WriteHeader(204)
@@ -1950,7 +1950,7 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 	}
 }
 
-func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberResponse, w http.ResponseWriter) error {
+func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsRemoveMemberNoContent:
 		w.WriteHeader(204)
@@ -1967,7 +1967,7 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberResponse, w http.Re
 	}
 }
 
-func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserResponse, w http.ResponseWriter) error {
+func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
@@ -1995,7 +1995,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	}
 }
 
-func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForUserResponse, w http.ResponseWriter) error {
+func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsRemoveMembershipForUserNoContent:
 		w.WriteHeader(204)
@@ -2019,7 +2019,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	}
 }
 
-func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgResponse, w http.ResponseWriter) error {
+func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsDownloadArchiveForOrgFound:
 		w.WriteHeader(302)
@@ -2036,7 +2036,7 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 	}
 }
 
-func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiveForOrgResponse, w http.ResponseWriter) error {
+func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiveForOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForOrgNoContent:
 		w.WriteHeader(204)
@@ -2053,7 +2053,7 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 	}
 }
 
-func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOrgResponse, w http.ResponseWriter) error {
+func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForOrgNoContent:
 		w.WriteHeader(204)
@@ -2070,7 +2070,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 	}
 }
 
-func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgResponse, w http.ResponseWriter) error {
+func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForOrgOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2091,7 +2091,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	}
 }
 
-func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorResponse, w http.ResponseWriter) error {
+func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
 		w.Header().Set("Content-Type", "application/json")
@@ -2118,7 +2118,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 	}
 }
 
-func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideCollaboratorResponse, w http.ResponseWriter) error {
+func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideCollaboratorRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsRemoveOutsideCollaboratorNoContent:
 		w.WriteHeader(204)
@@ -2135,7 +2135,7 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	}
 }
 
-func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgResponse, w http.ResponseWriter) error {
+func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
@@ -2202,7 +2202,7 @@ func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseW
 	return nil
 }
 
-func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMembershipForUserResponse, w http.ResponseWriter) error {
+func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMembershipForUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsCheckPublicMembershipForUserNoContent:
 		w.WriteHeader(204)
@@ -2215,7 +2215,7 @@ func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMemb
 	}
 }
 
-func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsSetPublicMembershipForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
@@ -2273,7 +2273,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.Respon
 	return nil
 }
 
-func encodeTeamsListResponse(response TeamsListResponse, w http.ResponseWriter) error {
+func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsListOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2294,7 +2294,7 @@ func encodeTeamsListResponse(response TeamsListResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeTeamsGetByNameResponse(response TeamsGetByNameResponse, w http.ResponseWriter) error {
+func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
@@ -2393,7 +2393,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	return nil
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgResponse, w http.ResponseWriter) error {
+func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2419,7 +2419,7 @@ func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDel
 	return nil
 }
 
-func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgResponse, w http.ResponseWriter) error {
+func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2463,7 +2463,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvit
 	return nil
 }
 
-func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipForUserInOrgResponse, w http.ResponseWriter) error {
+func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipForUserInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
@@ -2480,7 +2480,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 	}
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpdateMembershipForUserInOrgResponse, w http.ResponseWriter) error {
+func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpdateMembershipForUserInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
@@ -2500,7 +2500,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 	}
 }
 
-func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembershipForUserInOrgResponse, w http.ResponseWriter) error {
+func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembershipForUserInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserInOrgNoContent:
 		w.WriteHeader(204)
@@ -2531,7 +2531,7 @@ func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.Respons
 	return nil
 }
 
-func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgResponse, w http.ResponseWriter) error {
+func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
@@ -2548,7 +2548,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 	}
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUpdateProjectPermissionsInOrgResponse, w http.ResponseWriter) error {
+func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUpdateProjectPermissionsInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateProjectPermissionsInOrgNoContent:
 		w.WriteHeader(204)
@@ -2588,7 +2588,7 @@ func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.Resp
 	return nil
 }
 
-func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissionsForRepoInOrgResponse, w http.ResponseWriter) error {
+func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissionsForRepoInOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
@@ -2654,7 +2654,7 @@ func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter) e
 	return nil
 }
 
-func encodeProjectsGetCardResponse(response ProjectsGetCardResponse, w http.ResponseWriter) error {
+func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
@@ -2692,7 +2692,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardResponse, w http.Resp
 	}
 }
 
-func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardResponse, w http.ResponseWriter) error {
+func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteCardNoContent:
 		w.WriteHeader(204)
@@ -2726,7 +2726,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardResponse, w htt
 	}
 }
 
-func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardResponse, w http.ResponseWriter) error {
+func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
@@ -2771,7 +2771,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardResponse, w htt
 	}
 }
 
-func encodeProjectsGetColumnResponse(response ProjectsGetColumnResponse, w http.ResponseWriter) error {
+func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
@@ -2809,7 +2809,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnResponse, w http.
 	}
 }
 
-func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnResponse, w http.ResponseWriter) error {
+func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteColumnNoContent:
 		w.WriteHeader(204)
@@ -2836,7 +2836,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnResponse, w
 	}
 }
 
-func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnResponse, w http.ResponseWriter) error {
+func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
@@ -2867,7 +2867,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnResponse, w
 	}
 }
 
-func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnResponse, w http.ResponseWriter) error {
+func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectsMoveColumnCreated:
 		w.Header().Set("Content-Type", "application/json")
@@ -2905,7 +2905,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnResponse, w htt
 	}
 }
 
-func encodeProjectsGetResponse(response ProjectsGetResponse, w http.ResponseWriter) error {
+func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
@@ -2936,7 +2936,7 @@ func encodeProjectsGetResponse(response ProjectsGetResponse, w http.ResponseWrit
 	}
 }
 
-func encodeProjectsDeleteResponse(response ProjectsDeleteResponse, w http.ResponseWriter) error {
+func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteNoContent:
 		w.WriteHeader(204)
@@ -2977,7 +2977,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteResponse, w http.Respon
 	}
 }
 
-func encodeProjectsUpdateResponse(response ProjectsUpdateResponse, w http.ResponseWriter) error {
+func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
@@ -3025,7 +3025,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateResponse, w http.Respon
 	}
 }
 
-func encodeProjectsListColumnsResponse(response ProjectsListColumnsResponse, w http.ResponseWriter) error {
+func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectsListColumnsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3056,7 +3056,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsResponse, w h
 	}
 }
 
-func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnResponse, w http.ResponseWriter) error {
+func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
@@ -3094,7 +3094,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnResponse, w
 	}
 }
 
-func encodeRateLimitGetResponse(response RateLimitGetResponse, w http.ResponseWriter) error {
+func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *RateLimitOverview:
 		w.Header().Set("Content-Type", "application/json")
@@ -3118,7 +3118,7 @@ func encodeRateLimitGetResponse(response RateLimitGetResponse, w http.ResponseWr
 	}
 }
 
-func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyResponse, w http.ResponseWriter) error {
+func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReactionsDeleteLegacyNoContent:
 		w.WriteHeader(204)
@@ -3159,7 +3159,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyResponse,
 	}
 }
 
-func encodeReposGetResponse(response ReposGetResponse, w http.ResponseWriter) error {
+func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *FullRepository:
 		w.Header().Set("Content-Type", "application/json")
@@ -3194,7 +3194,7 @@ func encodeReposGetResponse(response ReposGetResponse, w http.ResponseWriter) er
 	}
 }
 
-func encodeReposDeleteResponse(response ReposDeleteResponse, w http.ResponseWriter) error {
+func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteNoContent:
 		w.WriteHeader(204)
@@ -3386,7 +3386,7 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 	return nil
 }
 
-func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunResponse, w http.ResponseWriter) error {
+func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
@@ -3496,7 +3496,7 @@ func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseW
 	return nil
 }
 
-func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretResponse, w http.ResponseWriter) error {
+func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActionsCreateOrUpdateRepoSecretCreated:
 		w.Header().Set("Content-Type", "application/json")
@@ -3527,7 +3527,7 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflows, w
 	return nil
 }
 
-func encodeIssuesListAssigneesResponse(response IssuesListAssigneesResponse, w http.ResponseWriter) error {
+func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesListAssigneesOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3548,7 +3548,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesResponse, w h
 	}
 }
 
-func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAssignedResponse, w http.ResponseWriter) error {
+func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAssignedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesCheckUserCanBeAssignedNoContent:
 		w.WriteHeader(204)
@@ -3583,7 +3583,7 @@ func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter
 	return nil
 }
 
-func encodeReposGetAutolinkResponse(response ReposGetAutolinkResponse, w http.ResponseWriter) error {
+func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Autolink:
 		w.Header().Set("Content-Type", "application/json")
@@ -3604,7 +3604,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkResponse, w http.Re
 	}
 }
 
-func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkResponse, w http.ResponseWriter) error {
+func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteAutolinkNoContent:
 		w.WriteHeader(204)
@@ -3631,7 +3631,7 @@ func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutom
 	return nil
 }
 
-func encodeReposListBranchesResponse(response ReposListBranchesResponse, w http.ResponseWriter) error {
+func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListBranchesOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3652,7 +3652,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesResponse, w http.
 	}
 }
 
-func encodeReposGetBranchResponse(response ReposGetBranchResponse, w http.ResponseWriter) error {
+func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *BranchWithProtection:
 		w.Header().Set("Content-Type", "application/json")
@@ -3687,7 +3687,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchResponse, w http.Respon
 	}
 }
 
-func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionResponse, w http.ResponseWriter) error {
+func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *BranchProtection:
 		w.Header().Set("Content-Type", "application/json")
@@ -3708,7 +3708,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 	}
 }
 
-func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionResponse, w http.ResponseWriter) error {
+func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProtectedBranch:
 		w.Header().Set("Content-Type", "application/json")
@@ -3743,7 +3743,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	}
 }
 
-func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtectionResponse, w http.ResponseWriter) error {
+func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteBranchProtectionNoContent:
 		w.WriteHeader(204)
@@ -3778,7 +3778,7 @@ func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	return nil
 }
 
-func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBranchProtectionResponse, w http.ResponseWriter) error {
+func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBranchProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteAdminBranchProtectionNoContent:
 		w.WriteHeader(204)
@@ -3804,7 +3804,7 @@ func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchP
 	return nil
 }
 
-func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionResponse, w http.ResponseWriter) error {
+func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeletePullRequestReviewProtectionNoContent:
 		w.WriteHeader(204)
@@ -3821,7 +3821,7 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	}
 }
 
-func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionResponse, w http.ResponseWriter) error {
+func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
@@ -3842,7 +3842,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	}
 }
 
-func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionResponse, w http.ResponseWriter) error {
+func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
@@ -3863,7 +3863,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	}
 }
 
-func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteCommitSignatureProtectionResponse, w http.ResponseWriter) error {
+func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteCommitSignatureProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteCommitSignatureProtectionNoContent:
 		w.WriteHeader(204)
@@ -3880,7 +3880,7 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 	}
 }
 
-func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksProtectionResponse, w http.ResponseWriter) error {
+func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksProtectionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *StatusCheckPolicy:
 		w.Header().Set("Content-Type", "application/json")
@@ -3906,7 +3906,7 @@ func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCh
 	return nil
 }
 
-func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusCheckContextsResponse, w http.ResponseWriter) error {
+func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusCheckContextsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetAllStatusCheckContextsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3927,7 +3927,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 	}
 }
 
-func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestrictionsResponse, w http.ResponseWriter) error {
+func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestrictionsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *BranchRestrictionPolicy:
 		w.Header().Set("Content-Type", "application/json")
@@ -3953,7 +3953,7 @@ func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestr
 	return nil
 }
 
-func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetAppsWithAccessToProtectedBranchResponse, w http.ResponseWriter) error {
+func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetAppsWithAccessToProtectedBranchRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetAppsWithAccessToProtectedBranchOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3974,7 +3974,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	}
 }
 
-func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchResponse, w http.ResponseWriter) error {
+func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetTeamsWithAccessToProtectedBranchOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3995,7 +3995,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	}
 }
 
-func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchResponse, w http.ResponseWriter) error {
+func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetUsersWithAccessToProtectedBranchOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4043,7 +4043,7 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 	return nil
 }
 
-func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteResponse, w http.ResponseWriter) error {
+func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ChecksCreateSuiteApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4091,7 +4091,7 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuite, w http.Re
 	return nil
 }
 
-func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesResponse, w http.ResponseWriter) error {
+func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertInstancesOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4126,7 +4126,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	}
 }
 
-func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecentAnalysesResponse, w http.ResponseWriter) error {
+func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecentAnalysesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeScanningListRecentAnalysesOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4161,7 +4161,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	}
 }
 
-func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysisResponse, w http.ResponseWriter) error {
+func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysisRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysisDeletion:
 		w.Header().Set("Content-Type", "application/json")
@@ -4207,7 +4207,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	}
 }
 
-func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifResponse, w http.ResponseWriter) error {
+func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsReceipt:
 		w.Header().Set("Content-Type", "application/json")
@@ -4248,7 +4248,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRespo
 	}
 }
 
-func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifResponse, w http.ResponseWriter) error {
+func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsStatus:
 		w.Header().Set("Content-Type", "application/json")
@@ -4279,7 +4279,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifResponse, w
 	}
 }
 
-func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorResponse, w http.ResponseWriter) error {
+func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposCheckCollaboratorNoContent:
 		w.WriteHeader(204)
@@ -4297,7 +4297,7 @@ func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaborator, w h
 	return nil
 }
 
-func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollaboratorPermissionLevelResponse, w http.ResponseWriter) error {
+func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollaboratorPermissionLevelRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *RepositoryCollaboratorPermission:
 		w.Header().Set("Content-Type", "application/json")
@@ -4336,7 +4336,7 @@ func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w ht
 	return nil
 }
 
-func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentResponse, w http.ResponseWriter) error {
+func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -4357,7 +4357,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentResponse,
 	}
 }
 
-func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentResponse, w http.ResponseWriter) error {
+func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteCommitCommentNoContent:
 		w.WriteHeader(204)
@@ -4374,7 +4374,7 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 	}
 }
 
-func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentResponse, w http.ResponseWriter) error {
+func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -4400,7 +4400,7 @@ func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCo
 	return nil
 }
 
-func encodeReposListCommitsResponse(response ReposListCommitsResponse, w http.ResponseWriter) error {
+func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListCommitsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4473,7 +4473,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRef, w htt
 	return nil
 }
 
-func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusForRefResponse, w http.ResponseWriter) error {
+func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusForRefRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CombinedCommitStatus:
 		w.Header().Set("Content-Type", "application/json")
@@ -4494,7 +4494,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	}
 }
 
-func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatusesForRefResponse, w http.ResponseWriter) error {
+func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatusesForRefRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListCommitStatusesForRefOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4524,7 +4524,7 @@ func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w 
 	return nil
 }
 
-func encodeReposCompareCommitsResponse(response ReposCompareCommitsResponse, w http.ResponseWriter) error {
+func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CommitComparison:
 		w.Header().Set("Content-Type", "application/json")
@@ -4552,7 +4552,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsResponse, w h
 	}
 }
 
-func encodeReposListContributorsResponse(response ReposListContributorsResponse, w http.ResponseWriter) error {
+func encodeReposListContributorsResponse(response ReposListContributorsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListContributorsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4583,7 +4583,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsResponse,
 	}
 }
 
-func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentResponse, w http.ResponseWriter) error {
+func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteDeploymentNoContent:
 		w.WriteHeader(204)
@@ -4607,7 +4607,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentResponse,
 	}
 }
 
-func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatusesResponse, w http.ResponseWriter) error {
+func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatusesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListDeploymentStatusesOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4628,7 +4628,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	}
 }
 
-func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusResponse, w http.ResponseWriter) error {
+func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *DeploymentStatus:
 		w.Header().Set("Content-Type", "application/json")
@@ -4661,7 +4661,7 @@ func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironment, w
 	return nil
 }
 
-func encodeGitGetCommitResponse(response GitGetCommitResponse, w http.ResponseWriter) error {
+func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GitCommit:
 		w.Header().Set("Content-Type", "application/json")
@@ -4700,7 +4700,7 @@ func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter)
 	return nil
 }
 
-func encodeGitGetRefResponse(response GitGetRefResponse, w http.ResponseWriter) error {
+func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GitRef:
 		w.Header().Set("Content-Type", "application/json")
@@ -4721,7 +4721,7 @@ func encodeGitGetRefResponse(response GitGetRefResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeGitGetTagResponse(response GitGetTagResponse, w http.ResponseWriter) error {
+func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GitTag:
 		w.Header().Set("Content-Type", "application/json")
@@ -4742,7 +4742,7 @@ func encodeGitGetTagResponse(response GitGetTagResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookResponse, w http.ResponseWriter) error {
+func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteWebhookNoContent:
 		w.WriteHeader(204)
@@ -4759,7 +4759,7 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookResponse, w htt
 	}
 }
 
-func encodeReposPingWebhookResponse(response ReposPingWebhookResponse, w http.ResponseWriter) error {
+func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposPingWebhookNoContent:
 		w.WriteHeader(204)
@@ -4776,7 +4776,7 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookResponse, w http.Re
 	}
 }
 
-func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookResponse, w http.ResponseWriter) error {
+func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposTestPushWebhookNoContent:
 		w.WriteHeader(204)
@@ -4793,7 +4793,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookResponse, w
 	}
 }
 
-func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusResponse, w http.ResponseWriter) error {
+func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Import:
 		w.Header().Set("Content-Type", "application/json")
@@ -4828,7 +4828,7 @@ func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter
 	return nil
 }
 
-func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthorsResponse, w http.ResponseWriter) error {
+func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthorsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsGetCommitAuthorsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4867,7 +4867,7 @@ func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.Re
 	return nil
 }
 
-func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoResponse, w http.ResponseWriter) error {
+func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
 		w.Header().Set("Content-Type", "application/json")
@@ -4884,7 +4884,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 	}
 }
 
-func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRemoveRestrictionsForRepoResponse, w http.ResponseWriter) error {
+func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRemoveRestrictionsForRepoRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *InteractionsRemoveRestrictionsForRepoNoContent:
 		w.WriteHeader(204)
@@ -4929,7 +4929,7 @@ func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.R
 	return nil
 }
 
-func encodeIssuesGetCommentResponse(response IssuesGetCommentResponse, w http.ResponseWriter) error {
+func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssueComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -4960,7 +4960,7 @@ func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIss
 	return nil
 }
 
-func encodeIssuesListCommentsResponse(response IssuesListCommentsResponse, w http.ResponseWriter) error {
+func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesListCommentsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4988,7 +4988,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsResponse, w htt
 	}
 }
 
-func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueResponse, w http.ResponseWriter) error {
+func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsOnIssueOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5009,7 +5009,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRespo
 	}
 }
 
-func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsResponse, w http.ResponseWriter) error {
+func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesRemoveAllLabelsNoContent:
 		w.WriteHeader(204)
@@ -5026,7 +5026,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsResponse,
 	}
 }
 
-func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelResponse, w http.ResponseWriter) error {
+func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesRemoveLabelOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5054,7 +5054,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelResponse, w http.
 	}
 }
 
-func encodeIssuesUnlockResponse(response IssuesUnlockResponse, w http.ResponseWriter) error {
+func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesUnlockNoContent:
 		w.WriteHeader(204)
@@ -5101,7 +5101,7 @@ func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWrit
 	return nil
 }
 
-func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyResponse, w http.ResponseWriter) error {
+func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *DeployKey:
 		w.Header().Set("Content-Type", "application/json")
@@ -5127,7 +5127,7 @@ func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKey, w http.Re
 	return nil
 }
 
-func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoResponse, w http.ResponseWriter) error {
+func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsForRepoOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5148,7 +5148,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRespo
 	}
 }
 
-func encodeIssuesGetLabelResponse(response IssuesGetLabelResponse, w http.ResponseWriter) error {
+func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Label:
 		w.Header().Set("Content-Type", "application/json")
@@ -5192,7 +5192,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter) 
 	return nil
 }
 
-func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoResponse, w http.ResponseWriter) error {
+func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
@@ -5223,7 +5223,7 @@ func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWr
 	return nil
 }
 
-func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamResponse, w http.ResponseWriter) error {
+func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MergedUpstream:
 		w.Header().Set("Content-Type", "application/json")
@@ -5243,7 +5243,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamResponse, w htt
 	}
 }
 
-func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneResponse, w http.ResponseWriter) error {
+func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Milestone:
 		w.Header().Set("Content-Type", "application/json")
@@ -5264,7 +5264,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneResponse, w htt
 	}
 }
 
-func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneResponse, w http.ResponseWriter) error {
+func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesDeleteMilestoneNoContent:
 		w.WriteHeader(204)
@@ -5326,7 +5326,7 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []
 	return nil
 }
 
-func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadResponse, w http.ResponseWriter) error {
+func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityMarkRepoNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
@@ -5343,7 +5343,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 	}
 }
 
-func encodeReposGetPagesResponse(response ReposGetPagesResponse, w http.ResponseWriter) error {
+func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Page:
 		w.Header().Set("Content-Type", "application/json")
@@ -5409,7 +5409,7 @@ func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter)
 	return nil
 }
 
-func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckResponse, w http.ResponseWriter) error {
+func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PagesHealthCheck:
 		w.Header().Set("Content-Type", "application/json")
@@ -5443,7 +5443,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	}
 }
 
-func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse, w http.ResponseWriter) error {
+func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
@@ -5492,7 +5492,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse,
 	}
 }
 
-func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentResponse, w http.ResponseWriter) error {
+func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -5513,7 +5513,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentResponse,
 	}
 }
 
-func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentResponse, w http.ResponseWriter) error {
+func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullsDeleteReviewCommentNoContent:
 		w.WriteHeader(204)
@@ -5544,7 +5544,7 @@ func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDelete
 	return nil
 }
 
-func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentResponse, w http.ResponseWriter) error {
+func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
@@ -5583,7 +5583,7 @@ func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter) er
 	return nil
 }
 
-func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedResponse, w http.ResponseWriter) error {
+func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullsCheckIfMergedNoContent:
 		w.WriteHeader(204)
@@ -5623,7 +5623,7 @@ func encodePullsListReviewsResponse(response []PullRequestReview, w http.Respons
 	return nil
 }
 
-func encodePullsCreateReviewResponse(response PullsCreateReviewResponse, w http.ResponseWriter) error {
+func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
@@ -5651,7 +5651,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewResponse, w http.
 	}
 }
 
-func encodePullsGetReviewResponse(response PullsGetReviewResponse, w http.ResponseWriter) error {
+func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
@@ -5672,7 +5672,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewResponse, w http.Respon
 	}
 }
 
-func encodePullsUpdateReviewResponse(response PullsUpdateReviewResponse, w http.ResponseWriter) error {
+func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
@@ -5693,7 +5693,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewResponse, w http.
 	}
 }
 
-func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewResponse, w http.ResponseWriter) error {
+func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
@@ -5721,7 +5721,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	}
 }
 
-func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewResponse, w http.ResponseWriter) error {
+func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullsListCommentsForReviewOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5742,7 +5742,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	}
 }
 
-func encodePullsDismissReviewResponse(response PullsDismissReviewResponse, w http.ResponseWriter) error {
+func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
@@ -5770,7 +5770,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewResponse, w htt
 	}
 }
 
-func encodePullsSubmitReviewResponse(response PullsSubmitReviewResponse, w http.ResponseWriter) error {
+func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
@@ -5805,7 +5805,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewResponse, w http.
 	}
 }
 
-func encodeReposListReleasesResponse(response ReposListReleasesResponse, w http.ResponseWriter) error {
+func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListReleasesOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5826,7 +5826,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesResponse, w http.
 	}
 }
 
-func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetResponse, w http.ResponseWriter) error {
+func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReleaseAsset:
 		w.Header().Set("Content-Type", "application/json")
@@ -5880,7 +5880,7 @@ func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter
 	return nil
 }
 
-func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagResponse, w http.ResponseWriter) error {
+func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
@@ -5901,7 +5901,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagResponse, w
 	}
 }
 
-func encodeReposGetReleaseResponse(response ReposGetReleaseResponse, w http.ResponseWriter) error {
+func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
@@ -5927,7 +5927,7 @@ func encodeReposDeleteReleaseResponse(response ReposDeleteRelease, w http.Respon
 	return nil
 }
 
-func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseResponse, w http.ResponseWriter) error {
+func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
@@ -5966,7 +5966,7 @@ func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.Respon
 	return nil
 }
 
-func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertResponse, w http.ResponseWriter) error {
+func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
@@ -5990,7 +5990,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRespons
 	}
 }
 
-func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertResponse, w http.ResponseWriter) error {
+func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
@@ -6017,7 +6017,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	}
 }
 
-func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStatsResponse, w http.ResponseWriter) error {
+func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStatsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetCodeFrequencyStatsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6041,7 +6041,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 	}
 }
 
-func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsResponse, w http.ResponseWriter) error {
+func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetCommitActivityStatsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6065,7 +6065,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 	}
 }
 
-func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsResponse, w http.ResponseWriter) error {
+func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetContributorsStatsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6089,7 +6089,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 	}
 }
 
-func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStatsResponse, w http.ResponseWriter) error {
+func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStatsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ParticipationStats:
 		w.Header().Set("Content-Type", "application/json")
@@ -6110,7 +6110,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	}
 }
 
-func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsResponse, w http.ResponseWriter) error {
+func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetPunchCardStatsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6154,7 +6154,7 @@ func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.Res
 	return nil
 }
 
-func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscriptionResponse, w http.ResponseWriter) error {
+func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscriptionRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *RepositorySubscription:
 		w.Header().Set("Content-Type", "application/json")
@@ -6233,7 +6233,7 @@ func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsResponse, w http.ResponseWriter) error {
+func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
@@ -6261,7 +6261,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsResponse, w http.
 	}
 }
 
-func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsResponse, w http.ResponseWriter) error {
+func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
@@ -6296,7 +6296,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsResponse,
 	}
 }
 
-func encodeReposGetTopPathsResponse(response ReposGetTopPathsResponse, w http.ResponseWriter) error {
+func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetTopPathsOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6317,7 +6317,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsResponse, w http.Re
 	}
 }
 
-func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersResponse, w http.ResponseWriter) error {
+func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetTopReferrersOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6347,7 +6347,7 @@ func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWrit
 	return nil
 }
 
-func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilityAlertsResponse, w http.ResponseWriter) error {
+func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilityAlertsRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposCheckVulnerabilityAlertsNoContent:
 		w.WriteHeader(204)
@@ -6411,7 +6411,7 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 	return nil
 }
 
-func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreateOrUpdateEnvironmentSecretResponse, w http.ResponseWriter) error {
+func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreateOrUpdateEnvironmentSecretRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
@@ -6524,7 +6524,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 	return nil
 }
 
-func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgResponse, w http.ResponseWriter) error {
+func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ScimDeleteUserFromOrgNoContent:
 		w.WriteHeader(204)
@@ -6559,7 +6559,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgResponse,
 	}
 }
 
-func encodeTeamsGetLegacyResponse(response TeamsGetLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
@@ -6680,7 +6680,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvi
 	return nil
 }
 
-func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsGetMemberLegacyNoContent:
 		w.WriteHeader(204)
@@ -6693,7 +6693,7 @@ func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyResponse, w
 	}
 }
 
-func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsAddMemberLegacyNoContent:
 		w.WriteHeader(204)
@@ -6716,7 +6716,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyResponse, w
 	}
 }
 
-func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMemberLegacyNoContent:
 		w.WriteHeader(204)
@@ -6729,7 +6729,7 @@ func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRespo
 	}
 }
 
-func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipForUserLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipForUserLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
@@ -6750,7 +6750,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 	}
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUpdateMembershipForUserLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUpdateMembershipForUserLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
@@ -6777,7 +6777,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 	}
 }
 
-func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMembershipForUserLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMembershipForUserLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserLegacyNoContent:
 		w.WriteHeader(204)
@@ -6790,7 +6790,7 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 	}
 }
 
-func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsListProjectsLegacyOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6811,7 +6811,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRespo
 	}
 }
 
-func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPermissionsForProjectLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPermissionsForProjectLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
@@ -6828,7 +6828,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 	}
 }
 
-func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsListReposLegacyOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6849,7 +6849,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyResponse, w
 	}
 }
 
-func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermissionsForRepoLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermissionsForRepoLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
@@ -6874,7 +6874,7 @@ func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacy, w http.
 	return nil
 }
 
-func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLegacyResponse, w http.ResponseWriter) error {
+func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLegacyRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GroupMapping:
 		w.Header().Set("Content-Type", "application/json")
@@ -6902,7 +6902,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	}
 }
 
-func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListBlockedByAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6947,7 +6947,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	}
 }
 
-func encodeUsersCheckBlockedResponse(response UsersCheckBlockedResponse, w http.ResponseWriter) error {
+func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersCheckBlockedNoContent:
 		w.WriteHeader(204)
@@ -6981,7 +6981,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedResponse, w http.
 	}
 }
 
-func encodeUsersUnblockResponse(response UsersUnblockResponse, w http.ResponseWriter) error {
+func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersUnblockNoContent:
 		w.WriteHeader(204)
@@ -7015,7 +7015,7 @@ func encodeUsersUnblockResponse(response UsersUnblockResponse, w http.ResponseWr
 	}
 }
 
-func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListEmailsForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7053,7 +7053,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	}
 }
 
-func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListFollowersForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7084,7 +7084,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	}
 }
 
-func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListFollowedByAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7115,7 +7115,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	}
 }
 
-func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheckPersonIsFollowedByAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheckPersonIsFollowedByAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersCheckPersonIsFollowedByAuthenticatedNoContent:
 		w.WriteHeader(204)
@@ -7149,7 +7149,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	}
 }
 
-func encodeUsersFollowResponse(response UsersFollowResponse, w http.ResponseWriter) error {
+func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersFollowNoContent:
 		w.WriteHeader(204)
@@ -7183,7 +7183,7 @@ func encodeUsersFollowResponse(response UsersFollowResponse, w http.ResponseWrit
 	}
 }
 
-func encodeUsersUnfollowResponse(response UsersUnfollowResponse, w http.ResponseWriter) error {
+func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersUnfollowNoContent:
 		w.WriteHeader(204)
@@ -7217,7 +7217,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowResponse, w http.Response
 	}
 }
 
-func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysForAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysForAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListGpgKeysForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7255,7 +7255,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	}
 }
 
-func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GpgKey:
 		w.Header().Set("Content-Type", "application/json")
@@ -7293,7 +7293,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	}
 }
 
-func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsListInstallationReposForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7324,7 +7324,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	}
 }
 
-func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationResponse, w http.ResponseWriter) error {
+func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsAddRepoToInstallationNoContent:
 		w.WriteHeader(204)
@@ -7351,7 +7351,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	}
 }
 
-func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationResponse, w http.ResponseWriter) error {
+func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsRemoveRepoFromInstallationNoContent:
 		w.WriteHeader(204)
@@ -7383,7 +7383,7 @@ func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response I
 	return nil
 }
 
-func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListPublicSSHKeysForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7421,7 +7421,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	}
 }
 
-func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicSSHKeyForAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicSSHKeyForAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Key:
 		w.Header().Set("Content-Type", "application/json")
@@ -7459,7 +7459,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	}
 }
 
-func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeletePublicSSHKeyForAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeletePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersDeletePublicSSHKeyForAuthenticatedNoContent:
 		w.WriteHeader(204)
@@ -7493,7 +7493,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	}
 }
 
-func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7524,7 +7524,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	}
 }
 
-func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedResponse, w http.ResponseWriter) error {
+func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7548,7 +7548,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	}
 }
 
-func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembershipForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembershipForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
@@ -7576,7 +7576,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	}
 }
 
-func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsListForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7607,7 +7607,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	}
 }
 
-func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGetStatusForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGetStatusForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
@@ -7645,7 +7645,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	}
 }
 
-func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsGetArchiveForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsGetArchiveForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsGetArchiveForAuthenticatedUserFound:
 		w.WriteHeader(302)
@@ -7672,7 +7672,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	}
 }
 
-func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response MigrationsDeleteArchiveForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response MigrationsDeleteArchiveForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
@@ -7706,7 +7706,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	}
 }
 
-func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
@@ -7740,7 +7740,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	}
 }
 
-func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserResponse, w http.ResponseWriter) error {
+func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7761,7 +7761,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	}
 }
 
-func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7792,7 +7792,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	}
 }
 
-func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
@@ -7837,7 +7837,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	}
 }
 
-func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPublicEmailsForAuthenticatedResponse, w http.ResponseWriter) error {
+func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPublicEmailsForAuthenticatedRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListPublicEmailsForAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7875,7 +7875,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	}
 }
 
-func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListInvitationsForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListInvitationsForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListInvitationsForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7913,7 +7913,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	}
 }
 
-func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationResponse, w http.ResponseWriter) error {
+func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeclineInvitationNoContent:
 		w.WriteHeader(204)
@@ -7947,7 +7947,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRespons
 	}
 }
 
-func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationResponse, w http.ResponseWriter) error {
+func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposAcceptInvitationNoContent:
 		w.WriteHeader(204)
@@ -7981,7 +7981,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationResponse,
 	}
 }
 
-func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response ActivityCheckRepoIsStarredByAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response ActivityCheckRepoIsStarredByAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent:
 		w.WriteHeader(204)
@@ -8015,7 +8015,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	}
 }
 
-func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRepoForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRepoForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityStarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
@@ -8049,7 +8049,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	}
 }
 
-func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnstarRepoForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnstarRepoForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityUnstarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
@@ -8083,7 +8083,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	}
 }
 
-func encodeActivityListWatchedReposForAuthenticatedUserResponse(response ActivityListWatchedReposForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeActivityListWatchedReposForAuthenticatedUserResponse(response ActivityListWatchedReposForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityListWatchedReposForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8114,7 +8114,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	}
 }
 
-func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthenticatedUserResponse, w http.ResponseWriter) error {
+func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthenticatedUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsListForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8145,7 +8145,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	}
 }
 
-func encodeUsersListResponse(response UsersListResponse, w http.ResponseWriter) error {
+func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersListOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8198,7 +8198,7 @@ func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.Respo
 	return nil
 }
 
-func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUserResponse, w http.ResponseWriter) error {
+func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUserRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *UsersCheckFollowingForUserNoContent:
 		w.WriteHeader(204)

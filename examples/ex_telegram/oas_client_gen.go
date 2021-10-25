@@ -72,7 +72,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostRequest) (res AnswerCallbackQueryPostResponse, err error) {
+func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReq) (res AnswerCallbackQueryPostRes, err error) {
 	body, contentType, err := encodeAnswerCallbackQueryPostRequest(req)
 	if err != nil {
 		return res, err
@@ -100,7 +100,7 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 	return result, nil
 }
 
-func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostRequest) (res AnswerPreCheckoutQueryPostResponse, err error) {
+func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReq) (res AnswerPreCheckoutQueryPostRes, err error) {
 	body, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req)
 	if err != nil {
 		return res, err
@@ -128,7 +128,7 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 	return result, nil
 }
 
-func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostRequest) (res AnswerShippingQueryPostResponse, err error) {
+func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
 	body, contentType, err := encodeAnswerShippingQueryPostRequest(req)
 	if err != nil {
 		return res, err
@@ -156,7 +156,7 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 	return result, nil
 }
 
-func (c *Client) ClosePost(ctx context.Context) (res ClosePostResponse, err error) {
+func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/close"
 
@@ -177,7 +177,7 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostResponse, err erro
 	return result, nil
 }
 
-func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostRequest) (res DeleteStickerFromSetPostResponse, err error) {
+func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReq) (res DeleteStickerFromSetPostRes, err error) {
 	body, contentType, err := encodeDeleteStickerFromSetPostRequest(req)
 	if err != nil {
 		return res, err
@@ -205,7 +205,7 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 	return result, nil
 }
 
-func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostRequest) (res DeleteWebhookPostResponse, err error) {
+func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq) (res DeleteWebhookPostRes, err error) {
 	body, contentType, err := encodeDeleteWebhookPostRequest(req)
 	if err != nil {
 		return res, err
@@ -233,7 +233,7 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 	return result, nil
 }
 
-func (c *Client) GetFilePost(ctx context.Context, req GetFilePostRequest) (res GetFilePostResponse, err error) {
+func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFilePostRes, err error) {
 	body, contentType, err := encodeGetFilePostRequest(req)
 	if err != nil {
 		return res, err
@@ -261,7 +261,7 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostRequest) (res G
 	return result, nil
 }
 
-func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostRequest) (res GetGameHighScoresPostResponse, err error) {
+func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReq) (res GetGameHighScoresPostRes, err error) {
 	body, contentType, err := encodeGetGameHighScoresPostRequest(req)
 	if err != nil {
 		return res, err
@@ -289,7 +289,7 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 	return result, nil
 }
 
-func (c *Client) GetMePost(ctx context.Context) (res GetMePostResponse, err error) {
+func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMe"
 
@@ -310,7 +310,7 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostResponse, err erro
 	return result, nil
 }
 
-func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostResponse, err error) {
+func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMyCommands"
 
@@ -331,7 +331,7 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 	return result, nil
 }
 
-func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostRequest) (res GetStickerSetPostResponse, err error) {
+func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq) (res GetStickerSetPostRes, err error) {
 	body, contentType, err := encodeGetStickerSetPostRequest(req)
 	if err != nil {
 		return res, err
@@ -359,7 +359,7 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 	return result, nil
 }
 
-func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostRequest) (res GetUpdatesPostResponse, err error) {
+func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res GetUpdatesPostRes, err error) {
 	body, contentType, err := encodeGetUpdatesPostRequest(req)
 	if err != nil {
 		return res, err
@@ -387,7 +387,7 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostRequest) 
 	return result, nil
 }
 
-func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostRequest) (res GetUserProfilePhotosPostResponse, err error) {
+func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReq) (res GetUserProfilePhotosPostRes, err error) {
 	body, contentType, err := encodeGetUserProfilePhotosPostRequest(req)
 	if err != nil {
 		return res, err
@@ -415,7 +415,7 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 	return result, nil
 }
 
-func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPostResponse, err error) {
+func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPostRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getWebhookInfo"
 
@@ -436,7 +436,7 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 	return result, nil
 }
 
-func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostResponse, err error) {
+func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logOut"
 
@@ -457,7 +457,7 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostResponse, err er
 	return result, nil
 }
 
-func (c *Client) SendGamePost(ctx context.Context, req SendGamePostRequest) (res SendGamePostResponse, err error) {
+func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res SendGamePostRes, err error) {
 	body, contentType, err := encodeSendGamePostRequest(req)
 	if err != nil {
 		return res, err
@@ -485,7 +485,7 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostRequest) (res
 	return result, nil
 }
 
-func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostRequest) (res SendInvoicePostResponse, err error) {
+func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (res SendInvoicePostRes, err error) {
 	body, contentType, err := encodeSendInvoicePostRequest(req)
 	if err != nil {
 		return res, err
@@ -513,7 +513,7 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostRequest
 	return result, nil
 }
 
-func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostRequest) (res SetMyCommandsPostResponse, err error) {
+func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq) (res SetMyCommandsPostRes, err error) {
 	body, contentType, err := encodeSetMyCommandsPostRequest(req)
 	if err != nil {
 		return res, err
@@ -541,7 +541,7 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 	return result, nil
 }
 
-func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostRequest) (res SetStickerPositionInSetPostResponse, err error) {
+func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReq) (res SetStickerPositionInSetPostRes, err error) {
 	body, contentType, err := encodeSetStickerPositionInSetPostRequest(req)
 	if err != nil {
 		return res, err
@@ -569,7 +569,7 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 	return result, nil
 }
 
-func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostMultipartFormDataRequest) (res SetWebhookPostResponse, err error) {
+func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostMultipartFormDataReq) (res SetWebhookPostRes, err error) {
 	body, contentType, err := encodeSetWebhookPostRequest(req)
 	if err != nil {
 		return res, err
@@ -597,7 +597,7 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostMultipart
 	return result, nil
 }
 
-func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFilePostMultipartFormDataRequest) (res UploadStickerFilePostResponse, err error) {
+func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFilePostMultipartFormDataReq) (res UploadStickerFilePostRes, err error) {
 	body, contentType, err := encodeUploadStickerFilePostRequest(req)
 	if err != nil {
 		return res, err
