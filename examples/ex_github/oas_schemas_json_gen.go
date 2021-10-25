@@ -108,6 +108,7 @@ func (s *APIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "SHA256_DSA":
 			if err := func() error {
+				s.SHA256DSA.Reset()
 				if err := s.SHA256DSA.ReadJSON(i); err != nil {
 					return err
 				}
@@ -119,6 +120,7 @@ func (s *APIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
 			return true
 		case "SHA256_ECDSA":
 			if err := func() error {
+				s.SHA256ECDSA.Reset()
 				if err := s.SHA256ECDSA.ReadJSON(i); err != nil {
 					return err
 				}
@@ -130,6 +132,7 @@ func (s *APIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
 			return true
 		case "SHA256_ED25519":
 			if err := func() error {
+				s.SHA256ED25519.Reset()
 				if err := s.SHA256ED25519.ReadJSON(i); err != nil {
 					return err
 				}
@@ -141,6 +144,7 @@ func (s *APIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
 			return true
 		case "SHA256_RSA":
 			if err := func() error {
+				s.SHA256RSA.Reset()
 				if err := s.SHA256RSA.ReadJSON(i); err != nil {
 					return err
 				}
@@ -459,6 +463,7 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "MACOS":
 			if err := func() error {
+				s.MACOS.Reset()
 				if err := s.MACOS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -470,6 +475,7 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) ReadJSON(i *json.Iterator) err
 			return true
 		case "UBUNTU":
 			if err := func() error {
+				s.UBUNTU.Reset()
 				if err := s.UBUNTU.ReadJSON(i); err != nil {
 					return err
 				}
@@ -481,6 +487,7 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) ReadJSON(i *json.Iterator) err
 			return true
 		case "WINDOWS":
 			if err := func() error {
+				s.WINDOWS.Reset()
 				if err := s.WINDOWS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -729,6 +736,7 @@ func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONReq) ReadJSON(i *json.Iter
 		switch k {
 		case "encrypted_value":
 			if err := func() error {
+				s.EncryptedValue.Reset()
 				if err := s.EncryptedValue.ReadJSON(i); err != nil {
 					return err
 				}
@@ -740,6 +748,7 @@ func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONReq) ReadJSON(i *json.Iter
 			return true
 		case "key_id":
 			if err := func() error {
+				s.KeyID.Reset()
 				if err := s.KeyID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -751,6 +760,7 @@ func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONReq) ReadJSON(i *json.Iter
 			return true
 		case "selected_repository_ids":
 			if err := func() error {
+				s.SelectedRepositoryIds = s.SelectedRepositoryIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -899,6 +909,7 @@ func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONReq) ReadJSON(i *json.Ite
 		switch k {
 		case "encrypted_value":
 			if err := func() error {
+				s.EncryptedValue.Reset()
 				if err := s.EncryptedValue.ReadJSON(i); err != nil {
 					return err
 				}
@@ -910,6 +921,7 @@ func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "key_id":
 			if err := func() error {
+				s.KeyID.Reset()
 				if err := s.KeyID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1103,6 +1115,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSON(i 
 			return true
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -1127,6 +1140,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSON(i 
 			return true
 		case "selected_repository_ids":
 			if err := func() error {
+				s.SelectedRepositoryIds = s.SelectedRepositoryIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -1151,6 +1165,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSON(i 
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1891,6 +1906,7 @@ func (s *ActionsListArtifactsForRepo) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "artifacts":
 			if err := func() error {
+				s.Artifacts = s.Artifacts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Artifact
@@ -1986,6 +2002,7 @@ func (s *ActionsListEnvironmentSecrets) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "secrets":
 			if err := func() error {
+				s.Secrets = s.Secrets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ActionsSecret
@@ -2081,6 +2098,7 @@ func (s *ActionsListOrgSecrets) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "secrets":
 			if err := func() error {
+				s.Secrets = s.Secrets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem OrganizationActionsSecret
@@ -2176,6 +2194,7 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Ite
 		switch k {
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MinimalRepository
@@ -2271,6 +2290,7 @@ func (s *ActionsListRepoSecrets) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "secrets":
 			if err := func() error {
+				s.Secrets = s.Secrets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ActionsSecret
@@ -2375,6 +2395,7 @@ func (s *ActionsListRepoWorkflows) ReadJSON(i *json.Iterator) error {
 			return true
 		case "workflows":
 			if err := func() error {
+				s.Workflows = s.Workflows[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Workflow
@@ -2461,6 +2482,7 @@ func (s *ActionsListSelectedReposForOrgSecret) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MinimalRepository
@@ -2556,6 +2578,7 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganization) ReadJS
 		switch k {
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Repository
@@ -2651,6 +2674,7 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrg) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "runner_groups":
 			if err := func() error {
+				s.RunnerGroups = s.RunnerGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem RunnerGroupsOrg
@@ -2746,6 +2770,7 @@ func (s *ActionsListSelfHostedRunnersForOrg) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Runner
@@ -2841,6 +2866,7 @@ func (s *ActionsListSelfHostedRunnersForRepo) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Runner
@@ -2936,6 +2962,7 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrg) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Runner
@@ -3031,6 +3058,7 @@ func (s *ActionsListWorkflowRunArtifacts) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "artifacts":
 			if err := func() error {
+				s.Artifacts = s.Artifacts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Artifact
@@ -3420,6 +3448,7 @@ func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONReq) ReadJSON(i *js
 			return true
 		case "environment_ids":
 			if err := func() error {
+				s.EnvironmentIds = s.EnvironmentIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -3660,6 +3689,7 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq) ReadJ
 		switch k {
 		case "allowed_actions":
 			if err := func() error {
+				s.AllowedActions.Reset()
 				if err := s.AllowedActions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3780,6 +3810,7 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq) ReadJSO
 		switch k {
 		case "allowed_actions":
 			if err := func() error {
+				s.AllowedActions.Reset()
 				if err := s.AllowedActions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3903,6 +3934,7 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq) Rea
 		switch k {
 		case "selected_repository_ids":
 			if err := func() error {
+				s.SelectedRepositoryIds = s.SelectedRepositoryIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -4031,6 +4063,7 @@ func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONReq) ReadJSON(i *json
 		switch k {
 		case "selected_repository_ids":
 			if err := func() error {
+				s.SelectedRepositoryIds = s.SelectedRepositoryIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -4159,6 +4192,7 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicati
 		switch k {
 		case "selected_repository_ids":
 			if err := func() error {
+				s.SelectedRepositoryIds = s.SelectedRepositoryIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -4287,6 +4321,7 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq) ReadJSON(i 
 		switch k {
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -4375,6 +4410,7 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq) ReadJSON(i 
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4763,6 +4799,7 @@ func (s *ActivityMarkNotificationsAsReadAccepted) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4842,6 +4879,7 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONReq) ReadJSON(i *json.Ite
 		switch k {
 		case "last_read_at":
 			if err := func() error {
+				s.LastReadAt.Reset()
 				if err := s.LastReadAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -4853,6 +4891,7 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "read":
 			if err := func() error {
+				s.Read.Reset()
 				if err := s.Read.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4979,6 +5018,7 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) ReadJSON(i *json.Iterator)
 		switch k {
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4990,6 +5030,7 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) ReadJSON(i *json.Iterator)
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5053,6 +5094,7 @@ func (s *ActivityMarkRepoNotificationsAsReadApplicationJSONReq) ReadJSON(i *json
 		switch k {
 		case "last_read_at":
 			if err := func() error {
+				s.LastReadAt.Reset()
 				if err := s.LastReadAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -5215,6 +5257,7 @@ func (s *ActivitySetRepoSubscriptionApplicationJSONReq) ReadJSON(i *json.Iterato
 		switch k {
 		case "ignored":
 			if err := func() error {
+				s.Ignored.Reset()
 				if err := s.Ignored.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5226,6 +5269,7 @@ func (s *ActivitySetRepoSubscriptionApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "subscribed":
 			if err := func() error {
+				s.Subscribed.Reset()
 				if err := s.Subscribed.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5300,6 +5344,7 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONReq) ReadJSON(i *json.Itera
 		switch k {
 		case "ignored":
 			if err := func() error {
+				s.Ignored.Reset()
 				if err := s.Ignored.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5898,11 +5943,10 @@ func (s *ApplicationGrantApp) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6221,6 +6265,7 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONReq) ReadJSON(i *json.I
 		switch k {
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6232,6 +6277,7 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONReq) ReadJSON(i *json.I
 			return true
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -6256,6 +6302,7 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONReq) ReadJSON(i *json.I
 			return true
 		case "repository_ids":
 			if err := func() error {
+				s.RepositoryIds = s.RepositoryIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -6707,6 +6754,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) ReadJSON(i *json.Itera
 		switch k {
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Repository
@@ -6733,6 +6781,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) ReadJSON(i *json.Itera
 			return true
 		case "repository_selection":
 			if err := func() error {
+				s.RepositorySelection.Reset()
 				if err := s.RepositorySelection.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6860,6 +6909,7 @@ func (s *AppsListReposAccessibleToInstallationOK) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Repository
@@ -6886,6 +6936,7 @@ func (s *AppsListReposAccessibleToInstallationOK) ReadJSON(i *json.Iterator) err
 			return true
 		case "repository_selection":
 			if err := func() error {
+				s.RepositorySelection.Reset()
 				if err := s.RepositorySelection.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7219,6 +7270,7 @@ func (s *AppsScopeTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7230,6 +7282,7 @@ func (s *AppsScopeTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -7254,6 +7307,7 @@ func (s *AppsScopeTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repository_ids":
 			if err := func() error {
+				s.RepositoryIds = s.RepositoryIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -7278,6 +7332,7 @@ func (s *AppsScopeTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "target":
 			if err := func() error {
+				s.Target.Reset()
 				if err := s.Target.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7289,6 +7344,7 @@ func (s *AppsScopeTokenApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "target_id":
 			if err := func() error {
+				s.TargetID.Reset()
 				if err := s.TargetID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7527,11 +7583,10 @@ func (s *AuthorizationApp) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7639,6 +7694,7 @@ func (s *BranchProtectionAllowDeletions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "enabled":
 			if err := func() error {
+				s.Enabled.Reset()
 				if err := s.Enabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7702,6 +7758,7 @@ func (s *BranchProtectionAllowForcePushes) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "enabled":
 			if err := func() error {
+				s.Enabled.Reset()
 				if err := s.Enabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7765,6 +7822,7 @@ func (s *BranchProtectionRequiredConversationResolution) ReadJSON(i *json.Iterat
 		switch k {
 		case "enabled":
 			if err := func() error {
+				s.Enabled.Reset()
 				if err := s.Enabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7828,6 +7886,7 @@ func (s *BranchProtectionRequiredLinearHistory) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "enabled":
 			if err := func() error {
+				s.Enabled.Reset()
 				if err := s.Enabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7902,11 +7961,10 @@ func (s *BranchProtectionRequiredSignatures) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -7992,6 +8050,7 @@ func (s *BranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "contexts":
 			if err := func() error {
+				s.Contexts = s.Contexts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -8016,6 +8075,7 @@ func (s *BranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error 
 			return true
 		case "contexts_url":
 			if err := func() error {
+				s.ContextsURL.Reset()
 				if err := s.ContextsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8027,6 +8087,7 @@ func (s *BranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error 
 			return true
 		case "enforcement_level":
 			if err := func() error {
+				s.EnforcementLevel.Reset()
 				if err := s.EnforcementLevel.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8038,6 +8099,7 @@ func (s *BranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error 
 			return true
 		case "strict":
 			if err := func() error {
+				s.Strict.Reset()
 				if err := s.Strict.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8049,6 +8111,7 @@ func (s *BranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error 
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8174,6 +8237,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8185,6 +8249,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8196,6 +8261,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events":
 			if err := func() error {
+				s.Events = s.Events[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -8220,6 +8286,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "external_url":
 			if err := func() error {
+				s.ExternalURL.Reset()
 				if err := s.ExternalURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8231,6 +8298,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8242,6 +8310,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8253,6 +8322,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8264,6 +8334,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8275,6 +8346,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "owner":
 			if err := func() error {
+				s.Owner.Reset()
 				if err := s.Owner.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8286,6 +8358,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8297,6 +8370,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "slug":
 			if err := func() error {
+				s.Slug.Reset()
 				if err := s.Slug.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8308,6 +8382,7 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updated_at":
 			if err := func() error {
+				s.UpdatedAt.Reset()
 				if err := s.UpdatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8481,6 +8556,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "avatar_url":
 			if err := func() error {
+				s.AvatarURL.Reset()
 				if err := s.AvatarURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8492,6 +8568,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8503,6 +8580,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "events_url":
 			if err := func() error {
+				s.EventsURL.Reset()
 				if err := s.EventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8514,6 +8592,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "followers_url":
 			if err := func() error {
+				s.FollowersURL.Reset()
 				if err := s.FollowersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8525,6 +8604,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "following_url":
 			if err := func() error {
+				s.FollowingURL.Reset()
 				if err := s.FollowingURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8536,6 +8616,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "gists_url":
 			if err := func() error {
+				s.GistsURL.Reset()
 				if err := s.GistsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8547,6 +8628,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "gravatar_id":
 			if err := func() error {
+				s.GravatarID.Reset()
 				if err := s.GravatarID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8558,6 +8640,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8569,6 +8652,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "hooks_url":
 			if err := func() error {
+				s.HooksURL.Reset()
 				if err := s.HooksURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8580,6 +8664,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8591,6 +8676,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "issues_url":
 			if err := func() error {
+				s.IssuesURL.Reset()
 				if err := s.IssuesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8602,6 +8688,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "login":
 			if err := func() error {
+				s.Login.Reset()
 				if err := s.Login.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8613,6 +8700,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "members_url":
 			if err := func() error {
+				s.MembersURL.Reset()
 				if err := s.MembersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8624,6 +8712,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8635,6 +8724,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "organizations_url":
 			if err := func() error {
+				s.OrganizationsURL.Reset()
 				if err := s.OrganizationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8646,6 +8736,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "public_members_url":
 			if err := func() error {
+				s.PublicMembersURL.Reset()
 				if err := s.PublicMembersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8657,6 +8748,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "received_events_url":
 			if err := func() error {
+				s.ReceivedEventsURL.Reset()
 				if err := s.ReceivedEventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8668,6 +8760,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "repos_url":
 			if err := func() error {
+				s.ReposURL.Reset()
 				if err := s.ReposURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8679,6 +8772,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "site_admin":
 			if err := func() error {
+				s.SiteAdmin.Reset()
 				if err := s.SiteAdmin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8690,6 +8784,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "starred_url":
 			if err := func() error {
+				s.StarredURL.Reset()
 				if err := s.StarredURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8701,6 +8796,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "subscriptions_url":
 			if err := func() error {
+				s.SubscriptionsURL.Reset()
 				if err := s.SubscriptionsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8712,6 +8808,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8723,6 +8820,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error 
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8801,6 +8899,7 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "contents":
 			if err := func() error {
+				s.Contents.Reset()
 				if err := s.Contents.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8812,6 +8911,7 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.Iterator) 
 			return true
 		case "issues":
 			if err := func() error {
+				s.Issues.Reset()
 				if err := s.Issues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8823,6 +8923,7 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.Iterator) 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8834,6 +8935,7 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.Iterator) 
 			return true
 		case "single_file":
 			if err := func() error {
+				s.SingleFile.Reset()
 				if err := s.SingleFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8952,6 +9054,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8963,6 +9066,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8974,6 +9078,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8985,6 +9090,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_url":
 			if err := func() error {
+				s.MembersURL.Reset()
 				if err := s.MembersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8996,6 +9102,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9007,6 +9114,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9018,6 +9126,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parent":
 			if err := func() error {
+				s.Parent.Reset()
 				if err := s.Parent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9029,6 +9138,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9040,6 +9150,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privacy":
 			if err := func() error {
+				s.Privacy.Reset()
 				if err := s.Privacy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9051,6 +9162,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repositories_url":
 			if err := func() error {
+				s.RepositoriesURL.Reset()
 				if err := s.RepositoriesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9062,6 +9174,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "slug":
 			if err := func() error {
+				s.Slug.Reset()
 				if err := s.Slug.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9073,6 +9186,7 @@ func (s *BranchRestrictionPolicyTeamsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9221,6 +9335,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "avatar_url":
 			if err := func() error {
+				s.AvatarURL.Reset()
 				if err := s.AvatarURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9232,6 +9347,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events_url":
 			if err := func() error {
+				s.EventsURL.Reset()
 				if err := s.EventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9243,6 +9359,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "followers_url":
 			if err := func() error {
+				s.FollowersURL.Reset()
 				if err := s.FollowersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9254,6 +9371,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "following_url":
 			if err := func() error {
+				s.FollowingURL.Reset()
 				if err := s.FollowingURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9265,6 +9383,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gists_url":
 			if err := func() error {
+				s.GistsURL.Reset()
 				if err := s.GistsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9276,6 +9395,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gravatar_id":
 			if err := func() error {
+				s.GravatarID.Reset()
 				if err := s.GravatarID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9287,6 +9407,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9298,6 +9419,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9309,6 +9431,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "login":
 			if err := func() error {
+				s.Login.Reset()
 				if err := s.Login.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9320,6 +9443,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9331,6 +9455,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organizations_url":
 			if err := func() error {
+				s.OrganizationsURL.Reset()
 				if err := s.OrganizationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9342,6 +9467,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "received_events_url":
 			if err := func() error {
+				s.ReceivedEventsURL.Reset()
 				if err := s.ReceivedEventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9353,6 +9479,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repos_url":
 			if err := func() error {
+				s.ReposURL.Reset()
 				if err := s.ReposURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9364,6 +9491,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "site_admin":
 			if err := func() error {
+				s.SiteAdmin.Reset()
 				if err := s.SiteAdmin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9375,6 +9503,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "starred_url":
 			if err := func() error {
+				s.StarredURL.Reset()
 				if err := s.StarredURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9386,6 +9515,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscriptions_url":
 			if err := func() error {
+				s.SubscriptionsURL.Reset()
 				if err := s.SubscriptionsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9397,6 +9527,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9408,6 +9539,7 @@ func (s *BranchRestrictionPolicyUsersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9553,11 +9685,10 @@ func (s *BranchWithProtectionLinks) ReadJSON(i *json.Iterator) error {
 		case "self":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.Self = v
 				if err != nil {
 					return err
 				}
-
-				s.Self = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9708,11 +9839,10 @@ func (s *CheckRunOutput) ReadJSON(i *json.Iterator) error {
 		case "annotations_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AnnotationsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AnnotationsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -9835,6 +9965,7 @@ func (s *CheckSuitePreferencePreferences) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "auto_trigger_checks":
 			if err := func() error {
+				s.AutoTriggerChecks = s.AutoTriggerChecks[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CheckSuitePreferencePreferencesAutoTriggerChecksItem
@@ -10072,6 +10203,7 @@ func (s *ChecksListSuitesForRef) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "check_suites":
 			if err := func() error {
+				s.CheckSuites = s.CheckSuites[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CheckSuite
@@ -10213,6 +10345,7 @@ func (s *ChecksSetSuitesPreferencesApplicationJSONReq) ReadJSON(i *json.Iterator
 		switch k {
 		case "auto_trigger_checks":
 			if err := func() error {
+				s.AutoTriggerChecks = s.AutoTriggerChecks[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ChecksSetSuitesPreferencesApplicationJSONReqAutoTriggerChecksItem
@@ -10362,6 +10495,7 @@ func (s *CodeScanningAlertInstanceMessage) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "text":
 			if err := func() error {
+				s.Text.Reset()
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10576,6 +10710,7 @@ func (s *CodeScanningUpdateAlertApplicationJSONReq) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "dismissed_reason":
 			if err := func() error {
+				s.DismissedReason.Reset()
 				if err := s.DismissedReason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10671,6 +10806,7 @@ func (s *CodeScanningUploadSarifApplicationJSONReq) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "checkout_uri":
 			if err := func() error {
+				s.CheckoutURI.Reset()
 				if err := s.CheckoutURI.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10706,6 +10842,7 @@ func (s *CodeScanningUploadSarifApplicationJSONReq) ReadJSON(i *json.Iterator) e
 			return true
 		case "started_at":
 			if err := func() error {
+				s.StartedAt.Reset()
 				if err := s.StartedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -10717,6 +10854,7 @@ func (s *CodeScanningUploadSarifApplicationJSONReq) ReadJSON(i *json.Iterator) e
 			return true
 		case "tool_name":
 			if err := func() error {
+				s.ToolName.Reset()
 				if err := s.ToolName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10949,11 +11087,10 @@ func (s *CommitCommit) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -10962,6 +11099,7 @@ func (s *CommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verification":
 			if err := func() error {
+				s.Verification.Reset()
 				if err := s.Verification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11036,11 +11174,10 @@ func (s *CommitCommitTree) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11162,6 +11299,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "additions":
 			if err := func() error {
+				s.Additions.Reset()
 				if err := s.Additions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11173,6 +11311,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "blob_url":
 			if err := func() error {
+				s.BlobURL.Reset()
 				if err := s.BlobURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11184,6 +11323,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "changes":
 			if err := func() error {
+				s.Changes.Reset()
 				if err := s.Changes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11195,6 +11335,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "contents_url":
 			if err := func() error {
+				s.ContentsURL.Reset()
 				if err := s.ContentsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11206,6 +11347,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deletions":
 			if err := func() error {
+				s.Deletions.Reset()
 				if err := s.Deletions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11217,6 +11359,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "filename":
 			if err := func() error {
+				s.Filename.Reset()
 				if err := s.Filename.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11228,6 +11371,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "patch":
 			if err := func() error {
+				s.Patch.Reset()
 				if err := s.Patch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11239,6 +11383,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "previous_filename":
 			if err := func() error {
+				s.PreviousFilename.Reset()
 				if err := s.PreviousFilename.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11250,6 +11395,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "raw_url":
 			if err := func() error {
+				s.RawURL.Reset()
 				if err := s.RawURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11261,6 +11407,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11272,6 +11419,7 @@ func (s *CommitFilesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11341,6 +11489,7 @@ func (s *CommitParentsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11362,11 +11511,10 @@ func (s *CommitParentsItem) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11437,6 +11585,7 @@ func (s *CommitStats) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "additions":
 			if err := func() error {
+				s.Additions.Reset()
 				if err := s.Additions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11448,6 +11597,7 @@ func (s *CommitStats) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deletions":
 			if err := func() error {
+				s.Deletions.Reset()
 				if err := s.Deletions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11459,6 +11609,7 @@ func (s *CommitStats) ReadJSON(i *json.Iterator) error {
 			return true
 		case "total":
 			if err := func() error {
+				s.Total.Reset()
 				if err := s.Total.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11694,11 +11845,10 @@ func (s *ContentFileLinks) ReadJSON(i *json.Iterator) error {
 		case "self":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.Self = v
 				if err != nil {
 					return err
 				}
-
-				s.Self = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -11774,6 +11924,7 @@ func (s *ContributorActivityWeeksItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "a":
 			if err := func() error {
+				s.A.Reset()
 				if err := s.A.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11785,6 +11936,7 @@ func (s *ContributorActivityWeeksItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "c":
 			if err := func() error {
+				s.C.Reset()
 				if err := s.C.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11796,6 +11948,7 @@ func (s *ContributorActivityWeeksItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "d":
 			if err := func() error {
+				s.D.Reset()
 				if err := s.D.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11807,6 +11960,7 @@ func (s *ContributorActivityWeeksItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "w":
 			if err := func() error {
+				s.W.Reset()
 				if err := s.W.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12069,6 +12223,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 			return true
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -12093,6 +12248,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 			return true
 		case "selected_organization_ids":
 			if err := func() error {
+				s.SelectedOrganizationIds = s.SelectedOrganizationIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -12117,6 +12273,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12481,6 +12638,7 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJS
 		switch k {
 		case "organizations":
 			if err := func() error {
+				s.Organizations = s.Organizations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem OrganizationSimple
@@ -12576,6 +12734,7 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise)
 		switch k {
 		case "organizations":
 			if err := func() error {
+				s.Organizations = s.Organizations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem OrganizationSimple
@@ -12671,6 +12830,7 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise) ReadJSON(i *jso
 		switch k {
 		case "runner_groups":
 			if err := func() error {
+				s.RunnerGroups = s.RunnerGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem RunnerGroupsEnterprise
@@ -12770,6 +12930,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterprise) ReadJSON(i *json.Ite
 		switch k {
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Runner
@@ -12796,6 +12957,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterprise) ReadJSON(i *json.Ite
 			return true
 		case "total_count":
 			if err := func() error {
+				s.TotalCount.Reset()
 				if err := s.TotalCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12867,6 +13029,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise) ReadJSON(i *j
 		switch k {
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Runner
@@ -12983,6 +13146,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) Rea
 			return true
 		case "members":
 			if err := func() error {
+				s.Members = s.Members[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReqMembersItem
@@ -13009,6 +13173,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq) Rea
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -13177,6 +13342,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) Read
 		switch k {
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqEmailsItem
@@ -13203,6 +13369,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) Read
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroupsItem
@@ -13240,6 +13407,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq) Read
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -13408,6 +13576,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReqGroups
 		switch k {
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -13733,6 +13902,7 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq)
 		switch k {
 		case "allowed_actions":
 			if err := func() error {
+				s.AllowedActions.Reset()
 				if err := s.AllowedActions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -13834,6 +14004,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJS
 			return true
 		case "members":
 			if err := func() error {
+				s.Members = s.Members[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReqMembersItem
@@ -13860,6 +14031,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJS
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -14028,6 +14200,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 		switch k {
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqEmailsItem
@@ -14054,6 +14227,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReqGroupsItem
@@ -14091,6 +14265,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -14259,6 +14434,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 		switch k {
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -14445,6 +14621,7 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicati
 		switch k {
 		case "selected_organization_ids":
 			if err := func() error {
+				s.SelectedOrganizationIds = s.SelectedOrganizationIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -14573,6 +14750,7 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseAp
 		switch k {
 		case "selected_organization_ids":
 			if err := func() error {
+				s.SelectedOrganizationIds = s.SelectedOrganizationIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -14701,6 +14879,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONR
 		switch k {
 		case "runners":
 			if err := func() error {
+				s.Runners = s.Runners[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -14792,6 +14971,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) Read
 		switch k {
 		case "Operations":
 			if err := func() error {
+				s.Operations = s.Operations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReqOperationsItem
@@ -14818,6 +14998,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq) Read
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -14946,6 +15127,7 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -14957,6 +15139,7 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15061,6 +15244,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -15072,6 +15256,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15083,6 +15268,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15094,6 +15280,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15105,6 +15292,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15116,6 +15304,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15127,6 +15316,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "updated_at":
 			if err := func() error {
+				s.UpdatedAt.Reset()
 				if err := s.UpdatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -15239,6 +15429,7 @@ func (s *FeedLinks) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "current_user":
 			if err := func() error {
+				s.CurrentUser.Reset()
 				if err := s.CurrentUser.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15250,6 +15441,7 @@ func (s *FeedLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_actor":
 			if err := func() error {
+				s.CurrentUserActor.Reset()
 				if err := s.CurrentUserActor.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15261,6 +15453,7 @@ func (s *FeedLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_organization":
 			if err := func() error {
+				s.CurrentUserOrganization.Reset()
 				if err := s.CurrentUserOrganization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15272,6 +15465,7 @@ func (s *FeedLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_organizations":
 			if err := func() error {
+				s.CurrentUserOrganizations = s.CurrentUserOrganizations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem LinkWithType
@@ -15298,6 +15492,7 @@ func (s *FeedLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_public":
 			if err := func() error {
+				s.CurrentUserPublic.Reset()
 				if err := s.CurrentUserPublic.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15309,6 +15504,7 @@ func (s *FeedLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		case "security_advisories":
 			if err := func() error {
+				s.SecurityAdvisories.Reset()
 				if err := s.SecurityAdvisories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15446,6 +15642,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "author":
 			if err := func() error {
+				s.Author.Reset()
 				if err := s.Author.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15457,6 +15654,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "committer":
 			if err := func() error {
+				s.Committer.Reset()
 				if err := s.Committer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15468,6 +15666,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15479,6 +15678,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15490,6 +15690,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15501,6 +15702,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parents":
 			if err := func() error {
+				s.Parents = s.Parents[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem FileCommitCommitParentsItem
@@ -15527,6 +15729,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15538,6 +15741,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tree":
 			if err := func() error {
+				s.Tree.Reset()
 				if err := s.Tree.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15549,6 +15753,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15560,6 +15765,7 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verification":
 			if err := func() error {
+				s.Verification.Reset()
 				if err := s.Verification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15633,6 +15839,7 @@ func (s *FileCommitCommitAuthor) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15644,6 +15851,7 @@ func (s *FileCommitCommitAuthor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15655,6 +15863,7 @@ func (s *FileCommitCommitAuthor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15728,6 +15937,7 @@ func (s *FileCommitCommitCommitter) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15739,6 +15949,7 @@ func (s *FileCommitCommitCommitter) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15750,6 +15961,7 @@ func (s *FileCommitCommitCommitter) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15823,6 +16035,7 @@ func (s *FileCommitCommitParentsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15834,6 +16047,7 @@ func (s *FileCommitCommitParentsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15845,6 +16059,7 @@ func (s *FileCommitCommitParentsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15913,6 +16128,7 @@ func (s *FileCommitCommitTree) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15924,6 +16140,7 @@ func (s *FileCommitCommitTree) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16002,6 +16219,7 @@ func (s *FileCommitCommitVerification) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "payload":
 			if err := func() error {
+				s.Payload.Reset()
 				if err := s.Payload.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16013,6 +16231,7 @@ func (s *FileCommitCommitVerification) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16024,6 +16243,7 @@ func (s *FileCommitCommitVerification) ReadJSON(i *json.Iterator) error {
 			return true
 		case "signature":
 			if err := func() error {
+				s.Signature.Reset()
 				if err := s.Signature.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16035,6 +16255,7 @@ func (s *FileCommitCommitVerification) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verified":
 			if err := func() error {
+				s.Verified.Reset()
 				if err := s.Verified.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16143,6 +16364,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "download_url":
 			if err := func() error {
+				s.DownloadURL.Reset()
 				if err := s.DownloadURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16154,6 +16376,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "git_url":
 			if err := func() error {
+				s.GitURL.Reset()
 				if err := s.GitURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16165,6 +16388,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16176,6 +16400,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "_links":
 			if err := func() error {
+				s.Links.Reset()
 				if err := s.Links.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16187,6 +16412,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16198,6 +16424,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16209,6 +16436,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16220,6 +16448,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "size":
 			if err := func() error {
+				s.Size.Reset()
 				if err := s.Size.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16231,6 +16460,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16242,6 +16472,7 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16315,6 +16546,7 @@ func (s *FileCommitContentLinks) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "git":
 			if err := func() error {
+				s.Git.Reset()
 				if err := s.Git.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16326,6 +16558,7 @@ func (s *FileCommitContentLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html":
 			if err := func() error {
+				s.HTML.Reset()
 				if err := s.HTML.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16337,6 +16570,7 @@ func (s *FileCommitContentLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		case "self":
 			if err := func() error {
+				s.Self.Reset()
 				if err := s.Self.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16410,6 +16644,7 @@ func (s *ForbiddenGist) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "block":
 			if err := func() error {
+				s.Block.Reset()
 				if err := s.Block.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16421,6 +16656,7 @@ func (s *ForbiddenGist) ReadJSON(i *json.Iterator) error {
 			return true
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16432,6 +16668,7 @@ func (s *ForbiddenGist) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16505,6 +16742,7 @@ func (s *ForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16516,6 +16754,7 @@ func (s *ForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16527,6 +16766,7 @@ func (s *ForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16660,6 +16900,7 @@ func (s *FullRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintain":
 			if err := func() error {
+				s.Maintain.Reset()
 				if err := s.Maintain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16689,6 +16930,7 @@ func (s *FullRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "triage":
 			if err := func() error {
+				s.Triage.Reset()
 				if err := s.Triage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16757,6 +16999,7 @@ func (s *FullRepositorySecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "advanced_security":
 			if err := func() error {
+				s.AdvancedSecurity.Reset()
 				if err := s.AdvancedSecurity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16768,6 +17011,7 @@ func (s *FullRepositorySecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret_scanning":
 			if err := func() error {
+				s.SecretScanning.Reset()
 				if err := s.SecretScanning.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16831,6 +17075,7 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Ite
 		switch k {
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16905,6 +17150,7 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(i *json.Itera
 		switch k {
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -16989,6 +17235,7 @@ func (s *GistCommitChangeStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "additions":
 			if err := func() error {
+				s.Additions.Reset()
 				if err := s.Additions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -17000,6 +17247,7 @@ func (s *GistCommitChangeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deletions":
 			if err := func() error {
+				s.Deletions.Reset()
 				if err := s.Deletions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -17011,6 +17259,7 @@ func (s *GistCommitChangeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "total":
 			if err := func() error {
+				s.Total.Reset()
 				if err := s.Total.ReadJSON(i); err != nil {
 					return err
 				}
@@ -17589,11 +17838,10 @@ func (s *GitCommitAuthor) ReadJSON(i *json.Iterator) error {
 		case "date":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.Date = v
 				if err != nil {
 					return err
 				}
-
-				s.Date = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -17677,11 +17925,10 @@ func (s *GitCommitCommitter) ReadJSON(i *json.Iterator) error {
 		case "date":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.Date = v
 				if err != nil {
 					return err
 				}
-
-				s.Date = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -17765,11 +18012,10 @@ func (s *GitCommitParentsItem) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -17788,11 +18034,10 @@ func (s *GitCommitParentsItem) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -17864,11 +18109,10 @@ func (s *GitCommitTree) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -18040,6 +18284,7 @@ func (s *GitCreateBlobApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "encoding":
 			if err := func() error {
+				s.Encoding.Reset()
 				if err := s.Encoding.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18131,6 +18376,7 @@ func (s *GitCreateCommitApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "author":
 			if err := func() error {
+				s.Author.Reset()
 				if err := s.Author.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18142,6 +18388,7 @@ func (s *GitCreateCommitApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "committer":
 			if err := func() error {
+				s.Committer.Reset()
 				if err := s.Committer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18162,6 +18409,7 @@ func (s *GitCreateCommitApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parents":
 			if err := func() error {
+				s.Parents = s.Parents[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -18186,6 +18434,7 @@ func (s *GitCreateCommitApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "signature":
 			if err := func() error {
+				s.Signature.Reset()
 				if err := s.Signature.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18264,6 +18513,7 @@ func (s *GitCreateCommitApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -18355,6 +18605,7 @@ func (s *GitCreateCommitApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -18366,6 +18617,7 @@ func (s *GitCreateCommitApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) 
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18377,6 +18629,7 @@ func (s *GitCreateCommitApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18446,6 +18699,7 @@ func (s *GitCreateRefApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "key":
 			if err := func() error {
+				s.Key.Reset()
 				if err := s.Key.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18566,6 +18820,7 @@ func (s *GitCreateTagApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tagger":
 			if err := func() error {
+				s.Tagger.Reset()
 				if err := s.Tagger.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18644,6 +18899,7 @@ func (s *GitCreateTagApplicationJSONReqTagger) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -18746,6 +19002,7 @@ func (s *GitCreateTreeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "base_tree":
 			if err := func() error {
+				s.BaseTree.Reset()
 				if err := s.BaseTree.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18757,6 +19014,7 @@ func (s *GitCreateTreeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tree":
 			if err := func() error {
+				s.Tree = s.Tree[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GitCreateTreeApplicationJSONReqTreeItem
@@ -18855,6 +19113,7 @@ func (s *GitCreateTreeApplicationJSONReqTreeItem) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "content":
 			if err := func() error {
+				s.Content.Reset()
 				if err := s.Content.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18866,6 +19125,7 @@ func (s *GitCreateTreeApplicationJSONReqTreeItem) ReadJSON(i *json.Iterator) err
 			return true
 		case "mode":
 			if err := func() error {
+				s.Mode.Reset()
 				if err := s.Mode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18877,6 +19137,7 @@ func (s *GitCreateTreeApplicationJSONReqTreeItem) ReadJSON(i *json.Iterator) err
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18888,6 +19149,7 @@ func (s *GitCreateTreeApplicationJSONReqTreeItem) ReadJSON(i *json.Iterator) err
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -18899,6 +19161,7 @@ func (s *GitCreateTreeApplicationJSONReqTreeItem) ReadJSON(i *json.Iterator) err
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19054,11 +19317,10 @@ func (s *GitRefObject) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -19142,11 +19404,10 @@ func (s *GitTagObject) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -19315,6 +19576,7 @@ func (s *GitTreeTreeItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "mode":
 			if err := func() error {
+				s.Mode.Reset()
 				if err := s.Mode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19326,6 +19588,7 @@ func (s *GitTreeTreeItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19337,6 +19600,7 @@ func (s *GitTreeTreeItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19348,6 +19612,7 @@ func (s *GitTreeTreeItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "size":
 			if err := func() error {
+				s.Size.Reset()
 				if err := s.Size.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19359,6 +19624,7 @@ func (s *GitTreeTreeItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19370,6 +19636,7 @@ func (s *GitTreeTreeItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19436,6 +19703,7 @@ func (s *GitUpdateRefApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "force":
 			if err := func() error {
+				s.Force.Reset()
 				if err := s.Force.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19518,6 +19786,7 @@ func (s *GpgKeyEmailsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19529,6 +19798,7 @@ func (s *GpgKeyEmailsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verified":
 			if err := func() error {
+				s.Verified.Reset()
 				if err := s.Verified.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19666,6 +19936,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "can_certify":
 			if err := func() error {
+				s.CanCertify.Reset()
 				if err := s.CanCertify.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19677,6 +19948,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_encrypt_comms":
 			if err := func() error {
+				s.CanEncryptComms.Reset()
 				if err := s.CanEncryptComms.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19688,6 +19960,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_encrypt_storage":
 			if err := func() error {
+				s.CanEncryptStorage.Reset()
 				if err := s.CanEncryptStorage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19699,6 +19972,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_sign":
 			if err := func() error {
+				s.CanSign.Reset()
 				if err := s.CanSign.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19710,6 +19984,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19721,6 +19996,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -19745,6 +20021,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "expires_at":
 			if err := func() error {
+				s.ExpiresAt.Reset()
 				if err := s.ExpiresAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19756,6 +20033,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19767,6 +20045,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "key_id":
 			if err := func() error {
+				s.KeyID.Reset()
 				if err := s.KeyID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19778,6 +20057,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "primary_key_id":
 			if err := func() error {
+				s.PrimaryKeyID.Reset()
 				if err := s.PrimaryKeyID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19789,6 +20069,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "public_key":
 			if err := func() error {
+				s.PublicKey.Reset()
 				if err := s.PublicKey.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19800,6 +20081,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "raw_key":
 			if err := func() error {
+				s.RawKey.Reset()
 				if err := s.RawKey.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19811,6 +20093,7 @@ func (s *GpgKeySubkeysItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subkeys":
 			if err := func() error {
+				s.Subkeys = s.Subkeys[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -19928,6 +20211,7 @@ func (s *GroupMappingGroupsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -19939,6 +20223,7 @@ func (s *GroupMappingGroupsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "synced_at":
 			if err := func() error {
+				s.SyncedAt.Reset()
 				if err := s.SyncedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20261,6 +20546,7 @@ func (s *ImportProjectChoicesItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "human_name":
 			if err := func() error {
+				s.HumanName.Reset()
 				if err := s.HumanName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20272,6 +20558,7 @@ func (s *ImportProjectChoicesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tfvc_project":
 			if err := func() error {
+				s.TfvcProject.Reset()
 				if err := s.TfvcProject.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20283,6 +20570,7 @@ func (s *ImportProjectChoicesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "vcs":
 			if err := func() error {
+				s.Vcs.Reset()
 				if err := s.Vcs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20388,6 +20676,7 @@ func (s *IntegrationPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "checks":
 			if err := func() error {
+				s.Checks.Reset()
 				if err := s.Checks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20399,6 +20688,7 @@ func (s *IntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "contents":
 			if err := func() error {
+				s.Contents.Reset()
 				if err := s.Contents.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20410,6 +20700,7 @@ func (s *IntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deployments":
 			if err := func() error {
+				s.Deployments.Reset()
 				if err := s.Deployments.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20421,6 +20712,7 @@ func (s *IntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "issues":
 			if err := func() error {
+				s.Issues.Reset()
 				if err := s.Issues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20432,6 +20724,7 @@ func (s *IntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20737,6 +21030,7 @@ func (s *IssuesAddAssigneesApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "assignees":
 			if err := func() error {
+				s.Assignees = s.Assignees[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -20927,6 +21221,7 @@ func (s *IssuesCreateLabelApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "color":
 			if err := func() error {
+				s.Color.Reset()
 				if err := s.Color.ReadJSON(i); err != nil {
 					return err
 				}
@@ -20938,6 +21233,7 @@ func (s *IssuesCreateLabelApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21023,6 +21319,7 @@ func (s *IssuesCreateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21034,6 +21331,7 @@ func (s *IssuesCreateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "due_on":
 			if err := func() error {
+				s.DueOn.Reset()
 				if err := s.DueOn.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -21045,6 +21343,7 @@ func (s *IssuesCreateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21299,6 +21598,7 @@ func (s *IssuesLockApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lock_reason":
 			if err := func() error {
+				s.LockReason.Reset()
 				if err := s.LockReason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21474,6 +21774,7 @@ func (s *IssuesRemoveAssigneesApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "assignees":
 			if err := func() error {
+				s.Assignees = s.Assignees[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -21691,6 +21992,7 @@ func (s *IssuesUpdateLabelApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "color":
 			if err := func() error {
+				s.Color.Reset()
 				if err := s.Color.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21702,6 +22004,7 @@ func (s *IssuesUpdateLabelApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21713,6 +22016,7 @@ func (s *IssuesUpdateLabelApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "new_name":
 			if err := func() error {
+				s.NewName.Reset()
 				if err := s.NewName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21791,6 +22095,7 @@ func (s *IssuesUpdateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21802,6 +22107,7 @@ func (s *IssuesUpdateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "due_on":
 			if err := func() error {
+				s.DueOn.Reset()
 				if err := s.DueOn.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -21813,6 +22119,7 @@ func (s *IssuesUpdateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21824,6 +22131,7 @@ func (s *IssuesUpdateMilestoneApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -21926,6 +22234,7 @@ func (s *JobStepsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "completed_at":
 			if err := func() error {
+				s.CompletedAt.Reset()
 				if err := s.CompletedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -21966,6 +22275,7 @@ func (s *JobStepsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "started_at":
 			if err := func() error {
+				s.StartedAt.Reset()
 				if err := s.StartedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -22076,11 +22386,10 @@ func (s *LicenseContentLinks) ReadJSON(i *json.Iterator) error {
 		case "self":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.Self = v
 				if err != nil {
 					return err
 				}
-
-				s.Self = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -22164,6 +22473,7 @@ func (s *MarkdownRenderApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "context":
 			if err := func() error {
+				s.Context.Reset()
 				if err := s.Context.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22175,6 +22485,7 @@ func (s *MarkdownRenderApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mode":
 			if err := func() error {
+				s.Mode.Reset()
 				if err := s.Mode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22283,6 +22594,7 @@ func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator)
 		switch k {
 		case "effective_date":
 			if err := func() error {
+				s.EffectiveDate.Reset()
 				if err := s.EffectiveDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22294,6 +22606,7 @@ func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator)
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22305,6 +22618,7 @@ func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator)
 			return true
 		case "is_installed":
 			if err := func() error {
+				s.IsInstalled.Reset()
 				if err := s.IsInstalled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22316,6 +22630,7 @@ func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator)
 			return true
 		case "plan":
 			if err := func() error {
+				s.Plan.Reset()
 				if err := s.Plan.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22327,6 +22642,7 @@ func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator)
 			return true
 		case "unit_count":
 			if err := func() error {
+				s.UnitCount.Reset()
 				if err := s.UnitCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22425,6 +22741,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "billing_cycle":
 			if err := func() error {
+				s.BillingCycle.Reset()
 				if err := s.BillingCycle.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22436,6 +22753,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			return true
 		case "free_trial_ends_on":
 			if err := func() error {
+				s.FreeTrialEndsOn.Reset()
 				if err := s.FreeTrialEndsOn.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22447,6 +22765,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			return true
 		case "is_installed":
 			if err := func() error {
+				s.IsInstalled.Reset()
 				if err := s.IsInstalled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22458,6 +22777,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			return true
 		case "next_billing_date":
 			if err := func() error {
+				s.NextBillingDate.Reset()
 				if err := s.NextBillingDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22469,6 +22789,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			return true
 		case "on_free_trial":
 			if err := func() error {
+				s.OnFreeTrial.Reset()
 				if err := s.OnFreeTrial.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22480,6 +22801,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			return true
 		case "plan":
 			if err := func() error {
+				s.Plan.Reset()
 				if err := s.Plan.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22491,6 +22813,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			return true
 		case "unit_count":
 			if err := func() error {
+				s.UnitCount.Reset()
 				if err := s.UnitCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22502,6 +22825,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			return true
 		case "updated_at":
 			if err := func() error {
+				s.UpdatedAt.Reset()
 				if err := s.UpdatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -22924,6 +23248,7 @@ func (s *MetaRoot) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topic_search_url":
 			if err := func() error {
+				s.TopicSearchURL.Reset()
 				if err := s.TopicSearchURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23418,6 +23743,7 @@ func (s *MigrationsMapCommitAuthorApplicationJSONReq) ReadJSON(i *json.Iterator)
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23429,6 +23755,7 @@ func (s *MigrationsMapCommitAuthorApplicationJSONReq) ReadJSON(i *json.Iterator)
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23599,6 +23926,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json
 		switch k {
 		case "exclude":
 			if err := func() error {
+				s.Exclude = s.Exclude[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MigrationsStartForAuthenticatedUserApplicationJSONReqExcludeItem
@@ -23623,6 +23951,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json
 			return true
 		case "exclude_attachments":
 			if err := func() error {
+				s.ExcludeAttachments.Reset()
 				if err := s.ExcludeAttachments.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23634,6 +23963,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json
 			return true
 		case "exclude_owner_projects":
 			if err := func() error {
+				s.ExcludeOwnerProjects.Reset()
 				if err := s.ExcludeOwnerProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23645,6 +23975,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json
 			return true
 		case "exclude_releases":
 			if err := func() error {
+				s.ExcludeReleases.Reset()
 				if err := s.ExcludeReleases.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23656,6 +23987,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json
 			return true
 		case "lock_repositories":
 			if err := func() error {
+				s.LockRepositories.Reset()
 				if err := s.LockRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23667,6 +23999,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json
 			return true
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -23791,6 +24124,7 @@ func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "exclude":
 			if err := func() error {
+				s.Exclude = s.Exclude[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MigrationsStartForOrgApplicationJSONReqExcludeItem
@@ -23815,6 +24149,7 @@ func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "exclude_attachments":
 			if err := func() error {
+				s.ExcludeAttachments.Reset()
 				if err := s.ExcludeAttachments.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23826,6 +24161,7 @@ func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "exclude_owner_projects":
 			if err := func() error {
+				s.ExcludeOwnerProjects.Reset()
 				if err := s.ExcludeOwnerProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23837,6 +24173,7 @@ func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "exclude_releases":
 			if err := func() error {
+				s.ExcludeReleases.Reset()
 				if err := s.ExcludeReleases.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23848,6 +24185,7 @@ func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "lock_repositories":
 			if err := func() error {
+				s.LockRepositories.Reset()
 				if err := s.LockRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23859,6 +24197,7 @@ func (s *MigrationsStartForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -23964,6 +24303,7 @@ func (s *MigrationsStartImportApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "tfvc_project":
 			if err := func() error {
+				s.TfvcProject.Reset()
 				if err := s.TfvcProject.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23975,6 +24315,7 @@ func (s *MigrationsStartImportApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "vcs":
 			if err := func() error {
+				s.Vcs.Reset()
 				if err := s.Vcs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -23986,6 +24327,7 @@ func (s *MigrationsStartImportApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "vcs_password":
 			if err := func() error {
+				s.VcsPassword.Reset()
 				if err := s.VcsPassword.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24006,6 +24348,7 @@ func (s *MigrationsStartImportApplicationJSONReq) ReadJSON(i *json.Iterator) err
 			return true
 		case "vcs_username":
 			if err := func() error {
+				s.VcsUsername.Reset()
 				if err := s.VcsUsername.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24223,6 +24566,7 @@ func (s *MigrationsUpdateImportApplicationJSONReq) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "tfvc_project":
 			if err := func() error {
+				s.TfvcProject.Reset()
 				if err := s.TfvcProject.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24234,6 +24578,7 @@ func (s *MigrationsUpdateImportApplicationJSONReq) ReadJSON(i *json.Iterator) er
 			return true
 		case "vcs":
 			if err := func() error {
+				s.Vcs.Reset()
 				if err := s.Vcs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24245,6 +24590,7 @@ func (s *MigrationsUpdateImportApplicationJSONReq) ReadJSON(i *json.Iterator) er
 			return true
 		case "vcs_password":
 			if err := func() error {
+				s.VcsPassword.Reset()
 				if err := s.VcsPassword.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24256,6 +24602,7 @@ func (s *MigrationsUpdateImportApplicationJSONReq) ReadJSON(i *json.Iterator) er
 			return true
 		case "vcs_username":
 			if err := func() error {
+				s.VcsUsername.Reset()
 				if err := s.VcsUsername.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24350,6 +24697,7 @@ func (s *MinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "key":
 			if err := func() error {
+				s.Key.Reset()
 				if err := s.Key.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24361,6 +24709,7 @@ func (s *MinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24372,6 +24721,7 @@ func (s *MinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24383,6 +24733,7 @@ func (s *MinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spdx_id":
 			if err := func() error {
+				s.SpdxID.Reset()
 				if err := s.SpdxID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24394,6 +24745,7 @@ func (s *MinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24477,6 +24829,7 @@ func (s *MinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "admin":
 			if err := func() error {
+				s.Admin.Reset()
 				if err := s.Admin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24488,6 +24841,7 @@ func (s *MinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintain":
 			if err := func() error {
+				s.Maintain.Reset()
 				if err := s.Maintain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24499,6 +24853,7 @@ func (s *MinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pull":
 			if err := func() error {
+				s.Pull.Reset()
 				if err := s.Pull.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24510,6 +24865,7 @@ func (s *MinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "push":
 			if err := func() error {
+				s.Push.Reset()
 				if err := s.Push.ReadJSON(i); err != nil {
 					return err
 				}
@@ -24521,6 +24877,7 @@ func (s *MinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "triage":
 			if err := func() error {
+				s.Triage.Reset()
 				if err := s.Triage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25228,6 +25585,7 @@ func (s *NullableIntegrationPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "checks":
 			if err := func() error {
+				s.Checks.Reset()
 				if err := s.Checks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25239,6 +25597,7 @@ func (s *NullableIntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "contents":
 			if err := func() error {
+				s.Contents.Reset()
 				if err := s.Contents.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25250,6 +25609,7 @@ func (s *NullableIntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deployments":
 			if err := func() error {
+				s.Deployments.Reset()
 				if err := s.Deployments.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25261,6 +25621,7 @@ func (s *NullableIntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "issues":
 			if err := func() error {
+				s.Issues.Reset()
 				if err := s.Issues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25272,6 +25633,7 @@ func (s *NullableIntegrationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25358,6 +25720,7 @@ func (s *NullableRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintain":
 			if err := func() error {
+				s.Maintain.Reset()
 				if err := s.Maintain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25387,6 +25750,7 @@ func (s *NullableRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "triage":
 			if err := func() error {
+				s.Triage.Reset()
 				if err := s.Triage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25857,6 +26221,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25868,6 +26233,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25879,6 +26245,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25890,6 +26257,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25901,6 +26269,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "archive_url":
 			if err := func() error {
+				s.ArchiveURL.Reset()
 				if err := s.ArchiveURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25912,6 +26281,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "archived":
 			if err := func() error {
+				s.Archived.Reset()
 				if err := s.Archived.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25923,6 +26293,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "assignees_url":
 			if err := func() error {
+				s.AssigneesURL.Reset()
 				if err := s.AssigneesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25934,6 +26305,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "blobs_url":
 			if err := func() error {
+				s.BlobsURL.Reset()
 				if err := s.BlobsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25945,6 +26317,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "branches_url":
 			if err := func() error {
+				s.BranchesURL.Reset()
 				if err := s.BranchesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25956,6 +26329,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "clone_url":
 			if err := func() error {
+				s.CloneURL.Reset()
 				if err := s.CloneURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25967,6 +26341,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "collaborators_url":
 			if err := func() error {
+				s.CollaboratorsURL.Reset()
 				if err := s.CollaboratorsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25978,6 +26353,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "comments_url":
 			if err := func() error {
+				s.CommentsURL.Reset()
 				if err := s.CommentsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -25989,6 +26365,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "commits_url":
 			if err := func() error {
+				s.CommitsURL.Reset()
 				if err := s.CommitsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26000,6 +26377,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "compare_url":
 			if err := func() error {
+				s.CompareURL.Reset()
 				if err := s.CompareURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26011,6 +26389,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "contents_url":
 			if err := func() error {
+				s.ContentsURL.Reset()
 				if err := s.ContentsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26022,6 +26401,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "contributors_url":
 			if err := func() error {
+				s.ContributorsURL.Reset()
 				if err := s.ContributorsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26033,6 +26413,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26044,6 +26425,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "default_branch":
 			if err := func() error {
+				s.DefaultBranch.Reset()
 				if err := s.DefaultBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26055,6 +26437,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26066,6 +26449,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "deployments_url":
 			if err := func() error {
+				s.DeploymentsURL.Reset()
 				if err := s.DeploymentsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26077,6 +26461,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26088,6 +26473,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "disabled":
 			if err := func() error {
+				s.Disabled.Reset()
 				if err := s.Disabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26099,6 +26485,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "downloads_url":
 			if err := func() error {
+				s.DownloadsURL.Reset()
 				if err := s.DownloadsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26110,6 +26497,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "events_url":
 			if err := func() error {
+				s.EventsURL.Reset()
 				if err := s.EventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26121,6 +26509,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "fork":
 			if err := func() error {
+				s.Fork.Reset()
 				if err := s.Fork.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26132,6 +26521,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "forks_count":
 			if err := func() error {
+				s.ForksCount.Reset()
 				if err := s.ForksCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26143,6 +26533,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "forks_url":
 			if err := func() error {
+				s.ForksURL.Reset()
 				if err := s.ForksURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26154,6 +26545,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "full_name":
 			if err := func() error {
+				s.FullName.Reset()
 				if err := s.FullName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26165,6 +26557,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "git_commits_url":
 			if err := func() error {
+				s.GitCommitsURL.Reset()
 				if err := s.GitCommitsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26176,6 +26569,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "git_refs_url":
 			if err := func() error {
+				s.GitRefsURL.Reset()
 				if err := s.GitRefsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26187,6 +26581,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "git_tags_url":
 			if err := func() error {
+				s.GitTagsURL.Reset()
 				if err := s.GitTagsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26198,6 +26593,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "git_url":
 			if err := func() error {
+				s.GitURL.Reset()
 				if err := s.GitURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26209,6 +26605,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26220,6 +26617,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "has_downloads":
 			if err := func() error {
+				s.HasDownloads.Reset()
 				if err := s.HasDownloads.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26231,6 +26629,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "has_issues":
 			if err := func() error {
+				s.HasIssues.Reset()
 				if err := s.HasIssues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26242,6 +26641,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "has_pages":
 			if err := func() error {
+				s.HasPages.Reset()
 				if err := s.HasPages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26253,6 +26653,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "has_projects":
 			if err := func() error {
+				s.HasProjects.Reset()
 				if err := s.HasProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26264,6 +26665,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "has_wiki":
 			if err := func() error {
+				s.HasWiki.Reset()
 				if err := s.HasWiki.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26275,6 +26677,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "homepage":
 			if err := func() error {
+				s.Homepage.Reset()
 				if err := s.Homepage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26286,6 +26689,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "hooks_url":
 			if err := func() error {
+				s.HooksURL.Reset()
 				if err := s.HooksURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26297,6 +26701,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26308,6 +26713,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26319,6 +26725,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "issue_comment_url":
 			if err := func() error {
+				s.IssueCommentURL.Reset()
 				if err := s.IssueCommentURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26330,6 +26737,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "issue_events_url":
 			if err := func() error {
+				s.IssueEventsURL.Reset()
 				if err := s.IssueEventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26341,6 +26749,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "issues_url":
 			if err := func() error {
+				s.IssuesURL.Reset()
 				if err := s.IssuesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26352,6 +26761,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "keys_url":
 			if err := func() error {
+				s.KeysURL.Reset()
 				if err := s.KeysURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26363,6 +26773,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "labels_url":
 			if err := func() error {
+				s.LabelsURL.Reset()
 				if err := s.LabelsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26374,6 +26785,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "language":
 			if err := func() error {
+				s.Language.Reset()
 				if err := s.Language.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26385,6 +26797,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "languages_url":
 			if err := func() error {
+				s.LanguagesURL.Reset()
 				if err := s.LanguagesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26396,6 +26809,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "merges_url":
 			if err := func() error {
+				s.MergesURL.Reset()
 				if err := s.MergesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26407,6 +26821,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "milestones_url":
 			if err := func() error {
+				s.MilestonesURL.Reset()
 				if err := s.MilestonesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26418,6 +26833,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "mirror_url":
 			if err := func() error {
+				s.MirrorURL.Reset()
 				if err := s.MirrorURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26429,6 +26845,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26440,6 +26857,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "network_count":
 			if err := func() error {
+				s.NetworkCount.Reset()
 				if err := s.NetworkCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26451,6 +26869,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26462,6 +26881,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "notifications_url":
 			if err := func() error {
+				s.NotificationsURL.Reset()
 				if err := s.NotificationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26473,6 +26893,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "open_issues_count":
 			if err := func() error {
+				s.OpenIssuesCount.Reset()
 				if err := s.OpenIssuesCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26484,6 +26905,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "owner":
 			if err := func() error {
+				s.Owner.Reset()
 				if err := s.Owner.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26495,6 +26917,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26506,6 +26929,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26517,6 +26941,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "pulls_url":
 			if err := func() error {
+				s.PullsURL.Reset()
 				if err := s.PullsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26528,6 +26953,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "pushed_at":
 			if err := func() error {
+				s.PushedAt.Reset()
 				if err := s.PushedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26539,6 +26965,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "releases_url":
 			if err := func() error {
+				s.ReleasesURL.Reset()
 				if err := s.ReleasesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26550,6 +26977,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "ssh_url":
 			if err := func() error {
+				s.SSHURL.Reset()
 				if err := s.SSHURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26561,6 +26989,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "size":
 			if err := func() error {
+				s.Size.Reset()
 				if err := s.Size.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26572,6 +27001,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "stargazers_count":
 			if err := func() error {
+				s.StargazersCount.Reset()
 				if err := s.StargazersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26583,6 +27013,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "stargazers_url":
 			if err := func() error {
+				s.StargazersURL.Reset()
 				if err := s.StargazersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26594,6 +27025,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "statuses_url":
 			if err := func() error {
+				s.StatusesURL.Reset()
 				if err := s.StatusesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26605,6 +27037,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "subscribers_count":
 			if err := func() error {
+				s.SubscribersCount.Reset()
 				if err := s.SubscribersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26616,6 +27049,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "subscribers_url":
 			if err := func() error {
+				s.SubscribersURL.Reset()
 				if err := s.SubscribersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26627,6 +27061,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "subscription_url":
 			if err := func() error {
+				s.SubscriptionURL.Reset()
 				if err := s.SubscriptionURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26638,6 +27073,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "svn_url":
 			if err := func() error {
+				s.SvnURL.Reset()
 				if err := s.SvnURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26649,6 +27085,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "tags_url":
 			if err := func() error {
+				s.TagsURL.Reset()
 				if err := s.TagsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26660,6 +27097,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "teams_url":
 			if err := func() error {
+				s.TeamsURL.Reset()
 				if err := s.TeamsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26671,6 +27109,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "temp_clone_token":
 			if err := func() error {
+				s.TempCloneToken.Reset()
 				if err := s.TempCloneToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26682,6 +27121,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "topics":
 			if err := func() error {
+				s.Topics = s.Topics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -26706,6 +27146,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "trees_url":
 			if err := func() error {
+				s.TreesURL.Reset()
 				if err := s.TreesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26717,6 +27158,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26728,6 +27170,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "updated_at":
 			if err := func() error {
+				s.UpdatedAt.Reset()
 				if err := s.UpdatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26739,6 +27182,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26750,6 +27194,7 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			return true
 		case "watchers_count":
 			if err := func() error {
+				s.WatchersCount.Reset()
 				if err := s.WatchersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26898,6 +27343,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "avatar_url":
 			if err := func() error {
+				s.AvatarURL.Reset()
 				if err := s.AvatarURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26909,6 +27355,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "events_url":
 			if err := func() error {
+				s.EventsURL.Reset()
 				if err := s.EventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26920,6 +27367,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "followers_url":
 			if err := func() error {
+				s.FollowersURL.Reset()
 				if err := s.FollowersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26931,6 +27379,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "following_url":
 			if err := func() error {
+				s.FollowingURL.Reset()
 				if err := s.FollowingURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26942,6 +27391,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "gists_url":
 			if err := func() error {
+				s.GistsURL.Reset()
 				if err := s.GistsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26953,6 +27403,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "gravatar_id":
 			if err := func() error {
+				s.GravatarID.Reset()
 				if err := s.GravatarID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26964,6 +27415,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26975,6 +27427,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26986,6 +27439,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "login":
 			if err := func() error {
+				s.Login.Reset()
 				if err := s.Login.ReadJSON(i); err != nil {
 					return err
 				}
@@ -26997,6 +27451,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27008,6 +27463,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "organizations_url":
 			if err := func() error {
+				s.OrganizationsURL.Reset()
 				if err := s.OrganizationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27019,6 +27475,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "received_events_url":
 			if err := func() error {
+				s.ReceivedEventsURL.Reset()
 				if err := s.ReceivedEventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27030,6 +27487,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "repos_url":
 			if err := func() error {
+				s.ReposURL.Reset()
 				if err := s.ReposURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27041,6 +27499,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "site_admin":
 			if err := func() error {
+				s.SiteAdmin.Reset()
 				if err := s.SiteAdmin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27052,6 +27511,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "starred_url":
 			if err := func() error {
+				s.StarredURL.Reset()
 				if err := s.StarredURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27063,6 +27523,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "subscriptions_url":
 			if err := func() error {
+				s.SubscriptionsURL.Reset()
 				if err := s.SubscriptionsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27074,6 +27535,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27085,6 +27547,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27168,6 +27631,7 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Itera
 		switch k {
 		case "admin":
 			if err := func() error {
+				s.Admin.Reset()
 				if err := s.Admin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27179,6 +27643,7 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Itera
 			return true
 		case "maintain":
 			if err := func() error {
+				s.Maintain.Reset()
 				if err := s.Maintain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27190,6 +27655,7 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Itera
 			return true
 		case "pull":
 			if err := func() error {
+				s.Pull.Reset()
 				if err := s.Pull.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27201,6 +27667,7 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Itera
 			return true
 		case "push":
 			if err := func() error {
+				s.Push.Reset()
 				if err := s.Push.ReadJSON(i); err != nil {
 					return err
 				}
@@ -27212,6 +27679,7 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Itera
 			return true
 		case "triage":
 			if err := func() error {
+				s.Triage.Reset()
 				if err := s.Triage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31591,6 +32059,7 @@ func (s *OrgHookConfig) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "content_type":
 			if err := func() error {
+				s.ContentType.Reset()
 				if err := s.ContentType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31602,6 +32071,7 @@ func (s *OrgHookConfig) ReadJSON(i *json.Iterator) error {
 			return true
 		case "insecure_ssl":
 			if err := func() error {
+				s.InsecureSsl.Reset()
 				if err := s.InsecureSsl.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31613,6 +32083,7 @@ func (s *OrgHookConfig) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret":
 			if err := func() error {
+				s.Secret.Reset()
 				if err := s.Secret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31624,6 +32095,7 @@ func (s *OrgHookConfig) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31793,6 +32265,7 @@ func (s *OrganizationFullPlan) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "filled_seats":
 			if err := func() error {
+				s.FilledSeats.Reset()
 				if err := s.FilledSeats.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31822,6 +32295,7 @@ func (s *OrganizationFullPlan) ReadJSON(i *json.Iterator) error {
 			return true
 		case "seats":
 			if err := func() error {
+				s.Seats.Reset()
 				if err := s.Seats.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32433,6 +32907,7 @@ func (s *OrgsCreateInvitationApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32444,6 +32919,7 @@ func (s *OrgsCreateInvitationApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 			return true
 		case "invitee_id":
 			if err := func() error {
+				s.InviteeID.Reset()
 				if err := s.InviteeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32455,6 +32931,7 @@ func (s *OrgsCreateInvitationApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 			return true
 		case "role":
 			if err := func() error {
+				s.Role.Reset()
 				if err := s.Role.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32466,6 +32943,7 @@ func (s *OrgsCreateInvitationApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 			return true
 		case "team_ids":
 			if err := func() error {
+				s.TeamIds = s.TeamIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -32903,6 +33381,7 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) ReadJSON(i *json.Iter
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32914,6 +33393,7 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) ReadJSON(i *json.Iter
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33071,6 +33551,7 @@ func (s *OrgsSetMembershipForUserApplicationJSONReq) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "role":
 			if err := func() error {
+				s.Role.Reset()
 				if err := s.Role.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33329,6 +33810,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "billing_email":
 			if err := func() error {
+				s.BillingEmail.Reset()
 				if err := s.BillingEmail.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33340,6 +33822,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "blog":
 			if err := func() error {
+				s.Blog.Reset()
 				if err := s.Blog.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33351,6 +33834,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "company":
 			if err := func() error {
+				s.Company.Reset()
 				if err := s.Company.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33362,6 +33846,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "default_repository_permission":
 			if err := func() error {
+				s.DefaultRepositoryPermission.Reset()
 				if err := s.DefaultRepositoryPermission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33373,6 +33858,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33384,6 +33870,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33395,6 +33882,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_organization_projects":
 			if err := func() error {
+				s.HasOrganizationProjects.Reset()
 				if err := s.HasOrganizationProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33406,6 +33894,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_repository_projects":
 			if err := func() error {
+				s.HasRepositoryProjects.Reset()
 				if err := s.HasRepositoryProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33417,6 +33906,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33428,6 +33918,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_allowed_repository_creation_type":
 			if err := func() error {
+				s.MembersAllowedRepositoryCreationType.Reset()
 				if err := s.MembersAllowedRepositoryCreationType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33439,6 +33930,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_internal_repositories":
 			if err := func() error {
+				s.MembersCanCreateInternalRepositories.Reset()
 				if err := s.MembersCanCreateInternalRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33450,6 +33942,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_pages":
 			if err := func() error {
+				s.MembersCanCreatePages.Reset()
 				if err := s.MembersCanCreatePages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33461,6 +33954,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_private_pages":
 			if err := func() error {
+				s.MembersCanCreatePrivatePages.Reset()
 				if err := s.MembersCanCreatePrivatePages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33472,6 +33966,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_private_repositories":
 			if err := func() error {
+				s.MembersCanCreatePrivateRepositories.Reset()
 				if err := s.MembersCanCreatePrivateRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33483,6 +33978,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_public_pages":
 			if err := func() error {
+				s.MembersCanCreatePublicPages.Reset()
 				if err := s.MembersCanCreatePublicPages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33494,6 +33990,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_public_repositories":
 			if err := func() error {
+				s.MembersCanCreatePublicRepositories.Reset()
 				if err := s.MembersCanCreatePublicRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33505,6 +34002,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_repositories":
 			if err := func() error {
+				s.MembersCanCreateRepositories.Reset()
 				if err := s.MembersCanCreateRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33516,6 +34014,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33527,6 +34026,7 @@ func (s *OrgsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "twitter_username":
 			if err := func() error {
+				s.TwitterUsername.Reset()
 				if err := s.TwitterUsername.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33911,6 +34411,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "caa_error":
 			if err := func() error {
+				s.CaaError.Reset()
 				if err := s.CaaError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33922,6 +34423,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "dns_resolves":
 			if err := func() error {
+				s.DNSResolves.Reset()
 				if err := s.DNSResolves.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33933,6 +34435,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "enforces_https":
 			if err := func() error {
+				s.EnforcesHTTPS.Reset()
 				if err := s.EnforcesHTTPS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33944,6 +34447,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "https_error":
 			if err := func() error {
+				s.HTTPSError.Reset()
 				if err := s.HTTPSError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33955,6 +34459,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_cname_record":
 			if err := func() error {
+				s.HasCnameRecord.Reset()
 				if err := s.HasCnameRecord.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33966,6 +34471,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_mx_records_present":
 			if err := func() error {
+				s.HasMxRecordsPresent.Reset()
 				if err := s.HasMxRecordsPresent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33977,6 +34483,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "host":
 			if err := func() error {
+				s.Host.Reset()
 				if err := s.Host.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33988,6 +34495,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_a_record":
 			if err := func() error {
+				s.IsARecord.Reset()
 				if err := s.IsARecord.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33999,6 +34507,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_apex_domain":
 			if err := func() error {
+				s.IsApexDomain.Reset()
 				if err := s.IsApexDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34010,6 +34519,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cloudflare_ip":
 			if err := func() error {
+				s.IsCloudflareIP.Reset()
 				if err := s.IsCloudflareIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34021,6 +34531,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cname_to_fastly":
 			if err := func() error {
+				s.IsCnameToFastly.Reset()
 				if err := s.IsCnameToFastly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34032,6 +34543,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cname_to_github_user_domain":
 			if err := func() error {
+				s.IsCnameToGithubUserDomain.Reset()
 				if err := s.IsCnameToGithubUserDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34043,6 +34555,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cname_to_pages_dot_github_dot_com":
 			if err := func() error {
+				s.IsCnameToPagesDotGithubDotCom.Reset()
 				if err := s.IsCnameToPagesDotGithubDotCom.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34054,6 +34567,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_fastly_ip":
 			if err := func() error {
+				s.IsFastlyIP.Reset()
 				if err := s.IsFastlyIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34065,6 +34579,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_https_eligible":
 			if err := func() error {
+				s.IsHTTPSEligible.Reset()
 				if err := s.IsHTTPSEligible.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34076,6 +34591,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_non_github_pages_ip_present":
 			if err := func() error {
+				s.IsNonGithubPagesIPPresent.Reset()
 				if err := s.IsNonGithubPagesIPPresent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34087,6 +34603,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_old_ip_address":
 			if err := func() error {
+				s.IsOldIPAddress.Reset()
 				if err := s.IsOldIPAddress.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34098,6 +34615,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_pages_domain":
 			if err := func() error {
+				s.IsPagesDomain.Reset()
 				if err := s.IsPagesDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34109,6 +34627,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_pointed_to_github_pages_ip":
 			if err := func() error {
+				s.IsPointedToGithubPagesIP.Reset()
 				if err := s.IsPointedToGithubPagesIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34120,6 +34639,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_proxied":
 			if err := func() error {
+				s.IsProxied.Reset()
 				if err := s.IsProxied.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34131,6 +34651,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_served_by_pages":
 			if err := func() error {
+				s.IsServedByPages.Reset()
 				if err := s.IsServedByPages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34142,6 +34663,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_valid":
 			if err := func() error {
+				s.IsValid.Reset()
 				if err := s.IsValid.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34153,6 +34675,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_valid_domain":
 			if err := func() error {
+				s.IsValidDomain.Reset()
 				if err := s.IsValidDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34164,6 +34687,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nameservers":
 			if err := func() error {
+				s.Nameservers.Reset()
 				if err := s.Nameservers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34175,6 +34699,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34186,6 +34711,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "responds_to_https":
 			if err := func() error {
+				s.RespondsToHTTPS.Reset()
 				if err := s.RespondsToHTTPS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34197,6 +34723,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "should_be_a_record":
 			if err := func() error {
+				s.ShouldBeARecord.Reset()
 				if err := s.ShouldBeARecord.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34208,6 +34735,7 @@ func (s *PagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "uri":
 			if err := func() error {
+				s.URI.Reset()
 				if err := s.URI.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34406,6 +34934,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "caa_error":
 			if err := func() error {
+				s.CaaError.Reset()
 				if err := s.CaaError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34417,6 +34946,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "dns_resolves":
 			if err := func() error {
+				s.DNSResolves.Reset()
 				if err := s.DNSResolves.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34428,6 +34958,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "enforces_https":
 			if err := func() error {
+				s.EnforcesHTTPS.Reset()
 				if err := s.EnforcesHTTPS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34439,6 +34970,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "https_error":
 			if err := func() error {
+				s.HTTPSError.Reset()
 				if err := s.HTTPSError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34450,6 +34982,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_cname_record":
 			if err := func() error {
+				s.HasCnameRecord.Reset()
 				if err := s.HasCnameRecord.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34461,6 +34994,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_mx_records_present":
 			if err := func() error {
+				s.HasMxRecordsPresent.Reset()
 				if err := s.HasMxRecordsPresent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34472,6 +35006,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "host":
 			if err := func() error {
+				s.Host.Reset()
 				if err := s.Host.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34483,6 +35018,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_a_record":
 			if err := func() error {
+				s.IsARecord.Reset()
 				if err := s.IsARecord.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34494,6 +35030,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_apex_domain":
 			if err := func() error {
+				s.IsApexDomain.Reset()
 				if err := s.IsApexDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34505,6 +35042,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cloudflare_ip":
 			if err := func() error {
+				s.IsCloudflareIP.Reset()
 				if err := s.IsCloudflareIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34516,6 +35054,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cname_to_fastly":
 			if err := func() error {
+				s.IsCnameToFastly.Reset()
 				if err := s.IsCnameToFastly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34527,6 +35066,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cname_to_github_user_domain":
 			if err := func() error {
+				s.IsCnameToGithubUserDomain.Reset()
 				if err := s.IsCnameToGithubUserDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34538,6 +35078,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_cname_to_pages_dot_github_dot_com":
 			if err := func() error {
+				s.IsCnameToPagesDotGithubDotCom.Reset()
 				if err := s.IsCnameToPagesDotGithubDotCom.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34549,6 +35090,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_fastly_ip":
 			if err := func() error {
+				s.IsFastlyIP.Reset()
 				if err := s.IsFastlyIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34560,6 +35102,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_https_eligible":
 			if err := func() error {
+				s.IsHTTPSEligible.Reset()
 				if err := s.IsHTTPSEligible.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34571,6 +35114,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_non_github_pages_ip_present":
 			if err := func() error {
+				s.IsNonGithubPagesIPPresent.Reset()
 				if err := s.IsNonGithubPagesIPPresent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34582,6 +35126,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_old_ip_address":
 			if err := func() error {
+				s.IsOldIPAddress.Reset()
 				if err := s.IsOldIPAddress.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34593,6 +35138,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_pages_domain":
 			if err := func() error {
+				s.IsPagesDomain.Reset()
 				if err := s.IsPagesDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34604,6 +35150,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_pointed_to_github_pages_ip":
 			if err := func() error {
+				s.IsPointedToGithubPagesIP.Reset()
 				if err := s.IsPointedToGithubPagesIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34615,6 +35162,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_proxied":
 			if err := func() error {
+				s.IsProxied.Reset()
 				if err := s.IsProxied.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34626,6 +35174,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_served_by_pages":
 			if err := func() error {
+				s.IsServedByPages.Reset()
 				if err := s.IsServedByPages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34637,6 +35186,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_valid":
 			if err := func() error {
+				s.IsValid.Reset()
 				if err := s.IsValid.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34648,6 +35198,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_valid_domain":
 			if err := func() error {
+				s.IsValidDomain.Reset()
 				if err := s.IsValidDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34659,6 +35210,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nameservers":
 			if err := func() error {
+				s.Nameservers.Reset()
 				if err := s.Nameservers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34670,6 +35222,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34681,6 +35234,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "responds_to_https":
 			if err := func() error {
+				s.RespondsToHTTPS.Reset()
 				if err := s.RespondsToHTTPS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34692,6 +35246,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "should_be_a_record":
 			if err := func() error {
+				s.ShouldBeARecord.Reset()
 				if err := s.ShouldBeARecord.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34703,6 +35258,7 @@ func (s *PagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 			return true
 		case "uri":
 			if err := func() error {
+				s.URI.Reset()
 				if err := s.URI.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34943,6 +35499,7 @@ func (s *ProjectsAddCollaboratorApplicationJSONReq) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35147,6 +35704,7 @@ func (s *ProjectsCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35248,6 +35806,7 @@ func (s *ProjectsCreateForOrgApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35343,6 +35902,7 @@ func (s *ProjectsCreateForRepoApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35462,6 +36022,7 @@ func (s *ProjectsDeleteCardForbidden) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35473,6 +36034,7 @@ func (s *ProjectsDeleteCardForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "errors":
 			if err := func() error {
+				s.Errors = s.Errors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -35497,6 +36059,7 @@ func (s *ProjectsDeleteCardForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35681,6 +36244,7 @@ func (s *ProjectsDeleteForbidden) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35692,6 +36256,7 @@ func (s *ProjectsDeleteForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "errors":
 			if err := func() error {
+				s.Errors = s.Errors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -35716,6 +36281,7 @@ func (s *ProjectsDeleteForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35884,6 +36450,7 @@ func (s *ProjectsMoveCardApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "column_id":
 			if err := func() error {
+				s.ColumnID.Reset()
 				if err := s.ColumnID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36020,6 +36587,7 @@ func (s *ProjectsMoveCardForbidden) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36031,6 +36599,7 @@ func (s *ProjectsMoveCardForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "errors":
 			if err := func() error {
+				s.Errors = s.Errors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ProjectsMoveCardForbiddenErrorsItem
@@ -36057,6 +36626,7 @@ func (s *ProjectsMoveCardForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36135,6 +36705,7 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "code":
 			if err := func() error {
+				s.Code.Reset()
 				if err := s.Code.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36146,6 +36717,7 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "field":
 			if err := func() error {
+				s.Field.Reset()
 				if err := s.Field.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36157,6 +36729,7 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36168,6 +36741,7 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resource":
 			if err := func() error {
+				s.Resource.Reset()
 				if err := s.Resource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36419,6 +36993,7 @@ func (s *ProjectsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36430,6 +37005,7 @@ func (s *ProjectsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36441,6 +37017,7 @@ func (s *ProjectsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_permission":
 			if err := func() error {
+				s.OrganizationPermission.Reset()
 				if err := s.OrganizationPermission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36452,6 +37029,7 @@ func (s *ProjectsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36463,6 +37041,7 @@ func (s *ProjectsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36557,6 +37136,7 @@ func (s *ProjectsUpdateCardApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "archived":
 			if err := func() error {
+				s.Archived.Reset()
 				if err := s.Archived.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36568,6 +37148,7 @@ func (s *ProjectsUpdateCardApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "note":
 			if err := func() error {
+				s.Note.Reset()
 				if err := s.Note.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36722,6 +37303,7 @@ func (s *ProjectsUpdateForbidden) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36733,6 +37315,7 @@ func (s *ProjectsUpdateForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "errors":
 			if err := func() error {
+				s.Errors = s.Errors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36757,6 +37340,7 @@ func (s *ProjectsUpdateForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36996,11 +37580,10 @@ func (s *ProtectedBranchEnforceAdmins) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -37095,6 +37678,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json
 		switch k {
 		case "teams":
 			if err := func() error {
+				s.Teams = s.Teams[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Team
@@ -37121,6 +37705,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json
 			return true
 		case "teams_url":
 			if err := func() error {
+				s.TeamsURL.Reset()
 				if err := s.TeamsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37132,6 +37717,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37143,6 +37729,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json
 			return true
 		case "users":
 			if err := func() error {
+				s.Users = s.Users[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleUser
@@ -37169,6 +37756,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json
 			return true
 		case "users_url":
 			if err := func() error {
+				s.UsersURL.Reset()
 				if err := s.UsersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37232,6 +37820,7 @@ func (s *ProtectedBranchRequiredConversationResolution) ReadJSON(i *json.Iterato
 		switch k {
 		case "enabled":
 			if err := func() error {
+				s.Enabled.Reset()
 				if err := s.Enabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37372,6 +37961,7 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "dismiss_stale_reviews":
 			if err := func() error {
+				s.DismissStaleReviews.Reset()
 				if err := s.DismissStaleReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37383,6 +37973,7 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) e
 			return true
 		case "dismissal_restrictions":
 			if err := func() error {
+				s.DismissalRestrictions.Reset()
 				if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37394,6 +37985,7 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) e
 			return true
 		case "require_code_owner_reviews":
 			if err := func() error {
+				s.RequireCodeOwnerReviews.Reset()
 				if err := s.RequireCodeOwnerReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37405,6 +37997,7 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) e
 			return true
 		case "required_approving_review_count":
 			if err := func() error {
+				s.RequiredApprovingReviewCount.Reset()
 				if err := s.RequiredApprovingReviewCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37417,11 +38010,10 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) e
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -37506,6 +38098,7 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSO
 		switch k {
 		case "teams":
 			if err := func() error {
+				s.Teams = s.Teams[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Team
@@ -37533,11 +38126,10 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSO
 		case "teams_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -37547,11 +38139,10 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSO
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -37560,6 +38151,7 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSO
 			return true
 		case "users":
 			if err := func() error {
+				s.Users = s.Users[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleUser
@@ -37587,11 +38179,10 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSO
 		case "users_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.UsersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.UsersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -37663,11 +38254,10 @@ func (s *ProtectedBranchRequiredSignatures) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -38152,11 +38742,10 @@ func (s *PullRequestReviewCommentLinksHTML) ReadJSON(i *json.Iterator) error {
 		case "href":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.Href = v
 				if err != nil {
 					return err
 				}
-
-				s.Href = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -38216,11 +38805,10 @@ func (s *PullRequestReviewCommentLinksPullRequest) ReadJSON(i *json.Iterator) er
 		case "href":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.Href = v
 				if err != nil {
 					return err
 				}
-
-				s.Href = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -38280,11 +38868,10 @@ func (s *PullRequestReviewCommentLinksSelf) ReadJSON(i *json.Iterator) error {
 		case "href":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.Href = v
 				if err != nil {
 					return err
 				}
-
-				s.Href = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -38689,6 +39276,7 @@ func (s *PullsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38700,6 +39288,7 @@ func (s *PullsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "draft":
 			if err := func() error {
+				s.Draft.Reset()
 				if err := s.Draft.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38720,6 +39309,7 @@ func (s *PullsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "issue":
 			if err := func() error {
+				s.Issue.Reset()
 				if err := s.Issue.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38731,6 +39321,7 @@ func (s *PullsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintainer_can_modify":
 			if err := func() error {
+				s.MaintainerCanModify.Reset()
 				if err := s.MaintainerCanModify.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38742,6 +39333,7 @@ func (s *PullsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38886,6 +39478,7 @@ func (s *PullsCreateReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38897,6 +39490,7 @@ func (s *PullsCreateReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "comments":
 			if err := func() error {
+				s.Comments = s.Comments[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PullsCreateReviewApplicationJSONReqCommentsItem
@@ -38923,6 +39517,7 @@ func (s *PullsCreateReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "commit_id":
 			if err := func() error {
+				s.CommitID.Reset()
 				if err := s.CommitID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38934,6 +39529,7 @@ func (s *PullsCreateReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "event":
 			if err := func() error {
+				s.Event.Reset()
 				if err := s.Event.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39032,6 +39628,7 @@ func (s *PullsCreateReviewApplicationJSONReqCommentsItem) ReadJSON(i *json.Itera
 			return true
 		case "line":
 			if err := func() error {
+				s.Line.Reset()
 				if err := s.Line.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39052,6 +39649,7 @@ func (s *PullsCreateReviewApplicationJSONReqCommentsItem) ReadJSON(i *json.Itera
 			return true
 		case "position":
 			if err := func() error {
+				s.Position.Reset()
 				if err := s.Position.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39063,6 +39661,7 @@ func (s *PullsCreateReviewApplicationJSONReqCommentsItem) ReadJSON(i *json.Itera
 			return true
 		case "side":
 			if err := func() error {
+				s.Side.Reset()
 				if err := s.Side.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39074,6 +39673,7 @@ func (s *PullsCreateReviewApplicationJSONReqCommentsItem) ReadJSON(i *json.Itera
 			return true
 		case "start_line":
 			if err := func() error {
+				s.StartLine.Reset()
 				if err := s.StartLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39085,6 +39685,7 @@ func (s *PullsCreateReviewApplicationJSONReqCommentsItem) ReadJSON(i *json.Itera
 			return true
 		case "start_side":
 			if err := func() error {
+				s.StartSide.Reset()
 				if err := s.StartSide.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39206,6 +39807,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "commit_id":
 			if err := func() error {
+				s.CommitID.Reset()
 				if err := s.CommitID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39217,6 +39819,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "in_reply_to":
 			if err := func() error {
+				s.InReplyTo.Reset()
 				if err := s.InReplyTo.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39228,6 +39831,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "line":
 			if err := func() error {
+				s.Line.Reset()
 				if err := s.Line.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39239,6 +39843,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39250,6 +39855,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "position":
 			if err := func() error {
+				s.Position.Reset()
 				if err := s.Position.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39261,6 +39867,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "side":
 			if err := func() error {
+				s.Side.Reset()
 				if err := s.Side.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39272,6 +39879,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "start_line":
 			if err := func() error {
+				s.StartLine.Reset()
 				if err := s.StartLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39283,6 +39891,7 @@ func (s *PullsCreateReviewCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "start_side":
 			if err := func() error {
+				s.StartSide.Reset()
 				if err := s.StartSide.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39418,6 +40027,7 @@ func (s *PullsDismissReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "event":
 			if err := func() error {
+				s.Event.Reset()
 				if err := s.Event.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39515,6 +40125,7 @@ func (s *PullsMergeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "commit_message":
 			if err := func() error {
+				s.CommitMessage.Reset()
 				if err := s.CommitMessage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39526,6 +40137,7 @@ func (s *PullsMergeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "commit_title":
 			if err := func() error {
+				s.CommitTitle.Reset()
 				if err := s.CommitTitle.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39537,6 +40149,7 @@ func (s *PullsMergeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "merge_method":
 			if err := func() error {
+				s.MergeMethod.Reset()
 				if err := s.MergeMethod.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39548,6 +40161,7 @@ func (s *PullsMergeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39627,6 +40241,7 @@ func (s *PullsMergeConflict) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39638,6 +40253,7 @@ func (s *PullsMergeConflict) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39706,6 +40322,7 @@ func (s *PullsMergeMethodNotAllowed) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39717,6 +40334,7 @@ func (s *PullsMergeMethodNotAllowed) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39797,6 +40415,7 @@ func (s *PullsRemoveRequestedReviewersApplicationJSONReq) ReadJSON(i *json.Itera
 		switch k {
 		case "reviewers":
 			if err := func() error {
+				s.Reviewers = s.Reviewers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -39821,6 +40440,7 @@ func (s *PullsRemoveRequestedReviewersApplicationJSONReq) ReadJSON(i *json.Itera
 			return true
 		case "team_reviewers":
 			if err := func() error {
+				s.TeamReviewers = s.TeamReviewers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -39910,6 +40530,7 @@ func (s *PullsSubmitReviewApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40013,6 +40634,7 @@ func (s *PullsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "base":
 			if err := func() error {
+				s.Base.Reset()
 				if err := s.Base.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40024,6 +40646,7 @@ func (s *PullsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40035,6 +40658,7 @@ func (s *PullsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintainer_can_modify":
 			if err := func() error {
+				s.MaintainerCanModify.Reset()
 				if err := s.MaintainerCanModify.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40046,6 +40670,7 @@ func (s *PullsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40057,6 +40682,7 @@ func (s *PullsUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40136,6 +40762,7 @@ func (s *PullsUpdateBranchAccepted) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40147,6 +40774,7 @@ func (s *PullsUpdateBranchAccepted) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40210,6 +40838,7 @@ func (s *PullsUpdateBranchApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "expected_head_sha":
 			if err := func() error {
+				s.ExpectedHeadSha.Reset()
 				if err := s.ExpectedHeadSha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40417,6 +41046,7 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "actions_runner_registration":
 			if err := func() error {
+				s.ActionsRunnerRegistration.Reset()
 				if err := s.ActionsRunnerRegistration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40428,6 +41058,7 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 			return true
 		case "code_scanning_upload":
 			if err := func() error {
+				s.CodeScanningUpload.Reset()
 				if err := s.CodeScanningUpload.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40450,6 +41081,7 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 			return true
 		case "graphql":
 			if err := func() error {
+				s.Graphql.Reset()
 				if err := s.Graphql.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40461,6 +41093,7 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 			return true
 		case "integration_manifest":
 			if err := func() error {
+				s.IntegrationManifest.Reset()
 				if err := s.IntegrationManifest.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40483,6 +41116,7 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 			return true
 		case "source_import":
 			if err := func() error {
+				s.SourceImport.Reset()
 				if err := s.SourceImport.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41653,6 +42287,7 @@ func (s *ReposAddCollaboratorApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41664,6 +42299,7 @@ func (s *ReposAddCollaboratorApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42082,6 +42718,7 @@ func (s *ReposCreateCommitCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "line":
 			if err := func() error {
+				s.Line.Reset()
 				if err := s.Line.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42093,6 +42730,7 @@ func (s *ReposCreateCommitCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42104,6 +42742,7 @@ func (s *ReposCreateCommitCommentApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "position":
 			if err := func() error {
+				s.Position.Reset()
 				if err := s.Position.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42180,6 +42819,7 @@ func (s *ReposCreateCommitStatusApplicationJSONReq) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "context":
 			if err := func() error {
+				s.Context.Reset()
 				if err := s.Context.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42191,6 +42831,7 @@ func (s *ReposCreateCommitStatusApplicationJSONReq) ReadJSON(i *json.Iterator) e
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42211,6 +42852,7 @@ func (s *ReposCreateCommitStatusApplicationJSONReq) ReadJSON(i *json.Iterator) e
 			return true
 		case "target_url":
 			if err := func() error {
+				s.TargetURL.Reset()
 				if err := s.TargetURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42302,6 +42944,7 @@ func (s *ReposCreateDeployKeyApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 			return true
 		case "read_only":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42313,6 +42956,7 @@ func (s *ReposCreateDeployKeyApplicationJSONReq) ReadJSON(i *json.Iterator) erro
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42404,6 +43048,7 @@ func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSON(i *json.Iterato
 		switch k {
 		case "auto_inactive":
 			if err := func() error {
+				s.AutoInactive.Reset()
 				if err := s.AutoInactive.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42415,6 +43060,7 @@ func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42426,6 +43072,7 @@ func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "environment":
 			if err := func() error {
+				s.Environment.Reset()
 				if err := s.Environment.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42437,6 +43084,7 @@ func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "environment_url":
 			if err := func() error {
+				s.EnvironmentURL.Reset()
 				if err := s.EnvironmentURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42448,6 +43096,7 @@ func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "log_url":
 			if err := func() error {
+				s.LogURL.Reset()
 				if err := s.LogURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42468,6 +43117,7 @@ func (s *ReposCreateDeploymentStatusApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "target_url":
 			if err := func() error {
+				s.TargetURL.Reset()
 				if err := s.TargetURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42789,6 +43439,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42800,6 +43451,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42811,6 +43463,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42822,6 +43475,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42833,6 +43487,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "auto_init":
 			if err := func() error {
+				s.AutoInit.Reset()
 				if err := s.AutoInit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42844,6 +43499,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42855,6 +43511,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42866,6 +43523,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "gitignore_template":
 			if err := func() error {
+				s.GitignoreTemplate.Reset()
 				if err := s.GitignoreTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42877,6 +43535,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "has_downloads":
 			if err := func() error {
+				s.HasDownloads.Reset()
 				if err := s.HasDownloads.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42888,6 +43547,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "has_issues":
 			if err := func() error {
+				s.HasIssues.Reset()
 				if err := s.HasIssues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42899,6 +43559,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "has_projects":
 			if err := func() error {
+				s.HasProjects.Reset()
 				if err := s.HasProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42910,6 +43571,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "has_wiki":
 			if err := func() error {
+				s.HasWiki.Reset()
 				if err := s.HasWiki.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42921,6 +43583,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "homepage":
 			if err := func() error {
+				s.Homepage.Reset()
 				if err := s.Homepage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42932,6 +43595,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42943,6 +43607,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "license_template":
 			if err := func() error {
+				s.LicenseTemplate.Reset()
 				if err := s.LicenseTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42963,6 +43628,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42974,6 +43640,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "team_id":
 			if err := func() error {
+				s.TeamID.Reset()
 				if err := s.TeamID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43037,6 +43704,7 @@ func (s *ReposCreateForkApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "organization":
 			if err := func() error {
+				s.Organization.Reset()
 				if err := s.Organization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43183,6 +43851,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43194,6 +43863,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43205,6 +43875,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43216,6 +43887,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43227,6 +43899,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "auto_init":
 			if err := func() error {
+				s.AutoInit.Reset()
 				if err := s.AutoInit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43238,6 +43911,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43249,6 +43923,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43260,6 +43935,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gitignore_template":
 			if err := func() error {
+				s.GitignoreTemplate.Reset()
 				if err := s.GitignoreTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43271,6 +43947,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_issues":
 			if err := func() error {
+				s.HasIssues.Reset()
 				if err := s.HasIssues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43282,6 +43959,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_projects":
 			if err := func() error {
+				s.HasProjects.Reset()
 				if err := s.HasProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43293,6 +43971,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_wiki":
 			if err := func() error {
+				s.HasWiki.Reset()
 				if err := s.HasWiki.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43304,6 +43983,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "homepage":
 			if err := func() error {
+				s.Homepage.Reset()
 				if err := s.Homepage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43315,6 +43995,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43326,6 +44007,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "license_template":
 			if err := func() error {
+				s.LicenseTemplate.Reset()
 				if err := s.LicenseTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43346,6 +44028,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43357,6 +44040,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "team_id":
 			if err := func() error {
+				s.TeamID.Reset()
 				if err := s.TeamID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43368,6 +44052,7 @@ func (s *ReposCreateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43463,6 +44148,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONReq) ReadJSON(i *json.Ite
 		switch k {
 		case "author":
 			if err := func() error {
+				s.Author.Reset()
 				if err := s.Author.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43474,6 +44160,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "branch":
 			if err := func() error {
+				s.Branch.Reset()
 				if err := s.Branch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43485,6 +44172,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "committer":
 			if err := func() error {
+				s.Committer.Reset()
 				if err := s.Committer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43514,6 +44202,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONReq) ReadJSON(i *json.Ite
 			return true
 		case "sha":
 			if err := func() error {
+				s.Sha.Reset()
 				if err := s.Sha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43583,6 +44272,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONReqAuthor) ReadJSON(i *js
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43670,6 +44360,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONReqCommitter) ReadJSON(i 
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43824,6 +44515,7 @@ func (s *ReposCreatePagesSiteApplicationJSONReqSource) ReadJSON(i *json.Iterator
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43926,6 +44618,7 @@ func (s *ReposCreateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43937,6 +44630,7 @@ func (s *ReposCreateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "discussion_category_name":
 			if err := func() error {
+				s.DiscussionCategoryName.Reset()
 				if err := s.DiscussionCategoryName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43948,6 +44642,7 @@ func (s *ReposCreateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "draft":
 			if err := func() error {
+				s.Draft.Reset()
 				if err := s.Draft.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43959,6 +44654,7 @@ func (s *ReposCreateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43970,6 +44666,7 @@ func (s *ReposCreateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "prerelease":
 			if err := func() error {
+				s.Prerelease.Reset()
 				if err := s.Prerelease.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43990,6 +44687,7 @@ func (s *ReposCreateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "target_commitish":
 			if err := func() error {
+				s.TargetCommitish.Reset()
 				if err := s.TargetCommitish.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44071,6 +44769,7 @@ func (s *ReposCreateUsingTemplateApplicationJSONReq) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44082,6 +44781,7 @@ func (s *ReposCreateUsingTemplateApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "include_all_branches":
 			if err := func() error {
+				s.IncludeAllBranches.Reset()
 				if err := s.IncludeAllBranches.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44102,6 +44802,7 @@ func (s *ReposCreateUsingTemplateApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "owner":
 			if err := func() error {
+				s.Owner.Reset()
 				if err := s.Owner.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44113,6 +44814,7 @@ func (s *ReposCreateUsingTemplateApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44687,6 +45389,7 @@ func (s *ReposDeleteFileApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "author":
 			if err := func() error {
+				s.Author.Reset()
 				if err := s.Author.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44698,6 +45401,7 @@ func (s *ReposDeleteFileApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "branch":
 			if err := func() error {
+				s.Branch.Reset()
 				if err := s.Branch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44709,6 +45413,7 @@ func (s *ReposDeleteFileApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "committer":
 			if err := func() error {
+				s.Committer.Reset()
 				if err := s.Committer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44795,6 +45500,7 @@ func (s *ReposDeleteFileApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44806,6 +45512,7 @@ func (s *ReposDeleteFileApplicationJSONReqAuthor) ReadJSON(i *json.Iterator) err
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44874,6 +45581,7 @@ func (s *ReposDeleteFileApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44885,6 +45593,7 @@ func (s *ReposDeleteFileApplicationJSONReqCommitter) ReadJSON(i *json.Iterator) 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44953,6 +45662,7 @@ func (s *ReposDeleteForbidden) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44964,6 +45674,7 @@ func (s *ReposDeleteForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46079,6 +46790,7 @@ func (s *ReposMergeApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "commit_message":
 			if err := func() error {
+				s.CommitMessage.Reset()
 				if err := s.CommitMessage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46650,6 +47362,7 @@ func (s *ReposReplaceAllTopicsApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "names":
 			if err := func() error {
+				s.Names = s.Names[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -46792,6 +47505,7 @@ func (s *ReposTransferApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "team_ids":
 			if err := func() error {
+				s.TeamIds = s.TeamIds[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -46953,6 +47667,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46964,6 +47679,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_forking":
 			if err := func() error {
+				s.AllowForking.Reset()
 				if err := s.AllowForking.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46975,6 +47691,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46986,6 +47703,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46997,6 +47715,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47008,6 +47727,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "archived":
 			if err := func() error {
+				s.Archived.Reset()
 				if err := s.Archived.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47019,6 +47739,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "default_branch":
 			if err := func() error {
+				s.DefaultBranch.Reset()
 				if err := s.DefaultBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47030,6 +47751,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47041,6 +47763,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47052,6 +47775,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_issues":
 			if err := func() error {
+				s.HasIssues.Reset()
 				if err := s.HasIssues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47063,6 +47787,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_projects":
 			if err := func() error {
+				s.HasProjects.Reset()
 				if err := s.HasProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47074,6 +47799,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_wiki":
 			if err := func() error {
+				s.HasWiki.Reset()
 				if err := s.HasWiki.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47085,6 +47811,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "homepage":
 			if err := func() error {
+				s.Homepage.Reset()
 				if err := s.Homepage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47096,6 +47823,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47107,6 +47835,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47118,6 +47847,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47129,6 +47859,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "security_and_analysis":
 			if err := func() error {
+				s.SecurityAndAnalysis.Reset()
 				if err := s.SecurityAndAnalysis.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47140,6 +47871,7 @@ func (s *ReposUpdateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47208,6 +47940,7 @@ func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysis) ReadJSON(i *json.Iter
 		switch k {
 		case "advanced_security":
 			if err := func() error {
+				s.AdvancedSecurity.Reset()
 				if err := s.AdvancedSecurity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47219,6 +47952,7 @@ func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysis) ReadJSON(i *json.Iter
 			return true
 		case "secret_scanning":
 			if err := func() error {
+				s.SecretScanning.Reset()
 				if err := s.SecretScanning.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47282,6 +48016,7 @@ func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysisAdvancedSecurity) ReadJ
 		switch k {
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47345,6 +48080,7 @@ func (s *ReposUpdateApplicationJSONReqSecurityAndAnalysisSecretScanning) ReadJSO
 		switch k {
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47462,6 +48198,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReq) ReadJSON(i *json.Iterato
 		switch k {
 		case "allow_deletions":
 			if err := func() error {
+				s.AllowDeletions.Reset()
 				if err := s.AllowDeletions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47473,6 +48210,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "allow_force_pushes":
 			if err := func() error {
+				s.AllowForcePushes.Reset()
 				if err := s.AllowForcePushes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47495,6 +48233,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "required_conversation_resolution":
 			if err := func() error {
+				s.RequiredConversationResolution.Reset()
 				if err := s.RequiredConversationResolution.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47506,6 +48245,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "required_linear_history":
 			if err := func() error {
+				s.RequiredLinearHistory.Reset()
 				if err := s.RequiredLinearHistory.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47617,6 +48357,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 		switch k {
 		case "dismiss_stale_reviews":
 			if err := func() error {
+				s.DismissStaleReviews.Reset()
 				if err := s.DismissStaleReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47628,6 +48369,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 			return true
 		case "dismissal_restrictions":
 			if err := func() error {
+				s.DismissalRestrictions.Reset()
 				if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47639,6 +48381,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 			return true
 		case "require_code_owner_reviews":
 			if err := func() error {
+				s.RequireCodeOwnerReviews.Reset()
 				if err := s.RequireCodeOwnerReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47650,6 +48393,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 			return true
 		case "required_approving_review_count":
 			if err := func() error {
+				s.RequiredApprovingReviewCount.Reset()
 				if err := s.RequiredApprovingReviewCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47732,6 +48476,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 		switch k {
 		case "teams":
 			if err := func() error {
+				s.Teams = s.Teams[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -47756,6 +48501,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredPullRequestReviews
 			return true
 		case "users":
 			if err := func() error {
+				s.Users = s.Users[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -47840,6 +48586,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRequiredStatusChecks) Read
 		switch k {
 		case "contexts":
 			if err := func() error {
+				s.Contexts = s.Contexts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -47952,6 +48699,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRestrictions) ReadJSON(i *
 		switch k {
 		case "apps":
 			if err := func() error {
+				s.Apps = s.Apps[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -47976,6 +48724,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRestrictions) ReadJSON(i *
 			return true
 		case "teams":
 			if err := func() error {
+				s.Teams = s.Teams[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48000,6 +48749,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONReqRestrictions) ReadJSON(i *
 			return true
 		case "users":
 			if err := func() error {
+				s.Users = s.Users[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48135,6 +48885,7 @@ func (s *ReposUpdateInvitationApplicationJSONReq) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48224,6 +48975,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReq) ReadJSON(i *j
 		switch k {
 		case "dismiss_stale_reviews":
 			if err := func() error {
+				s.DismissStaleReviews.Reset()
 				if err := s.DismissStaleReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48235,6 +48987,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReq) ReadJSON(i *j
 			return true
 		case "dismissal_restrictions":
 			if err := func() error {
+				s.DismissalRestrictions.Reset()
 				if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48246,6 +48999,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReq) ReadJSON(i *j
 			return true
 		case "require_code_owner_reviews":
 			if err := func() error {
+				s.RequireCodeOwnerReviews.Reset()
 				if err := s.RequireCodeOwnerReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48257,6 +49011,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReq) ReadJSON(i *j
 			return true
 		case "required_approving_review_count":
 			if err := func() error {
+				s.RequiredApprovingReviewCount.Reset()
 				if err := s.RequiredApprovingReviewCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48339,6 +49094,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestri
 		switch k {
 		case "teams":
 			if err := func() error {
+				s.Teams = s.Teams[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48363,6 +49119,7 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONReqDismissalRestri
 			return true
 		case "users":
 			if err := func() error {
+				s.Users = s.Users[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48469,6 +49226,7 @@ func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48480,6 +49238,7 @@ func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "discussion_category_name":
 			if err := func() error {
+				s.DiscussionCategoryName.Reset()
 				if err := s.DiscussionCategoryName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48491,6 +49250,7 @@ func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "draft":
 			if err := func() error {
+				s.Draft.Reset()
 				if err := s.Draft.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48502,6 +49262,7 @@ func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48513,6 +49274,7 @@ func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "prerelease":
 			if err := func() error {
+				s.Prerelease.Reset()
 				if err := s.Prerelease.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48524,6 +49286,7 @@ func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "tag_name":
 			if err := func() error {
+				s.TagName.Reset()
 				if err := s.TagName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48535,6 +49298,7 @@ func (s *ReposUpdateReleaseApplicationJSONReq) ReadJSON(i *json.Iterator) error 
 			return true
 		case "target_commitish":
 			if err := func() error {
+				s.TargetCommitish.Reset()
 				if err := s.TargetCommitish.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48608,6 +49372,7 @@ func (s *ReposUpdateReleaseAssetApplicationJSONReq) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "label":
 			if err := func() error {
+				s.Label.Reset()
 				if err := s.Label.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48619,6 +49384,7 @@ func (s *ReposUpdateReleaseAssetApplicationJSONReq) ReadJSON(i *json.Iterator) e
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48630,6 +49396,7 @@ func (s *ReposUpdateReleaseAssetApplicationJSONReq) ReadJSON(i *json.Iterator) e
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48705,6 +49472,7 @@ func (s *ReposUpdateStatusCheckProtectionApplicationJSONReq) ReadJSON(i *json.It
 		switch k {
 		case "contexts":
 			if err := func() error {
+				s.Contexts = s.Contexts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48729,6 +49497,7 @@ func (s *ReposUpdateStatusCheckProtectionApplicationJSONReq) ReadJSON(i *json.It
 			return true
 		case "strict":
 			if err := func() error {
+				s.Strict.Reset()
 				if err := s.Strict.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48826,6 +49595,7 @@ func (s *RepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintain":
 			if err := func() error {
+				s.Maintain.Reset()
 				if err := s.Maintain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48855,6 +49625,7 @@ func (s *RepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "triage":
 			if err := func() error {
+				s.Triage.Reset()
 				if err := s.Triage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49325,6 +50096,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49336,6 +50108,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49347,6 +50120,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49358,6 +50132,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49369,6 +50144,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "archive_url":
 			if err := func() error {
+				s.ArchiveURL.Reset()
 				if err := s.ArchiveURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49380,6 +50156,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "archived":
 			if err := func() error {
+				s.Archived.Reset()
 				if err := s.Archived.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49391,6 +50168,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "assignees_url":
 			if err := func() error {
+				s.AssigneesURL.Reset()
 				if err := s.AssigneesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49402,6 +50180,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "blobs_url":
 			if err := func() error {
+				s.BlobsURL.Reset()
 				if err := s.BlobsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49413,6 +50192,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "branches_url":
 			if err := func() error {
+				s.BranchesURL.Reset()
 				if err := s.BranchesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49424,6 +50204,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "clone_url":
 			if err := func() error {
+				s.CloneURL.Reset()
 				if err := s.CloneURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49435,6 +50216,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "collaborators_url":
 			if err := func() error {
+				s.CollaboratorsURL.Reset()
 				if err := s.CollaboratorsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49446,6 +50228,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "comments_url":
 			if err := func() error {
+				s.CommentsURL.Reset()
 				if err := s.CommentsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49457,6 +50240,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "commits_url":
 			if err := func() error {
+				s.CommitsURL.Reset()
 				if err := s.CommitsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49468,6 +50252,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "compare_url":
 			if err := func() error {
+				s.CompareURL.Reset()
 				if err := s.CompareURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49479,6 +50264,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "contents_url":
 			if err := func() error {
+				s.ContentsURL.Reset()
 				if err := s.ContentsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49490,6 +50276,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "contributors_url":
 			if err := func() error {
+				s.ContributorsURL.Reset()
 				if err := s.ContributorsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49501,6 +50288,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49512,6 +50300,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "default_branch":
 			if err := func() error {
+				s.DefaultBranch.Reset()
 				if err := s.DefaultBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49523,6 +50312,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49534,6 +50324,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deployments_url":
 			if err := func() error {
+				s.DeploymentsURL.Reset()
 				if err := s.DeploymentsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49545,6 +50336,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49556,6 +50348,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disabled":
 			if err := func() error {
+				s.Disabled.Reset()
 				if err := s.Disabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49567,6 +50360,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "downloads_url":
 			if err := func() error {
+				s.DownloadsURL.Reset()
 				if err := s.DownloadsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49578,6 +50372,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events_url":
 			if err := func() error {
+				s.EventsURL.Reset()
 				if err := s.EventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49589,6 +50384,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fork":
 			if err := func() error {
+				s.Fork.Reset()
 				if err := s.Fork.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49600,6 +50396,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forks_count":
 			if err := func() error {
+				s.ForksCount.Reset()
 				if err := s.ForksCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49611,6 +50408,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forks_url":
 			if err := func() error {
+				s.ForksURL.Reset()
 				if err := s.ForksURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49622,6 +50420,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "full_name":
 			if err := func() error {
+				s.FullName.Reset()
 				if err := s.FullName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49633,6 +50432,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "git_commits_url":
 			if err := func() error {
+				s.GitCommitsURL.Reset()
 				if err := s.GitCommitsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49644,6 +50444,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "git_refs_url":
 			if err := func() error {
+				s.GitRefsURL.Reset()
 				if err := s.GitRefsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49655,6 +50456,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "git_tags_url":
 			if err := func() error {
+				s.GitTagsURL.Reset()
 				if err := s.GitTagsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49666,6 +50468,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "git_url":
 			if err := func() error {
+				s.GitURL.Reset()
 				if err := s.GitURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49677,6 +50480,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49688,6 +50492,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_downloads":
 			if err := func() error {
+				s.HasDownloads.Reset()
 				if err := s.HasDownloads.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49699,6 +50504,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_issues":
 			if err := func() error {
+				s.HasIssues.Reset()
 				if err := s.HasIssues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49710,6 +50516,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_pages":
 			if err := func() error {
+				s.HasPages.Reset()
 				if err := s.HasPages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49721,6 +50528,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_projects":
 			if err := func() error {
+				s.HasProjects.Reset()
 				if err := s.HasProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49732,6 +50540,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_wiki":
 			if err := func() error {
+				s.HasWiki.Reset()
 				if err := s.HasWiki.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49743,6 +50552,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "homepage":
 			if err := func() error {
+				s.Homepage.Reset()
 				if err := s.Homepage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49754,6 +50564,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hooks_url":
 			if err := func() error {
+				s.HooksURL.Reset()
 				if err := s.HooksURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49765,6 +50576,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49776,6 +50588,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49787,6 +50600,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "issue_comment_url":
 			if err := func() error {
+				s.IssueCommentURL.Reset()
 				if err := s.IssueCommentURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49798,6 +50612,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "issue_events_url":
 			if err := func() error {
+				s.IssueEventsURL.Reset()
 				if err := s.IssueEventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49809,6 +50624,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "issues_url":
 			if err := func() error {
+				s.IssuesURL.Reset()
 				if err := s.IssuesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49820,6 +50636,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "keys_url":
 			if err := func() error {
+				s.KeysURL.Reset()
 				if err := s.KeysURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49831,6 +50648,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "labels_url":
 			if err := func() error {
+				s.LabelsURL.Reset()
 				if err := s.LabelsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49842,6 +50660,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "language":
 			if err := func() error {
+				s.Language.Reset()
 				if err := s.Language.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49853,6 +50672,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "languages_url":
 			if err := func() error {
+				s.LanguagesURL.Reset()
 				if err := s.LanguagesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49864,6 +50684,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "merges_url":
 			if err := func() error {
+				s.MergesURL.Reset()
 				if err := s.MergesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49875,6 +50696,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "milestones_url":
 			if err := func() error {
+				s.MilestonesURL.Reset()
 				if err := s.MilestonesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49886,6 +50708,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mirror_url":
 			if err := func() error {
+				s.MirrorURL.Reset()
 				if err := s.MirrorURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49897,6 +50720,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49908,6 +50732,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "network_count":
 			if err := func() error {
+				s.NetworkCount.Reset()
 				if err := s.NetworkCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49919,6 +50744,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49930,6 +50756,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "notifications_url":
 			if err := func() error {
+				s.NotificationsURL.Reset()
 				if err := s.NotificationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49941,6 +50768,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "open_issues_count":
 			if err := func() error {
+				s.OpenIssuesCount.Reset()
 				if err := s.OpenIssuesCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49952,6 +50780,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "owner":
 			if err := func() error {
+				s.Owner.Reset()
 				if err := s.Owner.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49963,6 +50792,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49974,6 +50804,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49985,6 +50816,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pulls_url":
 			if err := func() error {
+				s.PullsURL.Reset()
 				if err := s.PullsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49996,6 +50828,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pushed_at":
 			if err := func() error {
+				s.PushedAt.Reset()
 				if err := s.PushedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50007,6 +50840,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "releases_url":
 			if err := func() error {
+				s.ReleasesURL.Reset()
 				if err := s.ReleasesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50018,6 +50852,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ssh_url":
 			if err := func() error {
+				s.SSHURL.Reset()
 				if err := s.SSHURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50029,6 +50864,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "size":
 			if err := func() error {
+				s.Size.Reset()
 				if err := s.Size.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50040,6 +50876,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stargazers_count":
 			if err := func() error {
+				s.StargazersCount.Reset()
 				if err := s.StargazersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50051,6 +50888,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stargazers_url":
 			if err := func() error {
+				s.StargazersURL.Reset()
 				if err := s.StargazersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50062,6 +50900,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "statuses_url":
 			if err := func() error {
+				s.StatusesURL.Reset()
 				if err := s.StatusesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50073,6 +50912,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscribers_count":
 			if err := func() error {
+				s.SubscribersCount.Reset()
 				if err := s.SubscribersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50084,6 +50924,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscribers_url":
 			if err := func() error {
+				s.SubscribersURL.Reset()
 				if err := s.SubscribersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50095,6 +50936,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscription_url":
 			if err := func() error {
+				s.SubscriptionURL.Reset()
 				if err := s.SubscriptionURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50106,6 +50948,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "svn_url":
 			if err := func() error {
+				s.SvnURL.Reset()
 				if err := s.SvnURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50117,6 +50960,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tags_url":
 			if err := func() error {
+				s.TagsURL.Reset()
 				if err := s.TagsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50128,6 +50972,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "teams_url":
 			if err := func() error {
+				s.TeamsURL.Reset()
 				if err := s.TeamsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50139,6 +50984,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "temp_clone_token":
 			if err := func() error {
+				s.TempCloneToken.Reset()
 				if err := s.TempCloneToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50150,6 +50996,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topics":
 			if err := func() error {
+				s.Topics = s.Topics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -50174,6 +51021,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "trees_url":
 			if err := func() error {
+				s.TreesURL.Reset()
 				if err := s.TreesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50185,6 +51033,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50196,6 +51045,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updated_at":
 			if err := func() error {
+				s.UpdatedAt.Reset()
 				if err := s.UpdatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50207,6 +51057,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50218,6 +51069,7 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "watchers_count":
 			if err := func() error {
+				s.WatchersCount.Reset()
 				if err := s.WatchersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50366,6 +51218,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "avatar_url":
 			if err := func() error {
+				s.AvatarURL.Reset()
 				if err := s.AvatarURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50377,6 +51230,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events_url":
 			if err := func() error {
+				s.EventsURL.Reset()
 				if err := s.EventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50388,6 +51242,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "followers_url":
 			if err := func() error {
+				s.FollowersURL.Reset()
 				if err := s.FollowersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50399,6 +51254,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "following_url":
 			if err := func() error {
+				s.FollowingURL.Reset()
 				if err := s.FollowingURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50410,6 +51266,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gists_url":
 			if err := func() error {
+				s.GistsURL.Reset()
 				if err := s.GistsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50421,6 +51278,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gravatar_id":
 			if err := func() error {
+				s.GravatarID.Reset()
 				if err := s.GravatarID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50432,6 +51290,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50443,6 +51302,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50454,6 +51314,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "login":
 			if err := func() error {
+				s.Login.Reset()
 				if err := s.Login.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50465,6 +51326,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50476,6 +51338,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organizations_url":
 			if err := func() error {
+				s.OrganizationsURL.Reset()
 				if err := s.OrganizationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50487,6 +51350,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "received_events_url":
 			if err := func() error {
+				s.ReceivedEventsURL.Reset()
 				if err := s.ReceivedEventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50498,6 +51362,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repos_url":
 			if err := func() error {
+				s.ReposURL.Reset()
 				if err := s.ReposURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50509,6 +51374,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "site_admin":
 			if err := func() error {
+				s.SiteAdmin.Reset()
 				if err := s.SiteAdmin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50520,6 +51386,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "starred_url":
 			if err := func() error {
+				s.StarredURL.Reset()
 				if err := s.StarredURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50531,6 +51398,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscriptions_url":
 			if err := func() error {
+				s.SubscriptionsURL.Reset()
 				if err := s.SubscriptionsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50542,6 +51410,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50553,6 +51422,7 @@ func (s *RepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50636,6 +51506,7 @@ func (s *RepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "admin":
 			if err := func() error {
+				s.Admin.Reset()
 				if err := s.Admin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50647,6 +51518,7 @@ func (s *RepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) err
 			return true
 		case "maintain":
 			if err := func() error {
+				s.Maintain.Reset()
 				if err := s.Maintain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50658,6 +51530,7 @@ func (s *RepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) err
 			return true
 		case "pull":
 			if err := func() error {
+				s.Pull.Reset()
 				if err := s.Pull.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50669,6 +51542,7 @@ func (s *RepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) err
 			return true
 		case "push":
 			if err := func() error {
+				s.Push.Reset()
 				if err := s.Push.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50680,6 +51554,7 @@ func (s *RepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) err
 			return true
 		case "triage":
 			if err := func() error {
+				s.Triage.Reset()
 				if err := s.Triage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50864,6 +51739,7 @@ func (s *RunnerLabelsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50875,6 +51751,7 @@ func (s *RunnerLabelsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50886,6 +51763,7 @@ func (s *RunnerLabelsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51037,6 +51915,7 @@ func (s *ScimEnterpriseGroupMembersItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "display":
 			if err := func() error {
+				s.Display.Reset()
 				if err := s.Display.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51048,6 +51927,7 @@ func (s *ScimEnterpriseGroupMembersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "$ref":
 			if err := func() error {
+				s.Ref.Reset()
 				if err := s.Ref.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51059,6 +51939,7 @@ func (s *ScimEnterpriseGroupMembersItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51137,6 +52018,7 @@ func (s *ScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "created":
 			if err := func() error {
+				s.Created.Reset()
 				if err := s.Created.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51148,6 +52030,7 @@ func (s *ScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastModified":
 			if err := func() error {
+				s.LastModified.Reset()
 				if err := s.LastModified.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51159,6 +52042,7 @@ func (s *ScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51170,6 +52054,7 @@ func (s *ScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resourceType":
 			if err := func() error {
+				s.ResourceType.Reset()
 				if err := s.ResourceType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51243,6 +52128,7 @@ func (s *ScimEnterpriseUserEmailsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "primary":
 			if err := func() error {
+				s.Primary.Reset()
 				if err := s.Primary.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51254,6 +52140,7 @@ func (s *ScimEnterpriseUserEmailsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51265,6 +52152,7 @@ func (s *ScimEnterpriseUserEmailsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51328,6 +52216,7 @@ func (s *ScimEnterpriseUserGroupsItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51406,6 +52295,7 @@ func (s *ScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "created":
 			if err := func() error {
+				s.Created.Reset()
 				if err := s.Created.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51417,6 +52307,7 @@ func (s *ScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastModified":
 			if err := func() error {
+				s.LastModified.Reset()
 				if err := s.LastModified.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51428,6 +52319,7 @@ func (s *ScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51439,6 +52331,7 @@ func (s *ScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resourceType":
 			if err := func() error {
+				s.ResourceType.Reset()
 				if err := s.ResourceType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51507,6 +52400,7 @@ func (s *ScimEnterpriseUserName) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "familyName":
 			if err := func() error {
+				s.FamilyName.Reset()
 				if err := s.FamilyName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51518,6 +52412,7 @@ func (s *ScimEnterpriseUserName) ReadJSON(i *json.Iterator) error {
 			return true
 		case "givenName":
 			if err := func() error {
+				s.GivenName.Reset()
 				if err := s.GivenName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51616,6 +52511,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "displayName":
 			if err := func() error {
+				s.DisplayName.Reset()
 				if err := s.DisplayName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51627,6 +52523,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "externalId":
 			if err := func() error {
+				s.ExternalId.Reset()
 				if err := s.ExternalId.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51647,6 +52544,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "members":
 			if err := func() error {
+				s.Members = s.Members[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimGroupListEnterpriseResourcesItemMembersItem
@@ -51673,6 +52571,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "meta":
 			if err := func() error {
+				s.Meta.Reset()
 				if err := s.Meta.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51684,6 +52583,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error 
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -51770,6 +52670,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) ReadJSON(i *json.Itera
 		switch k {
 		case "display":
 			if err := func() error {
+				s.Display.Reset()
 				if err := s.Display.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51781,6 +52682,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) ReadJSON(i *json.Itera
 			return true
 		case "$ref":
 			if err := func() error {
+				s.Ref.Reset()
 				if err := s.Ref.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51792,6 +52694,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) ReadJSON(i *json.Itera
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51870,6 +52773,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "created":
 			if err := func() error {
+				s.Created.Reset()
 				if err := s.Created.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51881,6 +52785,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "lastModified":
 			if err := func() error {
+				s.LastModified.Reset()
 				if err := s.LastModified.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51892,6 +52797,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51903,6 +52809,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "resourceType":
 			if err := func() error {
+				s.ResourceType.Reset()
 				if err := s.ResourceType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52016,6 +52923,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSON(i *json.Iterator
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active.Reset()
 				if err := s.Active.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52027,6 +52935,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSON(i *json.Iterator
 			return true
 		case "displayName":
 			if err := func() error {
+				s.DisplayName.Reset()
 				if err := s.DisplayName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52038,6 +52947,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSON(i *json.Iterator
 			return true
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimProvisionAndInviteUserApplicationJSONReqEmailsItem
@@ -52064,6 +52974,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSON(i *json.Iterator
 			return true
 		case "externalId":
 			if err := func() error {
+				s.ExternalId.Reset()
 				if err := s.ExternalId.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52075,6 +52986,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSON(i *json.Iterator
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52110,6 +53022,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReq) ReadJSON(i *json.Iterator
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52203,6 +53116,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReqEmailsItem) ReadJSON(i *jso
 		switch k {
 		case "primary":
 			if err := func() error {
+				s.Primary.Reset()
 				if err := s.Primary.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52214,6 +53128,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReqEmailsItem) ReadJSON(i *jso
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52301,6 +53216,7 @@ func (s *ScimProvisionAndInviteUserApplicationJSONReqName) ReadJSON(i *json.Iter
 			return true
 		case "formatted":
 			if err := func() error {
+				s.Formatted.Reset()
 				if err := s.Formatted.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52423,6 +53339,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSON(i *jso
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active.Reset()
 				if err := s.Active.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52434,6 +53351,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSON(i *jso
 			return true
 		case "displayName":
 			if err := func() error {
+				s.DisplayName.Reset()
 				if err := s.DisplayName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52445,6 +53363,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSON(i *jso
 			return true
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem
@@ -52471,6 +53390,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSON(i *jso
 			return true
 		case "externalId":
 			if err := func() error {
+				s.ExternalId.Reset()
 				if err := s.ExternalId.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52482,6 +53402,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSON(i *jso
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52517,6 +53438,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReq) ReadJSON(i *jso
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52610,6 +53532,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem) ReadJ
 		switch k {
 		case "primary":
 			if err := func() error {
+				s.Primary.Reset()
 				if err := s.Primary.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52621,6 +53544,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReqEmailsItem) ReadJ
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52708,6 +53632,7 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONReqName) ReadJSON(i 
 			return true
 		case "formatted":
 			if err := func() error {
+				s.Formatted.Reset()
 				if err := s.Formatted.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52837,6 +53762,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active.Reset()
 				if err := s.Active.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52848,6 +53774,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimUserListEnterpriseResourcesItemEmailsItem
@@ -52874,6 +53801,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "externalId":
 			if err := func() error {
+				s.ExternalId.Reset()
 				if err := s.ExternalId.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52885,6 +53813,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimUserListEnterpriseResourcesItemGroupsItem
@@ -52920,6 +53849,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "meta":
 			if err := func() error {
+				s.Meta.Reset()
 				if err := s.Meta.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52931,6 +53861,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52942,6 +53873,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52966,6 +53898,7 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		case "userName":
 			if err := func() error {
+				s.UserName.Reset()
 				if err := s.UserName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53039,6 +53972,7 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) ReadJSON(i *json.Iterato
 		switch k {
 		case "primary":
 			if err := func() error {
+				s.Primary.Reset()
 				if err := s.Primary.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53050,6 +53984,7 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) ReadJSON(i *json.Iterato
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53061,6 +53996,7 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) ReadJSON(i *json.Iterato
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53124,6 +54060,7 @@ func (s *ScimUserListEnterpriseResourcesItemGroupsItem) ReadJSON(i *json.Iterato
 		switch k {
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53202,6 +54139,7 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "created":
 			if err := func() error {
+				s.Created.Reset()
 				if err := s.Created.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53213,6 +54151,7 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) err
 			return true
 		case "lastModified":
 			if err := func() error {
+				s.LastModified.Reset()
 				if err := s.LastModified.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53224,6 +54163,7 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) err
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53235,6 +54175,7 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) err
 			return true
 		case "resourceType":
 			if err := func() error {
+				s.ResourceType.Reset()
 				if err := s.ResourceType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53303,6 +54244,7 @@ func (s *ScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "familyName":
 			if err := func() error {
+				s.FamilyName.Reset()
 				if err := s.FamilyName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53314,6 +54256,7 @@ func (s *ScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Iterator) err
 			return true
 		case "givenName":
 			if err := func() error {
+				s.GivenName.Reset()
 				if err := s.GivenName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53427,6 +54370,7 @@ func (s *SecretScanningUpdateAlertApplicationJSONReq) ReadJSON(i *json.Iterator)
 		switch k {
 		case "resolution":
 			if err := func() error {
+				s.Resolution.Reset()
 				if err := s.Resolution.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53603,6 +54547,7 @@ func (s *ServiceUnavailable) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "code":
 			if err := func() error {
+				s.Code.Reset()
 				if err := s.Code.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53614,6 +54559,7 @@ func (s *ServiceUnavailable) ReadJSON(i *json.Iterator) error {
 			return true
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53625,6 +54571,7 @@ func (s *ServiceUnavailable) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53699,11 +54646,10 @@ func (s *ShortBranchCommit) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -53917,11 +54863,10 @@ func (s *TagCommit) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -54228,6 +55173,7 @@ func (s *TeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintain":
 			if err := func() error {
+				s.Maintain.Reset()
 				if err := s.Maintain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54257,6 +55203,7 @@ func (s *TeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "triage":
 			if err := func() error {
+				s.Triage.Reset()
 				if err := s.Triage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54461,6 +55408,7 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq) ReadJSON(i *j
 		switch k {
 		case "role":
 			if err := func() error {
+				s.Role.Reset()
 				if err := s.Role.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54629,6 +55577,7 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq) ReadJSON(i *
 		switch k {
 		case "role":
 			if err := func() error {
+				s.Role.Reset()
 				if err := s.Role.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54797,6 +55746,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq) ReadJSON(i *
 		switch k {
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54876,6 +55826,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) ReadJSON(i *json.Iter
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54887,6 +55838,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) ReadJSON(i *json.Iter
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54997,6 +55949,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONReq) ReadJSON(i 
 		switch k {
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55076,6 +56029,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) ReadJSON(i *json.Ite
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55087,6 +56041,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) ReadJSON(i *json.Ite
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55244,6 +56199,7 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq) ReadJSON(i *jso
 		switch k {
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55318,6 +56274,7 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONReq) ReadJSON(i *js
 		switch k {
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55763,6 +56720,7 @@ func (s *TeamsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55774,6 +56732,7 @@ func (s *TeamsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "maintainers":
 			if err := func() error {
+				s.Maintainers = s.Maintainers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -55807,6 +56766,7 @@ func (s *TeamsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parent_team_id":
 			if err := func() error {
+				s.ParentTeamID.Reset()
 				if err := s.ParentTeamID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55818,6 +56778,7 @@ func (s *TeamsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55829,6 +56790,7 @@ func (s *TeamsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privacy":
 			if err := func() error {
+				s.Privacy.Reset()
 				if err := s.Privacy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55840,6 +56802,7 @@ func (s *TeamsCreateApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repo_names":
 			if err := func() error {
+				s.RepoNames = s.RepoNames[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -56071,6 +57034,7 @@ func (s *TeamsCreateDiscussionInOrgApplicationJSONReq) ReadJSON(i *json.Iterator
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56158,6 +57122,7 @@ func (s *TeamsCreateDiscussionLegacyApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56237,6 +57202,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq) ReadJSON
 		switch k {
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReqGroupsItem
@@ -56408,6 +57374,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) ReadJSO
 		switch k {
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsItem
@@ -56434,6 +57401,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReq) ReadJSO
 			return true
 		case "synced_at":
 			if err := func() error {
+				s.SyncedAt.Reset()
 				if err := s.SyncedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56516,6 +57484,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsIte
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56554,6 +57523,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsIte
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56565,6 +57535,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONReqGroupsIte
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57707,6 +58678,7 @@ func (s *TeamsUpdateDiscussionInOrgApplicationJSONReq) ReadJSON(i *json.Iterator
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57718,6 +58690,7 @@ func (s *TeamsUpdateDiscussionInOrgApplicationJSONReq) ReadJSON(i *json.Iterator
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57786,6 +58759,7 @@ func (s *TeamsUpdateDiscussionLegacyApplicationJSONReq) ReadJSON(i *json.Iterato
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57797,6 +58771,7 @@ func (s *TeamsUpdateDiscussionLegacyApplicationJSONReq) ReadJSON(i *json.Iterato
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57880,6 +58855,7 @@ func (s *TeamsUpdateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57891,6 +58867,7 @@ func (s *TeamsUpdateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57902,6 +58879,7 @@ func (s *TeamsUpdateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parent_team_id":
 			if err := func() error {
+				s.ParentTeamID.Reset()
 				if err := s.ParentTeamID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57913,6 +58891,7 @@ func (s *TeamsUpdateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57924,6 +58903,7 @@ func (s *TeamsUpdateInOrgApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privacy":
 			if err := func() error {
+				s.Privacy.Reset()
 				if err := s.Privacy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58027,6 +59007,7 @@ func (s *TeamsUpdateLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58047,6 +59028,7 @@ func (s *TeamsUpdateLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parent_team_id":
 			if err := func() error {
+				s.ParentTeamID.Reset()
 				if err := s.ParentTeamID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58058,6 +59040,7 @@ func (s *TeamsUpdateLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permission":
 			if err := func() error {
+				s.Permission.Reset()
 				if err := s.Permission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58069,6 +59052,7 @@ func (s *TeamsUpdateLegacyApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privacy":
 			if err := func() error {
+				s.Privacy.Reset()
 				if err := s.Privacy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58604,6 +59588,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONReq) ReadJSON(i *
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59405,6 +60390,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "bio":
 			if err := func() error {
+				s.Bio.Reset()
 				if err := s.Bio.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59416,6 +60402,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "blog":
 			if err := func() error {
+				s.Blog.Reset()
 				if err := s.Blog.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59427,6 +60414,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "company":
 			if err := func() error {
+				s.Company.Reset()
 				if err := s.Company.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59438,6 +60426,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59449,6 +60438,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "hireable":
 			if err := func() error {
+				s.Hireable.Reset()
 				if err := s.Hireable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59460,6 +60450,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59471,6 +60462,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59482,6 +60474,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONReq) ReadJSON(i *json.Iterator) 
 			return true
 		case "twitter_username":
 			if err := func() error {
+				s.TwitterUsername.Reset()
 				if err := s.TwitterUsername.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59555,6 +60548,7 @@ func (s *WorkflowRunUsageBillable) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "MACOS":
 			if err := func() error {
+				s.MACOS.Reset()
 				if err := s.MACOS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59566,6 +60560,7 @@ func (s *WorkflowRunUsageBillable) ReadJSON(i *json.Iterator) error {
 			return true
 		case "UBUNTU":
 			if err := func() error {
+				s.UBUNTU.Reset()
 				if err := s.UBUNTU.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59577,6 +60572,7 @@ func (s *WorkflowRunUsageBillable) ReadJSON(i *json.Iterator) error {
 			return true
 		case "WINDOWS":
 			if err := func() error {
+				s.WINDOWS.Reset()
 				if err := s.WINDOWS.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59979,6 +60975,7 @@ func (s *ActionsEnterprisePermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowed_actions":
 			if err := func() error {
+				s.AllowedActions.Reset()
 				if err := s.AllowedActions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59999,6 +60996,7 @@ func (s *ActionsEnterprisePermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_actions_url":
 			if err := func() error {
+				s.SelectedActionsURL = nil
 				var elem SelectedActionsURL
 				if err := func() error {
 					return fmt.Errorf(`decoding of "SelectedActionsURL" (alias) is not implemented`)
@@ -60014,6 +61012,7 @@ func (s *ActionsEnterprisePermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_organizations_url":
 			if err := func() error {
+				s.SelectedOrganizationsURL.Reset()
 				if err := s.SelectedOrganizationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60090,6 +61089,7 @@ func (s *ActionsOrganizationPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowed_actions":
 			if err := func() error {
+				s.AllowedActions.Reset()
 				if err := s.AllowedActions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60110,6 +61110,7 @@ func (s *ActionsOrganizationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_actions_url":
 			if err := func() error {
+				s.SelectedActionsURL = nil
 				var elem SelectedActionsURL
 				if err := func() error {
 					return fmt.Errorf(`decoding of "SelectedActionsURL" (alias) is not implemented`)
@@ -60125,6 +61126,7 @@ func (s *ActionsOrganizationPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_repositories_url":
 			if err := func() error {
+				s.SelectedRepositoriesURL.Reset()
 				if err := s.SelectedRepositoriesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60209,6 +61211,7 @@ func (s *ActionsPublicKey) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60220,6 +61223,7 @@ func (s *ActionsPublicKey) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60249,6 +61253,7 @@ func (s *ActionsPublicKey) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60260,6 +61265,7 @@ func (s *ActionsPublicKey) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60329,6 +61335,7 @@ func (s *ActionsRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowed_actions":
 			if err := func() error {
+				s.AllowedActions.Reset()
 				if err := s.AllowedActions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60348,6 +61355,7 @@ func (s *ActionsRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_actions_url":
 			if err := func() error {
+				s.SelectedActionsURL = nil
 				var elem SelectedActionsURL
 				if err := func() error {
 					return fmt.Errorf(`decoding of "SelectedActionsURL" (alias) is not implemented`)
@@ -60420,11 +61428,10 @@ func (s *ActionsSecret) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -60443,11 +61450,10 @@ func (s *ActionsSecret) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -60650,6 +61656,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "api":
 			if err := func() error {
+				s.API = s.API[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60674,6 +61681,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "actions":
 			if err := func() error {
+				s.Actions = s.Actions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60698,6 +61706,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "dependabot":
 			if err := func() error {
+				s.Dependabot = s.Dependabot[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60722,6 +61731,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "git":
 			if err := func() error {
+				s.Git = s.Git[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60746,6 +61756,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hooks":
 			if err := func() error {
+				s.Hooks = s.Hooks[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60770,6 +61781,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "importer":
 			if err := func() error {
+				s.Importer = s.Importer[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60794,6 +61806,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "packages":
 			if err := func() error {
+				s.Packages = s.Packages[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60818,6 +61831,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pages":
 			if err := func() error {
+				s.Pages = s.Pages[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60842,6 +61856,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ssh_key_fingerprints":
 			if err := func() error {
+				s.SSHKeyFingerprints.Reset()
 				if err := s.SSHKeyFingerprints.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60862,6 +61877,7 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "web":
 			if err := func() error {
+				s.Web = s.Web[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -61088,6 +62104,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "actions":
 			if err := func() error {
+				s.Actions.Reset()
 				if err := s.Actions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61099,6 +62116,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "administration":
 			if err := func() error {
+				s.Administration.Reset()
 				if err := s.Administration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61110,6 +62128,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "checks":
 			if err := func() error {
+				s.Checks.Reset()
 				if err := s.Checks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61121,6 +62140,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "content_references":
 			if err := func() error {
+				s.ContentReferences.Reset()
 				if err := s.ContentReferences.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61132,6 +62152,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "contents":
 			if err := func() error {
+				s.Contents.Reset()
 				if err := s.Contents.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61143,6 +62164,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deployments":
 			if err := func() error {
+				s.Deployments.Reset()
 				if err := s.Deployments.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61154,6 +62176,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "environments":
 			if err := func() error {
+				s.Environments.Reset()
 				if err := s.Environments.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61165,6 +62188,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "issues":
 			if err := func() error {
+				s.Issues.Reset()
 				if err := s.Issues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61176,6 +62200,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members":
 			if err := func() error {
+				s.Members.Reset()
 				if err := s.Members.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61187,6 +62212,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61198,6 +62224,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_administration":
 			if err := func() error {
+				s.OrganizationAdministration.Reset()
 				if err := s.OrganizationAdministration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61209,6 +62236,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_hooks":
 			if err := func() error {
+				s.OrganizationHooks.Reset()
 				if err := s.OrganizationHooks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61220,6 +62248,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_packages":
 			if err := func() error {
+				s.OrganizationPackages.Reset()
 				if err := s.OrganizationPackages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61231,6 +62260,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_plan":
 			if err := func() error {
+				s.OrganizationPlan.Reset()
 				if err := s.OrganizationPlan.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61242,6 +62272,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_projects":
 			if err := func() error {
+				s.OrganizationProjects.Reset()
 				if err := s.OrganizationProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61253,6 +62284,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_secrets":
 			if err := func() error {
+				s.OrganizationSecrets.Reset()
 				if err := s.OrganizationSecrets.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61264,6 +62296,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_self_hosted_runners":
 			if err := func() error {
+				s.OrganizationSelfHostedRunners.Reset()
 				if err := s.OrganizationSelfHostedRunners.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61275,6 +62308,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_user_blocking":
 			if err := func() error {
+				s.OrganizationUserBlocking.Reset()
 				if err := s.OrganizationUserBlocking.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61286,6 +62320,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "packages":
 			if err := func() error {
+				s.Packages.Reset()
 				if err := s.Packages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61297,6 +62332,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pages":
 			if err := func() error {
+				s.Pages.Reset()
 				if err := s.Pages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61308,6 +62344,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pull_requests":
 			if err := func() error {
+				s.PullRequests.Reset()
 				if err := s.PullRequests.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61319,6 +62356,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repository_hooks":
 			if err := func() error {
+				s.RepositoryHooks.Reset()
 				if err := s.RepositoryHooks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61330,6 +62368,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repository_projects":
 			if err := func() error {
+				s.RepositoryProjects.Reset()
 				if err := s.RepositoryProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61341,6 +62380,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret_scanning_alerts":
 			if err := func() error {
+				s.SecretScanningAlerts.Reset()
 				if err := s.SecretScanningAlerts.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61352,6 +62392,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secrets":
 			if err := func() error {
+				s.Secrets.Reset()
 				if err := s.Secrets.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61363,6 +62404,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "security_events":
 			if err := func() error {
+				s.SecurityEvents.Reset()
 				if err := s.SecurityEvents.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61374,6 +62416,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "single_file":
 			if err := func() error {
+				s.SingleFile.Reset()
 				if err := s.SingleFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61385,6 +62428,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "statuses":
 			if err := func() error {
+				s.Statuses.Reset()
 				if err := s.Statuses.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61396,6 +62440,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "team_discussions":
 			if err := func() error {
+				s.TeamDiscussions.Reset()
 				if err := s.TeamDiscussions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61407,6 +62452,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "vulnerability_alerts":
 			if err := func() error {
+				s.VulnerabilityAlerts.Reset()
 				if err := s.VulnerabilityAlerts.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61418,6 +62464,7 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "workflows":
 			if err := func() error {
+				s.Workflows.Reset()
 				if err := s.Workflows.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61518,11 +62565,10 @@ func (s *ApplicationGrant) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -61540,6 +62586,7 @@ func (s *ApplicationGrant) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scopes":
 			if err := func() error {
+				s.Scopes = s.Scopes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -61565,11 +62612,10 @@ func (s *ApplicationGrant) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -61579,11 +62625,10 @@ func (s *ApplicationGrant) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -61592,6 +62637,7 @@ func (s *ApplicationGrant) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61852,11 +62898,10 @@ func (s *AuthenticationToken) ReadJSON(i *json.Iterator) error {
 		case "expires_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.ExpiresAt = v
 				if err != nil {
 					return err
 				}
-
-				s.ExpiresAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -61865,6 +62910,7 @@ func (s *AuthenticationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Repository
@@ -61891,6 +62937,7 @@ func (s *AuthenticationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repository_selection":
 			if err := func() error {
+				s.RepositorySelection.Reset()
 				if err := s.RepositorySelection.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61902,6 +62949,7 @@ func (s *AuthenticationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "single_file":
 			if err := func() error {
+				s.SingleFile.Reset()
 				if err := s.SingleFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62052,11 +63100,10 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62107,6 +63154,7 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "installation":
 			if err := func() error {
+				s.Installation.Reset()
 				if err := s.Installation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62140,6 +63188,7 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scopes":
 			if err := func() error {
+				s.Scopes = s.Scopes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -62185,11 +63234,10 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62199,11 +63247,10 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62212,6 +63259,7 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62442,11 +63490,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "comments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.CommentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.CommentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62456,11 +63503,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "commits_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.CommitsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.CommitsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62470,11 +63516,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62494,6 +63539,7 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forks":
 			if err := func() error {
+				s.Forks = s.Forks[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -62519,11 +63565,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "forks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ForksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ForksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62533,11 +63578,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "git_pull_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.GitPullURL = v
 				if err != nil {
 					return err
 				}
-
-				s.GitPullURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62547,11 +63591,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "git_push_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.GitPushURL = v
 				if err != nil {
 					return err
 				}
-
-				s.GitPushURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62561,11 +63604,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62574,6 +63616,7 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			return true
 		case "history":
 			if err := func() error {
+				s.History = s.History[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -62616,6 +63659,7 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			return true
 		case "owner":
 			if err := func() error {
+				s.Owner.Reset()
 				if err := s.Owner.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62636,6 +63680,7 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			return true
 		case "truncated":
 			if err := func() error {
+				s.Truncated.Reset()
 				if err := s.Truncated.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62648,11 +63693,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62662,11 +63706,10 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -62753,6 +63796,7 @@ func (s *BasicError) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62764,6 +63808,7 @@ func (s *BasicError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62775,6 +63820,7 @@ func (s *BasicError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62786,6 +63832,7 @@ func (s *BasicError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62885,6 +63932,7 @@ func (s *Blob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "highlighted_content":
 			if err := func() error {
+				s.HighlightedContent.Reset()
 				if err := s.HighlightedContent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62926,11 +63974,10 @@ func (s *Blob) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -63051,6 +64098,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_deletions":
 			if err := func() error {
+				s.AllowDeletions.Reset()
 				if err := s.AllowDeletions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63062,6 +64110,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_force_pushes":
 			if err := func() error {
+				s.AllowForcePushes.Reset()
 				if err := s.AllowForcePushes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63073,6 +64122,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "enabled":
 			if err := func() error {
+				s.Enabled.Reset()
 				if err := s.Enabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63084,6 +64134,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "enforce_admins":
 			if err := func() error {
+				s.EnforceAdmins.Reset()
 				if err := s.EnforceAdmins.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63095,6 +64146,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63106,6 +64158,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protection_url":
 			if err := func() error {
+				s.ProtectionURL.Reset()
 				if err := s.ProtectionURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63117,6 +64170,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_conversation_resolution":
 			if err := func() error {
+				s.RequiredConversationResolution.Reset()
 				if err := s.RequiredConversationResolution.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63128,6 +64182,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_linear_history":
 			if err := func() error {
+				s.RequiredLinearHistory.Reset()
 				if err := s.RequiredLinearHistory.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63139,6 +64194,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_pull_request_reviews":
 			if err := func() error {
+				s.RequiredPullRequestReviews.Reset()
 				if err := s.RequiredPullRequestReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63150,6 +64206,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_signatures":
 			if err := func() error {
+				s.RequiredSignatures.Reset()
 				if err := s.RequiredSignatures.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63161,6 +64218,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_status_checks":
 			if err := func() error {
+				s.RequiredStatusChecks.Reset()
 				if err := s.RequiredStatusChecks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63172,6 +64230,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "restrictions":
 			if err := func() error {
+				s.Restrictions.Reset()
 				if err := s.Restrictions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63183,6 +64242,7 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63283,6 +64343,7 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apps":
 			if err := func() error {
+				s.Apps = s.Apps[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem BranchRestrictionPolicyAppsItem
@@ -63310,11 +64371,10 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 		case "apps_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AppsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AppsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -63323,6 +64383,7 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 			return true
 		case "teams":
 			if err := func() error {
+				s.Teams = s.Teams[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem BranchRestrictionPolicyTeamsItem
@@ -63350,11 +64411,10 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 		case "teams_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -63364,11 +64424,10 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -63377,6 +64436,7 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 			return true
 		case "users":
 			if err := func() error {
+				s.Users = s.Users[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem BranchRestrictionPolicyUsersItem
@@ -63404,11 +64464,10 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 		case "users_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.UsersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.UsersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -63608,6 +64667,7 @@ func (s *BranchWithProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pattern":
 			if err := func() error {
+				s.Pattern.Reset()
 				if err := s.Pattern.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63640,11 +64700,10 @@ func (s *BranchWithProtection) ReadJSON(i *json.Iterator) error {
 		case "protection_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ProtectionURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ProtectionURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -63653,6 +64712,7 @@ func (s *BranchWithProtection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_approving_review_count":
 			if err := func() error {
+				s.RequiredApprovingReviewCount.Reset()
 				if err := s.RequiredApprovingReviewCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63987,6 +65047,7 @@ func (s *CheckRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deployment":
 			if err := func() error {
+				s.Deployment.Reset()
 				if err := s.Deployment.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64347,6 +65408,7 @@ func (s *CheckSuite) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pull_requests":
 			if err := func() error {
+				s.PullRequests = s.PullRequests[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PullRequestMinimal
@@ -64561,6 +65623,7 @@ func (s *CodeOfConduct) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64602,11 +65665,10 @@ func (s *CodeOfConduct) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -64704,11 +65766,10 @@ func (s *CodeOfConductSimple) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -64848,6 +65909,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "analysis_key":
 			if err := func() error {
+				s.AnalysisKey = nil
 				var elem CodeScanningAnalysisAnalysisKey
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAnalysisAnalysisKey" (alias) is not implemented`)
@@ -64863,6 +65925,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "category":
 			if err := func() error {
+				s.Category = nil
 				var elem CodeScanningAnalysisCategory
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAnalysisCategory" (alias) is not implemented`)
@@ -64878,6 +65941,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "classifications":
 			if err := func() error {
+				s.Classifications = s.Classifications[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CodeScanningAlertClassification
@@ -64902,6 +65966,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "commit_sha":
 			if err := func() error {
+				s.CommitSha.Reset()
 				if err := s.CommitSha.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64913,6 +65978,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "environment":
 			if err := func() error {
+				s.Environment = nil
 				var elem CodeScanningAlertEnvironment
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAlertEnvironment" (alias) is not implemented`)
@@ -64928,6 +65994,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64939,6 +66006,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64950,6 +66018,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64961,6 +66030,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ref":
 			if err := func() error {
+				s.Ref = nil
 				var elem CodeScanningRef
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningRef" (alias) is not implemented`)
@@ -64976,6 +66046,7 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65059,6 +66130,7 @@ func (s *CodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "end_column":
 			if err := func() error {
+				s.EndColumn.Reset()
 				if err := s.EndColumn.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65070,6 +66142,7 @@ func (s *CodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "end_line":
 			if err := func() error {
+				s.EndLine.Reset()
 				if err := s.EndLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65081,6 +66154,7 @@ func (s *CodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65092,6 +66166,7 @@ func (s *CodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_column":
 			if err := func() error {
+				s.StartColumn.Reset()
 				if err := s.StartColumn.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65103,6 +66178,7 @@ func (s *CodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_line":
 			if err := func() error {
+				s.StartLine.Reset()
 				if err := s.StartLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65229,6 +66305,7 @@ func (s *CodeScanningAnalysis) ReadJSON(i *json.Iterator) error {
 			return true
 		case "category":
 			if err := func() error {
+				s.Category = nil
 				var elem CodeScanningAnalysisCategory
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAnalysisCategory" (alias) is not implemented`)
@@ -65340,6 +66417,7 @@ func (s *CodeScanningAnalysis) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tool_name":
 			if err := func() error {
+				s.ToolName.Reset()
 				if err := s.ToolName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65540,6 +66618,7 @@ func (s *CodeScanningAnalysisTool) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "guid":
 			if err := func() error {
+				s.GUID = nil
 				var elem CodeScanningAnalysisToolGUID
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAnalysisToolGUID" (alias) is not implemented`)
@@ -65555,6 +66634,7 @@ func (s *CodeScanningAnalysisTool) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name = nil
 				var elem CodeScanningAnalysisToolName
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAnalysisToolName" (alias) is not implemented`)
@@ -65570,6 +66650,7 @@ func (s *CodeScanningAnalysisTool) ReadJSON(i *json.Iterator) error {
 			return true
 		case "version":
 			if err := func() error {
+				s.Version = nil
 				var elem CodeScanningAnalysisToolVersion
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAnalysisToolVersion" (alias) is not implemented`)
@@ -65667,6 +66748,7 @@ func (s *CodeScanningSarifsReceipt) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "id":
 			if err := func() error {
+				s.ID = nil
 				var elem CodeScanningAnalysisSarifID
 				if err := func() error {
 					return fmt.Errorf(`decoding of "CodeScanningAnalysisSarifID" (alias) is not implemented`)
@@ -65682,6 +66764,7 @@ func (s *CodeScanningSarifsReceipt) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65750,6 +66833,7 @@ func (s *CodeScanningSarifsStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "analyses_url":
 			if err := func() error {
+				s.AnalysesURL.Reset()
 				if err := s.AnalysesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65761,6 +66845,7 @@ func (s *CodeScanningSarifsStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "processing_status":
 			if err := func() error {
+				s.ProcessingStatus.Reset()
 				if err := s.ProcessingStatus.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65931,11 +67016,10 @@ func (s *CombinedCommitStatus) ReadJSON(i *json.Iterator) error {
 		case "commit_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.CommitURL = v
 				if err != nil {
 					return err
 				}
-
-				s.CommitURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -65973,6 +67057,7 @@ func (s *CombinedCommitStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "statuses":
 			if err := func() error {
+				s.Statuses = s.Statuses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleCommitStatus
@@ -66009,11 +67094,10 @@ func (s *CombinedCommitStatus) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66132,11 +67216,10 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 		case "comments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.CommentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.CommentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66167,6 +67250,7 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "files":
 			if err := func() error {
+				s.Files = s.Files[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CommitFilesItem
@@ -66194,11 +67278,10 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66216,6 +67299,7 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parents":
 			if err := func() error {
+				s.Parents = s.Parents[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CommitParentsItem
@@ -66251,6 +67335,7 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stats":
 			if err := func() error {
+				s.Stats.Reset()
 				if err := s.Stats.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66263,11 +67348,10 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66339,6 +67423,7 @@ func (s *CommitActivity) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "days":
 			if err := func() error {
+				s.Days = s.Days[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -66500,11 +67585,10 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66514,11 +67598,10 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66578,6 +67661,7 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reactions":
 			if err := func() error {
+				s.Reactions.Reset()
 				if err := s.Reactions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66590,11 +67674,10 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66604,11 +67687,10 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66759,6 +67841,7 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 			return true
 		case "commits":
 			if err := func() error {
+				s.Commits = s.Commits[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Commit
@@ -66786,11 +67869,10 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 		case "diff_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DiffURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DiffURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66799,6 +67881,7 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 			return true
 		case "files":
 			if err := func() error {
+				s.Files = s.Files[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem DiffEntry
@@ -66826,11 +67909,10 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66851,11 +67933,10 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 		case "patch_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.PatchURL = v
 				if err != nil {
 					return err
 				}
-
-				s.PatchURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66865,11 +67946,10 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 		case "permalink_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.PermalinkURL = v
 				if err != nil {
 					return err
 				}
-
-				s.PermalinkURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66897,11 +67977,10 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -66977,6 +68056,7 @@ func (s *CommunityProfile) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "content_reports_enabled":
 			if err := func() error {
+				s.ContentReportsEnabled.Reset()
 				if err := s.ContentReportsEnabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67232,6 +68312,7 @@ func (s *ContentFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "submodule_git_url":
 			if err := func() error {
+				s.SubmoduleGitURL.Reset()
 				if err := s.SubmoduleGitURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67243,6 +68324,7 @@ func (s *ContentFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "target":
 			if err := func() error {
+				s.Target.Reset()
 				if err := s.Target.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67264,11 +68346,10 @@ func (s *ContentFile) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -67356,6 +68437,7 @@ func (s *ContentReferenceAttachment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67619,6 +68701,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "avatar_url":
 			if err := func() error {
+				s.AvatarURL.Reset()
 				if err := s.AvatarURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67639,6 +68722,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67650,6 +68734,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events_url":
 			if err := func() error {
+				s.EventsURL.Reset()
 				if err := s.EventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67661,6 +68746,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "followers_url":
 			if err := func() error {
+				s.FollowersURL.Reset()
 				if err := s.FollowersURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67672,6 +68758,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "following_url":
 			if err := func() error {
+				s.FollowingURL.Reset()
 				if err := s.FollowingURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67683,6 +68770,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gists_url":
 			if err := func() error {
+				s.GistsURL.Reset()
 				if err := s.GistsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67694,6 +68782,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gravatar_id":
 			if err := func() error {
+				s.GravatarID.Reset()
 				if err := s.GravatarID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67705,6 +68794,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67716,6 +68806,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67727,6 +68818,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "login":
 			if err := func() error {
+				s.Login.Reset()
 				if err := s.Login.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67738,6 +68830,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67749,6 +68842,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67760,6 +68854,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organizations_url":
 			if err := func() error {
+				s.OrganizationsURL.Reset()
 				if err := s.OrganizationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67771,6 +68866,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "received_events_url":
 			if err := func() error {
+				s.ReceivedEventsURL.Reset()
 				if err := s.ReceivedEventsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67782,6 +68878,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repos_url":
 			if err := func() error {
+				s.ReposURL.Reset()
 				if err := s.ReposURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67793,6 +68890,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "site_admin":
 			if err := func() error {
+				s.SiteAdmin.Reset()
 				if err := s.SiteAdmin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67804,6 +68902,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "starred_url":
 			if err := func() error {
+				s.StarredURL.Reset()
 				if err := s.StarredURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67815,6 +68914,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscriptions_url":
 			if err := func() error {
+				s.SubscriptionsURL.Reset()
 				if err := s.SubscriptionsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67835,6 +68935,7 @@ func (s *Contributor) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67929,6 +69030,7 @@ func (s *ContributorActivity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "weeks":
 			if err := func() error {
+				s.Weeks = s.Weeks[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ContributorActivityWeeksItem
@@ -68056,6 +69158,7 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "authorized_credential_id":
 			if err := func() error {
+				s.AuthorizedCredentialID.Reset()
 				if err := s.AuthorizedCredentialID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68067,6 +69170,7 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "authorized_credential_note":
 			if err := func() error {
+				s.AuthorizedCredentialNote.Reset()
 				if err := s.AuthorizedCredentialNote.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68078,6 +69182,7 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "authorized_credential_title":
 			if err := func() error {
+				s.AuthorizedCredentialTitle.Reset()
 				if err := s.AuthorizedCredentialTitle.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68089,6 +69194,7 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "credential_accessed_at":
 			if err := func() error {
+				s.CredentialAccessedAt.Reset()
 				if err := s.CredentialAccessedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -68101,11 +69207,10 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 		case "credential_authorized_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CredentialAuthorizedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CredentialAuthorizedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68132,6 +69237,7 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fingerprint":
 			if err := func() error {
+				s.Fingerprint.Reset()
 				if err := s.Fingerprint.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68152,6 +69258,7 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scopes":
 			if err := func() error {
+				s.Scopes = s.Scopes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -68176,6 +69283,7 @@ func (s *CredentialAuthorization) ReadJSON(i *json.Iterator) error {
 			return true
 		case "token_last_eight":
 			if err := func() error {
+				s.TokenLastEight.Reset()
 				if err := s.TokenLastEight.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68416,11 +69524,10 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68467,6 +69574,7 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 			return true
 		case "original_environment":
 			if err := func() error {
+				s.OriginalEnvironment.Reset()
 				if err := s.OriginalEnvironment.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68478,6 +69586,7 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 			return true
 		case "performed_via_github_app":
 			if err := func() error {
+				s.PerformedViaGithubApp.Reset()
 				if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68489,6 +69598,7 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 			return true
 		case "production_environment":
 			if err := func() error {
+				s.ProductionEnvironment.Reset()
 				if err := s.ProductionEnvironment.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68501,11 +69611,10 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 		case "repository_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoryURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoryURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68515,11 +69624,10 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 		case "statuses_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.StatusesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.StatusesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68537,6 +69645,7 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 			return true
 		case "transient_environment":
 			if err := func() error {
+				s.TransientEnvironment.Reset()
 				if err := s.TransientEnvironment.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68549,11 +69658,10 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68563,11 +69671,10 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68677,11 +69784,10 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68702,11 +69808,10 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		case "deployment_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DeploymentURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DeploymentURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68724,6 +69829,7 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "environment":
 			if err := func() error {
+				s.Environment.Reset()
 				if err := s.Environment.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68735,6 +69841,7 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "environment_url":
 			if err := func() error {
+				s.EnvironmentURL.Reset()
 				if err := s.EnvironmentURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68755,6 +69862,7 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "log_url":
 			if err := func() error {
+				s.LogURL.Reset()
 				if err := s.LogURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68775,6 +69883,7 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "performed_via_github_app":
 			if err := func() error {
+				s.PerformedViaGithubApp.Reset()
 				if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68787,11 +69896,10 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		case "repository_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoryURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoryURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68810,11 +69918,10 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		case "target_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TargetURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TargetURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68824,11 +69931,10 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68838,11 +69944,10 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68945,11 +70050,10 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 		case "blob_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.BlobURL = v
 				if err != nil {
 					return err
 				}
-
-				s.BlobURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68968,11 +70072,10 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 		case "contents_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ContentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ContentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -68999,6 +70102,7 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 			return true
 		case "patch":
 			if err := func() error {
+				s.Patch.Reset()
 				if err := s.Patch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69010,6 +70114,7 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 			return true
 		case "previous_filename":
 			if err := func() error {
+				s.PreviousFilename.Reset()
 				if err := s.PreviousFilename.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69022,11 +70127,10 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 		case "raw_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RawURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RawURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -69294,6 +70398,7 @@ func (s *EnvironmentApprovals) ReadJSON(i *json.Iterator) error {
 			return true
 		case "environments":
 			if err := func() error {
+				s.Environments = s.Environments[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnvironmentApprovalsEnvironmentsItem
@@ -69433,6 +70538,7 @@ func (s *Feed) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "current_user_actor_url":
 			if err := func() error {
+				s.CurrentUserActorURL.Reset()
 				if err := s.CurrentUserActorURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69444,6 +70550,7 @@ func (s *Feed) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_organization_url":
 			if err := func() error {
+				s.CurrentUserOrganizationURL.Reset()
 				if err := s.CurrentUserOrganizationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69455,16 +70562,16 @@ func (s *Feed) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_organization_urls":
 			if err := func() error {
+				s.CurrentUserOrganizationUrls = s.CurrentUserOrganizationUrls[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem url.URL
 					if err := func() error {
 						v, err := json.ReadURI(i)
+						elem = v
 						if err != nil {
 							return err
 						}
-
-						elem = v
 						return i.Error
 					}(); err != nil {
 						retErr = err
@@ -69484,6 +70591,7 @@ func (s *Feed) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_public_url":
 			if err := func() error {
+				s.CurrentUserPublicURL.Reset()
 				if err := s.CurrentUserPublicURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69495,6 +70603,7 @@ func (s *Feed) ReadJSON(i *json.Iterator) error {
 			return true
 		case "current_user_url":
 			if err := func() error {
+				s.CurrentUserURL.Reset()
 				if err := s.CurrentUserURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69517,6 +70626,7 @@ func (s *Feed) ReadJSON(i *json.Iterator) error {
 			return true
 		case "security_advisories_url":
 			if err := func() error {
+				s.SecurityAdvisoriesURL.Reset()
 				if err := s.SecurityAdvisoriesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69995,6 +71105,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70006,6 +71117,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_forking":
 			if err := func() error {
+				s.AllowForking.Reset()
 				if err := s.AllowForking.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70017,6 +71129,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70028,6 +71141,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70039,6 +71153,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70050,6 +71165,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "anonymous_access_enabled":
 			if err := func() error {
+				s.AnonymousAccessEnabled.Reset()
 				if err := s.AnonymousAccessEnabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70115,6 +71231,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "code_of_conduct":
 			if err := func() error {
+				s.CodeOfConduct.Reset()
 				if err := s.CodeOfConduct.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70172,11 +71289,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "contributors_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ContributorsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ContributorsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70186,11 +71302,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70208,6 +71323,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70220,11 +71336,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "deployments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DeploymentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DeploymentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70254,11 +71369,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "downloads_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DownloadsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DownloadsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70268,11 +71382,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.EventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.EventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70309,11 +71422,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "forks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ForksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ForksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70368,11 +71480,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70438,11 +71549,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "hooks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HooksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HooksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70460,6 +71570,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70528,11 +71639,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "languages_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.LanguagesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.LanguagesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70552,6 +71662,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "master_branch":
 			if err := func() error {
+				s.MasterBranch.Reset()
 				if err := s.MasterBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70564,11 +71675,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "merges_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.MergesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.MergesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70651,6 +71761,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization":
 			if err := func() error {
+				s.Organization.Reset()
 				if err := s.Organization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70673,6 +71784,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parent":
 			if err := func() error {
+				s.Parent.Reset()
 				if err := s.Parent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70684,6 +71796,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70714,11 +71827,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "pushed_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.PushedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.PushedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70745,6 +71857,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "security_and_analysis":
 			if err := func() error {
+				s.SecurityAndAnalysis.Reset()
 				if err := s.SecurityAndAnalysis.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70765,6 +71878,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "source":
 			if err := func() error {
+				s.Source.Reset()
 				if err := s.Source.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70786,11 +71900,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "stargazers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.StargazersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.StargazersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70818,11 +71931,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "subscribers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscribersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscribersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70832,11 +71944,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "subscription_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70846,11 +71957,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "svn_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SvnURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SvnURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70860,11 +71970,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "tags_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TagsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TagsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70874,11 +71983,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "teams_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70887,6 +71995,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "temp_clone_token":
 			if err := func() error {
+				s.TempCloneToken.Reset()
 				if err := s.TempCloneToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70898,6 +72007,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "template_repository":
 			if err := func() error {
+				s.TemplateRepository.Reset()
 				if err := s.TemplateRepository.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70909,6 +72019,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topics":
 			if err := func() error {
+				s.Topics = s.Topics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -70943,11 +72054,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70957,11 +72067,10 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -70970,6 +72079,7 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71089,11 +72199,10 @@ func (s *GistComment) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71121,11 +72230,10 @@ func (s *GistComment) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71135,11 +72243,10 @@ func (s *GistComment) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71233,11 +72340,10 @@ func (s *GistCommit) ReadJSON(i *json.Iterator) error {
 		case "committed_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CommittedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CommittedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71247,11 +72353,10 @@ func (s *GistCommit) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71387,11 +72492,10 @@ func (s *GitCommit) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71418,6 +72522,7 @@ func (s *GitCommit) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parents":
 			if err := func() error {
+				s.Parents = s.Parents[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GitCommitParentsItem
@@ -71465,11 +72570,10 @@ func (s *GitCommit) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71578,11 +72682,10 @@ func (s *GitRef) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71723,11 +72826,10 @@ func (s *GitTag) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -71736,6 +72838,7 @@ func (s *GitTag) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verification":
 			if err := func() error {
+				s.Verification.Reset()
 				if err := s.Verification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71822,6 +72925,7 @@ func (s *GitTree) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tree":
 			if err := func() error {
+				s.Tree = s.Tree[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GitTreeTreeItem
@@ -71858,11 +72962,10 @@ func (s *GitTree) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -72079,11 +73182,10 @@ func (s *GpgKey) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -72092,6 +73194,7 @@ func (s *GpgKey) ReadJSON(i *json.Iterator) error {
 			return true
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GpgKeyEmailsItem
@@ -72178,6 +73281,7 @@ func (s *GpgKey) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subkeys":
 			if err := func() error {
+				s.Subkeys = s.Subkeys[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GpgKeySubkeysItem
@@ -72263,6 +73367,7 @@ func (s *GroupMapping) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GroupMappingGroupsItem
@@ -72392,11 +73497,10 @@ func (s *HookDelivery) ReadJSON(i *json.Iterator) error {
 		case "delivered_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.DeliveredAt = v
 				if err != nil {
 					return err
 				}
-
-				s.DeliveredAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -72512,6 +73616,7 @@ func (s *HookDelivery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72615,11 +73720,10 @@ func (s *HookDeliveryItem) ReadJSON(i *json.Iterator) error {
 		case "delivered_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.DeliveredAt = v
 				if err != nil {
 					return err
 				}
-
-				s.DeliveredAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -72868,6 +73972,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "authors_count":
 			if err := func() error {
+				s.AuthorsCount.Reset()
 				if err := s.AuthorsCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72880,11 +73985,10 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 		case "authors_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AuthorsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AuthorsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -72893,6 +73997,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "commit_count":
 			if err := func() error {
+				s.CommitCount.Reset()
 				if err := s.CommitCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72904,6 +74009,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "error_message":
 			if err := func() error {
+				s.ErrorMessage.Reset()
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72915,6 +74021,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "failed_step":
 			if err := func() error {
+				s.FailedStep.Reset()
 				if err := s.FailedStep.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72927,11 +74034,10 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -72940,6 +74046,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_large_files":
 			if err := func() error {
+				s.HasLargeFiles.Reset()
 				if err := s.HasLargeFiles.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72951,6 +74058,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "import_percent":
 			if err := func() error {
+				s.ImportPercent.Reset()
 				if err := s.ImportPercent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72962,6 +74070,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "large_files_count":
 			if err := func() error {
+				s.LargeFilesCount.Reset()
 				if err := s.LargeFilesCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72973,6 +74082,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "large_files_size":
 			if err := func() error {
+				s.LargeFilesSize.Reset()
 				if err := s.LargeFilesSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72984,6 +74094,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72995,6 +74106,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "project_choices":
 			if err := func() error {
+				s.ProjectChoices = s.ProjectChoices[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ImportProjectChoicesItem
@@ -73021,6 +74133,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "push_percent":
 			if err := func() error {
+				s.PushPercent.Reset()
 				if err := s.PushPercent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73033,11 +74146,10 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 		case "repository_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoryURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoryURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -73055,6 +74167,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status_text":
 			if err := func() error {
+				s.StatusText.Reset()
 				if err := s.StatusText.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73066,6 +74179,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "svc_root":
 			if err := func() error {
+				s.SvcRoot.Reset()
 				if err := s.SvcRoot.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73077,6 +74191,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "svn_root":
 			if err := func() error {
+				s.SvnRoot.Reset()
 				if err := s.SvnRoot.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73088,6 +74203,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tfvc_project":
 			if err := func() error {
+				s.TfvcProject.Reset()
 				if err := s.TfvcProject.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73100,11 +74216,10 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -73113,6 +74228,7 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			return true
 		case "use_lfs":
 			if err := func() error {
+				s.UseLfs.Reset()
 				if err := s.UseLfs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73250,6 +74366,7 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_multiple_single_files":
 			if err := func() error {
+				s.HasMultipleSingleFiles.Reset()
 				if err := s.HasMultipleSingleFiles.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73261,6 +74378,7 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73272,6 +74390,7 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Repository
@@ -73298,6 +74417,7 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repository_selection":
 			if err := func() error {
+				s.RepositorySelection.Reset()
 				if err := s.RepositorySelection.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73309,6 +74429,7 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "single_file":
 			if err := func() error {
+				s.SingleFile.Reset()
 				if err := s.SingleFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73320,6 +74441,7 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		case "single_file_paths":
 			if err := func() error {
+				s.SingleFilePaths = s.SingleFilePaths[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -73470,6 +74592,7 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "client_id":
 			if err := func() error {
+				s.ClientID.Reset()
 				if err := s.ClientID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73481,6 +74604,7 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "client_secret":
 			if err := func() error {
+				s.ClientSecret.Reset()
 				if err := s.ClientSecret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73493,11 +74617,10 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -73517,6 +74640,7 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events":
 			if err := func() error {
+				s.Events = s.Events[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -73542,11 +74666,10 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 		case "external_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ExternalURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ExternalURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -73556,11 +74679,10 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -73578,6 +74700,7 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "installations_count":
 			if err := func() error {
+				s.InstallationsCount.Reset()
 				if err := s.InstallationsCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73618,6 +74741,7 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pem":
 			if err := func() error {
+				s.Pem.Reset()
 				if err := s.Pem.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73640,6 +74764,7 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "slug":
 			if err := func() error {
+				s.Slug.Reset()
 				if err := s.Slug.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73652,11 +74777,10 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -73665,6 +74789,7 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "webhook_secret":
 			if err := func() error {
+				s.WebhookSecret.Reset()
 				if err := s.WebhookSecret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73753,6 +74878,7 @@ func (s *InteractionLimit) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "expiry":
 			if err := func() error {
+				s.Expiry.Reset()
 				if err := s.Expiry.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73830,11 +74956,10 @@ func (s *InteractionLimitResponse) ReadJSON(i *json.Iterator) error {
 		case "expires_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.ExpiresAt = v
 				if err != nil {
 					return err
 				}
-
-				s.ExpiresAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -73969,6 +75094,7 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73980,6 +75106,7 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_html":
 			if err := func() error {
+				s.BodyHTML.Reset()
 				if err := s.BodyHTML.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73991,6 +75118,7 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_text":
 			if err := func() error {
+				s.BodyText.Reset()
 				if err := s.BodyText.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74003,11 +75131,10 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74017,11 +75144,10 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74040,11 +75166,10 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 		case "issue_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.IssueURL = v
 				if err != nil {
 					return err
 				}
-
-				s.IssueURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74062,6 +75187,7 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "performed_via_github_app":
 			if err := func() error {
+				s.PerformedViaGithubApp.Reset()
 				if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74073,6 +75199,7 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reactions":
 			if err := func() error {
+				s.Reactions.Reset()
 				if err := s.Reactions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74085,11 +75212,10 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74099,11 +75225,10 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74318,11 +75443,10 @@ func (s *Job) ReadJSON(i *json.Iterator) error {
 		case "started_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.StartedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.StartedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74340,6 +75464,7 @@ func (s *Job) ReadJSON(i *json.Iterator) error {
 			return true
 		case "steps":
 			if err := func() error {
+				s.Steps = s.Steps[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem JobStepsItem
@@ -74444,11 +75569,10 @@ func (s *Key) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74707,11 +75831,10 @@ func (s *Label) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74883,6 +76006,7 @@ func (s *License) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -74926,11 +76050,10 @@ func (s *License) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -74957,6 +76080,7 @@ func (s *License) ReadJSON(i *json.Iterator) error {
 			return true
 		case "limitations":
 			if err := func() error {
+				s.Limitations = s.Limitations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -74999,6 +76123,7 @@ func (s *License) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions = s.Permissions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -75250,11 +76375,10 @@ func (s *LicenseContent) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -75330,6 +76454,7 @@ func (s *LicenseSimple) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75594,6 +76719,7 @@ func (s *MarketplaceAccount) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75623,6 +76749,7 @@ func (s *MarketplaceAccount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "node_id":
 			if err := func() error {
+				s.NodeID.Reset()
 				if err := s.NodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75634,6 +76761,7 @@ func (s *MarketplaceAccount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_billing_email":
 			if err := func() error {
+				s.OrganizationBillingEmail.Reset()
 				if err := s.OrganizationBillingEmail.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75655,11 +76783,10 @@ func (s *MarketplaceAccount) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -75762,11 +76889,10 @@ func (s *MarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
 		case "accounts_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AccountsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AccountsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -75775,6 +76901,7 @@ func (s *MarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
 			return true
 		case "bullets":
 			if err := func() error {
+				s.Bullets = s.Bullets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -75872,11 +76999,10 @@ func (s *MarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -75982,6 +77108,7 @@ func (s *MarketplacePurchase) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76011,6 +77138,7 @@ func (s *MarketplacePurchase) ReadJSON(i *json.Iterator) error {
 			return true
 		case "marketplace_pending_change":
 			if err := func() error {
+				s.MarketplacePendingChange.Reset()
 				if err := s.MarketplacePendingChange.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76033,6 +77161,7 @@ func (s *MarketplacePurchase) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_billing_email":
 			if err := func() error {
+				s.OrganizationBillingEmail.Reset()
 				if err := s.OrganizationBillingEmail.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76124,6 +77253,7 @@ func (s *MergedUpstream) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "base_branch":
 			if err := func() error {
+				s.BaseBranch.Reset()
 				if err := s.BaseBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76135,6 +77265,7 @@ func (s *MergedUpstream) ReadJSON(i *json.Iterator) error {
 			return true
 		case "merge_type":
 			if err := func() error {
+				s.MergeType.Reset()
 				if err := s.MergeType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76146,6 +77277,7 @@ func (s *MergedUpstream) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76273,6 +77405,7 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "archive_url":
 			if err := func() error {
+				s.ArchiveURL.Reset()
 				if err := s.ArchiveURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76285,11 +77418,10 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -76298,6 +77430,7 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "exclude":
 			if err := func() error {
+				s.Exclude = s.Exclude[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -76414,6 +77547,7 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repositories":
 			if err := func() error {
+				s.Repositories = s.Repositories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Repository
@@ -76450,11 +77584,10 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -76464,11 +77597,10 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -76593,11 +77725,10 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -76640,11 +77771,10 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -76663,11 +77793,10 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 		case "labels_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.LabelsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.LabelsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -76722,11 +77851,10 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -76736,11 +77864,10 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77131,6 +78258,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_forking":
 			if err := func() error {
+				s.AllowForking.Reset()
 				if err := s.AllowForking.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77151,6 +78279,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "archived":
 			if err := func() error {
+				s.Archived.Reset()
 				if err := s.Archived.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77189,6 +78318,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "clone_url":
 			if err := func() error {
+				s.CloneURL.Reset()
 				if err := s.CloneURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77200,6 +78330,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "code_of_conduct":
 			if err := func() error {
+				s.CodeOfConduct.Reset()
 				if err := s.CodeOfConduct.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77257,11 +78388,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "contributors_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ContributorsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ContributorsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77270,6 +78400,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt.Reset()
 				if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -77281,6 +78412,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "default_branch":
 			if err := func() error {
+				s.DefaultBranch.Reset()
 				if err := s.DefaultBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77292,6 +78424,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77304,11 +78437,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "deployments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DeploymentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DeploymentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77328,6 +78460,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disabled":
 			if err := func() error {
+				s.Disabled.Reset()
 				if err := s.Disabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77340,11 +78473,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "downloads_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DownloadsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DownloadsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77354,11 +78486,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.EventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.EventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77376,6 +78507,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forks":
 			if err := func() error {
+				s.Forks.Reset()
 				if err := s.Forks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77387,6 +78519,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forks_count":
 			if err := func() error {
+				s.ForksCount.Reset()
 				if err := s.ForksCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77399,11 +78532,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "forks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ForksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ForksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77448,6 +78580,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "git_url":
 			if err := func() error {
+				s.GitURL.Reset()
 				if err := s.GitURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77460,11 +78593,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77473,6 +78605,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_downloads":
 			if err := func() error {
+				s.HasDownloads.Reset()
 				if err := s.HasDownloads.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77484,6 +78617,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_issues":
 			if err := func() error {
+				s.HasIssues.Reset()
 				if err := s.HasIssues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77495,6 +78629,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_pages":
 			if err := func() error {
+				s.HasPages.Reset()
 				if err := s.HasPages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77506,6 +78641,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_projects":
 			if err := func() error {
+				s.HasProjects.Reset()
 				if err := s.HasProjects.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77517,6 +78653,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_wiki":
 			if err := func() error {
+				s.HasWiki.Reset()
 				if err := s.HasWiki.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77528,6 +78665,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "homepage":
 			if err := func() error {
+				s.Homepage.Reset()
 				if err := s.Homepage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77540,11 +78678,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "hooks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HooksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HooksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77562,6 +78699,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77618,6 +78756,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "language":
 			if err := func() error {
+				s.Language.Reset()
 				if err := s.Language.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77630,11 +78769,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "languages_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.LanguagesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.LanguagesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77643,6 +78781,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "license":
 			if err := func() error {
+				s.License.Reset()
 				if err := s.License.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77655,11 +78794,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "merges_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.MergesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.MergesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77677,6 +78815,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mirror_url":
 			if err := func() error {
+				s.MirrorURL.Reset()
 				if err := s.MirrorURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77697,6 +78836,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "network_count":
 			if err := func() error {
+				s.NetworkCount.Reset()
 				if err := s.NetworkCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77726,6 +78866,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "open_issues":
 			if err := func() error {
+				s.OpenIssues.Reset()
 				if err := s.OpenIssues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77737,6 +78878,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "open_issues_count":
 			if err := func() error {
+				s.OpenIssuesCount.Reset()
 				if err := s.OpenIssuesCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77759,6 +78901,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77788,6 +78931,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pushed_at":
 			if err := func() error {
+				s.PushedAt.Reset()
 				if err := s.PushedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -77808,6 +78952,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ssh_url":
 			if err := func() error {
+				s.SSHURL.Reset()
 				if err := s.SSHURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77819,6 +78964,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "size":
 			if err := func() error {
+				s.Size.Reset()
 				if err := s.Size.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77830,6 +78976,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stargazers_count":
 			if err := func() error {
+				s.StargazersCount.Reset()
 				if err := s.StargazersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77842,11 +78989,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "stargazers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.StargazersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.StargazersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77864,6 +79010,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscribers_count":
 			if err := func() error {
+				s.SubscribersCount.Reset()
 				if err := s.SubscribersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77876,11 +79023,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "subscribers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscribersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscribersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77890,11 +79036,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "subscription_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77903,6 +79048,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "svn_url":
 			if err := func() error {
+				s.SvnURL.Reset()
 				if err := s.SvnURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77915,11 +79061,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "tags_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TagsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TagsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77929,11 +79074,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "teams_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -77942,6 +79086,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "temp_clone_token":
 			if err := func() error {
+				s.TempCloneToken.Reset()
 				if err := s.TempCloneToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77953,6 +79098,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "template_repository":
 			if err := func() error {
+				s.TemplateRepository.Reset()
 				if err := s.TemplateRepository.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77964,6 +79110,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topics":
 			if err := func() error {
+				s.Topics = s.Topics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -77998,11 +79145,10 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78011,6 +79157,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updated_at":
 			if err := func() error {
+				s.UpdatedAt.Reset()
 				if err := s.UpdatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -78022,6 +79169,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78033,6 +79181,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "watchers":
 			if err := func() error {
+				s.Watchers.Reset()
 				if err := s.Watchers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78044,6 +79193,7 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "watchers_count":
 			if err := func() error {
+				s.WatchersCount.Reset()
 				if err := s.WatchersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78144,11 +79294,10 @@ func (s *NullableCodeOfConductSimple) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78211,11 +79360,10 @@ func (s *NullableCommunityHealthFile) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78225,11 +79373,10 @@ func (s *NullableCommunityHealthFile) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78300,6 +79447,7 @@ func (s *NullableGitUser) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "date":
 			if err := func() error {
+				s.Date.Reset()
 				if err := s.Date.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78311,6 +79459,7 @@ func (s *NullableGitUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78322,6 +79471,7 @@ func (s *NullableGitUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78450,6 +79600,7 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "client_id":
 			if err := func() error {
+				s.ClientID.Reset()
 				if err := s.ClientID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78461,6 +79612,7 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "client_secret":
 			if err := func() error {
+				s.ClientSecret.Reset()
 				if err := s.ClientSecret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78473,11 +79625,10 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78497,6 +79648,7 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events":
 			if err := func() error {
+				s.Events = s.Events[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -78522,11 +79674,10 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 		case "external_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ExternalURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ExternalURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78536,11 +79687,10 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78558,6 +79708,7 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "installations_count":
 			if err := func() error {
+				s.InstallationsCount.Reset()
 				if err := s.InstallationsCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78598,6 +79749,7 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pem":
 			if err := func() error {
+				s.Pem.Reset()
 				if err := s.Pem.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78620,6 +79772,7 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "slug":
 			if err := func() error {
+				s.Slug.Reset()
 				if err := s.Slug.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78632,11 +79785,10 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -78645,6 +79797,7 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "webhook_secret":
 			if err := func() error {
+				s.WebhookSecret.Reset()
 				if err := s.WebhookSecret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78723,6 +79876,7 @@ func (s *NullableLicenseSimple) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79141,6 +80295,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79152,6 +80307,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_forking":
 			if err := func() error {
+				s.AllowForking.Reset()
 				if err := s.AllowForking.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79163,6 +80319,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79174,6 +80331,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79185,6 +80343,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79296,11 +80455,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "contributors_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ContributorsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ContributorsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79329,6 +80487,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79341,11 +80500,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "deployments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DeploymentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DeploymentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79375,11 +80533,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "downloads_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DownloadsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DownloadsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79389,11 +80546,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.EventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.EventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79430,11 +80586,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "forks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ForksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ForksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79489,11 +80644,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79559,11 +80713,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "hooks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HooksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HooksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79581,6 +80734,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79649,11 +80803,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "languages_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.LanguagesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.LanguagesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79673,6 +80826,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "master_branch":
 			if err := func() error {
+				s.MasterBranch.Reset()
 				if err := s.MasterBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79685,11 +80839,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "merges_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.MergesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.MergesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79727,6 +80880,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "network_count":
 			if err := func() error {
+				s.NetworkCount.Reset()
 				if err := s.NetworkCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79774,6 +80928,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization":
 			if err := func() error {
+				s.Organization.Reset()
 				if err := s.Organization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79796,6 +80951,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79873,11 +81029,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "stargazers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.StargazersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.StargazersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79886,6 +81041,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "starred_at":
 			if err := func() error {
+				s.StarredAt.Reset()
 				if err := s.StarredAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79906,6 +81062,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscribers_count":
 			if err := func() error {
+				s.SubscribersCount.Reset()
 				if err := s.SubscribersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79918,11 +81075,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "subscribers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscribersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscribersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79932,11 +81088,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "subscription_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79946,11 +81101,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "svn_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SvnURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SvnURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79960,11 +81114,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "tags_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TagsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TagsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79974,11 +81127,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "teams_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -79987,6 +81139,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "temp_clone_token":
 			if err := func() error {
+				s.TempCloneToken.Reset()
 				if err := s.TempCloneToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79998,6 +81151,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "template_repository":
 			if err := func() error {
+				s.TemplateRepository.Reset()
 				if err := s.TemplateRepository.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80009,6 +81163,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topics":
 			if err := func() error {
+				s.Topics = s.Topics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -80043,11 +81198,10 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80067,6 +81221,7 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80186,6 +81341,7 @@ func (s *NullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "has_multiple_single_files":
 			if err := func() error {
+				s.HasMultipleSingleFiles.Reset()
 				if err := s.HasMultipleSingleFiles.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80209,11 +81365,10 @@ func (s *NullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 		case "repositories_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoriesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoriesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80242,6 +81397,7 @@ func (s *NullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "single_file_paths":
 			if err := func() error {
+				s.SingleFilePaths = s.SingleFilePaths[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -80372,11 +81528,10 @@ func (s *NullableSimpleCommit) ReadJSON(i *json.Iterator) error {
 		case "timestamp":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.Timestamp = v
 				if err != nil {
 					return err
 				}
-
-				s.Timestamp = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80511,11 +81666,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "avatar_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AvatarURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AvatarURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80524,6 +81678,7 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80545,11 +81700,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "followers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.FollowersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.FollowersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80588,11 +81742,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80619,6 +81772,7 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80640,11 +81794,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "organizations_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.OrganizationsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.OrganizationsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80654,11 +81807,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "received_events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReceivedEventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReceivedEventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80668,11 +81820,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "repos_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReposURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReposURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80690,6 +81841,7 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "starred_at":
 			if err := func() error {
+				s.StarredAt.Reset()
 				if err := s.StarredAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80711,11 +81863,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "subscriptions_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80734,11 +81885,10 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80846,11 +81996,10 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80868,6 +82017,7 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ldap_dn":
 			if err := func() error {
+				s.LdapDn.Reset()
 				if err := s.LdapDn.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80915,6 +82065,7 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privacy":
 			if err := func() error {
+				s.Privacy.Reset()
 				if err := s.Privacy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80927,11 +82078,10 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iterator) error {
 		case "repositories_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoriesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoriesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -80950,11 +82100,10 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81073,11 +82222,10 @@ func (s *OrgHook) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81086,6 +82234,7 @@ func (s *OrgHook) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deliveries_url":
 			if err := func() error {
+				s.DeliveriesURL.Reset()
 				if err := s.DeliveriesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81097,6 +82246,7 @@ func (s *OrgHook) ReadJSON(i *json.Iterator) error {
 			return true
 		case "events":
 			if err := func() error {
+				s.Events = s.Events[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -81140,11 +82290,10 @@ func (s *OrgHook) ReadJSON(i *json.Iterator) error {
 		case "ping_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.PingURL = v
 				if err != nil {
 					return err
 				}
-
-				s.PingURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81163,11 +82312,10 @@ func (s *OrgHook) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81177,11 +82325,10 @@ func (s *OrgHook) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81272,11 +82419,10 @@ func (s *OrgMembership) ReadJSON(i *json.Iterator) error {
 		case "organization_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.OrganizationURL = v
 				if err != nil {
 					return err
 				}
-
-				s.OrganizationURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81285,6 +82431,7 @@ func (s *OrgMembership) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81315,11 +82462,10 @@ func (s *OrgMembership) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81404,11 +82550,10 @@ func (s *OrganizationActionsSecret) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81426,6 +82571,7 @@ func (s *OrganizationActionsSecret) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_repositories_url":
 			if err := func() error {
+				s.SelectedRepositoriesURL.Reset()
 				if err := s.SelectedRepositoriesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81438,11 +82584,10 @@ func (s *OrganizationActionsSecret) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81702,6 +82847,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "billing_email":
 			if err := func() error {
+				s.BillingEmail.Reset()
 				if err := s.BillingEmail.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81713,6 +82859,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "blog":
 			if err := func() error {
+				s.Blog.Reset()
 				if err := s.Blog.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81724,6 +82871,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "collaborators":
 			if err := func() error {
+				s.Collaborators.Reset()
 				if err := s.Collaborators.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81735,6 +82883,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "company":
 			if err := func() error {
+				s.Company.Reset()
 				if err := s.Company.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81747,11 +82896,10 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81760,6 +82908,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "default_repository_permission":
 			if err := func() error {
+				s.DefaultRepositoryPermission.Reset()
 				if err := s.DefaultRepositoryPermission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81782,6 +82931,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disk_usage":
 			if err := func() error {
+				s.DiskUsage.Reset()
 				if err := s.DiskUsage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81793,6 +82943,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81805,11 +82956,10 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 		case "events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.EventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.EventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81837,11 +82987,10 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -81886,6 +83035,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_verified":
 			if err := func() error {
+				s.IsVerified.Reset()
 				if err := s.IsVerified.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81906,6 +83056,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81926,6 +83077,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_allowed_repository_creation_type":
 			if err := func() error {
+				s.MembersAllowedRepositoryCreationType.Reset()
 				if err := s.MembersAllowedRepositoryCreationType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81937,6 +83089,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_internal_repositories":
 			if err := func() error {
+				s.MembersCanCreateInternalRepositories.Reset()
 				if err := s.MembersCanCreateInternalRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81948,6 +83101,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_pages":
 			if err := func() error {
+				s.MembersCanCreatePages.Reset()
 				if err := s.MembersCanCreatePages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81959,6 +83113,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_private_pages":
 			if err := func() error {
+				s.MembersCanCreatePrivatePages.Reset()
 				if err := s.MembersCanCreatePrivatePages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81970,6 +83125,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_private_repositories":
 			if err := func() error {
+				s.MembersCanCreatePrivateRepositories.Reset()
 				if err := s.MembersCanCreatePrivateRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81981,6 +83137,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_public_pages":
 			if err := func() error {
+				s.MembersCanCreatePublicPages.Reset()
 				if err := s.MembersCanCreatePublicPages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81992,6 +83149,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_public_repositories":
 			if err := func() error {
+				s.MembersCanCreatePublicRepositories.Reset()
 				if err := s.MembersCanCreatePublicRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82003,6 +83161,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members_can_create_repositories":
 			if err := func() error {
+				s.MembersCanCreateRepositories.Reset()
 				if err := s.MembersCanCreateRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82023,6 +83182,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82043,6 +83203,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "owned_private_repos":
 			if err := func() error {
+				s.OwnedPrivateRepos.Reset()
 				if err := s.OwnedPrivateRepos.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82054,6 +83215,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "plan":
 			if err := func() error {
+				s.Plan.Reset()
 				if err := s.Plan.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82065,6 +83227,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "private_gists":
 			if err := func() error {
+				s.PrivateGists.Reset()
 				if err := s.PrivateGists.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82104,11 +83267,10 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 		case "repos_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReposURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReposURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -82117,6 +83279,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "total_private_repos":
 			if err := func() error {
+				s.TotalPrivateRepos.Reset()
 				if err := s.TotalPrivateRepos.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82128,6 +83291,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "twitter_username":
 			if err := func() error {
+				s.TwitterUsername.Reset()
 				if err := s.TwitterUsername.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82139,6 +83303,7 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "two_factor_requirement_enabled":
 			if err := func() error {
+				s.TwoFactorRequirementEnabled.Reset()
 				if err := s.TwoFactorRequirementEnabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82160,11 +83325,10 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -82174,11 +83338,10 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -82291,6 +83454,7 @@ func (s *OrganizationInvitation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "failed_at":
 			if err := func() error {
+				s.FailedAt.Reset()
 				if err := s.FailedAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82302,6 +83466,7 @@ func (s *OrganizationInvitation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "failed_reason":
 			if err := func() error {
+				s.FailedReason.Reset()
 				if err := s.FailedReason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82484,11 +83649,10 @@ func (s *OrganizationSimple) ReadJSON(i *json.Iterator) error {
 		case "events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.EventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.EventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -82561,11 +83725,10 @@ func (s *OrganizationSimple) ReadJSON(i *json.Iterator) error {
 		case "repos_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReposURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReposURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -82575,11 +83738,10 @@ func (s *OrganizationSimple) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -82783,6 +83945,7 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL.Reset()
 				if err := s.HTMLURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82794,6 +83957,7 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			return true
 		case "https_certificate":
 			if err := func() error {
+				s.HTTPSCertificate.Reset()
 				if err := s.HTTPSCertificate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82805,6 +83969,7 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			return true
 		case "https_enforced":
 			if err := func() error {
+				s.HTTPSEnforced.Reset()
 				if err := s.HTTPSEnforced.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82816,6 +83981,7 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pending_domain_unverified_at":
 			if err := func() error {
+				s.PendingDomainUnverifiedAt.Reset()
 				if err := s.PendingDomainUnverifiedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -82827,6 +83993,7 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protected_domain_state":
 			if err := func() error {
+				s.ProtectedDomainState.Reset()
 				if err := s.ProtectedDomainState.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82847,6 +84014,7 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			return true
 		case "source":
 			if err := func() error {
+				s.Source.Reset()
 				if err := s.Source.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82870,11 +84038,10 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -82964,11 +84131,10 @@ func (s *PageBuild) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -83018,11 +84184,10 @@ func (s *PageBuild) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -83032,11 +84197,10 @@ func (s *PageBuild) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -83108,11 +84272,10 @@ func (s *PageBuildStatus) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -83178,6 +84341,7 @@ func (s *PagesHealthCheck) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "alt_domain":
 			if err := func() error {
+				s.AltDomain.Reset()
 				if err := s.AltDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83189,6 +84353,7 @@ func (s *PagesHealthCheck) ReadJSON(i *json.Iterator) error {
 			return true
 		case "domain":
 			if err := func() error {
+				s.Domain.Reset()
 				if err := s.Domain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83277,6 +84442,7 @@ func (s *PagesHTTPSCertificate) ReadJSON(i *json.Iterator) error {
 			return true
 		case "domains":
 			if err := func() error {
+				s.Domains = s.Domains[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83301,6 +84467,7 @@ func (s *PagesHTTPSCertificate) ReadJSON(i *json.Iterator) error {
 			return true
 		case "expires_at":
 			if err := func() error {
+				s.ExpiresAt.Reset()
 				if err := s.ExpiresAt.ReadJSON(i, json.ReadDate); err != nil {
 					return err
 				}
@@ -83459,6 +84626,7 @@ func (s *ParticipationStats) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "all":
 			if err := func() error {
+				s.All = s.All[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -83483,6 +84651,7 @@ func (s *ParticipationStats) ReadJSON(i *json.Iterator) error {
 			return true
 		case "owner":
 			if err := func() error {
+				s.Owner = s.Owner[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -83594,11 +84763,10 @@ func (s *PorterAuthor) ReadJSON(i *json.Iterator) error {
 		case "import_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ImportURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ImportURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -83635,11 +84803,10 @@ func (s *PorterAuthor) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -83927,11 +85094,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "avatar_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AvatarURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AvatarURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -83962,6 +85128,7 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "business_plus":
 			if err := func() error {
+				s.BusinessPlus.Reset()
 				if err := s.BusinessPlus.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83994,11 +85161,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84046,11 +85212,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "followers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.FollowersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.FollowersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84098,11 +85263,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84131,6 +85295,7 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ldap_dn":
 			if err := func() error {
+				s.LdapDn.Reset()
 				if err := s.LdapDn.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84183,11 +85348,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "organizations_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.OrganizationsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.OrganizationsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84205,6 +85369,7 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "plan":
 			if err := func() error {
+				s.Plan.Reset()
 				if err := s.Plan.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84244,11 +85409,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "received_events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReceivedEventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReceivedEventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84258,11 +85422,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "repos_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReposURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReposURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84290,11 +85453,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "subscriptions_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84303,6 +85465,7 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "suspended_at":
 			if err := func() error {
+				s.SuspendedAt.Reset()
 				if err := s.SuspendedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -84323,6 +85486,7 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "twitter_username":
 			if err := func() error {
+				s.TwitterUsername.Reset()
 				if err := s.TwitterUsername.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84353,11 +85517,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84367,11 +85530,10 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84488,11 +85650,10 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 		case "columns_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ColumnsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ColumnsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84502,11 +85663,10 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84527,11 +85687,10 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84576,6 +85735,7 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_permission":
 			if err := func() error {
+				s.OrganizationPermission.Reset()
 				if err := s.OrganizationPermission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84588,11 +85748,10 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 		case "owner_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.OwnerURL = v
 				if err != nil {
 					return err
 				}
-
-				s.OwnerURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84601,6 +85760,7 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84622,11 +85782,10 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84636,11 +85795,10 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84743,6 +85901,7 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "archived":
 			if err := func() error {
+				s.Archived.Reset()
 				if err := s.Archived.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84754,6 +85913,7 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 			return true
 		case "column_name":
 			if err := func() error {
+				s.ColumnName.Reset()
 				if err := s.ColumnName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84766,11 +85926,10 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 		case "column_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ColumnURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ColumnURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84779,6 +85938,7 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 			return true
 		case "content_url":
 			if err := func() error {
+				s.ContentURL.Reset()
 				if err := s.ContentURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84791,11 +85951,10 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84844,6 +86003,7 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 			return true
 		case "project_id":
 			if err := func() error {
+				s.ProjectID.Reset()
 				if err := s.ProjectID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84856,11 +86016,10 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 		case "project_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ProjectURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ProjectURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84870,11 +86029,10 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84884,11 +86042,10 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84969,11 +86126,10 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 		case "cards_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.CardsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.CardsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -84983,11 +86139,10 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85024,11 +86179,10 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 		case "project_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ProjectURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ProjectURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85038,11 +86192,10 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85052,11 +86205,10 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85160,6 +86312,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_deletions":
 			if err := func() error {
+				s.AllowDeletions.Reset()
 				if err := s.AllowDeletions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85171,6 +86324,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_force_pushes":
 			if err := func() error {
+				s.AllowForcePushes.Reset()
 				if err := s.AllowForcePushes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85182,6 +86336,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "enforce_admins":
 			if err := func() error {
+				s.EnforceAdmins.Reset()
 				if err := s.EnforceAdmins.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85193,6 +86348,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_conversation_resolution":
 			if err := func() error {
+				s.RequiredConversationResolution.Reset()
 				if err := s.RequiredConversationResolution.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85204,6 +86360,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_linear_history":
 			if err := func() error {
+				s.RequiredLinearHistory.Reset()
 				if err := s.RequiredLinearHistory.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85215,6 +86372,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_pull_request_reviews":
 			if err := func() error {
+				s.RequiredPullRequestReviews.Reset()
 				if err := s.RequiredPullRequestReviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85226,6 +86384,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_signatures":
 			if err := func() error {
+				s.RequiredSignatures.Reset()
 				if err := s.RequiredSignatures.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85237,6 +86396,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_status_checks":
 			if err := func() error {
+				s.RequiredStatusChecks.Reset()
 				if err := s.RequiredStatusChecks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85248,6 +86408,7 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "restrictions":
 			if err := func() error {
+				s.Restrictions.Reset()
 				if err := s.Restrictions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85260,11 +86421,10 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85336,11 +86496,10 @@ func (s *ProtectedBranchAdminEnforced) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85426,6 +86585,7 @@ func (s *ProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "dismissal_restrictions":
 			if err := func() error {
+				s.DismissalRestrictions.Reset()
 				if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85446,6 +86606,7 @@ func (s *ProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required_approving_review_count":
 			if err := func() error {
+				s.RequiredApprovingReviewCount.Reset()
 				if err := s.RequiredApprovingReviewCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85457,6 +86618,7 @@ func (s *ProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85772,6 +86934,7 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_html":
 			if err := func() error {
+				s.BodyHTML.Reset()
 				if err := s.BodyHTML.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85783,6 +86946,7 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_text":
 			if err := func() error {
+				s.BodyText.Reset()
 				if err := s.BodyText.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85804,11 +86968,10 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85847,11 +87010,10 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 		case "pull_request_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.PullRequestURL = v
 				if err != nil {
 					return err
 				}
-
-				s.PullRequestURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -85869,6 +87031,7 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "submitted_at":
 			if err := func() error {
+				s.SubmittedAt.Reset()
 				if err := s.SubmittedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -86060,6 +87223,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_html":
 			if err := func() error {
+				s.BodyHTML.Reset()
 				if err := s.BodyHTML.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86071,6 +87235,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_text":
 			if err := func() error {
+				s.BodyText.Reset()
 				if err := s.BodyText.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86092,11 +87257,10 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -86115,11 +87279,10 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -86137,6 +87300,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "in_reply_to_id":
 			if err := func() error {
+				s.InReplyToID.Reset()
 				if err := s.InReplyToID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86148,6 +87312,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "line":
 			if err := func() error {
+				s.Line.Reset()
 				if err := s.Line.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86188,6 +87353,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "original_line":
 			if err := func() error {
+				s.OriginalLine.Reset()
 				if err := s.OriginalLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86208,6 +87374,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "original_start_line":
 			if err := func() error {
+				s.OriginalStartLine.Reset()
 				if err := s.OriginalStartLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86249,11 +87416,10 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 		case "pull_request_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.PullRequestURL = v
 				if err != nil {
 					return err
 				}
-
-				s.PullRequestURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -86262,6 +87428,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reactions":
 			if err := func() error {
+				s.Reactions.Reset()
 				if err := s.Reactions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86273,6 +87440,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "side":
 			if err := func() error {
+				s.Side.Reset()
 				if err := s.Side.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86284,6 +87452,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_line":
 			if err := func() error {
+				s.StartLine.Reset()
 				if err := s.StartLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86295,6 +87464,7 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_side":
 			if err := func() error {
+				s.StartSide.Reset()
 				if err := s.StartSide.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86316,11 +87486,10 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -86407,6 +87576,7 @@ func (s *PullRequestReviewRequest) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "teams":
 			if err := func() error {
+				s.Teams = s.Teams[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Team
@@ -86433,6 +87603,7 @@ func (s *PullRequestReviewRequest) ReadJSON(i *json.Iterator) error {
 			return true
 		case "users":
 			if err := func() error {
+				s.Users = s.Users[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleUser
@@ -86701,11 +87872,10 @@ func (s *Reaction) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -86902,11 +88072,10 @@ func (s *ReactionRollup) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87133,6 +88302,7 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "assets":
 			if err := func() error {
+				s.Assets = s.Assets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ReleaseAsset
@@ -87160,11 +88330,10 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 		case "assets_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AssetsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AssetsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87184,6 +88353,7 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body":
 			if err := func() error {
+				s.Body.Reset()
 				if err := s.Body.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87195,6 +88365,7 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_html":
 			if err := func() error {
+				s.BodyHTML.Reset()
 				if err := s.BodyHTML.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87206,6 +88377,7 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_text":
 			if err := func() error {
+				s.BodyText.Reset()
 				if err := s.BodyText.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87218,11 +88390,10 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87231,6 +88402,7 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			return true
 		case "discussion_url":
 			if err := func() error {
+				s.DiscussionURL.Reset()
 				if err := s.DiscussionURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87252,11 +88424,10 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87274,6 +88445,7 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mentions_count":
 			if err := func() error {
+				s.MentionsCount.Reset()
 				if err := s.MentionsCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87325,6 +88497,7 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reactions":
 			if err := func() error {
+				s.Reactions.Reset()
 				if err := s.Reactions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87366,11 +88539,10 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87486,11 +88658,10 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 		case "browser_download_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.BrowserDownloadURL = v
 				if err != nil {
 					return err
 				}
-
-				s.BrowserDownloadURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87509,11 +88680,10 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87588,11 +88758,10 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87602,11 +88771,10 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -87984,6 +89152,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87995,6 +89164,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_forking":
 			if err := func() error {
+				s.AllowForking.Reset()
 				if err := s.AllowForking.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88006,6 +89176,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88017,6 +89188,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88028,6 +89200,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88139,11 +89312,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "contributors_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ContributorsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ContributorsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88172,6 +89344,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88184,11 +89357,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "deployments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DeploymentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DeploymentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88218,11 +89390,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "downloads_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DownloadsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DownloadsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88232,11 +89403,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.EventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.EventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88273,11 +89443,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "forks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ForksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ForksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88332,11 +89501,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88402,11 +89570,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "hooks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HooksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HooksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88424,6 +89591,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88492,11 +89660,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "languages_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.LanguagesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.LanguagesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88516,6 +89683,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "master_branch":
 			if err := func() error {
+				s.MasterBranch.Reset()
 				if err := s.MasterBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88528,11 +89696,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "merges_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.MergesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.MergesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88570,6 +89737,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "network_count":
 			if err := func() error {
+				s.NetworkCount.Reset()
 				if err := s.NetworkCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88617,6 +89785,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization":
 			if err := func() error {
+				s.Organization.Reset()
 				if err := s.Organization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88639,6 +89808,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88716,11 +89886,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "stargazers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.StargazersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.StargazersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88729,6 +89898,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "starred_at":
 			if err := func() error {
+				s.StarredAt.Reset()
 				if err := s.StarredAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88749,6 +89919,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscribers_count":
 			if err := func() error {
+				s.SubscribersCount.Reset()
 				if err := s.SubscribersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88761,11 +89932,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "subscribers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscribersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscribersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88775,11 +89945,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "subscription_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88789,11 +89958,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "svn_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SvnURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SvnURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88803,11 +89971,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "tags_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TagsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TagsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88817,11 +89984,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "teams_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88830,6 +89996,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "temp_clone_token":
 			if err := func() error {
+				s.TempCloneToken.Reset()
 				if err := s.TempCloneToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88841,6 +90008,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "template_repository":
 			if err := func() error {
+				s.TemplateRepository.Reset()
 				if err := s.TemplateRepository.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88852,6 +90020,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topics":
 			if err := func() error {
+				s.Topics = s.Topics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -88886,11 +90055,10 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -88910,6 +90078,7 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89092,11 +90261,10 @@ func (s *RepositoryInvitation) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89105,6 +90273,7 @@ func (s *RepositoryInvitation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "expired":
 			if err := func() error {
+				s.Expired.Reset()
 				if err := s.Expired.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89260,11 +90429,10 @@ func (s *RepositorySubscription) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89294,11 +90462,10 @@ func (s *RepositorySubscription) ReadJSON(i *json.Iterator) error {
 		case "repository_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoryURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoryURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89317,11 +90484,10 @@ func (s *RepositorySubscription) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89499,6 +90665,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_html":
 			if err := func() error {
+				s.BodyHTML.Reset()
 				if err := s.BodyHTML.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89510,6 +90677,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "body_text":
 			if err := func() error {
+				s.BodyText.Reset()
 				if err := s.BodyText.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89531,11 +90699,10 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89554,11 +90721,10 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89576,6 +90742,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "in_reply_to_id":
 			if err := func() error {
+				s.InReplyToID.Reset()
 				if err := s.InReplyToID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89587,6 +90754,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "line":
 			if err := func() error {
+				s.Line.Reset()
 				if err := s.Line.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89627,6 +90795,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "original_line":
 			if err := func() error {
+				s.OriginalLine.Reset()
 				if err := s.OriginalLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89647,6 +90816,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "original_start_line":
 			if err := func() error {
+				s.OriginalStartLine.Reset()
 				if err := s.OriginalStartLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89690,11 +90860,10 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 		case "pull_request_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.PullRequestURL = v
 				if err != nil {
 					return err
 				}
-
-				s.PullRequestURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89703,6 +90872,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reactions":
 			if err := func() error {
+				s.Reactions.Reset()
 				if err := s.Reactions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89714,6 +90884,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "side":
 			if err := func() error {
+				s.Side.Reset()
 				if err := s.Side.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89725,6 +90896,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_line":
 			if err := func() error {
+				s.StartLine.Reset()
 				if err := s.StartLine.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89736,6 +90908,7 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_side":
 			if err := func() error {
+				s.StartSide.Reset()
 				if err := s.StartSide.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89748,11 +90921,10 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89762,11 +90934,10 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -89876,6 +91047,7 @@ func (s *Runner) ReadJSON(i *json.Iterator) error {
 			return true
 		case "labels":
 			if err := func() error {
+				s.Labels = s.Labels[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem RunnerLabelsItem
@@ -90034,6 +91206,7 @@ func (s *RunnerApplication) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sha256_checksum":
 			if err := func() error {
+				s.SHA256Checksum.Reset()
 				if err := s.SHA256Checksum.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90045,6 +91218,7 @@ func (s *RunnerApplication) ReadJSON(i *json.Iterator) error {
 			return true
 		case "temp_download_token":
 			if err := func() error {
+				s.TempDownloadToken.Reset()
 				if err := s.TempDownloadToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90171,6 +91345,7 @@ func (s *RunnerGroupsEnterprise) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_organizations_url":
 			if err := func() error {
+				s.SelectedOrganizationsURL.Reset()
 				if err := s.SelectedOrganizationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90305,6 +91480,7 @@ func (s *RunnerGroupsOrg) ReadJSON(i *json.Iterator) error {
 			return true
 		case "inherited_allows_public_repositories":
 			if err := func() error {
+				s.InheritedAllowsPublicRepositories.Reset()
 				if err := s.InheritedAllowsPublicRepositories.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90334,6 +91510,7 @@ func (s *RunnerGroupsOrg) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selected_repositories_url":
 			if err := func() error {
+				s.SelectedRepositoriesURL.Reset()
 				if err := s.SelectedRepositoriesURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90441,6 +91618,7 @@ func (s *ScimEnterpriseGroup) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "displayName":
 			if err := func() error {
+				s.DisplayName.Reset()
 				if err := s.DisplayName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90452,6 +91630,7 @@ func (s *ScimEnterpriseGroup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "externalId":
 			if err := func() error {
+				s.ExternalId.Reset()
 				if err := s.ExternalId.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90472,6 +91651,7 @@ func (s *ScimEnterpriseGroup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "members":
 			if err := func() error {
+				s.Members = s.Members[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimEnterpriseGroupMembersItem
@@ -90498,6 +91678,7 @@ func (s *ScimEnterpriseGroup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "meta":
 			if err := func() error {
+				s.Meta.Reset()
 				if err := s.Meta.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90509,6 +91690,7 @@ func (s *ScimEnterpriseGroup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -90642,6 +91824,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active.Reset()
 				if err := s.Active.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90653,6 +91836,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "emails":
 			if err := func() error {
+				s.Emails = s.Emails[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimEnterpriseUserEmailsItem
@@ -90679,6 +91863,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "externalId":
 			if err := func() error {
+				s.ExternalId.Reset()
 				if err := s.ExternalId.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90690,6 +91875,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimEnterpriseUserGroupsItem
@@ -90725,6 +91911,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "meta":
 			if err := func() error {
+				s.Meta.Reset()
 				if err := s.Meta.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90736,6 +91923,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90747,6 +91935,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -90771,6 +91960,7 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "userName":
 			if err := func() error {
+				s.UserName.Reset()
 				if err := s.UserName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90866,6 +92056,7 @@ func (s *ScimError) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "detail":
 			if err := func() error {
+				s.Detail.Reset()
 				if err := s.Detail.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90877,6 +92068,7 @@ func (s *ScimError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "documentation_url":
 			if err := func() error {
+				s.DocumentationURL.Reset()
 				if err := s.DocumentationURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90888,6 +92080,7 @@ func (s *ScimError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90899,6 +92092,7 @@ func (s *ScimError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -90923,6 +92117,7 @@ func (s *ScimError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scimType":
 			if err := func() error {
+				s.ScimType.Reset()
 				if err := s.ScimType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90934,6 +92129,7 @@ func (s *ScimError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91030,6 +92226,7 @@ func (s *ScimGroupListEnterprise) ReadJSON(i *json.Iterator) error {
 			return true
 		case "Resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimGroupListEnterpriseResourcesItem
@@ -91056,6 +92253,7 @@ func (s *ScimGroupListEnterprise) ReadJSON(i *json.Iterator) error {
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91183,6 +92381,7 @@ func (s *ScimUserListEnterprise) ReadJSON(i *json.Iterator) error {
 			return true
 		case "Resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ScimUserListEnterpriseResourcesItem
@@ -91209,6 +92408,7 @@ func (s *ScimUserListEnterprise) ReadJSON(i *json.Iterator) error {
 			return true
 		case "schemas":
 			if err := func() error {
+				s.Schemas = s.Schemas[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91353,6 +92553,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "created_at":
 			if err := func() error {
+				s.CreatedAt = nil
 				var elem AlertCreatedAt
 				if err := func() error {
 					return fmt.Errorf(`decoding of "AlertCreatedAt" (alias) is not implemented`)
@@ -91368,6 +92569,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "html_url":
 			if err := func() error {
+				s.HTMLURL = nil
 				var elem AlertHTMLURL
 				if err := func() error {
 					return fmt.Errorf(`decoding of "AlertHTMLURL" (alias) is not implemented`)
@@ -91383,6 +92585,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "locations_url":
 			if err := func() error {
+				s.LocationsURL.Reset()
 				if err := s.LocationsURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91394,6 +92597,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "number":
 			if err := func() error {
+				s.Number = nil
 				var elem AlertNumber
 				if err := func() error {
 					return fmt.Errorf(`decoding of "AlertNumber" (alias) is not implemented`)
@@ -91409,6 +92613,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resolution":
 			if err := func() error {
+				s.Resolution.Reset()
 				if err := s.Resolution.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91420,6 +92625,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resolved_at":
 			if err := func() error {
+				s.ResolvedAt.Reset()
 				if err := s.ResolvedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -91431,6 +92637,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resolved_by":
 			if err := func() error {
+				s.ResolvedBy.Reset()
 				if err := s.ResolvedBy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91442,6 +92649,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret":
 			if err := func() error {
+				s.Secret.Reset()
 				if err := s.Secret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91453,6 +92661,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret_type":
 			if err := func() error {
+				s.SecretType.Reset()
 				if err := s.SecretType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91464,6 +92673,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91475,6 +92685,7 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL = nil
 				var elem AlertURL
 				if err := func() error {
 					return fmt.Errorf(`decoding of "AlertURL" (alias) is not implemented`)
@@ -91581,6 +92792,7 @@ func (s *SelectedActions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "github_owned_allowed":
 			if err := func() error {
+				s.GithubOwnedAllowed.Reset()
 				if err := s.GithubOwnedAllowed.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91592,6 +92804,7 @@ func (s *SelectedActions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "patterns_allowed":
 			if err := func() error {
+				s.PatternsAllowed = s.PatternsAllowed[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91616,6 +92829,7 @@ func (s *SelectedActions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verified_allowed":
 			if err := func() error {
+				s.VerifiedAllowed.Reset()
 				if err := s.VerifiedAllowed.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91798,6 +93012,7 @@ func (s *ShortBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protection":
 			if err := func() error {
+				s.Protection.Reset()
 				if err := s.Protection.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91809,6 +93024,7 @@ func (s *ShortBranch) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protection_url":
 			if err := func() error {
+				s.ProtectionURL.Reset()
 				if err := s.ProtectionURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91926,11 +93142,10 @@ func (s *SimpleCommit) ReadJSON(i *json.Iterator) error {
 		case "timestamp":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.Timestamp = v
 				if err != nil {
 					return err
 				}
-
-				s.Timestamp = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92051,11 +93266,10 @@ func (s *SimpleCommitStatus) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92093,6 +93307,7 @@ func (s *SimpleCommitStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "required":
 			if err := func() error {
+				s.Required.Reset()
 				if err := s.Required.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92114,11 +93329,10 @@ func (s *SimpleCommitStatus) ReadJSON(i *json.Iterator) error {
 		case "target_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TargetURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TargetURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92128,11 +93342,10 @@ func (s *SimpleCommitStatus) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92142,11 +93355,10 @@ func (s *SimpleCommitStatus) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92272,11 +93484,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "avatar_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.AvatarURL = v
 				if err != nil {
 					return err
 				}
-
-				s.AvatarURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92285,6 +93496,7 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92306,11 +93518,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "followers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.FollowersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.FollowersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92349,11 +93560,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92380,6 +93590,7 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92401,11 +93612,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "organizations_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.OrganizationsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.OrganizationsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92415,11 +93625,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "received_events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReceivedEventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReceivedEventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92429,11 +93638,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "repos_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ReposURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ReposURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92451,6 +93659,7 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 			return true
 		case "starred_at":
 			if err := func() error {
+				s.StarredAt.Reset()
 				if err := s.StarredAt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92472,11 +93681,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "subscriptions_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92495,11 +93703,10 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92757,6 +93964,7 @@ func (s *StatusCheckPolicy) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "contexts":
 			if err := func() error {
+				s.Contexts = s.Contexts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -92782,11 +93990,10 @@ func (s *StatusCheckPolicy) ReadJSON(i *json.Iterator) error {
 		case "contexts_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ContextsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ContextsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92805,11 +94012,10 @@ func (s *StatusCheckPolicy) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92910,11 +94116,10 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 		case "tarball_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TarballURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TarballURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -92924,11 +94129,10 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 		case "zipball_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ZipballURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ZipballURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93039,11 +94243,10 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93108,6 +94311,7 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93119,6 +94323,7 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privacy":
 			if err := func() error {
+				s.Privacy.Reset()
 				if err := s.Privacy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93131,11 +94336,10 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 		case "repositories_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoriesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoriesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93154,11 +94358,10 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93318,11 +94521,10 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 		case "comments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.CommentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.CommentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93332,11 +94534,10 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93346,11 +94547,10 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93406,6 +94606,7 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reactions":
 			if err := func() error {
+				s.Reactions.Reset()
 				if err := s.Reactions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93418,11 +94619,10 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 		case "team_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93441,11 +94641,10 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93455,11 +94654,10 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93595,11 +94793,10 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93609,11 +94806,10 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 		case "discussion_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DiscussionURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DiscussionURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93623,11 +94819,10 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93665,6 +94860,7 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reactions":
 			if err := func() error {
+				s.Reactions.Reset()
 				if err := s.Reactions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93677,11 +94873,10 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93691,11 +94886,10 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93812,11 +95006,10 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93837,11 +95030,10 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93859,6 +95051,7 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ldap_dn":
 			if err := func() error {
+				s.LdapDn.Reset()
 				if err := s.LdapDn.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93917,6 +95110,7 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parent":
 			if err := func() error {
+				s.Parent.Reset()
 				if err := s.Parent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93937,6 +95131,7 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privacy":
 			if err := func() error {
+				s.Privacy.Reset()
 				if err := s.Privacy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93958,11 +95153,10 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 		case "repositories_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.RepositoriesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.RepositoriesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93981,11 +95175,10 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -93995,11 +95188,10 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -94083,11 +95275,10 @@ func (s *TeamMembership) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -94280,6 +95471,7 @@ func (s *TeamProject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "organization_permission":
 			if err := func() error {
+				s.OrganizationPermission.Reset()
 				if err := s.OrganizationPermission.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94311,6 +95503,7 @@ func (s *TeamProject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "private":
 			if err := func() error {
+				s.Private.Reset()
 				if err := s.Private.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94697,6 +95890,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_auto_merge":
 			if err := func() error {
+				s.AllowAutoMerge.Reset()
 				if err := s.AllowAutoMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94708,6 +95902,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_forking":
 			if err := func() error {
+				s.AllowForking.Reset()
 				if err := s.AllowForking.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94719,6 +95914,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_merge_commit":
 			if err := func() error {
+				s.AllowMergeCommit.Reset()
 				if err := s.AllowMergeCommit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94730,6 +95926,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_rebase_merge":
 			if err := func() error {
+				s.AllowRebaseMerge.Reset()
 				if err := s.AllowRebaseMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94741,6 +95938,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_squash_merge":
 			if err := func() error {
+				s.AllowSquashMerge.Reset()
 				if err := s.AllowSquashMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94852,11 +96050,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "contributors_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ContributorsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ContributorsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -94885,6 +96082,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_branch_on_merge":
 			if err := func() error {
+				s.DeleteBranchOnMerge.Reset()
 				if err := s.DeleteBranchOnMerge.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94897,11 +96095,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "deployments_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DeploymentsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DeploymentsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -94931,11 +96128,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "downloads_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.DownloadsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.DownloadsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -94945,11 +96141,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "events_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.EventsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.EventsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -94986,11 +96181,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "forks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.ForksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.ForksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95045,11 +96239,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "html_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HTMLURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HTMLURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95115,11 +96308,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "hooks_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.HooksURL = v
 				if err != nil {
 					return err
 				}
-
-				s.HooksURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95137,6 +96329,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_template":
 			if err := func() error {
+				s.IsTemplate.Reset()
 				if err := s.IsTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95205,11 +96398,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "languages_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.LanguagesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.LanguagesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95229,6 +96421,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "master_branch":
 			if err := func() error {
+				s.MasterBranch.Reset()
 				if err := s.MasterBranch.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95241,11 +96434,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "merges_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.MergesURL = v
 				if err != nil {
 					return err
 				}
-
-				s.MergesURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95283,6 +96475,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "network_count":
 			if err := func() error {
+				s.NetworkCount.Reset()
 				if err := s.NetworkCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95341,6 +96534,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95418,11 +96612,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "stargazers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.StargazersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.StargazersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95440,6 +96633,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subscribers_count":
 			if err := func() error {
+				s.SubscribersCount.Reset()
 				if err := s.SubscribersCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95452,11 +96646,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "subscribers_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscribersURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscribersURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95466,11 +96659,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "subscription_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SubscriptionURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SubscriptionURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95480,11 +96672,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "svn_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.SvnURL = v
 				if err != nil {
 					return err
 				}
-
-				s.SvnURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95494,11 +96685,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "tags_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TagsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TagsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95508,11 +96698,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "teams_url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.TeamsURL = v
 				if err != nil {
 					return err
 				}
-
-				s.TeamsURL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95521,6 +96710,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "temp_clone_token":
 			if err := func() error {
+				s.TempCloneToken.Reset()
 				if err := s.TempCloneToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95532,6 +96722,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "template_repository":
 			if err := func() error {
+				s.TemplateRepository.Reset()
 				if err := s.TemplateRepository.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95543,6 +96734,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topics":
 			if err := func() error {
+				s.Topics = s.Topics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -95577,11 +96769,10 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95601,6 +96792,7 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			return true
 		case "visibility":
 			if err := func() error {
+				s.Visibility.Reset()
 				if err := s.Visibility.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95894,6 +97086,7 @@ func (s *ThreadSubscription) ReadJSON(i *json.Iterator) error {
 			return true
 		case "repository_url":
 			if err := func() error {
+				s.RepositoryURL.Reset()
 				if err := s.RepositoryURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95914,6 +97107,7 @@ func (s *ThreadSubscription) ReadJSON(i *json.Iterator) error {
 			return true
 		case "thread_url":
 			if err := func() error {
+				s.ThreadURL.Reset()
 				if err := s.ThreadURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -95926,11 +97120,10 @@ func (s *ThreadSubscription) ReadJSON(i *json.Iterator) error {
 		case "url":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URL = v
 				if err != nil {
 					return err
 				}
-
-				s.URL = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -95996,6 +97189,7 @@ func (s *Topic) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "names":
 			if err := func() error {
+				s.Names = s.Names[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -96249,6 +97443,7 @@ func (s *ValidationErrorSimple) ReadJSON(i *json.Iterator) error {
 			return true
 		case "errors":
 			if err := func() error {
+				s.Errors = s.Errors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -96473,11 +97668,10 @@ func (s *Workflow) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -96486,6 +97680,7 @@ func (s *Workflow) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deleted_at":
 			if err := func() error {
+				s.DeletedAt.Reset()
 				if err := s.DeletedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -96561,11 +97756,10 @@ func (s *Workflow) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -96752,6 +97946,7 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "check_suite_id":
 			if err := func() error {
+				s.CheckSuiteID.Reset()
 				if err := s.CheckSuiteID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -96763,6 +97958,7 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "check_suite_node_id":
 			if err := func() error {
+				s.CheckSuiteNodeID.Reset()
 				if err := s.CheckSuiteNodeID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -96795,11 +97991,10 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 		case "created_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.CreatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.CreatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -96859,6 +98054,7 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "head_repository_id":
 			if err := func() error {
+				s.HeadRepositoryID.Reset()
 				if err := s.HeadRepositoryID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -96906,6 +98102,7 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -96926,6 +98123,7 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "previous_attempt_url":
 			if err := func() error {
+				s.PreviousAttemptURL.Reset()
 				if err := s.PreviousAttemptURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -96937,6 +98135,7 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pull_requests":
 			if err := func() error {
+				s.PullRequests = s.PullRequests[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PullRequestMinimal
@@ -96983,6 +98182,7 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 			return true
 		case "run_attempt":
 			if err := func() error {
+				s.RunAttempt.Reset()
 				if err := s.RunAttempt.ReadJSON(i); err != nil {
 					return err
 				}
@@ -97024,11 +98224,10 @@ func (s *WorkflowRun) ReadJSON(i *json.Iterator) error {
 		case "updated_at":
 			if err := func() error {
 				v, err := json.ReadDateTime(i)
+				s.UpdatedAt = v
 				if err != nil {
 					return err
 				}
-
-				s.UpdatedAt = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -97121,6 +98320,7 @@ func (s *WorkflowRunUsage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "run_duration_ms":
 			if err := func() error {
+				s.RunDurationMs.Reset()
 				if err := s.RunDurationMs.ReadJSON(i); err != nil {
 					return err
 				}

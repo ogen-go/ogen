@@ -67,6 +67,7 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 
 			var response []WorldObject
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem WorldObject
@@ -184,6 +185,7 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 
 			var response []WorldObject
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem WorldObject
@@ -233,6 +235,7 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 
 			var response []WorldObject
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem WorldObject

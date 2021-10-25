@@ -29698,6 +29698,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 		switch k {
 		case "admissionReviewVersions":
 			if err := func() error {
+				s.AdmissionReviewVersions = s.AdmissionReviewVersions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -29733,6 +29734,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			return true
 		case "failurePolicy":
 			if err := func() error {
+				s.FailurePolicy.Reset()
 				if err := s.FailurePolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29744,6 +29746,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			return true
 		case "matchPolicy":
 			if err := func() error {
+				s.MatchPolicy.Reset()
 				if err := s.MatchPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29764,6 +29767,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			return true
 		case "namespaceSelector":
 			if err := func() error {
+				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29775,6 +29779,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			return true
 		case "objectSelector":
 			if err := func() error {
+				s.ObjectSelector.Reset()
 				if err := s.ObjectSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29786,6 +29791,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			return true
 		case "reinvocationPolicy":
 			if err := func() error {
+				s.ReinvocationPolicy.Reset()
 				if err := s.ReinvocationPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29797,6 +29803,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			return true
 		case "rules":
 			if err := func() error {
+				s.Rules = s.Rules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAdmissionregistrationV1RuleWithOperations
@@ -29832,6 +29839,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			return true
 		case "timeoutSeconds":
 			if err := func() error {
+				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29917,6 +29925,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29928,6 +29937,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29939,6 +29949,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -29950,6 +29961,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i
 			return true
 		case "webhooks":
 			if err := func() error {
+				s.Webhooks = s.Webhooks[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAdmissionregistrationV1MutatingWebhook
@@ -30048,6 +30060,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJS
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30059,6 +30072,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJS
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
@@ -30085,6 +30099,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJS
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30096,6 +30111,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJS
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30207,6 +30223,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Ite
 		switch k {
 		case "apiGroups":
 			if err := func() error {
+				s.ApiGroups = s.ApiGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -30231,6 +30248,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Ite
 			return true
 		case "apiVersions":
 			if err := func() error {
+				s.ApiVersions = s.ApiVersions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -30255,6 +30273,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Ite
 			return true
 		case "operations":
 			if err := func() error {
+				s.Operations = s.Operations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -30279,6 +30298,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Ite
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -30303,6 +30323,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Ite
 			return true
 		case "scope":
 			if err := func() error {
+				s.Scope.Reset()
 				if err := s.Scope.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30395,6 +30416,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Itera
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30406,6 +30428,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Itera
 			return true
 		case "port":
 			if err := func() error {
+				s.Port.Reset()
 				if err := s.Port.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30520,6 +30543,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 		switch k {
 		case "admissionReviewVersions":
 			if err := func() error {
+				s.AdmissionReviewVersions = s.AdmissionReviewVersions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -30555,6 +30579,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			return true
 		case "failurePolicy":
 			if err := func() error {
+				s.FailurePolicy.Reset()
 				if err := s.FailurePolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30566,6 +30591,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			return true
 		case "matchPolicy":
 			if err := func() error {
+				s.MatchPolicy.Reset()
 				if err := s.MatchPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30586,6 +30612,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			return true
 		case "namespaceSelector":
 			if err := func() error {
+				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30597,6 +30624,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			return true
 		case "objectSelector":
 			if err := func() error {
+				s.ObjectSelector.Reset()
 				if err := s.ObjectSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30608,6 +30636,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			return true
 		case "rules":
 			if err := func() error {
+				s.Rules = s.Rules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAdmissionregistrationV1RuleWithOperations
@@ -30643,6 +30672,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			return true
 		case "timeoutSeconds":
 			if err := func() error {
+				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30728,6 +30758,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30739,6 +30770,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30750,6 +30782,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30761,6 +30794,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 			return true
 		case "webhooks":
 			if err := func() error {
+				s.Webhooks = s.Webhooks[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAdmissionregistrationV1ValidatingWebhook
@@ -30859,6 +30893,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Read
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30870,6 +30905,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Read
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
@@ -30896,6 +30932,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Read
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30907,6 +30944,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Read
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -30986,6 +31024,7 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(i *json.It
 		switch k {
 		case "caBundle":
 			if err := func() error {
+				s.CaBundle = s.CaBundle[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem byte
@@ -31009,6 +31048,7 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(i *json.It
 			return true
 		case "service":
 			if err := func() error {
+				s.Service.Reset()
 				if err := s.Service.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31020,6 +31060,7 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(i *json.It
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31100,6 +31141,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) ReadJSON(i *json
 		switch k {
 		case "apiServerID":
 			if err := func() error {
+				s.ApiServerID.Reset()
 				if err := s.ApiServerID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31111,6 +31153,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) ReadJSON(i *json
 			return true
 		case "decodableVersions":
 			if err := func() error {
+				s.DecodableVersions = s.DecodableVersions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -31135,6 +31178,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) ReadJSON(i *json
 			return true
 		case "encodingVersion":
 			if err := func() error {
+				s.EncodingVersion.Reset()
 				if err := s.EncodingVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31211,6 +31255,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(i *json.Itera
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31222,6 +31267,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(i *json.Itera
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31233,6 +31279,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(i *json.Itera
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31326,6 +31373,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) ReadJSON(i *j
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -31341,6 +31389,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) ReadJSON(i *j
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31352,6 +31401,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) ReadJSON(i *j
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31462,6 +31512,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31473,6 +31524,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIApiserverinternalV1alpha1StorageVersion
@@ -31499,6 +31551,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31510,6 +31563,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31644,6 +31698,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) ReadJSON(i *json
 		switch k {
 		case "commonEncodingVersion":
 			if err := func() error {
+				s.CommonEncodingVersion.Reset()
 				if err := s.CommonEncodingVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31655,6 +31710,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) ReadJSON(i *json
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition
@@ -31681,6 +31737,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) ReadJSON(i *json
 			return true
 		case "storageVersions":
 			if err := func() error {
+				s.StorageVersions = s.StorageVersions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion
@@ -31772,6 +31829,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31783,6 +31841,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31794,6 +31853,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31886,6 +31946,7 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31897,6 +31958,7 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1ControllerRevision
@@ -31923,6 +31985,7 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -31934,6 +31997,7 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32017,6 +32081,7 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32028,6 +32093,7 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32039,6 +32105,7 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32050,6 +32117,7 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32061,6 +32129,7 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32140,6 +32209,7 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -32155,6 +32225,7 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32166,6 +32237,7 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32267,6 +32339,7 @@ func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32278,6 +32351,7 @@ func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1DaemonSet
@@ -32304,6 +32378,7 @@ func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32315,6 +32390,7 @@ func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32394,6 +32470,7 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "minReadySeconds":
 			if err := func() error {
+				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32405,6 +32482,7 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "revisionHistoryLimit":
 			if err := func() error {
+				s.RevisionHistoryLimit.Reset()
 				if err := s.RevisionHistoryLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32438,6 +32516,7 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updateStrategy":
 			if err := func() error {
+				s.UpdateStrategy.Reset()
 				if err := s.UpdateStrategy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32545,6 +32624,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "collisionCount":
 			if err := func() error {
+				s.CollisionCount.Reset()
 				if err := s.CollisionCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32556,6 +32636,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1DaemonSetCondition
@@ -32600,6 +32681,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "numberAvailable":
 			if err := func() error {
+				s.NumberAvailable.Reset()
 				if err := s.NumberAvailable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32629,6 +32711,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "numberUnavailable":
 			if err := func() error {
+				s.NumberUnavailable.Reset()
 				if err := s.NumberUnavailable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32640,6 +32723,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32651,6 +32735,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updatedNumberScheduled":
 			if err := func() error {
+				s.UpdatedNumberScheduled.Reset()
 				if err := s.UpdatedNumberScheduled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32719,6 +32804,7 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "rollingUpdate":
 			if err := func() error {
+				s.RollingUpdate.Reset()
 				if err := s.RollingUpdate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32730,6 +32816,7 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) error
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32813,6 +32900,7 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32824,6 +32912,7 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32835,6 +32924,7 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32846,6 +32936,7 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32857,6 +32948,7 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32941,6 +33033,7 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -32956,6 +33049,7 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastUpdateTime":
 			if err := func() error {
+				s.LastUpdateTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -32971,6 +33065,7 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -32982,6 +33077,7 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33083,6 +33179,7 @@ func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33094,6 +33191,7 @@ func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1Deployment
@@ -33120,6 +33218,7 @@ func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33131,6 +33230,7 @@ func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33225,6 +33325,7 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "minReadySeconds":
 			if err := func() error {
+				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33236,6 +33337,7 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "paused":
 			if err := func() error {
+				s.Paused.Reset()
 				if err := s.Paused.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33247,6 +33349,7 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "progressDeadlineSeconds":
 			if err := func() error {
+				s.ProgressDeadlineSeconds.Reset()
 				if err := s.ProgressDeadlineSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33258,6 +33361,7 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "replicas":
 			if err := func() error {
+				s.Replicas.Reset()
 				if err := s.Replicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33269,6 +33373,7 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "revisionHistoryLimit":
 			if err := func() error {
+				s.RevisionHistoryLimit.Reset()
 				if err := s.RevisionHistoryLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33291,6 +33396,7 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "strategy":
 			if err := func() error {
+				s.Strategy.Reset()
 				if err := s.Strategy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33407,6 +33513,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "availableReplicas":
 			if err := func() error {
+				s.AvailableReplicas.Reset()
 				if err := s.AvailableReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33418,6 +33525,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "collisionCount":
 			if err := func() error {
+				s.CollisionCount.Reset()
 				if err := s.CollisionCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33429,6 +33537,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1DeploymentCondition
@@ -33455,6 +33564,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33466,6 +33576,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readyReplicas":
 			if err := func() error {
+				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33477,6 +33588,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "replicas":
 			if err := func() error {
+				s.Replicas.Reset()
 				if err := s.Replicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33488,6 +33600,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "unavailableReplicas":
 			if err := func() error {
+				s.UnavailableReplicas.Reset()
 				if err := s.UnavailableReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33499,6 +33612,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updatedReplicas":
 			if err := func() error {
+				s.UpdatedReplicas.Reset()
 				if err := s.UpdatedReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33567,6 +33681,7 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "rollingUpdate":
 			if err := func() error {
+				s.RollingUpdate.Reset()
 				if err := s.RollingUpdate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33578,6 +33693,7 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33661,6 +33777,7 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33672,6 +33789,7 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33683,6 +33801,7 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33694,6 +33813,7 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33705,6 +33825,7 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33784,6 +33905,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -33799,6 +33921,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33810,6 +33933,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33911,6 +34035,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33922,6 +34047,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1ReplicaSet
@@ -33948,6 +34074,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -33959,6 +34086,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34035,6 +34163,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "minReadySeconds":
 			if err := func() error {
+				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34046,6 +34175,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "replicas":
 			if err := func() error {
+				s.Replicas.Reset()
 				if err := s.Replicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34068,6 +34198,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "template":
 			if err := func() error {
+				s.Template.Reset()
 				if err := s.Template.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34161,6 +34292,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "availableReplicas":
 			if err := func() error {
+				s.AvailableReplicas.Reset()
 				if err := s.AvailableReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34172,6 +34304,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1ReplicaSetCondition
@@ -34198,6 +34331,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fullyLabeledReplicas":
 			if err := func() error {
+				s.FullyLabeledReplicas.Reset()
 				if err := s.FullyLabeledReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34209,6 +34343,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34220,6 +34355,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readyReplicas":
 			if err := func() error {
+				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34297,6 +34433,7 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "maxSurge":
 			if err := func() error {
+				s.MaxSurge = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -34312,6 +34449,7 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error 
 			return true
 		case "maxUnavailable":
 			if err := func() error {
+				s.MaxUnavailable = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -34384,6 +34522,7 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "maxSurge":
 			if err := func() error {
+				s.MaxSurge = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -34399,6 +34538,7 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error
 			return true
 		case "maxUnavailable":
 			if err := func() error {
+				s.MaxUnavailable = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -34466,6 +34606,7 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Iterat
 		switch k {
 		case "partition":
 			if err := func() error {
+				s.Partition.Reset()
 				if err := s.Partition.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34549,6 +34690,7 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34560,6 +34702,7 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34571,6 +34714,7 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34582,6 +34726,7 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34593,6 +34738,7 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34672,6 +34818,7 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -34687,6 +34834,7 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34698,6 +34846,7 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34799,6 +34948,7 @@ func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34810,6 +34960,7 @@ func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1StatefulSet
@@ -34836,6 +34987,7 @@ func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34847,6 +34999,7 @@ func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34951,6 +35104,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "minReadySeconds":
 			if err := func() error {
+				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34962,6 +35116,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podManagementPolicy":
 			if err := func() error {
+				s.PodManagementPolicy.Reset()
 				if err := s.PodManagementPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34973,6 +35128,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "replicas":
 			if err := func() error {
+				s.Replicas.Reset()
 				if err := s.Replicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -34984,6 +35140,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "revisionHistoryLimit":
 			if err := func() error {
+				s.RevisionHistoryLimit.Reset()
 				if err := s.RevisionHistoryLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35026,6 +35183,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updateStrategy":
 			if err := func() error {
+				s.UpdateStrategy.Reset()
 				if err := s.UpdateStrategy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35037,6 +35195,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeClaimTemplates":
 			if err := func() error {
+				s.VolumeClaimTemplates = s.VolumeClaimTemplates[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PersistentVolumeClaim
@@ -35172,6 +35331,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "collisionCount":
 			if err := func() error {
+				s.CollisionCount.Reset()
 				if err := s.CollisionCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35183,6 +35343,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAppsV1StatefulSetCondition
@@ -35209,6 +35370,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "currentReplicas":
 			if err := func() error {
+				s.CurrentReplicas.Reset()
 				if err := s.CurrentReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35220,6 +35382,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "currentRevision":
 			if err := func() error {
+				s.CurrentRevision.Reset()
 				if err := s.CurrentRevision.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35231,6 +35394,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35242,6 +35406,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readyReplicas":
 			if err := func() error {
+				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35262,6 +35427,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updateRevision":
 			if err := func() error {
+				s.UpdateRevision.Reset()
 				if err := s.UpdateRevision.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35273,6 +35439,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "updatedReplicas":
 			if err := func() error {
+				s.UpdatedReplicas.Reset()
 				if err := s.UpdatedReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35341,6 +35508,7 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "rollingUpdate":
 			if err := func() error {
+				s.RollingUpdate.Reset()
 				if err := s.RollingUpdate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35352,6 +35520,7 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) err
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35433,6 +35602,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35444,6 +35614,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35455,6 +35626,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35477,6 +35649,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35552,6 +35725,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewSpec) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "audiences":
 			if err := func() error {
+				s.Audiences = s.Audiences[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -35576,6 +35750,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "token":
 			if err := func() error {
+				s.Token.Reset()
 				if err := s.Token.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35661,6 +35836,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "audiences":
 			if err := func() error {
+				s.Audiences = s.Audiences[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -35685,6 +35861,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "authenticated":
 			if err := func() error {
+				s.Authenticated.Reset()
 				if err := s.Authenticated.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35696,6 +35873,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "error":
 			if err := func() error {
+				s.Error.Reset()
 				if err := s.Error.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35707,6 +35885,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35787,6 +35966,7 @@ func (s *IoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -35811,6 +35991,7 @@ func (s *IoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35822,6 +36003,7 @@ func (s *IoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "username":
 			if err := func() error {
+				s.Username.Reset()
 				if err := s.Username.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35890,6 +36072,7 @@ func (s *IoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iterator
 		switch k {
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35901,6 +36084,7 @@ func (s *IoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iterator
 			return true
 		case "verb":
 			if err := func() error {
+				s.Verb.Reset()
 				if err := s.Verb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -35981,6 +36165,7 @@ func (s *IoK8sAPIAuthorizationV1NonResourceRule) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "nonResourceURLs":
 			if err := func() error {
+				s.NonResourceURLs = s.NonResourceURLs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36005,6 +36190,7 @@ func (s *IoK8sAPIAuthorizationV1NonResourceRule) ReadJSON(i *json.Iterator) erro
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36111,6 +36297,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "group":
 			if err := func() error {
+				s.Group.Reset()
 				if err := s.Group.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36122,6 +36309,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36133,6 +36321,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 			return true
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36144,6 +36333,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 			return true
 		case "resource":
 			if err := func() error {
+				s.Resource.Reset()
 				if err := s.Resource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36155,6 +36345,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 			return true
 		case "subresource":
 			if err := func() error {
+				s.Subresource.Reset()
 				if err := s.Subresource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36166,6 +36357,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 			return true
 		case "verb":
 			if err := func() error {
+				s.Verb.Reset()
 				if err := s.Verb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36177,6 +36369,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 			return true
 		case "version":
 			if err := func() error {
+				s.Version.Reset()
 				if err := s.Version.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36281,6 +36474,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiGroups":
 			if err := func() error {
+				s.ApiGroups = s.ApiGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36305,6 +36499,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resourceNames":
 			if err := func() error {
+				s.ResourceNames = s.ResourceNames[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36329,6 +36524,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36353,6 +36549,7 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36447,6 +36644,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iterat
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36458,6 +36656,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iterat
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36469,6 +36668,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iterat
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36491,6 +36691,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iterat
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36559,6 +36760,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) ReadJSON(i *json.It
 		switch k {
 		case "nonResourceAttributes":
 			if err := func() error {
+				s.NonResourceAttributes.Reset()
 				if err := s.NonResourceAttributes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36570,6 +36772,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) ReadJSON(i *json.It
 			return true
 		case "resourceAttributes":
 			if err := func() error {
+				s.ResourceAttributes.Reset()
 				if err := s.ResourceAttributes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36651,6 +36854,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iterato
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36662,6 +36866,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iterato
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36673,6 +36878,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iterato
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36695,6 +36901,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iterato
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36758,6 +36965,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec) ReadJSON(i *json.Ite
 		switch k {
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36839,6 +37047,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36850,6 +37059,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iterator) 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36861,6 +37071,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iterator) 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36883,6 +37094,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iterator) 
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -36973,6 +37185,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 		switch k {
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -36997,6 +37210,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 			return true
 		case "nonResourceAttributes":
 			if err := func() error {
+				s.NonResourceAttributes.Reset()
 				if err := s.NonResourceAttributes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37008,6 +37222,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 			return true
 		case "resourceAttributes":
 			if err := func() error {
+				s.ResourceAttributes.Reset()
 				if err := s.ResourceAttributes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37019,6 +37234,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37030,6 +37246,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37115,6 +37332,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iter
 			return true
 		case "denied":
 			if err := func() error {
+				s.Denied.Reset()
 				if err := s.Denied.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37126,6 +37344,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iter
 			return true
 		case "evaluationError":
 			if err := func() error {
+				s.EvaluationError.Reset()
 				if err := s.EvaluationError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37137,6 +37356,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iter
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37223,6 +37443,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Itera
 		switch k {
 		case "evaluationError":
 			if err := func() error {
+				s.EvaluationError.Reset()
 				if err := s.EvaluationError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37243,6 +37464,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Itera
 			return true
 		case "nonResourceRules":
 			if err := func() error {
+				s.NonResourceRules = s.NonResourceRules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAuthorizationV1NonResourceRule
@@ -37269,6 +37491,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Itera
 			return true
 		case "resourceRules":
 			if err := func() error {
+				s.ResourceRules = s.ResourceRules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAuthorizationV1ResourceRule
@@ -37353,6 +37576,7 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) ReadJSON(i *json.Iter
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37454,6 +37678,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iterator
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37465,6 +37690,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iterator
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37476,6 +37702,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iterator
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37487,6 +37714,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iterator
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37498,6 +37726,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iterator
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37581,6 +37810,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37592,6 +37822,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
@@ -37618,6 +37849,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37629,6 +37861,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37712,6 +37945,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter
 			return true
 		case "minReplicas":
 			if err := func() error {
+				s.MinReplicas.Reset()
 				if err := s.MinReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37734,6 +37968,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter
 			return true
 		case "targetCPUUtilizationPercentage":
 			if err := func() error {
+				s.TargetCPUUtilizationPercentage.Reset()
 				if err := s.TargetCPUUtilizationPercentage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37813,6 +38048,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.It
 		switch k {
 		case "currentCPUUtilizationPercentage":
 			if err := func() error {
+				s.CurrentCPUUtilizationPercentage.Reset()
 				if err := s.CurrentCPUUtilizationPercentage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37842,6 +38078,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.It
 			return true
 		case "lastScaleTime":
 			if err := func() error {
+				s.LastScaleTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -37857,6 +38094,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.It
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37949,6 +38187,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *js
 			return true
 		case "targetAverageUtilization":
 			if err := func() error {
+				s.TargetAverageUtilization.Reset()
 				if err := s.TargetAverageUtilization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -37960,6 +38199,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *js
 			return true
 		case "targetAverageValue":
 			if err := func() error {
+				s.TargetAverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -38043,6 +38283,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i *js
 			return true
 		case "currentAverageUtilization":
 			if err := func() error {
+				s.CurrentAverageUtilization.Reset()
 				if err := s.CurrentAverageUtilization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38129,6 +38370,7 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) ReadJSON(i *json
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38232,6 +38474,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "metricSelector":
 			if err := func() error {
+				s.MetricSelector.Reset()
 				if err := s.MetricSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38243,6 +38486,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "targetAverageValue":
 			if err := func() error {
+				s.TargetAverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -38258,6 +38502,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "targetValue":
 			if err := func() error {
+				s.TargetValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -38334,6 +38579,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterat
 		switch k {
 		case "currentAverageValue":
 			if err := func() error {
+				s.CurrentAverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -38366,6 +38612,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterat
 			return true
 		case "metricSelector":
 			if err := func() error {
+				s.MetricSelector.Reset()
 				if err := s.MetricSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38449,6 +38696,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38460,6 +38708,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38471,6 +38720,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38482,6 +38732,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38493,6 +38744,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38572,6 +38824,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) ReadJSON(i 
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -38587,6 +38840,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) ReadJSON(i 
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38598,6 +38852,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) ReadJSON(i 
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38699,6 +38954,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(i *json
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38710,6 +38966,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(i *json
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
@@ -38736,6 +38993,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(i *json
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38747,6 +39005,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(i *json
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38837,6 +39096,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json
 			return true
 		case "metrics":
 			if err := func() error {
+				s.Metrics = s.Metrics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta1MetricSpec
@@ -38863,6 +39123,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json
 			return true
 		case "minReplicas":
 			if err := func() error {
+				s.MinReplicas.Reset()
 				if err := s.MinReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -38970,6 +39231,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *js
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition
@@ -38996,6 +39258,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "currentMetrics":
 			if err := func() error {
+				s.CurrentMetrics = s.CurrentMetrics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta1MetricStatus
@@ -39040,6 +39303,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "lastScaleTime":
 			if err := func() error {
+				s.LastScaleTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -39055,6 +39319,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39141,6 +39406,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "containerResource":
 			if err := func() error {
+				s.ContainerResource.Reset()
 				if err := s.ContainerResource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39152,6 +39418,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "external":
 			if err := func() error {
+				s.External.Reset()
 				if err := s.External.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39163,6 +39430,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "object":
 			if err := func() error {
+				s.Object.Reset()
 				if err := s.Object.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39174,6 +39442,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "pods":
 			if err := func() error {
+				s.Pods.Reset()
 				if err := s.Pods.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39185,6 +39454,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "resource":
 			if err := func() error {
+				s.Resource.Reset()
 				if err := s.Resource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39280,6 +39550,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "containerResource":
 			if err := func() error {
+				s.ContainerResource.Reset()
 				if err := s.ContainerResource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39291,6 +39562,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "external":
 			if err := func() error {
+				s.External.Reset()
 				if err := s.External.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39302,6 +39574,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "object":
 			if err := func() error {
+				s.Object.Reset()
 				if err := s.Object.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39313,6 +39586,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "pods":
 			if err := func() error {
+				s.Pods.Reset()
 				if err := s.Pods.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39324,6 +39598,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "resource":
 			if err := func() error {
+				s.Resource.Reset()
 				if err := s.Resource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39408,6 +39683,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator
 		switch k {
 		case "averageValue":
 			if err := func() error {
+				s.AverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -39432,6 +39708,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39526,6 +39803,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator
 		switch k {
 		case "averageValue":
 			if err := func() error {
+				s.AverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -39558,6 +39836,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39645,6 +39924,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39737,6 +40017,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iterator) 
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39817,6 +40098,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "targetAverageUtilization":
 			if err := func() error {
+				s.TargetAverageUtilization.Reset()
 				if err := s.TargetAverageUtilization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -39828,6 +40110,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "targetAverageValue":
 			if err := func() error {
+				s.TargetAverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -39899,6 +40182,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Iterat
 		switch k {
 		case "currentAverageUtilization":
 			if err := func() error {
+				s.CurrentAverageUtilization.Reset()
 				if err := s.CurrentAverageUtilization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40155,6 +40439,7 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) ReadJSON(i *json
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40486,6 +40771,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "policies":
 			if err := func() error {
+				s.Policies = s.Policies[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta2HPAScalingPolicy
@@ -40512,6 +40798,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) e
 			return true
 		case "selectPolicy":
 			if err := func() error {
+				s.SelectPolicy.Reset()
 				if err := s.SelectPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40523,6 +40810,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) e
 			return true
 		case "stabilizationWindowSeconds":
 			if err := func() error {
+				s.StabilizationWindowSeconds.Reset()
 				if err := s.StabilizationWindowSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40606,6 +40894,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40617,6 +40906,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40628,6 +40918,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40639,6 +40930,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40650,6 +40942,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40718,6 +41011,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *
 		switch k {
 		case "scaleDown":
 			if err := func() error {
+				s.ScaleDown.Reset()
 				if err := s.ScaleDown.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40729,6 +41023,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *
 			return true
 		case "scaleUp":
 			if err := func() error {
+				s.ScaleUp.Reset()
 				if err := s.ScaleUp.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40808,6 +41103,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) ReadJSON(i 
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -40823,6 +41119,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) ReadJSON(i 
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40834,6 +41131,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) ReadJSON(i 
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40935,6 +41233,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(i *json
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40946,6 +41245,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(i *json
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
@@ -40972,6 +41272,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(i *json
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -40983,6 +41284,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(i *json
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41069,6 +41371,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json
 		switch k {
 		case "behavior":
 			if err := func() error {
+				s.Behavior.Reset()
 				if err := s.Behavior.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41089,6 +41392,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json
 			return true
 		case "metrics":
 			if err := func() error {
+				s.Metrics = s.Metrics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta2MetricSpec
@@ -41115,6 +41419,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json
 			return true
 		case "minReplicas":
 			if err := func() error {
+				s.MinReplicas.Reset()
 				if err := s.MinReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41222,6 +41527,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *js
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition
@@ -41248,6 +41554,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "currentMetrics":
 			if err := func() error {
+				s.CurrentMetrics = s.CurrentMetrics[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIAutoscalingV2beta2MetricStatus
@@ -41292,6 +41599,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "lastScaleTime":
 			if err := func() error {
+				s.LastScaleTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -41307,6 +41615,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41382,6 +41691,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) ReadJSON(i *json.Iterator) 
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41468,6 +41778,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "containerResource":
 			if err := func() error {
+				s.ContainerResource.Reset()
 				if err := s.ContainerResource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41479,6 +41790,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "external":
 			if err := func() error {
+				s.External.Reset()
 				if err := s.External.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41490,6 +41802,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "object":
 			if err := func() error {
+				s.Object.Reset()
 				if err := s.Object.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41501,6 +41814,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "pods":
 			if err := func() error {
+				s.Pods.Reset()
 				if err := s.Pods.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41512,6 +41826,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "resource":
 			if err := func() error {
+				s.Resource.Reset()
 				if err := s.Resource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41607,6 +41922,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "containerResource":
 			if err := func() error {
+				s.ContainerResource.Reset()
 				if err := s.ContainerResource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41618,6 +41934,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "external":
 			if err := func() error {
+				s.External.Reset()
 				if err := s.External.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41629,6 +41946,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "object":
 			if err := func() error {
+				s.Object.Reset()
 				if err := s.Object.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41640,6 +41958,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "pods":
 			if err := func() error {
+				s.Pods.Reset()
 				if err := s.Pods.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41651,6 +41970,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iterator) erro
 			return true
 		case "resource":
 			if err := func() error {
+				s.Resource.Reset()
 				if err := s.Resource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41736,6 +42056,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "averageUtilization":
 			if err := func() error {
+				s.AverageUtilization.Reset()
 				if err := s.AverageUtilization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41747,6 +42068,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(i *json.Iterator) erro
 			return true
 		case "averageValue":
 			if err := func() error {
+				s.AverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -41771,6 +42093,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(i *json.Iterator) erro
 			return true
 		case "value":
 			if err := func() error {
+				s.Value = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -41848,6 +42171,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(i *json.Iterator)
 		switch k {
 		case "averageUtilization":
 			if err := func() error {
+				s.AverageUtilization.Reset()
 				if err := s.AverageUtilization.ReadJSON(i); err != nil {
 					return err
 				}
@@ -41859,6 +42183,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(i *json.Iterator)
 			return true
 		case "averageValue":
 			if err := func() error {
+				s.AverageValue = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -41874,6 +42199,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(i *json.Iterator)
 			return true
 		case "value":
 			if err := func() error {
+				s.Value = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -42435,6 +42761,7 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42446,6 +42773,7 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42457,6 +42785,7 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42468,6 +42797,7 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42479,6 +42809,7 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42562,6 +42893,7 @@ func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42573,6 +42905,7 @@ func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIBatchV1CronJob
@@ -42599,6 +42932,7 @@ func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42610,6 +42944,7 @@ func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42699,6 +43034,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "concurrencyPolicy":
 			if err := func() error {
+				s.ConcurrencyPolicy.Reset()
 				if err := s.ConcurrencyPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42710,6 +43046,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "failedJobsHistoryLimit":
 			if err := func() error {
+				s.FailedJobsHistoryLimit.Reset()
 				if err := s.FailedJobsHistoryLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42741,6 +43078,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startingDeadlineSeconds":
 			if err := func() error {
+				s.StartingDeadlineSeconds.Reset()
 				if err := s.StartingDeadlineSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42752,6 +43090,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "successfulJobsHistoryLimit":
 			if err := func() error {
+				s.SuccessfulJobsHistoryLimit.Reset()
 				if err := s.SuccessfulJobsHistoryLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42763,6 +43102,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "suspend":
 			if err := func() error {
+				s.Suspend.Reset()
 				if err := s.Suspend.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42843,6 +43183,7 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active = s.Active[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ObjectReference
@@ -42869,6 +43210,7 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastScheduleTime":
 			if err := func() error {
+				s.LastScheduleTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -42884,6 +43226,7 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastSuccessfulTime":
 			if err := func() error {
+				s.LastSuccessfulTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -42971,6 +43314,7 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42982,6 +43326,7 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -42993,6 +43338,7 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43004,6 +43350,7 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43015,6 +43362,7 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43099,6 +43447,7 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastProbeTime":
 			if err := func() error {
+				s.LastProbeTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -43114,6 +43463,7 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -43129,6 +43479,7 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43140,6 +43491,7 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43241,6 +43593,7 @@ func (s *IoK8sAPIBatchV1JobList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43252,6 +43605,7 @@ func (s *IoK8sAPIBatchV1JobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIBatchV1Job
@@ -43278,6 +43632,7 @@ func (s *IoK8sAPIBatchV1JobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43289,6 +43644,7 @@ func (s *IoK8sAPIBatchV1JobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43395,6 +43751,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "activeDeadlineSeconds":
 			if err := func() error {
+				s.ActiveDeadlineSeconds.Reset()
 				if err := s.ActiveDeadlineSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43406,6 +43763,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "backoffLimit":
 			if err := func() error {
+				s.BackoffLimit.Reset()
 				if err := s.BackoffLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43417,6 +43775,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "completionMode":
 			if err := func() error {
+				s.CompletionMode.Reset()
 				if err := s.CompletionMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43428,6 +43787,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "completions":
 			if err := func() error {
+				s.Completions.Reset()
 				if err := s.Completions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43439,6 +43799,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "manualSelector":
 			if err := func() error {
+				s.ManualSelector.Reset()
 				if err := s.ManualSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43450,6 +43811,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parallelism":
 			if err := func() error {
+				s.Parallelism.Reset()
 				if err := s.Parallelism.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43461,6 +43823,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43472,6 +43835,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "suspend":
 			if err := func() error {
+				s.Suspend.Reset()
 				if err := s.Suspend.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43494,6 +43858,7 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ttlSecondsAfterFinished":
 			if err := func() error {
+				s.TtlSecondsAfterFinished.Reset()
 				if err := s.TtlSecondsAfterFinished.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43599,6 +43964,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active.Reset()
 				if err := s.Active.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43610,6 +43976,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "completedIndexes":
 			if err := func() error {
+				s.CompletedIndexes.Reset()
 				if err := s.CompletedIndexes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43621,6 +43988,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "completionTime":
 			if err := func() error {
+				s.CompletionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -43636,6 +44004,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIBatchV1JobCondition
@@ -43662,6 +44031,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "failed":
 			if err := func() error {
+				s.Failed.Reset()
 				if err := s.Failed.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43673,6 +44043,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startTime":
 			if err := func() error {
+				s.StartTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -43688,6 +44059,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "succeeded":
 			if err := func() error {
+				s.Succeeded.Reset()
 				if err := s.Succeeded.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43699,6 +44071,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "uncountedTerminatedPods":
 			if err := func() error {
+				s.UncountedTerminatedPods.Reset()
 				if err := s.UncountedTerminatedPods.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43767,6 +44140,7 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43778,6 +44152,7 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43860,6 +44235,7 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "failed":
 			if err := func() error {
+				s.Failed = s.Failed[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -43884,6 +44260,7 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) erro
 			return true
 		case "succeeded":
 			if err := func() error {
+				s.Succeeded = s.Succeeded[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -43980,6 +44357,7 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -43991,6 +44369,7 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44002,6 +44381,7 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44013,6 +44393,7 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44024,6 +44405,7 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44107,6 +44489,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44118,6 +44501,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIBatchV1beta1CronJob
@@ -44144,6 +44528,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44155,6 +44540,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44244,6 +44630,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "concurrencyPolicy":
 			if err := func() error {
+				s.ConcurrencyPolicy.Reset()
 				if err := s.ConcurrencyPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44255,6 +44642,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "failedJobsHistoryLimit":
 			if err := func() error {
+				s.FailedJobsHistoryLimit.Reset()
 				if err := s.FailedJobsHistoryLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44286,6 +44674,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startingDeadlineSeconds":
 			if err := func() error {
+				s.StartingDeadlineSeconds.Reset()
 				if err := s.StartingDeadlineSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44297,6 +44686,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "successfulJobsHistoryLimit":
 			if err := func() error {
+				s.SuccessfulJobsHistoryLimit.Reset()
 				if err := s.SuccessfulJobsHistoryLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44308,6 +44698,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "suspend":
 			if err := func() error {
+				s.Suspend.Reset()
 				if err := s.Suspend.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44388,6 +44779,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active = s.Active[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ObjectReference
@@ -44414,6 +44806,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastScheduleTime":
 			if err := func() error {
+				s.LastScheduleTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -44429,6 +44822,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastSuccessfulTime":
 			if err := func() error {
+				s.LastSuccessfulTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -44501,6 +44895,7 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44512,6 +44907,7 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44593,6 +44989,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Itera
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44604,6 +45001,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Itera
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44615,6 +45013,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Itera
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44637,6 +45036,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Itera
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44721,6 +45121,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *j
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -44736,6 +45137,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *j
 			return true
 		case "lastUpdateTime":
 			if err := func() error {
+				s.LastUpdateTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -44751,6 +45153,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *j
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44762,6 +45165,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *j
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44863,6 +45267,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(i *json.I
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44874,6 +45279,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(i *json.I
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICertificatesV1CertificateSigningRequest
@@ -44900,6 +45306,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(i *json.I
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -44911,6 +45318,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(i *json.I
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45020,6 +45428,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 		switch k {
 		case "expirationSeconds":
 			if err := func() error {
+				s.ExpirationSeconds.Reset()
 				if err := s.ExpirationSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45031,6 +45440,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -45055,6 +45465,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			return true
 		case "request":
 			if err := func() error {
+				s.Request = s.Request[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem byte
@@ -45087,6 +45498,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45098,6 +45510,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			return true
 		case "usages":
 			if err := func() error {
+				s.Usages = s.Usages[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -45122,6 +45535,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			return true
 		case "username":
 			if err := func() error {
+				s.Username.Reset()
 				if err := s.Username.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45203,6 +45617,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json
 		switch k {
 		case "certificate":
 			if err := func() error {
+				s.Certificate = s.Certificate[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem byte
@@ -45226,6 +45641,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICertificatesV1CertificateSigningRequestCondition
@@ -45319,6 +45735,7 @@ func (s *IoK8sAPICoordinationV1Lease) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45330,6 +45747,7 @@ func (s *IoK8sAPICoordinationV1Lease) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45341,6 +45759,7 @@ func (s *IoK8sAPICoordinationV1Lease) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45352,6 +45771,7 @@ func (s *IoK8sAPICoordinationV1Lease) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45435,6 +45855,7 @@ func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45446,6 +45867,7 @@ func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoordinationV1Lease
@@ -45472,6 +45894,7 @@ func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45483,6 +45906,7 @@ func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45566,6 +45990,7 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "acquireTime":
 			if err := func() error {
+				s.AcquireTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
@@ -45581,6 +46006,7 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "holderIdentity":
 			if err := func() error {
+				s.HolderIdentity.Reset()
 				if err := s.HolderIdentity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45592,6 +46018,7 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "leaseDurationSeconds":
 			if err := func() error {
+				s.LeaseDurationSeconds.Reset()
 				if err := s.LeaseDurationSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45603,6 +46030,7 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "leaseTransitions":
 			if err := func() error {
+				s.LeaseTransitions.Reset()
 				if err := s.LeaseTransitions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45614,6 +46042,7 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "renewTime":
 			if err := func() error {
+				s.RenewTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
@@ -45694,6 +46123,7 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iterat
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45705,6 +46135,7 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iterat
 			return true
 		case "partition":
 			if err := func() error {
+				s.Partition.Reset()
 				if err := s.Partition.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45716,6 +46147,7 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iterat
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45798,6 +46230,7 @@ func (s *IoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "nodeAffinity":
 			if err := func() error {
+				s.NodeAffinity.Reset()
 				if err := s.NodeAffinity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45809,6 +46242,7 @@ func (s *IoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podAffinity":
 			if err := func() error {
+				s.PodAffinity.Reset()
 				if err := s.PodAffinity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45820,6 +46254,7 @@ func (s *IoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podAntiAffinity":
 			if err := func() error {
+				s.PodAntiAffinity.Reset()
 				if err := s.PodAntiAffinity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -45975,6 +46410,7 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "cachingMode":
 			if err := func() error {
+				s.CachingMode.Reset()
 				if err := s.CachingMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46004,6 +46440,7 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46015,6 +46452,7 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46026,6 +46464,7 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46100,6 +46539,7 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iterato
 		switch k {
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46120,6 +46560,7 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iterato
 			return true
 		case "secretNamespace":
 			if err := func() error {
+				s.SecretNamespace.Reset()
 				if err := s.SecretNamespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46198,6 +46639,7 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46310,6 +46752,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "controllerExpandSecretRef":
 			if err := func() error {
+				s.ControllerExpandSecretRef.Reset()
 				if err := s.ControllerExpandSecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46321,6 +46764,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "controllerPublishSecretRef":
 			if err := func() error {
+				s.ControllerPublishSecretRef.Reset()
 				if err := s.ControllerPublishSecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46341,6 +46785,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46352,6 +46797,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "nodePublishSecretRef":
 			if err := func() error {
+				s.NodePublishSecretRef.Reset()
 				if err := s.NodePublishSecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46363,6 +46809,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "nodeStageSecretRef":
 			if err := func() error {
+				s.NodeStageSecretRef.Reset()
 				if err := s.NodeStageSecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46374,6 +46821,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46468,6 +46916,7 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46479,6 +46928,7 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodePublishSecretRef":
 			if err := func() error {
+				s.NodePublishSecretRef.Reset()
 				if err := s.NodePublishSecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46490,6 +46940,7 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46572,6 +47023,7 @@ func (s *IoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "add":
 			if err := func() error {
+				s.Add = s.Add[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -46596,6 +47048,7 @@ func (s *IoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
 			return true
 		case "drop":
 			if err := func() error {
+				s.Drop = s.Drop[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -46702,6 +47155,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "monitors":
 			if err := func() error {
+				s.Monitors = s.Monitors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -46726,6 +47180,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46737,6 +47192,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46748,6 +47204,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "secretFile":
 			if err := func() error {
+				s.SecretFile.Reset()
 				if err := s.SecretFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46759,6 +47216,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46770,6 +47228,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46863,6 +47322,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "monitors":
 			if err := func() error {
+				s.Monitors = s.Monitors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -46887,6 +47347,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46898,6 +47359,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46909,6 +47371,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretFile":
 			if err := func() error {
+				s.SecretFile.Reset()
 				if err := s.SecretFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46920,6 +47383,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -46931,6 +47395,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47007,6 +47472,7 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47018,6 +47484,7 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47029,6 +47496,7 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47114,6 +47582,7 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47125,6 +47594,7 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47136,6 +47606,7 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47208,6 +47679,7 @@ func (s *IoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "timeoutSeconds":
 			if err := func() error {
+				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47282,6 +47754,7 @@ func (s *IoK8sAPICoreV1ComponentCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "error":
 			if err := func() error {
+				s.Error.Reset()
 				if err := s.Error.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47293,6 +47766,7 @@ func (s *IoK8sAPICoreV1ComponentCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47396,6 +47870,7 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47407,6 +47882,7 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ComponentCondition
@@ -47433,6 +47909,7 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47444,6 +47921,7 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47527,6 +48005,7 @@ func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47538,6 +48017,7 @@ func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ComponentStatus
@@ -47564,6 +48044,7 @@ func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47575,6 +48056,7 @@ func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47653,6 +48135,7 @@ func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47664,6 +48147,7 @@ func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(i *json.Iterator) error {
 			return true
 		case "immutable":
 			if err := func() error {
+				s.Immutable.Reset()
 				if err := s.Immutable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47675,6 +48159,7 @@ func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47686,6 +48171,7 @@ func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47754,6 +48240,7 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47765,6 +48252,7 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47845,6 +48333,7 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47856,6 +48345,7 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47939,6 +48429,7 @@ func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47950,6 +48441,7 @@ func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ConfigMap
@@ -47976,6 +48468,7 @@ func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -47987,6 +48480,7 @@ func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48091,6 +48585,7 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "resourceVersion":
 			if err := func() error {
+				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48102,6 +48597,7 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48182,6 +48678,7 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1KeyToPath
@@ -48208,6 +48705,7 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48219,6 +48717,7 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48304,6 +48803,7 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "defaultMode":
 			if err := func() error {
+				s.DefaultMode.Reset()
 				if err := s.DefaultMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48315,6 +48815,7 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1KeyToPath
@@ -48341,6 +48842,7 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48352,6 +48854,7 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48567,6 +49070,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "args":
 			if err := func() error {
+				s.Args = s.Args[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48591,6 +49095,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "command":
 			if err := func() error {
+				s.Command = s.Command[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48615,6 +49120,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "env":
 			if err := func() error {
+				s.Env = s.Env[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EnvVar
@@ -48641,6 +49147,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "envFrom":
 			if err := func() error {
+				s.EnvFrom = s.EnvFrom[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EnvFromSource
@@ -48667,6 +49174,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "image":
 			if err := func() error {
+				s.Image.Reset()
 				if err := s.Image.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48678,6 +49186,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "imagePullPolicy":
 			if err := func() error {
+				s.ImagePullPolicy.Reset()
 				if err := s.ImagePullPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48689,6 +49198,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lifecycle":
 			if err := func() error {
+				s.Lifecycle.Reset()
 				if err := s.Lifecycle.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48700,6 +49210,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "livenessProbe":
 			if err := func() error {
+				s.LivenessProbe.Reset()
 				if err := s.LivenessProbe.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48720,6 +49231,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ContainerPort
@@ -48746,6 +49258,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readinessProbe":
 			if err := func() error {
+				s.ReadinessProbe.Reset()
 				if err := s.ReadinessProbe.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48757,6 +49270,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources.Reset()
 				if err := s.Resources.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48768,6 +49282,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "securityContext":
 			if err := func() error {
+				s.SecurityContext.Reset()
 				if err := s.SecurityContext.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48779,6 +49294,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startupProbe":
 			if err := func() error {
+				s.StartupProbe.Reset()
 				if err := s.StartupProbe.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48790,6 +49306,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stdin":
 			if err := func() error {
+				s.Stdin.Reset()
 				if err := s.Stdin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48801,6 +49318,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stdinOnce":
 			if err := func() error {
+				s.StdinOnce.Reset()
 				if err := s.StdinOnce.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48812,6 +49330,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "terminationMessagePath":
 			if err := func() error {
+				s.TerminationMessagePath.Reset()
 				if err := s.TerminationMessagePath.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48823,6 +49342,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "terminationMessagePolicy":
 			if err := func() error {
+				s.TerminationMessagePolicy.Reset()
 				if err := s.TerminationMessagePolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48834,6 +49354,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tty":
 			if err := func() error {
+				s.Tty.Reset()
 				if err := s.Tty.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48845,6 +49366,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeDevices":
 			if err := func() error {
+				s.VolumeDevices = s.VolumeDevices[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1VolumeDevice
@@ -48871,6 +49393,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeMounts":
 			if err := func() error {
+				s.VolumeMounts = s.VolumeMounts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1VolumeMount
@@ -48897,6 +49420,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			return true
 		case "workingDir":
 			if err := func() error {
+				s.WorkingDir.Reset()
 				if err := s.WorkingDir.ReadJSON(i); err != nil {
 					return err
 				}
@@ -48972,6 +49496,7 @@ func (s *IoK8sAPICoreV1ContainerImage) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "names":
 			if err := func() error {
+				s.Names = s.Names[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -48996,6 +49521,7 @@ func (s *IoK8sAPICoreV1ContainerImage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sizeBytes":
 			if err := func() error {
+				s.SizeBytes.Reset()
 				if err := s.SizeBytes.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49086,6 +49612,7 @@ func (s *IoK8sAPICoreV1ContainerPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostIP":
 			if err := func() error {
+				s.HostIP.Reset()
 				if err := s.HostIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49097,6 +49624,7 @@ func (s *IoK8sAPICoreV1ContainerPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostPort":
 			if err := func() error {
+				s.HostPort.Reset()
 				if err := s.HostPort.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49108,6 +49636,7 @@ func (s *IoK8sAPICoreV1ContainerPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49119,6 +49648,7 @@ func (s *IoK8sAPICoreV1ContainerPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protocol":
 			if err := func() error {
+				s.Protocol.Reset()
 				if err := s.Protocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49192,6 +49722,7 @@ func (s *IoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "running":
 			if err := func() error {
+				s.Running.Reset()
 				if err := s.Running.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49203,6 +49734,7 @@ func (s *IoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
 			return true
 		case "terminated":
 			if err := func() error {
+				s.Terminated.Reset()
 				if err := s.Terminated.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49214,6 +49746,7 @@ func (s *IoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
 			return true
 		case "waiting":
 			if err := func() error {
+				s.Waiting.Reset()
 				if err := s.Waiting.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49277,6 +49810,7 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "startedAt":
 			if err := func() error {
+				s.StartedAt = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -49372,6 +49906,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "containerID":
 			if err := func() error {
+				s.ContainerID.Reset()
 				if err := s.ContainerID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49392,6 +49927,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 			return true
 		case "finishedAt":
 			if err := func() error {
+				s.FinishedAt = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -49407,6 +49943,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49418,6 +49955,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49429,6 +49967,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 			return true
 		case "signal":
 			if err := func() error {
+				s.Signal.Reset()
 				if err := s.Signal.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49440,6 +49979,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 			return true
 		case "startedAt":
 			if err := func() error {
+				s.StartedAt = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -49512,6 +50052,7 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49523,6 +50064,7 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49616,6 +50158,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "containerID":
 			if err := func() error {
+				s.ContainerID.Reset()
 				if err := s.ContainerID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49645,6 +50188,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastState":
 			if err := func() error {
+				s.LastState.Reset()
 				if err := s.LastState.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49683,6 +50227,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "started":
 			if err := func() error {
+				s.Started.Reset()
 				if err := s.Started.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49694,6 +50239,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "state":
 			if err := func() error {
+				s.State.Reset()
 				if err := s.State.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49823,6 +50369,7 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1DownwardAPIVolumeFile
@@ -49914,6 +50461,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fieldRef":
 			if err := func() error {
+				s.FieldRef.Reset()
 				if err := s.FieldRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49925,6 +50473,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mode":
 			if err := func() error {
+				s.Mode.Reset()
 				if err := s.Mode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -49945,6 +50494,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resourceFieldRef":
 			if err := func() error {
+				s.ResourceFieldRef.Reset()
 				if err := s.ResourceFieldRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50020,6 +50570,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "defaultMode":
 			if err := func() error {
+				s.DefaultMode.Reset()
 				if err := s.DefaultMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50031,6 +50582,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) error
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1DownwardAPIVolumeFile
@@ -50114,6 +50666,7 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "medium":
 			if err := func() error {
+				s.Medium.Reset()
 				if err := s.Medium.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50125,6 +50678,7 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sizeLimit":
 			if err := func() error {
+				s.SizeLimit = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -50205,6 +50759,7 @@ func (s *IoK8sAPICoreV1EndpointAddress) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "hostname":
 			if err := func() error {
+				s.Hostname.Reset()
 				if err := s.Hostname.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50225,6 +50780,7 @@ func (s *IoK8sAPICoreV1EndpointAddress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodeName":
 			if err := func() error {
+				s.NodeName.Reset()
 				if err := s.NodeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50236,6 +50792,7 @@ func (s *IoK8sAPICoreV1EndpointAddress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "targetRef":
 			if err := func() error {
+				s.TargetRef.Reset()
 				if err := s.TargetRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50312,6 +50869,7 @@ func (s *IoK8sAPICoreV1EndpointPort) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "appProtocol":
 			if err := func() error {
+				s.AppProtocol.Reset()
 				if err := s.AppProtocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50323,6 +50881,7 @@ func (s *IoK8sAPICoreV1EndpointPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50343,6 +50902,7 @@ func (s *IoK8sAPICoreV1EndpointPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protocol":
 			if err := func() error {
+				s.Protocol.Reset()
 				if err := s.Protocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50437,6 +50997,7 @@ func (s *IoK8sAPICoreV1EndpointSubset) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "addresses":
 			if err := func() error {
+				s.Addresses = s.Addresses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EndpointAddress
@@ -50463,6 +51024,7 @@ func (s *IoK8sAPICoreV1EndpointSubset) ReadJSON(i *json.Iterator) error {
 			return true
 		case "notReadyAddresses":
 			if err := func() error {
+				s.NotReadyAddresses = s.NotReadyAddresses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EndpointAddress
@@ -50489,6 +51051,7 @@ func (s *IoK8sAPICoreV1EndpointSubset) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EndpointPort
@@ -50589,6 +51152,7 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50600,6 +51164,7 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50611,6 +51176,7 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50622,6 +51188,7 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subsets":
 			if err := func() error {
+				s.Subsets = s.Subsets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EndpointSubset
@@ -50720,6 +51287,7 @@ func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50731,6 +51299,7 @@ func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Endpoints
@@ -50757,6 +51326,7 @@ func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50768,6 +51338,7 @@ func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50841,6 +51412,7 @@ func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "configMapRef":
 			if err := func() error {
+				s.ConfigMapRef.Reset()
 				if err := s.ConfigMapRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50852,6 +51424,7 @@ func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "prefix":
 			if err := func() error {
+				s.Prefix.Reset()
 				if err := s.Prefix.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50863,6 +51436,7 @@ func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50943,6 +51517,7 @@ func (s *IoK8sAPICoreV1EnvVar) ReadJSON(i *json.Iterator) error {
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -50954,6 +51529,7 @@ func (s *IoK8sAPICoreV1EnvVar) ReadJSON(i *json.Iterator) error {
 			return true
 		case "valueFrom":
 			if err := func() error {
+				s.ValueFrom.Reset()
 				if err := s.ValueFrom.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51032,6 +51608,7 @@ func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "configMapKeyRef":
 			if err := func() error {
+				s.ConfigMapKeyRef.Reset()
 				if err := s.ConfigMapKeyRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51043,6 +51620,7 @@ func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fieldRef":
 			if err := func() error {
+				s.FieldRef.Reset()
 				if err := s.FieldRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51054,6 +51632,7 @@ func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resourceFieldRef":
 			if err := func() error {
+				s.ResourceFieldRef.Reset()
 				if err := s.ResourceFieldRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51065,6 +51644,7 @@ func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretKeyRef":
 			if err := func() error {
+				s.SecretKeyRef.Reset()
 				if err := s.SecretKeyRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51285,6 +51865,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "args":
 			if err := func() error {
+				s.Args = s.Args[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -51309,6 +51890,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "command":
 			if err := func() error {
+				s.Command = s.Command[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -51333,6 +51915,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "env":
 			if err := func() error {
+				s.Env = s.Env[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EnvVar
@@ -51359,6 +51942,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "envFrom":
 			if err := func() error {
+				s.EnvFrom = s.EnvFrom[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EnvFromSource
@@ -51385,6 +51969,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "image":
 			if err := func() error {
+				s.Image.Reset()
 				if err := s.Image.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51396,6 +51981,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "imagePullPolicy":
 			if err := func() error {
+				s.ImagePullPolicy.Reset()
 				if err := s.ImagePullPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51407,6 +51993,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lifecycle":
 			if err := func() error {
+				s.Lifecycle.Reset()
 				if err := s.Lifecycle.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51418,6 +52005,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "livenessProbe":
 			if err := func() error {
+				s.LivenessProbe.Reset()
 				if err := s.LivenessProbe.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51438,6 +52026,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ContainerPort
@@ -51464,6 +52053,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readinessProbe":
 			if err := func() error {
+				s.ReadinessProbe.Reset()
 				if err := s.ReadinessProbe.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51475,6 +52065,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources.Reset()
 				if err := s.Resources.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51486,6 +52077,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "securityContext":
 			if err := func() error {
+				s.SecurityContext.Reset()
 				if err := s.SecurityContext.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51497,6 +52089,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startupProbe":
 			if err := func() error {
+				s.StartupProbe.Reset()
 				if err := s.StartupProbe.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51508,6 +52101,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stdin":
 			if err := func() error {
+				s.Stdin.Reset()
 				if err := s.Stdin.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51519,6 +52113,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stdinOnce":
 			if err := func() error {
+				s.StdinOnce.Reset()
 				if err := s.StdinOnce.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51530,6 +52125,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "targetContainerName":
 			if err := func() error {
+				s.TargetContainerName.Reset()
 				if err := s.TargetContainerName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51541,6 +52137,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "terminationMessagePath":
 			if err := func() error {
+				s.TerminationMessagePath.Reset()
 				if err := s.TerminationMessagePath.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51552,6 +52149,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "terminationMessagePolicy":
 			if err := func() error {
+				s.TerminationMessagePolicy.Reset()
 				if err := s.TerminationMessagePolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51563,6 +52161,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tty":
 			if err := func() error {
+				s.Tty.Reset()
 				if err := s.Tty.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51574,6 +52173,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeDevices":
 			if err := func() error {
+				s.VolumeDevices = s.VolumeDevices[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1VolumeDevice
@@ -51600,6 +52200,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeMounts":
 			if err := func() error {
+				s.VolumeMounts = s.VolumeMounts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1VolumeMount
@@ -51626,6 +52227,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			return true
 		case "workingDir":
 			if err := func() error {
+				s.WorkingDir.Reset()
 				if err := s.WorkingDir.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51689,6 +52291,7 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "volumeClaimTemplate":
 			if err := func() error {
+				s.VolumeClaimTemplate.Reset()
 				if err := s.VolumeClaimTemplate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51828,6 +52431,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "action":
 			if err := func() error {
+				s.Action.Reset()
 				if err := s.Action.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51839,6 +52443,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51850,6 +52455,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "count":
 			if err := func() error {
+				s.Count.Reset()
 				if err := s.Count.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51861,6 +52467,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "eventTime":
 			if err := func() error {
+				s.EventTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
@@ -51876,6 +52483,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "firstTimestamp":
 			if err := func() error {
+				s.FirstTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -51902,6 +52510,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51913,6 +52522,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTimestamp":
 			if err := func() error {
+				s.LastTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -51928,6 +52538,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51950,6 +52561,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51961,6 +52573,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "related":
 			if err := func() error {
+				s.Related.Reset()
 				if err := s.Related.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51972,6 +52585,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reportingComponent":
 			if err := func() error {
+				s.ReportingComponent.Reset()
 				if err := s.ReportingComponent.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51983,6 +52597,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reportingInstance":
 			if err := func() error {
+				s.ReportingInstance.Reset()
 				if err := s.ReportingInstance.ReadJSON(i); err != nil {
 					return err
 				}
@@ -51994,6 +52609,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "series":
 			if err := func() error {
+				s.Series.Reset()
 				if err := s.Series.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52005,6 +52621,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "source":
 			if err := func() error {
+				s.Source.Reset()
 				if err := s.Source.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52016,6 +52633,7 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52099,6 +52717,7 @@ func (s *IoK8sAPICoreV1EventList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52110,6 +52729,7 @@ func (s *IoK8sAPICoreV1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Event
@@ -52136,6 +52756,7 @@ func (s *IoK8sAPICoreV1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52147,6 +52768,7 @@ func (s *IoK8sAPICoreV1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52215,6 +52837,7 @@ func (s *IoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "count":
 			if err := func() error {
+				s.Count.Reset()
 				if err := s.Count.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52226,6 +52849,7 @@ func (s *IoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastObservedTime":
 			if err := func() error {
+				s.LastObservedTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
@@ -52298,6 +52922,7 @@ func (s *IoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "component":
 			if err := func() error {
+				s.Component.Reset()
 				if err := s.Component.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52309,6 +52934,7 @@ func (s *IoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "host":
 			if err := func() error {
+				s.Host.Reset()
 				if err := s.Host.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52379,6 +53005,7 @@ func (s *IoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "command":
 			if err := func() error {
+				s.Command = s.Command[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52489,6 +53116,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52500,6 +53128,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lun":
 			if err := func() error {
+				s.Lun.Reset()
 				if err := s.Lun.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52511,6 +53140,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52522,6 +53152,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "targetWWNs":
 			if err := func() error {
+				s.TargetWWNs = s.TargetWWNs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52546,6 +53177,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "wwids":
 			if err := func() error {
+				s.Wwids = s.Wwids[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -52644,6 +53276,7 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) er
 			return true
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52655,6 +53288,7 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) er
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52666,6 +53300,7 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) er
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52751,6 +53386,7 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52762,6 +53398,7 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52773,6 +53410,7 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52841,6 +53479,7 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "datasetName":
 			if err := func() error {
+				s.DatasetName.Reset()
 				if err := s.DatasetName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52852,6 +53491,7 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "datasetUUID":
 			if err := func() error {
+				s.DatasetUUID.Reset()
 				if err := s.DatasetUUID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52928,6 +53568,7 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterator)
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52939,6 +53580,7 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "partition":
 			if err := func() error {
+				s.Partition.Reset()
 				if err := s.Partition.ReadJSON(i); err != nil {
 					return err
 				}
@@ -52959,6 +53601,7 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53030,6 +53673,7 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "directory":
 			if err := func() error {
+				s.Directory.Reset()
 				if err := s.Directory.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53050,6 +53694,7 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "revision":
 			if err := func() error {
+				s.Revision.Reset()
 				if err := s.Revision.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53133,6 +53778,7 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iterato
 			return true
 		case "endpointsNamespace":
 			if err := func() error {
+				s.EndpointsNamespace.Reset()
 				if err := s.EndpointsNamespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53153,6 +53799,7 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iterato
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53240,6 +53887,7 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53326,6 +53974,7 @@ func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "host":
 			if err := func() error {
+				s.Host.Reset()
 				if err := s.Host.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53337,6 +53986,7 @@ func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 			return true
 		case "httpHeaders":
 			if err := func() error {
+				s.HttpHeaders = s.HttpHeaders[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1HTTPHeader
@@ -53363,6 +54013,7 @@ func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53382,6 +54033,7 @@ func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scheme":
 			if err := func() error {
+				s.Scheme.Reset()
 				if err := s.Scheme.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53526,6 +54178,7 @@ func (s *IoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "exec":
 			if err := func() error {
+				s.Exec.Reset()
 				if err := s.Exec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53537,6 +54190,7 @@ func (s *IoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 			return true
 		case "httpGet":
 			if err := func() error {
+				s.HttpGet.Reset()
 				if err := s.HttpGet.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53548,6 +54202,7 @@ func (s *IoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tcpSocket":
 			if err := func() error {
+				s.TcpSocket.Reset()
 				if err := s.TcpSocket.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53623,6 +54278,7 @@ func (s *IoK8sAPICoreV1HostAlias) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "hostnames":
 			if err := func() error {
+				s.Hostnames = s.Hostnames[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -53647,6 +54303,7 @@ func (s *IoK8sAPICoreV1HostAlias) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ip":
 			if err := func() error {
+				s.IP.Reset()
 				if err := s.IP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53722,6 +54379,7 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53836,6 +54494,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "chapAuthDiscovery":
 			if err := func() error {
+				s.ChapAuthDiscovery.Reset()
 				if err := s.ChapAuthDiscovery.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53847,6 +54506,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			return true
 		case "chapAuthSession":
 			if err := func() error {
+				s.ChapAuthSession.Reset()
 				if err := s.ChapAuthSession.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53858,6 +54518,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			return true
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53869,6 +54530,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			return true
 		case "initiatorName":
 			if err := func() error {
+				s.InitiatorName.Reset()
 				if err := s.InitiatorName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53889,6 +54551,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			return true
 		case "iscsiInterface":
 			if err := func() error {
+				s.IscsiInterface.Reset()
 				if err := s.IscsiInterface.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53909,6 +54572,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			return true
 		case "portals":
 			if err := func() error {
+				s.Portals = s.Portals[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -53933,6 +54597,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -53944,6 +54609,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54067,6 +54733,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chapAuthDiscovery":
 			if err := func() error {
+				s.ChapAuthDiscovery.Reset()
 				if err := s.ChapAuthDiscovery.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54078,6 +54745,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "chapAuthSession":
 			if err := func() error {
+				s.ChapAuthSession.Reset()
 				if err := s.ChapAuthSession.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54089,6 +54757,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54100,6 +54769,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "initiatorName":
 			if err := func() error {
+				s.InitiatorName.Reset()
 				if err := s.InitiatorName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54120,6 +54790,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "iscsiInterface":
 			if err := func() error {
+				s.IscsiInterface.Reset()
 				if err := s.IscsiInterface.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54140,6 +54811,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "portals":
 			if err := func() error {
+				s.Portals = s.Portals[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -54164,6 +54836,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54175,6 +54848,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54262,6 +54936,7 @@ func (s *IoK8sAPICoreV1KeyToPath) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mode":
 			if err := func() error {
+				s.Mode.Reset()
 				if err := s.Mode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54339,6 +55014,7 @@ func (s *IoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "postStart":
 			if err := func() error {
+				s.PostStart.Reset()
 				if err := s.PostStart.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54350,6 +55026,7 @@ func (s *IoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
 			return true
 		case "preStop":
 			if err := func() error {
+				s.PreStop.Reset()
 				if err := s.PreStop.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54428,6 +55105,7 @@ func (s *IoK8sAPICoreV1LimitRange) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54439,6 +55117,7 @@ func (s *IoK8sAPICoreV1LimitRange) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54450,6 +55129,7 @@ func (s *IoK8sAPICoreV1LimitRange) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54461,6 +55141,7 @@ func (s *IoK8sAPICoreV1LimitRange) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54603,6 +55284,7 @@ func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54614,6 +55296,7 @@ func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1LimitRange
@@ -54640,6 +55323,7 @@ func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54651,6 +55335,7 @@ func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54719,6 +55404,7 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "limits":
 			if err := func() error {
+				s.Limits = s.Limits[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1LimitRangeItem
@@ -54814,6 +55500,7 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "hostname":
 			if err := func() error {
+				s.Hostname.Reset()
 				if err := s.Hostname.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54825,6 +55512,7 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ip":
 			if err := func() error {
+				s.IP.Reset()
 				if err := s.IP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -54836,6 +55524,7 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PortStatus
@@ -54921,6 +55610,7 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "ingress":
 			if err := func() error {
+				s.Ingress = s.Ingress[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1LoadBalancerIngress
@@ -54999,6 +55689,7 @@ func (s *IoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55065,6 +55756,7 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55152,6 +55844,7 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55244,6 +55937,7 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55255,6 +55949,7 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55266,6 +55961,7 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55277,6 +55973,7 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55288,6 +55985,7 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55367,6 +56065,7 @@ func (s *IoK8sAPICoreV1NamespaceCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -55382,6 +56081,7 @@ func (s *IoK8sAPICoreV1NamespaceCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55393,6 +56093,7 @@ func (s *IoK8sAPICoreV1NamespaceCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55494,6 +56195,7 @@ func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55505,6 +56207,7 @@ func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Namespace
@@ -55531,6 +56234,7 @@ func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55542,6 +56246,7 @@ func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55612,6 +56317,7 @@ func (s *IoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "finalizers":
 			if err := func() error {
+				s.Finalizers = s.Finalizers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -55700,6 +56406,7 @@ func (s *IoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1NamespaceCondition
@@ -55726,6 +56433,7 @@ func (s *IoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "phase":
 			if err := func() error {
+				s.Phase.Reset()
 				if err := s.Phase.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55809,6 +56517,7 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55820,6 +56529,7 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55831,6 +56541,7 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55842,6 +56553,7 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55853,6 +56565,7 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -55999,6 +56712,7 @@ func (s *IoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
+				s.PreferredDuringSchedulingIgnoredDuringExecution = s.PreferredDuringSchedulingIgnoredDuringExecution[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PreferredSchedulingTerm
@@ -56025,6 +56739,7 @@ func (s *IoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "requiredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
+				s.RequiredDuringSchedulingIgnoredDuringExecution.Reset()
 				if err := s.RequiredDuringSchedulingIgnoredDuringExecution.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56109,6 +56824,7 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastHeartbeatTime":
 			if err := func() error {
+				s.LastHeartbeatTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -56124,6 +56840,7 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -56139,6 +56856,7 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56150,6 +56868,7 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56231,6 +56950,7 @@ func (s *IoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "configMap":
 			if err := func() error {
+				s.ConfigMap.Reset()
 				if err := s.ConfigMap.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56309,6 +57029,7 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "active":
 			if err := func() error {
+				s.Active.Reset()
 				if err := s.Active.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56320,6 +57041,7 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "assigned":
 			if err := func() error {
+				s.Assigned.Reset()
 				if err := s.Assigned.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56331,6 +57053,7 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "error":
 			if err := func() error {
+				s.Error.Reset()
 				if err := s.Error.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56342,6 +57065,7 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastKnownGood":
 			if err := func() error {
+				s.LastKnownGood.Reset()
 				if err := s.LastKnownGood.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56405,6 +57129,7 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "kubeletEndpoint":
 			if err := func() error {
+				s.KubeletEndpoint.Reset()
 				if err := s.KubeletEndpoint.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56488,6 +57213,7 @@ func (s *IoK8sAPICoreV1NodeList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56499,6 +57225,7 @@ func (s *IoK8sAPICoreV1NodeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Node
@@ -56525,6 +57252,7 @@ func (s *IoK8sAPICoreV1NodeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56536,6 +57264,7 @@ func (s *IoK8sAPICoreV1NodeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56604,6 +57333,7 @@ func (s *IoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "nodeSelectorTerms":
 			if err := func() error {
+				s.NodeSelectorTerms = s.NodeSelectorTerms[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1NodeSelectorTerm
@@ -56713,6 +57443,7 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) ReadJSON(i *json.Iterator) error
 			return true
 		case "values":
 			if err := func() error {
+				s.Values = s.Values[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -56808,6 +57539,7 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "matchExpressions":
 			if err := func() error {
+				s.MatchExpressions = s.MatchExpressions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1NodeSelectorRequirement
@@ -56834,6 +57566,7 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) ReadJSON(i *json.Iterator) error {
 			return true
 		case "matchFields":
 			if err := func() error {
+				s.MatchFields = s.MatchFields[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1NodeSelectorRequirement
@@ -56956,6 +57689,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "configSource":
 			if err := func() error {
+				s.ConfigSource.Reset()
 				if err := s.ConfigSource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56967,6 +57701,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "externalID":
 			if err := func() error {
+				s.ExternalID.Reset()
 				if err := s.ExternalID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56978,6 +57713,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podCIDR":
 			if err := func() error {
+				s.PodCIDR.Reset()
 				if err := s.PodCIDR.ReadJSON(i); err != nil {
 					return err
 				}
@@ -56989,6 +57725,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podCIDRs":
 			if err := func() error {
+				s.PodCIDRs = s.PodCIDRs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -57013,6 +57750,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "providerID":
 			if err := func() error {
+				s.ProviderID.Reset()
 				if err := s.ProviderID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57024,6 +57762,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "taints":
 			if err := func() error {
+				s.Taints = s.Taints[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Taint
@@ -57050,6 +57789,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "unschedulable":
 			if err := func() error {
+				s.Unschedulable.Reset()
 				if err := s.Unschedulable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57188,6 +57928,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "addresses":
 			if err := func() error {
+				s.Addresses = s.Addresses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1NodeAddress
@@ -57214,6 +57955,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1NodeCondition
@@ -57240,6 +57982,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "config":
 			if err := func() error {
+				s.Config.Reset()
 				if err := s.Config.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57251,6 +57994,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "daemonEndpoints":
 			if err := func() error {
+				s.DaemonEndpoints.Reset()
 				if err := s.DaemonEndpoints.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57262,6 +58006,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "images":
 			if err := func() error {
+				s.Images = s.Images[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ContainerImage
@@ -57288,6 +58033,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodeInfo":
 			if err := func() error {
+				s.NodeInfo.Reset()
 				if err := s.NodeInfo.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57299,6 +58045,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "phase":
 			if err := func() error {
+				s.Phase.Reset()
 				if err := s.Phase.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57310,6 +58057,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumesAttached":
 			if err := func() error {
+				s.VolumesAttached = s.VolumesAttached[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1AttachedVolume
@@ -57336,6 +58084,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumesInUse":
 			if err := func() error {
+				s.VolumesInUse = s.VolumesInUse[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -57582,6 +58331,7 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57684,6 +58434,7 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57695,6 +58446,7 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fieldPath":
 			if err := func() error {
+				s.FieldPath.Reset()
 				if err := s.FieldPath.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57706,6 +58458,7 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57717,6 +58470,7 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57728,6 +58482,7 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 			return true
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57739,6 +58494,7 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resourceVersion":
 			if err := func() error {
+				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57750,6 +58506,7 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57833,6 +58590,7 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57844,6 +58602,7 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57855,6 +58614,7 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57866,6 +58626,7 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57877,6 +58638,7 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57960,6 +58722,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57971,6 +58734,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57982,6 +58746,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -57993,6 +58758,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58004,6 +58770,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58088,6 +58855,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iterator
 		switch k {
 		case "lastProbeTime":
 			if err := func() error {
+				s.LastProbeTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -58103,6 +58871,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iterator
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -58118,6 +58887,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iterator
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58129,6 +58899,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iterator
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58230,6 +59001,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58241,6 +59013,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(i *json.Iterator) err
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PersistentVolumeClaim
@@ -58267,6 +59040,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(i *json.Iterator) err
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58278,6 +59052,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(i *json.Iterator) err
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58383,6 +59158,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "accessModes":
 			if err := func() error {
+				s.AccessModes = s.AccessModes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -58407,6 +59183,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "dataSource":
 			if err := func() error {
+				s.DataSource.Reset()
 				if err := s.DataSource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58418,6 +59195,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "dataSourceRef":
 			if err := func() error {
+				s.DataSourceRef.Reset()
 				if err := s.DataSourceRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58429,6 +59207,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources.Reset()
 				if err := s.Resources.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58440,6 +59219,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58451,6 +59231,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "storageClassName":
 			if err := func() error {
+				s.StorageClassName.Reset()
 				if err := s.StorageClassName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58462,6 +59243,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "volumeMode":
 			if err := func() error {
+				s.VolumeMode.Reset()
 				if err := s.VolumeMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58473,6 +59255,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "volumeName":
 			if err := func() error {
+				s.VolumeName.Reset()
 				if err := s.VolumeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58560,6 +59343,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "accessModes":
 			if err := func() error {
+				s.AccessModes = s.AccessModes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -58584,6 +59368,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PersistentVolumeClaimCondition
@@ -58610,6 +59395,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "phase":
 			if err := func() error {
+				s.Phase.Reset()
 				if err := s.Phase.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58676,6 +59462,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iterator)
 		switch k {
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58762,6 +59549,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.Itera
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58845,6 +59633,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58856,6 +59645,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PersistentVolume
@@ -58882,6 +59672,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -58893,6 +59684,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59110,6 +59902,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "accessModes":
 			if err := func() error {
+				s.AccessModes = s.AccessModes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -59134,6 +59927,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "awsElasticBlockStore":
 			if err := func() error {
+				s.AwsElasticBlockStore.Reset()
 				if err := s.AwsElasticBlockStore.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59145,6 +59939,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "azureDisk":
 			if err := func() error {
+				s.AzureDisk.Reset()
 				if err := s.AzureDisk.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59156,6 +59951,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "azureFile":
 			if err := func() error {
+				s.AzureFile.Reset()
 				if err := s.AzureFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59167,6 +59963,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "cephfs":
 			if err := func() error {
+				s.Cephfs.Reset()
 				if err := s.Cephfs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59178,6 +59975,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "cinder":
 			if err := func() error {
+				s.Cinder.Reset()
 				if err := s.Cinder.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59189,6 +59987,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "claimRef":
 			if err := func() error {
+				s.ClaimRef.Reset()
 				if err := s.ClaimRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59200,6 +59999,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "csi":
 			if err := func() error {
+				s.Csi.Reset()
 				if err := s.Csi.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59211,6 +60011,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fc":
 			if err := func() error {
+				s.Fc.Reset()
 				if err := s.Fc.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59222,6 +60023,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "flexVolume":
 			if err := func() error {
+				s.FlexVolume.Reset()
 				if err := s.FlexVolume.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59233,6 +60035,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "flocker":
 			if err := func() error {
+				s.Flocker.Reset()
 				if err := s.Flocker.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59244,6 +60047,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gcePersistentDisk":
 			if err := func() error {
+				s.GcePersistentDisk.Reset()
 				if err := s.GcePersistentDisk.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59255,6 +60059,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "glusterfs":
 			if err := func() error {
+				s.Glusterfs.Reset()
 				if err := s.Glusterfs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59266,6 +60071,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostPath":
 			if err := func() error {
+				s.HostPath.Reset()
 				if err := s.HostPath.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59277,6 +60083,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "iscsi":
 			if err := func() error {
+				s.Iscsi.Reset()
 				if err := s.Iscsi.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59288,6 +60095,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "local":
 			if err := func() error {
+				s.Local.Reset()
 				if err := s.Local.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59299,6 +60107,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mountOptions":
 			if err := func() error {
+				s.MountOptions = s.MountOptions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -59323,6 +60132,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nfs":
 			if err := func() error {
+				s.Nfs.Reset()
 				if err := s.Nfs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59334,6 +60144,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodeAffinity":
 			if err := func() error {
+				s.NodeAffinity.Reset()
 				if err := s.NodeAffinity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59345,6 +60156,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "persistentVolumeReclaimPolicy":
 			if err := func() error {
+				s.PersistentVolumeReclaimPolicy.Reset()
 				if err := s.PersistentVolumeReclaimPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59356,6 +60168,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photonPersistentDisk":
 			if err := func() error {
+				s.PhotonPersistentDisk.Reset()
 				if err := s.PhotonPersistentDisk.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59367,6 +60180,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "portworxVolume":
 			if err := func() error {
+				s.PortworxVolume.Reset()
 				if err := s.PortworxVolume.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59378,6 +60192,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "quobyte":
 			if err := func() error {
+				s.Quobyte.Reset()
 				if err := s.Quobyte.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59389,6 +60204,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "rbd":
 			if err := func() error {
+				s.Rbd.Reset()
 				if err := s.Rbd.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59400,6 +60216,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scaleIO":
 			if err := func() error {
+				s.ScaleIO.Reset()
 				if err := s.ScaleIO.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59411,6 +60228,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "storageClassName":
 			if err := func() error {
+				s.StorageClassName.Reset()
 				if err := s.StorageClassName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59422,6 +60240,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "storageos":
 			if err := func() error {
+				s.Storageos.Reset()
 				if err := s.Storageos.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59433,6 +60252,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeMode":
 			if err := func() error {
+				s.VolumeMode.Reset()
 				if err := s.VolumeMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59444,6 +60264,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "vsphereVolume":
 			if err := func() error {
+				s.VsphereVolume.Reset()
 				if err := s.VsphereVolume.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59517,6 +60338,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59528,6 +60350,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) error 
 			return true
 		case "phase":
 			if err := func() error {
+				s.Phase.Reset()
 				if err := s.Phase.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59539,6 +60362,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) error 
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59605,6 +60429,7 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Iterat
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59697,6 +60522,7 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59708,6 +60534,7 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59719,6 +60546,7 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59730,6 +60558,7 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59741,6 +60570,7 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59823,6 +60653,7 @@ func (s *IoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
+				s.PreferredDuringSchedulingIgnoredDuringExecution = s.PreferredDuringSchedulingIgnoredDuringExecution[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1WeightedPodAffinityTerm
@@ -59849,6 +60680,7 @@ func (s *IoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "requiredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
+				s.RequiredDuringSchedulingIgnoredDuringExecution = s.RequiredDuringSchedulingIgnoredDuringExecution[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PodAffinityTerm
@@ -59947,6 +60779,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "labelSelector":
 			if err := func() error {
+				s.LabelSelector.Reset()
 				if err := s.LabelSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59958,6 +60791,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(i *json.Iterator) error {
 			return true
 		case "namespaceSelector":
 			if err := func() error {
+				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -59969,6 +60803,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(i *json.Iterator) error {
 			return true
 		case "namespaces":
 			if err := func() error {
+				s.Namespaces = s.Namespaces[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60073,6 +60908,7 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
+				s.PreferredDuringSchedulingIgnoredDuringExecution = s.PreferredDuringSchedulingIgnoredDuringExecution[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1WeightedPodAffinityTerm
@@ -60099,6 +60935,7 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "requiredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
+				s.RequiredDuringSchedulingIgnoredDuringExecution = s.RequiredDuringSchedulingIgnoredDuringExecution[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PodAffinityTerm
@@ -60198,6 +61035,7 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastProbeTime":
 			if err := func() error {
+				s.LastProbeTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -60213,6 +61051,7 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -60228,6 +61067,7 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60239,6 +61079,7 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60351,6 +61192,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "nameservers":
 			if err := func() error {
+				s.Nameservers = s.Nameservers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60375,6 +61217,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 			return true
 		case "options":
 			if err := func() error {
+				s.Options = s.Options[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PodDNSConfigOption
@@ -60401,6 +61244,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 			return true
 		case "searches":
 			if err := func() error {
+				s.Searches = s.Searches[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -60482,6 +61326,7 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60493,6 +61338,7 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60556,6 +61402,7 @@ func (s *IoK8sAPICoreV1PodIP) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "ip":
 			if err := func() error {
+				s.IP.Reset()
 				if err := s.IP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60639,6 +61486,7 @@ func (s *IoK8sAPICoreV1PodList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60650,6 +61498,7 @@ func (s *IoK8sAPICoreV1PodList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Pod
@@ -60676,6 +61525,7 @@ func (s *IoK8sAPICoreV1PodList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60687,6 +61537,7 @@ func (s *IoK8sAPICoreV1PodList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60868,6 +61719,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsGroup":
 			if err := func() error {
+				s.FsGroup.Reset()
 				if err := s.FsGroup.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60879,6 +61731,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fsGroupChangePolicy":
 			if err := func() error {
+				s.FsGroupChangePolicy.Reset()
 				if err := s.FsGroupChangePolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60890,6 +61743,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "runAsGroup":
 			if err := func() error {
+				s.RunAsGroup.Reset()
 				if err := s.RunAsGroup.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60901,6 +61755,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "runAsNonRoot":
 			if err := func() error {
+				s.RunAsNonRoot.Reset()
 				if err := s.RunAsNonRoot.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60912,6 +61767,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "runAsUser":
 			if err := func() error {
+				s.RunAsUser.Reset()
 				if err := s.RunAsUser.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60923,6 +61779,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "seLinuxOptions":
 			if err := func() error {
+				s.SeLinuxOptions.Reset()
 				if err := s.SeLinuxOptions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60934,6 +61791,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "seccompProfile":
 			if err := func() error {
+				s.SeccompProfile.Reset()
 				if err := s.SeccompProfile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -60945,6 +61803,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "supplementalGroups":
 			if err := func() error {
+				s.SupplementalGroups = s.SupplementalGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int64
@@ -60969,6 +61828,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sysctls":
 			if err := func() error {
+				s.Sysctls = s.Sysctls[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Sysctl
@@ -60995,6 +61855,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "windowsOptions":
 			if err := func() error {
+				s.WindowsOptions.Reset()
 				if err := s.WindowsOptions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61279,6 +62140,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "activeDeadlineSeconds":
 			if err := func() error {
+				s.ActiveDeadlineSeconds.Reset()
 				if err := s.ActiveDeadlineSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61290,6 +62152,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "affinity":
 			if err := func() error {
+				s.Affinity.Reset()
 				if err := s.Affinity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61301,6 +62164,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "automountServiceAccountToken":
 			if err := func() error {
+				s.AutomountServiceAccountToken.Reset()
 				if err := s.AutomountServiceAccountToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61312,6 +62176,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "containers":
 			if err := func() error {
+				s.Containers = s.Containers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Container
@@ -61338,6 +62203,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "dnsConfig":
 			if err := func() error {
+				s.DnsConfig.Reset()
 				if err := s.DnsConfig.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61349,6 +62215,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "dnsPolicy":
 			if err := func() error {
+				s.DnsPolicy.Reset()
 				if err := s.DnsPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61360,6 +62227,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "enableServiceLinks":
 			if err := func() error {
+				s.EnableServiceLinks.Reset()
 				if err := s.EnableServiceLinks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61371,6 +62239,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ephemeralContainers":
 			if err := func() error {
+				s.EphemeralContainers = s.EphemeralContainers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1EphemeralContainer
@@ -61397,6 +62266,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostAliases":
 			if err := func() error {
+				s.HostAliases = s.HostAliases[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1HostAlias
@@ -61423,6 +62293,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostIPC":
 			if err := func() error {
+				s.HostIPC.Reset()
 				if err := s.HostIPC.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61434,6 +62305,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostNetwork":
 			if err := func() error {
+				s.HostNetwork.Reset()
 				if err := s.HostNetwork.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61445,6 +62317,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostPID":
 			if err := func() error {
+				s.HostPID.Reset()
 				if err := s.HostPID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61456,6 +62329,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostname":
 			if err := func() error {
+				s.Hostname.Reset()
 				if err := s.Hostname.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61467,6 +62341,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "imagePullSecrets":
 			if err := func() error {
+				s.ImagePullSecrets = s.ImagePullSecrets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1LocalObjectReference
@@ -61493,6 +62368,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "initContainers":
 			if err := func() error {
+				s.InitContainers = s.InitContainers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Container
@@ -61519,6 +62395,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodeName":
 			if err := func() error {
+				s.NodeName.Reset()
 				if err := s.NodeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61530,6 +62407,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "preemptionPolicy":
 			if err := func() error {
+				s.PreemptionPolicy.Reset()
 				if err := s.PreemptionPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61541,6 +62419,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "priority":
 			if err := func() error {
+				s.Priority.Reset()
 				if err := s.Priority.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61552,6 +62431,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "priorityClassName":
 			if err := func() error {
+				s.PriorityClassName.Reset()
 				if err := s.PriorityClassName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61563,6 +62443,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readinessGates":
 			if err := func() error {
+				s.ReadinessGates = s.ReadinessGates[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PodReadinessGate
@@ -61589,6 +62470,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "restartPolicy":
 			if err := func() error {
+				s.RestartPolicy.Reset()
 				if err := s.RestartPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61600,6 +62482,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "runtimeClassName":
 			if err := func() error {
+				s.RuntimeClassName.Reset()
 				if err := s.RuntimeClassName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61611,6 +62494,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "schedulerName":
 			if err := func() error {
+				s.SchedulerName.Reset()
 				if err := s.SchedulerName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61622,6 +62506,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "securityContext":
 			if err := func() error {
+				s.SecurityContext.Reset()
 				if err := s.SecurityContext.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61633,6 +62518,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "serviceAccount":
 			if err := func() error {
+				s.ServiceAccount.Reset()
 				if err := s.ServiceAccount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61644,6 +62530,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "serviceAccountName":
 			if err := func() error {
+				s.ServiceAccountName.Reset()
 				if err := s.ServiceAccountName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61655,6 +62542,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "setHostnameAsFQDN":
 			if err := func() error {
+				s.SetHostnameAsFQDN.Reset()
 				if err := s.SetHostnameAsFQDN.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61666,6 +62554,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "shareProcessNamespace":
 			if err := func() error {
+				s.ShareProcessNamespace.Reset()
 				if err := s.ShareProcessNamespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61677,6 +62566,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subdomain":
 			if err := func() error {
+				s.Subdomain.Reset()
 				if err := s.Subdomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61688,6 +62578,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "terminationGracePeriodSeconds":
 			if err := func() error {
+				s.TerminationGracePeriodSeconds.Reset()
 				if err := s.TerminationGracePeriodSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -61699,6 +62590,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tolerations":
 			if err := func() error {
+				s.Tolerations = s.Tolerations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Toleration
@@ -61725,6 +62617,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topologySpreadConstraints":
 			if err := func() error {
+				s.TopologySpreadConstraints = s.TopologySpreadConstraints[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1TopologySpreadConstraint
@@ -61751,6 +62644,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumes":
 			if err := func() error {
+				s.Volumes = s.Volumes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Volume
@@ -61924,6 +62818,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PodCondition
@@ -61950,6 +62845,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "containerStatuses":
 			if err := func() error {
+				s.ContainerStatuses = s.ContainerStatuses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ContainerStatus
@@ -61976,6 +62872,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ephemeralContainerStatuses":
 			if err := func() error {
+				s.EphemeralContainerStatuses = s.EphemeralContainerStatuses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ContainerStatus
@@ -62002,6 +62899,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostIP":
 			if err := func() error {
+				s.HostIP.Reset()
 				if err := s.HostIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62013,6 +62911,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "initContainerStatuses":
 			if err := func() error {
+				s.InitContainerStatuses = s.InitContainerStatuses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ContainerStatus
@@ -62039,6 +62938,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62050,6 +62950,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nominatedNodeName":
 			if err := func() error {
+				s.NominatedNodeName.Reset()
 				if err := s.NominatedNodeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62061,6 +62962,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "phase":
 			if err := func() error {
+				s.Phase.Reset()
 				if err := s.Phase.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62072,6 +62974,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podIP":
 			if err := func() error {
+				s.PodIP.Reset()
 				if err := s.PodIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62083,6 +62986,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podIPs":
 			if err := func() error {
+				s.PodIPs = s.PodIPs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PodIP
@@ -62109,6 +63013,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "qosClass":
 			if err := func() error {
+				s.QosClass.Reset()
 				if err := s.QosClass.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62120,6 +63025,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62131,6 +63037,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startTime":
 			if err := func() error {
+				s.StartTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -62213,6 +63120,7 @@ func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62224,6 +63132,7 @@ func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62235,6 +63144,7 @@ func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62246,6 +63156,7 @@ func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(i *json.Iterator) error {
 			return true
 		case "template":
 			if err := func() error {
+				s.Template.Reset()
 				if err := s.Template.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62329,6 +63240,7 @@ func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62340,6 +63252,7 @@ func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1PodTemplate
@@ -62366,6 +63279,7 @@ func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62377,6 +63291,7 @@ func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62445,6 +63360,7 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62456,6 +63372,7 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62525,6 +63442,7 @@ func (s *IoK8sAPICoreV1PortStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "error":
 			if err := func() error {
+				s.Error.Reset()
 				if err := s.Error.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62614,6 +63532,7 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62625,6 +63544,7 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62810,6 +63730,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "exec":
 			if err := func() error {
+				s.Exec.Reset()
 				if err := s.Exec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62821,6 +63742,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "failureThreshold":
 			if err := func() error {
+				s.FailureThreshold.Reset()
 				if err := s.FailureThreshold.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62832,6 +63754,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "httpGet":
 			if err := func() error {
+				s.HttpGet.Reset()
 				if err := s.HttpGet.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62843,6 +63766,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "initialDelaySeconds":
 			if err := func() error {
+				s.InitialDelaySeconds.Reset()
 				if err := s.InitialDelaySeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62854,6 +63778,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "periodSeconds":
 			if err := func() error {
+				s.PeriodSeconds.Reset()
 				if err := s.PeriodSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62865,6 +63790,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "successThreshold":
 			if err := func() error {
+				s.SuccessThreshold.Reset()
 				if err := s.SuccessThreshold.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62876,6 +63802,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tcpSocket":
 			if err := func() error {
+				s.TcpSocket.Reset()
 				if err := s.TcpSocket.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62887,6 +63814,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "terminationGracePeriodSeconds":
 			if err := func() error {
+				s.TerminationGracePeriodSeconds.Reset()
 				if err := s.TerminationGracePeriodSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62898,6 +63826,7 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			return true
 		case "timeoutSeconds":
 			if err := func() error {
+				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62973,6 +63902,7 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "defaultMode":
 			if err := func() error {
+				s.DefaultMode.Reset()
 				if err := s.DefaultMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -62984,6 +63914,7 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sources":
 			if err := func() error {
+				s.Sources = s.Sources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1VolumeProjection
@@ -63083,6 +64014,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "group":
 			if err := func() error {
+				s.Group.Reset()
 				if err := s.Group.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63094,6 +64026,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63114,6 +64047,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tenant":
 			if err := func() error {
+				s.Tenant.Reset()
 				if err := s.Tenant.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63125,6 +64059,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63235,6 +64170,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63255,6 +64191,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "keyring":
 			if err := func() error {
+				s.Keyring.Reset()
 				if err := s.Keyring.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63266,6 +64203,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "monitors":
 			if err := func() error {
+				s.Monitors = s.Monitors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -63290,6 +64228,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "pool":
 			if err := func() error {
+				s.Pool.Reset()
 				if err := s.Pool.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63301,6 +64240,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63312,6 +64252,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63323,6 +64264,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63424,6 +64366,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63444,6 +64387,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "keyring":
 			if err := func() error {
+				s.Keyring.Reset()
 				if err := s.Keyring.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63455,6 +64399,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "monitors":
 			if err := func() error {
+				s.Monitors = s.Monitors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -63479,6 +64424,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pool":
 			if err := func() error {
+				s.Pool.Reset()
 				if err := s.Pool.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63490,6 +64436,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63501,6 +64448,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63512,6 +64460,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63595,6 +64544,7 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63606,6 +64556,7 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63617,6 +64568,7 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63628,6 +64580,7 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63639,6 +64592,7 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63718,6 +64672,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) ReadJSON(i *json.Iterator
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -63733,6 +64688,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) ReadJSON(i *json.Iterator
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63744,6 +64700,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) ReadJSON(i *json.Iterator
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63845,6 +64802,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63856,6 +64814,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(i *json.Iterator) err
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ReplicationController
@@ -63882,6 +64841,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(i *json.Iterator) err
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63893,6 +64853,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(i *json.Iterator) err
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63966,6 +64927,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "minReadySeconds":
 			if err := func() error {
+				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63977,6 +64939,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "replicas":
 			if err := func() error {
+				s.Replicas.Reset()
 				if err := s.Replicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -63988,6 +64951,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "template":
 			if err := func() error {
+				s.Template.Reset()
 				if err := s.Template.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64081,6 +65045,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "availableReplicas":
 			if err := func() error {
+				s.AvailableReplicas.Reset()
 				if err := s.AvailableReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64092,6 +65057,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ReplicationControllerCondition
@@ -64118,6 +65084,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "fullyLabeledReplicas":
 			if err := func() error {
+				s.FullyLabeledReplicas.Reset()
 				if err := s.FullyLabeledReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64129,6 +65096,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64140,6 +65108,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "readyReplicas":
 			if err := func() error {
+				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64220,6 +65189,7 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "containerName":
 			if err := func() error {
+				s.ContainerName.Reset()
 				if err := s.ContainerName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64231,6 +65201,7 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) error {
 			return true
 		case "divisor":
 			if err := func() error {
+				s.Divisor = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -64327,6 +65298,7 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64338,6 +65310,7 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64349,6 +65322,7 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64360,6 +65334,7 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64371,6 +65346,7 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64454,6 +65430,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64465,6 +65442,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ResourceQuota
@@ -64491,6 +65469,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64502,6 +65481,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64577,6 +65557,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "scopeSelector":
 			if err := func() error {
+				s.ScopeSelector.Reset()
 				if err := s.ScopeSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64588,6 +65569,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scopes":
 			if err := func() error {
+				s.Scopes = s.Scopes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -64773,6 +65755,7 @@ func (s *IoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "level":
 			if err := func() error {
+				s.Level.Reset()
 				if err := s.Level.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64784,6 +65767,7 @@ func (s *IoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "role":
 			if err := func() error {
+				s.Role.Reset()
 				if err := s.Role.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64795,6 +65779,7 @@ func (s *IoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64806,6 +65791,7 @@ func (s *IoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64908,6 +65894,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64928,6 +65915,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "protectionDomain":
 			if err := func() error {
+				s.ProtectionDomain.Reset()
 				if err := s.ProtectionDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64939,6 +65927,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64961,6 +65950,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "sslEnabled":
 			if err := func() error {
+				s.SslEnabled.Reset()
 				if err := s.SslEnabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64972,6 +65962,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "storageMode":
 			if err := func() error {
+				s.StorageMode.Reset()
 				if err := s.StorageMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -64983,6 +65974,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "storagePool":
 			if err := func() error {
+				s.StoragePool.Reset()
 				if err := s.StoragePool.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65003,6 +65995,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 			return true
 		case "volumeName":
 			if err := func() error {
+				s.VolumeName.Reset()
 				if err := s.VolumeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65105,6 +66098,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65125,6 +66119,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protectionDomain":
 			if err := func() error {
+				s.ProtectionDomain.Reset()
 				if err := s.ProtectionDomain.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65136,6 +66131,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65158,6 +66154,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sslEnabled":
 			if err := func() error {
+				s.SslEnabled.Reset()
 				if err := s.SslEnabled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65169,6 +66166,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "storageMode":
 			if err := func() error {
+				s.StorageMode.Reset()
 				if err := s.StorageMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65180,6 +66178,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "storagePool":
 			if err := func() error {
+				s.StoragePool.Reset()
 				if err := s.StoragePool.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65200,6 +66199,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeName":
 			if err := func() error {
+				s.VolumeName.Reset()
 				if err := s.VolumeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65270,6 +66270,7 @@ func (s *IoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "matchExpressions":
 			if err := func() error {
+				s.MatchExpressions = s.MatchExpressions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ScopedResourceSelectorRequirement
@@ -65379,6 +66380,7 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) ReadJSON(i *json.Itera
 			return true
 		case "values":
 			if err := func() error {
+				s.Values = s.Values[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -65458,6 +66460,7 @@ func (s *IoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "localhostProfile":
 			if err := func() error {
+				s.LocalhostProfile.Reset()
 				if err := s.LocalhostProfile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65550,6 +66553,7 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65561,6 +66565,7 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iterator) error {
 			return true
 		case "immutable":
 			if err := func() error {
+				s.Immutable.Reset()
 				if err := s.Immutable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65572,6 +66577,7 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65583,6 +66589,7 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65594,6 +66601,7 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65662,6 +66670,7 @@ func (s *IoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65673,6 +66682,7 @@ func (s *IoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65753,6 +66763,7 @@ func (s *IoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65764,6 +66775,7 @@ func (s *IoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65847,6 +66859,7 @@ func (s *IoK8sAPICoreV1SecretList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65858,6 +66871,7 @@ func (s *IoK8sAPICoreV1SecretList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Secret
@@ -65884,6 +66898,7 @@ func (s *IoK8sAPICoreV1SecretList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65895,6 +66910,7 @@ func (s *IoK8sAPICoreV1SecretList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -65975,6 +66991,7 @@ func (s *IoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1KeyToPath
@@ -66001,6 +67018,7 @@ func (s *IoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66012,6 +67030,7 @@ func (s *IoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66080,6 +67099,7 @@ func (s *IoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66091,6 +67111,7 @@ func (s *IoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error {
 			return true
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66176,6 +67197,7 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "defaultMode":
 			if err := func() error {
+				s.DefaultMode.Reset()
 				if err := s.DefaultMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66187,6 +67209,7 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1KeyToPath
@@ -66213,6 +67236,7 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "optional":
 			if err := func() error {
+				s.Optional.Reset()
 				if err := s.Optional.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66224,6 +67248,7 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretName":
 			if err := func() error {
+				s.SecretName.Reset()
 				if err := s.SecretName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66337,6 +67362,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowPrivilegeEscalation":
 			if err := func() error {
+				s.AllowPrivilegeEscalation.Reset()
 				if err := s.AllowPrivilegeEscalation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66348,6 +67374,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "capabilities":
 			if err := func() error {
+				s.Capabilities.Reset()
 				if err := s.Capabilities.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66359,6 +67386,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "privileged":
 			if err := func() error {
+				s.Privileged.Reset()
 				if err := s.Privileged.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66370,6 +67398,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "procMount":
 			if err := func() error {
+				s.ProcMount.Reset()
 				if err := s.ProcMount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66381,6 +67410,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnlyRootFilesystem":
 			if err := func() error {
+				s.ReadOnlyRootFilesystem.Reset()
 				if err := s.ReadOnlyRootFilesystem.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66392,6 +67422,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "runAsGroup":
 			if err := func() error {
+				s.RunAsGroup.Reset()
 				if err := s.RunAsGroup.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66403,6 +67434,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "runAsNonRoot":
 			if err := func() error {
+				s.RunAsNonRoot.Reset()
 				if err := s.RunAsNonRoot.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66414,6 +67446,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "runAsUser":
 			if err := func() error {
+				s.RunAsUser.Reset()
 				if err := s.RunAsUser.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66425,6 +67458,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "seLinuxOptions":
 			if err := func() error {
+				s.SeLinuxOptions.Reset()
 				if err := s.SeLinuxOptions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66436,6 +67470,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "seccompProfile":
 			if err := func() error {
+				s.SeccompProfile.Reset()
 				if err := s.SeccompProfile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66447,6 +67482,7 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			return true
 		case "windowsOptions":
 			if err := func() error {
+				s.WindowsOptions.Reset()
 				if err := s.WindowsOptions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66530,6 +67566,7 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66541,6 +67578,7 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66552,6 +67590,7 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66563,6 +67602,7 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66574,6 +67614,7 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66676,6 +67717,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66687,6 +67729,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "automountServiceAccountToken":
 			if err := func() error {
+				s.AutomountServiceAccountToken.Reset()
 				if err := s.AutomountServiceAccountToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66698,6 +67741,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "imagePullSecrets":
 			if err := func() error {
+				s.ImagePullSecrets = s.ImagePullSecrets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1LocalObjectReference
@@ -66724,6 +67768,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66735,6 +67780,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66746,6 +67792,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secrets":
 			if err := func() error {
+				s.Secrets = s.Secrets[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ObjectReference
@@ -66844,6 +67891,7 @@ func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66855,6 +67903,7 @@ func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ServiceAccount
@@ -66881,6 +67930,7 @@ func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66892,6 +67942,7 @@ func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66963,6 +68014,7 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iterator)
 		switch k {
 		case "audience":
 			if err := func() error {
+				s.Audience.Reset()
 				if err := s.Audience.ReadJSON(i); err != nil {
 					return err
 				}
@@ -66974,6 +68026,7 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iterator)
 			return true
 		case "expirationSeconds":
 			if err := func() error {
+				s.ExpirationSeconds.Reset()
 				if err := s.ExpirationSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67066,6 +68119,7 @@ func (s *IoK8sAPICoreV1ServiceList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67077,6 +68131,7 @@ func (s *IoK8sAPICoreV1ServiceList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Service
@@ -67103,6 +68158,7 @@ func (s *IoK8sAPICoreV1ServiceList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67114,6 +68170,7 @@ func (s *IoK8sAPICoreV1ServiceList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67200,6 +68257,7 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "appProtocol":
 			if err := func() error {
+				s.AppProtocol.Reset()
 				if err := s.AppProtocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67211,6 +68269,7 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67222,6 +68281,7 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodePort":
 			if err := func() error {
+				s.NodePort.Reset()
 				if err := s.NodePort.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67242,6 +68302,7 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protocol":
 			if err := func() error {
+				s.Protocol.Reset()
 				if err := s.Protocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67253,6 +68314,7 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "targetPort":
 			if err := func() error {
+				s.TargetPort = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -67440,6 +68502,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allocateLoadBalancerNodePorts":
 			if err := func() error {
+				s.AllocateLoadBalancerNodePorts.Reset()
 				if err := s.AllocateLoadBalancerNodePorts.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67451,6 +68514,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "clusterIP":
 			if err := func() error {
+				s.ClusterIP.Reset()
 				if err := s.ClusterIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67462,6 +68526,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "clusterIPs":
 			if err := func() error {
+				s.ClusterIPs = s.ClusterIPs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -67486,6 +68551,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "externalIPs":
 			if err := func() error {
+				s.ExternalIPs = s.ExternalIPs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -67510,6 +68576,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "externalName":
 			if err := func() error {
+				s.ExternalName.Reset()
 				if err := s.ExternalName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67521,6 +68588,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "externalTrafficPolicy":
 			if err := func() error {
+				s.ExternalTrafficPolicy.Reset()
 				if err := s.ExternalTrafficPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67532,6 +68600,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "healthCheckNodePort":
 			if err := func() error {
+				s.HealthCheckNodePort.Reset()
 				if err := s.HealthCheckNodePort.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67543,6 +68612,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "internalTrafficPolicy":
 			if err := func() error {
+				s.InternalTrafficPolicy.Reset()
 				if err := s.InternalTrafficPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67554,6 +68624,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ipFamilies":
 			if err := func() error {
+				s.IpFamilies = s.IpFamilies[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -67578,6 +68649,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ipFamilyPolicy":
 			if err := func() error {
+				s.IpFamilyPolicy.Reset()
 				if err := s.IpFamilyPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67589,6 +68661,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "loadBalancerClass":
 			if err := func() error {
+				s.LoadBalancerClass.Reset()
 				if err := s.LoadBalancerClass.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67600,6 +68673,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "loadBalancerIP":
 			if err := func() error {
+				s.LoadBalancerIP.Reset()
 				if err := s.LoadBalancerIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67611,6 +68685,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "loadBalancerSourceRanges":
 			if err := func() error {
+				s.LoadBalancerSourceRanges = s.LoadBalancerSourceRanges[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -67635,6 +68710,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1ServicePort
@@ -67661,6 +68737,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "publishNotReadyAddresses":
 			if err := func() error {
+				s.PublishNotReadyAddresses.Reset()
 				if err := s.PublishNotReadyAddresses.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67672,6 +68749,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sessionAffinity":
 			if err := func() error {
+				s.SessionAffinity.Reset()
 				if err := s.SessionAffinity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67683,6 +68761,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sessionAffinityConfig":
 			if err := func() error {
+				s.SessionAffinityConfig.Reset()
 				if err := s.SessionAffinityConfig.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67694,6 +68773,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67769,6 +68849,7 @@ func (s *IoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1Condition
@@ -67795,6 +68876,7 @@ func (s *IoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "loadBalancer":
 			if err := func() error {
+				s.LoadBalancer.Reset()
 				if err := s.LoadBalancer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67858,6 +68940,7 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "clientIP":
 			if err := func() error {
+				s.ClientIP.Reset()
 				if err := s.ClientIP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67941,6 +69024,7 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterato
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67952,6 +69036,7 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterato
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67963,6 +69048,7 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterato
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67974,6 +69060,7 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterato
 			return true
 		case "volumeName":
 			if err := func() error {
+				s.VolumeName.Reset()
 				if err := s.VolumeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -67985,6 +69072,7 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterato
 			return true
 		case "volumeNamespace":
 			if err := func() error {
+				s.VolumeNamespace.Reset()
 				if err := s.VolumeNamespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68068,6 +69156,7 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68079,6 +69168,7 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68090,6 +69180,7 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretRef":
 			if err := func() error {
+				s.SecretRef.Reset()
 				if err := s.SecretRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68101,6 +69192,7 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeName":
 			if err := func() error {
+				s.VolumeName.Reset()
 				if err := s.VolumeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68112,6 +69204,7 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeNamespace":
 			if err := func() error {
+				s.VolumeNamespace.Reset()
 				if err := s.VolumeNamespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68247,6 +69340,7 @@ func (s *IoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "host":
 			if err := func() error {
+				s.Host.Reset()
 				if err := s.Host.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68347,6 +69441,7 @@ func (s *IoK8sAPICoreV1Taint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "timeAdded":
 			if err := func() error {
+				s.TimeAdded = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -68362,6 +69457,7 @@ func (s *IoK8sAPICoreV1Taint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68445,6 +69541,7 @@ func (s *IoK8sAPICoreV1Toleration) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "effect":
 			if err := func() error {
+				s.Effect.Reset()
 				if err := s.Effect.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68456,6 +69553,7 @@ func (s *IoK8sAPICoreV1Toleration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "key":
 			if err := func() error {
+				s.Key.Reset()
 				if err := s.Key.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68467,6 +69565,7 @@ func (s *IoK8sAPICoreV1Toleration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "operator":
 			if err := func() error {
+				s.Operator.Reset()
 				if err := s.Operator.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68478,6 +69577,7 @@ func (s *IoK8sAPICoreV1Toleration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tolerationSeconds":
 			if err := func() error {
+				s.TolerationSeconds.Reset()
 				if err := s.TolerationSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68489,6 +69589,7 @@ func (s *IoK8sAPICoreV1Toleration) ReadJSON(i *json.Iterator) error {
 			return true
 		case "value":
 			if err := func() error {
+				s.Value.Reset()
 				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68569,6 +69670,7 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) ReadJSON(i *json.Iterat
 			return true
 		case "values":
 			if err := func() error {
+				s.Values = s.Values[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -68652,6 +69754,7 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "matchLabelExpressions":
 			if err := func() error {
+				s.MatchLabelExpressions = s.MatchLabelExpressions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1TopologySelectorLabelRequirement
@@ -68739,6 +69842,7 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "labelSelector":
 			if err := func() error {
+				s.LabelSelector.Reset()
 				if err := s.LabelSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -68835,6 +69939,7 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "apiGroup":
 			if err := func() error {
+				s.ApiGroup.Reset()
 				if err := s.ApiGroup.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69059,6 +70164,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "awsElasticBlockStore":
 			if err := func() error {
+				s.AwsElasticBlockStore.Reset()
 				if err := s.AwsElasticBlockStore.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69070,6 +70176,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "azureDisk":
 			if err := func() error {
+				s.AzureDisk.Reset()
 				if err := s.AzureDisk.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69081,6 +70188,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "azureFile":
 			if err := func() error {
+				s.AzureFile.Reset()
 				if err := s.AzureFile.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69092,6 +70200,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "cephfs":
 			if err := func() error {
+				s.Cephfs.Reset()
 				if err := s.Cephfs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69103,6 +70212,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "cinder":
 			if err := func() error {
+				s.Cinder.Reset()
 				if err := s.Cinder.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69114,6 +70224,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "configMap":
 			if err := func() error {
+				s.ConfigMap.Reset()
 				if err := s.ConfigMap.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69125,6 +70236,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "csi":
 			if err := func() error {
+				s.Csi.Reset()
 				if err := s.Csi.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69136,6 +70248,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "downwardAPI":
 			if err := func() error {
+				s.DownwardAPI.Reset()
 				if err := s.DownwardAPI.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69147,6 +70260,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "emptyDir":
 			if err := func() error {
+				s.EmptyDir.Reset()
 				if err := s.EmptyDir.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69158,6 +70272,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ephemeral":
 			if err := func() error {
+				s.Ephemeral.Reset()
 				if err := s.Ephemeral.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69169,6 +70284,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fc":
 			if err := func() error {
+				s.Fc.Reset()
 				if err := s.Fc.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69180,6 +70296,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "flexVolume":
 			if err := func() error {
+				s.FlexVolume.Reset()
 				if err := s.FlexVolume.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69191,6 +70308,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "flocker":
 			if err := func() error {
+				s.Flocker.Reset()
 				if err := s.Flocker.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69202,6 +70320,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gcePersistentDisk":
 			if err := func() error {
+				s.GcePersistentDisk.Reset()
 				if err := s.GcePersistentDisk.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69213,6 +70332,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "gitRepo":
 			if err := func() error {
+				s.GitRepo.Reset()
 				if err := s.GitRepo.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69224,6 +70344,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "glusterfs":
 			if err := func() error {
+				s.Glusterfs.Reset()
 				if err := s.Glusterfs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69235,6 +70356,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostPath":
 			if err := func() error {
+				s.HostPath.Reset()
 				if err := s.HostPath.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69246,6 +70368,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "iscsi":
 			if err := func() error {
+				s.Iscsi.Reset()
 				if err := s.Iscsi.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69266,6 +70389,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nfs":
 			if err := func() error {
+				s.Nfs.Reset()
 				if err := s.Nfs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69277,6 +70401,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "persistentVolumeClaim":
 			if err := func() error {
+				s.PersistentVolumeClaim.Reset()
 				if err := s.PersistentVolumeClaim.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69288,6 +70413,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photonPersistentDisk":
 			if err := func() error {
+				s.PhotonPersistentDisk.Reset()
 				if err := s.PhotonPersistentDisk.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69299,6 +70425,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "portworxVolume":
 			if err := func() error {
+				s.PortworxVolume.Reset()
 				if err := s.PortworxVolume.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69310,6 +70437,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "projected":
 			if err := func() error {
+				s.Projected.Reset()
 				if err := s.Projected.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69321,6 +70449,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "quobyte":
 			if err := func() error {
+				s.Quobyte.Reset()
 				if err := s.Quobyte.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69332,6 +70461,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "rbd":
 			if err := func() error {
+				s.Rbd.Reset()
 				if err := s.Rbd.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69343,6 +70473,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scaleIO":
 			if err := func() error {
+				s.ScaleIO.Reset()
 				if err := s.ScaleIO.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69354,6 +70485,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret":
 			if err := func() error {
+				s.Secret.Reset()
 				if err := s.Secret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69365,6 +70497,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "storageos":
 			if err := func() error {
+				s.Storageos.Reset()
 				if err := s.Storageos.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69376,6 +70509,7 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 			return true
 		case "vsphereVolume":
 			if err := func() error {
+				s.VsphereVolume.Reset()
 				if err := s.VsphereVolume.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69540,6 +70674,7 @@ func (s *IoK8sAPICoreV1VolumeMount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mountPropagation":
 			if err := func() error {
+				s.MountPropagation.Reset()
 				if err := s.MountPropagation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69560,6 +70695,7 @@ func (s *IoK8sAPICoreV1VolumeMount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69571,6 +70707,7 @@ func (s *IoK8sAPICoreV1VolumeMount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subPath":
 			if err := func() error {
+				s.SubPath.Reset()
 				if err := s.SubPath.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69582,6 +70719,7 @@ func (s *IoK8sAPICoreV1VolumeMount) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subPathExpr":
 			if err := func() error {
+				s.SubPathExpr.Reset()
 				if err := s.SubPathExpr.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69645,6 +70783,7 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "required":
 			if err := func() error {
+				s.Required.Reset()
 				if err := s.Required.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69723,6 +70862,7 @@ func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "configMap":
 			if err := func() error {
+				s.ConfigMap.Reset()
 				if err := s.ConfigMap.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69734,6 +70874,7 @@ func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "downwardAPI":
 			if err := func() error {
+				s.DownwardAPI.Reset()
 				if err := s.DownwardAPI.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69745,6 +70886,7 @@ func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secret":
 			if err := func() error {
+				s.Secret.Reset()
 				if err := s.Secret.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69756,6 +70898,7 @@ func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(i *json.Iterator) error {
 			return true
 		case "serviceAccountToken":
 			if err := func() error {
+				s.ServiceAccountToken.Reset()
 				if err := s.ServiceAccountToken.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69832,6 +70975,7 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iterator
 		switch k {
 		case "fsType":
 			if err := func() error {
+				s.FsType.Reset()
 				if err := s.FsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69843,6 +70987,7 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iterator
 			return true
 		case "storagePolicyID":
 			if err := func() error {
+				s.StoragePolicyID.Reset()
 				if err := s.StoragePolicyID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -69854,6 +70999,7 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iterator
 			return true
 		case "storagePolicyName":
 			if err := func() error {
+				s.StoragePolicyName.Reset()
 				if err := s.StoragePolicyName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70014,6 +71160,7 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator)
 		switch k {
 		case "gmsaCredentialSpec":
 			if err := func() error {
+				s.GmsaCredentialSpec.Reset()
 				if err := s.GmsaCredentialSpec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70025,6 +71172,7 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "gmsaCredentialSpecName":
 			if err := func() error {
+				s.GmsaCredentialSpecName.Reset()
 				if err := s.GmsaCredentialSpecName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70036,6 +71184,7 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "hostProcess":
 			if err := func() error {
+				s.HostProcess.Reset()
 				if err := s.HostProcess.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70047,6 +71196,7 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "runAsUserName":
 			if err := func() error {
+				s.RunAsUserName.Reset()
 				if err := s.RunAsUserName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70145,6 +71295,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "addresses":
 			if err := func() error {
+				s.Addresses = s.Addresses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -70169,6 +71320,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions.Reset()
 				if err := s.Conditions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70180,6 +71332,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hints":
 			if err := func() error {
+				s.Hints.Reset()
 				if err := s.Hints.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70191,6 +71344,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostname":
 			if err := func() error {
+				s.Hostname.Reset()
 				if err := s.Hostname.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70202,6 +71356,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodeName":
 			if err := func() error {
+				s.NodeName.Reset()
 				if err := s.NodeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70213,6 +71368,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "targetRef":
 			if err := func() error {
+				s.TargetRef.Reset()
 				if err := s.TargetRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70224,6 +71380,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "zone":
 			if err := func() error {
+				s.Zone.Reset()
 				if err := s.Zone.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70297,6 +71454,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "ready":
 			if err := func() error {
+				s.Ready.Reset()
 				if err := s.Ready.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70308,6 +71466,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) error
 			return true
 		case "serving":
 			if err := func() error {
+				s.Serving.Reset()
 				if err := s.Serving.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70319,6 +71478,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) error
 			return true
 		case "terminating":
 			if err := func() error {
+				s.Terminating.Reset()
 				if err := s.Terminating.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70389,6 +71549,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "forZones":
 			if err := func() error {
+				s.ForZones = s.ForZones[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1ForZone
@@ -70482,6 +71643,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "appProtocol":
 			if err := func() error {
+				s.AppProtocol.Reset()
 				if err := s.AppProtocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70493,6 +71655,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70504,6 +71667,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "port":
 			if err := func() error {
+				s.Port.Reset()
 				if err := s.Port.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70515,6 +71679,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "protocol":
 			if err := func() error {
+				s.Protocol.Reset()
 				if err := s.Protocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70622,6 +71787,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70633,6 +71799,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "endpoints":
 			if err := func() error {
+				s.Endpoints = s.Endpoints[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1Endpoint
@@ -70659,6 +71826,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70670,6 +71838,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70681,6 +71850,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1EndpointPort
@@ -70779,6 +71949,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70790,6 +71961,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1EndpointSlice
@@ -70816,6 +71988,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70827,6 +72000,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -70979,6 +72153,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "addresses":
 			if err := func() error {
+				s.Addresses = s.Addresses[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -71003,6 +72178,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions.Reset()
 				if err := s.Conditions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71014,6 +72190,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hints":
 			if err := func() error {
+				s.Hints.Reset()
 				if err := s.Hints.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71025,6 +72202,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "hostname":
 			if err := func() error {
+				s.Hostname.Reset()
 				if err := s.Hostname.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71036,6 +72214,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nodeName":
 			if err := func() error {
+				s.NodeName.Reset()
 				if err := s.NodeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71047,6 +72226,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "targetRef":
 			if err := func() error {
+				s.TargetRef.Reset()
 				if err := s.TargetRef.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71120,6 +72300,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "ready":
 			if err := func() error {
+				s.Ready.Reset()
 				if err := s.Ready.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71131,6 +72312,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterator) 
 			return true
 		case "serving":
 			if err := func() error {
+				s.Serving.Reset()
 				if err := s.Serving.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71142,6 +72324,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterator) 
 			return true
 		case "terminating":
 			if err := func() error {
+				s.Terminating.Reset()
 				if err := s.Terminating.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71212,6 +72395,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "forZones":
 			if err := func() error {
+				s.ForZones = s.ForZones[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1beta1ForZone
@@ -71305,6 +72489,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "appProtocol":
 			if err := func() error {
+				s.AppProtocol.Reset()
 				if err := s.AppProtocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71316,6 +72501,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) ReadJSON(i *json.Iterator) error 
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71327,6 +72513,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) ReadJSON(i *json.Iterator) error 
 			return true
 		case "port":
 			if err := func() error {
+				s.Port.Reset()
 				if err := s.Port.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71338,6 +72525,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) ReadJSON(i *json.Iterator) error 
 			return true
 		case "protocol":
 			if err := func() error {
+				s.Protocol.Reset()
 				if err := s.Protocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71445,6 +72633,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 			return true
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71456,6 +72645,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 			return true
 		case "endpoints":
 			if err := func() error {
+				s.Endpoints = s.Endpoints[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1beta1Endpoint
@@ -71482,6 +72672,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71493,6 +72684,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71504,6 +72696,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1beta1EndpointPort
@@ -71602,6 +72795,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71613,6 +72807,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(i *json.Iterator) e
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIDiscoveryV1beta1EndpointSlice
@@ -71639,6 +72834,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(i *json.Iterator) e
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71650,6 +72846,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(i *json.Iterator) e
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71848,6 +73045,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "action":
 			if err := func() error {
+				s.Action.Reset()
 				if err := s.Action.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71859,6 +73057,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71870,6 +73069,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedCount":
 			if err := func() error {
+				s.DeprecatedCount.Reset()
 				if err := s.DeprecatedCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71881,6 +73081,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedFirstTimestamp":
 			if err := func() error {
+				s.DeprecatedFirstTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -71896,6 +73097,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedLastTimestamp":
 			if err := func() error {
+				s.DeprecatedLastTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -71911,6 +73113,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedSource":
 			if err := func() error {
+				s.DeprecatedSource.Reset()
 				if err := s.DeprecatedSource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71930,6 +73133,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71941,6 +73145,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71952,6 +73157,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "note":
 			if err := func() error {
+				s.Note.Reset()
 				if err := s.Note.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71963,6 +73169,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71974,6 +73181,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "regarding":
 			if err := func() error {
+				s.Regarding.Reset()
 				if err := s.Regarding.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71985,6 +73193,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "related":
 			if err := func() error {
+				s.Related.Reset()
 				if err := s.Related.ReadJSON(i); err != nil {
 					return err
 				}
@@ -71996,6 +73205,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reportingController":
 			if err := func() error {
+				s.ReportingController.Reset()
 				if err := s.ReportingController.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72007,6 +73217,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reportingInstance":
 			if err := func() error {
+				s.ReportingInstance.Reset()
 				if err := s.ReportingInstance.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72018,6 +73229,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "series":
 			if err := func() error {
+				s.Series.Reset()
 				if err := s.Series.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72029,6 +73241,7 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72112,6 +73325,7 @@ func (s *IoK8sAPIEventsV1EventList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72123,6 +73337,7 @@ func (s *IoK8sAPIEventsV1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIEventsV1Event
@@ -72149,6 +73364,7 @@ func (s *IoK8sAPIEventsV1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72160,6 +73376,7 @@ func (s *IoK8sAPIEventsV1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72367,6 +73584,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "action":
 			if err := func() error {
+				s.Action.Reset()
 				if err := s.Action.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72378,6 +73596,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72389,6 +73608,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedCount":
 			if err := func() error {
+				s.DeprecatedCount.Reset()
 				if err := s.DeprecatedCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72400,6 +73620,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedFirstTimestamp":
 			if err := func() error {
+				s.DeprecatedFirstTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -72415,6 +73636,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedLastTimestamp":
 			if err := func() error {
+				s.DeprecatedLastTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -72430,6 +73652,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedSource":
 			if err := func() error {
+				s.DeprecatedSource.Reset()
 				if err := s.DeprecatedSource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72449,6 +73672,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72460,6 +73684,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72471,6 +73696,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "note":
 			if err := func() error {
+				s.Note.Reset()
 				if err := s.Note.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72482,6 +73708,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72493,6 +73720,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "regarding":
 			if err := func() error {
+				s.Regarding.Reset()
 				if err := s.Regarding.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72504,6 +73732,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "related":
 			if err := func() error {
+				s.Related.Reset()
 				if err := s.Related.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72515,6 +73744,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reportingController":
 			if err := func() error {
+				s.ReportingController.Reset()
 				if err := s.ReportingController.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72526,6 +73756,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reportingInstance":
 			if err := func() error {
+				s.ReportingInstance.Reset()
 				if err := s.ReportingInstance.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72537,6 +73768,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "series":
 			if err := func() error {
+				s.Series.Reset()
 				if err := s.Series.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72548,6 +73780,7 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72631,6 +73864,7 @@ func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72642,6 +73876,7 @@ func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIEventsV1beta1Event
@@ -72668,6 +73903,7 @@ func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72679,6 +73915,7 @@ func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72889,6 +74126,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72900,6 +74138,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72911,6 +74150,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72922,6 +74162,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -72933,6 +74174,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73016,6 +74258,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iterato
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -73031,6 +74274,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73042,6 +74286,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73053,6 +74298,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73064,6 +74310,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73147,6 +74394,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73158,6 +74406,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(i *json.Iterator) er
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1FlowSchema
@@ -73184,6 +74433,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(i *json.Iterator) er
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73195,6 +74445,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(i *json.Iterator) er
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73278,6 +74529,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "distinguisherMethod":
 			if err := func() error {
+				s.DistinguisherMethod.Reset()
 				if err := s.DistinguisherMethod.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73289,6 +74541,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 			return true
 		case "matchingPrecedence":
 			if err := func() error {
+				s.MatchingPrecedence.Reset()
 				if err := s.MatchingPrecedence.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73311,6 +74564,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 			return true
 		case "rules":
 			if err := func() error {
+				s.Rules = s.Rules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects
@@ -73396,6 +74650,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition
@@ -73536,6 +74791,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "queuing":
 			if err := func() error {
+				s.Queuing.Reset()
 				if err := s.Queuing.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73613,6 +74869,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i
 		switch k {
 		case "assuredConcurrencyShares":
 			if err := func() error {
+				s.AssuredConcurrencyShares.Reset()
 				if err := s.AssuredConcurrencyShares.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73624,6 +74881,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i
 			return true
 		case "limitResponse":
 			if err := func() error {
+				s.LimitResponse.Reset()
 				if err := s.LimitResponse.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73702,6 +74960,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) ReadJSON(i *json.Itera
 		switch k {
 		case "nonResourceURLs":
 			if err := func() error {
+				s.NonResourceURLs = s.NonResourceURLs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -73726,6 +74985,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) ReadJSON(i *json.Itera
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -73831,6 +75091,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 		switch k {
 		case "nonResourceRules":
 			if err := func() error {
+				s.NonResourceRules = s.NonResourceRules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule
@@ -73857,6 +75118,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 			return true
 		case "resourceRules":
 			if err := func() error {
+				s.ResourceRules = s.ResourceRules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule
@@ -73883,6 +75145,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 			return true
 		case "subjects":
 			if err := func() error {
+				s.Subjects = s.Subjects[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1Subject
@@ -73981,6 +75244,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -73992,6 +75256,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74003,6 +75268,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74014,6 +75280,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74025,6 +75292,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74108,6 +75376,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -74123,6 +75392,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74134,6 +75404,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74145,6 +75416,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74156,6 +75428,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74239,6 +75512,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(i *j
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74250,6 +75524,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(i *j
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
@@ -74276,6 +75551,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(i *j
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74287,6 +75563,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(i *j
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74412,6 +75689,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *j
 		switch k {
 		case "limited":
 			if err := func() error {
+				s.Limited.Reset()
 				if err := s.Limited.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74491,6 +75769,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i 
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition
@@ -74579,6 +75858,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iterat
 		switch k {
 		case "handSize":
 			if err := func() error {
+				s.HandSize.Reset()
 				if err := s.HandSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74590,6 +75870,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iterat
 			return true
 		case "queueLengthLimit":
 			if err := func() error {
+				s.QueueLengthLimit.Reset()
 				if err := s.QueueLengthLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74601,6 +75882,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iterat
 			return true
 		case "queues":
 			if err := func() error {
+				s.Queues.Reset()
 				if err := s.Queues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74706,6 +75988,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iterator
 		switch k {
 		case "apiGroups":
 			if err := func() error {
+				s.ApiGroups = s.ApiGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -74730,6 +76013,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "clusterScope":
 			if err := func() error {
+				s.ClusterScope.Reset()
 				if err := s.ClusterScope.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74741,6 +76025,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "namespaces":
 			if err := func() error {
+				s.Namespaces = s.Namespaces[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -74765,6 +76050,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -74789,6 +76075,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -74949,6 +76236,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "group":
 			if err := func() error {
+				s.Group.Reset()
 				if err := s.Group.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74969,6 +76257,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "serviceAccount":
 			if err := func() error {
+				s.ServiceAccount.Reset()
 				if err := s.ServiceAccount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -74980,6 +76269,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75181,6 +76471,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75192,6 +76483,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75203,6 +76495,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75214,6 +76507,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75225,6 +76519,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iterator) error 
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75308,6 +76603,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iterato
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -75323,6 +76619,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75334,6 +76631,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75345,6 +76643,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75356,6 +76655,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iterato
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75439,6 +76739,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75450,6 +76751,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(i *json.Iterator) er
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2FlowSchema
@@ -75476,6 +76778,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(i *json.Iterator) er
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75487,6 +76790,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(i *json.Iterator) er
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75570,6 +76874,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "distinguisherMethod":
 			if err := func() error {
+				s.DistinguisherMethod.Reset()
 				if err := s.DistinguisherMethod.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75581,6 +76886,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 			return true
 		case "matchingPrecedence":
 			if err := func() error {
+				s.MatchingPrecedence.Reset()
 				if err := s.MatchingPrecedence.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75603,6 +76909,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 			return true
 		case "rules":
 			if err := func() error {
+				s.Rules = s.Rules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects
@@ -75688,6 +76995,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition
@@ -75828,6 +77136,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "queuing":
 			if err := func() error {
+				s.Queuing.Reset()
 				if err := s.Queuing.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75905,6 +77214,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i
 		switch k {
 		case "assuredConcurrencyShares":
 			if err := func() error {
+				s.AssuredConcurrencyShares.Reset()
 				if err := s.AssuredConcurrencyShares.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75916,6 +77226,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i
 			return true
 		case "limitResponse":
 			if err := func() error {
+				s.LimitResponse.Reset()
 				if err := s.LimitResponse.ReadJSON(i); err != nil {
 					return err
 				}
@@ -75994,6 +77305,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) ReadJSON(i *json.Itera
 		switch k {
 		case "nonResourceURLs":
 			if err := func() error {
+				s.NonResourceURLs = s.NonResourceURLs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -76018,6 +77330,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) ReadJSON(i *json.Itera
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -76123,6 +77436,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 		switch k {
 		case "nonResourceRules":
 			if err := func() error {
+				s.NonResourceRules = s.NonResourceRules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule
@@ -76149,6 +77463,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 			return true
 		case "resourceRules":
 			if err := func() error {
+				s.ResourceRules = s.ResourceRules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule
@@ -76175,6 +77490,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 			return true
 		case "subjects":
 			if err := func() error {
+				s.Subjects = s.Subjects[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2Subject
@@ -76273,6 +77589,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76284,6 +77601,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76295,6 +77613,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76306,6 +77625,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76317,6 +77637,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76400,6 +77721,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -76415,6 +77737,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76426,6 +77749,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76437,6 +77761,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76448,6 +77773,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76531,6 +77857,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(i *j
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76542,6 +77869,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(i *j
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
@@ -76568,6 +77896,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(i *j
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76579,6 +77908,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(i *j
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76704,6 +78034,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *j
 		switch k {
 		case "limited":
 			if err := func() error {
+				s.Limited.Reset()
 				if err := s.Limited.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76783,6 +78114,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i 
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition
@@ -76871,6 +78203,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iterat
 		switch k {
 		case "handSize":
 			if err := func() error {
+				s.HandSize.Reset()
 				if err := s.HandSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76882,6 +78215,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iterat
 			return true
 		case "queueLengthLimit":
 			if err := func() error {
+				s.QueueLengthLimit.Reset()
 				if err := s.QueueLengthLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76893,6 +78227,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iterat
 			return true
 		case "queues":
 			if err := func() error {
+				s.Queues.Reset()
 				if err := s.Queues.ReadJSON(i); err != nil {
 					return err
 				}
@@ -76998,6 +78333,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iterator
 		switch k {
 		case "apiGroups":
 			if err := func() error {
+				s.ApiGroups = s.ApiGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -77022,6 +78358,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "clusterScope":
 			if err := func() error {
+				s.ClusterScope.Reset()
 				if err := s.ClusterScope.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77033,6 +78370,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "namespaces":
 			if err := func() error {
+				s.Namespaces = s.Namespaces[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -77057,6 +78395,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -77081,6 +78420,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iterator
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -77241,6 +78581,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "group":
 			if err := func() error {
+				s.Group.Reset()
 				if err := s.Group.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77261,6 +78602,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "serviceAccount":
 			if err := func() error {
+				s.ServiceAccount.Reset()
 				if err := s.ServiceAccount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77272,6 +78614,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user":
 			if err := func() error {
+				s.User.Reset()
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77411,6 +78754,7 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) ReadJSON(i *json.Iterator) error {
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77488,6 +78832,7 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "paths":
 			if err := func() error {
+				s.Paths = s.Paths[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1HTTPIngressPath
@@ -77585,6 +78930,7 @@ func (s *IoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
 			return true
 		case "except":
 			if err := func() error {
+				s.Except = s.Except[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -77681,6 +79027,7 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77692,6 +79039,7 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77703,6 +79051,7 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77714,6 +79063,7 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77725,6 +79075,7 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77793,6 +79144,7 @@ func (s *IoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "resource":
 			if err := func() error {
+				s.Resource.Reset()
 				if err := s.Resource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77804,6 +79156,7 @@ func (s *IoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error {
 			return true
 		case "service":
 			if err := func() error {
+				s.Service.Reset()
 				if err := s.Service.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77882,6 +79235,7 @@ func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77893,6 +79247,7 @@ func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77904,6 +79259,7 @@ func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77915,6 +79271,7 @@ func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -77998,6 +79355,7 @@ func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78009,6 +79367,7 @@ func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1IngressClass
@@ -78035,6 +79394,7 @@ func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78046,6 +79406,7 @@ func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78125,6 +79486,7 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.I
 		switch k {
 		case "apiGroup":
 			if err := func() error {
+				s.ApiGroup.Reset()
 				if err := s.ApiGroup.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78154,6 +79516,7 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.I
 			return true
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78165,6 +79528,7 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.I
 			return true
 		case "scope":
 			if err := func() error {
+				s.Scope.Reset()
 				if err := s.Scope.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78233,6 +79597,7 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "controller":
 			if err := func() error {
+				s.Controller.Reset()
 				if err := s.Controller.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78244,6 +79609,7 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "parameters":
 			if err := func() error {
+				s.Parameters.Reset()
 				if err := s.Parameters.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78327,6 +79693,7 @@ func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78338,6 +79705,7 @@ func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1Ingress
@@ -78364,6 +79732,7 @@ func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78375,6 +79744,7 @@ func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78443,6 +79813,7 @@ func (s *IoK8sAPINetworkingV1IngressRule) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "http":
 			if err := func() error {
+				s.HTTP.Reset()
 				if err := s.HTTP.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78454,6 +79825,7 @@ func (s *IoK8sAPINetworkingV1IngressRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "host":
 			if err := func() error {
+				s.Host.Reset()
 				if err := s.Host.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78529,6 +79901,7 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iterator) e
 			return true
 		case "port":
 			if err := func() error {
+				s.Port.Reset()
 				if err := s.Port.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78621,6 +79994,7 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "defaultBackend":
 			if err := func() error {
+				s.DefaultBackend.Reset()
 				if err := s.DefaultBackend.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78632,6 +80006,7 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ingressClassName":
 			if err := func() error {
+				s.IngressClassName.Reset()
 				if err := s.IngressClassName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78643,6 +80018,7 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "rules":
 			if err := func() error {
+				s.Rules = s.Rules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1IngressRule
@@ -78669,6 +80045,7 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tls":
 			if err := func() error {
+				s.TLS = s.TLS[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1IngressTLS
@@ -78747,6 +80124,7 @@ func (s *IoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "loadBalancer":
 			if err := func() error {
+				s.LoadBalancer.Reset()
 				if err := s.LoadBalancer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78822,6 +80200,7 @@ func (s *IoK8sAPINetworkingV1IngressTLS) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "hosts":
 			if err := func() error {
+				s.Hosts = s.Hosts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -78846,6 +80225,7 @@ func (s *IoK8sAPINetworkingV1IngressTLS) ReadJSON(i *json.Iterator) error {
 			return true
 		case "secretName":
 			if err := func() error {
+				s.SecretName.Reset()
 				if err := s.SecretName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78924,6 +80304,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78935,6 +80316,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78946,6 +80328,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -78957,6 +80340,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79039,6 +80423,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) ReadJSON(i *json.Iterator)
 		switch k {
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPort
@@ -79065,6 +80450,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) ReadJSON(i *json.Iterator)
 			return true
 		case "to":
 			if err := func() error {
+				s.To = s.To[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPeer
@@ -79162,6 +80548,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) ReadJSON(i *json.Iterator
 		switch k {
 		case "from":
 			if err := func() error {
+				s.From = s.From[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPeer
@@ -79188,6 +80575,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) ReadJSON(i *json.Iterator
 			return true
 		case "ports":
 			if err := func() error {
+				s.Ports = s.Ports[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPort
@@ -79286,6 +80674,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79297,6 +80686,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(i *json.Iterator) error
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1NetworkPolicy
@@ -79323,6 +80713,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(i *json.Iterator) error
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79334,6 +80725,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(i *json.Iterator) error
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79407,6 +80799,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "ipBlock":
 			if err := func() error {
+				s.IpBlock.Reset()
 				if err := s.IpBlock.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79418,6 +80811,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) ReadJSON(i *json.Iterator) error
 			return true
 		case "namespaceSelector":
 			if err := func() error {
+				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79429,6 +80823,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) ReadJSON(i *json.Iterator) error
 			return true
 		case "podSelector":
 			if err := func() error {
+				s.PodSelector.Reset()
 				if err := s.PodSelector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79502,6 +80897,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "endPort":
 			if err := func() error {
+				s.EndPort.Reset()
 				if err := s.EndPort.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79513,6 +80909,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) ReadJSON(i *json.Iterator) error
 			return true
 		case "port":
 			if err := func() error {
+				s.Port = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -79528,6 +80925,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) ReadJSON(i *json.Iterator) error
 			return true
 		case "protocol":
 			if err := func() error {
+				s.Protocol.Reset()
 				if err := s.Protocol.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79625,6 +81023,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "egress":
 			if err := func() error {
+				s.Egress = s.Egress[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1NetworkPolicyEgressRule
@@ -79651,6 +81050,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error
 			return true
 		case "ingress":
 			if err := func() error {
+				s.Ingress = s.Ingress[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINetworkingV1NetworkPolicyIngressRule
@@ -79688,6 +81088,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error
 			return true
 		case "policyTypes":
 			if err := func() error {
+				s.PolicyTypes = s.PolicyTypes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -79769,6 +81170,7 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79780,6 +81182,7 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterator) erro
 			return true
 		case "number":
 			if err := func() error {
+				s.Number.Reset()
 				if err := s.Number.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79913,6 +81316,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79933,6 +81337,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79944,6 +81349,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79955,6 +81361,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "overhead":
 			if err := func() error {
+				s.Overhead.Reset()
 				if err := s.Overhead.ReadJSON(i); err != nil {
 					return err
 				}
@@ -79966,6 +81373,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scheduling":
 			if err := func() error {
+				s.Scheduling.Reset()
 				if err := s.Scheduling.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80049,6 +81457,7 @@ func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80060,6 +81469,7 @@ func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINodeV1RuntimeClass
@@ -80086,6 +81496,7 @@ func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80097,6 +81508,7 @@ func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80167,6 +81579,7 @@ func (s *IoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "tolerations":
 			if err := func() error {
+				s.Tolerations = s.Tolerations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Toleration
@@ -80305,6 +81718,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80316,6 +81730,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80327,6 +81742,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80421,6 +81837,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80432,6 +81849,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINodeV1alpha1RuntimeClass
@@ -80458,6 +81876,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80469,6 +81888,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80540,6 +81960,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "overhead":
 			if err := func() error {
+				s.Overhead.Reset()
 				if err := s.Overhead.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80560,6 +81981,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) ReadJSON(i *json.Iterator) error 
 			return true
 		case "scheduling":
 			if err := func() error {
+				s.Scheduling.Reset()
 				if err := s.Scheduling.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80630,6 +82052,7 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "tolerations":
 			if err := func() error {
+				s.Tolerations = s.Tolerations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Toleration
@@ -80778,6 +82201,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80798,6 +82222,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80809,6 +82234,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80820,6 +82246,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "overhead":
 			if err := func() error {
+				s.Overhead.Reset()
 				if err := s.Overhead.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80831,6 +82258,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "scheduling":
 			if err := func() error {
+				s.Scheduling.Reset()
 				if err := s.Scheduling.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80914,6 +82342,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80925,6 +82354,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPINodeV1beta1RuntimeClass
@@ -80951,6 +82381,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -80962,6 +82393,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81032,6 +82464,7 @@ func (s *IoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "tolerations":
 			if err := func() error {
+				s.Tolerations = s.Tolerations[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1Toleration
@@ -81130,6 +82563,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81141,6 +82575,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81152,6 +82587,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81163,6 +82599,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iterator) error {
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81174,6 +82611,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81257,6 +82695,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81268,6 +82707,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(i *json.Iterator) err
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1PodDisruptionBudget
@@ -81294,6 +82734,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(i *json.Iterator) err
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81305,6 +82746,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(i *json.Iterator) err
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81378,6 +82820,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "maxUnavailable":
 			if err := func() error {
+				s.MaxUnavailable = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -81393,6 +82836,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "minAvailable":
 			if err := func() error {
+				s.MinAvailable = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -81408,6 +82852,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81495,6 +82940,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1Condition
@@ -81557,6 +83003,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) e
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81743,6 +83190,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "pathPrefix":
 			if err := func() error {
+				s.PathPrefix.Reset()
 				if err := s.PathPrefix.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81754,6 +83202,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) ReadJSON(i *json.Iterator) error 
 			return true
 		case "readOnly":
 			if err := func() error {
+				s.ReadOnly.Reset()
 				if err := s.ReadOnly.ReadJSON(i); err != nil {
 					return err
 				}
@@ -81829,6 +83278,7 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) ReadJSON(i *json.Iterator)
 		switch k {
 		case "ranges":
 			if err := func() error {
+				s.Ranges = s.Ranges[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1IDRange
@@ -81855,6 +83305,7 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "rule":
 			if err := func() error {
+				s.Rule.Reset()
 				if err := s.Rule.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82080,6 +83531,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82091,6 +83543,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iterator) er
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82102,6 +83555,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iterator) er
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82113,6 +83567,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iterator) er
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82124,6 +83579,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iterator) er
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82207,6 +83663,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(i *json.Iterator
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82218,6 +83675,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(i *json.Iterator
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1PodDisruptionBudget
@@ -82244,6 +83702,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(i *json.Iterator
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82255,6 +83714,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(i *json.Iterator
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82328,6 +83788,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator
 		switch k {
 		case "maxUnavailable":
 			if err := func() error {
+				s.MaxUnavailable = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -82343,6 +83804,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator
 			return true
 		case "minAvailable":
 			if err := func() error {
+				s.MinAvailable = nil
 				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
@@ -82358,6 +83820,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator
 			return true
 		case "selector":
 			if err := func() error {
+				s.Selector.Reset()
 				if err := s.Selector.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82445,6 +83908,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterat
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1Condition
@@ -82507,6 +83971,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterat
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82585,6 +84050,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82596,6 +84062,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(i *json.Iterator) erro
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82607,6 +84074,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(i *json.Iterator) erro
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82618,6 +84086,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(i *json.Iterator) erro
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82701,6 +84170,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82712,6 +84182,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(i *json.Iterator) 
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1PodSecurityPolicy
@@ -82738,6 +84209,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(i *json.Iterator) 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82749,6 +84221,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(i *json.Iterator) 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -82996,6 +84469,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "allowPrivilegeEscalation":
 			if err := func() error {
+				s.AllowPrivilegeEscalation.Reset()
 				if err := s.AllowPrivilegeEscalation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83007,6 +84481,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "allowedCSIDrivers":
 			if err := func() error {
+				s.AllowedCSIDrivers = s.AllowedCSIDrivers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1AllowedCSIDriver
@@ -83033,6 +84508,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "allowedCapabilities":
 			if err := func() error {
+				s.AllowedCapabilities = s.AllowedCapabilities[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83057,6 +84533,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "allowedFlexVolumes":
 			if err := func() error {
+				s.AllowedFlexVolumes = s.AllowedFlexVolumes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1AllowedFlexVolume
@@ -83083,6 +84560,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "allowedHostPaths":
 			if err := func() error {
+				s.AllowedHostPaths = s.AllowedHostPaths[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1AllowedHostPath
@@ -83109,6 +84587,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "allowedProcMountTypes":
 			if err := func() error {
+				s.AllowedProcMountTypes = s.AllowedProcMountTypes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83133,6 +84612,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "allowedUnsafeSysctls":
 			if err := func() error {
+				s.AllowedUnsafeSysctls = s.AllowedUnsafeSysctls[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83157,6 +84637,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "defaultAddCapabilities":
 			if err := func() error {
+				s.DefaultAddCapabilities = s.DefaultAddCapabilities[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83181,6 +84662,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "defaultAllowPrivilegeEscalation":
 			if err := func() error {
+				s.DefaultAllowPrivilegeEscalation.Reset()
 				if err := s.DefaultAllowPrivilegeEscalation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83192,6 +84674,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "forbiddenSysctls":
 			if err := func() error {
+				s.ForbiddenSysctls = s.ForbiddenSysctls[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83227,6 +84710,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "hostIPC":
 			if err := func() error {
+				s.HostIPC.Reset()
 				if err := s.HostIPC.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83238,6 +84722,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "hostNetwork":
 			if err := func() error {
+				s.HostNetwork.Reset()
 				if err := s.HostNetwork.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83249,6 +84734,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "hostPID":
 			if err := func() error {
+				s.HostPID.Reset()
 				if err := s.HostPID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83260,6 +84746,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "hostPorts":
 			if err := func() error {
+				s.HostPorts = s.HostPorts[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1HostPortRange
@@ -83286,6 +84773,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "privileged":
 			if err := func() error {
+				s.Privileged.Reset()
 				if err := s.Privileged.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83297,6 +84785,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "readOnlyRootFilesystem":
 			if err := func() error {
+				s.ReadOnlyRootFilesystem.Reset()
 				if err := s.ReadOnlyRootFilesystem.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83308,6 +84797,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "requiredDropCapabilities":
 			if err := func() error {
+				s.RequiredDropCapabilities = s.RequiredDropCapabilities[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83332,6 +84822,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "runAsGroup":
 			if err := func() error {
+				s.RunAsGroup.Reset()
 				if err := s.RunAsGroup.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83354,6 +84845,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "runtimeClass":
 			if err := func() error {
+				s.RuntimeClass.Reset()
 				if err := s.RuntimeClass.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83387,6 +84879,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			return true
 		case "volumes":
 			if err := func() error {
+				s.Volumes = s.Volumes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83473,6 +84966,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iterat
 		switch k {
 		case "ranges":
 			if err := func() error {
+				s.Ranges = s.Ranges[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1IDRange
@@ -83570,6 +85064,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) ReadJSON(i *json.Iterato
 		switch k {
 		case "ranges":
 			if err := func() error {
+				s.Ranges = s.Ranges[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1IDRange
@@ -83667,6 +85162,7 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iter
 		switch k {
 		case "allowedRuntimeClassNames":
 			if err := func() error {
+				s.AllowedRuntimeClassNames = s.AllowedRuntimeClassNames[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -83691,6 +85187,7 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iter
 			return true
 		case "defaultRuntimeClassName":
 			if err := func() error {
+				s.DefaultRuntimeClassName.Reset()
 				if err := s.DefaultRuntimeClassName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83766,6 +85263,7 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "seLinuxOptions":
 			if err := func() error {
+				s.SeLinuxOptions.Reset()
 				if err := s.SeLinuxOptions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83841,6 +85339,7 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) ReadJSON(i *jso
 		switch k {
 		case "ranges":
 			if err := func() error {
+				s.Ranges = s.Ranges[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIPolicyV1beta1IDRange
@@ -83867,6 +85366,7 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) ReadJSON(i *jso
 			return true
 		case "rule":
 			if err := func() error {
+				s.Rule.Reset()
 				if err := s.Rule.ReadJSON(i); err != nil {
 					return err
 				}
@@ -83937,6 +85437,7 @@ func (s *IoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "clusterRoleSelectors":
 			if err := func() error {
+				s.ClusterRoleSelectors = s.ClusterRoleSelectors[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1LabelSelector
@@ -84042,6 +85543,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "aggregationRule":
 			if err := func() error {
+				s.AggregationRule.Reset()
 				if err := s.AggregationRule.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84053,6 +85555,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 			return true
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84064,6 +85567,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84075,6 +85579,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84086,6 +85591,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 			return true
 		case "rules":
 			if err := func() error {
+				s.Rules = s.Rules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1PolicyRule
@@ -84189,6 +85695,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84200,6 +85707,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84211,6 +85719,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84233,6 +85742,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subjects":
 			if err := func() error {
+				s.Subjects = s.Subjects[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1Subject
@@ -84331,6 +85841,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84342,6 +85853,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1ClusterRoleBinding
@@ -84368,6 +85880,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84379,6 +85892,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84462,6 +85976,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84473,6 +85988,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1ClusterRole
@@ -84499,6 +86015,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84510,6 +86027,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84626,6 +86144,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiGroups":
 			if err := func() error {
+				s.ApiGroups = s.ApiGroups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -84650,6 +86169,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nonResourceURLs":
 			if err := func() error {
+				s.NonResourceURLs = s.NonResourceURLs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -84674,6 +86194,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resourceNames":
 			if err := func() error {
+				s.ResourceNames = s.ResourceNames[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -84698,6 +86219,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -84722,6 +86244,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iterator) error {
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -84820,6 +86343,7 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84831,6 +86355,7 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84842,6 +86367,7 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84853,6 +86379,7 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iterator) error {
 			return true
 		case "rules":
 			if err := func() error {
+				s.Rules = s.Rules[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1PolicyRule
@@ -84956,6 +86483,7 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84967,6 +86495,7 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -84978,6 +86507,7 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85000,6 +86530,7 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iterator) error {
 			return true
 		case "subjects":
 			if err := func() error {
+				s.Subjects = s.Subjects[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1Subject
@@ -85098,6 +86629,7 @@ func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85109,6 +86641,7 @@ func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1RoleBinding
@@ -85135,6 +86668,7 @@ func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85146,6 +86680,7 @@ func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85229,6 +86764,7 @@ func (s *IoK8sAPIRbacV1RoleList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85240,6 +86776,7 @@ func (s *IoK8sAPIRbacV1RoleList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIRbacV1Role
@@ -85266,6 +86803,7 @@ func (s *IoK8sAPIRbacV1RoleList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85277,6 +86815,7 @@ func (s *IoK8sAPIRbacV1RoleList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85434,6 +86973,7 @@ func (s *IoK8sAPIRbacV1Subject) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiGroup":
 			if err := func() error {
+				s.ApiGroup.Reset()
 				if err := s.ApiGroup.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85463,6 +87003,7 @@ func (s *IoK8sAPIRbacV1Subject) ReadJSON(i *json.Iterator) error {
 			return true
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85554,6 +87095,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85565,6 +87107,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85576,6 +87119,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "globalDefault":
 			if err := func() error {
+				s.GlobalDefault.Reset()
 				if err := s.GlobalDefault.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85587,6 +87131,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85598,6 +87143,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85609,6 +87155,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "preemptionPolicy":
 			if err := func() error {
+				s.PreemptionPolicy.Reset()
 				if err := s.PreemptionPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85701,6 +87248,7 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85712,6 +87260,7 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(i *json.Iterator) error
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPISchedulingV1PriorityClass
@@ -85738,6 +87287,7 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(i *json.Iterator) error
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85749,6 +87299,7 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(i *json.Iterator) error
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85825,6 +87376,7 @@ func (s *IoK8sAPIStorageV1CSIDriver) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85836,6 +87388,7 @@ func (s *IoK8sAPIStorageV1CSIDriver) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85847,6 +87400,7 @@ func (s *IoK8sAPIStorageV1CSIDriver) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85941,6 +87495,7 @@ func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85952,6 +87507,7 @@ func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1CSIDriver
@@ -85978,6 +87534,7 @@ func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -85989,6 +87546,7 @@ func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86096,6 +87654,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "attachRequired":
 			if err := func() error {
+				s.AttachRequired.Reset()
 				if err := s.AttachRequired.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86107,6 +87666,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "fsGroupPolicy":
 			if err := func() error {
+				s.FsGroupPolicy.Reset()
 				if err := s.FsGroupPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86118,6 +87678,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "podInfoOnMount":
 			if err := func() error {
+				s.PodInfoOnMount.Reset()
 				if err := s.PodInfoOnMount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86129,6 +87690,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "requiresRepublish":
 			if err := func() error {
+				s.RequiresRepublish.Reset()
 				if err := s.RequiresRepublish.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86140,6 +87702,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "storageCapacity":
 			if err := func() error {
+				s.StorageCapacity.Reset()
 				if err := s.StorageCapacity.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86151,6 +87714,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tokenRequests":
 			if err := func() error {
+				s.TokenRequests = s.TokenRequests[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1TokenRequest
@@ -86177,6 +87741,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeLifecycleModes":
 			if err := func() error {
+				s.VolumeLifecycleModes = s.VolumeLifecycleModes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -86266,6 +87831,7 @@ func (s *IoK8sAPIStorageV1CSINode) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86277,6 +87843,7 @@ func (s *IoK8sAPIStorageV1CSINode) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86288,6 +87855,7 @@ func (s *IoK8sAPIStorageV1CSINode) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86380,6 +87948,7 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allocatable":
 			if err := func() error {
+				s.Allocatable.Reset()
 				if err := s.Allocatable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86409,6 +87978,7 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) ReadJSON(i *json.Iterator) error {
 			return true
 		case "topologyKeys":
 			if err := func() error {
+				s.TopologyKeys = s.TopologyKeys[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -86505,6 +88075,7 @@ func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86516,6 +88087,7 @@ func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1CSINode
@@ -86542,6 +88114,7 @@ func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86553,6 +88126,7 @@ func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86621,6 +88195,7 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "drivers":
 			if err := func() error {
+				s.Drivers = s.Drivers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1CSINodeDriver
@@ -86751,6 +88326,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowVolumeExpansion":
 			if err := func() error {
+				s.AllowVolumeExpansion.Reset()
 				if err := s.AllowVolumeExpansion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86762,6 +88338,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allowedTopologies":
 			if err := func() error {
+				s.AllowedTopologies = s.AllowedTopologies[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPICoreV1TopologySelectorTerm
@@ -86788,6 +88365,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86799,6 +88377,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86810,6 +88389,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86821,6 +88401,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mountOptions":
 			if err := func() error {
+				s.MountOptions = s.MountOptions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -86854,6 +88435,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reclaimPolicy":
 			if err := func() error {
+				s.ReclaimPolicy.Reset()
 				if err := s.ReclaimPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86865,6 +88447,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			return true
 		case "volumeBindingMode":
 			if err := func() error {
+				s.VolumeBindingMode.Reset()
 				if err := s.VolumeBindingMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86948,6 +88531,7 @@ func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86959,6 +88543,7 @@ func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1StorageClass
@@ -86985,6 +88570,7 @@ func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -86996,6 +88582,7 @@ func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87071,6 +88658,7 @@ func (s *IoK8sAPIStorageV1TokenRequest) ReadJSON(i *json.Iterator) error {
 			return true
 		case "expirationSeconds":
 			if err := func() error {
+				s.ExpirationSeconds.Reset()
 				if err := s.ExpirationSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87152,6 +88740,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87163,6 +88752,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87174,6 +88764,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87196,6 +88787,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87279,6 +88871,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87290,6 +88883,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(i *json.Iterator) error
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1VolumeAttachment
@@ -87316,6 +88910,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(i *json.Iterator) error
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87327,6 +88922,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(i *json.Iterator) error
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87395,6 +88991,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "inlineVolumeSpec":
 			if err := func() error {
+				s.InlineVolumeSpec.Reset()
 				if err := s.InlineVolumeSpec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87406,6 +89003,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) ReadJSON(i *json.Iterator) err
 			return true
 		case "persistentVolumeName":
 			if err := func() error {
+				s.PersistentVolumeName.Reset()
 				if err := s.PersistentVolumeName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87562,6 +89160,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "attachError":
 			if err := func() error {
+				s.AttachError.Reset()
 				if err := s.AttachError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87582,6 +89181,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) err
 			return true
 		case "detachError":
 			if err := func() error {
+				s.DetachError.Reset()
 				if err := s.DetachError.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87650,6 +89250,7 @@ func (s *IoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87661,6 +89262,7 @@ func (s *IoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "time":
 			if err := func() error {
+				s.Time = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -87728,6 +89330,7 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "count":
 			if err := func() error {
+				s.Count.Reset()
 				if err := s.Count.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87819,6 +89422,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87830,6 +89434,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			return true
 		case "capacity":
 			if err := func() error {
+				s.Capacity = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -87845,6 +89450,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87856,6 +89462,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			return true
 		case "maximumVolumeSize":
 			if err := func() error {
+				s.MaximumVolumeSize = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -87871,6 +89478,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87882,6 +89490,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			return true
 		case "nodeTopology":
 			if err := func() error {
+				s.NodeTopology.Reset()
 				if err := s.NodeTopology.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87974,6 +89583,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(i *json.Iterato
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -87985,6 +89595,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(i *json.Iterato
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1alpha1CSIStorageCapacity
@@ -88011,6 +89622,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(i *json.Iterato
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88022,6 +89634,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(i *json.Iterato
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88113,6 +89726,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88124,6 +89738,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			return true
 		case "capacity":
 			if err := func() error {
+				s.Capacity = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -88139,6 +89754,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88150,6 +89766,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			return true
 		case "maximumVolumeSize":
 			if err := func() error {
+				s.MaximumVolumeSize = nil
 				var elem IoK8sApimachineryPkgAPIResourceQuantity
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
@@ -88165,6 +89782,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88176,6 +89794,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			return true
 		case "nodeTopology":
 			if err := func() error {
+				s.NodeTopology.Reset()
 				if err := s.NodeTopology.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88268,6 +89887,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(i *json.Iterator
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88279,6 +89899,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(i *json.Iterator
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sAPIStorageV1beta1CSIStorageCapacity
@@ -88305,6 +89926,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(i *json.Iterator
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88316,6 +89938,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(i *json.Iterator
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88398,6 +90021,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88409,6 +90033,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 			return true
 		case "format":
 			if err := func() error {
+				s.Format.Reset()
 				if err := s.Format.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88438,6 +90063,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 			return true
 		case "priority":
 			if err := func() error {
+				s.Priority.Reset()
 				if err := s.Priority.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88522,6 +90148,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 			return true
 		case "webhook":
 			if err := func() error {
+				s.Webhook.Reset()
 				if err := s.Webhook.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88603,6 +90230,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88614,6 +90242,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88625,6 +90254,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88647,6 +90277,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88726,6 +90357,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -88741,6 +90373,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88752,6 +90385,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88853,6 +90487,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88864,6 +90499,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
@@ -88890,6 +90526,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88901,6 +90538,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -88999,6 +90637,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "categories":
 			if err := func() error {
+				s.Categories = s.Categories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -89032,6 +90671,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "listKind":
 			if err := func() error {
+				s.ListKind.Reset()
 				if err := s.ListKind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89052,6 +90692,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "shortNames":
 			if err := func() error {
+				s.ShortNames = s.ShortNames[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -89076,6 +90717,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "singular":
 			if err := func() error {
+				s.Singular.Reset()
 				if err := s.Singular.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89163,6 +90805,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "conversion":
 			if err := func() error {
+				s.Conversion.Reset()
 				if err := s.Conversion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89194,6 +90837,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "preserveUnknownFields":
 			if err := func() error {
+				s.PreserveUnknownFields.Reset()
 				if err := s.PreserveUnknownFields.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89214,6 +90858,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "versions":
 			if err := func() error {
+				s.Versions = s.Versions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion
@@ -89316,6 +90961,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "acceptedNames":
 			if err := func() error {
+				s.AcceptedNames.Reset()
 				if err := s.AcceptedNames.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89327,6 +90973,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition
@@ -89353,6 +91000,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "storedVersions":
 			if err := func() error {
+				s.StoredVersions = s.StoredVersions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -89465,6 +91113,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "additionalPrinterColumns":
 			if err := func() error {
+				s.AdditionalPrinterColumns = s.AdditionalPrinterColumns[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition
@@ -89491,6 +91140,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "deprecated":
 			if err := func() error {
+				s.Deprecated.Reset()
 				if err := s.Deprecated.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89502,6 +91152,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "deprecationWarning":
 			if err := func() error {
+				s.DeprecationWarning.Reset()
 				if err := s.DeprecationWarning.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89522,6 +91173,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "schema":
 			if err := func() error {
+				s.Schema.Reset()
 				if err := s.Schema.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89551,6 +91203,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			return true
 		case "subresources":
 			if err := func() error {
+				s.Subresources.Reset()
 				if err := s.Subresources.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89620,6 +91273,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 		switch k {
 		case "labelSelectorPath":
 			if err := func() error {
+				s.LabelSelectorPath.Reset()
 				if err := s.LabelSelectorPath.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89748,6 +91402,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 		switch k {
 		case "scale":
 			if err := func() error {
+				s.Scale.Reset()
 				if err := s.Scale.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89811,6 +91466,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 		switch k {
 		case "openAPIV3Schema":
 			if err := func() error {
+				s.OpenAPIV3Schema.Reset()
 				if err := s.OpenAPIV3Schema.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89879,6 +91535,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -89890,6 +91547,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90207,6 +91865,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 		switch k {
 		case "allOf":
 			if err := func() error {
+				s.AllOf = s.AllOf[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
@@ -90233,6 +91892,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "anyOf":
 			if err := func() error {
+				s.AnyOf = s.AnyOf[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
@@ -90259,6 +91919,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90270,6 +91931,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "enum":
 			if err := func() error {
+				s.Enum = s.Enum[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
@@ -90296,6 +91958,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "exclusiveMaximum":
 			if err := func() error {
+				s.ExclusiveMaximum.Reset()
 				if err := s.ExclusiveMaximum.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90307,6 +91970,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "exclusiveMinimum":
 			if err := func() error {
+				s.ExclusiveMinimum.Reset()
 				if err := s.ExclusiveMinimum.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90318,6 +91982,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "externalDocs":
 			if err := func() error {
+				s.ExternalDocs.Reset()
 				if err := s.ExternalDocs.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90329,6 +91994,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "format":
 			if err := func() error {
+				s.Format.Reset()
 				if err := s.Format.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90340,6 +92006,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "id":
 			if err := func() error {
+				s.ID.Reset()
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90351,6 +92018,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "maxItems":
 			if err := func() error {
+				s.MaxItems.Reset()
 				if err := s.MaxItems.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90362,6 +92030,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "maxLength":
 			if err := func() error {
+				s.MaxLength.Reset()
 				if err := s.MaxLength.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90373,6 +92042,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "maxProperties":
 			if err := func() error {
+				s.MaxProperties.Reset()
 				if err := s.MaxProperties.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90384,6 +92054,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "maximum":
 			if err := func() error {
+				s.Maximum.Reset()
 				if err := s.Maximum.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90395,6 +92066,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "minItems":
 			if err := func() error {
+				s.MinItems.Reset()
 				if err := s.MinItems.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90406,6 +92078,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "minLength":
 			if err := func() error {
+				s.MinLength.Reset()
 				if err := s.MinLength.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90417,6 +92090,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "minProperties":
 			if err := func() error {
+				s.MinProperties.Reset()
 				if err := s.MinProperties.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90428,6 +92102,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "minimum":
 			if err := func() error {
+				s.Minimum.Reset()
 				if err := s.Minimum.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90439,6 +92114,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "multipleOf":
 			if err := func() error {
+				s.MultipleOf.Reset()
 				if err := s.MultipleOf.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90450,6 +92126,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "not":
 			if err := func() error {
+				s.Not = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 				if err := func() error {
 					if err := elem.ReadJSON(i); err != nil {
@@ -90468,6 +92145,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "nullable":
 			if err := func() error {
+				s.Nullable.Reset()
 				if err := s.Nullable.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90479,6 +92157,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "oneOf":
 			if err := func() error {
+				s.OneOf = s.OneOf[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
@@ -90505,6 +92184,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "pattern":
 			if err := func() error {
+				s.Pattern.Reset()
 				if err := s.Pattern.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90516,6 +92196,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "$ref":
 			if err := func() error {
+				s.Ref.Reset()
 				if err := s.Ref.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90527,6 +92208,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "required":
 			if err := func() error {
+				s.Required = s.Required[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -90551,6 +92233,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "$schema":
 			if err := func() error {
+				s.Schema.Reset()
 				if err := s.Schema.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90562,6 +92245,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90573,6 +92257,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90584,6 +92269,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "uniqueItems":
 			if err := func() error {
+				s.UniqueItems.Reset()
 				if err := s.UniqueItems.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90595,6 +92281,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "x-kubernetes-embedded-resource":
 			if err := func() error {
+				s.XMinusKubernetesMinusEmbeddedMinusResource.Reset()
 				if err := s.XMinusKubernetesMinusEmbeddedMinusResource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90606,6 +92293,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "x-kubernetes-int-or-string":
 			if err := func() error {
+				s.XMinusKubernetesMinusIntMinusOrMinusString.Reset()
 				if err := s.XMinusKubernetesMinusIntMinusOrMinusString.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90617,6 +92305,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "x-kubernetes-list-map-keys":
 			if err := func() error {
+				s.XMinusKubernetesMinusListMinusMapMinusKeys = s.XMinusKubernetesMinusListMinusMapMinusKeys[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -90641,6 +92330,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "x-kubernetes-list-type":
 			if err := func() error {
+				s.XMinusKubernetesMinusListMinusType.Reset()
 				if err := s.XMinusKubernetesMinusListMinusType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90652,6 +92342,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "x-kubernetes-map-type":
 			if err := func() error {
+				s.XMinusKubernetesMinusMapMinusType.Reset()
 				if err := s.XMinusKubernetesMinusMapMinusType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90663,6 +92354,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "x-kubernetes-preserve-unknown-fields":
 			if err := func() error {
+				s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Reset()
 				if err := s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90849,6 +92541,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Read
 			return true
 		case "path":
 			if err := func() error {
+				s.Path.Reset()
 				if err := s.Path.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90860,6 +92553,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Read
 			return true
 		case "port":
 			if err := func() error {
+				s.Port.Reset()
 				if err := s.Port.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90939,6 +92633,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) R
 		switch k {
 		case "caBundle":
 			if err := func() error {
+				s.CaBundle = s.CaBundle[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem byte
@@ -90962,6 +92657,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) R
 			return true
 		case "service":
 			if err := func() error {
+				s.Service.Reset()
 				if err := s.Service.ReadJSON(i); err != nil {
 					return err
 				}
@@ -90973,6 +92669,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) R
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91046,6 +92743,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Rea
 		switch k {
 		case "clientConfig":
 			if err := func() error {
+				s.ClientConfig.Reset()
 				if err := s.ClientConfig.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91057,6 +92755,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Rea
 			return true
 		case "conversionReviewVersions":
 			if err := func() error {
+				s.ConversionReviewVersions = s.ConversionReviewVersions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91173,6 +92872,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91184,6 +92884,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91204,6 +92905,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 			return true
 		case "preferredVersion":
 			if err := func() error {
+				s.PreferredVersion.Reset()
 				if err := s.PreferredVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91215,6 +92917,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 			return true
 		case "serverAddressByClientCIDRs":
 			if err := func() error {
+				s.ServerAddressByClientCIDRs = s.ServerAddressByClientCIDRs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
@@ -91241,6 +92944,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 			return true
 		case "versions":
 			if err := func() error {
+				s.Versions = s.Versions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
@@ -91334,6 +93038,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) ReadJSON(i *json.Iterator) 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91345,6 +93050,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) ReadJSON(i *json.Iterator) 
 			return true
 		case "groups":
 			if err := func() error {
+				s.Groups = s.Groups[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1APIGroup
@@ -91371,6 +93077,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) ReadJSON(i *json.Iterator) 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91490,6 +93197,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "categories":
 			if err := func() error {
+				s.Categories = s.Categories[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91514,6 +93222,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 			return true
 		case "group":
 			if err := func() error {
+				s.Group.Reset()
 				if err := s.Group.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91552,6 +93261,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 			return true
 		case "shortNames":
 			if err := func() error {
+				s.ShortNames = s.ShortNames[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91585,6 +93295,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 			return true
 		case "storageVersionHash":
 			if err := func() error {
+				s.StorageVersionHash.Reset()
 				if err := s.StorageVersionHash.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91596,6 +93307,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 			return true
 		case "verbs":
 			if err := func() error {
+				s.Verbs = s.Verbs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91620,6 +93332,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 			return true
 		case "version":
 			if err := func() error {
+				s.Version.Reset()
 				if err := s.Version.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91701,6 +93414,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) ReadJSON(i *json.Iterato
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91721,6 +93435,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) ReadJSON(i *json.Iterato
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91732,6 +93447,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) ReadJSON(i *json.Iterato
 			return true
 		case "resources":
 			if err := func() error {
+				s.Resources = s.Resources[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1APIResource
@@ -91835,6 +93551,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91846,6 +93563,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) ReadJSON(i *json.Iterator) e
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -91857,6 +93575,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) ReadJSON(i *json.Iterator) e
 			return true
 		case "serverAddressByClientCIDRs":
 			if err := func() error {
+				s.ServerAddressByClientCIDRs = s.ServerAddressByClientCIDRs[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
@@ -91883,6 +93602,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) ReadJSON(i *json.Iterator) e
 			return true
 		case "versions":
 			if err := func() error {
+				s.Versions = s.Versions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -91989,6 +93709,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) ReadJSON(i *json.Iterator) err
 			return true
 		case "observedGeneration":
 			if err := func() error {
+				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92116,6 +93837,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92127,6 +93849,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "dryRun":
 			if err := func() error {
+				s.DryRun = s.DryRun[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -92151,6 +93874,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "gracePeriodSeconds":
 			if err := func() error {
+				s.GracePeriodSeconds.Reset()
 				if err := s.GracePeriodSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92162,6 +93886,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92173,6 +93898,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "orphanDependents":
 			if err := func() error {
+				s.OrphanDependents.Reset()
 				if err := s.OrphanDependents.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92184,6 +93910,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "preconditions":
 			if err := func() error {
+				s.Preconditions.Reset()
 				if err := s.Preconditions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92195,6 +93922,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			return true
 		case "propagationPolicy":
 			if err := func() error {
+				s.PropagationPolicy.Reset()
 				if err := s.PropagationPolicy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92383,6 +94111,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iterator)
 		switch k {
 		case "matchExpressions":
 			if err := func() error {
+				s.MatchExpressions = s.MatchExpressions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement
@@ -92492,6 +94221,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) ReadJSON(i *jso
 			return true
 		case "values":
 			if err := func() error {
+				s.Values = s.Values[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -92583,6 +94313,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) erro
 		switch k {
 		case "continue":
 			if err := func() error {
+				s.Continue.Reset()
 				if err := s.Continue.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92594,6 +94325,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) erro
 			return true
 		case "remainingItemCount":
 			if err := func() error {
+				s.RemainingItemCount.Reset()
 				if err := s.RemainingItemCount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92605,6 +94337,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) erro
 			return true
 		case "resourceVersion":
 			if err := func() error {
+				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92616,6 +94349,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) erro
 			return true
 		case "selfLink":
 			if err := func() error {
+				s.SelfLink.Reset()
 				if err := s.SelfLink.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92704,6 +94438,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92715,6 +94450,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 			return true
 		case "fieldsType":
 			if err := func() error {
+				s.FieldsType.Reset()
 				if err := s.FieldsType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92726,6 +94462,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 			return true
 		case "manager":
 			if err := func() error {
+				s.Manager.Reset()
 				if err := s.Manager.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92737,6 +94474,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 			return true
 		case "operation":
 			if err := func() error {
+				s.Operation.Reset()
 				if err := s.Operation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92748,6 +94486,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 			return true
 		case "subresource":
 			if err := func() error {
+				s.Subresource.Reset()
 				if err := s.Subresource.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92759,6 +94498,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 			return true
 		case "time":
 			if err := func() error {
+				s.Time = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -92917,6 +94657,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 		switch k {
 		case "clusterName":
 			if err := func() error {
+				s.ClusterName.Reset()
 				if err := s.ClusterName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92928,6 +94669,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "creationTimestamp":
 			if err := func() error {
+				s.CreationTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -92943,6 +94685,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "deletionGracePeriodSeconds":
 			if err := func() error {
+				s.DeletionGracePeriodSeconds.Reset()
 				if err := s.DeletionGracePeriodSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -92954,6 +94697,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "deletionTimestamp":
 			if err := func() error {
+				s.DeletionTimestamp = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -92969,6 +94713,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "finalizers":
 			if err := func() error {
+				s.Finalizers = s.Finalizers[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -92993,6 +94738,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "generateName":
 			if err := func() error {
+				s.GenerateName.Reset()
 				if err := s.GenerateName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93004,6 +94750,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "generation":
 			if err := func() error {
+				s.Generation.Reset()
 				if err := s.Generation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93015,6 +94762,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "managedFields":
 			if err := func() error {
+				s.ManagedFields = s.ManagedFields[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry
@@ -93041,6 +94789,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93052,6 +94801,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93063,6 +94813,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "ownerReferences":
 			if err := func() error {
+				s.OwnerReferences = s.OwnerReferences[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1OwnerReference
@@ -93089,6 +94840,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "resourceVersion":
 			if err := func() error {
+				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93100,6 +94852,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "selfLink":
 			if err := func() error {
+				s.SelfLink.Reset()
 				if err := s.SelfLink.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93111,6 +94864,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93200,6 +94954,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) ReadJSON(i *json.Iterator
 			return true
 		case "blockOwnerDeletion":
 			if err := func() error {
+				s.BlockOwnerDeletion.Reset()
 				if err := s.BlockOwnerDeletion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93211,6 +94966,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) ReadJSON(i *json.Iterator
 			return true
 		case "controller":
 			if err := func() error {
+				s.Controller.Reset()
 				if err := s.Controller.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93306,6 +95062,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iterator)
 		switch k {
 		case "resourceVersion":
 			if err := func() error {
+				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93317,6 +95074,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iterator)
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93486,6 +95244,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93497,6 +95256,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			return true
 		case "code":
 			if err := func() error {
+				s.Code.Reset()
 				if err := s.Code.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93508,6 +95268,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			return true
 		case "details":
 			if err := func() error {
+				s.Details.Reset()
 				if err := s.Details.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93519,6 +95280,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93530,6 +95292,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93541,6 +95304,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93552,6 +95316,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93563,6 +95328,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93636,6 +95402,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusCause) ReadJSON(i *json.Iterator) e
 		switch k {
 		case "field":
 			if err := func() error {
+				s.Field.Reset()
 				if err := s.Field.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93647,6 +95414,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusCause) ReadJSON(i *json.Iterator) e
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93658,6 +95426,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusCause) ReadJSON(i *json.Iterator) e
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93753,6 +95522,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 		switch k {
 		case "causes":
 			if err := func() error {
+				s.Causes = s.Causes[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sApimachineryPkgApisMetaV1StatusCause
@@ -93779,6 +95549,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 			return true
 		case "group":
 			if err := func() error {
+				s.Group.Reset()
 				if err := s.Group.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93790,6 +95561,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93801,6 +95573,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93812,6 +95585,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 			return true
 		case "retryAfterSeconds":
 			if err := func() error {
+				s.RetryAfterSeconds.Reset()
 				if err := s.RetryAfterSeconds.ReadJSON(i); err != nil {
 					return err
 				}
@@ -93823,6 +95597,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 			return true
 		case "uid":
 			if err := func() error {
+				s.UID.Reset()
 				if err := s.UID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94177,6 +95952,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94188,6 +95964,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94199,6 +95976,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94210,6 +95988,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json
 			return true
 		case "spec":
 			if err := func() error {
+				s.Spec.Reset()
 				if err := s.Spec.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94221,6 +96000,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json
 			return true
 		case "status":
 			if err := func() error {
+				s.Status.Reset()
 				if err := s.Status.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94300,6 +96080,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) ReadJSO
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
+				s.LastTransitionTime = nil
 				var elem IoK8sApimachineryPkgApisMetaV1Time
 				if err := func() error {
 					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
@@ -94315,6 +96096,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) ReadJSO
 			return true
 		case "message":
 			if err := func() error {
+				s.Message.Reset()
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94326,6 +96108,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) ReadJSO
 			return true
 		case "reason":
 			if err := func() error {
+				s.Reason.Reset()
 				if err := s.Reason.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94427,6 +96210,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(i *
 		switch k {
 		case "apiVersion":
 			if err := func() error {
+				s.ApiVersion.Reset()
 				if err := s.ApiVersion.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94438,6 +96222,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(i *
 			return true
 		case "items":
 			if err := func() error {
+				s.Items = s.Items[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
@@ -94464,6 +96249,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(i *
 			return true
 		case "kind":
 			if err := func() error {
+				s.Kind.Reset()
 				if err := s.Kind.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94475,6 +96261,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(i *
 			return true
 		case "metadata":
 			if err := func() error {
+				s.Metadata.Reset()
 				if err := s.Metadata.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94570,6 +96357,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 		switch k {
 		case "caBundle":
 			if err := func() error {
+				s.CaBundle = s.CaBundle[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem byte
@@ -94593,6 +96381,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 			return true
 		case "group":
 			if err := func() error {
+				s.Group.Reset()
 				if err := s.Group.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94613,6 +96402,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 			return true
 		case "insecureSkipTLSVerify":
 			if err := func() error {
+				s.InsecureSkipTLSVerify.Reset()
 				if err := s.InsecureSkipTLSVerify.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94624,6 +96414,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 			return true
 		case "service":
 			if err := func() error {
+				s.Service.Reset()
 				if err := s.Service.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94635,6 +96426,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 			return true
 		case "version":
 			if err := func() error {
+				s.Version.Reset()
 				if err := s.Version.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94714,6 +96506,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i
 		switch k {
 		case "conditions":
 			if err := func() error {
+				s.Conditions = s.Conditions[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition
@@ -94802,6 +96595,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i
 		switch k {
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94813,6 +96607,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i
 			return true
 		case "namespace":
 			if err := func() error {
+				s.Namespace.Reset()
 				if err := s.Namespace.ReadJSON(i); err != nil {
 					return err
 				}
@@ -94824,6 +96619,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i
 			return true
 		case "port":
 			if err := func() error {
+				s.Port.Reset()
 				if err := s.Port.ReadJSON(i); err != nil {
 					return err
 				}

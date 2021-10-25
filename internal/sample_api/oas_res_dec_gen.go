@@ -260,6 +260,7 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 
 			var response []string
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string

@@ -1404,6 +1404,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 
 			var response []RunnerApplication
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem RunnerApplication
@@ -4017,6 +4018,7 @@ func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response) (res
 
 			var response []RunnerApplication
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem RunnerApplication
@@ -4522,6 +4524,7 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []Cre
 
 			var response []CredentialAuthorization
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CredentialAuthorization
@@ -5515,6 +5518,7 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res []SimpleUser,
 
 			var response []SimpleUser
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleUser
@@ -6286,6 +6290,7 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res []
 
 			var response []OrganizationInvitation
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem OrganizationInvitation
@@ -6426,6 +6431,7 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res []TeamProjec
 
 			var response []TeamProject
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem TeamProject
@@ -6562,6 +6568,7 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res []MinimalReposi
 
 			var response []MinimalRepository
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MinimalRepository
@@ -6747,6 +6754,7 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res []Team, err err
 
 			var response []Team
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Team
@@ -8409,6 +8417,7 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (re
 
 			var response []RunnerApplication
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem RunnerApplication
@@ -8624,6 +8633,7 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []Environme
 
 			var response []EnvironmentApprovals
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EnvironmentApprovals
@@ -9218,6 +9228,7 @@ func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, err 
 
 			var response []Autolink
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Autolink
@@ -10415,6 +10426,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res []CheckAnnota
 
 			var response []CheckAnnotation
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CheckAnnotation
@@ -11255,6 +11267,7 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res []Co
 
 			var response []CommitComment
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CommitComment
@@ -11570,6 +11583,7 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res []Commit
 
 			var response []CommitComment
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem CommitComment
@@ -12188,6 +12202,7 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res []GitRef, err e
 
 			var response []GitRef
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GitRef
@@ -12611,6 +12626,7 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLar
 
 			var response []PorterLargeFile
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PorterLargeFile
@@ -12713,6 +12729,7 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res []RepositoryIn
 
 			var response []RepositoryInvitation
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem RepositoryInvitation
@@ -13184,6 +13201,7 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res []DeployKey, er
 
 			var response []DeployKey
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem DeployKey
@@ -13741,6 +13759,7 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res []Labe
 
 			var response []Label
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Label
@@ -13790,6 +13809,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 
 			var response []Thread
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Thread
@@ -13930,6 +13950,7 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res []PageBuild, e
 
 			var response []PageBuild
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PageBuild
@@ -14483,6 +14504,7 @@ func decodePullsListCommitsResponse(resp *http.Response) (res []Commit, err erro
 
 			var response []Commit
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Commit
@@ -14583,6 +14605,7 @@ func decodePullsListReviewsResponse(resp *http.Response) (res []PullRequestRevie
 
 			var response []PullRequestReview
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PullRequestReview
@@ -15506,6 +15529,7 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res []ReleaseAss
 
 			var response []ReleaseAsset
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ReleaseAsset
@@ -15955,6 +15979,7 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res []Simpl
 
 			var response []SimpleUser
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleUser
@@ -16110,6 +16135,7 @@ func decodeReposListTagsResponse(resp *http.Response) (res []Tag, err error) {
 
 			var response []Tag
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Tag
@@ -16174,6 +16200,7 @@ func decodeReposListTeamsResponse(resp *http.Response) (res []Team, err error) {
 
 			var response []Team
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Team
@@ -17533,6 +17560,7 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res [
 
 			var response []OrganizationInvitation
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem OrganizationInvitation
@@ -20838,6 +20866,7 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res []SimpleU
 
 			var response []SimpleUser
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleUser
@@ -20887,6 +20916,7 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res []SimpleU
 
 			var response []SimpleUser
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem SimpleUser
@@ -20953,6 +20983,7 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res []GpgKey, e
 
 			var response []GpgKey
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GpgKey
@@ -21002,6 +21033,7 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res []KeySim
 
 			var response []KeySimple
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem KeySimple
@@ -21051,6 +21083,7 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res []OrganizationSimpl
 
 			var response []OrganizationSimple
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem OrganizationSimple
@@ -21202,6 +21235,7 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res []Mi
 
 			var response []MinimalRepository
 			if err := func() error {
+				response = response[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MinimalRepository

@@ -93,6 +93,7 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -699,11 +700,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "birthday":
 			if err := func() error {
 				v, err := json.ReadDate(i)
+				s.Birthday = v
 				if err != nil {
 					return err
 				}
-
-				s.Birthday = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -712,6 +712,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "friends":
 			if err := func() error {
+				s.Friends = s.Friends[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Pet
@@ -748,11 +749,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "ip":
 			if err := func() error {
 				v, err := json.ReadIP(i)
+				s.IP = v
 				if err != nil {
 					return err
 				}
-
-				s.IP = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -762,11 +762,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "ip_v4":
 			if err := func() error {
 				v, err := json.ReadIP(i)
+				s.IPV4 = v
 				if err != nil {
 					return err
 				}
-
-				s.IPV4 = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -776,11 +775,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "ip_v6":
 			if err := func() error {
 				v, err := json.ReadIP(i)
+				s.IPV6 = v
 				if err != nil {
 					return err
 				}
-
-				s.IPV6 = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -807,6 +805,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "next":
 			if err := func() error {
+				s.Next.Reset()
 				if err := s.Next.ReadJSON(i); err != nil {
 					return err
 				}
@@ -829,6 +828,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "nullStr":
 			if err := func() error {
+				s.NullStr.Reset()
 				if err := s.NullStr.ReadJSON(i); err != nil {
 					return err
 				}
@@ -840,6 +840,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "primary":
 			if err := func() error {
+				s.Primary = nil
 				var elem Pet
 				if err := func() error {
 					if err := elem.ReadJSON(i); err != nil {
@@ -859,11 +860,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "rate":
 			if err := func() error {
 				v, err := json.ReadDuration(i)
+				s.Rate = v
 				if err != nil {
 					return err
 				}
-
-				s.Rate = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -872,6 +872,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tag":
 			if err := func() error {
+				s.Tag.Reset()
 				if err := s.Tag.ReadJSON(i); err != nil {
 					return err
 				}
@@ -883,10 +884,12 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testArray1":
 			if err := func() error {
+				s.TestArray1 = s.TestArray1[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem []string
 					if err := func() error {
+						elem = elem[:0]
 						var retErr error
 						i.ReadArrayCB(func(i *json.Iterator) bool {
 							var elemElem string
@@ -922,6 +925,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testDate":
 			if err := func() error {
+				s.TestDate.Reset()
 				if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
 					return err
 				}
@@ -933,6 +937,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testDateTime":
 			if err := func() error {
+				s.TestDateTime.Reset()
 				if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
@@ -944,6 +949,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testDuration":
 			if err := func() error {
+				s.TestDuration.Reset()
 				if err := s.TestDuration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -955,6 +961,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testFloat1":
 			if err := func() error {
+				s.TestFloat1.Reset()
 				if err := s.TestFloat1.ReadJSON(i); err != nil {
 					return err
 				}
@@ -966,6 +973,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testInteger1":
 			if err := func() error {
+				s.TestInteger1.Reset()
 				if err := s.TestInteger1.ReadJSON(i); err != nil {
 					return err
 				}
@@ -977,6 +985,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testTime":
 			if err := func() error {
+				s.TestTime.Reset()
 				if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
 					return err
 				}
@@ -988,6 +997,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1000,11 +1010,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "uri":
 			if err := func() error {
 				v, err := json.ReadURI(i)
+				s.URI = v
 				if err != nil {
 					return err
 				}
-
-				s.URI = v
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1014,11 +1023,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "unique_id":
 			if err := func() error {
 				v, err := json.ReadUUID(i)
+				s.UniqueID = v
 				if err != nil {
 					return err
 				}
-
-				s.UniqueID = v
 				return i.Error
 			}(); err != nil {
 				retErr = err

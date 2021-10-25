@@ -141,6 +141,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_name":
 			if err := func() error {
+				s.FileName.Reset()
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -152,6 +153,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -181,6 +183,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mime_type":
 			if err := func() error {
+				s.MimeType.Reset()
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -192,6 +195,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "thumb":
 			if err := func() error {
+				s.Thumb.Reset()
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -316,6 +320,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_name":
 			if err := func() error {
+				s.FileName.Reset()
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -327,6 +332,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -347,6 +353,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mime_type":
 			if err := func() error {
+				s.MimeType.Reset()
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -358,6 +365,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "performer":
 			if err := func() error {
+				s.Performer.Reset()
 				if err := s.Performer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -369,6 +377,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "thumb":
 			if err := func() error {
+				s.Thumb.Reset()
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -380,6 +389,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -571,6 +581,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "bio":
 			if err := func() error {
+				s.Bio.Reset()
 				if err := s.Bio.ReadJSON(i); err != nil {
 					return err
 				}
@@ -582,6 +593,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_set_sticker_set":
 			if err := func() error {
+				s.CanSetStickerSet.Reset()
 				if err := s.CanSetStickerSet.ReadJSON(i); err != nil {
 					return err
 				}
@@ -593,6 +605,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -604,6 +617,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "first_name":
 			if err := func() error {
+				s.FirstName.Reset()
 				if err := s.FirstName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -624,6 +638,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "invite_link":
 			if err := func() error {
+				s.InviteLink.Reset()
 				if err := s.InviteLink.ReadJSON(i); err != nil {
 					return err
 				}
@@ -635,6 +650,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "last_name":
 			if err := func() error {
+				s.LastName.Reset()
 				if err := s.LastName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -646,6 +662,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "linked_chat_id":
 			if err := func() error {
+				s.LinkedChatID.Reset()
 				if err := s.LinkedChatID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -657,6 +674,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -668,6 +686,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_auto_delete_time":
 			if err := func() error {
+				s.MessageAutoDeleteTime.Reset()
 				if err := s.MessageAutoDeleteTime.ReadJSON(i); err != nil {
 					return err
 				}
@@ -679,6 +698,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "permissions":
 			if err := func() error {
+				s.Permissions.Reset()
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -690,6 +710,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo":
 			if err := func() error {
+				s.Photo.Reset()
 				if err := s.Photo.ReadJSON(i); err != nil {
 					return err
 				}
@@ -701,6 +722,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pinned_message":
 			if err := func() error {
+				s.PinnedMessage.Reset()
 				if err := s.PinnedMessage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -712,6 +734,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "slow_mode_delay":
 			if err := func() error {
+				s.SlowModeDelay.Reset()
 				if err := s.SlowModeDelay.ReadJSON(i); err != nil {
 					return err
 				}
@@ -723,6 +746,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sticker_set_name":
 			if err := func() error {
+				s.StickerSetName.Reset()
 				if err := s.StickerSetName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -734,6 +758,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -754,6 +779,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "username":
 			if err := func() error {
+				s.Username.Reset()
 				if err := s.Username.ReadJSON(i); err != nil {
 					return err
 				}
@@ -925,6 +951,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "can_add_web_page_previews":
 			if err := func() error {
+				s.CanAddWebPagePreviews.Reset()
 				if err := s.CanAddWebPagePreviews.ReadJSON(i); err != nil {
 					return err
 				}
@@ -936,6 +963,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_change_info":
 			if err := func() error {
+				s.CanChangeInfo.Reset()
 				if err := s.CanChangeInfo.ReadJSON(i); err != nil {
 					return err
 				}
@@ -947,6 +975,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_invite_users":
 			if err := func() error {
+				s.CanInviteUsers.Reset()
 				if err := s.CanInviteUsers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -958,6 +987,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_pin_messages":
 			if err := func() error {
+				s.CanPinMessages.Reset()
 				if err := s.CanPinMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -969,6 +999,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_send_media_messages":
 			if err := func() error {
+				s.CanSendMediaMessages.Reset()
 				if err := s.CanSendMediaMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -980,6 +1011,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_send_messages":
 			if err := func() error {
+				s.CanSendMessages.Reset()
 				if err := s.CanSendMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -991,6 +1023,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_send_other_messages":
 			if err := func() error {
+				s.CanSendOtherMessages.Reset()
 				if err := s.CanSendOtherMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1002,6 +1035,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_send_polls":
 			if err := func() error {
+				s.CanSendPolls.Reset()
 				if err := s.CanSendPolls.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1185,6 +1219,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "last_name":
 			if err := func() error {
+				s.LastName.Reset()
 				if err := s.LastName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1205,6 +1240,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "user_id":
 			if err := func() error {
+				s.UserID.Reset()
 				if err := s.UserID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1216,6 +1252,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "vcard":
 			if err := func() error {
+				s.Vcard.Reset()
 				if err := s.Vcard.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1380,6 +1417,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_name":
 			if err := func() error {
+				s.FileName.Reset()
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1391,6 +1429,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1411,6 +1450,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mime_type":
 			if err := func() error {
+				s.MimeType.Reset()
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1422,6 +1462,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 			return true
 		case "thumb":
 			if err := func() error {
+				s.Thumb.Reset()
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1579,6 +1620,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "animation":
 			if err := func() error {
+				s.Animation.Reset()
 				if err := s.Animation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1599,6 +1641,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 			return true
 		case "text":
 			if err := func() error {
+				s.Text.Reset()
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1893,6 +1936,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "heading":
 			if err := func() error {
+				s.Heading.Reset()
 				if err := s.Heading.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1904,6 +1948,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 			return true
 		case "horizontal_accuracy":
 			if err := func() error {
+				s.HorizontalAccuracy.Reset()
 				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1924,6 +1969,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 			return true
 		case "live_period":
 			if err := func() error {
+				s.LivePeriod.Reset()
 				if err := s.LivePeriod.ReadJSON(i); err != nil {
 					return err
 				}
@@ -1944,6 +1990,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 			return true
 		case "proximity_alert_radius":
 			if err := func() error {
+				s.ProximityAlertRadius.Reset()
 				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2333,6 +2380,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "animation":
 			if err := func() error {
+				s.Animation.Reset()
 				if err := s.Animation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2344,6 +2392,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "audio":
 			if err := func() error {
+				s.Audio.Reset()
 				if err := s.Audio.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2355,6 +2404,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "author_signature":
 			if err := func() error {
+				s.AuthorSignature.Reset()
 				if err := s.AuthorSignature.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2366,6 +2416,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2377,6 +2428,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "channel_chat_created":
 			if err := func() error {
+				s.ChannelChatCreated.Reset()
 				if err := s.ChannelChatCreated.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2388,6 +2440,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "chat":
 			if err := func() error {
+				s.Chat = nil
 				var elem Chat
 				if err := func() error {
 					if err := elem.ReadJSON(i); err != nil {
@@ -2406,6 +2459,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "connected_website":
 			if err := func() error {
+				s.ConnectedWebsite.Reset()
 				if err := s.ConnectedWebsite.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2417,6 +2471,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "contact":
 			if err := func() error {
+				s.Contact.Reset()
 				if err := s.Contact.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2437,6 +2492,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "delete_chat_photo":
 			if err := func() error {
+				s.DeleteChatPhoto.Reset()
 				if err := s.DeleteChatPhoto.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2448,6 +2504,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "dice":
 			if err := func() error {
+				s.Dice.Reset()
 				if err := s.Dice.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2459,6 +2516,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "document":
 			if err := func() error {
+				s.Document.Reset()
 				if err := s.Document.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2470,6 +2528,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "edit_date":
 			if err := func() error {
+				s.EditDate.Reset()
 				if err := s.EditDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2481,6 +2540,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forward_date":
 			if err := func() error {
+				s.ForwardDate.Reset()
 				if err := s.ForwardDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2492,6 +2552,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forward_from":
 			if err := func() error {
+				s.ForwardFrom.Reset()
 				if err := s.ForwardFrom.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2503,6 +2564,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forward_from_chat":
 			if err := func() error {
+				s.ForwardFromChat = nil
 				var elem Chat
 				if err := func() error {
 					if err := elem.ReadJSON(i); err != nil {
@@ -2521,6 +2583,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forward_from_message_id":
 			if err := func() error {
+				s.ForwardFromMessageID.Reset()
 				if err := s.ForwardFromMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2532,6 +2595,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forward_sender_name":
 			if err := func() error {
+				s.ForwardSenderName.Reset()
 				if err := s.ForwardSenderName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2543,6 +2607,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forward_signature":
 			if err := func() error {
+				s.ForwardSignature.Reset()
 				if err := s.ForwardSignature.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2554,6 +2619,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "from":
 			if err := func() error {
+				s.From.Reset()
 				if err := s.From.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2565,6 +2631,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "game":
 			if err := func() error {
+				s.Game.Reset()
 				if err := s.Game.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2576,6 +2643,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "group_chat_created":
 			if err := func() error {
+				s.GroupChatCreated.Reset()
 				if err := s.GroupChatCreated.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2587,6 +2655,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "invoice":
 			if err := func() error {
+				s.Invoice.Reset()
 				if err := s.Invoice.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2598,6 +2667,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "left_chat_member":
 			if err := func() error {
+				s.LeftChatMember.Reset()
 				if err := s.LeftChatMember.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2609,6 +2679,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
+				s.Location.Reset()
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2620,6 +2691,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "media_group_id":
 			if err := func() error {
+				s.MediaGroupID.Reset()
 				if err := s.MediaGroupID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2631,6 +2703,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_auto_delete_timer_changed":
 			if err := func() error {
+				s.MessageAutoDeleteTimerChanged.Reset()
 				if err := s.MessageAutoDeleteTimerChanged.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2651,6 +2724,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "migrate_from_chat_id":
 			if err := func() error {
+				s.MigrateFromChatID.Reset()
 				if err := s.MigrateFromChatID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2662,6 +2736,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "migrate_to_chat_id":
 			if err := func() error {
+				s.MigrateToChatID.Reset()
 				if err := s.MigrateToChatID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2673,6 +2748,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "new_chat_title":
 			if err := func() error {
+				s.NewChatTitle.Reset()
 				if err := s.NewChatTitle.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2684,6 +2760,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "passport_data":
 			if err := func() error {
+				s.PassportData.Reset()
 				if err := s.PassportData.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2695,6 +2772,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pinned_message":
 			if err := func() error {
+				s.PinnedMessage = nil
 				var elem Message
 				if err := func() error {
 					if err := elem.ReadJSON(i); err != nil {
@@ -2713,6 +2791,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "poll":
 			if err := func() error {
+				s.Poll.Reset()
 				if err := s.Poll.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2724,6 +2803,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "proximity_alert_triggered":
 			if err := func() error {
+				s.ProximityAlertTriggered.Reset()
 				if err := s.ProximityAlertTriggered.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2735,6 +2815,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message":
 			if err := func() error {
+				s.ReplyToMessage = nil
 				var elem Message
 				if err := func() error {
 					if err := elem.ReadJSON(i); err != nil {
@@ -2753,6 +2834,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sender_chat":
 			if err := func() error {
+				s.SenderChat = nil
 				var elem Chat
 				if err := func() error {
 					if err := elem.ReadJSON(i); err != nil {
@@ -2771,6 +2853,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sticker":
 			if err := func() error {
+				s.Sticker.Reset()
 				if err := s.Sticker.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2782,6 +2865,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "successful_payment":
 			if err := func() error {
+				s.SuccessfulPayment.Reset()
 				if err := s.SuccessfulPayment.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2793,6 +2877,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "supergroup_chat_created":
 			if err := func() error {
+				s.SupergroupChatCreated.Reset()
 				if err := s.SupergroupChatCreated.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2804,6 +2889,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "text":
 			if err := func() error {
+				s.Text.Reset()
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2815,6 +2901,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "venue":
 			if err := func() error {
+				s.Venue.Reset()
 				if err := s.Venue.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2826,6 +2913,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "via_bot":
 			if err := func() error {
+				s.ViaBot.Reset()
 				if err := s.ViaBot.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2837,6 +2925,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "video":
 			if err := func() error {
+				s.Video.Reset()
 				if err := s.Video.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2848,6 +2937,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "video_note":
 			if err := func() error {
+				s.VideoNote.Reset()
 				if err := s.VideoNote.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2859,6 +2949,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "voice":
 			if err := func() error {
+				s.Voice.Reset()
 				if err := s.Voice.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2870,6 +2961,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "voice_chat_ended":
 			if err := func() error {
+				s.VoiceChatEnded.Reset()
 				if err := s.VoiceChatEnded.ReadJSON(i); err != nil {
 					return err
 				}
@@ -2881,6 +2973,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "voice_chat_scheduled":
 			if err := func() error {
+				s.VoiceChatScheduled.Reset()
 				if err := s.VoiceChatScheduled.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3670,6 +3763,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "email":
 			if err := func() error {
+				s.Email.Reset()
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3681,6 +3775,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "name":
 			if err := func() error {
+				s.Name.Reset()
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3692,6 +3787,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "phone_number":
 			if err := func() error {
+				s.PhoneNumber.Reset()
 				if err := s.PhoneNumber.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3703,6 +3799,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "shipping_address":
 			if err := func() error {
+				s.ShippingAddress.Reset()
 				if err := s.ShippingAddress.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3848,6 +3945,7 @@ func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3983,6 +4081,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "close_date":
 			if err := func() error {
+				s.CloseDate.Reset()
 				if err := s.CloseDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -3994,6 +4093,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "correct_option_id":
 			if err := func() error {
+				s.CorrectOptionID.Reset()
 				if err := s.CorrectOptionID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4005,6 +4105,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "explanation":
 			if err := func() error {
+				s.Explanation.Reset()
 				if err := s.Explanation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4043,6 +4144,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "open_period":
 			if err := func() error {
+				s.OpenPeriod.Reset()
 				if err := s.OpenPeriod.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4232,6 +4334,7 @@ func (s *Result) ReadJSON(i *json.Iterator) error {
 			return true
 		case "result":
 			if err := func() error {
+				s.Result.Reset()
 				if err := s.Result.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4449,6 +4552,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "emoji":
 			if err := func() error {
+				s.Emoji.Reset()
 				if err := s.Emoji.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4469,6 +4573,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4507,6 +4612,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mask_position":
 			if err := func() error {
+				s.MaskPosition.Reset()
 				if err := s.MaskPosition.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4518,6 +4624,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "set_name":
 			if err := func() error {
+				s.SetName.Reset()
 				if err := s.SetName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4529,6 +4636,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "thumb":
 			if err := func() error {
+				s.Thumb.Reset()
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4639,6 +4747,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "order_info":
 			if err := func() error {
+				s.OrderInfo.Reset()
 				if err := s.OrderInfo.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4659,6 +4768,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 			return true
 		case "shipping_option_id":
 			if err := func() error {
+				s.ShippingOptionID.Reset()
 				if err := s.ShippingOptionID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4774,6 +4884,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "can_join_groups":
 			if err := func() error {
+				s.CanJoinGroups.Reset()
 				if err := s.CanJoinGroups.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4785,6 +4896,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_read_all_group_messages":
 			if err := func() error {
+				s.CanReadAllGroupMessages.Reset()
 				if err := s.CanReadAllGroupMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4823,6 +4935,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "language_code":
 			if err := func() error {
+				s.LanguageCode.Reset()
 				if err := s.LanguageCode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4834,6 +4947,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "last_name":
 			if err := func() error {
+				s.LastName.Reset()
 				if err := s.LastName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4845,6 +4959,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "supports_inline_queries":
 			if err := func() error {
+				s.SupportsInlineQueries.Reset()
 				if err := s.SupportsInlineQueries.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4856,6 +4971,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		case "username":
 			if err := func() error {
+				s.Username.Reset()
 				if err := s.Username.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4952,6 +5068,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "foursquare_id":
 			if err := func() error {
+				s.FoursquareID.Reset()
 				if err := s.FoursquareID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4963,6 +5080,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "foursquare_type":
 			if err := func() error {
+				s.FoursquareType.Reset()
 				if err := s.FoursquareType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4974,6 +5092,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "google_place_id":
 			if err := func() error {
+				s.GooglePlaceID.Reset()
 				if err := s.GooglePlaceID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4985,6 +5104,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "google_place_type":
 			if err := func() error {
+				s.GooglePlaceType.Reset()
 				if err := s.GooglePlaceType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5116,6 +5236,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_name":
 			if err := func() error {
+				s.FileName.Reset()
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5127,6 +5248,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5156,6 +5278,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mime_type":
 			if err := func() error {
+				s.MimeType.Reset()
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5167,6 +5290,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 			return true
 		case "thumb":
 			if err := func() error {
+				s.Thumb.Reset()
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5274,6 +5398,7 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5303,6 +5428,7 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "thumb":
 			if err := func() error {
+				s.Thumb.Reset()
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5398,6 +5524,7 @@ func (s *Voice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "file_size":
 			if err := func() error {
+				s.FileSize.Reset()
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5418,6 +5545,7 @@ func (s *Voice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mime_type":
 			if err := func() error {
+				s.MimeType.Reset()
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5716,6 +5844,7 @@ func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mask_position":
 			if err := func() error {
+				s.MaskPosition.Reset()
 				if err := s.MaskPosition.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5736,6 +5865,7 @@ func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tgs_sticker":
 			if err := func() error {
+				s.TgsSticker.Reset()
 				if err := s.TgsSticker.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5826,6 +5956,7 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "cache_time":
 			if err := func() error {
+				s.CacheTime.Reset()
 				if err := s.CacheTime.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5846,6 +5977,7 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "show_alert":
 			if err := func() error {
+				s.ShowAlert.Reset()
 				if err := s.ShowAlert.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5857,6 +5989,7 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "text":
 			if err := func() error {
+				s.Text.Reset()
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5868,6 +6001,7 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "url":
 			if err := func() error {
+				s.URL.Reset()
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5954,6 +6088,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "cache_time":
 			if err := func() error {
+				s.CacheTime.Reset()
 				if err := s.CacheTime.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5974,6 +6109,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_personal":
 			if err := func() error {
+				s.IsPersonal.Reset()
 				if err := s.IsPersonal.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5985,6 +6121,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "next_offset":
 			if err := func() error {
+				s.NextOffset.Reset()
 				if err := s.NextOffset.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5996,6 +6133,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "switch_pm_parameter":
 			if err := func() error {
+				s.SwitchPmParameter.Reset()
 				if err := s.SwitchPmParameter.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6007,6 +6145,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		case "switch_pm_text":
 			if err := func() error {
+				s.SwitchPmText.Reset()
 				if err := s.SwitchPmText.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6076,6 +6215,7 @@ func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "error_message":
 			if err := func() error {
+				s.ErrorMessage.Reset()
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6163,6 +6303,7 @@ func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "error_message":
 			if err := func() error {
+				s.ErrorMessage.Reset()
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6252,6 +6393,7 @@ func (s *BanChatMember) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "revoke_messages":
 			if err := func() error {
+				s.RevokeMessages.Reset()
 				if err := s.RevokeMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6263,6 +6405,7 @@ func (s *BanChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "until_date":
 			if err := func() error {
+				s.UntilDate.Reset()
 				if err := s.UntilDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6358,6 +6501,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6369,6 +6513,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6380,6 +6525,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6400,6 +6546,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6411,6 +6558,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6479,6 +6627,7 @@ func (s *CreateChatInviteLink) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "expire_date":
 			if err := func() error {
+				s.ExpireDate.Reset()
 				if err := s.ExpireDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6490,6 +6639,7 @@ func (s *CreateChatInviteLink) ReadJSON(i *json.Iterator) error {
 			return true
 		case "member_limit":
 			if err := func() error {
+				s.MemberLimit.Reset()
 				if err := s.MemberLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6575,6 +6725,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "contains_masks":
 			if err := func() error {
+				s.ContainsMasks.Reset()
 				if err := s.ContainsMasks.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6595,6 +6746,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "mask_position":
 			if err := func() error {
+				s.MaskPosition.Reset()
 				if err := s.MaskPosition.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6615,6 +6767,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tgs_sticker":
 			if err := func() error {
+				s.TgsSticker.Reset()
 				if err := s.TgsSticker.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6849,6 +7002,7 @@ func (s *DeleteMyCommands) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "language_code":
 			if err := func() error {
+				s.LanguageCode.Reset()
 				if err := s.LanguageCode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -6971,6 +7125,7 @@ func (s *DeleteWebhook) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "drop_pending_updates":
 			if err := func() error {
+				s.DropPendingUpdates.Reset()
 				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7042,6 +7197,7 @@ func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "expire_date":
 			if err := func() error {
+				s.ExpireDate.Reset()
 				if err := s.ExpireDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7062,6 +7218,7 @@ func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
 			return true
 		case "member_limit":
 			if err := func() error {
+				s.MemberLimit.Reset()
 				if err := s.MemberLimit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7140,6 +7297,7 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7151,6 +7309,7 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7162,6 +7321,7 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7173,6 +7333,7 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7262,6 +7423,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "heading":
 			if err := func() error {
+				s.Heading.Reset()
 				if err := s.Heading.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7273,6 +7435,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "horizontal_accuracy":
 			if err := func() error {
+				s.HorizontalAccuracy.Reset()
 				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7284,6 +7447,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7313,6 +7477,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7324,6 +7489,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "proximity_alert_radius":
 			if err := func() error {
+				s.ProximityAlertRadius.Reset()
 				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7392,6 +7558,7 @@ func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7403,6 +7570,7 @@ func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7471,6 +7639,7 @@ func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7482,6 +7651,7 @@ func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7563,6 +7733,7 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "disable_web_page_preview":
 			if err := func() error {
+				s.DisableWebPagePreview.Reset()
 				if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7574,6 +7745,7 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 			return true
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7585,6 +7757,7 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7596,6 +7769,7 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -7718,6 +7892,7 @@ func (s *ForwardMessage) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8062,6 +8237,7 @@ func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chat_id":
 			if err := func() error {
+				s.ChatID.Reset()
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8073,6 +8249,7 @@ func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
 			return true
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8084,6 +8261,7 @@ func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8156,6 +8334,7 @@ func (s *GetMyCommands) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "language_code":
 			if err := func() error {
+				s.LanguageCode.Reset()
 				if err := s.LanguageCode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8288,6 +8467,7 @@ func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "limit":
 			if err := func() error {
+				s.Limit.Reset()
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8299,6 +8479,7 @@ func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
 			return true
 		case "offset":
 			if err := func() error {
+				s.Offset.Reset()
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8310,6 +8491,7 @@ func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
 			return true
 		case "timeout":
 			if err := func() error {
+				s.Timeout.Reset()
 				if err := s.Timeout.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8381,6 +8563,7 @@ func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "limit":
 			if err := func() error {
+				s.Limit.Reset()
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8392,6 +8575,7 @@ func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
 			return true
 		case "offset":
 			if err := func() error {
+				s.Offset.Reset()
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8514,6 +8698,7 @@ func (s *PinChatMessage) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8639,6 +8824,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "can_change_info":
 			if err := func() error {
+				s.CanChangeInfo.Reset()
 				if err := s.CanChangeInfo.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8650,6 +8836,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_delete_messages":
 			if err := func() error {
+				s.CanDeleteMessages.Reset()
 				if err := s.CanDeleteMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8661,6 +8848,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_edit_messages":
 			if err := func() error {
+				s.CanEditMessages.Reset()
 				if err := s.CanEditMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8672,6 +8860,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_invite_users":
 			if err := func() error {
+				s.CanInviteUsers.Reset()
 				if err := s.CanInviteUsers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8683,6 +8872,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_manage_chat":
 			if err := func() error {
+				s.CanManageChat.Reset()
 				if err := s.CanManageChat.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8694,6 +8884,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_manage_voice_chats":
 			if err := func() error {
+				s.CanManageVoiceChats.Reset()
 				if err := s.CanManageVoiceChats.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8705,6 +8896,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_pin_messages":
 			if err := func() error {
+				s.CanPinMessages.Reset()
 				if err := s.CanPinMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8716,6 +8908,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_post_messages":
 			if err := func() error {
+				s.CanPostMessages.Reset()
 				if err := s.CanPostMessages.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8727,6 +8920,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_promote_members":
 			if err := func() error {
+				s.CanPromoteMembers.Reset()
 				if err := s.CanPromoteMembers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8738,6 +8932,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "can_restrict_members":
 			if err := func() error {
+				s.CanRestrictMembers.Reset()
 				if err := s.CanRestrictMembers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8749,6 +8944,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_anonymous":
 			if err := func() error {
+				s.IsAnonymous.Reset()
 				if err := s.IsAnonymous.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8838,6 +9034,7 @@ func (s *RestrictChatMember) ReadJSON(i *json.Iterator) error {
 			return true
 		case "until_date":
 			if err := func() error {
+				s.UntilDate.Reset()
 				if err := s.UntilDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9004,6 +9201,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9015,6 +9213,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9026,6 +9225,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9037,6 +9237,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "duration":
 			if err := func() error {
+				s.Duration.Reset()
 				if err := s.Duration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9048,6 +9249,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "height":
 			if err := func() error {
+				s.Height.Reset()
 				if err := s.Height.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9059,6 +9261,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9070,6 +9273,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9081,6 +9285,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "width":
 			if err := func() error {
+				s.Width.Reset()
 				if err := s.Width.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9179,6 +9384,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9190,6 +9396,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9201,6 +9408,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9212,6 +9420,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "duration":
 			if err := func() error {
+				s.Duration.Reset()
 				if err := s.Duration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9223,6 +9432,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9234,6 +9444,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "performer":
 			if err := func() error {
+				s.Performer.Reset()
 				if err := s.Performer.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9245,6 +9456,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9256,6 +9468,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		case "title":
 			if err := func() error {
+				s.Title.Reset()
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9404,6 +9617,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9415,6 +9629,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9435,6 +9650,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "last_name":
 			if err := func() error {
+				s.LastName.Reset()
 				if err := s.LastName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9455,6 +9671,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9466,6 +9683,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 			return true
 		case "vcard":
 			if err := func() error {
+				s.Vcard.Reset()
 				if err := s.Vcard.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9544,6 +9762,7 @@ func (s *SendDice) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9555,6 +9774,7 @@ func (s *SendDice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9566,6 +9786,7 @@ func (s *SendDice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "emoji":
 			if err := func() error {
+				s.Emoji.Reset()
 				if err := s.Emoji.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9577,6 +9798,7 @@ func (s *SendDice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9665,6 +9887,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9676,6 +9899,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9687,6 +9911,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_content_type_detection":
 			if err := func() error {
+				s.DisableContentTypeDetection.Reset()
 				if err := s.DisableContentTypeDetection.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9698,6 +9923,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9709,6 +9935,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9720,6 +9947,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9799,6 +10027,7 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9819,6 +10048,7 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9839,6 +10069,7 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -9997,6 +10228,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10026,6 +10258,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10037,6 +10270,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_flexible":
 			if err := func() error {
+				s.IsFlexible.Reset()
 				if err := s.IsFlexible.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10048,6 +10282,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "max_tip_amount":
 			if err := func() error {
+				s.MaxTipAmount.Reset()
 				if err := s.MaxTipAmount.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10059,6 +10294,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "need_email":
 			if err := func() error {
+				s.NeedEmail.Reset()
 				if err := s.NeedEmail.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10070,6 +10306,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "need_name":
 			if err := func() error {
+				s.NeedName.Reset()
 				if err := s.NeedName.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10081,6 +10318,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "need_phone_number":
 			if err := func() error {
+				s.NeedPhoneNumber.Reset()
 				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10092,6 +10330,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "need_shipping_address":
 			if err := func() error {
+				s.NeedShippingAddress.Reset()
 				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10112,6 +10351,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo_height":
 			if err := func() error {
+				s.PhotoHeight.Reset()
 				if err := s.PhotoHeight.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10123,6 +10363,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo_size":
 			if err := func() error {
+				s.PhotoSize.Reset()
 				if err := s.PhotoSize.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10134,6 +10375,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo_url":
 			if err := func() error {
+				s.PhotoURL.Reset()
 				if err := s.PhotoURL.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10145,6 +10387,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo_width":
 			if err := func() error {
+				s.PhotoWidth.Reset()
 				if err := s.PhotoWidth.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10156,6 +10399,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "provider_data":
 			if err := func() error {
+				s.ProviderData.Reset()
 				if err := s.ProviderData.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10176,6 +10420,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10187,6 +10432,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "send_email_to_provider":
 			if err := func() error {
+				s.SendEmailToProvider.Reset()
 				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10198,6 +10444,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "send_phone_number_to_provider":
 			if err := func() error {
+				s.SendPhoneNumberToProvider.Reset()
 				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10209,6 +10456,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "start_parameter":
 			if err := func() error {
+				s.StartParameter.Reset()
 				if err := s.StartParameter.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10317,6 +10565,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10328,6 +10577,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10339,6 +10589,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "heading":
 			if err := func() error {
+				s.Heading.Reset()
 				if err := s.Heading.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10350,6 +10601,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "horizontal_accuracy":
 			if err := func() error {
+				s.HorizontalAccuracy.Reset()
 				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10370,6 +10622,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "live_period":
 			if err := func() error {
+				s.LivePeriod.Reset()
 				if err := s.LivePeriod.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10390,6 +10643,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "proximity_alert_radius":
 			if err := func() error {
+				s.ProximityAlertRadius.Reset()
 				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10401,6 +10655,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10474,6 +10729,7 @@ func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10485,6 +10741,7 @@ func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10496,6 +10753,7 @@ func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10582,6 +10840,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10593,6 +10852,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10604,6 +10864,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_web_page_preview":
 			if err := func() error {
+				s.DisableWebPagePreview.Reset()
 				if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10615,6 +10876,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10626,6 +10888,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10718,6 +10981,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10729,6 +10993,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10740,6 +11005,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10751,6 +11017,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10762,6 +11029,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10883,6 +11151,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10894,6 +11163,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allows_multiple_answers":
 			if err := func() error {
+				s.AllowsMultipleAnswers.Reset()
 				if err := s.AllowsMultipleAnswers.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10905,6 +11175,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "close_date":
 			if err := func() error {
+				s.CloseDate.Reset()
 				if err := s.CloseDate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10916,6 +11187,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "correct_option_id":
 			if err := func() error {
+				s.CorrectOptionID.Reset()
 				if err := s.CorrectOptionID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10927,6 +11199,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10938,6 +11211,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "explanation":
 			if err := func() error {
+				s.Explanation.Reset()
 				if err := s.Explanation.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10949,6 +11223,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "explanation_parse_mode":
 			if err := func() error {
+				s.ExplanationParseMode.Reset()
 				if err := s.ExplanationParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10960,6 +11235,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_anonymous":
 			if err := func() error {
+				s.IsAnonymous.Reset()
 				if err := s.IsAnonymous.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10971,6 +11247,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "is_closed":
 			if err := func() error {
+				s.IsClosed.Reset()
 				if err := s.IsClosed.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10982,6 +11259,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "open_period":
 			if err := func() error {
+				s.OpenPeriod.Reset()
 				if err := s.OpenPeriod.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11002,6 +11280,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11013,6 +11292,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
+				s.Type.Reset()
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11086,6 +11366,7 @@ func (s *SendSticker) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11097,6 +11378,7 @@ func (s *SendSticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11108,6 +11390,7 @@ func (s *SendSticker) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11222,6 +11505,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11233,6 +11517,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11244,6 +11529,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "foursquare_id":
 			if err := func() error {
+				s.FoursquareID.Reset()
 				if err := s.FoursquareID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11255,6 +11541,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "foursquare_type":
 			if err := func() error {
+				s.FoursquareType.Reset()
 				if err := s.FoursquareType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11266,6 +11553,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "google_place_id":
 			if err := func() error {
+				s.GooglePlaceID.Reset()
 				if err := s.GooglePlaceID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11277,6 +11565,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "google_place_type":
 			if err := func() error {
+				s.GooglePlaceType.Reset()
 				if err := s.GooglePlaceType.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11306,6 +11595,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11418,6 +11708,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11429,6 +11720,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11440,6 +11732,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11451,6 +11744,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "duration":
 			if err := func() error {
+				s.Duration.Reset()
 				if err := s.Duration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11462,6 +11756,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "height":
 			if err := func() error {
+				s.Height.Reset()
 				if err := s.Height.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11473,6 +11768,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11484,6 +11780,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11495,6 +11792,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "supports_streaming":
 			if err := func() error {
+				s.SupportsStreaming.Reset()
 				if err := s.SupportsStreaming.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11506,6 +11804,7 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		case "width":
 			if err := func() error {
+				s.Width.Reset()
 				if err := s.Width.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11589,6 +11888,7 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11600,6 +11900,7 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11611,6 +11912,7 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "duration":
 			if err := func() error {
+				s.Duration.Reset()
 				if err := s.Duration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11622,6 +11924,7 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "length":
 			if err := func() error {
+				s.Length.Reset()
 				if err := s.Length.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11633,6 +11936,7 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11721,6 +12025,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allow_sending_without_reply":
 			if err := func() error {
+				s.AllowSendingWithoutReply.Reset()
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11732,6 +12037,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption":
 			if err := func() error {
+				s.Caption.Reset()
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11743,6 +12049,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_notification":
 			if err := func() error {
+				s.DisableNotification.Reset()
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11754,6 +12061,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "duration":
 			if err := func() error {
+				s.Duration.Reset()
 				if err := s.Duration.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11765,6 +12073,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "parse_mode":
 			if err := func() error {
+				s.ParseMode.Reset()
 				if err := s.ParseMode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11776,6 +12085,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message_id":
 			if err := func() error {
+				s.ReplyToMessageID.Reset()
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -11910,6 +12220,7 @@ func (s *SetChatDescription) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "description":
 			if err := func() error {
+				s.Description.Reset()
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12237,6 +12548,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chat_id":
 			if err := func() error {
+				s.ChatID.Reset()
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12248,6 +12560,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 			return true
 		case "disable_edit_message":
 			if err := func() error {
+				s.DisableEditMessage.Reset()
 				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12259,6 +12572,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 			return true
 		case "force":
 			if err := func() error {
+				s.Force.Reset()
 				if err := s.Force.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12270,6 +12584,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 			return true
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12281,6 +12596,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12362,6 +12678,7 @@ func (s *SetMyCommands) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "language_code":
 			if err := func() error {
+				s.LanguageCode.Reset()
 				if err := s.LanguageCode.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12644,6 +12961,7 @@ func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "certificate":
 			if err := func() error {
+				s.Certificate.Reset()
 				if err := s.Certificate.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12655,6 +12973,7 @@ func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
 			return true
 		case "drop_pending_updates":
 			if err := func() error {
+				s.DropPendingUpdates.Reset()
 				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12666,6 +12985,7 @@ func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
 			return true
 		case "ip_address":
 			if err := func() error {
+				s.IPAddress.Reset()
 				if err := s.IPAddress.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12677,6 +12997,7 @@ func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
 			return true
 		case "max_connections":
 			if err := func() error {
+				s.MaxConnections.Reset()
 				if err := s.MaxConnections.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12754,6 +13075,7 @@ func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "inline_message_id":
 			if err := func() error {
+				s.InlineMessageID.Reset()
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12765,6 +13087,7 @@ func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12890,6 +13213,7 @@ func (s *UnbanChatMember) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "only_if_banned":
 			if err := func() error {
+				s.OnlyIfBanned.Reset()
 				if err := s.OnlyIfBanned.ReadJSON(i); err != nil {
 					return err
 				}
@@ -13009,6 +13333,7 @@ func (s *UnpinChatMessage) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "message_id":
 			if err := func() error {
+				s.MessageID.Reset()
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}

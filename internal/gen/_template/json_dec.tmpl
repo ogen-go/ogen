@@ -1,6 +1,7 @@
 {{- define "dec_json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     {{- if $.Schema.IsPointer -}}
+        {{ $.Var }} = nil
         var {{ $.NextVar }} {{ $.Schema.PointerTo.Type }}
         if err := func() error {
           {{- template "dec_json_value" pointer_elem $ }}
@@ -14,11 +15,10 @@
         return i.Error
     {{- else if $.Schema.JSONHelper }}
         v, err := json.Read{{ $.Schema.JSONHelper }}(i)
+        {{ $.Var }} = v
         if err != nil {
             return err
         }
-
-        {{ $.Var }} = v
         return i.Error
     {{- else if or ($.Schema.IsStruct) ($.Schema.IsEnum) }}
         if err := {{ $.Var }}.ReadJSON(i); err != nil {
@@ -26,6 +26,7 @@
         }
         return i.Error
     {{- else if $.Schema.IsArray }}
+        {{ $.Var }} = {{ $.Var }}[:0]
         var retErr error
         i.ReadArrayCB(func(i *json.Iterator) bool {
            var {{ $.NextVar }} {{ $.Schema.Item.Type }}
@@ -43,6 +44,9 @@
         }
         return i.Error
     {{- else if $.Schema.GenericOf }}
+        {{- if $.Schema.GenericVariant.Optional }}
+          {{ $.Var }}.Reset()
+        {{- end }}
         {{- $g := $.Schema.GenericOf }}
         {{- if $g.FormatCustom }}
           if err := {{ $.Var }}.ReadJSON(i, json.Read{{ $g.JSONHelper }}); err != nil {
