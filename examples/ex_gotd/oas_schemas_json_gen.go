@@ -2388,7 +2388,17 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "chat":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*Chat" (pointer) is not implemented`)
+				var elem Chat
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Chat = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2493,7 +2503,17 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "forward_from_chat":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*Chat" (pointer) is not implemented`)
+				var elem Chat
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.ForwardFromChat = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2675,7 +2695,17 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pinned_message":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*Message" (pointer) is not implemented`)
+				var elem Message
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.PinnedMessage = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2705,7 +2735,17 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_to_message":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*Message" (pointer) is not implemented`)
+				var elem Message
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.ReplyToMessage = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2713,7 +2753,17 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sender_chat":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "*Chat" (pointer) is not implemented`)
+				var elem Chat
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.SenderChat = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
