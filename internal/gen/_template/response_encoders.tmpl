@@ -49,7 +49,7 @@ j := json.NewStream(w)
 defer json.PutStream(j)
 more := json.NewMore(j)
 defer more.Reset()
-{{ template "enc_json__value" resp_elem $ }}
+{{ template "enc_json_value" resp_elem $ }}
 if err := j.Flush(); err != nil {
     return err
 }
