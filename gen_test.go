@@ -44,6 +44,8 @@ func TestGenerate(t *testing.T) {
 					"nullable",
 					"array parameter with complex type",
 					"optional nullable array",
+					"requestBody with primitive type",
+					"response with primitive type",
 				},
 			},
 		},
@@ -52,6 +54,12 @@ func TestGenerate(t *testing.T) {
 		},
 		{
 			Name: "nh.jqon",
+			Options: gen.Options{
+				IgnoreNotImplemented: []string{
+					"requestBody with primitive type",
+					"response with primitive type",
+				},
+			},
 		},
 		{
 			Name: "techempower.json",
@@ -74,6 +82,10 @@ func TestGenerate(t *testing.T) {
 			Name: "k8s.json",
 			Options: gen.Options{
 				IgnoreUnspecifiedParams: true,
+				IgnoreNotImplemented: []string{
+					"requestBody with primitive type",
+					"response with primitive type",
+				},
 			},
 		},
 	} {
