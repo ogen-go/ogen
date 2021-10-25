@@ -50,7 +50,7 @@ func TestGenerate(t *testing.T) {
 			},
 		},
 		{
-			Name: "sample_1.json",
+			Name: "sample.json",
 		},
 		{
 			Name: "nh.json",
