@@ -46,8 +46,6 @@ func (p PrimitiveType) String() string {
 		return "url.URL"
 	case Bool:
 		return "bool"
-	case EmptyStruct:
-		return "struct{}"
 	default:
 		panic(fmt.Sprintf("unexpected PrimitiveType: %d", p))
 	}
@@ -74,5 +72,4 @@ const (
 	IP
 	URL
 	Bool
-	EmptyStruct
 )

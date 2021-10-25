@@ -133,7 +133,7 @@ func (g *Generator) generateResponse(respName string, resp ogen.Response) (*ast.
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := ast.Alias(respName, ast.Primitive(ast.EmptyStruct))
+		s := ast.Struct(respName)
 		g.schemas[s.Name] = s
 		response.NoContent = s
 		return response, nil

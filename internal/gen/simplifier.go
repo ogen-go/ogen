@@ -119,13 +119,6 @@ func (g *Generator) unwrapAlias(schema *ast.Schema) (*ast.Schema, bool) {
 		return schema, false
 	}
 
-	to := schema.AliasTo
-	if to.Is(ast.KindPrimitive) {
-		if to.Primitive == ast.EmptyStruct {
-			return schema, false
-		}
-	}
-
 	delete(g.schemas, schema.Name)
 	return schema.AliasTo, true
 }

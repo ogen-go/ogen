@@ -136,10 +136,6 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 	switch schema.Type {
 	case "object":
-		if len(schema.Properties) == 0 {
-			return sideEffect(ast.Primitive(ast.EmptyStruct)), nil
-		}
-
 		if schema.Items != nil {
 			return nil, xerrors.New("object cannot contain 'items' field")
 		}

@@ -56,8 +56,8 @@ func (s Schema) JSONFields() []SchemaField {
 
 func (s Schema) CanGeneric() bool {
 	switch s.Kind {
-	case KindPrimitive:
-		if s.Primitive == EmptyStruct {
+	case KindStruct:
+		if len(s.Fields) == 0 {
 			return false
 		}
 	case KindArray:
@@ -79,7 +79,7 @@ const (
 )
 
 func (s Schema) BlankStruct() bool {
-	if s.Primitive == EmptyStruct {
+	if s.Kind == KindStruct && len(s.Fields) == 0 {
 		return true
 	}
 	if s.PointerTo != nil && s.PointerTo.BlankStruct() {
