@@ -51,16 +51,16 @@ var (
 )
 
 func decodeAnswerCallbackQueryPostResponse(resp *http.Response) (res AnswerCallbackQueryPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -82,8 +82,17 @@ func decodeAnswerCallbackQueryPostResponse(resp *http.Response) (res AnswerCallb
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -96,16 +105,16 @@ func decodeAnswerCallbackQueryPostResponse(resp *http.Response) (res AnswerCallb
 }
 
 func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response) (res AnswerPreCheckoutQueryPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -127,8 +136,17 @@ func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response) (res AnswerPr
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -141,16 +159,16 @@ func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response) (res AnswerPr
 }
 
 func decodeAnswerShippingQueryPostResponse(resp *http.Response) (res AnswerShippingQueryPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -172,8 +190,17 @@ func decodeAnswerShippingQueryPostResponse(resp *http.Response) (res AnswerShipp
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -186,16 +213,16 @@ func decodeAnswerShippingQueryPostResponse(resp *http.Response) (res AnswerShipp
 }
 
 func decodeClosePostResponse(resp *http.Response) (res ClosePostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -217,8 +244,17 @@ func decodeClosePostResponse(resp *http.Response) (res ClosePostRes, err error) 
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -231,16 +267,16 @@ func decodeClosePostResponse(resp *http.Response) (res ClosePostRes, err error) 
 }
 
 func decodeDeleteStickerFromSetPostResponse(resp *http.Response) (res DeleteStickerFromSetPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -262,8 +298,17 @@ func decodeDeleteStickerFromSetPostResponse(resp *http.Response) (res DeleteStic
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -276,16 +321,16 @@ func decodeDeleteStickerFromSetPostResponse(resp *http.Response) (res DeleteStic
 }
 
 func decodeDeleteWebhookPostResponse(resp *http.Response) (res DeleteWebhookPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -307,8 +352,17 @@ func decodeDeleteWebhookPostResponse(resp *http.Response) (res DeleteWebhookPost
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -321,16 +375,16 @@ func decodeDeleteWebhookPostResponse(resp *http.Response) (res DeleteWebhookPost
 }
 
 func decodeGetFilePostResponse(resp *http.Response) (res GetFilePostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -352,8 +406,17 @@ func decodeGetFilePostResponse(resp *http.Response) (res GetFilePostRes, err err
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -366,16 +429,16 @@ func decodeGetFilePostResponse(resp *http.Response) (res GetFilePostRes, err err
 }
 
 func decodeGetGameHighScoresPostResponse(resp *http.Response) (res GetGameHighScoresPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -397,8 +460,17 @@ func decodeGetGameHighScoresPostResponse(resp *http.Response) (res GetGameHighSc
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -411,16 +483,16 @@ func decodeGetGameHighScoresPostResponse(resp *http.Response) (res GetGameHighSc
 }
 
 func decodeGetMePostResponse(resp *http.Response) (res GetMePostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -442,8 +514,17 @@ func decodeGetMePostResponse(resp *http.Response) (res GetMePostRes, err error) 
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -456,16 +537,16 @@ func decodeGetMePostResponse(resp *http.Response) (res GetMePostRes, err error) 
 }
 
 func decodeGetMyCommandsPostResponse(resp *http.Response) (res GetMyCommandsPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -487,8 +568,17 @@ func decodeGetMyCommandsPostResponse(resp *http.Response) (res GetMyCommandsPost
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -501,16 +591,16 @@ func decodeGetMyCommandsPostResponse(resp *http.Response) (res GetMyCommandsPost
 }
 
 func decodeGetStickerSetPostResponse(resp *http.Response) (res GetStickerSetPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -532,8 +622,17 @@ func decodeGetStickerSetPostResponse(resp *http.Response) (res GetStickerSetPost
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -546,16 +645,16 @@ func decodeGetStickerSetPostResponse(resp *http.Response) (res GetStickerSetPost
 }
 
 func decodeGetUpdatesPostResponse(resp *http.Response) (res GetUpdatesPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -577,8 +676,17 @@ func decodeGetUpdatesPostResponse(resp *http.Response) (res GetUpdatesPostRes, e
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -591,16 +699,16 @@ func decodeGetUpdatesPostResponse(resp *http.Response) (res GetUpdatesPostRes, e
 }
 
 func decodeGetUserProfilePhotosPostResponse(resp *http.Response) (res GetUserProfilePhotosPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -622,8 +730,17 @@ func decodeGetUserProfilePhotosPostResponse(resp *http.Response) (res GetUserPro
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -636,16 +753,16 @@ func decodeGetUserProfilePhotosPostResponse(resp *http.Response) (res GetUserPro
 }
 
 func decodeGetWebhookInfoPostResponse(resp *http.Response) (res GetWebhookInfoPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -667,8 +784,17 @@ func decodeGetWebhookInfoPostResponse(resp *http.Response) (res GetWebhookInfoPo
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -681,16 +807,16 @@ func decodeGetWebhookInfoPostResponse(resp *http.Response) (res GetWebhookInfoPo
 }
 
 func decodeLogOutPostResponse(resp *http.Response) (res LogOutPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -712,8 +838,17 @@ func decodeLogOutPostResponse(resp *http.Response) (res LogOutPostRes, err error
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -726,16 +861,16 @@ func decodeLogOutPostResponse(resp *http.Response) (res LogOutPostRes, err error
 }
 
 func decodeSendGamePostResponse(resp *http.Response) (res SendGamePostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -757,8 +892,17 @@ func decodeSendGamePostResponse(resp *http.Response) (res SendGamePostRes, err e
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -771,16 +915,16 @@ func decodeSendGamePostResponse(resp *http.Response) (res SendGamePostRes, err e
 }
 
 func decodeSendInvoicePostResponse(resp *http.Response) (res SendInvoicePostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -802,8 +946,17 @@ func decodeSendInvoicePostResponse(resp *http.Response) (res SendInvoicePostRes,
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -816,16 +969,16 @@ func decodeSendInvoicePostResponse(resp *http.Response) (res SendInvoicePostRes,
 }
 
 func decodeSetMyCommandsPostResponse(resp *http.Response) (res SetMyCommandsPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -847,8 +1000,17 @@ func decodeSetMyCommandsPostResponse(resp *http.Response) (res SetMyCommandsPost
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -861,16 +1023,16 @@ func decodeSetMyCommandsPostResponse(resp *http.Response) (res SetMyCommandsPost
 }
 
 func decodeSetStickerPositionInSetPostResponse(resp *http.Response) (res SetStickerPositionInSetPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -892,8 +1054,17 @@ func decodeSetStickerPositionInSetPostResponse(resp *http.Response) (res SetStic
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -906,16 +1077,16 @@ func decodeSetStickerPositionInSetPostResponse(resp *http.Response) (res SetStic
 }
 
 func decodeSetWebhookPostResponse(resp *http.Response) (res SetWebhookPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -937,8 +1108,17 @@ func decodeSetWebhookPostResponse(resp *http.Response) (res SetWebhookPostRes, e
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -951,16 +1131,16 @@ func decodeSetWebhookPostResponse(resp *http.Response) (res SetWebhookPostRes, e
 }
 
 func decodeUploadStickerFilePostResponse(resp *http.Response) (res UploadStickerFilePostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -982,8 +1162,17 @@ func decodeUploadStickerFilePostResponse(resp *http.Response) (res UploadSticker
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 

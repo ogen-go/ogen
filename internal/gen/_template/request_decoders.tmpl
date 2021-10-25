@@ -7,6 +7,12 @@
 {{- range $m := $.Methods }}
 {{- if $m.RequestType }}
 func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }}, err error) {
+    buf := json.GetBuffer()
+    defer json.PutBuffer(buf)
+    if _, err := io.Copy(buf, r.Body); err != nil {
+        return req, err
+    }
+
     switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
     {{- range $contentType, $schema := $m.RequestBody.Contents }}
@@ -14,8 +20,13 @@ func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }},
         var request {{ $schema.Type }}
         {{- /* Decode json */ -}}
         {{- if eq $contentType "application/json" }}
-        if err := request.ReadJSONFrom(r.Body); err != nil {
-            return req, fmt.Errorf("json: %w", err)
+        i := json.GetIterator()
+        defer json.PutIterator(i)
+        i.ResetBytes(buf.Bytes())
+        if err := func() error {
+            {{- template "dec_json_value" req_decode_elem $schema }}
+        }(); err != nil {
+            return req, err
         }
         {{- if $schema.NeedValidation }}
         if err := request.Validate(); err != nil {

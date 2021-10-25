@@ -51,11 +51,25 @@ var (
 )
 
 func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -68,11 +82,25 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 }
 
 func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -85,11 +113,25 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 }
 
 func decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request) (req SelectedActions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SelectedActions
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -99,11 +141,25 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request) (r
 }
 
 func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -116,11 +172,25 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 }
 
 func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (req *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -133,11 +203,25 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 }
 
 func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -150,11 +234,25 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 }
 
 func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request) (req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -167,11 +265,25 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 }
 
 func decodeGistsCreateCommentRequest(r *http.Request) (req GistsCreateCommentApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GistsCreateCommentApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -184,11 +296,25 @@ func decodeGistsCreateCommentRequest(r *http.Request) (req GistsCreateCommentApp
 }
 
 func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request GistsUpdateCommentApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -201,11 +327,25 @@ func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApp
 }
 
 func decodeMarkdownRenderRequest(r *http.Request) (req MarkdownRenderApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MarkdownRenderApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -218,11 +358,25 @@ func decodeMarkdownRenderRequest(r *http.Request) (req MarkdownRenderApplication
 }
 
 func decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkNotificationsAsReadApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivityMarkNotificationsAsReadApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -232,11 +386,25 @@ func decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (req *Activit
 }
 
 func decodeActivitySetThreadSubscriptionRequest(r *http.Request) (req *ActivitySetThreadSubscriptionApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivitySetThreadSubscriptionApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -246,11 +414,25 @@ func decodeActivitySetThreadSubscriptionRequest(r *http.Request) (req *ActivityS
 }
 
 func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request) (req ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetGithubActionsPermissionsOrganizationApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -263,11 +445,25 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 }
 
 func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request) (req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -280,11 +476,25 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 }
 
 func decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request) (req *SelectedActions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SelectedActions
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -294,11 +504,25 @@ func decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request) (req *Se
 }
 
 func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -311,11 +535,25 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req
 }
 
 func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -328,11 +566,25 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req
 }
 
 func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request) (req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -345,11 +597,25 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 }
 
 func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (req ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -362,11 +628,25 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (req
 }
 
 func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (req ActionsCreateOrUpdateOrgSecretApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateOrUpdateOrgSecretApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -379,11 +659,25 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (req ActionsCr
 }
 
 func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (req ActionsSetSelectedReposForOrgSecretApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetSelectedReposForOrgSecretApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -396,11 +690,25 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (req Acti
 }
 
 func decodeProjectsCreateForOrgRequest(r *http.Request) (req ProjectsCreateForOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateForOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -410,11 +718,25 @@ func decodeProjectsCreateForOrgRequest(r *http.Request) (req ProjectsCreateForOr
 }
 
 func decodeTeamsUpdateInOrgRequest(r *http.Request) (req *TeamsUpdateInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -427,11 +749,25 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request) (req *TeamsUpdateInOrgApplic
 }
 
 func decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (req TeamsCreateDiscussionInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -441,11 +777,25 @@ func decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (req TeamsCreateDi
 }
 
 func decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request) (req *TeamsUpdateDiscussionInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -455,11 +805,25 @@ func decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request) (req *TeamsUpdateD
 }
 
 func decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsCreateDiscussionCommentInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionCommentInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -469,11 +833,25 @@ func decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsC
 }
 
 func decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsUpdateDiscussionCommentInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionCommentInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -483,11 +861,25 @@ func decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request) (req TeamsU
 }
 
 func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -500,11 +892,25 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request) 
 }
 
 func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -517,11 +923,25 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request) (req Re
 }
 
 func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -534,11 +954,25 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request) (req *
 }
 
 func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -551,11 +985,25 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request) (req 
 }
 
 func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request) (req *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -568,11 +1016,25 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request) (req *Te
 }
 
 func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request) (req TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -582,11 +1044,25 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request) (
 }
 
 func decodeProjectsUpdateCardRequest(r *http.Request) (req *ProjectsUpdateCardApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsUpdateCardApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -596,11 +1072,25 @@ func decodeProjectsUpdateCardRequest(r *http.Request) (req *ProjectsUpdateCardAp
 }
 
 func decodeProjectsUpdateColumnRequest(r *http.Request) (req ProjectsUpdateColumnApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsUpdateColumnApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -610,11 +1100,25 @@ func decodeProjectsUpdateColumnRequest(r *http.Request) (req ProjectsUpdateColum
 }
 
 func decodeProjectsMoveColumnRequest(r *http.Request) (req ProjectsMoveColumnApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsMoveColumnApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -624,11 +1128,25 @@ func decodeProjectsMoveColumnRequest(r *http.Request) (req ProjectsMoveColumnApp
 }
 
 func decodeProjectsUpdateRequest(r *http.Request) (req *ProjectsUpdateApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsUpdateApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -641,11 +1159,25 @@ func decodeProjectsUpdateRequest(r *http.Request) (req *ProjectsUpdateApplicatio
 }
 
 func decodeProjectsCreateColumnRequest(r *http.Request) (req ProjectsCreateColumnApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateColumnApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -655,11 +1187,25 @@ func decodeProjectsCreateColumnRequest(r *http.Request) (req ProjectsCreateColum
 }
 
 func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request) (req ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsSetGithubActionsPermissionsRepositoryApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -672,11 +1218,25 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request) 
 }
 
 func decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request) (req *SelectedActions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SelectedActions
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -686,11 +1246,25 @@ func decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request) (req *Sele
 }
 
 func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (req ActionsCreateOrUpdateRepoSecretApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateOrUpdateRepoSecretApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -700,11 +1274,25 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (req ActionsC
 }
 
 func decodeReposUpdateBranchProtectionRequest(r *http.Request) (req ReposUpdateBranchProtectionApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateBranchProtectionApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -717,11 +1305,25 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request) (req ReposUpdateB
 }
 
 func decodeChecksCreateSuiteRequest(r *http.Request) (req ChecksCreateSuiteApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ChecksCreateSuiteApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -731,11 +1333,25 @@ func decodeChecksCreateSuiteRequest(r *http.Request) (req ChecksCreateSuiteAppli
 }
 
 func decodeChecksSetSuitesPreferencesRequest(r *http.Request) (req ChecksSetSuitesPreferencesApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ChecksSetSuitesPreferencesApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -745,11 +1361,25 @@ func decodeChecksSetSuitesPreferencesRequest(r *http.Request) (req ChecksSetSuit
 }
 
 func decodeCodeScanningUploadSarifRequest(r *http.Request) (req CodeScanningUploadSarifApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request CodeScanningUploadSarifApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -762,11 +1392,25 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request) (req CodeScanningUplo
 }
 
 func decodeReposUpdateCommitCommentRequest(r *http.Request) (req ReposUpdateCommitCommentApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateCommitCommentApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -776,11 +1420,25 @@ func decodeReposUpdateCommitCommentRequest(r *http.Request) (req ReposUpdateComm
 }
 
 func decodeMigrationsUpdateImportRequest(r *http.Request) (req *MigrationsUpdateImportApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request MigrationsUpdateImportApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -790,11 +1448,25 @@ func decodeMigrationsUpdateImportRequest(r *http.Request) (req *MigrationsUpdate
 }
 
 func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request) (req InteractionLimit, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request InteractionLimit
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -807,11 +1479,25 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request) (req Inter
 }
 
 func decodeReposUpdateInvitationRequest(r *http.Request) (req *ReposUpdateInvitationApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateInvitationApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -824,11 +1510,25 @@ func decodeReposUpdateInvitationRequest(r *http.Request) (req *ReposUpdateInvita
 }
 
 func decodeIssuesUpdateLabelRequest(r *http.Request) (req *IssuesUpdateLabelApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request IssuesUpdateLabelApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -838,11 +1538,25 @@ func decodeIssuesUpdateLabelRequest(r *http.Request) (req *IssuesUpdateLabelAppl
 }
 
 func decodeReposMergeUpstreamRequest(r *http.Request) (req ReposMergeUpstreamApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposMergeUpstreamApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -852,11 +1566,25 @@ func decodeReposMergeUpstreamRequest(r *http.Request) (req ReposMergeUpstreamApp
 }
 
 func decodeIssuesUpdateMilestoneRequest(r *http.Request) (req *IssuesUpdateMilestoneApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request IssuesUpdateMilestoneApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -869,11 +1597,25 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request) (req *IssuesUpdateMiles
 }
 
 func decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request) (req *ActivityMarkRepoNotificationsAsReadApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivityMarkRepoNotificationsAsReadApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -883,11 +1625,25 @@ func decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request) (req *Act
 }
 
 func decodeProjectsCreateForRepoRequest(r *http.Request) (req ProjectsCreateForRepoApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateForRepoApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -897,11 +1653,25 @@ func decodeProjectsCreateForRepoRequest(r *http.Request) (req ProjectsCreateForR
 }
 
 func decodePullsUpdateReviewCommentRequest(r *http.Request) (req PullsUpdateReviewCommentApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsUpdateReviewCommentApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -911,11 +1681,25 @@ func decodePullsUpdateReviewCommentRequest(r *http.Request) (req PullsUpdateRevi
 }
 
 func decodePullsCreateReplyForReviewCommentRequest(r *http.Request) (req PullsCreateReplyForReviewCommentApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsCreateReplyForReviewCommentApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -925,11 +1709,25 @@ func decodePullsCreateReplyForReviewCommentRequest(r *http.Request) (req PullsCr
 }
 
 func decodePullsCreateReviewRequest(r *http.Request) (req *PullsCreateReviewApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsCreateReviewApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -942,11 +1740,25 @@ func decodePullsCreateReviewRequest(r *http.Request) (req *PullsCreateReviewAppl
 }
 
 func decodePullsUpdateReviewRequest(r *http.Request) (req PullsUpdateReviewApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsUpdateReviewApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -956,11 +1768,25 @@ func decodePullsUpdateReviewRequest(r *http.Request) (req PullsUpdateReviewAppli
 }
 
 func decodePullsDismissReviewRequest(r *http.Request) (req PullsDismissReviewApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsDismissReviewApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -970,11 +1796,25 @@ func decodePullsDismissReviewRequest(r *http.Request) (req PullsDismissReviewApp
 }
 
 func decodePullsSubmitReviewRequest(r *http.Request) (req PullsSubmitReviewApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request PullsSubmitReviewApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -987,11 +1827,25 @@ func decodePullsSubmitReviewRequest(r *http.Request) (req PullsSubmitReviewAppli
 }
 
 func decodeReposUpdateReleaseAssetRequest(r *http.Request) (req *ReposUpdateReleaseAssetApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateReleaseAssetApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -1001,11 +1855,25 @@ func decodeReposUpdateReleaseAssetRequest(r *http.Request) (req *ReposUpdateRele
 }
 
 func decodeReposUpdateReleaseRequest(r *http.Request) (req *ReposUpdateReleaseApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposUpdateReleaseApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -1015,11 +1883,25 @@ func decodeReposUpdateReleaseRequest(r *http.Request) (req *ReposUpdateReleaseAp
 }
 
 func decodeSecretScanningUpdateAlertRequest(r *http.Request) (req SecretScanningUpdateAlertApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request SecretScanningUpdateAlertApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1032,11 +1914,25 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request) (req SecretScanning
 }
 
 func decodeReposCreateCommitStatusRequest(r *http.Request) (req ReposCreateCommitStatusApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposCreateCommitStatusApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1049,11 +1945,25 @@ func decodeReposCreateCommitStatusRequest(r *http.Request) (req ReposCreateCommi
 }
 
 func decodeActivitySetRepoSubscriptionRequest(r *http.Request) (req *ActivitySetRepoSubscriptionApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActivitySetRepoSubscriptionApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -1063,11 +1973,25 @@ func decodeActivitySetRepoSubscriptionRequest(r *http.Request) (req *ActivitySet
 }
 
 func decodeReposReplaceAllTopicsRequest(r *http.Request) (req ReposReplaceAllTopicsApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposReplaceAllTopicsApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1080,11 +2004,25 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request) (req ReposReplaceAllTop
 }
 
 func decodeReposTransferRequest(r *http.Request) (req ReposTransferApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposTransferApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -1094,11 +2032,25 @@ func decodeReposTransferRequest(r *http.Request) (req ReposTransferApplicationJS
 }
 
 func decodeReposCreateUsingTemplateRequest(r *http.Request) (req ReposCreateUsingTemplateApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReposCreateUsingTemplateApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -1108,11 +2060,25 @@ func decodeReposCreateUsingTemplateRequest(r *http.Request) (req ReposCreateUsin
 }
 
 func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request) (req ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ActionsCreateOrUpdateEnvironmentSecretApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -1122,11 +2088,25 @@ func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request) (req A
 }
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request) (req EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1139,11 +2119,25 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 }
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request) (req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1156,11 +2150,25 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 }
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1173,11 +2181,25 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 }
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1190,11 +2212,25 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 }
 
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request) (req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1207,11 +2243,25 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 }
 
 func decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (req TeamsCreateDiscussionLegacyApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionLegacyApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -1221,11 +2271,25 @@ func decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (req TeamsCreateD
 }
 
 func decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request) (req *TeamsUpdateDiscussionLegacyApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionLegacyApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
@@ -1235,11 +2299,25 @@ func decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request) (req *TeamsUpdate
 }
 
 func decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request) (req TeamsCreateDiscussionCommentLegacyApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsCreateDiscussionCommentLegacyApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -1249,11 +2327,25 @@ func decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request) (req Teams
 }
 
 func decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request) (req TeamsUpdateDiscussionCommentLegacyApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsUpdateDiscussionCommentLegacyApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil
@@ -1263,11 +2355,25 @@ func decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request) (req Teams
 }
 
 func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1280,11 +2386,25 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request)
 }
 
 func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request) (req ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ReactionsCreateForTeamDiscussionLegacyApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1297,11 +2417,25 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request) (req R
 }
 
 func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request) (req *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -1314,11 +2448,25 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request) (req 
 }
 
 func decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request) (req ProjectsCreateForAuthenticatedUserApplicationJSONReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request ProjectsCreateForAuthenticatedUserApplicationJSONReq
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 
 		return request, nil

@@ -51,6 +51,12 @@ var (
 )
 
 func decodeCreateCoreV1NamespaceRequest(r *http.Request) (req IoK8sAPICoreV1Namespace, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPICoreV1Namespace
@@ -62,6 +68,12 @@ func decodeCreateCoreV1NamespaceRequest(r *http.Request) (req IoK8sAPICoreV1Name
 }
 
 func decodeCreateCoreV1NodeRequest(r *http.Request) (req IoK8sAPICoreV1Node, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPICoreV1Node
@@ -73,6 +85,12 @@ func decodeCreateCoreV1NodeRequest(r *http.Request) (req IoK8sAPICoreV1Node, err
 }
 
 func decodeDeleteCoreV1CollectionNodeRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -84,6 +102,12 @@ func decodeDeleteCoreV1CollectionNodeRequest(r *http.Request) (req *IoK8sApimach
 }
 
 func decodeCreateCoreV1PersistentVolumeRequest(r *http.Request) (req IoK8sAPICoreV1PersistentVolume, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPICoreV1PersistentVolume
@@ -95,6 +119,12 @@ func decodeCreateCoreV1PersistentVolumeRequest(r *http.Request) (req IoK8sAPICor
 }
 
 func decodeDeleteCoreV1CollectionPersistentVolumeRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -106,6 +136,12 @@ func decodeDeleteCoreV1CollectionPersistentVolumeRequest(r *http.Request) (req *
 }
 
 func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(r *http.Request) (req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
@@ -117,6 +153,12 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(r *h
 }
 
 func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -128,6 +170,12 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 }
 
 func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(r *http.Request) (req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
@@ -139,6 +187,12 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(r 
 }
 
 func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -150,6 +204,12 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 }
 
 func decodeCreateApiextensionsV1CustomResourceDefinitionRequest(r *http.Request) (req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
@@ -161,6 +221,12 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionRequest(r *http.Request)
 }
 
 func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -172,6 +238,12 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(r *htt
 }
 
 func decodeCreateApiregistrationV1APIServiceRequest(r *http.Request) (req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
@@ -183,6 +255,12 @@ func decodeCreateApiregistrationV1APIServiceRequest(r *http.Request) (req IoK8sK
 }
 
 func decodeDeleteApiregistrationV1CollectionAPIServiceRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -194,6 +272,12 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceRequest(r *http.Request) (
 }
 
 func decodeCreateAuthenticationV1TokenReviewRequest(r *http.Request) (req IoK8sAPIAuthenticationV1TokenReview, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIAuthenticationV1TokenReview
@@ -205,6 +289,12 @@ func decodeCreateAuthenticationV1TokenReviewRequest(r *http.Request) (req IoK8sA
 }
 
 func decodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(r *http.Request) (req IoK8sAPIAuthorizationV1SelfSubjectAccessReview, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIAuthorizationV1SelfSubjectAccessReview
@@ -216,6 +306,12 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(r *http.Request) 
 }
 
 func decodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(r *http.Request) (req IoK8sAPIAuthorizationV1SelfSubjectRulesReview, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIAuthorizationV1SelfSubjectRulesReview
@@ -227,6 +323,12 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(r *http.Request) (
 }
 
 func decodeCreateAuthorizationV1SubjectAccessReviewRequest(r *http.Request) (req IoK8sAPIAuthorizationV1SubjectAccessReview, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIAuthorizationV1SubjectAccessReview
@@ -238,6 +340,12 @@ func decodeCreateAuthorizationV1SubjectAccessReviewRequest(r *http.Request) (req
 }
 
 func decodeCreateCertificatesV1CertificateSigningRequestRequest(r *http.Request) (req IoK8sAPICertificatesV1CertificateSigningRequest, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPICertificatesV1CertificateSigningRequest
@@ -249,6 +357,12 @@ func decodeCreateCertificatesV1CertificateSigningRequestRequest(r *http.Request)
 }
 
 func decodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -260,6 +374,12 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(r *htt
 }
 
 func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta1FlowSchema, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta1FlowSchema
@@ -271,6 +391,12 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(r *http.Request) (
 }
 
 func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -282,6 +408,12 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(r *http.
 }
 
 func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
@@ -293,6 +425,12 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(r 
 }
 
 func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -304,6 +442,12 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 }
 
 func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta2FlowSchema, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta2FlowSchema
@@ -315,6 +459,12 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(r *http.Request) (
 }
 
 func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -326,6 +476,12 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(r *http.
 }
 
 func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
@@ -337,6 +493,12 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(r 
 }
 
 func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -348,6 +510,12 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 }
 
 func decodeCreateInternalApiserverV1alpha1StorageVersionRequest(r *http.Request) (req IoK8sAPIApiserverinternalV1alpha1StorageVersion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIApiserverinternalV1alpha1StorageVersion
@@ -359,6 +527,12 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionRequest(r *http.Request)
 }
 
 func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -370,6 +544,12 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(r *htt
 }
 
 func decodeCreateNetworkingV1IngressClassRequest(r *http.Request) (req IoK8sAPINetworkingV1IngressClass, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPINetworkingV1IngressClass
@@ -381,6 +561,12 @@ func decodeCreateNetworkingV1IngressClassRequest(r *http.Request) (req IoK8sAPIN
 }
 
 func decodeDeleteNetworkingV1CollectionIngressClassRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -392,6 +578,12 @@ func decodeDeleteNetworkingV1CollectionIngressClassRequest(r *http.Request) (req
 }
 
 func decodeCreateNodeV1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1RuntimeClass, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPINodeV1RuntimeClass
@@ -403,6 +595,12 @@ func decodeCreateNodeV1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1R
 }
 
 func decodeDeleteNodeV1CollectionRuntimeClassRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -414,6 +612,12 @@ func decodeDeleteNodeV1CollectionRuntimeClassRequest(r *http.Request) (req *IoK8
 }
 
 func decodeCreateNodeV1alpha1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1alpha1RuntimeClass, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPINodeV1alpha1RuntimeClass
@@ -425,6 +629,12 @@ func decodeCreateNodeV1alpha1RuntimeClassRequest(r *http.Request) (req IoK8sAPIN
 }
 
 func decodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -436,6 +646,12 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(r *http.Request) (req
 }
 
 func decodeCreateNodeV1beta1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1beta1RuntimeClass, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPINodeV1beta1RuntimeClass
@@ -447,6 +663,12 @@ func decodeCreateNodeV1beta1RuntimeClassRequest(r *http.Request) (req IoK8sAPINo
 }
 
 func decodeDeleteNodeV1beta1CollectionRuntimeClassRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -458,6 +680,12 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassRequest(r *http.Request) (req 
 }
 
 func decodeCreatePolicyV1beta1PodSecurityPolicyRequest(r *http.Request) (req IoK8sAPIPolicyV1beta1PodSecurityPolicy, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIPolicyV1beta1PodSecurityPolicy
@@ -469,6 +697,12 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyRequest(r *http.Request) (req IoK
 }
 
 func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -480,6 +714,12 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(r *http.Request
 }
 
 func decodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(r *http.Request) (req IoK8sAPIRbacV1ClusterRoleBinding, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIRbacV1ClusterRoleBinding
@@ -491,6 +731,12 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(r *http.Request) (
 }
 
 func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -502,6 +748,12 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(r *http.
 }
 
 func decodeCreateRbacAuthorizationV1ClusterRoleRequest(r *http.Request) (req IoK8sAPIRbacV1ClusterRole, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIRbacV1ClusterRole
@@ -513,6 +765,12 @@ func decodeCreateRbacAuthorizationV1ClusterRoleRequest(r *http.Request) (req IoK
 }
 
 func decodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -524,6 +782,12 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(r *http.Request
 }
 
 func decodeCreateSchedulingV1PriorityClassRequest(r *http.Request) (req IoK8sAPISchedulingV1PriorityClass, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPISchedulingV1PriorityClass
@@ -535,6 +799,12 @@ func decodeCreateSchedulingV1PriorityClassRequest(r *http.Request) (req IoK8sAPI
 }
 
 func decodeDeleteSchedulingV1CollectionPriorityClassRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -546,6 +816,12 @@ func decodeDeleteSchedulingV1CollectionPriorityClassRequest(r *http.Request) (re
 }
 
 func decodeCreateStorageV1CSIDriverRequest(r *http.Request) (req IoK8sAPIStorageV1CSIDriver, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIStorageV1CSIDriver
@@ -557,6 +833,12 @@ func decodeCreateStorageV1CSIDriverRequest(r *http.Request) (req IoK8sAPIStorage
 }
 
 func decodeDeleteStorageV1CollectionCSIDriverRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -568,6 +850,12 @@ func decodeDeleteStorageV1CollectionCSIDriverRequest(r *http.Request) (req *IoK8
 }
 
 func decodeCreateStorageV1CSINodeRequest(r *http.Request) (req IoK8sAPIStorageV1CSINode, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIStorageV1CSINode
@@ -579,6 +867,12 @@ func decodeCreateStorageV1CSINodeRequest(r *http.Request) (req IoK8sAPIStorageV1
 }
 
 func decodeDeleteStorageV1CollectionCSINodeRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -590,6 +884,12 @@ func decodeDeleteStorageV1CollectionCSINodeRequest(r *http.Request) (req *IoK8sA
 }
 
 func decodeCreateStorageV1StorageClassRequest(r *http.Request) (req IoK8sAPIStorageV1StorageClass, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIStorageV1StorageClass
@@ -601,6 +901,12 @@ func decodeCreateStorageV1StorageClassRequest(r *http.Request) (req IoK8sAPIStor
 }
 
 func decodeDeleteStorageV1CollectionStorageClassRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -612,6 +918,12 @@ func decodeDeleteStorageV1CollectionStorageClassRequest(r *http.Request) (req *I
 }
 
 func decodeCreateStorageV1VolumeAttachmentRequest(r *http.Request) (req IoK8sAPIStorageV1VolumeAttachment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sAPIStorageV1VolumeAttachment
@@ -623,6 +935,12 @@ func decodeCreateStorageV1VolumeAttachmentRequest(r *http.Request) (req IoK8sAPI
 }
 
 func decodeDeleteStorageV1CollectionVolumeAttachmentRequest(r *http.Request) (req *IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "*/*":
 		var request IoK8sApimachineryPkgApisMetaV1DeleteOptions

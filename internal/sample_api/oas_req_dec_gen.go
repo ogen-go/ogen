@@ -51,11 +51,25 @@ var (
 )
 
 func decodeFoobarPostRequest(r *http.Request) (req *Pet, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
@@ -68,11 +82,25 @@ func decodeFoobarPostRequest(r *http.Request) (req *Pet, err error) {
 }
 
 func decodePetCreateRequest(r *http.Request) (req PetCreateReq, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.ReadJSON(i); err != nil {
+				return err
+			}
+			return i.Error
+		}(); err != nil {
+			return req, err
 		}
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)

@@ -31,15 +31,16 @@ type Elem struct {
 // templateFuncs returns functions which used in templates.
 func templateFuncs() template.FuncMap {
 	return template.FuncMap{
-		"trim":       strings.TrimSpace,
-		"lower":      strings.ToLower,
-		"trimPrefix": strings.TrimPrefix,
-		"trimSuffix": strings.TrimSuffix,
-		"hasPrefix":  strings.HasPrefix,
-		"hasSuffix":  strings.HasSuffix,
-		"pascalMP":   pascalMP,
-		"array_elem": func(s *ast.Schema) Elem { return Elem{Schema: s, ArrElem: true, Var: "elem"} },
-		"req_elem":   func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "response"} },
+		"trim":            strings.TrimSpace,
+		"lower":           strings.ToLower,
+		"trimPrefix":      strings.TrimPrefix,
+		"trimSuffix":      strings.TrimSuffix,
+		"hasPrefix":       strings.HasPrefix,
+		"hasSuffix":       strings.HasSuffix,
+		"pascalMP":        pascalMP,
+		"array_elem":      func(s *ast.Schema) Elem { return Elem{Schema: s, ArrElem: true, Var: "elem"} },
+		"req_elem":        func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "response"} },
+		"req_decode_elem": func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "request"} },
 		"res_elem": func(i *ast.ResponseInfo) Elem {
 			v := "response"
 			if i.Default {
