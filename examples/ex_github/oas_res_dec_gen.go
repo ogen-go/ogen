@@ -51,16 +51,16 @@ var (
 )
 
 func decodeMetaRootResponse(resp *http.Response) (res MetaRoot, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -85,16 +85,16 @@ func decodeMetaRootResponse(resp *http.Response) (res MetaRoot, err error) {
 }
 
 func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res Integration, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -119,18 +119,18 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res Integration, e
 }
 
 func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteInstallationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &AppsDeleteInstallationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -155,18 +155,18 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteIn
 }
 
 func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspendInstallationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &AppsSuspendInstallationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -191,18 +191,18 @@ func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspend
 }
 
 func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsuspendInstallationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &AppsUnsuspendInstallationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -227,16 +227,16 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsus
 }
 
 func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuthAuthorizationsListGrantsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -257,12 +257,6 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -281,12 +275,6 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -305,12 +293,6 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -332,16 +314,16 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 }
 
 func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAuthorizationsGetGrantRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -365,12 +347,6 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -389,12 +365,6 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -416,6 +386,12 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 }
 
 func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAuthAuthorizationsDeleteGrantRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OAuthAuthorizationsDeleteGrantNoContent{}, nil
@@ -424,12 +400,6 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -448,12 +418,6 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -475,16 +439,16 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 }
 
 func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -506,12 +470,6 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -530,12 +488,6 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -554,12 +506,6 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -584,16 +530,16 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 }
 
 func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -614,12 +560,6 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -638,12 +578,6 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -662,12 +596,6 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -689,16 +617,16 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 }
 
 func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -722,12 +650,6 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -746,12 +668,6 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -773,6 +689,12 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 }
 
 func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OAuthAuthorizationsDeleteAuthorizationNoContent{}, nil
@@ -781,12 +703,6 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -805,12 +721,6 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -832,16 +742,16 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 }
 
 func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res CodesOfConductGetAllCodesOfConductRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -865,16 +775,16 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res 
 }
 
 func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesOfConductGetConductCodeRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -898,12 +808,6 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesO
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -928,16 +832,16 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesO
 }
 
 func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -964,16 +868,16 @@ func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, err error) 
 }
 
 func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res ActionsEnterprisePermissions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -998,6 +902,12 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *ht
 }
 
 func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetGithubActionsPermissionsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminSetGithubActionsPermissionsEnterprise{}, nil
@@ -1007,16 +917,16 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *ht
 }
 
 func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1041,6 +951,12 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 }
 
 func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise{}, nil
@@ -1050,6 +966,12 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 }
 
 func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise{}, nil
@@ -1059,6 +981,12 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRespo
 }
 
 func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise{}, nil
@@ -1068,16 +996,16 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResp
 }
 
 func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Response) (res SelectedActions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1102,6 +1030,12 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Respons
 }
 
 func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetAllowedActionsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminSetAllowedActionsEnterprise{}, nil
@@ -1111,16 +1045,16 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Respons
 }
 
 func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1145,16 +1079,16 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 }
 
 func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res RunnerGroupsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1179,16 +1113,16 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 }
 
 func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res RunnerGroupsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1213,6 +1147,12 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 }
 
 func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise{}, nil
@@ -1222,16 +1162,16 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp
 }
 
 func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res RunnerGroupsEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1256,16 +1196,16 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 }
 
 func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1290,6 +1230,12 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 }
 
 func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise{}, nil
@@ -1299,6 +1245,12 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRespons
 }
 
 func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise{}, nil
@@ -1308,6 +1260,12 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRespons
 }
 
 func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise{}, nil
@@ -1317,16 +1275,16 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResp
 }
 
 func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1351,6 +1309,12 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 }
 
 func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise{}, nil
@@ -1360,6 +1324,12 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp 
 }
 
 func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise{}, nil
@@ -1369,6 +1339,12 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *
 }
 
 func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise{}, nil
@@ -1378,16 +1354,16 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(r
 }
 
 func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelfHostedRunnersForEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1412,16 +1388,16 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 }
 
 func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http.Response) (res []RunnerApplication, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1462,16 +1438,16 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 }
 
 func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *http.Response) (res AuthenticationToken, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1496,16 +1472,16 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *htt
 }
 
 func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Response) (res AuthenticationToken, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1530,16 +1506,16 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Resp
 }
 
 func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Response) (res Runner, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1564,6 +1540,12 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Re
 }
 
 func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise{}, nil
@@ -1573,16 +1555,16 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *htt
 }
 
 func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res ActionsBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1607,16 +1589,16 @@ func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res A
 }
 
 func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res PackagesBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1641,16 +1623,16 @@ func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res 
 }
 
 func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res CombinedBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1675,16 +1657,16 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res C
 }
 
 func decodeActivityGetFeedsResponse(resp *http.Response) (res Feed, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1709,16 +1691,16 @@ func decodeActivityGetFeedsResponse(resp *http.Response) (res Feed, err error) {
 }
 
 func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1739,12 +1721,6 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1769,16 +1745,16 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) 
 }
 
 func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1799,12 +1775,6 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1823,12 +1793,6 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1850,6 +1814,12 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 }
 
 func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &GistsDeleteNoContent{}, nil
@@ -1858,12 +1828,6 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1882,12 +1846,6 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1909,16 +1867,16 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 }
 
 func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListCommentsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1939,12 +1897,6 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1963,12 +1915,6 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -1990,16 +1936,16 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 }
 
 func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2023,12 +1969,6 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2047,12 +1987,6 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2074,16 +2008,16 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 }
 
 func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2107,12 +2041,6 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes,
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2134,12 +2062,6 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2164,6 +2086,12 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes,
 }
 
 func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &GistsDeleteCommentNoContent{}, nil
@@ -2172,12 +2100,6 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2196,12 +2118,6 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2223,16 +2139,16 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 }
 
 func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2254,12 +2170,6 @@ func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateComme
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2284,16 +2194,16 @@ func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateComme
 }
 
 func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2314,12 +2224,6 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2338,12 +2242,6 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2365,6 +2263,12 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 }
 
 func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsStarredRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &GistsCheckIsStarredNoContent{}, nil
@@ -2373,12 +2277,6 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsSta
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2400,12 +2298,6 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsSta
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2430,6 +2322,12 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsSta
 }
 
 func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &GistsStarNoContent{}, nil
@@ -2438,12 +2336,6 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2462,12 +2354,6 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2489,6 +2375,12 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 }
 
 func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &GistsUnstarNoContent{}, nil
@@ -2497,12 +2389,6 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2521,12 +2407,6 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2548,16 +2428,16 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 }
 
 func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreGetAllTemplatesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2581,16 +2461,16 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreG
 }
 
 func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTemplateRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2617,16 +2497,16 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTe
 }
 
 func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (res AppsListReposAccessibleToInstallationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2650,12 +2530,6 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2674,12 +2548,6 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2701,6 +2569,12 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 }
 
 func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res AppsRevokeInstallationAccessToken, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return AppsRevokeInstallationAccessToken{}, nil
@@ -2710,16 +2584,16 @@ func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res A
 }
 
 func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res LicensesGetAllCommonlyUsedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2743,16 +2617,16 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res Licenses
 }
 
 func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2776,12 +2650,6 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2800,12 +2668,6 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2827,6 +2689,12 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 }
 
 func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -2843,16 +2711,16 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, e
 }
 
 func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2874,12 +2742,6 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2898,12 +2760,6 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2925,16 +2781,16 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 }
 
 func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2953,12 +2809,6 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -2977,12 +2827,6 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3004,16 +2848,16 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 }
 
 func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3035,12 +2879,6 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response)
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3067,16 +2905,16 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response)
 }
 
 func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansStubbedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3095,12 +2933,6 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3125,16 +2957,16 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 }
 
 func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3161,16 +2993,16 @@ func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
 }
 
 func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkNotificationsAsReadRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3196,12 +3028,6 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3220,12 +3046,6 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3247,16 +3067,16 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 }
 
 func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThreadRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3280,12 +3100,6 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3304,12 +3118,6 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3331,6 +3139,12 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 }
 
 func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMarkThreadAsReadRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 205:
 		return &ActivityMarkThreadAsReadResetContent{}, nil
@@ -3339,12 +3153,6 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3369,16 +3177,16 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMa
 }
 
 func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.Response) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3402,12 +3210,6 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3426,12 +3228,6 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3453,16 +3249,16 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 }
 
 func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res ActivitySetThreadSubscriptionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3486,12 +3282,6 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3510,12 +3300,6 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3537,6 +3321,12 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 }
 
 func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res ActivityDeleteThreadSubscriptionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityDeleteThreadSubscriptionNoContent{}, nil
@@ -3545,12 +3335,6 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3569,12 +3353,6 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3596,6 +3374,12 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 }
 
 func decodeMetaGetOctocatResponse(resp *http.Response) (res string, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -3610,16 +3394,16 @@ func decodeMetaGetOctocatResponse(resp *http.Response) (res string, err error) {
 }
 
 func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3643,16 +3427,16 @@ func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
 }
 
 func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3674,12 +3458,6 @@ func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3704,16 +3482,16 @@ func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
 }
 
 func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res ActionsOrganizationPermissions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3738,6 +3516,12 @@ func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 }
 
 func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res ActionsSetGithubActionsPermissionsOrganization, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetGithubActionsPermissionsOrganization{}, nil
@@ -3747,16 +3531,16 @@ func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 }
 
 func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganization, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3781,6 +3565,12 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 }
 
 func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization{}, nil
@@ -3790,6 +3580,12 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRespons
 }
 
 func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res ActionsEnableSelectedRepositoryGithubActionsOrganization, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsEnableSelectedRepositoryGithubActionsOrganization{}, nil
@@ -3799,6 +3595,12 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp
 }
 
 func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res ActionsDisableSelectedRepositoryGithubActionsOrganization, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDisableSelectedRepositoryGithubActionsOrganization{}, nil
@@ -3808,16 +3610,16 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 }
 
 func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (res SelectedActions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3842,6 +3644,12 @@ func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (re
 }
 
 func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response) (res ActionsSetAllowedActionsOrganization, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetAllowedActionsOrganization{}, nil
@@ -3851,16 +3659,16 @@ func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response) (re
 }
 
 func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) (res ActionsListSelfHostedRunnerGroupsForOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3885,16 +3693,16 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) 
 }
 
 func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res RunnerGroupsOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3919,16 +3727,16 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 }
 
 func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res RunnerGroupsOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3953,6 +3761,12 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (r
 }
 
 func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response) (res ActionsDeleteSelfHostedRunnerGroupFromOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteSelfHostedRunnerGroupFromOrg{}, nil
@@ -3962,16 +3776,16 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response
 }
 
 func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res RunnerGroupsOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -3996,16 +3810,16 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 }
 
 func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4030,6 +3844,12 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 }
 
 func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg{}, nil
@@ -4039,6 +3859,12 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.R
 }
 
 func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg{}, nil
@@ -4048,6 +3874,12 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.R
 }
 
 func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg{}, nil
@@ -4057,16 +3889,16 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *htt
 }
 
 func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res ActionsListSelfHostedRunnersInGroupForOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4091,6 +3923,12 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 }
 
 func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res ActionsSetSelfHostedRunnersInGroupForOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetSelfHostedRunnersInGroupForOrg{}, nil
@@ -4100,6 +3938,12 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response)
 }
 
 func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response) (res ActionsAddSelfHostedRunnerToGroupForOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsAddSelfHostedRunnerToGroupForOrg{}, nil
@@ -4109,6 +3953,12 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response) 
 }
 
 func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response) (res ActionsRemoveSelfHostedRunnerFromGroupForOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsRemoveSelfHostedRunnerFromGroupForOrg{}, nil
@@ -4118,16 +3968,16 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Respo
 }
 
 func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res ActionsListSelfHostedRunnersForOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4152,16 +4002,16 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 }
 
 func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response) (res []RunnerApplication, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4202,16 +4052,16 @@ func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response) (res
 }
 
 func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (res AuthenticationToken, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4236,16 +4086,16 @@ func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (re
 }
 
 func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res AuthenticationToken, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4270,16 +4120,16 @@ func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res Auth
 }
 
 func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res Runner, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4304,6 +4154,12 @@ func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res Ru
 }
 
 func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response) (res ActionsDeleteSelfHostedRunnerFromOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteSelfHostedRunnerFromOrg{}, nil
@@ -4313,16 +4169,16 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response) (re
 }
 
 func decodeActionsListOrgSecretsResponse(resp *http.Response) (res ActionsListOrgSecrets, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4347,16 +4203,16 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res ActionsListOr
 }
 
 func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res ActionsPublicKey, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4381,16 +4237,16 @@ func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res ActionsPubli
 }
 
 func decodeActionsGetOrgSecretResponse(resp *http.Response) (res OrganizationActionsSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4415,16 +4271,16 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response) (res OrganizationAct
 }
 
 func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4451,6 +4307,12 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res Acti
 }
 
 func decodeActionsDeleteOrgSecretResponse(resp *http.Response) (res ActionsDeleteOrgSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteOrgSecret{}, nil
@@ -4460,16 +4322,16 @@ func decodeActionsDeleteOrgSecretResponse(resp *http.Response) (res ActionsDelet
 }
 
 func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (res ActionsListSelectedReposForOrgSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4494,6 +4356,12 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (re
 }
 
 func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res ActionsSetSelectedReposForOrgSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetSelectedReposForOrgSecret{}, nil
@@ -4503,6 +4371,12 @@ func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res
 }
 
 func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ActionsAddSelectedRepoToOrgSecretNoContent{}, nil
@@ -4514,6 +4388,12 @@ func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res A
 }
 
 func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ActionsRemoveSelectedRepoFromOrgSecretNoContent{}, nil
@@ -4525,16 +4405,16 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (
 }
 
 func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlockedUsersRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4553,12 +4433,6 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlocke
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4583,18 +4457,18 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlocke
 }
 
 func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlockedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsCheckBlockedUserNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4619,6 +4493,12 @@ func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlock
 }
 
 func decodeOrgsUnblockUserResponse(resp *http.Response) (res OrgsUnblockUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return OrgsUnblockUser{}, nil
@@ -4628,16 +4508,16 @@ func decodeOrgsUnblockUserResponse(resp *http.Response) (res OrgsUnblockUser, er
 }
 
 func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []CredentialAuthorization, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4678,18 +4558,18 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []Cre
 }
 
 func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveSamlSSOAuthorizationNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4714,16 +4594,16 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res Orgs
 }
 
 func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListFailedInvitationsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4742,12 +4622,6 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4772,16 +4646,16 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 }
 
 func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4800,12 +4674,6 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4830,16 +4698,16 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 }
 
 func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4861,12 +4729,6 @@ func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4891,18 +4753,18 @@ func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, e
 }
 
 func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhookRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsDeleteWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4927,18 +4789,18 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhook
 }
 
 func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsPingWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -4963,6 +4825,12 @@ func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookRes,
 }
 
 func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return InteractionsRemoveRestrictionsForOrg{}, nil
@@ -4972,16 +4840,16 @@ func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (re
 }
 
 func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsListPendingInvitationsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5000,12 +4868,6 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5030,16 +4892,16 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 }
 
 func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInvitationTeamsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5058,12 +4920,6 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5088,6 +4944,12 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 }
 
 func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsCheckMembershipForUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsCheckMembershipForUserNoContent{}, nil
@@ -5101,18 +4963,18 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsChec
 }
 
 func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveMemberNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5137,16 +4999,16 @@ func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRe
 }
 
 func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMembershipForUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5168,12 +5030,6 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5192,12 +5048,6 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5219,18 +5069,18 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 }
 
 func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRemoveMembershipForUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveMembershipForUserNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5249,12 +5099,6 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5276,18 +5120,18 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 }
 
 func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res MigrationsDownloadArchiveForOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 302:
 		return &MigrationsDownloadArchiveForOrgFound{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5312,18 +5156,18 @@ func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res Mig
 }
 
 func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res MigrationsDeleteArchiveForOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsDeleteArchiveForOrgNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5348,18 +5192,18 @@ func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res Migra
 }
 
 func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res MigrationsUnlockRepoForOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsUnlockRepoForOrgNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5384,16 +5228,16 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res Migratio
 }
 
 func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res MigrationsListReposForOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5412,12 +5256,6 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5442,16 +5280,16 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 }
 
 func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5477,12 +5315,6 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5507,18 +5339,18 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (
 }
 
 func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsRemoveOutsideCollaboratorRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsRemoveOutsideCollaboratorNoContent{}, nil
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5543,16 +5375,16 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsR
 }
 
 func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreateForOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5574,12 +5406,6 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5598,12 +5424,6 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5622,12 +5442,6 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5646,12 +5460,6 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5670,12 +5478,6 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5700,16 +5502,16 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 }
 
 func decodeOrgsListPublicMembersResponse(resp *http.Response) (res []SimpleUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5750,6 +5552,12 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res []SimpleUser,
 }
 
 func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res OrgsCheckPublicMembershipForUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsCheckPublicMembershipForUserNoContent{}, nil
@@ -5761,18 +5569,18 @@ func decodeOrgsCheckPublicMembershipForUserResponse(resp *http.Response) (res Or
 }
 
 func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &OrgsSetPublicMembershipForAuthenticatedUserNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5797,6 +5605,12 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 }
 
 func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsRemovePublicMembershipForAuthenticatedUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return OrgsRemovePublicMembershipForAuthenticatedUser{}, nil
@@ -5806,16 +5620,16 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Res
 }
 
 func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res ActionsBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5840,16 +5654,16 @@ func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res A
 }
 
 func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res PackagesBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5874,16 +5688,16 @@ func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res 
 }
 
 func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res CombinedBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5908,16 +5722,16 @@ func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res C
 }
 
 func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res GroupMapping, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5942,16 +5756,16 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res GroupMappi
 }
 
 func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -5970,12 +5784,6 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6000,16 +5808,16 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 }
 
 func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6031,12 +5839,6 @@ func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6061,6 +5863,12 @@ func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, e
 }
 
 func decodeTeamsDeleteInOrgResponse(resp *http.Response) (res TeamsDeleteInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsDeleteInOrg{}, nil
@@ -6070,16 +5878,16 @@ func decodeTeamsDeleteInOrgResponse(resp *http.Response) (res TeamsDeleteInOrg, 
 }
 
 func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res TeamFull, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6104,16 +5912,16 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res TeamFull, err erro
 }
 
 func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res TeamDiscussion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6138,16 +5946,16 @@ func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 }
 
 func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res TeamDiscussion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6172,6 +5980,12 @@ func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res TeamDiscuss
 }
 
 func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response) (res TeamsDeleteDiscussionInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsDeleteDiscussionInOrg{}, nil
@@ -6181,16 +5995,16 @@ func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response) (res TeamsDel
 }
 
 func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res TeamDiscussion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6215,16 +6029,16 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 }
 
 func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6249,16 +6063,16 @@ func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 }
 
 func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6283,6 +6097,12 @@ func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res Team
 }
 
 func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response) (res TeamsDeleteDiscussionCommentInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsDeleteDiscussionCommentInOrg{}, nil
@@ -6292,16 +6112,16 @@ func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response) (res T
 }
 
 func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6326,16 +6146,16 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 }
 
 func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6354,12 +6174,6 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6381,6 +6195,12 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 }
 
 func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) (res ReactionsDeleteForTeamDiscussionComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForTeamDiscussionComment{}, nil
@@ -6390,16 +6210,16 @@ func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) 
 }
 
 func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6418,12 +6238,6 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6445,6 +6259,12 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 }
 
 func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response) (res ReactionsDeleteForTeamDiscussion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForTeamDiscussion{}, nil
@@ -6454,16 +6274,16 @@ func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response) (res Re
 }
 
 func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res []OrganizationInvitation, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6504,16 +6324,16 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res []
 }
 
 func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res TeamsGetMembershipForUserInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6540,16 +6360,16 @@ func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res Team
 }
 
 func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6578,6 +6398,12 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (
 }
 
 func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsRemoveMembershipForUserInOrgNoContent{}, nil
@@ -6589,16 +6415,16 @@ func decodeTeamsRemoveMembershipForUserInOrgResponse(resp *http.Response) (res T
 }
 
 func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res []TeamProject, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6639,16 +6465,16 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res []TeamProjec
 }
 
 func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6675,18 +6501,18 @@ func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (re
 }
 
 func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsAddOrUpdateProjectPermissionsInOrgNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6711,6 +6537,12 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) 
 }
 
 func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response) (res TeamsRemoveProjectInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsRemoveProjectInOrg{}, nil
@@ -6720,16 +6552,16 @@ func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response) (res TeamsRemove
 }
 
 func decodeTeamsListReposInOrgResponse(resp *http.Response) (res []MinimalRepository, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6770,16 +6602,16 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res []MinimalReposi
 }
 
 func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6808,6 +6640,12 @@ func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res T
 }
 
 func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateRepoPermissionsInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsAddOrUpdateRepoPermissionsInOrg{}, nil
@@ -6817,6 +6655,12 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response) (re
 }
 
 func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response) (res TeamsRemoveRepoInOrg, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsRemoveRepoInOrg{}, nil
@@ -6826,16 +6670,16 @@ func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response) (res TeamsRemoveRep
 }
 
 func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res GroupMapping, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6860,16 +6704,16 @@ func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res GroupMappin
 }
 
 func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Response) (res GroupMapping, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6894,16 +6738,16 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 }
 
 func decodeTeamsListChildInOrgResponse(resp *http.Response) (res []Team, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6944,16 +6788,16 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res []Team, err err
 }
 
 func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -6977,12 +6821,6 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7001,12 +6839,6 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7025,12 +6857,6 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7052,6 +6878,12 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 }
 
 func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCardRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ProjectsDeleteCardNoContent{}, nil
@@ -7060,12 +6892,6 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7084,12 +6910,6 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7111,12 +6931,6 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7138,16 +6952,16 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 }
 
 func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCardRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7171,12 +6985,6 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7195,12 +7003,6 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7219,12 +7021,6 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7243,12 +7039,6 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7273,16 +7063,16 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 }
 
 func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumnRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7306,12 +7096,6 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7330,12 +7114,6 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7354,12 +7132,6 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7381,6 +7153,12 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 }
 
 func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDeleteColumnRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ProjectsDeleteColumnNoContent{}, nil
@@ -7389,12 +7167,6 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7413,12 +7185,6 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7440,16 +7206,16 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 }
 
 func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdateColumnRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7473,12 +7239,6 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7497,12 +7257,6 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7524,16 +7278,16 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 }
 
 func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColumnRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7557,12 +7311,6 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7581,12 +7329,6 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7605,12 +7347,6 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7635,16 +7371,16 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 }
 
 func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7668,12 +7404,6 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7692,12 +7422,6 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7719,6 +7443,12 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 }
 
 func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ProjectsDeleteNoContent{}, nil
@@ -7727,12 +7457,6 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7751,12 +7475,6 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7778,12 +7496,6 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7802,12 +7514,6 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7829,16 +7535,16 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 }
 
 func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7862,12 +7568,6 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7886,12 +7586,6 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7915,12 +7609,6 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7939,12 +7627,6 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7969,16 +7651,16 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 }
 
 func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListColumnsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -7999,12 +7681,6 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8023,12 +7699,6 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8050,16 +7720,16 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 }
 
 func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreateColumnRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8083,12 +7753,6 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8107,12 +7771,6 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8131,12 +7789,6 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8161,16 +7813,16 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 }
 
 func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8194,12 +7846,6 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8224,6 +7870,12 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 }
 
 func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDeleteLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReactionsDeleteLegacyNoContent{}, nil
@@ -8232,12 +7884,6 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8256,12 +7902,6 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8280,12 +7920,6 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8304,12 +7938,6 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8334,16 +7962,16 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 }
 
 func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8365,12 +7993,6 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8389,12 +8011,6 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8413,12 +8029,6 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8440,18 +8050,18 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 }
 
 func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteNoContent{}, nil
 	case 307:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8470,12 +8080,6 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8497,12 +8101,6 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8524,16 +8122,16 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 }
 
 func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res ActionsListArtifactsForRepo, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8558,16 +8156,16 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res Actions
 }
 
 func decodeActionsGetArtifactResponse(resp *http.Response) (res Artifact, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8592,6 +8190,12 @@ func decodeActionsGetArtifactResponse(resp *http.Response) (res Artifact, err er
 }
 
 func decodeActionsDeleteArtifactResponse(resp *http.Response) (res ActionsDeleteArtifact, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteArtifact{}, nil
@@ -8601,6 +8205,12 @@ func decodeActionsDeleteArtifactResponse(resp *http.Response) (res ActionsDelete
 }
 
 func decodeActionsDownloadArtifactResponse(resp *http.Response) (res ActionsDownloadArtifact, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 302:
 		return ActionsDownloadArtifact{}, nil
@@ -8610,16 +8220,16 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response) (res ActionsDown
 }
 
 func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res Job, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8644,6 +8254,12 @@ func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res Job, er
 }
 
 func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (res ActionsDownloadJobLogsForWorkflowRun, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 302:
 		return ActionsDownloadJobLogsForWorkflowRun{}, nil
@@ -8653,16 +8269,16 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (re
 }
 
 func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res ActionsRepositoryPermissions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8687,6 +8303,12 @@ func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 }
 
 func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res ActionsSetGithubActionsPermissionsRepository, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetGithubActionsPermissionsRepository{}, nil
@@ -8696,16 +8318,16 @@ func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 }
 
 func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res SelectedActions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8730,6 +8352,12 @@ func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res 
 }
 
 func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response) (res ActionsSetAllowedActionsRepository, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsSetAllowedActionsRepository{}, nil
@@ -8739,16 +8367,16 @@ func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response) (res 
 }
 
 func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res ActionsListSelfHostedRunnersForRepo, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8773,16 +8401,16 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 }
 
 func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (res []RunnerApplication, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8823,16 +8451,16 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (re
 }
 
 func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (res AuthenticationToken, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8857,16 +8485,16 @@ func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (r
 }
 
 func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res AuthenticationToken, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8891,16 +8519,16 @@ func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res Aut
 }
 
 func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res Runner, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8925,6 +8553,12 @@ func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res R
 }
 
 func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (res ActionsDeleteSelfHostedRunnerFromRepo, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteSelfHostedRunnerFromRepo{}, nil
@@ -8934,16 +8568,16 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (r
 }
 
 func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res WorkflowRun, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -8968,6 +8602,12 @@ func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res WorkflowRun, 
 }
 
 func decodeActionsDeleteWorkflowRunResponse(resp *http.Response) (res ActionsDeleteWorkflowRun, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteWorkflowRun{}, nil
@@ -8977,16 +8617,16 @@ func decodeActionsDeleteWorkflowRunResponse(resp *http.Response) (res ActionsDel
 }
 
 func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []EnvironmentApprovals, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9027,16 +8667,16 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []Environme
 }
 
 func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsApproveWorkflowRunRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9058,12 +8698,6 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9082,12 +8716,6 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9109,16 +8737,16 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 }
 
 func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res ActionsListWorkflowRunArtifacts, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9143,16 +8771,16 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res Act
 }
 
 func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res ActionsCancelWorkflowRun, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9177,6 +8805,12 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res ActionsCan
 }
 
 func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res ActionsDownloadWorkflowRunLogs, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 302:
 		return ActionsDownloadWorkflowRunLogs{}, nil
@@ -9186,6 +8820,12 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res Acti
 }
 
 func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (res ActionsDeleteWorkflowRunLogs, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteWorkflowRunLogs{}, nil
@@ -9195,16 +8835,16 @@ func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (res Action
 }
 
 func decodeActionsReRunWorkflowResponse(resp *http.Response) (res ActionsReRunWorkflow, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9229,16 +8869,16 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response) (res ActionsReRunWo
 }
 
 func decodeActionsRetryWorkflowResponse(resp *http.Response) (res ActionsRetryWorkflow, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9263,16 +8903,16 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response) (res ActionsRetryWo
 }
 
 func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res WorkflowRunUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9297,16 +8937,16 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res Workflow
 }
 
 func decodeActionsListRepoSecretsResponse(resp *http.Response) (res ActionsListRepoSecrets, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9331,16 +8971,16 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res ActionsListR
 }
 
 func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res ActionsPublicKey, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9365,16 +9005,16 @@ func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res ActionsPubl
 }
 
 func decodeActionsGetRepoSecretResponse(resp *http.Response) (res ActionsSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9399,16 +9039,16 @@ func decodeActionsGetRepoSecretResponse(resp *http.Response) (res ActionsSecret,
 }
 
 func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9435,6 +9075,12 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res Act
 }
 
 func decodeActionsDeleteRepoSecretResponse(resp *http.Response) (res ActionsDeleteRepoSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteRepoSecret{}, nil
@@ -9444,16 +9090,16 @@ func decodeActionsDeleteRepoSecretResponse(resp *http.Response) (res ActionsDele
 }
 
 func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res ActionsListRepoWorkflows, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9478,16 +9124,16 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res ActionsLis
 }
 
 func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssigneesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9506,12 +9152,6 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9536,18 +9176,18 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 }
 
 func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res IssuesCheckUserCanBeAssignedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesCheckUserCanBeAssignedNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9572,16 +9212,16 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res Issues
 }
 
 func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9622,16 +9262,16 @@ func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, err 
 }
 
 func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9653,12 +9293,6 @@ func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9683,18 +9317,18 @@ func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRe
 }
 
 func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAutolinkRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteAutolinkNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9719,6 +9353,12 @@ func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAuto
 }
 
 func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response) (res ReposEnableAutomatedSecurityFixes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposEnableAutomatedSecurityFixes{}, nil
@@ -9728,6 +9368,12 @@ func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response) (res R
 }
 
 func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res ReposDisableAutomatedSecurityFixes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDisableAutomatedSecurityFixes{}, nil
@@ -9737,16 +9383,16 @@ func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res 
 }
 
 func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranchesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9765,12 +9411,6 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9795,16 +9435,16 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 }
 
 func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9826,12 +9466,6 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9850,12 +9484,6 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9874,12 +9502,6 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9904,16 +9526,16 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 }
 
 func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBranchProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9935,12 +9557,6 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9965,16 +9581,16 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBr
 }
 
 func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUpdateBranchProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -9996,12 +9612,6 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10020,12 +9630,6 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10044,12 +9648,6 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10074,18 +9672,18 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 }
 
 func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDeleteBranchProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteBranchProtectionNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10110,16 +9708,16 @@ func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDe
 }
 
 func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res ProtectedBranchAdminEnforced, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10144,16 +9742,16 @@ func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res Prote
 }
 
 func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res ProtectedBranchAdminEnforced, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10178,18 +9776,18 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res Prote
 }
 
 func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res ReposDeleteAdminBranchProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteAdminBranchProtectionNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10214,16 +9812,16 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res Re
 }
 
 func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res ProtectedBranchPullRequestReview, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10248,18 +9846,18 @@ func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res
 }
 
 func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (res ReposDeletePullRequestReviewProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeletePullRequestReviewProtectionNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10284,16 +9882,16 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (
 }
 
 func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res ReposGetCommitSignatureProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10315,12 +9913,6 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res R
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10345,16 +9937,16 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res R
 }
 
 func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (res ReposCreateCommitSignatureProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10376,12 +9968,6 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10406,18 +9992,18 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (re
 }
 
 func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (res ReposDeleteCommitSignatureProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteCommitSignatureProtectionNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10442,16 +10028,16 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (re
 }
 
 func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res ReposGetStatusChecksProtectionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10473,12 +10059,6 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res Repo
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10503,6 +10083,12 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res Repo
 }
 
 func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res ReposRemoveStatusCheckProtection, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposRemoveStatusCheckProtection{}, nil
@@ -10512,16 +10098,16 @@ func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res Re
 }
 
 func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res ReposGetAllStatusCheckContextsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10540,12 +10126,6 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res Repo
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10570,16 +10150,16 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res Repo
 }
 
 func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGetAccessRestrictionsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10601,12 +10181,6 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGet
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10631,6 +10205,12 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGet
 }
 
 func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res ReposDeleteAccessRestrictions, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteAccessRestrictions{}, nil
@@ -10640,16 +10220,16 @@ func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res Repos
 }
 
 func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10668,12 +10248,6 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10698,16 +10272,16 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) 
 }
 
 func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10726,12 +10300,6 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10756,16 +10324,16 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response)
 }
 
 func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10784,12 +10352,6 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10814,16 +10376,16 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response)
 }
 
 func decodeChecksGetResponse(resp *http.Response) (res CheckRun, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10848,16 +10410,16 @@ func decodeChecksGetResponse(resp *http.Response) (res CheckRun, err error) {
 }
 
 func decodeChecksListAnnotationsResponse(resp *http.Response) (res []CheckAnnotation, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10898,16 +10460,16 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res []CheckAnnota
 }
 
 func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuiteRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10926,12 +10488,6 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10953,16 +10509,16 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 }
 
 func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res CheckSuitePreference, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -10987,16 +10543,16 @@ func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res CheckSui
 }
 
 func decodeChecksGetSuiteResponse(resp *http.Response) (res CheckSuite, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11021,16 +10577,16 @@ func decodeChecksGetSuiteResponse(resp *http.Response) (res CheckSuite, err erro
 }
 
 func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRerequestSuite, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11055,16 +10611,16 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRereques
 }
 
 func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res CodeScanningListAlertInstancesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11083,12 +10639,6 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11107,12 +10657,6 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11131,12 +10675,6 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11161,16 +10699,16 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 }
 
 func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res CodeScanningListRecentAnalysesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11189,12 +10727,6 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11213,12 +10745,6 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11237,12 +10763,6 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11267,16 +10787,16 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 }
 
 func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScanningGetAnalysisRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11300,12 +10820,6 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11324,12 +10838,6 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11348,12 +10856,6 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11378,16 +10880,16 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 }
 
 func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScanningDeleteAnalysisRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11409,12 +10911,6 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11435,12 +10931,6 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11459,12 +10949,6 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11483,12 +10967,6 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11513,16 +10991,16 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 }
 
 func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScanningUploadSarifRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11546,12 +11024,6 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11570,12 +11042,6 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11596,12 +11062,6 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11626,16 +11086,16 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 }
 
 func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGetSarifRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11657,12 +11117,6 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11686,12 +11140,6 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11716,6 +11164,12 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 }
 
 func decodeReposCheckCollaboratorResponse(resp *http.Response) (res ReposCheckCollaboratorRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposCheckCollaboratorNoContent{}, nil
@@ -11727,6 +11181,12 @@ func decodeReposCheckCollaboratorResponse(resp *http.Response) (res ReposCheckCo
 }
 
 func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res ReposRemoveCollaborator, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposRemoveCollaborator{}, nil
@@ -11736,16 +11196,16 @@ func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res ReposRemove
 }
 
 func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res ReposGetCollaboratorPermissionLevelRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11767,12 +11227,6 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11797,16 +11251,16 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res
 }
 
 func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res []CommitComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11847,16 +11301,16 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res []Co
 }
 
 func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommitCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11878,12 +11332,6 @@ func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11908,18 +11356,18 @@ func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommi
 }
 
 func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDeleteCommitCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteCommitCommentNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11944,16 +11392,16 @@ func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDelet
 }
 
 func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdateCommitCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -11975,12 +11423,6 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdat
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12005,6 +11447,12 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdat
 }
 
 func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res ReactionsDeleteForCommitComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForCommitComment{}, nil
@@ -12014,16 +11462,16 @@ func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res Rea
 }
 
 func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12042,12 +11490,6 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12068,12 +11510,6 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12092,12 +11528,6 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12116,12 +11546,6 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12143,16 +11567,16 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 }
 
 func decodeReposListCommentsForCommitResponse(resp *http.Response) (res []CommitComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12193,16 +11617,16 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res []Commit
 }
 
 func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSuitesForRef, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12227,16 +11651,16 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSu
 }
 
 func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposGetCombinedStatusForRefRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12258,12 +11682,6 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposG
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12288,16 +11706,16 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposG
 }
 
 func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res ReposListCommitStatusesForRefRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12316,12 +11734,6 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12346,16 +11758,16 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 }
 
 func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res CommunityProfile, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12380,16 +11792,16 @@ func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res Com
 }
 
 func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCommitsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12411,12 +11823,6 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12435,12 +11841,6 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12462,16 +11862,16 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 }
 
 func decodeReposListContributorsResponse(resp *http.Response) (res ReposListContributorsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12492,12 +11892,6 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12516,12 +11910,6 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12543,18 +11931,18 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 }
 
 func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDeploymentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteDeploymentNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12576,12 +11964,6 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDe
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12606,16 +11988,16 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDe
 }
 
 func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposListDeploymentStatusesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12634,12 +12016,6 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12664,16 +12040,16 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 }
 
 func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDeploymentStatusRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12695,12 +12071,6 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12722,12 +12092,6 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12752,6 +12116,12 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 }
 
 func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res ReposDeleteAnEnvironment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteAnEnvironment{}, nil
@@ -12761,16 +12131,16 @@ func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res ReposDelet
 }
 
 func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12792,12 +12162,6 @@ func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12822,16 +12186,16 @@ func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err e
 }
 
 func decodeGitListMatchingRefsResponse(resp *http.Response) (res []GitRef, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12872,16 +12236,16 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res []GitRef, err e
 }
 
 func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12903,12 +12267,6 @@ func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12933,16 +12291,16 @@ func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) 
 }
 
 func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12964,12 +12322,6 @@ func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -12994,18 +12346,18 @@ func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) 
 }
 
 func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebhookRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeleteWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13030,18 +12382,18 @@ func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebho
 }
 
 func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposPingWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13066,18 +12418,18 @@ func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRe
 }
 
 func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushWebhookRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposTestPushWebhookNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13102,16 +12454,16 @@ func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushW
 }
 
 func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res MigrationsGetImportStatusRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13133,12 +12485,6 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res Migration
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13163,6 +12509,12 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res Migration
 }
 
 func decodeMigrationsCancelImportResponse(resp *http.Response) (res MigrationsCancelImport, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return MigrationsCancelImport{}, nil
@@ -13172,16 +12524,16 @@ func decodeMigrationsCancelImportResponse(resp *http.Response) (res MigrationsCa
 }
 
 func decodeMigrationsUpdateImportResponse(resp *http.Response) (res Import, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13206,16 +12558,16 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response) (res Import, err 
 }
 
 func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res MigrationsGetCommitAuthorsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13234,12 +12586,6 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res Migratio
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13264,16 +12610,16 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res Migratio
 }
 
 func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLargeFile, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13314,16 +12660,16 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLar
 }
 
 func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res InteractionsSetRestrictionsForRepoRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13350,6 +12696,12 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res 
 }
 
 func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &InteractionsRemoveRestrictionsForRepoNoContent{}, nil
@@ -13361,16 +12713,16 @@ func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response) (r
 }
 
 func decodeReposListInvitationsResponse(resp *http.Response) (res []RepositoryInvitation, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13411,6 +12763,12 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res []RepositoryIn
 }
 
 func decodeReposDeleteInvitationResponse(resp *http.Response) (res ReposDeleteInvitation, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteInvitation{}, nil
@@ -13420,16 +12778,16 @@ func decodeReposDeleteInvitationResponse(resp *http.Response) (res ReposDeleteIn
 }
 
 func decodeReposUpdateInvitationResponse(resp *http.Response) (res RepositoryInvitation, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13454,16 +12812,16 @@ func decodeReposUpdateInvitationResponse(resp *http.Response) (res RepositoryInv
 }
 
 func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13485,12 +12843,6 @@ func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13515,6 +12867,12 @@ func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRe
 }
 
 func decodeIssuesDeleteCommentResponse(resp *http.Response) (res IssuesDeleteComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return IssuesDeleteComment{}, nil
@@ -13524,6 +12882,12 @@ func decodeIssuesDeleteCommentResponse(resp *http.Response) (res IssuesDeleteCom
 }
 
 func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res ReactionsDeleteForIssueComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForIssueComment{}, nil
@@ -13533,16 +12897,16 @@ func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res Reac
 }
 
 func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommentsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13561,12 +12925,6 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13585,12 +12943,6 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13612,16 +12964,16 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 }
 
 func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListLabelsOnIssueRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13640,12 +12992,6 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13670,18 +13016,18 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 }
 
 func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveAllLabelsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesRemoveAllLabelsNoContent{}, nil
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13706,16 +13052,16 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveA
 }
 
 func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabelRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13734,12 +13080,6 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13758,12 +13098,6 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13785,18 +13119,18 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 }
 
 func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesUnlockNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13815,12 +13149,6 @@ func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13842,6 +13170,12 @@ func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err e
 }
 
 func decodeReactionsDeleteForIssueResponse(resp *http.Response) (res ReactionsDeleteForIssue, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForIssue{}, nil
@@ -13851,16 +13185,16 @@ func decodeReactionsDeleteForIssueResponse(resp *http.Response) (res ReactionsDe
 }
 
 func decodeReposListDeployKeysResponse(resp *http.Response) (res []DeployKey, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13901,16 +13235,16 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res []DeployKey, er
 }
 
 func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKeyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13932,12 +13266,6 @@ func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKey
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13962,6 +13290,12 @@ func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKey
 }
 
 func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res ReposDeleteDeployKey, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteDeployKey{}, nil
@@ -13971,16 +13305,16 @@ func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res ReposDeleteDep
 }
 
 func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListLabelsForRepoRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -13999,12 +13333,6 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14029,16 +13357,16 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 }
 
 func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14060,12 +13388,6 @@ func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14090,6 +13412,12 @@ func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, e
 }
 
 func decodeIssuesDeleteLabelResponse(resp *http.Response) (res IssuesDeleteLabel, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return IssuesDeleteLabel{}, nil
@@ -14099,16 +13427,16 @@ func decodeIssuesDeleteLabelResponse(resp *http.Response) (res IssuesDeleteLabel
 }
 
 func decodeIssuesUpdateLabelResponse(resp *http.Response) (res Label, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14133,16 +13461,16 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response) (res Label, err error)
 }
 
 func decodeReposListLanguagesResponse(resp *http.Response) (res Language, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14167,16 +13495,16 @@ func decodeReposListLanguagesResponse(resp *http.Response) (res Language, err er
 }
 
 func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLfsForRepoRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14203,6 +13531,12 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLf
 }
 
 func decodeReposDisableLfsForRepoResponse(resp *http.Response) (res ReposDisableLfsForRepo, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDisableLfsForRepo{}, nil
@@ -14212,16 +13546,16 @@ func decodeReposDisableLfsForRepoResponse(resp *http.Response) (res ReposDisable
 }
 
 func decodeLicensesGetForRepoResponse(resp *http.Response) (res LicenseContent, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14246,16 +13580,16 @@ func decodeLicensesGetForRepoResponse(resp *http.Response) (res LicenseContent, 
 }
 
 func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstreamRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14284,16 +13618,16 @@ func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstre
 }
 
 func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilestoneRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14315,12 +13649,6 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilesto
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14345,18 +13673,18 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilesto
 }
 
 func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteMilestoneRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &IssuesDeleteMilestoneNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14381,16 +13709,16 @@ func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteM
 }
 
 func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res Milestone, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14415,16 +13743,16 @@ func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res Milestone, er
 }
 
 func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res []Label, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14465,16 +13793,16 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res []Labe
 }
 
 func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.Response) (res []Thread, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14515,16 +13843,16 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 }
 
 func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14551,16 +13879,16 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res
 }
 
 func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14582,12 +13910,6 @@ func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14612,16 +13934,16 @@ func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err
 }
 
 func decodeReposListPagesBuildsResponse(resp *http.Response) (res []PageBuild, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14662,16 +13984,16 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res []PageBuild, e
 }
 
 func decodeReposRequestPagesBuildResponse(resp *http.Response) (res PageBuildStatus, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14696,16 +14018,16 @@ func decodeReposRequestPagesBuildResponse(resp *http.Response) (res PageBuildSta
 }
 
 func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res PageBuild, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14730,16 +14052,16 @@ func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res PageBuild,
 }
 
 func decodeReposGetPagesBuildResponse(resp *http.Response) (res PageBuild, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14764,16 +14086,16 @@ func decodeReposGetPagesBuildResponse(resp *http.Response) (res PageBuild, err e
 }
 
 func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPagesHealthCheckRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14795,12 +14117,6 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14824,12 +14140,6 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14856,16 +14166,16 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 }
 
 func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreateForRepoRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14887,12 +14197,6 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14911,12 +14215,6 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14935,12 +14233,6 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14959,12 +14251,6 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -14983,12 +14269,6 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15013,16 +14293,16 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 }
 
 func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetReviewCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15044,12 +14324,6 @@ func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetRevie
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15074,18 +14348,18 @@ func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetRevie
 }
 
 func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDeleteReviewCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &PullsDeleteReviewCommentNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15110,16 +14384,16 @@ func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDelet
 }
 
 func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res PullRequestReviewComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15144,6 +14418,12 @@ func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res PullReques
 }
 
 func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (res ReactionsDeleteForPullRequestComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForPullRequestComment{}, nil
@@ -15153,16 +14433,16 @@ func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (re
 }
 
 func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res PullsCreateReplyForReviewCommentRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15184,12 +14464,6 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15214,16 +14488,16 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 }
 
 func decodePullsListCommitsResponse(resp *http.Response) (res []Commit, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15264,6 +14538,12 @@ func decodePullsListCommitsResponse(resp *http.Response) (res []Commit, err erro
 }
 
 func decodePullsCheckIfMergedResponse(resp *http.Response) (res PullsCheckIfMergedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &PullsCheckIfMergedNoContent{}, nil
@@ -15275,16 +14555,16 @@ func decodePullsCheckIfMergedResponse(resp *http.Response) (res PullsCheckIfMerg
 }
 
 func decodePullsListRequestedReviewersResponse(resp *http.Response) (res PullRequestReviewRequest, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15309,16 +14589,16 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res PullReq
 }
 
 func decodePullsListReviewsResponse(resp *http.Response) (res []PullRequestReview, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15359,16 +14639,16 @@ func decodePullsListReviewsResponse(resp *http.Response) (res []PullRequestRevie
 }
 
 func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReviewRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15390,12 +14670,6 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15417,12 +14691,6 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15447,16 +14715,16 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 }
 
 func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15478,12 +14746,6 @@ func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15508,16 +14770,16 @@ func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, e
 }
 
 func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReviewRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15539,12 +14801,6 @@ func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReview
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15569,16 +14825,16 @@ func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReview
 }
 
 func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDeletePendingReviewRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15600,12 +14856,6 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15627,12 +14877,6 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15657,16 +14901,16 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 }
 
 func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsListCommentsForReviewRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15685,12 +14929,6 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15715,16 +14953,16 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 }
 
 func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissReviewRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15746,12 +14984,6 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15773,12 +15005,6 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15803,16 +15029,16 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 }
 
 func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReviewRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15834,12 +15060,6 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15858,12 +15078,6 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15882,12 +15096,6 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15912,16 +15120,16 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 }
 
 func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleasesRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15940,12 +15148,6 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -15970,16 +15172,16 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 }
 
 func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleaseAssetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16003,12 +15205,6 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleas
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16030,12 +15226,6 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleas
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16060,6 +15250,12 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleas
 }
 
 func decodeReposDeleteReleaseAssetResponse(resp *http.Response) (res ReposDeleteReleaseAsset, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteReleaseAsset{}, nil
@@ -16069,16 +15265,16 @@ func decodeReposDeleteReleaseAssetResponse(resp *http.Response) (res ReposDelete
 }
 
 func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res ReleaseAsset, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16103,16 +15299,16 @@ func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res ReleaseAsse
 }
 
 func decodeReposGetLatestReleaseResponse(resp *http.Response) (res Release, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16137,16 +15333,16 @@ func decodeReposGetLatestReleaseResponse(resp *http.Response) (res Release, err 
 }
 
 func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleaseByTagRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16168,12 +15364,6 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleas
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16198,16 +15388,16 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleas
 }
 
 func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16229,12 +15419,6 @@ func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes,
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16259,6 +15443,12 @@ func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes,
 }
 
 func decodeReposDeleteReleaseResponse(resp *http.Response) (res ReposDeleteRelease, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteRelease{}, nil
@@ -16268,16 +15458,16 @@ func decodeReposDeleteReleaseResponse(resp *http.Response) (res ReposDeleteRelea
 }
 
 func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateReleaseRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16299,12 +15489,6 @@ func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateRelea
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16329,16 +15513,16 @@ func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateRelea
 }
 
 func decodeReposListReleaseAssetsResponse(resp *http.Response) (res []ReleaseAsset, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16379,16 +15563,16 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res []ReleaseAss
 }
 
 func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanningGetAlertRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16412,12 +15596,6 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanni
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16442,16 +15620,16 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanni
 }
 
 func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretScanningUpdateAlertRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16477,12 +15655,6 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretSca
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16507,16 +15679,16 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretSca
 }
 
 func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGetCodeFrequencyStatsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16535,12 +15707,6 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGet
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16567,16 +15733,16 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGet
 }
 
 func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGetCommitActivityStatsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16595,12 +15761,6 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGe
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16627,16 +15787,16 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGe
 }
 
 func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetContributorsStatsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16655,12 +15815,6 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetC
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16687,16 +15841,16 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetC
 }
 
 func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGetParticipationStatsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16718,12 +15872,6 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGet
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16748,16 +15896,16 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGet
 }
 
 func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunchCardStatsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16781,16 +15929,16 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunc
 }
 
 func decodeReposCreateCommitStatusResponse(resp *http.Response) (res Status, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16815,16 +15963,16 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response) (res Status, err
 }
 
 func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res []SimpleUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16865,16 +16013,16 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res []Simpl
 }
 
 func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res ActivityGetRepoSubscriptionRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16896,12 +16044,6 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res Activit
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16928,16 +16070,16 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res Activit
 }
 
 func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res RepositorySubscription, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -16962,6 +16104,12 @@ func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res Reposit
 }
 
 func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response) (res ActivityDeleteRepoSubscription, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActivityDeleteRepoSubscription{}, nil
@@ -16971,16 +16119,16 @@ func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response) (res Acti
 }
 
 func decodeReposListTagsResponse(resp *http.Response) (res []Tag, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17021,6 +16169,12 @@ func decodeReposListTagsResponse(resp *http.Response) (res []Tag, err error) {
 }
 
 func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res ReposDownloadTarballArchive, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 302:
 		return ReposDownloadTarballArchive{}, nil
@@ -17030,16 +16184,16 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res ReposDo
 }
 
 func decodeReposListTeamsResponse(resp *http.Response) (res []Team, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17080,16 +16234,16 @@ func decodeReposListTeamsResponse(resp *http.Response) (res []Team, err error) {
 }
 
 func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopicsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17111,12 +16265,6 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17138,12 +16286,6 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17168,16 +16310,16 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 }
 
 func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceAllTopicsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17199,12 +16341,6 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17226,12 +16362,6 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17253,12 +16383,6 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17283,16 +16407,16 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 }
 
 func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17311,12 +16435,6 @@ func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17341,16 +16459,16 @@ func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRe
 }
 
 func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopReferrersRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17369,12 +16487,6 @@ func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopRef
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17399,16 +16511,16 @@ func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopRef
 }
 
 func decodeReposTransferResponse(resp *http.Response) (res MinimalRepository, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17433,6 +16545,12 @@ func decodeReposTransferResponse(resp *http.Response) (res MinimalRepository, er
 }
 
 func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response) (res ReposCheckVulnerabilityAlertsRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposCheckVulnerabilityAlertsNoContent{}, nil
@@ -17444,6 +16562,12 @@ func decodeReposCheckVulnerabilityAlertsResponse(resp *http.Response) (res Repos
 }
 
 func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response) (res ReposEnableVulnerabilityAlerts, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposEnableVulnerabilityAlerts{}, nil
@@ -17453,6 +16577,12 @@ func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response) (res Repo
 }
 
 func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response) (res ReposDisableVulnerabilityAlerts, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ReposDisableVulnerabilityAlerts{}, nil
@@ -17462,6 +16592,12 @@ func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response) (res Rep
 }
 
 func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res ReposDownloadZipballArchive, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 302:
 		return ReposDownloadZipballArchive{}, nil
@@ -17471,16 +16607,16 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res ReposDo
 }
 
 func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res Repository, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17505,16 +16641,16 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res Repository
 }
 
 func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res ActionsListEnvironmentSecrets, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17539,16 +16675,16 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res Actio
 }
 
 func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res ActionsPublicKey, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17573,16 +16709,16 @@ func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res Acti
 }
 
 func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res ActionsSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17607,16 +16743,16 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res Actions
 }
 
 func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17643,6 +16779,12 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (
 }
 
 func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response) (res ActionsDeleteEnvironmentSecret, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteEnvironmentSecret{}, nil
@@ -17652,16 +16794,16 @@ func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response) (res Acti
 }
 
 func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Response) (res ScimGroupListEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17686,16 +16828,16 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Res
 }
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.Response) (res ScimEnterpriseGroup, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17720,16 +16862,16 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.R
 }
 
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(resp *http.Response) (res ScimEnterpriseGroup, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17754,16 +16896,16 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 }
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp *http.Response) (res ScimEnterpriseGroup, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17788,6 +16930,12 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 }
 
 func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteScimGroupFromEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminDeleteScimGroupFromEnterprise{}, nil
@@ -17797,16 +16945,16 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Respo
 }
 
 func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http.Response) (res ScimUserListEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17831,16 +16979,16 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http
 }
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17865,16 +17013,16 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 }
 
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17899,16 +17047,16 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 }
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17933,6 +17081,12 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 }
 
 func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteUserFromEnterprise, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return EnterpriseAdminDeleteUserFromEnterprise{}, nil
@@ -17942,16 +17096,16 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response) 
 }
 
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -17976,6 +17130,12 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 }
 
 func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUserFromOrgRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ScimDeleteUserFromOrgNoContent{}, nil
@@ -17984,12 +17144,6 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18010,12 +17164,6 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18039,16 +17187,16 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 }
 
 func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18070,12 +17218,6 @@ func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18100,16 +17242,16 @@ func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, e
 }
 
 func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res TeamDiscussion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18134,16 +17276,16 @@ func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 }
 
 func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res TeamDiscussion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18168,6 +17310,12 @@ func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res TeamDiscus
 }
 
 func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response) (res TeamsDeleteDiscussionLegacy, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsDeleteDiscussionLegacy{}, nil
@@ -18177,16 +17325,16 @@ func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response) (res TeamsDe
 }
 
 func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res TeamDiscussion, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18211,16 +17359,16 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 }
 
 func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18245,16 +17393,16 @@ func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 }
 
 func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18279,6 +17427,12 @@ func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res Tea
 }
 
 func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response) (res TeamsDeleteDiscussionCommentLegacy, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsDeleteDiscussionCommentLegacy{}, nil
@@ -18288,16 +17442,16 @@ func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response) (res 
 }
 
 func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18322,16 +17476,16 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 }
 
 func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res Reaction, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18356,16 +17510,16 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Resp
 }
 
 func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (res Reaction, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18390,16 +17544,16 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (
 }
 
 func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res []OrganizationInvitation, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18440,6 +17594,12 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res [
 }
 
 func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMemberLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsGetMemberLegacyNoContent{}, nil
@@ -18451,18 +17611,18 @@ func decodeTeamsGetMemberLegacyResponse(resp *http.Response) (res TeamsGetMember
 }
 
 func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMemberLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsAddMemberLegacyNoContent{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18491,6 +17651,12 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMember
 }
 
 func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemoveMemberLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsRemoveMemberLegacyNoContent{}, nil
@@ -18502,16 +17668,16 @@ func decodeTeamsRemoveMemberLegacyResponse(resp *http.Response) (res TeamsRemove
 }
 
 func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res TeamsGetMembershipForUserLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18533,12 +17699,6 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res Tea
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18563,16 +17723,16 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res Tea
 }
 
 func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18596,12 +17756,6 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18628,6 +17782,12 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) 
 }
 
 func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &TeamsRemoveMembershipForUserLegacyNoContent{}, nil
@@ -18639,16 +17799,16 @@ func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res 
 }
 
 func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListProjectsLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18667,12 +17827,6 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18697,16 +17851,16 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 }
 
 func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18733,16 +17887,16 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (r
 }
 
 func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListReposLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18761,12 +17915,6 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18791,16 +17939,16 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 }
 
 func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18829,6 +17977,12 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res 
 }
 
 func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res TeamsRemoveRepoLegacy, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return TeamsRemoveRepoLegacy{}, nil
@@ -18838,16 +17992,16 @@ func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res TeamsRemoveRe
 }
 
 func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsListIdpGroupsForLegacyRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18869,12 +18023,6 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18893,12 +18041,6 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18920,16 +18062,16 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 }
 
 func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res UsersListBlockedByAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18950,12 +18092,6 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18974,12 +18110,6 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -18998,12 +18128,6 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19022,12 +18146,6 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19052,6 +18170,12 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 }
 
 func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlockedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &UsersCheckBlockedNoContent{}, nil
@@ -19060,12 +18184,6 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19084,12 +18202,6 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19108,12 +18220,6 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19135,6 +18241,12 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 }
 
 func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &UsersUnblockNoContent{}, nil
@@ -19143,12 +18255,6 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19167,12 +18273,6 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19191,12 +18291,6 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19218,16 +18312,16 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 }
 
 func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListEmailsForAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19248,12 +18342,6 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19272,12 +18360,6 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19296,12 +18378,6 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19323,16 +18399,16 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 }
 
 func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (res UsersListFollowersForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19353,12 +18429,6 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19377,12 +18447,6 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19404,16 +18468,16 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 }
 
 func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res UsersListFollowedByAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19434,12 +18498,6 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19458,12 +18516,6 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19485,6 +18537,12 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 }
 
 func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &UsersCheckPersonIsFollowedByAuthenticatedNoContent{}, nil
@@ -19493,12 +18551,6 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19517,12 +18569,6 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19541,12 +18587,6 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19568,6 +18608,12 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 }
 
 func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &UsersFollowNoContent{}, nil
@@ -19576,12 +18622,6 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19600,12 +18640,6 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19624,12 +18658,6 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19651,6 +18679,12 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 }
 
 func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &UsersUnfollowNoContent{}, nil
@@ -19659,12 +18693,6 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19683,12 +18711,6 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19707,12 +18729,6 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19734,16 +18750,16 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 }
 
 func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res UsersListGpgKeysForAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19764,12 +18780,6 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19788,12 +18798,6 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19812,12 +18816,6 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19839,16 +18837,16 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 }
 
 func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19872,12 +18870,6 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19896,12 +18888,6 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19920,12 +18906,6 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19947,16 +18927,16 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 }
 
 func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Response) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -19980,12 +18960,6 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20004,12 +18978,6 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20031,6 +18999,12 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 }
 
 func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRepoToInstallationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &AppsAddRepoToInstallationNoContent{}, nil
@@ -20039,12 +19013,6 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20063,12 +19031,6 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20090,6 +19052,12 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 }
 
 func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res AppsRemoveRepoFromInstallationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &AppsRemoveRepoFromInstallationNoContent{}, nil
@@ -20098,12 +19066,6 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20122,12 +19084,6 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20149,6 +19105,12 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 }
 
 func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForAuthenticatedUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return InteractionsRemoveRestrictionsForAuthenticatedUser{}, nil
@@ -20158,16 +19120,16 @@ func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http
 }
 
 func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20188,12 +19150,6 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20212,12 +19168,6 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20236,12 +19186,6 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20263,16 +19207,16 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 }
 
 func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20296,12 +19240,6 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20320,12 +19258,6 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20344,12 +19276,6 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20371,6 +19297,12 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 }
 
 func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &UsersDeletePublicSSHKeyForAuthenticatedNoContent{}, nil
@@ -20379,12 +19311,6 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20403,12 +19329,6 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20427,12 +19347,6 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20454,16 +19368,16 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 }
 
 func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20484,12 +19398,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20508,12 +19416,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20535,16 +19437,16 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 }
 
 func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.Response) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20565,12 +19467,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20595,16 +19491,16 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 }
 
 func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20626,12 +19522,6 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20650,12 +19540,6 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20677,16 +19561,16 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 }
 
 func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res MigrationsListForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20707,12 +19591,6 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20731,12 +19609,6 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20758,16 +19630,16 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 }
 
 func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20791,12 +19663,6 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20815,12 +19681,6 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20839,12 +19699,6 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20866,6 +19720,12 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 }
 
 func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 302:
 		return &MigrationsGetArchiveForAuthenticatedUserFound{}, nil
@@ -20874,12 +19734,6 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20898,12 +19752,6 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20925,6 +19773,12 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 }
 
 func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Response) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsDeleteArchiveForAuthenticatedUserNoContent{}, nil
@@ -20933,12 +19787,6 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20957,12 +19805,6 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -20981,12 +19823,6 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21008,6 +19844,12 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 }
 
 func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &MigrationsUnlockRepoForAuthenticatedUserNoContent{}, nil
@@ -21016,12 +19858,6 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21040,12 +19876,6 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21064,12 +19894,6 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21091,16 +19915,16 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 }
 
 func decodeMigrationsListReposForUserResponse(resp *http.Response) (res MigrationsListReposForUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21119,12 +19943,6 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21149,16 +19967,16 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 }
 
 func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsListForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21179,12 +19997,6 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21203,12 +20015,6 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21230,16 +20036,16 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 }
 
 func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res ProjectsCreateForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21263,12 +20069,6 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21287,12 +20087,6 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21311,12 +20105,6 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21338,12 +20126,6 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 	case 422:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21368,16 +20150,16 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 }
 
 func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21398,12 +20180,6 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21422,12 +20198,6 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21446,12 +20216,6 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21473,16 +20237,16 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 }
 
 func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21503,12 +20267,6 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21527,12 +20285,6 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21551,12 +20303,6 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21578,6 +20324,12 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 }
 
 func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDeclineInvitationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposDeclineInvitationNoContent{}, nil
@@ -21586,12 +20338,6 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21610,12 +20356,6 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21634,12 +20374,6 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21661,6 +20395,12 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 }
 
 func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptInvitationRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ReposAcceptInvitationNoContent{}, nil
@@ -21669,12 +20409,6 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21693,12 +20427,6 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21717,12 +20445,6 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21744,6 +20466,12 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 }
 
 func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Response) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityCheckRepoIsStarredByAuthenticatedUserNoContent{}, nil
@@ -21752,12 +20480,6 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21776,12 +20498,6 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21800,12 +20516,6 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21827,6 +20537,12 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 }
 
 func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityStarRepoForAuthenticatedUserNoContent{}, nil
@@ -21835,12 +20551,6 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21859,12 +20569,6 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21883,12 +20587,6 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21910,6 +20608,12 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 }
 
 func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &ActivityUnstarRepoForAuthenticatedUserNoContent{}, nil
@@ -21918,12 +20622,6 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21942,12 +20640,6 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21966,12 +20658,6 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -21993,16 +20679,16 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 }
 
 func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Response) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22023,12 +20709,6 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22047,12 +20727,6 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22074,16 +20748,16 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 }
 
 func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res TeamsListForAuthenticatedUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22104,12 +20778,6 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22128,12 +20796,6 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22155,16 +20817,16 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 }
 
 func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22188,16 +20850,16 @@ func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) 
 }
 
 func decodeUsersListFollowersForUserResponse(resp *http.Response) (res []SimpleUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22238,16 +20900,16 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res []SimpleU
 }
 
 func decodeUsersListFollowingForUserResponse(resp *http.Response) (res []SimpleUser, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22288,6 +20950,12 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res []SimpleU
 }
 
 func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (res UsersCheckFollowingForUserRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 204:
 		return &UsersCheckFollowingForUserNoContent{}, nil
@@ -22299,16 +20967,16 @@ func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (res UsersChe
 }
 
 func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res []GpgKey, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22349,16 +21017,16 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res []GpgKey, e
 }
 
 func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res []KeySimple, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22399,16 +21067,16 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res []KeySim
 }
 
 func decodeOrgsListForUserResponse(resp *http.Response) (res []OrganizationSimple, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22449,16 +21117,16 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res []OrganizationSimpl
 }
 
 func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res ActionsBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22483,16 +21151,16 @@ func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res 
 }
 
 func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res PackagesBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22517,16 +21185,16 @@ func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res
 }
 
 func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res CombinedBillingUsage, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22551,16 +21219,16 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res 
 }
 
 func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res []MinimalRepository, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -22601,6 +21269,12 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res []Mi
 }
 
 func decodeMetaGetZenResponse(resp *http.Response) (res string, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

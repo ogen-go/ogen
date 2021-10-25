@@ -51,16 +51,16 @@ var (
 )
 
 func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -101,16 +101,16 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 }
 
 func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -135,16 +135,16 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 }
 
 func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -169,16 +169,16 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 }
 
 func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -219,16 +219,16 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 }
 
 func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())

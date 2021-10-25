@@ -51,16 +51,16 @@ var (
 )
 
 func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -87,6 +87,12 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) 
 }
 
 func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDefault, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	default:
 		return FoobarPutDefault{StatusCode: resp.StatusCode}, nil
@@ -94,16 +100,16 @@ func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDefault, err err
 }
 
 func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -127,8 +133,17 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response ErrorStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -141,16 +156,16 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 }
 
 func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -172,8 +187,17 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
 			var response PetGetDefaultStatusCode
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
+			if err := func() error {
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
 				return res, err
 			}
 
@@ -186,16 +210,16 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 }
 
 func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -220,16 +244,16 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 }
 
 func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -267,16 +291,16 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 }
 
 func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
@@ -299,16 +323,16 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 }
 
 func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			buf := json.GetBuffer()
-			defer json.PutBuffer(buf)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
-				return res, err
-			}
-
 			i := json.GetIterator()
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())

@@ -9,11 +9,11 @@
 func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }}, err error) {
     switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
-    {{- range $ctype, $schema := $m.RequestBody.Contents }}
-    case "{{ $ctype }}":
+    {{- range $contentType, $schema := $m.RequestBody.Contents }}
+    case "{{ $contentType }}":
         var request {{ $schema.Type }}
         {{- /* Decode json */ -}}
-        {{- if eq $ctype "application/json" }}
+        {{- if eq $contentType "application/json" }}
         if err := request.ReadJSONFrom(r.Body); err != nil {
             return req, fmt.Errorf("json: %w", err)
         }
@@ -27,7 +27,7 @@ func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }},
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request
-        return req, fmt.Errorf("{{ $ctype }} decoder not implemented")
+        return req, fmt.Errorf("{{ $contentType }} decoder not implemented")
         {{- end }}
     {{- end }}
     {{- /* Range over all request types */}}
