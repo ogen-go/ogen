@@ -274,10 +274,48 @@ func (o *NilString) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-func (NotFound) WriteJSON(j *json.Stream)        {}
-func (NotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (NotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (NotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s NotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes NotFound json value to io.Writer.
+func (s NotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads NotFound json value from io.Reader.
+func (s *NotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads NotFound from json stream.
+func (s *NotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON writes json value of Data to json stream.
 func (o OptData) WriteJSON(j *json.Stream) {

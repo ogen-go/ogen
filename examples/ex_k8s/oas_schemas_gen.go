@@ -2844,6 +2844,102 @@ type GetStorageV1beta1APIResourcesUnauthorized struct{}
 
 func (*GetStorageV1beta1APIResourcesUnauthorized) getStorageV1beta1APIResourcesResponse() {}
 
+type IoK8sAPIAuthenticationV1UserInfoExtra struct{}
+
+type IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra struct{}
+
+type IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra struct{}
+
+type IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes struct{}
+
+type IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes struct{}
+
+type IoK8sAPICoreV1ConfigMapBinaryData struct{}
+
+type IoK8sAPICoreV1ConfigMapData struct{}
+
+type IoK8sAPICoreV1FlexPersistentVolumeSourceOptions struct{}
+
+type IoK8sAPICoreV1FlexVolumeSourceOptions struct{}
+
+type IoK8sAPICoreV1LimitRangeItemDefault struct{}
+
+type IoK8sAPICoreV1LimitRangeItemDefaultRequest struct{}
+
+type IoK8sAPICoreV1LimitRangeItemMax struct{}
+
+type IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio struct{}
+
+type IoK8sAPICoreV1LimitRangeItemMin struct{}
+
+type IoK8sAPICoreV1NodeStatusAllocatable struct{}
+
+type IoK8sAPICoreV1NodeStatusCapacity struct{}
+
+type IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity struct{}
+
+type IoK8sAPICoreV1PersistentVolumeSpecCapacity struct{}
+
+type IoK8sAPICoreV1PodSpecNodeSelector struct{}
+
+type IoK8sAPICoreV1PodSpecOverhead struct{}
+
+type IoK8sAPICoreV1ReplicationControllerSpecSelector struct{}
+
+type IoK8sAPICoreV1ResourceQuotaSpecHard struct{}
+
+type IoK8sAPICoreV1ResourceQuotaStatusHard struct{}
+
+type IoK8sAPICoreV1ResourceQuotaStatusUsed struct{}
+
+type IoK8sAPICoreV1ResourceRequirementsLimits struct{}
+
+type IoK8sAPICoreV1ResourceRequirementsRequests struct{}
+
+type IoK8sAPICoreV1SecretData struct{}
+
+type IoK8sAPICoreV1SecretStringData struct{}
+
+type IoK8sAPICoreV1ServiceSpecSelector struct{}
+
+type IoK8sAPIDiscoveryV1EndpointDeprecatedTopology struct{}
+
+type IoK8sAPIDiscoveryV1beta1EndpointTopology struct{}
+
+type IoK8sAPINodeV1OverheadPodFixed struct{}
+
+type IoK8sAPINodeV1SchedulingNodeSelector struct{}
+
+type IoK8sAPINodeV1alpha1OverheadPodFixed struct{}
+
+type IoK8sAPINodeV1alpha1SchedulingNodeSelector struct{}
+
+type IoK8sAPINodeV1beta1OverheadPodFixed struct{}
+
+type IoK8sAPINodeV1beta1SchedulingNodeSelector struct{}
+
+type IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods struct{}
+
+type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods struct{}
+
+type IoK8sAPIStorageV1StorageClassParameters struct{}
+
+type IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata struct{}
+
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions struct{}
+
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies struct{}
+
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties struct{}
+
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties struct{}
+
+type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels struct{}
+
+type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations struct{}
+
+type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels struct{}
+
 type ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList
 
 func (*ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) listAdmissionregistrationV1MutatingWebhookConfigurationResponse() {
@@ -15999,6 +16095,7 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionList struct {
 	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta         `json:"metadata"`
 }
 
+// IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec describes #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionSpec.
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec struct{}
 
 // IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus describes #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionStatus.
@@ -16282,10 +16379,10 @@ type IoK8sAPIAuthenticationV1TokenReviewStatus struct {
 
 // IoK8sAPIAuthenticationV1UserInfo describes #/components/schemas/io.k8s.api.authentication.v1.UserInfo.
 type IoK8sAPIAuthenticationV1UserInfo struct {
-	Extra    *struct{} `json:"extra"`
-	Groups   []string  `json:"groups"`
-	UID      OptString `json:"uid"`
-	Username OptString `json:"username"`
+	Extra    *IoK8sAPIAuthenticationV1UserInfoExtra `json:"extra"`
+	Groups   []string                               `json:"groups"`
+	UID      OptString                              `json:"uid"`
+	Username OptString                              `json:"username"`
 }
 
 // IoK8sAPIAuthorizationV1NonResourceAttributes describes #/components/schemas/io.k8s.api.authorization.v1.NonResourceAttributes.
@@ -16359,12 +16456,12 @@ type IoK8sAPIAuthorizationV1SubjectAccessReview struct {
 
 // IoK8sAPIAuthorizationV1SubjectAccessReviewSpec describes #/components/schemas/io.k8s.api.authorization.v1.SubjectAccessReviewSpec.
 type IoK8sAPIAuthorizationV1SubjectAccessReviewSpec struct {
-	Extra                 *struct{}                                       `json:"extra"`
-	Groups                []string                                        `json:"groups"`
-	NonResourceAttributes OptIoK8sAPIAuthorizationV1NonResourceAttributes `json:"nonResourceAttributes"`
-	ResourceAttributes    OptIoK8sAPIAuthorizationV1ResourceAttributes    `json:"resourceAttributes"`
-	UID                   OptString                                       `json:"uid"`
-	User                  OptString                                       `json:"user"`
+	Extra                 *IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra `json:"extra"`
+	Groups                []string                                             `json:"groups"`
+	NonResourceAttributes OptIoK8sAPIAuthorizationV1NonResourceAttributes      `json:"nonResourceAttributes"`
+	ResourceAttributes    OptIoK8sAPIAuthorizationV1ResourceAttributes         `json:"resourceAttributes"`
+	UID                   OptString                                            `json:"uid"`
+	User                  OptString                                            `json:"user"`
 }
 
 // IoK8sAPIAuthorizationV1SubjectAccessReviewStatus describes #/components/schemas/io.k8s.api.authorization.v1.SubjectAccessReviewStatus.
@@ -16920,14 +17017,14 @@ type IoK8sAPICertificatesV1CertificateSigningRequestList struct {
 
 // IoK8sAPICertificatesV1CertificateSigningRequestSpec describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestSpec.
 type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
-	ExpirationSeconds OptInt32  `json:"expirationSeconds"`
-	Extra             *struct{} `json:"extra"`
-	Groups            []string  `json:"groups"`
-	Request           []byte    `json:"request"`
-	SignerName        string    `json:"signerName"`
-	UID               OptString `json:"uid"`
-	Usages            []string  `json:"usages"`
-	Username          OptString `json:"username"`
+	ExpirationSeconds OptInt32                                                  `json:"expirationSeconds"`
+	Extra             *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra `json:"extra"`
+	Groups            []string                                                  `json:"groups"`
+	Request           []byte                                                    `json:"request"`
+	SignerName        string                                                    `json:"signerName"`
+	UID               OptString                                                 `json:"uid"`
+	Usages            []string                                                  `json:"usages"`
+	Username          OptString                                                 `json:"username"`
 }
 
 // IoK8sAPICertificatesV1CertificateSigningRequestStatus describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestStatus.
@@ -17009,24 +17106,24 @@ type IoK8sAPICoreV1AzureFileVolumeSource struct {
 
 // IoK8sAPICoreV1CSIPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CSIPersistentVolumeSource.
 type IoK8sAPICoreV1CSIPersistentVolumeSource struct {
-	ControllerExpandSecretRef  OptIoK8sAPICoreV1SecretReference `json:"controllerExpandSecretRef"`
-	ControllerPublishSecretRef OptIoK8sAPICoreV1SecretReference `json:"controllerPublishSecretRef"`
-	Driver                     string                           `json:"driver"`
-	FsType                     OptString                        `json:"fsType"`
-	NodePublishSecretRef       OptIoK8sAPICoreV1SecretReference `json:"nodePublishSecretRef"`
-	NodeStageSecretRef         OptIoK8sAPICoreV1SecretReference `json:"nodeStageSecretRef"`
-	ReadOnly                   OptBool                          `json:"readOnly"`
-	VolumeAttributes           *struct{}                        `json:"volumeAttributes"`
-	VolumeHandle               string                           `json:"volumeHandle"`
+	ControllerExpandSecretRef  OptIoK8sAPICoreV1SecretReference                         `json:"controllerExpandSecretRef"`
+	ControllerPublishSecretRef OptIoK8sAPICoreV1SecretReference                         `json:"controllerPublishSecretRef"`
+	Driver                     string                                                   `json:"driver"`
+	FsType                     OptString                                                `json:"fsType"`
+	NodePublishSecretRef       OptIoK8sAPICoreV1SecretReference                         `json:"nodePublishSecretRef"`
+	NodeStageSecretRef         OptIoK8sAPICoreV1SecretReference                         `json:"nodeStageSecretRef"`
+	ReadOnly                   OptBool                                                  `json:"readOnly"`
+	VolumeAttributes           *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes `json:"volumeAttributes"`
+	VolumeHandle               string                                                   `json:"volumeHandle"`
 }
 
 // IoK8sAPICoreV1CSIVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CSIVolumeSource.
 type IoK8sAPICoreV1CSIVolumeSource struct {
-	Driver               string                                `json:"driver"`
-	FsType               OptString                             `json:"fsType"`
-	NodePublishSecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"nodePublishSecretRef"`
-	ReadOnly             OptBool                               `json:"readOnly"`
-	VolumeAttributes     *struct{}                             `json:"volumeAttributes"`
+	Driver               string                                         `json:"driver"`
+	FsType               OptString                                      `json:"fsType"`
+	NodePublishSecretRef OptIoK8sAPICoreV1LocalObjectReference          `json:"nodePublishSecretRef"`
+	ReadOnly             OptBool                                        `json:"readOnly"`
+	VolumeAttributes     *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes `json:"volumeAttributes"`
 }
 
 // IoK8sAPICoreV1Capabilities describes #/components/schemas/io.k8s.api.core.v1.Capabilities.
@@ -17103,8 +17200,8 @@ type IoK8sAPICoreV1ComponentStatusList struct {
 // IoK8sAPICoreV1ConfigMap describes #/components/schemas/io.k8s.api.core.v1.ConfigMap.
 type IoK8sAPICoreV1ConfigMap struct {
 	ApiVersion OptString                                   `json:"apiVersion"`
-	BinaryData *struct{}                                   `json:"binaryData"`
-	Data       *struct{}                                   `json:"data"`
+	BinaryData *IoK8sAPICoreV1ConfigMapBinaryData          `json:"binaryData"`
+	Data       *IoK8sAPICoreV1ConfigMapData                `json:"data"`
 	Immutable  OptBool                                     `json:"immutable"`
 	Kind       OptString                                   `json:"kind"`
 	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -17418,20 +17515,20 @@ type IoK8sAPICoreV1FCVolumeSource struct {
 
 // IoK8sAPICoreV1FlexPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.FlexPersistentVolumeSource.
 type IoK8sAPICoreV1FlexPersistentVolumeSource struct {
-	Driver    string                           `json:"driver"`
-	FsType    OptString                        `json:"fsType"`
-	Options   *struct{}                        `json:"options"`
-	ReadOnly  OptBool                          `json:"readOnly"`
-	SecretRef OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
+	Driver    string                                           `json:"driver"`
+	FsType    OptString                                        `json:"fsType"`
+	Options   *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions `json:"options"`
+	ReadOnly  OptBool                                          `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1SecretReference                 `json:"secretRef"`
 }
 
 // IoK8sAPICoreV1FlexVolumeSource describes #/components/schemas/io.k8s.api.core.v1.FlexVolumeSource.
 type IoK8sAPICoreV1FlexVolumeSource struct {
-	Driver    string                                `json:"driver"`
-	FsType    OptString                             `json:"fsType"`
-	Options   *struct{}                             `json:"options"`
-	ReadOnly  OptBool                               `json:"readOnly"`
-	SecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
+	Driver    string                                 `json:"driver"`
+	FsType    OptString                              `json:"fsType"`
+	Options   *IoK8sAPICoreV1FlexVolumeSourceOptions `json:"options"`
+	ReadOnly  OptBool                                `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1LocalObjectReference  `json:"secretRef"`
 }
 
 // IoK8sAPICoreV1FlockerVolumeSource describes #/components/schemas/io.k8s.api.core.v1.FlockerVolumeSource.
@@ -17557,12 +17654,12 @@ type IoK8sAPICoreV1LimitRange struct {
 
 // IoK8sAPICoreV1LimitRangeItem describes #/components/schemas/io.k8s.api.core.v1.LimitRangeItem.
 type IoK8sAPICoreV1LimitRangeItem struct {
-	Default              *struct{} `json:"default"`
-	DefaultRequest       *struct{} `json:"defaultRequest"`
-	Max                  *struct{} `json:"max"`
-	MaxLimitRequestRatio *struct{} `json:"maxLimitRequestRatio"`
-	Min                  *struct{} `json:"min"`
-	Type                 string    `json:"type"`
+	Default              *IoK8sAPICoreV1LimitRangeItemDefault              `json:"default"`
+	DefaultRequest       *IoK8sAPICoreV1LimitRangeItemDefaultRequest       `json:"defaultRequest"`
+	Max                  *IoK8sAPICoreV1LimitRangeItemMax                  `json:"max"`
+	MaxLimitRequestRatio *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio `json:"maxLimitRequestRatio"`
+	Min                  *IoK8sAPICoreV1LimitRangeItemMin                  `json:"min"`
+	Type                 string                                            `json:"type"`
 }
 
 // IoK8sAPICoreV1LimitRangeList describes #/components/schemas/io.k8s.api.core.v1.LimitRangeList.
@@ -17734,8 +17831,8 @@ type IoK8sAPICoreV1NodeSpec struct {
 // IoK8sAPICoreV1NodeStatus describes #/components/schemas/io.k8s.api.core.v1.NodeStatus.
 type IoK8sAPICoreV1NodeStatus struct {
 	Addresses       []IoK8sAPICoreV1NodeAddress          `json:"addresses"`
-	Allocatable     *struct{}                            `json:"allocatable"`
-	Capacity        *struct{}                            `json:"capacity"`
+	Allocatable     *IoK8sAPICoreV1NodeStatusAllocatable `json:"allocatable"`
+	Capacity        *IoK8sAPICoreV1NodeStatusCapacity    `json:"capacity"`
 	Conditions      []IoK8sAPICoreV1NodeCondition        `json:"conditions"`
 	Config          OptIoK8sAPICoreV1NodeConfigStatus    `json:"config"`
 	DaemonEndpoints OptIoK8sAPICoreV1NodeDaemonEndpoints `json:"daemonEndpoints"`
@@ -17827,10 +17924,10 @@ type IoK8sAPICoreV1PersistentVolumeClaimSpec struct {
 
 // IoK8sAPICoreV1PersistentVolumeClaimStatus describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimStatus.
 type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
-	AccessModes []string                                       `json:"accessModes"`
-	Capacity    *struct{}                                      `json:"capacity"`
-	Conditions  []IoK8sAPICoreV1PersistentVolumeClaimCondition `json:"conditions"`
-	Phase       OptString                                      `json:"phase"`
+	AccessModes []string                                           `json:"accessModes"`
+	Capacity    *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity `json:"capacity"`
+	Conditions  []IoK8sAPICoreV1PersistentVolumeClaimCondition     `json:"conditions"`
+	Phase       OptString                                          `json:"phase"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaimTemplate describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimTemplate.
@@ -17859,7 +17956,7 @@ type IoK8sAPICoreV1PersistentVolumeSpec struct {
 	AwsElasticBlockStore          OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource `json:"awsElasticBlockStore"`
 	AzureDisk                     OptIoK8sAPICoreV1AzureDiskVolumeSource            `json:"azureDisk"`
 	AzureFile                     OptIoK8sAPICoreV1AzureFilePersistentVolumeSource  `json:"azureFile"`
-	Capacity                      *struct{}                                         `json:"capacity"`
+	Capacity                      *IoK8sAPICoreV1PersistentVolumeSpecCapacity       `json:"capacity"`
 	Cephfs                        OptIoK8sAPICoreV1CephFSPersistentVolumeSource     `json:"cephfs"`
 	Cinder                        OptIoK8sAPICoreV1CinderPersistentVolumeSource     `json:"cinder"`
 	ClaimRef                      OptIoK8sAPICoreV1ObjectReference                  `json:"claimRef"`
@@ -18002,8 +18099,8 @@ type IoK8sAPICoreV1PodSpec struct {
 	ImagePullSecrets              []IoK8sAPICoreV1LocalObjectReference     `json:"imagePullSecrets"`
 	InitContainers                []IoK8sAPICoreV1Container                `json:"initContainers"`
 	NodeName                      OptString                                `json:"nodeName"`
-	NodeSelector                  *struct{}                                `json:"nodeSelector"`
-	Overhead                      *struct{}                                `json:"overhead"`
+	NodeSelector                  *IoK8sAPICoreV1PodSpecNodeSelector       `json:"nodeSelector"`
+	Overhead                      *IoK8sAPICoreV1PodSpecOverhead           `json:"overhead"`
 	PreemptionPolicy              OptString                                `json:"preemptionPolicy"`
 	Priority                      OptInt32                                 `json:"priority"`
 	PriorityClassName             OptString                                `json:"priorityClassName"`
@@ -18163,10 +18260,10 @@ type IoK8sAPICoreV1ReplicationControllerList struct {
 
 // IoK8sAPICoreV1ReplicationControllerSpec describes #/components/schemas/io.k8s.api.core.v1.ReplicationControllerSpec.
 type IoK8sAPICoreV1ReplicationControllerSpec struct {
-	MinReadySeconds OptInt32                         `json:"minReadySeconds"`
-	Replicas        OptInt32                         `json:"replicas"`
-	Selector        *struct{}                        `json:"selector"`
-	Template        OptIoK8sAPICoreV1PodTemplateSpec `json:"template"`
+	MinReadySeconds OptInt32                                         `json:"minReadySeconds"`
+	Replicas        OptInt32                                         `json:"replicas"`
+	Selector        *IoK8sAPICoreV1ReplicationControllerSpecSelector `json:"selector"`
+	Template        OptIoK8sAPICoreV1PodTemplateSpec                 `json:"template"`
 }
 
 // IoK8sAPICoreV1ReplicationControllerStatus describes #/components/schemas/io.k8s.api.core.v1.ReplicationControllerStatus.
@@ -18205,21 +18302,21 @@ type IoK8sAPICoreV1ResourceQuotaList struct {
 
 // IoK8sAPICoreV1ResourceQuotaSpec describes #/components/schemas/io.k8s.api.core.v1.ResourceQuotaSpec.
 type IoK8sAPICoreV1ResourceQuotaSpec struct {
-	Hard          *struct{}                      `json:"hard"`
-	ScopeSelector OptIoK8sAPICoreV1ScopeSelector `json:"scopeSelector"`
-	Scopes        []string                       `json:"scopes"`
+	Hard          *IoK8sAPICoreV1ResourceQuotaSpecHard `json:"hard"`
+	ScopeSelector OptIoK8sAPICoreV1ScopeSelector       `json:"scopeSelector"`
+	Scopes        []string                             `json:"scopes"`
 }
 
 // IoK8sAPICoreV1ResourceQuotaStatus describes #/components/schemas/io.k8s.api.core.v1.ResourceQuotaStatus.
 type IoK8sAPICoreV1ResourceQuotaStatus struct {
-	Hard *struct{} `json:"hard"`
-	Used *struct{} `json:"used"`
+	Hard *IoK8sAPICoreV1ResourceQuotaStatusHard `json:"hard"`
+	Used *IoK8sAPICoreV1ResourceQuotaStatusUsed `json:"used"`
 }
 
 // IoK8sAPICoreV1ResourceRequirements describes #/components/schemas/io.k8s.api.core.v1.ResourceRequirements.
 type IoK8sAPICoreV1ResourceRequirements struct {
-	Limits   *struct{} `json:"limits"`
-	Requests *struct{} `json:"requests"`
+	Limits   *IoK8sAPICoreV1ResourceRequirementsLimits   `json:"limits"`
+	Requests *IoK8sAPICoreV1ResourceRequirementsRequests `json:"requests"`
 }
 
 // IoK8sAPICoreV1SELinuxOptions describes #/components/schemas/io.k8s.api.core.v1.SELinuxOptions.
@@ -18279,11 +18376,11 @@ type IoK8sAPICoreV1SeccompProfile struct {
 // IoK8sAPICoreV1Secret describes #/components/schemas/io.k8s.api.core.v1.Secret.
 type IoK8sAPICoreV1Secret struct {
 	ApiVersion OptString                                   `json:"apiVersion"`
-	Data       *struct{}                                   `json:"data"`
+	Data       *IoK8sAPICoreV1SecretData                   `json:"data"`
 	Immutable  OptBool                                     `json:"immutable"`
 	Kind       OptString                                   `json:"kind"`
 	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	StringData *struct{}                                   `json:"stringData"`
+	StringData *IoK8sAPICoreV1SecretStringData             `json:"stringData"`
 	Type       OptString                                   `json:"type"`
 }
 
@@ -18413,7 +18510,7 @@ type IoK8sAPICoreV1ServiceSpec struct {
 	LoadBalancerSourceRanges      []string                               `json:"loadBalancerSourceRanges"`
 	Ports                         []IoK8sAPICoreV1ServicePort            `json:"ports"`
 	PublishNotReadyAddresses      OptBool                                `json:"publishNotReadyAddresses"`
-	Selector                      *struct{}                              `json:"selector"`
+	Selector                      *IoK8sAPICoreV1ServiceSpecSelector     `json:"selector"`
 	SessionAffinity               OptString                              `json:"sessionAffinity"`
 	SessionAffinityConfig         OptIoK8sAPICoreV1SessionAffinityConfig `json:"sessionAffinityConfig"`
 	Type                          OptString                              `json:"type"`
@@ -18590,14 +18687,14 @@ type IoK8sAPICoreV1WindowsSecurityContextOptions struct {
 
 // IoK8sAPIDiscoveryV1Endpoint describes #/components/schemas/io.k8s.api.discovery.v1.Endpoint.
 type IoK8sAPIDiscoveryV1Endpoint struct {
-	Addresses          []string                                 `json:"addresses"`
-	Conditions         OptIoK8sAPIDiscoveryV1EndpointConditions `json:"conditions"`
-	DeprecatedTopology *struct{}                                `json:"deprecatedTopology"`
-	Hints              OptIoK8sAPIDiscoveryV1EndpointHints      `json:"hints"`
-	Hostname           OptString                                `json:"hostname"`
-	NodeName           OptString                                `json:"nodeName"`
-	TargetRef          OptIoK8sAPICoreV1ObjectReference         `json:"targetRef"`
-	Zone               OptString                                `json:"zone"`
+	Addresses          []string                                       `json:"addresses"`
+	Conditions         OptIoK8sAPIDiscoveryV1EndpointConditions       `json:"conditions"`
+	DeprecatedTopology *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology `json:"deprecatedTopology"`
+	Hints              OptIoK8sAPIDiscoveryV1EndpointHints            `json:"hints"`
+	Hostname           OptString                                      `json:"hostname"`
+	NodeName           OptString                                      `json:"nodeName"`
+	TargetRef          OptIoK8sAPICoreV1ObjectReference               `json:"targetRef"`
+	Zone               OptString                                      `json:"zone"`
 }
 
 // IoK8sAPIDiscoveryV1EndpointConditions describes #/components/schemas/io.k8s.api.discovery.v1.EndpointConditions.
@@ -18651,7 +18748,7 @@ type IoK8sAPIDiscoveryV1beta1Endpoint struct {
 	Hostname   OptString                                     `json:"hostname"`
 	NodeName   OptString                                     `json:"nodeName"`
 	TargetRef  OptIoK8sAPICoreV1ObjectReference              `json:"targetRef"`
-	Topology   *struct{}                                     `json:"topology"`
+	Topology   *IoK8sAPIDiscoveryV1beta1EndpointTopology     `json:"topology"`
 }
 
 // IoK8sAPIDiscoveryV1beta1EndpointConditions describes #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointConditions.
@@ -19230,7 +19327,7 @@ type IoK8sAPINetworkingV1ServiceBackendPort struct {
 
 // IoK8sAPINodeV1Overhead describes #/components/schemas/io.k8s.api.node.v1.Overhead.
 type IoK8sAPINodeV1Overhead struct {
-	PodFixed *struct{} `json:"podFixed"`
+	PodFixed *IoK8sAPINodeV1OverheadPodFixed `json:"podFixed"`
 }
 
 // IoK8sAPINodeV1RuntimeClass describes #/components/schemas/io.k8s.api.node.v1.RuntimeClass.
@@ -19253,13 +19350,13 @@ type IoK8sAPINodeV1RuntimeClassList struct {
 
 // IoK8sAPINodeV1Scheduling describes #/components/schemas/io.k8s.api.node.v1.Scheduling.
 type IoK8sAPINodeV1Scheduling struct {
-	NodeSelector *struct{}                  `json:"nodeSelector"`
-	Tolerations  []IoK8sAPICoreV1Toleration `json:"tolerations"`
+	NodeSelector *IoK8sAPINodeV1SchedulingNodeSelector `json:"nodeSelector"`
+	Tolerations  []IoK8sAPICoreV1Toleration            `json:"tolerations"`
 }
 
 // IoK8sAPINodeV1alpha1Overhead describes #/components/schemas/io.k8s.api.node.v1alpha1.Overhead.
 type IoK8sAPINodeV1alpha1Overhead struct {
-	PodFixed *struct{} `json:"podFixed"`
+	PodFixed *IoK8sAPINodeV1alpha1OverheadPodFixed `json:"podFixed"`
 }
 
 // IoK8sAPINodeV1alpha1RuntimeClass describes #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClass.
@@ -19287,13 +19384,13 @@ type IoK8sAPINodeV1alpha1RuntimeClassSpec struct {
 
 // IoK8sAPINodeV1alpha1Scheduling describes #/components/schemas/io.k8s.api.node.v1alpha1.Scheduling.
 type IoK8sAPINodeV1alpha1Scheduling struct {
-	NodeSelector *struct{}                  `json:"nodeSelector"`
-	Tolerations  []IoK8sAPICoreV1Toleration `json:"tolerations"`
+	NodeSelector *IoK8sAPINodeV1alpha1SchedulingNodeSelector `json:"nodeSelector"`
+	Tolerations  []IoK8sAPICoreV1Toleration                  `json:"tolerations"`
 }
 
 // IoK8sAPINodeV1beta1Overhead describes #/components/schemas/io.k8s.api.node.v1beta1.Overhead.
 type IoK8sAPINodeV1beta1Overhead struct {
-	PodFixed *struct{} `json:"podFixed"`
+	PodFixed *IoK8sAPINodeV1beta1OverheadPodFixed `json:"podFixed"`
 }
 
 // IoK8sAPINodeV1beta1RuntimeClass describes #/components/schemas/io.k8s.api.node.v1beta1.RuntimeClass.
@@ -19316,8 +19413,8 @@ type IoK8sAPINodeV1beta1RuntimeClassList struct {
 
 // IoK8sAPINodeV1beta1Scheduling describes #/components/schemas/io.k8s.api.node.v1beta1.Scheduling.
 type IoK8sAPINodeV1beta1Scheduling struct {
-	NodeSelector *struct{}                  `json:"nodeSelector"`
-	Tolerations  []IoK8sAPICoreV1Toleration `json:"tolerations"`
+	NodeSelector *IoK8sAPINodeV1beta1SchedulingNodeSelector `json:"nodeSelector"`
+	Tolerations  []IoK8sAPICoreV1Toleration                 `json:"tolerations"`
 }
 
 // IoK8sAPIPolicyV1PodDisruptionBudget describes #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudget.
@@ -19346,13 +19443,13 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
 
 // IoK8sAPIPolicyV1PodDisruptionBudgetStatus describes #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetStatus.
 type IoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
-	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition `json:"conditions"`
-	CurrentHealthy     int32                                     `json:"currentHealthy"`
-	DesiredHealthy     int32                                     `json:"desiredHealthy"`
-	DisruptedPods      *struct{}                                 `json:"disruptedPods"`
-	DisruptionsAllowed int32                                     `json:"disruptionsAllowed"`
-	ExpectedPods       int32                                     `json:"expectedPods"`
-	ObservedGeneration OptInt64                                  `json:"observedGeneration"`
+	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition               `json:"conditions"`
+	CurrentHealthy     int32                                                   `json:"currentHealthy"`
+	DesiredHealthy     int32                                                   `json:"desiredHealthy"`
+	DisruptedPods      *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
+	DisruptionsAllowed int32                                                   `json:"disruptionsAllowed"`
+	ExpectedPods       int32                                                   `json:"expectedPods"`
+	ObservedGeneration OptInt64                                                `json:"observedGeneration"`
 }
 
 // IoK8sAPIPolicyV1beta1AllowedCSIDriver describes #/components/schemas/io.k8s.api.policy.v1beta1.AllowedCSIDriver.
@@ -19415,13 +19512,13 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
 
 // IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus describes #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus.
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
-	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition `json:"conditions"`
-	CurrentHealthy     int32                                     `json:"currentHealthy"`
-	DesiredHealthy     int32                                     `json:"desiredHealthy"`
-	DisruptedPods      *struct{}                                 `json:"disruptedPods"`
-	DisruptionsAllowed int32                                     `json:"disruptionsAllowed"`
-	ExpectedPods       int32                                     `json:"expectedPods"`
-	ObservedGeneration OptInt64                                  `json:"observedGeneration"`
+	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition                    `json:"conditions"`
+	CurrentHealthy     int32                                                        `json:"currentHealthy"`
+	DesiredHealthy     int32                                                        `json:"desiredHealthy"`
+	DisruptedPods      *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
+	DisruptionsAllowed int32                                                        `json:"disruptionsAllowed"`
+	ExpectedPods       int32                                                        `json:"expectedPods"`
+	ObservedGeneration OptInt64                                                     `json:"observedGeneration"`
 }
 
 // IoK8sAPIPolicyV1beta1PodSecurityPolicy describes #/components/schemas/io.k8s.api.policy.v1beta1.PodSecurityPolicy.
@@ -19677,7 +19774,7 @@ type IoK8sAPIStorageV1StorageClass struct {
 	Kind                 OptString                                   `json:"kind"`
 	Metadata             OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 	MountOptions         []string                                    `json:"mountOptions"`
-	Parameters           *struct{}                                   `json:"parameters"`
+	Parameters           *IoK8sAPIStorageV1StorageClassParameters    `json:"parameters"`
 	Provisioner          string                                      `json:"provisioner"`
 	ReclaimPolicy        OptString                                   `json:"reclaimPolicy"`
 	VolumeBindingMode    OptString                                   `json:"volumeBindingMode"`
@@ -19729,10 +19826,10 @@ type IoK8sAPIStorageV1VolumeAttachmentSpec struct {
 
 // IoK8sAPIStorageV1VolumeAttachmentStatus describes #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentStatus.
 type IoK8sAPIStorageV1VolumeAttachmentStatus struct {
-	AttachError        OptIoK8sAPIStorageV1VolumeError `json:"attachError"`
-	Attached           bool                            `json:"attached"`
-	AttachmentMetadata *struct{}                       `json:"attachmentMetadata"`
-	DetachError        OptIoK8sAPIStorageV1VolumeError `json:"detachError"`
+	AttachError        OptIoK8sAPIStorageV1VolumeError                            `json:"attachError"`
+	Attached           bool                                                       `json:"attached"`
+	AttachmentMetadata *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata `json:"attachmentMetadata"`
+	DetachError        OptIoK8sAPIStorageV1VolumeError                            `json:"detachError"`
 }
 
 // IoK8sAPIStorageV1VolumeError describes #/components/schemas/io.k8s.api.storage.v1.VolumeError.
@@ -19872,6 +19969,7 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceS
 	StatusReplicasPath string    `json:"statusReplicasPath"`
 }
 
+// IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresourceStatus.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus struct{}
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresources.
@@ -19891,57 +19989,60 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation stru
 	URL         OptString `json:"url"`
 }
 
+// IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON struct{}
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
-	AdditionalItems                                      *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool   `json:"additionalItems"`
-	AdditionalProperties                                 *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool   `json:"additionalProperties"`
-	AllOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps        `json:"allOf"`
-	AnyOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps        `json:"anyOf"`
-	Default                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                    `json:"default"`
-	Definitions                                          *struct{}                                                                 `json:"definitions"`
-	Dependencies                                         *struct{}                                                                 `json:"dependencies"`
-	Description                                          OptString                                                                 `json:"description"`
-	Enum                                                 []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                   `json:"enum"`
-	Example                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                    `json:"example"`
-	ExclusiveMaximum                                     OptBool                                                                   `json:"exclusiveMaximum"`
-	ExclusiveMinimum                                     OptBool                                                                   `json:"exclusiveMinimum"`
-	ExternalDocs                                         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation `json:"externalDocs"`
-	Format                                               OptString                                                                 `json:"format"`
-	ID                                                   OptString                                                                 `json:"id"`
-	Items                                                *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray  `json:"items"`
-	MaxItems                                             OptInt64                                                                  `json:"maxItems"`
-	MaxLength                                            OptInt64                                                                  `json:"maxLength"`
-	MaxProperties                                        OptInt64                                                                  `json:"maxProperties"`
-	Maximum                                              OptFloat64                                                                `json:"maximum"`
-	MinItems                                             OptInt64                                                                  `json:"minItems"`
-	MinLength                                            OptInt64                                                                  `json:"minLength"`
-	MinProperties                                        OptInt64                                                                  `json:"minProperties"`
-	Minimum                                              OptFloat64                                                                `json:"minimum"`
-	MultipleOf                                           OptFloat64                                                                `json:"multipleOf"`
-	Not                                                  *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps         `json:"not"`
-	Nullable                                             OptBool                                                                   `json:"nullable"`
-	OneOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps        `json:"oneOf"`
-	Pattern                                              OptString                                                                 `json:"pattern"`
-	PatternProperties                                    *struct{}                                                                 `json:"patternProperties"`
-	Properties                                           *struct{}                                                                 `json:"properties"`
-	Ref                                                  OptString                                                                 `json:"$ref"`
-	Required                                             []string                                                                  `json:"required"`
-	Schema                                               OptString                                                                 `json:"$schema"`
-	Title                                                OptString                                                                 `json:"title"`
-	Type                                                 OptString                                                                 `json:"type"`
-	UniqueItems                                          OptBool                                                                   `json:"uniqueItems"`
-	XMinusKubernetesMinusEmbeddedMinusResource           OptBool                                                                   `json:"x-kubernetes-embedded-resource"`
-	XMinusKubernetesMinusIntMinusOrMinusString           OptBool                                                                   `json:"x-kubernetes-int-or-string"`
-	XMinusKubernetesMinusListMinusMapMinusKeys           []string                                                                  `json:"x-kubernetes-list-map-keys"`
-	XMinusKubernetesMinusListMinusType                   OptString                                                                 `json:"x-kubernetes-list-type"`
-	XMinusKubernetesMinusMapMinusType                    OptString                                                                 `json:"x-kubernetes-map-type"`
-	XMinusKubernetesMinusPreserveMinusUnknownMinusFields OptBool                                                                   `json:"x-kubernetes-preserve-unknown-fields"`
+	AdditionalItems                                      *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool            `json:"additionalItems"`
+	AdditionalProperties                                 *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool            `json:"additionalProperties"`
+	AllOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                 `json:"allOf"`
+	AnyOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                 `json:"anyOf"`
+	Default                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                             `json:"default"`
+	Definitions                                          *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions       `json:"definitions"`
+	Dependencies                                         *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies      `json:"dependencies"`
+	Description                                          OptString                                                                          `json:"description"`
+	Enum                                                 []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                            `json:"enum"`
+	Example                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                             `json:"example"`
+	ExclusiveMaximum                                     OptBool                                                                            `json:"exclusiveMaximum"`
+	ExclusiveMinimum                                     OptBool                                                                            `json:"exclusiveMinimum"`
+	ExternalDocs                                         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation          `json:"externalDocs"`
+	Format                                               OptString                                                                          `json:"format"`
+	ID                                                   OptString                                                                          `json:"id"`
+	Items                                                *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray           `json:"items"`
+	MaxItems                                             OptInt64                                                                           `json:"maxItems"`
+	MaxLength                                            OptInt64                                                                           `json:"maxLength"`
+	MaxProperties                                        OptInt64                                                                           `json:"maxProperties"`
+	Maximum                                              OptFloat64                                                                         `json:"maximum"`
+	MinItems                                             OptInt64                                                                           `json:"minItems"`
+	MinLength                                            OptInt64                                                                           `json:"minLength"`
+	MinProperties                                        OptInt64                                                                           `json:"minProperties"`
+	Minimum                                              OptFloat64                                                                         `json:"minimum"`
+	MultipleOf                                           OptFloat64                                                                         `json:"multipleOf"`
+	Not                                                  *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                  `json:"not"`
+	Nullable                                             OptBool                                                                            `json:"nullable"`
+	OneOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                 `json:"oneOf"`
+	Pattern                                              OptString                                                                          `json:"pattern"`
+	PatternProperties                                    *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties `json:"patternProperties"`
+	Properties                                           *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties        `json:"properties"`
+	Ref                                                  OptString                                                                          `json:"$ref"`
+	Required                                             []string                                                                           `json:"required"`
+	Schema                                               OptString                                                                          `json:"$schema"`
+	Title                                                OptString                                                                          `json:"title"`
+	Type                                                 OptString                                                                          `json:"type"`
+	UniqueItems                                          OptBool                                                                            `json:"uniqueItems"`
+	XMinusKubernetesMinusEmbeddedMinusResource           OptBool                                                                            `json:"x-kubernetes-embedded-resource"`
+	XMinusKubernetesMinusIntMinusOrMinusString           OptBool                                                                            `json:"x-kubernetes-int-or-string"`
+	XMinusKubernetesMinusListMinusMapMinusKeys           []string                                                                           `json:"x-kubernetes-list-map-keys"`
+	XMinusKubernetesMinusListMinusType                   OptString                                                                          `json:"x-kubernetes-list-type"`
+	XMinusKubernetesMinusMapMinusType                    OptString                                                                          `json:"x-kubernetes-map-type"`
+	XMinusKubernetesMinusPreserveMinusUnknownMinusFields OptBool                                                                            `json:"x-kubernetes-preserve-unknown-fields"`
 }
 
+// IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrArray.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray struct{}
 
+// IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool struct{}
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ServiceReference.
@@ -20035,6 +20136,7 @@ type IoK8sApimachineryPkgApisMetaV1DeleteOptions struct {
 	PropagationPolicy  OptString                                      `json:"propagationPolicy"`
 }
 
+// IoK8sApimachineryPkgApisMetaV1FieldsV1 describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1.
 type IoK8sApimachineryPkgApisMetaV1FieldsV1 struct{}
 
 // IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery.
@@ -20046,7 +20148,7 @@ type IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery struct {
 // IoK8sApimachineryPkgApisMetaV1LabelSelector describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector.
 type IoK8sApimachineryPkgApisMetaV1LabelSelector struct {
 	MatchExpressions []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement `json:"matchExpressions"`
-	MatchLabels      *struct{}                                                `json:"matchLabels"`
+	MatchLabels      *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels  `json:"matchLabels"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement.
@@ -20079,22 +20181,22 @@ type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
 
 // IoK8sApimachineryPkgApisMetaV1ObjectMeta describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.
 type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
-	Annotations                *struct{}                                          `json:"annotations"`
-	ClusterName                OptString                                          `json:"clusterName"`
-	CreationTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                `json:"creationTimestamp"`
-	DeletionGracePeriodSeconds OptInt64                                           `json:"deletionGracePeriodSeconds"`
-	DeletionTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                `json:"deletionTimestamp"`
-	Finalizers                 []string                                           `json:"finalizers"`
-	GenerateName               OptString                                          `json:"generateName"`
-	Generation                 OptInt64                                           `json:"generation"`
-	Labels                     *struct{}                                          `json:"labels"`
-	ManagedFields              []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry `json:"managedFields"`
-	Name                       OptString                                          `json:"name"`
-	Namespace                  OptString                                          `json:"namespace"`
-	OwnerReferences            []IoK8sApimachineryPkgApisMetaV1OwnerReference     `json:"ownerReferences"`
-	ResourceVersion            OptString                                          `json:"resourceVersion"`
-	SelfLink                   OptString                                          `json:"selfLink"`
-	UID                        OptString                                          `json:"uid"`
+	Annotations                *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations `json:"annotations"`
+	ClusterName                OptString                                            `json:"clusterName"`
+	CreationTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                  `json:"creationTimestamp"`
+	DeletionGracePeriodSeconds OptInt64                                             `json:"deletionGracePeriodSeconds"`
+	DeletionTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                  `json:"deletionTimestamp"`
+	Finalizers                 []string                                             `json:"finalizers"`
+	GenerateName               OptString                                            `json:"generateName"`
+	Generation                 OptInt64                                             `json:"generation"`
+	Labels                     *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels      `json:"labels"`
+	ManagedFields              []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry   `json:"managedFields"`
+	Name                       OptString                                            `json:"name"`
+	Namespace                  OptString                                            `json:"namespace"`
+	OwnerReferences            []IoK8sApimachineryPkgApisMetaV1OwnerReference       `json:"ownerReferences"`
+	ResourceVersion            OptString                                            `json:"resourceVersion"`
+	SelfLink                   OptString                                            `json:"selfLink"`
+	UID                        OptString                                            `json:"uid"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1OwnerReference describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.
@@ -20156,6 +20258,7 @@ type IoK8sApimachineryPkgApisMetaV1WatchEvent struct {
 	Type   string                                  `json:"type"`
 }
 
+// IoK8sApimachineryPkgRuntimeRawExtension describes #/components/schemas/io.k8s.apimachinery.pkg.runtime.RawExtension.
 type IoK8sApimachineryPkgRuntimeRawExtension struct{}
 
 type IoK8sApimachineryPkgUtilIntstrIntOrString string

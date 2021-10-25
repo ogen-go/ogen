@@ -158,16 +158,47 @@ func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK
 	return nil
 }
 
-func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized json value to io.Writer.
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized json value from io.Reader.
+func (s *CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized from json stream.
+func (s *CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted) WriteJSON(j *json.Stream) {
@@ -278,16 +309,47 @@ func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYaml
 	return nil
 }
 
-func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized json value to io.Writer.
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized json value from io.Reader.
+func (s *CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized from json stream.
+func (s *CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted) WriteJSON(j *json.Stream) {
@@ -396,15 +458,47 @@ func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) WriteJSONT
 	return nil
 }
 
-func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateApiextensionsV1CustomResourceDefinitionUnauthorized json value to io.Writer.
+func (s CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateApiextensionsV1CustomResourceDefinitionUnauthorized json value from io.Reader.
+func (s *CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateApiextensionsV1CustomResourceDefinitionUnauthorized from json stream.
+func (s *CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateApiregistrationV1APIServiceApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
@@ -501,10 +595,48 @@ func (CreateApiregistrationV1APIServiceApplicationYamlOK) ReadJSON(i *json.Itera
 func (CreateApiregistrationV1APIServiceApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (CreateApiregistrationV1APIServiceApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (CreateApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateApiregistrationV1APIServiceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateApiregistrationV1APIServiceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateApiregistrationV1APIServiceUnauthorized json value to io.Writer.
+func (s CreateApiregistrationV1APIServiceUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateApiregistrationV1APIServiceUnauthorized json value from io.Reader.
+func (s *CreateApiregistrationV1APIServiceUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateApiregistrationV1APIServiceUnauthorized from json stream.
+func (s *CreateApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateAuthenticationV1TokenReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateAuthenticationV1TokenReviewApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -600,10 +732,48 @@ func (CreateAuthenticationV1TokenReviewApplicationYamlOK) ReadJSON(i *json.Itera
 func (CreateAuthenticationV1TokenReviewApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (CreateAuthenticationV1TokenReviewApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (CreateAuthenticationV1TokenReviewUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateAuthenticationV1TokenReviewUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateAuthenticationV1TokenReviewUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateAuthenticationV1TokenReviewUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateAuthenticationV1TokenReviewUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateAuthenticationV1TokenReviewUnauthorized json value to io.Writer.
+func (s CreateAuthenticationV1TokenReviewUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateAuthenticationV1TokenReviewUnauthorized json value from io.Reader.
+func (s *CreateAuthenticationV1TokenReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateAuthenticationV1TokenReviewUnauthorized from json stream.
+func (s *CreateAuthenticationV1TokenReviewUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {
 }
@@ -709,15 +879,47 @@ func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK) WriteJSONTo
 	return nil
 }
 
-func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized json value to io.Writer.
+func (s CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized json value from io.Reader.
+func (s *CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized from json stream.
+func (s *CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
@@ -822,15 +1024,47 @@ func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized json value to io.Writer.
+func (s CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized json value from io.Reader.
+func (s *CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized from json stream.
+func (s *CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
@@ -935,15 +1169,47 @@ func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateAuthorizationV1SubjectAccessReviewUnauthorized json value to io.Writer.
+func (s CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateAuthorizationV1SubjectAccessReviewUnauthorized json value from io.Reader.
+func (s *CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateAuthorizationV1SubjectAccessReviewUnauthorized from json stream.
+func (s *CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted) WriteJSON(j *json.Stream) {
@@ -1052,15 +1318,47 @@ func (CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) WriteJSONT
 	return nil
 }
 
-func (CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateCertificatesV1CertificateSigningRequestUnauthorized json value to io.Writer.
+func (s CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateCertificatesV1CertificateSigningRequestUnauthorized json value from io.Reader.
+func (s *CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateCertificatesV1CertificateSigningRequestUnauthorized from json stream.
+func (s *CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateCoreV1NamespaceApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
@@ -1126,10 +1424,48 @@ func (CreateCoreV1NamespaceApplicationYamlOK) ReadJSON(i *json.Iterator) error {
 func (CreateCoreV1NamespaceApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateCoreV1NamespaceApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateCoreV1NamespaceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateCoreV1NamespaceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateCoreV1NamespaceUnauthorized json value to io.Writer.
+func (s CreateCoreV1NamespaceUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateCoreV1NamespaceUnauthorized json value from io.Reader.
+func (s *CreateCoreV1NamespaceUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateCoreV1NamespaceUnauthorized from json stream.
+func (s *CreateCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateCoreV1NodeApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
 func (CreateCoreV1NodeApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
@@ -1190,10 +1526,48 @@ func (CreateCoreV1NodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { retu
 func (CreateCoreV1NodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateCoreV1NodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateCoreV1NodeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateCoreV1NodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateCoreV1NodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateCoreV1NodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateCoreV1NodeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateCoreV1NodeUnauthorized json value to io.Writer.
+func (s CreateCoreV1NodeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateCoreV1NodeUnauthorized json value from io.Reader.
+func (s *CreateCoreV1NodeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateCoreV1NodeUnauthorized from json stream.
+func (s *CreateCoreV1NodeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateCoreV1PersistentVolumeApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateCoreV1PersistentVolumeApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -1272,10 +1646,48 @@ func (CreateCoreV1PersistentVolumeApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (CreateCoreV1PersistentVolumeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateCoreV1PersistentVolumeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateCoreV1PersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateCoreV1PersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateCoreV1PersistentVolumeUnauthorized json value to io.Writer.
+func (s CreateCoreV1PersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateCoreV1PersistentVolumeUnauthorized json value from io.Reader.
+func (s *CreateCoreV1PersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateCoreV1PersistentVolumeUnauthorized from json stream.
+func (s *CreateCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -1379,15 +1791,47 @@ func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized json value to io.Writer.
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized json value from io.Reader.
+func (s *CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted) WriteJSON(j *json.Stream) {
@@ -1498,16 +1942,47 @@ func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYaml
 	return nil
 }
 
-func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized json value to io.Writer.
+func (s CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized json value from io.Reader.
+func (s *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
@@ -1612,15 +2087,47 @@ func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized json value to io.Writer.
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized json value from io.Reader.
+func (s *CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted) WriteJSON(j *json.Stream) {
@@ -1731,16 +2238,47 @@ func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYaml
 	return nil
 }
 
-func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized json value to io.Writer.
+func (s CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized json value from io.Reader.
+func (s *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized from json stream.
+func (s *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted) WriteJSON(j *json.Stream) {
@@ -1849,15 +2387,47 @@ func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK) WriteJSONT
 	return nil
 }
 
-func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes CreateInternalApiserverV1alpha1StorageVersionUnauthorized json value to io.Writer.
+func (s CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads CreateInternalApiserverV1alpha1StorageVersionUnauthorized json value from io.Reader.
+func (s *CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateInternalApiserverV1alpha1StorageVersionUnauthorized from json stream.
+func (s *CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (CreateNetworkingV1IngressClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
@@ -1949,10 +2519,48 @@ func (CreateNetworkingV1IngressClassApplicationYamlOK) ReadJSON(i *json.Iterator
 func (CreateNetworkingV1IngressClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateNetworkingV1IngressClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateNetworkingV1IngressClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateNetworkingV1IngressClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateNetworkingV1IngressClassUnauthorized json value to io.Writer.
+func (s CreateNetworkingV1IngressClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateNetworkingV1IngressClassUnauthorized json value from io.Reader.
+func (s *CreateNetworkingV1IngressClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateNetworkingV1IngressClassUnauthorized from json stream.
+func (s *CreateNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateNodeV1RuntimeClassApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
 func (CreateNodeV1RuntimeClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
@@ -2017,10 +2625,48 @@ func (CreateNodeV1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) erro
 func (CreateNodeV1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateNodeV1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateNodeV1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateNodeV1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateNodeV1RuntimeClassUnauthorized json value to io.Writer.
+func (s CreateNodeV1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateNodeV1RuntimeClassUnauthorized json value from io.Reader.
+func (s *CreateNodeV1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateNodeV1RuntimeClassUnauthorized from json stream.
+func (s *CreateNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -2111,10 +2757,48 @@ func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator
 func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateNodeV1alpha1RuntimeClassUnauthorized json value to io.Writer.
+func (s CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateNodeV1alpha1RuntimeClassUnauthorized json value from io.Reader.
+func (s *CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateNodeV1alpha1RuntimeClassUnauthorized from json stream.
+func (s *CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateNodeV1beta1RuntimeClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateNodeV1beta1RuntimeClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -2201,10 +2885,48 @@ func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator)
 func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateNodeV1beta1RuntimeClassUnauthorized json value to io.Writer.
+func (s CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateNodeV1beta1RuntimeClassUnauthorized json value from io.Reader.
+func (s *CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateNodeV1beta1RuntimeClassUnauthorized from json stream.
+func (s *CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -2308,10 +3030,48 @@ func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSONTo(w io.Wr
 	return nil
 }
 
-func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreatePolicyV1beta1PodSecurityPolicyUnauthorized json value to io.Writer.
+func (s CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreatePolicyV1beta1PodSecurityPolicyUnauthorized json value from io.Reader.
+func (s *CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreatePolicyV1beta1PodSecurityPolicyUnauthorized from json stream.
+func (s *CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -2517,21 +3277,91 @@ func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {}
-func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized json value to io.Writer.
+func (s CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized json value from io.Reader.
+func (s *CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized from json stream.
+func (s *CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateRbacAuthorizationV1ClusterRoleUnauthorized json value to io.Writer.
+func (s CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateRbacAuthorizationV1ClusterRoleUnauthorized json value from io.Reader.
+func (s *CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateRbacAuthorizationV1ClusterRoleUnauthorized from json stream.
+func (s *CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateSchedulingV1PriorityClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateSchedulingV1PriorityClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -2622,10 +3452,48 @@ func (CreateSchedulingV1PriorityClassApplicationYamlOK) ReadJSON(i *json.Iterato
 func (CreateSchedulingV1PriorityClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateSchedulingV1PriorityClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateSchedulingV1PriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateSchedulingV1PriorityClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateSchedulingV1PriorityClassUnauthorized json value to io.Writer.
+func (s CreateSchedulingV1PriorityClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateSchedulingV1PriorityClassUnauthorized json value from io.Reader.
+func (s *CreateSchedulingV1PriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateSchedulingV1PriorityClassUnauthorized from json stream.
+func (s *CreateSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateStorageV1CSIDriverApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
 func (CreateStorageV1CSIDriverApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
@@ -2690,10 +3558,48 @@ func (CreateStorageV1CSIDriverApplicationYamlOK) ReadJSON(i *json.Iterator) erro
 func (CreateStorageV1CSIDriverApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateStorageV1CSIDriverApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateStorageV1CSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateStorageV1CSIDriverUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateStorageV1CSIDriverUnauthorized json value to io.Writer.
+func (s CreateStorageV1CSIDriverUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateStorageV1CSIDriverUnauthorized json value from io.Reader.
+func (s *CreateStorageV1CSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateStorageV1CSIDriverUnauthorized from json stream.
+func (s *CreateStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateStorageV1CSINodeApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
 func (CreateStorageV1CSINodeApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
@@ -2758,10 +3664,48 @@ func (CreateStorageV1CSINodeApplicationYamlOK) ReadJSON(i *json.Iterator) error 
 func (CreateStorageV1CSINodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateStorageV1CSINodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateStorageV1CSINodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateStorageV1CSINodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateStorageV1CSINodeUnauthorized json value to io.Writer.
+func (s CreateStorageV1CSINodeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateStorageV1CSINodeUnauthorized json value from io.Reader.
+func (s *CreateStorageV1CSINodeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateStorageV1CSINodeUnauthorized from json stream.
+func (s *CreateStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateStorageV1StorageClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateStorageV1StorageClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -2831,10 +3775,48 @@ func (CreateStorageV1StorageClassApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (CreateStorageV1StorageClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateStorageV1StorageClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateStorageV1StorageClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateStorageV1StorageClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateStorageV1StorageClassUnauthorized json value to io.Writer.
+func (s CreateStorageV1StorageClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateStorageV1StorageClassUnauthorized json value from io.Reader.
+func (s *CreateStorageV1StorageClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateStorageV1StorageClassUnauthorized from json stream.
+func (s *CreateStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CreateStorageV1VolumeAttachmentApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
 func (CreateStorageV1VolumeAttachmentApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
@@ -2925,10 +3907,48 @@ func (CreateStorageV1VolumeAttachmentApplicationYamlOK) ReadJSON(i *json.Iterato
 func (CreateStorageV1VolumeAttachmentApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CreateStorageV1VolumeAttachmentApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CreateStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream)        {}
-func (CreateStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateStorageV1VolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateStorageV1VolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateStorageV1VolumeAttachmentUnauthorized json value to io.Writer.
+func (s CreateStorageV1VolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateStorageV1VolumeAttachmentUnauthorized json value from io.Reader.
+func (s *CreateStorageV1VolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateStorageV1VolumeAttachmentUnauthorized from json stream.
+func (s *CreateStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -2966,16 +3986,47 @@ func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplica
 	return nil
 }
 
-func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized json value to io.Writer.
+func (s DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized json value from io.Reader.
+func (s *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized from json stream.
+func (s *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -3014,16 +4065,47 @@ func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationAppli
 	return nil
 }
 
-func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized json value to io.Writer.
+func (s DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized json value from io.Reader.
+func (s *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized from json stream.
+func (s *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -3062,16 +4144,47 @@ func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK) 
 	return nil
 }
 
-func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized json value to io.Writer.
+func (s DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized json value from io.Reader.
+func (s *DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized from json stream.
+func (s *DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -3108,15 +4221,47 @@ func (DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteApiregistrationV1CollectionAPIServiceUnauthorized json value to io.Writer.
+func (s DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeleteApiregistrationV1CollectionAPIServiceUnauthorized json value from io.Reader.
+func (s *DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteApiregistrationV1CollectionAPIServiceUnauthorized from json stream.
+func (s *DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -3155,16 +4300,47 @@ func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK) 
 	return nil
 }
 
-func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized json value to io.Writer.
+func (s DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized json value from io.Reader.
+func (s *DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized from json stream.
+func (s *DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteCoreV1CollectionNodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -3188,10 +4364,48 @@ func (DeleteCoreV1CollectionNodeApplicationYamlOK) ReadJSON(i *json.Iterator) er
 func (DeleteCoreV1CollectionNodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (DeleteCoreV1CollectionNodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (DeleteCoreV1CollectionNodeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (DeleteCoreV1CollectionNodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (DeleteCoreV1CollectionNodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (DeleteCoreV1CollectionNodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s DeleteCoreV1CollectionNodeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes DeleteCoreV1CollectionNodeUnauthorized json value to io.Writer.
+func (s DeleteCoreV1CollectionNodeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads DeleteCoreV1CollectionNodeUnauthorized json value from io.Reader.
+func (s *DeleteCoreV1CollectionNodeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteCoreV1CollectionNodeUnauthorized from json stream.
+func (s *DeleteCoreV1CollectionNodeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -3227,12 +4441,48 @@ func (DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK) WriteJSONTo(w io.
 	return nil
 }
 
-func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
-func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+// WriteJSONTo writes DeleteCoreV1CollectionPersistentVolumeUnauthorized json value to io.Writer.
+func (s DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads DeleteCoreV1CollectionPersistentVolumeUnauthorized json value from io.Reader.
+func (s *DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteCoreV1CollectionPersistentVolumeUnauthorized from json stream.
+func (s *DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -3270,15 +4520,47 @@ func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK) Wr
 	return nil
 }
 
-func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized json value to io.Writer.
+func (s DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized json value from io.Reader.
+func (s *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -3317,16 +4599,47 @@ func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationAppli
 	return nil
 }
 
-func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized json value to io.Writer.
+func (s DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized json value from io.Reader.
+func (s *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -3365,15 +4678,47 @@ func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK) Wr
 	return nil
 }
 
-func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized json value to io.Writer.
+func (s DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized json value from io.Reader.
+func (s *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -3412,16 +4757,47 @@ func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationAppli
 	return nil
 }
 
-func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized json value to io.Writer.
+func (s DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized json value from io.Reader.
+func (s *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized from json stream.
+func (s *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -3460,16 +4836,47 @@ func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK) 
 	return nil
 }
 
-func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized json value to io.Writer.
+func (s DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized json value from io.Reader.
+func (s *DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized from json stream.
+func (s *DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteNetworkingV1CollectionIngressClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -3506,15 +4913,47 @@ func (DeleteNetworkingV1CollectionIngressClassApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteNetworkingV1CollectionIngressClassUnauthorized json value to io.Writer.
+func (s DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeleteNetworkingV1CollectionIngressClassUnauthorized json value from io.Reader.
+func (s *DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteNetworkingV1CollectionIngressClassUnauthorized from json stream.
+func (s *DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteNodeV1CollectionRuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -3547,10 +4986,48 @@ func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes DeleteNodeV1CollectionRuntimeClassUnauthorized json value to io.Writer.
+func (s DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads DeleteNodeV1CollectionRuntimeClassUnauthorized json value from io.Reader.
+func (s *DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteNodeV1CollectionRuntimeClassUnauthorized from json stream.
+func (s *DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -3586,15 +5063,47 @@ func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized json value to io.Writer.
+func (s DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized json value from io.Reader.
+func (s *DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized from json stream.
+func (s *DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -3631,14 +5140,48 @@ func (DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteNodeV1beta1CollectionRuntimeClassUnauthorized json value to io.Writer.
+func (s DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads DeleteNodeV1beta1CollectionRuntimeClassUnauthorized json value from io.Reader.
+func (s *DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteNodeV1beta1CollectionRuntimeClassUnauthorized from json stream.
+func (s *DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -3674,15 +5217,47 @@ func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK) WriteJSON
 	return nil
 }
 
-func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized json value to io.Writer.
+func (s DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized json value from io.Reader.
+func (s *DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized from json stream.
+func (s *DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -3755,26 +5330,90 @@ func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK) Wr
 	return nil
 }
 
-func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSONTo writes DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized json value to io.Writer.
+func (s DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized json value from io.Reader.
+func (s *DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized from json stream.
+func (s *DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized json value to io.Writer.
+func (s DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized json value from io.Reader.
+func (s *DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized from json stream.
+func (s *DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -3811,15 +5450,47 @@ func (DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteSchedulingV1CollectionPriorityClassUnauthorized json value to io.Writer.
+func (s DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeleteSchedulingV1CollectionPriorityClassUnauthorized json value from io.Reader.
+func (s *DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteSchedulingV1CollectionPriorityClassUnauthorized from json stream.
+func (s *DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (DeleteStorageV1CollectionCSIDriverApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -3852,10 +5523,48 @@ func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSON(j *json.Stream)        {}
-func (DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes DeleteStorageV1CollectionCSIDriverUnauthorized json value to io.Writer.
+func (s DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads DeleteStorageV1CollectionCSIDriverUnauthorized json value from io.Reader.
+func (s *DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteStorageV1CollectionCSIDriverUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeleteStorageV1CollectionCSINodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (DeleteStorageV1CollectionCSINodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -3878,10 +5587,48 @@ func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) ReadJSON(i *json.Iterat
 func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes DeleteStorageV1CollectionCSINodeUnauthorized json value to io.Writer.
+func (s DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads DeleteStorageV1CollectionCSINodeUnauthorized json value from io.Reader.
+func (s *DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteStorageV1CollectionCSINodeUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeleteStorageV1CollectionStorageClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (DeleteStorageV1CollectionStorageClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -3917,10 +5664,48 @@ func (DeleteStorageV1CollectionStorageClassApplicationYamlOK) WriteJSONTo(w io.W
 	return nil
 }
 
-func (DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes DeleteStorageV1CollectionStorageClassUnauthorized json value to io.Writer.
+func (s DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads DeleteStorageV1CollectionStorageClassUnauthorized json value from io.Reader.
+func (s *DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteStorageV1CollectionStorageClassUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -3956,15 +5741,47 @@ func (DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {}
-func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes DeleteStorageV1CollectionVolumeAttachmentUnauthorized json value to io.Writer.
+func (s DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads DeleteStorageV1CollectionVolumeAttachmentUnauthorized json value from io.Reader.
+func (s *DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads DeleteStorageV1CollectionVolumeAttachmentUnauthorized from json stream.
+func (s *DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (GetAPIVersionsApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -3982,10 +5799,48 @@ func (GetAPIVersionsApplicationYamlOK) ReadJSON(i *json.Iterator) error { return
 func (GetAPIVersionsApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAPIVersionsApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAPIVersionsUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAPIVersionsUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAPIVersionsUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAPIVersionsUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAPIVersionsUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAPIVersionsUnauthorized json value to io.Writer.
+func (s GetAPIVersionsUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAPIVersionsUnauthorized json value from io.Reader.
+func (s *GetAPIVersionsUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAPIVersionsUnauthorized from json stream.
+func (s *GetAPIVersionsUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAdmissionregistrationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAdmissionregistrationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4008,10 +5863,48 @@ func (GetAdmissionregistrationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterat
 func (GetAdmissionregistrationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAdmissionregistrationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAdmissionregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAdmissionregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAdmissionregistrationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAdmissionregistrationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAdmissionregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAdmissionregistrationAPIGroupUnauthorized json value to io.Writer.
+func (s GetAdmissionregistrationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAdmissionregistrationAPIGroupUnauthorized json value from io.Reader.
+func (s *GetAdmissionregistrationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAdmissionregistrationAPIGroupUnauthorized from json stream.
+func (s *GetAdmissionregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAdmissionregistrationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (GetAdmissionregistrationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -4047,12 +5940,48 @@ func (GetAdmissionregistrationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.
 	return nil
 }
 
-func (GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
-func (GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
-func (GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+// WriteJSONTo writes GetAdmissionregistrationV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAdmissionregistrationV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAdmissionregistrationV1APIResourcesUnauthorized from json stream.
+func (s *GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetApiextensionsAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetApiextensionsAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4075,10 +6004,48 @@ func (GetApiextensionsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) erro
 func (GetApiextensionsAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetApiextensionsAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetApiextensionsAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetApiextensionsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetApiextensionsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetApiextensionsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetApiextensionsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetApiextensionsAPIGroupUnauthorized json value to io.Writer.
+func (s GetApiextensionsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetApiextensionsAPIGroupUnauthorized json value from io.Reader.
+func (s *GetApiextensionsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetApiextensionsAPIGroupUnauthorized from json stream.
+func (s *GetApiextensionsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetApiextensionsV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetApiextensionsV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4101,10 +6068,48 @@ func (GetApiextensionsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator
 func (GetApiextensionsV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetApiextensionsV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetApiextensionsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetApiextensionsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetApiextensionsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetApiextensionsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetApiextensionsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetApiextensionsV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetApiextensionsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetApiextensionsV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetApiextensionsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetApiextensionsV1APIResourcesUnauthorized from json stream.
+func (s *GetApiextensionsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetApiregistrationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetApiregistrationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4127,10 +6132,48 @@ func (GetApiregistrationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) er
 func (GetApiregistrationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetApiregistrationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetApiregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetApiregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetApiregistrationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetApiregistrationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetApiregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetApiregistrationAPIGroupUnauthorized json value to io.Writer.
+func (s GetApiregistrationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetApiregistrationAPIGroupUnauthorized json value from io.Reader.
+func (s *GetApiregistrationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetApiregistrationAPIGroupUnauthorized from json stream.
+func (s *GetApiregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetApiregistrationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetApiregistrationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4153,10 +6196,48 @@ func (GetApiregistrationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterat
 func (GetApiregistrationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetApiregistrationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetApiregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetApiregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetApiregistrationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetApiregistrationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetApiregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetApiregistrationV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetApiregistrationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetApiregistrationV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetApiregistrationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetApiregistrationV1APIResourcesUnauthorized from json stream.
+func (s *GetApiregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAppsAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAppsAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4173,10 +6254,48 @@ func (GetAppsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { retur
 func (GetAppsAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAppsAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAppsAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAppsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAppsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAppsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAppsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAppsAPIGroupUnauthorized json value to io.Writer.
+func (s GetAppsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAppsAPIGroupUnauthorized json value from io.Reader.
+func (s *GetAppsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAppsAPIGroupUnauthorized from json stream.
+func (s *GetAppsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAppsV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAppsV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4199,10 +6318,48 @@ func (GetAppsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
 func (GetAppsV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAppsV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAppsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAppsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAppsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAppsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAppsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAppsV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetAppsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAppsV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetAppsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAppsV1APIResourcesUnauthorized from json stream.
+func (s *GetAppsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAuthenticationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAuthenticationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4225,10 +6382,48 @@ func (GetAuthenticationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) err
 func (GetAuthenticationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAuthenticationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAuthenticationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAuthenticationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAuthenticationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAuthenticationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAuthenticationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAuthenticationAPIGroupUnauthorized json value to io.Writer.
+func (s GetAuthenticationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAuthenticationAPIGroupUnauthorized json value from io.Reader.
+func (s *GetAuthenticationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAuthenticationAPIGroupUnauthorized from json stream.
+func (s *GetAuthenticationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAuthenticationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAuthenticationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4251,10 +6446,48 @@ func (GetAuthenticationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterato
 func (GetAuthenticationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAuthenticationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAuthenticationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAuthenticationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAuthenticationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAuthenticationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAuthenticationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAuthenticationV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetAuthenticationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAuthenticationV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetAuthenticationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAuthenticationV1APIResourcesUnauthorized from json stream.
+func (s *GetAuthenticationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAuthorizationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAuthorizationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4277,10 +6510,48 @@ func (GetAuthorizationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) erro
 func (GetAuthorizationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAuthorizationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAuthorizationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAuthorizationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAuthorizationAPIGroupUnauthorized json value to io.Writer.
+func (s GetAuthorizationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAuthorizationAPIGroupUnauthorized json value from io.Reader.
+func (s *GetAuthorizationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAuthorizationAPIGroupUnauthorized from json stream.
+func (s *GetAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAuthorizationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAuthorizationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4303,10 +6574,48 @@ func (GetAuthorizationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator
 func (GetAuthorizationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAuthorizationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAuthorizationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAuthorizationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAuthorizationV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetAuthorizationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAuthorizationV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetAuthorizationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAuthorizationV1APIResourcesUnauthorized from json stream.
+func (s *GetAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAutoscalingAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAutoscalingAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4329,10 +6638,48 @@ func (GetAutoscalingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error 
 func (GetAutoscalingAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAutoscalingAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAutoscalingAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAutoscalingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAutoscalingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAutoscalingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAutoscalingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAutoscalingAPIGroupUnauthorized json value to io.Writer.
+func (s GetAutoscalingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAutoscalingAPIGroupUnauthorized json value from io.Reader.
+func (s *GetAutoscalingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAutoscalingAPIGroupUnauthorized from json stream.
+func (s *GetAutoscalingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAutoscalingV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetAutoscalingV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4355,10 +6702,48 @@ func (GetAutoscalingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (GetAutoscalingV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetAutoscalingV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetAutoscalingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAutoscalingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAutoscalingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAutoscalingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAutoscalingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAutoscalingV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetAutoscalingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAutoscalingV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetAutoscalingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAutoscalingV1APIResourcesUnauthorized from json stream.
+func (s *GetAutoscalingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAutoscalingV2beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (GetAutoscalingV2beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -4386,10 +6771,48 @@ func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Itera
 func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAutoscalingV2beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAutoscalingV2beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAutoscalingV2beta1APIResourcesUnauthorized from json stream.
+func (s *GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetAutoscalingV2beta2APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (GetAutoscalingV2beta2APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -4417,10 +6840,48 @@ func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) ReadJSON(i *json.Itera
 func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetAutoscalingV2beta2APIResourcesUnauthorized json value to io.Writer.
+func (s GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetAutoscalingV2beta2APIResourcesUnauthorized json value from io.Reader.
+func (s *GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetAutoscalingV2beta2APIResourcesUnauthorized from json stream.
+func (s *GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetBatchAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetBatchAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4439,10 +6900,48 @@ func (GetBatchAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { retu
 func (GetBatchAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetBatchAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetBatchAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetBatchAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetBatchAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetBatchAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetBatchAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetBatchAPIGroupUnauthorized json value to io.Writer.
+func (s GetBatchAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetBatchAPIGroupUnauthorized json value from io.Reader.
+func (s *GetBatchAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetBatchAPIGroupUnauthorized from json stream.
+func (s *GetBatchAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetBatchV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetBatchV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4465,10 +6964,48 @@ func (GetBatchV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error 
 func (GetBatchV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetBatchV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetBatchV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetBatchV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetBatchV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetBatchV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetBatchV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetBatchV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetBatchV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetBatchV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetBatchV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetBatchV1APIResourcesUnauthorized from json stream.
+func (s *GetBatchV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetBatchV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetBatchV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4491,10 +7028,48 @@ func (GetBatchV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (GetBatchV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetBatchV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetBatchV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetBatchV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetBatchV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetBatchV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetBatchV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetBatchV1beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetBatchV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetBatchV1beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetBatchV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetBatchV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetBatchV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetCertificatesAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetCertificatesAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4517,10 +7092,48 @@ func (GetCertificatesAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error
 func (GetCertificatesAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetCertificatesAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetCertificatesAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetCertificatesAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetCertificatesAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetCertificatesAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetCertificatesAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetCertificatesAPIGroupUnauthorized json value to io.Writer.
+func (s GetCertificatesAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetCertificatesAPIGroupUnauthorized json value from io.Reader.
+func (s *GetCertificatesAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetCertificatesAPIGroupUnauthorized from json stream.
+func (s *GetCertificatesAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetCertificatesV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetCertificatesV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4543,15 +7156,91 @@ func (GetCertificatesV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator)
 func (GetCertificatesV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetCertificatesV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetCertificatesV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetCertificatesV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetCertificatesV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetCertificatesV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetCertificatesV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (GetCodeVersionUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetCodeVersionUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetCodeVersionUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetCodeVersionUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes GetCertificatesV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetCertificatesV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetCertificatesV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetCertificatesV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetCertificatesV1APIResourcesUnauthorized from json stream.
+func (s *GetCertificatesV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GetCodeVersionUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetCodeVersionUnauthorized json value to io.Writer.
+func (s GetCodeVersionUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetCodeVersionUnauthorized json value from io.Reader.
+func (s *GetCodeVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetCodeVersionUnauthorized from json stream.
+func (s *GetCodeVersionUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetCoordinationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetCoordinationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4574,10 +7263,48 @@ func (GetCoordinationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error
 func (GetCoordinationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetCoordinationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetCoordinationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetCoordinationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetCoordinationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetCoordinationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetCoordinationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetCoordinationAPIGroupUnauthorized json value to io.Writer.
+func (s GetCoordinationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetCoordinationAPIGroupUnauthorized json value from io.Reader.
+func (s *GetCoordinationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetCoordinationAPIGroupUnauthorized from json stream.
+func (s *GetCoordinationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetCoordinationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetCoordinationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4600,10 +7327,48 @@ func (GetCoordinationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator)
 func (GetCoordinationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetCoordinationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetCoordinationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetCoordinationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetCoordinationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetCoordinationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetCoordinationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetCoordinationV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetCoordinationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetCoordinationV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetCoordinationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetCoordinationV1APIResourcesUnauthorized from json stream.
+func (s *GetCoordinationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetCoreAPIVersionsApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetCoreAPIVersionsApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4626,10 +7391,48 @@ func (GetCoreAPIVersionsApplicationYamlOK) ReadJSON(i *json.Iterator) error { re
 func (GetCoreAPIVersionsApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetCoreAPIVersionsApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetCoreAPIVersionsUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetCoreAPIVersionsUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetCoreAPIVersionsUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetCoreAPIVersionsUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetCoreAPIVersionsUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetCoreAPIVersionsUnauthorized json value to io.Writer.
+func (s GetCoreAPIVersionsUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetCoreAPIVersionsUnauthorized json value from io.Reader.
+func (s *GetCoreAPIVersionsUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetCoreAPIVersionsUnauthorized from json stream.
+func (s *GetCoreAPIVersionsUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetCoreV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetCoreV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4652,10 +7455,48 @@ func (GetCoreV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
 func (GetCoreV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetCoreV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetCoreV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetCoreV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetCoreV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetCoreV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetCoreV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetCoreV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetCoreV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetCoreV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetCoreV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetCoreV1APIResourcesUnauthorized from json stream.
+func (s *GetCoreV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetDiscoveryAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetDiscoveryAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4678,10 +7519,48 @@ func (GetDiscoveryAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { 
 func (GetDiscoveryAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetDiscoveryAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetDiscoveryAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetDiscoveryAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetDiscoveryAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetDiscoveryAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetDiscoveryAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetDiscoveryAPIGroupUnauthorized json value to io.Writer.
+func (s GetDiscoveryAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetDiscoveryAPIGroupUnauthorized json value from io.Reader.
+func (s *GetDiscoveryAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetDiscoveryAPIGroupUnauthorized from json stream.
+func (s *GetDiscoveryAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetDiscoveryV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetDiscoveryV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4704,10 +7583,48 @@ func (GetDiscoveryV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) er
 func (GetDiscoveryV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetDiscoveryV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetDiscoveryV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetDiscoveryV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetDiscoveryV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetDiscoveryV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetDiscoveryV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetDiscoveryV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetDiscoveryV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetDiscoveryV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetDiscoveryV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetDiscoveryV1APIResourcesUnauthorized from json stream.
+func (s *GetDiscoveryV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetDiscoveryV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetDiscoveryV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4730,10 +7647,48 @@ func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterato
 func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetDiscoveryV1beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetDiscoveryV1beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetDiscoveryV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetEventsAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetEventsAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4754,10 +7709,48 @@ func (GetEventsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { ret
 func (GetEventsAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetEventsAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetEventsAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetEventsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetEventsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetEventsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetEventsAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetEventsAPIGroupUnauthorized json value to io.Writer.
+func (s GetEventsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetEventsAPIGroupUnauthorized json value from io.Reader.
+func (s *GetEventsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetEventsAPIGroupUnauthorized from json stream.
+func (s *GetEventsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetEventsV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetEventsV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4780,10 +7773,48 @@ func (GetEventsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error
 func (GetEventsV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetEventsV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetEventsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetEventsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetEventsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetEventsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetEventsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetEventsV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetEventsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetEventsV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetEventsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetEventsV1APIResourcesUnauthorized from json stream.
+func (s *GetEventsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetEventsV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetEventsV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4806,10 +7837,48 @@ func (GetEventsV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (GetEventsV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetEventsV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetEventsV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetEventsV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetEventsV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetEventsV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetEventsV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetEventsV1beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetEventsV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetEventsV1beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetEventsV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetEventsV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetEventsV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetFlowcontrolApiserverAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetFlowcontrolApiserverAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -4832,10 +7901,48 @@ func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterato
 func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetFlowcontrolApiserverAPIGroupUnauthorized json value to io.Writer.
+func (s GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetFlowcontrolApiserverAPIGroupUnauthorized json value from io.Reader.
+func (s *GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetFlowcontrolApiserverAPIGroupUnauthorized from json stream.
+func (s *GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -4871,15 +7978,47 @@ func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w
 	return nil
 }
 
-func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
-func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -4916,15 +8055,47 @@ func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) WriteJSONTo(w
 	return nil
 }
 
-func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
-func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized json value to io.Writer.
+func (s GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized json value from io.Reader.
+func (s *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized from json stream.
+func (s *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (GetInternalApiserverAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -4948,10 +8119,48 @@ func (GetInternalApiserverAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (GetInternalApiserverAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetInternalApiserverAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetInternalApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetInternalApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetInternalApiserverAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetInternalApiserverAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetInternalApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetInternalApiserverAPIGroupUnauthorized json value to io.Writer.
+func (s GetInternalApiserverAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetInternalApiserverAPIGroupUnauthorized json value from io.Reader.
+func (s *GetInternalApiserverAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetInternalApiserverAPIGroupUnauthorized from json stream.
+func (s *GetInternalApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -4987,15 +8196,47 @@ func (GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
-func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes GetInternalApiserverV1alpha1APIResourcesUnauthorized json value to io.Writer.
+func (s GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads GetInternalApiserverV1alpha1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetInternalApiserverV1alpha1APIResourcesUnauthorized from json stream.
+func (s *GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (GetNetworkingAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -5019,10 +8260,48 @@ func (GetNetworkingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error {
 func (GetNetworkingAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetNetworkingAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetNetworkingAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetNetworkingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetNetworkingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetNetworkingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetNetworkingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetNetworkingAPIGroupUnauthorized json value to io.Writer.
+func (s GetNetworkingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetNetworkingAPIGroupUnauthorized json value from io.Reader.
+func (s *GetNetworkingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetNetworkingAPIGroupUnauthorized from json stream.
+func (s *GetNetworkingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetNetworkingV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetNetworkingV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5045,10 +8324,48 @@ func (GetNetworkingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (GetNetworkingV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetNetworkingV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetNetworkingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetNetworkingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetNetworkingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetNetworkingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetNetworkingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetNetworkingV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetNetworkingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetNetworkingV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetNetworkingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetNetworkingV1APIResourcesUnauthorized from json stream.
+func (s *GetNetworkingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetNodeAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetNodeAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5065,10 +8382,48 @@ func (GetNodeAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { retur
 func (GetNodeAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetNodeAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetNodeAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetNodeAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetNodeAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetNodeAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetNodeAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetNodeAPIGroupUnauthorized json value to io.Writer.
+func (s GetNodeAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetNodeAPIGroupUnauthorized json value from io.Reader.
+func (s *GetNodeAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetNodeAPIGroupUnauthorized from json stream.
+func (s *GetNodeAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetNodeV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetNodeV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5091,10 +8446,48 @@ func (GetNodeV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
 func (GetNodeV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetNodeV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetNodeV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetNodeV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetNodeV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetNodeV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetNodeV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetNodeV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetNodeV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetNodeV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetNodeV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetNodeV1APIResourcesUnauthorized from json stream.
+func (s *GetNodeV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetNodeV1alpha1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetNodeV1alpha1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5117,10 +8510,48 @@ func (GetNodeV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (GetNodeV1alpha1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetNodeV1alpha1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetNodeV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetNodeV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetNodeV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetNodeV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetNodeV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetNodeV1alpha1APIResourcesUnauthorized json value to io.Writer.
+func (s GetNodeV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetNodeV1alpha1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetNodeV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetNodeV1alpha1APIResourcesUnauthorized from json stream.
+func (s *GetNodeV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetNodeV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetNodeV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5143,10 +8574,48 @@ func (GetNodeV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) er
 func (GetNodeV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetNodeV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetNodeV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetNodeV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetNodeV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetNodeV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetNodeV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetNodeV1beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetNodeV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetNodeV1beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetNodeV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetNodeV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetNodeV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetPolicyAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetPolicyAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5167,10 +8636,48 @@ func (GetPolicyAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { ret
 func (GetPolicyAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetPolicyAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetPolicyAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetPolicyAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetPolicyAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetPolicyAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetPolicyAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetPolicyAPIGroupUnauthorized json value to io.Writer.
+func (s GetPolicyAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetPolicyAPIGroupUnauthorized json value from io.Reader.
+func (s *GetPolicyAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetPolicyAPIGroupUnauthorized from json stream.
+func (s *GetPolicyAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetPolicyV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetPolicyV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5193,10 +8700,48 @@ func (GetPolicyV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error
 func (GetPolicyV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetPolicyV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetPolicyV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetPolicyV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetPolicyV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetPolicyV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetPolicyV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetPolicyV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetPolicyV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetPolicyV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetPolicyV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetPolicyV1APIResourcesUnauthorized from json stream.
+func (s *GetPolicyV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetPolicyV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetPolicyV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5219,10 +8764,48 @@ func (GetPolicyV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (GetPolicyV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetPolicyV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetPolicyV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetPolicyV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetPolicyV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetPolicyV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetPolicyV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetPolicyV1beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetPolicyV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetPolicyV1beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetPolicyV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetPolicyV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetPolicyV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetRbacAuthorizationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetRbacAuthorizationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5245,10 +8828,48 @@ func (GetRbacAuthorizationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (GetRbacAuthorizationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetRbacAuthorizationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetRbacAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetRbacAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetRbacAuthorizationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetRbacAuthorizationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetRbacAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetRbacAuthorizationAPIGroupUnauthorized json value to io.Writer.
+func (s GetRbacAuthorizationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetRbacAuthorizationAPIGroupUnauthorized json value from io.Reader.
+func (s *GetRbacAuthorizationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetRbacAuthorizationAPIGroupUnauthorized from json stream.
+func (s *GetRbacAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetRbacAuthorizationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (GetRbacAuthorizationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -5280,10 +8901,48 @@ func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetRbacAuthorizationV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetRbacAuthorizationV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetRbacAuthorizationV1APIResourcesUnauthorized from json stream.
+func (s *GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetSchedulingAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetSchedulingAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5306,10 +8965,48 @@ func (GetSchedulingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error {
 func (GetSchedulingAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetSchedulingAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetSchedulingAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetSchedulingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetSchedulingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetSchedulingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetSchedulingAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetSchedulingAPIGroupUnauthorized json value to io.Writer.
+func (s GetSchedulingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetSchedulingAPIGroupUnauthorized json value from io.Reader.
+func (s *GetSchedulingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetSchedulingAPIGroupUnauthorized from json stream.
+func (s *GetSchedulingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetSchedulingV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetSchedulingV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5332,25 +9029,95 @@ func (GetSchedulingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (GetSchedulingV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetSchedulingV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetSchedulingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetSchedulingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetSchedulingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetSchedulingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetSchedulingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetSchedulingV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetSchedulingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetSchedulingV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetSchedulingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetSchedulingV1APIResourcesUnauthorized from json stream.
+func (s *GetSchedulingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetServiceAccountIssuerOpenIDConfigurationOK) WriteJSON(j *json.Stream)        {}
 func (GetServiceAccountIssuerOpenIDConfigurationOK) ReadJSON(i *json.Iterator) error { return nil }
 func (GetServiceAccountIssuerOpenIDConfigurationOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetServiceAccountIssuerOpenIDConfigurationOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSON(j *json.Stream) {}
-func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes GetServiceAccountIssuerOpenIDConfigurationUnauthorized json value to io.Writer.
+func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads GetServiceAccountIssuerOpenIDConfigurationUnauthorized json value from io.Reader.
+func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetServiceAccountIssuerOpenIDConfigurationUnauthorized from json stream.
+func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (GetServiceAccountIssuerOpenIDKeysetOK) WriteJSON(j *json.Stream)        {}
@@ -5358,10 +9125,48 @@ func (GetServiceAccountIssuerOpenIDKeysetOK) ReadJSON(i *json.Iterator) error { 
 func (GetServiceAccountIssuerOpenIDKeysetOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetServiceAccountIssuerOpenIDKeysetOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetServiceAccountIssuerOpenIDKeysetUnauthorized json value to io.Writer.
+func (s GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetServiceAccountIssuerOpenIDKeysetUnauthorized json value from io.Reader.
+func (s *GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetServiceAccountIssuerOpenIDKeysetUnauthorized from json stream.
+func (s *GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetStorageAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetStorageAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5384,10 +9189,48 @@ func (GetStorageAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { re
 func (GetStorageAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetStorageAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetStorageAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetStorageAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetStorageAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetStorageAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetStorageAPIGroupUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetStorageAPIGroupUnauthorized json value to io.Writer.
+func (s GetStorageAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetStorageAPIGroupUnauthorized json value from io.Reader.
+func (s *GetStorageAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetStorageAPIGroupUnauthorized from json stream.
+func (s *GetStorageAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetStorageV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetStorageV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5410,10 +9253,48 @@ func (GetStorageV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) erro
 func (GetStorageV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetStorageV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetStorageV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetStorageV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetStorageV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetStorageV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetStorageV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetStorageV1APIResourcesUnauthorized json value to io.Writer.
+func (s GetStorageV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetStorageV1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetStorageV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetStorageV1APIResourcesUnauthorized from json stream.
+func (s *GetStorageV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetStorageV1alpha1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetStorageV1alpha1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5436,10 +9317,48 @@ func (GetStorageV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator
 func (GetStorageV1alpha1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetStorageV1alpha1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetStorageV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetStorageV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetStorageV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetStorageV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetStorageV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetStorageV1alpha1APIResourcesUnauthorized json value to io.Writer.
+func (s GetStorageV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetStorageV1alpha1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetStorageV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetStorageV1alpha1APIResourcesUnauthorized from json stream.
+func (s *GetStorageV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetStorageV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (GetStorageV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -5462,10 +9381,2112 @@ func (GetStorageV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator)
 func (GetStorageV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetStorageV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetStorageV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (GetStorageV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (GetStorageV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetStorageV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetStorageV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetStorageV1beta1APIResourcesUnauthorized json value to io.Writer.
+func (s GetStorageV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetStorageV1beta1APIResourcesUnauthorized json value from io.Reader.
+func (s *GetStorageV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetStorageV1beta1APIResourcesUnauthorized from json stream.
+func (s *GetStorageV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIAuthenticationV1UserInfoExtra) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIAuthenticationV1UserInfoExtra json value to io.Writer.
+func (s IoK8sAPIAuthenticationV1UserInfoExtra) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIAuthenticationV1UserInfoExtra json value from io.Reader.
+func (s *IoK8sAPIAuthenticationV1UserInfoExtra) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIAuthenticationV1UserInfoExtra from json stream.
+func (s *IoK8sAPIAuthenticationV1UserInfoExtra) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra json value to io.Writer.
+func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra json value from io.Reader.
+func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra from json stream.
+func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpecExtra) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra json value to io.Writer.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra json value from io.Reader.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra from json stream.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes json value to io.Writer.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes json value from io.Reader.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes from json stream.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes json value to io.Writer.
+func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes json value from io.Reader.
+func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes from json stream.
+func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapBinaryData) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ConfigMapBinaryData json value to io.Writer.
+func (s IoK8sAPICoreV1ConfigMapBinaryData) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ConfigMapBinaryData json value from io.Reader.
+func (s *IoK8sAPICoreV1ConfigMapBinaryData) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ConfigMapBinaryData from json stream.
+func (s *IoK8sAPICoreV1ConfigMapBinaryData) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapData) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ConfigMapData json value to io.Writer.
+func (s IoK8sAPICoreV1ConfigMapData) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ConfigMapData json value from io.Reader.
+func (s *IoK8sAPICoreV1ConfigMapData) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ConfigMapData from json stream.
+func (s *IoK8sAPICoreV1ConfigMapData) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions json value to io.Writer.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1FlexPersistentVolumeSourceOptions json value from io.Reader.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1FlexPersistentVolumeSourceOptions from json stream.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1FlexVolumeSourceOptions) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1FlexVolumeSourceOptions json value to io.Writer.
+func (s IoK8sAPICoreV1FlexVolumeSourceOptions) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1FlexVolumeSourceOptions json value from io.Reader.
+func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1FlexVolumeSourceOptions from json stream.
+func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemDefault) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1LimitRangeItemDefault json value to io.Writer.
+func (s IoK8sAPICoreV1LimitRangeItemDefault) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1LimitRangeItemDefault json value from io.Reader.
+func (s *IoK8sAPICoreV1LimitRangeItemDefault) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1LimitRangeItemDefault from json stream.
+func (s *IoK8sAPICoreV1LimitRangeItemDefault) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1LimitRangeItemDefaultRequest json value to io.Writer.
+func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1LimitRangeItemDefaultRequest json value from io.Reader.
+func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1LimitRangeItemDefaultRequest from json stream.
+func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMax) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1LimitRangeItemMax json value to io.Writer.
+func (s IoK8sAPICoreV1LimitRangeItemMax) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1LimitRangeItemMax json value from io.Reader.
+func (s *IoK8sAPICoreV1LimitRangeItemMax) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1LimitRangeItemMax from json stream.
+func (s *IoK8sAPICoreV1LimitRangeItemMax) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio json value to io.Writer.
+func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio json value from io.Reader.
+func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio from json stream.
+func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMin) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1LimitRangeItemMin json value to io.Writer.
+func (s IoK8sAPICoreV1LimitRangeItemMin) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1LimitRangeItemMin json value from io.Reader.
+func (s *IoK8sAPICoreV1LimitRangeItemMin) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1LimitRangeItemMin from json stream.
+func (s *IoK8sAPICoreV1LimitRangeItemMin) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeStatusAllocatable) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1NodeStatusAllocatable json value to io.Writer.
+func (s IoK8sAPICoreV1NodeStatusAllocatable) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1NodeStatusAllocatable json value from io.Reader.
+func (s *IoK8sAPICoreV1NodeStatusAllocatable) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1NodeStatusAllocatable from json stream.
+func (s *IoK8sAPICoreV1NodeStatusAllocatable) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeStatusCapacity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1NodeStatusCapacity json value to io.Writer.
+func (s IoK8sAPICoreV1NodeStatusCapacity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1NodeStatusCapacity json value from io.Reader.
+func (s *IoK8sAPICoreV1NodeStatusCapacity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1NodeStatusCapacity from json stream.
+func (s *IoK8sAPICoreV1NodeStatusCapacity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity json value to io.Writer.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity json value from io.Reader.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity from json stream.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeSpecCapacity json value to io.Writer.
+func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1PersistentVolumeSpecCapacity json value from io.Reader.
+func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1PersistentVolumeSpecCapacity from json stream.
+func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1PodSpecNodeSelector) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1PodSpecNodeSelector json value to io.Writer.
+func (s IoK8sAPICoreV1PodSpecNodeSelector) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1PodSpecNodeSelector json value from io.Reader.
+func (s *IoK8sAPICoreV1PodSpecNodeSelector) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1PodSpecNodeSelector from json stream.
+func (s *IoK8sAPICoreV1PodSpecNodeSelector) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1PodSpecOverhead) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1PodSpecOverhead json value to io.Writer.
+func (s IoK8sAPICoreV1PodSpecOverhead) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1PodSpecOverhead json value from io.Reader.
+func (s *IoK8sAPICoreV1PodSpecOverhead) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1PodSpecOverhead from json stream.
+func (s *IoK8sAPICoreV1PodSpecOverhead) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ReplicationControllerSpecSelector json value to io.Writer.
+func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ReplicationControllerSpecSelector json value from io.Reader.
+func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ReplicationControllerSpecSelector from json stream.
+func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaSpecHard) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ResourceQuotaSpecHard json value to io.Writer.
+func (s IoK8sAPICoreV1ResourceQuotaSpecHard) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ResourceQuotaSpecHard json value from io.Reader.
+func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ResourceQuotaSpecHard from json stream.
+func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatusHard) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ResourceQuotaStatusHard json value to io.Writer.
+func (s IoK8sAPICoreV1ResourceQuotaStatusHard) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ResourceQuotaStatusHard json value from io.Reader.
+func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ResourceQuotaStatusHard from json stream.
+func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ResourceQuotaStatusUsed json value to io.Writer.
+func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ResourceQuotaStatusUsed json value from io.Reader.
+func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ResourceQuotaStatusUsed from json stream.
+func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirementsLimits) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ResourceRequirementsLimits json value to io.Writer.
+func (s IoK8sAPICoreV1ResourceRequirementsLimits) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ResourceRequirementsLimits json value from io.Reader.
+func (s *IoK8sAPICoreV1ResourceRequirementsLimits) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ResourceRequirementsLimits from json stream.
+func (s *IoK8sAPICoreV1ResourceRequirementsLimits) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirementsRequests) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ResourceRequirementsRequests json value to io.Writer.
+func (s IoK8sAPICoreV1ResourceRequirementsRequests) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ResourceRequirementsRequests json value from io.Reader.
+func (s *IoK8sAPICoreV1ResourceRequirementsRequests) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ResourceRequirementsRequests from json stream.
+func (s *IoK8sAPICoreV1ResourceRequirementsRequests) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretData) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1SecretData json value to io.Writer.
+func (s IoK8sAPICoreV1SecretData) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1SecretData json value from io.Reader.
+func (s *IoK8sAPICoreV1SecretData) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1SecretData from json stream.
+func (s *IoK8sAPICoreV1SecretData) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretStringData) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1SecretStringData json value to io.Writer.
+func (s IoK8sAPICoreV1SecretStringData) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1SecretStringData json value from io.Reader.
+func (s *IoK8sAPICoreV1SecretStringData) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1SecretStringData from json stream.
+func (s *IoK8sAPICoreV1SecretStringData) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceSpecSelector) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPICoreV1ServiceSpecSelector json value to io.Writer.
+func (s IoK8sAPICoreV1ServiceSpecSelector) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPICoreV1ServiceSpecSelector json value from io.Reader.
+func (s *IoK8sAPICoreV1ServiceSpecSelector) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPICoreV1ServiceSpecSelector from json stream.
+func (s *IoK8sAPICoreV1ServiceSpecSelector) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology json value to io.Writer.
+func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIDiscoveryV1EndpointDeprecatedTopology json value from io.Reader.
+func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIDiscoveryV1EndpointDeprecatedTopology from json stream.
+func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIDiscoveryV1beta1EndpointTopology json value to io.Writer.
+func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIDiscoveryV1beta1EndpointTopology json value from io.Reader.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIDiscoveryV1beta1EndpointTopology from json stream.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPINodeV1OverheadPodFixed) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPINodeV1OverheadPodFixed json value to io.Writer.
+func (s IoK8sAPINodeV1OverheadPodFixed) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPINodeV1OverheadPodFixed json value from io.Reader.
+func (s *IoK8sAPINodeV1OverheadPodFixed) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPINodeV1OverheadPodFixed from json stream.
+func (s *IoK8sAPINodeV1OverheadPodFixed) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPINodeV1SchedulingNodeSelector) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPINodeV1SchedulingNodeSelector json value to io.Writer.
+func (s IoK8sAPINodeV1SchedulingNodeSelector) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPINodeV1SchedulingNodeSelector json value from io.Reader.
+func (s *IoK8sAPINodeV1SchedulingNodeSelector) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPINodeV1SchedulingNodeSelector from json stream.
+func (s *IoK8sAPINodeV1SchedulingNodeSelector) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1OverheadPodFixed) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPINodeV1alpha1OverheadPodFixed json value to io.Writer.
+func (s IoK8sAPINodeV1alpha1OverheadPodFixed) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPINodeV1alpha1OverheadPodFixed json value from io.Reader.
+func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPINodeV1alpha1OverheadPodFixed from json stream.
+func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPINodeV1alpha1SchedulingNodeSelector json value to io.Writer.
+func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPINodeV1alpha1SchedulingNodeSelector json value from io.Reader.
+func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPINodeV1alpha1SchedulingNodeSelector from json stream.
+func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1OverheadPodFixed) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPINodeV1beta1OverheadPodFixed json value to io.Writer.
+func (s IoK8sAPINodeV1beta1OverheadPodFixed) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPINodeV1beta1OverheadPodFixed json value from io.Reader.
+func (s *IoK8sAPINodeV1beta1OverheadPodFixed) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPINodeV1beta1OverheadPodFixed from json stream.
+func (s *IoK8sAPINodeV1beta1OverheadPodFixed) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPINodeV1beta1SchedulingNodeSelector json value to io.Writer.
+func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPINodeV1beta1SchedulingNodeSelector json value from io.Reader.
+func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPINodeV1beta1SchedulingNodeSelector from json stream.
+func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods json value to io.Writer.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods json value from io.Reader.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods from json stream.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods json value to io.Writer.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods json value from io.Reader.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods from json stream.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIStorageV1StorageClassParameters) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIStorageV1StorageClassParameters json value to io.Writer.
+func (s IoK8sAPIStorageV1StorageClassParameters) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIStorageV1StorageClassParameters json value from io.Reader.
+func (s *IoK8sAPIStorageV1StorageClassParameters) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIStorageV1StorageClassParameters from json stream.
+func (s *IoK8sAPIStorageV1StorageClassParameters) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata json value to io.Writer.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata json value from io.Reader.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata from json stream.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels json value to io.Writer.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels json value from io.Reader.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels from json stream.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations json value to io.Writer.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations json value from io.Reader.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations from json stream.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels json value to io.Writer.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels json value from io.Reader.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels from json stream.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -5527,16 +11548,47 @@ func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) 
 	return nil
 }
 
-func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized json value to io.Writer.
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized json value from io.Reader.
+func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized from json stream.
+func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -5599,16 +11651,47 @@ func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK
 	return nil
 }
 
-func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized json value to io.Writer.
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized json value from io.Reader.
+func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized from json stream.
+func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -5669,15 +11752,47 @@ func (ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListApiextensionsV1CustomResourceDefinitionUnauthorized json value to io.Writer.
+func (s ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListApiextensionsV1CustomResourceDefinitionUnauthorized json value from io.Reader.
+func (s *ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListApiextensionsV1CustomResourceDefinitionUnauthorized from json stream.
+func (s *ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListApiregistrationV1APIServiceApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -5724,10 +11839,48 @@ func (ListApiregistrationV1APIServiceApplicationYamlOK) ReadJSON(i *json.Iterato
 func (ListApiregistrationV1APIServiceApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListApiregistrationV1APIServiceApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListApiregistrationV1APIServiceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListApiregistrationV1APIServiceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListApiregistrationV1APIServiceUnauthorized json value to io.Writer.
+func (s ListApiregistrationV1APIServiceUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListApiregistrationV1APIServiceUnauthorized json value from io.Reader.
+func (s *ListApiregistrationV1APIServiceUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListApiregistrationV1APIServiceUnauthorized from json stream.
+func (s *ListApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -5787,15 +11940,47 @@ func (ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) WriteJSONTo
 	return nil
 }
 
-func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListAppsV1ControllerRevisionForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListAppsV1ControllerRevisionForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListAppsV1ControllerRevisionForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -5855,10 +12040,48 @@ func (ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wri
 	return nil
 }
 
-func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListAppsV1DaemonSetForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListAppsV1DaemonSetForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListAppsV1DaemonSetForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListAppsV1DeploymentForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListAppsV1DeploymentForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -5917,10 +12140,48 @@ func (ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wr
 	return nil
 }
 
-func (ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListAppsV1DeploymentForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListAppsV1DeploymentForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListAppsV1DeploymentForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -5979,10 +12240,48 @@ func (ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wr
 	return nil
 }
 
-func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListAppsV1ReplicaSetForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListAppsV1ReplicaSetForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListAppsV1ReplicaSetForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -6041,10 +12340,48 @@ func (ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.W
 	return nil
 }
 
-func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListAppsV1StatefulSetForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListAppsV1StatefulSetForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListAppsV1StatefulSetForAllNamespacesUnauthorized from json stream.
+func (s *ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -6106,16 +12443,47 @@ func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK)
 	return nil
 }
 
-func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
+func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -6178,16 +12546,47 @@ func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYa
 	return nil
 }
 
-func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
+func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -6250,16 +12649,47 @@ func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYa
 	return nil
 }
 
-func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized from json stream.
+func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListBatchV1CronJobForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -6315,10 +12745,48 @@ func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListBatchV1CronJobForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListBatchV1CronJobForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListBatchV1CronJobForAllNamespacesUnauthorized from json stream.
+func (s *ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListBatchV1JobForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListBatchV1JobForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -6364,10 +12832,48 @@ func (ListBatchV1JobForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator
 func (ListBatchV1JobForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListBatchV1JobForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListBatchV1JobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListBatchV1JobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListBatchV1JobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListBatchV1JobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListBatchV1JobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListBatchV1JobForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListBatchV1JobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListBatchV1JobForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListBatchV1JobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListBatchV1JobForAllNamespacesUnauthorized from json stream.
+func (s *ListBatchV1JobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -6427,14 +12933,48 @@ func (ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListBatchV1beta1CronJobForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads ListBatchV1beta1CronJobForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListBatchV1beta1CronJobForAllNamespacesUnauthorized from json stream.
+func (s *ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCertificatesV1CertificateSigningRequestApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListCertificatesV1CertificateSigningRequestApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -6494,15 +13034,47 @@ func (ListCertificatesV1CertificateSigningRequestApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListCertificatesV1CertificateSigningRequestUnauthorized json value to io.Writer.
+func (s ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListCertificatesV1CertificateSigningRequestUnauthorized json value from io.Reader.
+func (s *ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCertificatesV1CertificateSigningRequestUnauthorized from json stream.
+func (s *ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -6563,14 +13135,48 @@ func (ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListCoordinationV1LeaseForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads ListCoordinationV1LeaseForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoordinationV1LeaseForAllNamespacesUnauthorized from json stream.
+func (s *ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1ComponentStatusApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListCoreV1ComponentStatusApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -6616,10 +13222,48 @@ func (ListCoreV1ComponentStatusApplicationYamlOK) ReadJSON(i *json.Iterator) err
 func (ListCoreV1ComponentStatusApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListCoreV1ComponentStatusApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListCoreV1ComponentStatusUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1ComponentStatusUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1ComponentStatusUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1ComponentStatusUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1ComponentStatusUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1ComponentStatusUnauthorized json value to io.Writer.
+func (s ListCoreV1ComponentStatusUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1ComponentStatusUnauthorized json value from io.Reader.
+func (s *ListCoreV1ComponentStatusUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1ComponentStatusUnauthorized from json stream.
+func (s *ListCoreV1ComponentStatusUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -6678,10 +13322,48 @@ func (ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wri
 	return nil
 }
 
-func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1ConfigMapForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1ConfigMapForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1ConfigMapForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1EndpointsForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListCoreV1EndpointsForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -6740,10 +13422,48 @@ func (ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wri
 	return nil
 }
 
-func (ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1EndpointsForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1EndpointsForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1EndpointsForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1EventForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListCoreV1EventForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -6789,10 +13509,48 @@ func (ListCoreV1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterato
 func (ListCoreV1EventForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListCoreV1EventForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListCoreV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1EventForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1EventForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1EventForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -6851,10 +13609,48 @@ func (ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wr
 	return nil
 }
 
-func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1LimitRangeForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1LimitRangeForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1LimitRangeForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1NamespaceApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListCoreV1NamespaceApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -6893,10 +13689,48 @@ func (ListCoreV1NamespaceApplicationYamlOK) ReadJSON(i *json.Iterator) error { r
 func (ListCoreV1NamespaceApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListCoreV1NamespaceApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1NamespaceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1NamespaceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1NamespaceUnauthorized json value to io.Writer.
+func (s ListCoreV1NamespaceUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1NamespaceUnauthorized json value from io.Reader.
+func (s *ListCoreV1NamespaceUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1NamespaceUnauthorized from json stream.
+func (s *ListCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1NodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListCoreV1NodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -6929,10 +13763,48 @@ func (ListCoreV1NodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return
 func (ListCoreV1NodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListCoreV1NodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListCoreV1NodeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1NodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1NodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1NodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1NodeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1NodeUnauthorized json value to io.Writer.
+func (s ListCoreV1NodeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1NodeUnauthorized json value from io.Reader.
+func (s *ListCoreV1NodeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1NodeUnauthorized from json stream.
+func (s *ListCoreV1NodeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1PersistentVolumeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListCoreV1PersistentVolumeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -7036,21 +13908,91 @@ func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) WriteJSO
 	return nil
 }
 
-func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (ListCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1PersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1PersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1PersistentVolumeUnauthorized json value to io.Writer.
+func (s ListCoreV1PersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1PersistentVolumeUnauthorized json value from io.Reader.
+func (s *ListCoreV1PersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1PersistentVolumeUnauthorized from json stream.
+func (s *ListCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1PodForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListCoreV1PodForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -7096,10 +14038,48 @@ func (ListCoreV1PodForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator)
 func (ListCoreV1PodForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListCoreV1PodForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListCoreV1PodForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1PodForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1PodForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1PodForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1PodForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1PodForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1PodForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1PodForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1PodForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1PodForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1PodForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -7158,10 +14138,48 @@ func (ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.W
 	return nil
 }
 
-func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1PodTemplateForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1PodTemplateForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1PodTemplateForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -7221,15 +14239,47 @@ func (ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) WriteJSO
 	return nil
 }
 
-func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListCoreV1ReplicationControllerForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListCoreV1ReplicationControllerForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1ReplicationControllerForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -7290,14 +14340,48 @@ func (ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListCoreV1ResourceQuotaForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads ListCoreV1ResourceQuotaForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1ResourceQuotaForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1SecretForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListCoreV1SecretForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -7343,10 +14427,48 @@ func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterat
 func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1SecretForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1SecretForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1SecretForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -7406,15 +14528,47 @@ func (ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListCoreV1ServiceAccountForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListCoreV1ServiceAccountForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1ServiceAccountForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListCoreV1ServiceForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -7466,10 +14620,48 @@ func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Itera
 func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListCoreV1ServiceForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListCoreV1ServiceForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListCoreV1ServiceForAllNamespacesUnauthorized from json stream.
+func (s *ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -7529,15 +14721,47 @@ func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) WriteJSONTo
 	return nil
 }
 
-func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized from json stream.
+func (s *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -7598,15 +14822,47 @@ func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) WriteJ
 	return nil
 }
 
-func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized from json stream.
+func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListEventsV1EventForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -7658,10 +14914,48 @@ func (ListEventsV1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Itera
 func (ListEventsV1EventForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (ListEventsV1EventForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (ListEventsV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListEventsV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListEventsV1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListEventsV1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListEventsV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListEventsV1EventForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListEventsV1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListEventsV1EventForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListEventsV1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListEventsV1EventForAllNamespacesUnauthorized from json stream.
+func (s *ListEventsV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -7720,12 +15014,48 @@ func (ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.
 	return nil
 }
 
-func (ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
-func (ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+// WriteJSONTo writes ListEventsV1beta1EventForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListEventsV1beta1EventForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListEventsV1beta1EventForAllNamespacesUnauthorized from json stream.
+func (s *ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -7785,15 +15115,47 @@ func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized json value to io.Writer.
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized json value from io.Reader.
+func (s *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -7856,16 +15218,47 @@ func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK
 	return nil
 }
 
-func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized json value to io.Writer.
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized json value from io.Reader.
+func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -7926,15 +15319,47 @@ func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized json value to io.Writer.
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized json value from io.Reader.
+func (s *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -7997,16 +15422,47 @@ func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK
 	return nil
 }
 
-func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized json value to io.Writer.
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized json value from io.Reader.
+func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized from json stream.
+func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -8067,15 +15523,47 @@ func (ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListInternalApiserverV1alpha1StorageVersionUnauthorized json value to io.Writer.
+func (s ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListInternalApiserverV1alpha1StorageVersionUnauthorized json value from io.Reader.
+func (s *ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListInternalApiserverV1alpha1StorageVersionUnauthorized from json stream.
+func (s *ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListNetworkingV1IngressClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -8122,10 +15610,48 @@ func (ListNetworkingV1IngressClassApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (ListNetworkingV1IngressClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListNetworkingV1IngressClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListNetworkingV1IngressClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListNetworkingV1IngressClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListNetworkingV1IngressClassUnauthorized json value to io.Writer.
+func (s ListNetworkingV1IngressClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListNetworkingV1IngressClassUnauthorized json value from io.Reader.
+func (s *ListNetworkingV1IngressClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListNetworkingV1IngressClassUnauthorized from json stream.
+func (s *ListNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListNetworkingV1IngressForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListNetworkingV1IngressForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -8185,14 +15711,48 @@ func (ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListNetworkingV1IngressForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads ListNetworkingV1IngressForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListNetworkingV1IngressForAllNamespacesUnauthorized from json stream.
+func (s *ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -8252,15 +15812,47 @@ func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) WriteJSONT
 	return nil
 }
 
-func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized from json stream.
+func (s *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListNodeV1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -8303,10 +15895,48 @@ func (ListNodeV1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error 
 func (ListNodeV1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListNodeV1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListNodeV1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListNodeV1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListNodeV1RuntimeClassUnauthorized json value to io.Writer.
+func (s ListNodeV1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListNodeV1RuntimeClassUnauthorized json value from io.Reader.
+func (s *ListNodeV1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListNodeV1RuntimeClassUnauthorized from json stream.
+func (s *ListNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListNodeV1alpha1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListNodeV1alpha1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -8352,10 +15982,48 @@ func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) 
 func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListNodeV1alpha1RuntimeClassUnauthorized json value to io.Writer.
+func (s ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListNodeV1alpha1RuntimeClassUnauthorized json value from io.Reader.
+func (s *ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListNodeV1alpha1RuntimeClassUnauthorized from json stream.
+func (s *ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListNodeV1beta1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListNodeV1beta1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -8401,10 +16069,48 @@ func (ListNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (ListNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListNodeV1beta1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListNodeV1beta1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListNodeV1beta1RuntimeClassUnauthorized json value to io.Writer.
+func (s ListNodeV1beta1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListNodeV1beta1RuntimeClassUnauthorized json value from io.Reader.
+func (s *ListNodeV1beta1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListNodeV1beta1RuntimeClassUnauthorized from json stream.
+func (s *ListNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -8464,15 +16170,47 @@ func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) WriteJSO
 	return nil
 }
 
-func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized from json stream.
+func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -8535,15 +16273,47 @@ func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) Wri
 	return nil
 }
 
-func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized from json stream.
+func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -8599,10 +16369,48 @@ func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListPolicyV1beta1PodSecurityPolicyUnauthorized json value to io.Writer.
+func (s ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListPolicyV1beta1PodSecurityPolicyUnauthorized json value from io.Reader.
+func (s *ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListPolicyV1beta1PodSecurityPolicyUnauthorized from json stream.
+func (s *ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListRbacAuthorizationV1ClusterRoleApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (ListRbacAuthorizationV1ClusterRoleApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -8715,21 +16523,91 @@ func (ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ListRbacAuthorizationV1ClusterRoleBindingUnauthorized json value to io.Writer.
+func (s ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListRbacAuthorizationV1ClusterRoleBindingUnauthorized json value from io.Reader.
+func (s *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListRbacAuthorizationV1ClusterRoleBindingUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListRbacAuthorizationV1ClusterRoleUnauthorized json value to io.Writer.
+func (s ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListRbacAuthorizationV1ClusterRoleUnauthorized json value from io.Reader.
+func (s *ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListRbacAuthorizationV1ClusterRoleUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -8791,15 +16669,47 @@ func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) Write
 	return nil
 }
 
-func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -8860,15 +16770,47 @@ func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized from json stream.
+func (s *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListSchedulingV1PriorityClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -8915,10 +16857,48 @@ func (ListSchedulingV1PriorityClassApplicationYamlOK) ReadJSON(i *json.Iterator)
 func (ListSchedulingV1PriorityClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListSchedulingV1PriorityClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListSchedulingV1PriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListSchedulingV1PriorityClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListSchedulingV1PriorityClassUnauthorized json value to io.Writer.
+func (s ListSchedulingV1PriorityClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListSchedulingV1PriorityClassUnauthorized json value from io.Reader.
+func (s *ListSchedulingV1PriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListSchedulingV1PriorityClassUnauthorized from json stream.
+func (s *ListSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListStorageV1CSIDriverApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListStorageV1CSIDriverApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -8960,10 +16940,48 @@ func (ListStorageV1CSIDriverApplicationYamlOK) ReadJSON(i *json.Iterator) error 
 func (ListStorageV1CSIDriverApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListStorageV1CSIDriverApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListStorageV1CSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListStorageV1CSIDriverUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListStorageV1CSIDriverUnauthorized json value to io.Writer.
+func (s ListStorageV1CSIDriverUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListStorageV1CSIDriverUnauthorized json value from io.Reader.
+func (s *ListStorageV1CSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListStorageV1CSIDriverUnauthorized from json stream.
+func (s *ListStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListStorageV1CSINodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListStorageV1CSINodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -9002,10 +17020,48 @@ func (ListStorageV1CSINodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { 
 func (ListStorageV1CSINodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListStorageV1CSINodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListStorageV1CSINodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListStorageV1CSINodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListStorageV1CSINodeUnauthorized json value to io.Writer.
+func (s ListStorageV1CSINodeUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListStorageV1CSINodeUnauthorized json value from io.Reader.
+func (s *ListStorageV1CSINodeUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListStorageV1CSINodeUnauthorized from json stream.
+func (s *ListStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListStorageV1StorageClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListStorageV1StorageClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -9051,10 +17107,48 @@ func (ListStorageV1StorageClassApplicationYamlOK) ReadJSON(i *json.Iterator) err
 func (ListStorageV1StorageClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListStorageV1StorageClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListStorageV1StorageClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListStorageV1StorageClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListStorageV1StorageClassUnauthorized json value to io.Writer.
+func (s ListStorageV1StorageClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListStorageV1StorageClassUnauthorized json value from io.Reader.
+func (s *ListStorageV1StorageClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListStorageV1StorageClassUnauthorized from json stream.
+func (s *ListStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListStorageV1VolumeAttachmentApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (ListStorageV1VolumeAttachmentApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -9100,10 +17194,48 @@ func (ListStorageV1VolumeAttachmentApplicationYamlOK) ReadJSON(i *json.Iterator)
 func (ListStorageV1VolumeAttachmentApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ListStorageV1VolumeAttachmentApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ListStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream)        {}
-func (ListStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (ListStorageV1VolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ListStorageV1VolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ListStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ListStorageV1VolumeAttachmentUnauthorized json value to io.Writer.
+func (s ListStorageV1VolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListStorageV1VolumeAttachmentUnauthorized json value from io.Reader.
+func (s *ListStorageV1VolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListStorageV1VolumeAttachmentUnauthorized from json stream.
+func (s *ListStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -9165,15 +17297,47 @@ func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Wr
 	return nil
 }
 
-func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized from json stream.
+func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -9236,21 +17400,91 @@ func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Wri
 	return nil
 }
 
-func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (LogFileListHandler) WriteJSON(j *json.Stream)        {}
-func (LogFileListHandler) ReadJSON(i *json.Iterator) error { return nil }
-func (LogFileListHandler) ReadJSONFrom(r io.Reader) error  { return nil }
-func (LogFileListHandler) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized json value to io.Writer.
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized json value from io.Reader.
+func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized from json stream.
+func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s LogFileListHandler) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes LogFileListHandler json value to io.Writer.
+func (s LogFileListHandler) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads LogFileListHandler json value from io.Reader.
+func (s *LogFileListHandler) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads LogFileListHandler from json stream.
+func (s *LogFileListHandler) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON writes json value of bool to json stream.
 func (o OptBool) WriteJSON(j *json.Stream) {
@@ -14262,16 +22496,47 @@ func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYam
 	return nil
 }
 
-func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized json value to io.Writer.
+func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized json value from io.Reader.
+func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized from json stream.
+func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -14334,16 +22599,47 @@ func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationY
 	return nil
 }
 
-func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized json value to io.Writer.
+func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized json value from io.Reader.
+func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized from json stream.
+func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -14404,15 +22700,47 @@ func (WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK) WriteJS
 	return nil
 }
 
-func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchApiextensionsV1CustomResourceDefinitionListUnauthorized json value to io.Writer.
+func (s WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchApiextensionsV1CustomResourceDefinitionListUnauthorized json value from io.Reader.
+func (s *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchApiextensionsV1CustomResourceDefinitionListUnauthorized from json stream.
+func (s *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchApiregistrationV1APIServiceListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -14472,10 +22800,48 @@ func (WatchApiregistrationV1APIServiceListApplicationYamlOK) WriteJSONTo(w io.Wr
 	return nil
 }
 
-func (WatchApiregistrationV1APIServiceListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchApiregistrationV1APIServiceListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchApiregistrationV1APIServiceListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchApiregistrationV1APIServiceListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchApiregistrationV1APIServiceListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchApiregistrationV1APIServiceListUnauthorized json value to io.Writer.
+func (s WatchApiregistrationV1APIServiceListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchApiregistrationV1APIServiceListUnauthorized json value from io.Reader.
+func (s *WatchApiregistrationV1APIServiceListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchApiregistrationV1APIServiceListUnauthorized from json stream.
+func (s *WatchApiregistrationV1APIServiceListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -14535,15 +22901,47 @@ func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK) WriteJ
 	return nil
 }
 
-func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -14604,15 +23002,47 @@ func (WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchAppsV1DaemonSetListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchAppsV1DaemonSetListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchAppsV1DaemonSetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -14673,15 +23103,47 @@ func (WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchAppsV1DeploymentListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchAppsV1DeploymentListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchAppsV1DeploymentListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -14742,15 +23204,47 @@ func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -14811,15 +23305,47 @@ func (WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w
 	return nil
 }
 
-func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchAppsV1StatefulSetListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchAppsV1StatefulSetListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchAppsV1StatefulSetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -14882,16 +23408,47 @@ func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYa
 	return nil
 }
 
-func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -14954,16 +23511,47 @@ func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicat
 	return nil
 }
 
-func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -15026,16 +23614,47 @@ func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicat
 	return nil
 }
 
-func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -15096,14 +23715,48 @@ func (WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchBatchV1CronJobListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads WatchBatchV1CronJobListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchBatchV1CronJobListForAllNamespacesUnauthorized from json stream.
+func (s *WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchBatchV1JobListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchBatchV1JobListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -15162,10 +23815,48 @@ func (WatchBatchV1JobListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wri
 	return nil
 }
 
-func (WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchBatchV1JobListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchBatchV1JobListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchBatchV1JobListForAllNamespacesUnauthorized from json stream.
+func (s *WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -15225,15 +23916,47 @@ func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK) WriteJSONTo
 	return nil
 }
 
-func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized from json stream.
+func (s *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -15294,15 +24017,47 @@ func (WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK) WriteJS
 	return nil
 }
 
-func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCertificatesV1CertificateSigningRequestListUnauthorized json value to io.Writer.
+func (s WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCertificatesV1CertificateSigningRequestListUnauthorized json value from io.Reader.
+func (s *WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCertificatesV1CertificateSigningRequestListUnauthorized from json stream.
+func (s *WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -15363,15 +24118,47 @@ func (WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK) WriteJSONTo
 	return nil
 }
 
-func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoordinationV1LeaseListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoordinationV1LeaseListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoordinationV1LeaseListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -15432,15 +24219,47 @@ func (WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1ConfigMapListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1ConfigMapListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1ConfigMapListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -15501,15 +24320,47 @@ func (WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK) WriteJSONTo(w i
 	return nil
 }
 
-func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1EndpointsListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1EndpointsListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1EndpointsListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1EventListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -15569,10 +24420,48 @@ func (WatchCoreV1EventListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Wr
 	return nil
 }
 
-func (WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchCoreV1EventListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchCoreV1EventListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1EventListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -15632,15 +24521,47 @@ func (WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK) WriteJSONTo(w 
 	return nil
 }
 
-func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1LimitRangeListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1LimitRangeListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1LimitRangeListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1NamespaceListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -15687,10 +24608,48 @@ func (WatchCoreV1NamespaceListApplicationYamlOK) ReadJSON(i *json.Iterator) erro
 func (WatchCoreV1NamespaceListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchCoreV1NamespaceListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchCoreV1NamespaceListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchCoreV1NamespaceListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchCoreV1NamespaceListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchCoreV1NamespaceListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1NamespaceListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchCoreV1NamespaceListUnauthorized json value to io.Writer.
+func (s WatchCoreV1NamespaceListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchCoreV1NamespaceListUnauthorized json value from io.Reader.
+func (s *WatchCoreV1NamespaceListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1NamespaceListUnauthorized from json stream.
+func (s *WatchCoreV1NamespaceListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchCoreV1NodeListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (WatchCoreV1NodeListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -15729,10 +24688,48 @@ func (WatchCoreV1NodeListApplicationYamlOK) ReadJSON(i *json.Iterator) error { r
 func (WatchCoreV1NodeListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchCoreV1NodeListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchCoreV1NodeListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchCoreV1NodeListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchCoreV1NodeListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchCoreV1NodeListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1NodeListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchCoreV1NodeListUnauthorized json value to io.Writer.
+func (s WatchCoreV1NodeListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchCoreV1NodeListUnauthorized json value from io.Reader.
+func (s *WatchCoreV1NodeListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1NodeListUnauthorized from json stream.
+func (s *WatchCoreV1NodeListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -15794,15 +24791,47 @@ func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK) Wri
 	return nil
 }
 
-func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1PersistentVolumeListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -15849,10 +24878,48 @@ func (WatchCoreV1PersistentVolumeListApplicationYamlOK) ReadJSON(i *json.Iterato
 func (WatchCoreV1PersistentVolumeListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchCoreV1PersistentVolumeListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchCoreV1PersistentVolumeListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchCoreV1PersistentVolumeListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchCoreV1PersistentVolumeListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchCoreV1PersistentVolumeListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1PersistentVolumeListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchCoreV1PersistentVolumeListUnauthorized json value to io.Writer.
+func (s WatchCoreV1PersistentVolumeListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchCoreV1PersistentVolumeListUnauthorized json value from io.Reader.
+func (s *WatchCoreV1PersistentVolumeListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1PersistentVolumeListUnauthorized from json stream.
+func (s *WatchCoreV1PersistentVolumeListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchCoreV1PodListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchCoreV1PodListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -15907,10 +24974,48 @@ func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchCoreV1PodListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchCoreV1PodListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1PodListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -15970,15 +25075,47 @@ func (WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK) WriteJSONTo(w
 	return nil
 }
 
-func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1PodTemplateListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1PodTemplateListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1PodTemplateListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -16041,15 +25178,47 @@ func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK) Wri
 	return nil
 }
 
-func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16110,15 +25279,47 @@ func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK) WriteJSONTo
 	return nil
 }
 
-func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1SecretListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16178,10 +25379,48 @@ func (WatchCoreV1SecretListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.W
 	return nil
 }
 
-func (WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchCoreV1SecretListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchCoreV1SecretListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1SecretListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -16241,15 +25480,47 @@ func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK) WriteJSONT
 	return nil
 }
 
-func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16309,12 +25580,48 @@ func (WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.
 	return nil
 }
 
-func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
-func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+// WriteJSONTo writes WatchCoreV1ServiceListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchCoreV1ServiceListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchCoreV1ServiceListForAllNamespacesUnauthorized from json stream.
+func (s *WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -16374,15 +25681,47 @@ func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK) WriteJ
 	return nil
 }
 
-func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized from json stream.
+func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -16445,15 +25784,47 @@ func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK) W
 	return nil
 }
 
-func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized from json stream.
+func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchEventsV1EventListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16513,12 +25884,48 @@ func (WatchEventsV1EventListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.
 	return nil
 }
 
-func (WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
-func (WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+// WriteJSONTo writes WatchEventsV1EventListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchEventsV1EventListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchEventsV1EventListForAllNamespacesUnauthorized from json stream.
+func (s *WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -16578,15 +25985,47 @@ func (WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK) WriteJSONTo(
 	return nil
 }
 
-func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchEventsV1beta1EventListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchEventsV1beta1EventListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchEventsV1beta1EventListForAllNamespacesUnauthorized from json stream.
+func (s *WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16647,15 +26086,47 @@ func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK) WriteJSON
 	return nil
 }
 
-func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized json value to io.Writer.
+func (s WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized json value from io.Reader.
+func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -16718,16 +26189,47 @@ func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationY
 	return nil
 }
 
-func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized json value to io.Writer.
+func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized json value from io.Reader.
+func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16788,15 +26290,47 @@ func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK) WriteJSON
 	return nil
 }
 
-func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized json value to io.Writer.
+func (s WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized json value from io.Reader.
+func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -16859,16 +26393,47 @@ func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationY
 	return nil
 }
 
-func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized json value to io.Writer.
+func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized json value from io.Reader.
+func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized from json stream.
+func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16929,15 +26494,47 @@ func (WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK) WriteJS
 	return nil
 }
 
-func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchInternalApiserverV1alpha1StorageVersionListUnauthorized json value to io.Writer.
+func (s WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchInternalApiserverV1alpha1StorageVersionListUnauthorized json value from io.Reader.
+func (s *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchInternalApiserverV1alpha1StorageVersionListUnauthorized from json stream.
+func (s *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchNetworkingV1IngressClassListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -16989,10 +26586,48 @@ func (WatchNetworkingV1IngressClassListApplicationYamlOK) ReadJSON(i *json.Itera
 func (WatchNetworkingV1IngressClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (WatchNetworkingV1IngressClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (WatchNetworkingV1IngressClassListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchNetworkingV1IngressClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchNetworkingV1IngressClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchNetworkingV1IngressClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchNetworkingV1IngressClassListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchNetworkingV1IngressClassListUnauthorized json value to io.Writer.
+func (s WatchNetworkingV1IngressClassListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchNetworkingV1IngressClassListUnauthorized json value from io.Reader.
+func (s *WatchNetworkingV1IngressClassListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchNetworkingV1IngressClassListUnauthorized from json stream.
+func (s *WatchNetworkingV1IngressClassListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -17052,15 +26687,47 @@ func (WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK) WriteJSONTo
 	return nil
 }
 
-func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchNetworkingV1IngressListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchNetworkingV1IngressListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchNetworkingV1IngressListForAllNamespacesUnauthorized from json stream.
+func (s *WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -17123,15 +26790,47 @@ func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK) Write
 	return nil
 }
 
-func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized from json stream.
+func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchNodeV1RuntimeClassListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
@@ -17178,10 +26877,48 @@ func (WatchNodeV1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (WatchNodeV1RuntimeClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchNodeV1RuntimeClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchNodeV1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchNodeV1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchNodeV1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchNodeV1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchNodeV1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchNodeV1RuntimeClassListUnauthorized json value to io.Writer.
+func (s WatchNodeV1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchNodeV1RuntimeClassListUnauthorized json value from io.Reader.
+func (s *WatchNodeV1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchNodeV1RuntimeClassListUnauthorized from json stream.
+func (s *WatchNodeV1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchNodeV1alpha1RuntimeClassListApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchNodeV1alpha1RuntimeClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -17232,10 +26969,48 @@ func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Itera
 func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
 func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchNodeV1alpha1RuntimeClassListUnauthorized json value to io.Writer.
+func (s WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchNodeV1alpha1RuntimeClassListUnauthorized json value from io.Reader.
+func (s *WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchNodeV1alpha1RuntimeClassListUnauthorized from json stream.
+func (s *WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchNodeV1beta1RuntimeClassListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (WatchNodeV1beta1RuntimeClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -17281,10 +27056,48 @@ func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iterat
 func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchNodeV1beta1RuntimeClassListUnauthorized json value to io.Writer.
+func (s WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchNodeV1beta1RuntimeClassListUnauthorized json value from io.Reader.
+func (s *WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchNodeV1beta1RuntimeClassListUnauthorized from json stream.
+func (s *WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -17346,15 +27159,47 @@ func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) Wri
 	return nil
 }
 
-func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -17417,16 +27262,47 @@ func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK
 	return nil
 }
 
-func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized from json stream.
+func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -17487,14 +27363,48 @@ func (WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchPolicyV1beta1PodSecurityPolicyListUnauthorized json value to io.Writer.
+func (s WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads WatchPolicyV1beta1PodSecurityPolicyListUnauthorized json value from io.Reader.
+func (s *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchPolicyV1beta1PodSecurityPolicyListUnauthorized from json stream.
+func (s *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -17554,15 +27464,47 @@ func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK) WriteJSON
 	return nil
 }
 
-func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized json value to io.Writer.
+func (s WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized json value from io.Reader.
+func (s *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -17623,14 +27565,48 @@ func (WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK) WriteJSONTo(w io
 	return nil
 }
 
-func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchRbacAuthorizationV1ClusterRoleListUnauthorized json value to io.Writer.
+func (s WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads WatchRbacAuthorizationV1ClusterRoleListUnauthorized json value from io.Reader.
+func (s *WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchRbacAuthorizationV1ClusterRoleListUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -17692,16 +27668,47 @@ func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK) 
 	return nil
 }
 
-func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -17762,15 +27769,47 @@ func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK) WriteJS
 	return nil
 }
 
-func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
-func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized from json stream.
+func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchSchedulingV1PriorityClassListApplicationJSONOK) WriteJSON(j *json.Stream) {}
@@ -17826,10 +27865,48 @@ func (WatchSchedulingV1PriorityClassListApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (WatchSchedulingV1PriorityClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (WatchSchedulingV1PriorityClassListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchSchedulingV1PriorityClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchSchedulingV1PriorityClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchSchedulingV1PriorityClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchSchedulingV1PriorityClassListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchSchedulingV1PriorityClassListUnauthorized json value to io.Writer.
+func (s WatchSchedulingV1PriorityClassListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchSchedulingV1PriorityClassListUnauthorized json value from io.Reader.
+func (s *WatchSchedulingV1PriorityClassListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchSchedulingV1PriorityClassListUnauthorized from json stream.
+func (s *WatchSchedulingV1PriorityClassListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchStorageV1CSIDriverListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (WatchStorageV1CSIDriverListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -17875,10 +27952,48 @@ func (WatchStorageV1CSIDriverListApplicationYamlOK) ReadJSON(i *json.Iterator) e
 func (WatchStorageV1CSIDriverListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchStorageV1CSIDriverListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchStorageV1CSIDriverListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchStorageV1CSIDriverListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchStorageV1CSIDriverListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchStorageV1CSIDriverListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchStorageV1CSIDriverListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchStorageV1CSIDriverListUnauthorized json value to io.Writer.
+func (s WatchStorageV1CSIDriverListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchStorageV1CSIDriverListUnauthorized json value from io.Reader.
+func (s *WatchStorageV1CSIDriverListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchStorageV1CSIDriverListUnauthorized from json stream.
+func (s *WatchStorageV1CSIDriverListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchStorageV1CSINodeListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (WatchStorageV1CSINodeListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -17924,10 +28039,48 @@ func (WatchStorageV1CSINodeListApplicationYamlOK) ReadJSON(i *json.Iterator) err
 func (WatchStorageV1CSINodeListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchStorageV1CSINodeListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchStorageV1CSINodeListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchStorageV1CSINodeListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchStorageV1CSINodeListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchStorageV1CSINodeListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchStorageV1CSINodeListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchStorageV1CSINodeListUnauthorized json value to io.Writer.
+func (s WatchStorageV1CSINodeListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchStorageV1CSINodeListUnauthorized json value from io.Reader.
+func (s *WatchStorageV1CSINodeListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchStorageV1CSINodeListUnauthorized from json stream.
+func (s *WatchStorageV1CSINodeListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchStorageV1StorageClassListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
 func (WatchStorageV1StorageClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -17973,10 +28126,48 @@ func (WatchStorageV1StorageClassListApplicationYamlOK) ReadJSON(i *json.Iterator
 func (WatchStorageV1StorageClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (WatchStorageV1StorageClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (WatchStorageV1StorageClassListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchStorageV1StorageClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchStorageV1StorageClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchStorageV1StorageClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchStorageV1StorageClassListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchStorageV1StorageClassListUnauthorized json value to io.Writer.
+func (s WatchStorageV1StorageClassListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchStorageV1StorageClassListUnauthorized json value from io.Reader.
+func (s *WatchStorageV1StorageClassListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchStorageV1StorageClassListUnauthorized from json stream.
+func (s *WatchStorageV1StorageClassListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchStorageV1VolumeAttachmentListApplicationJSONOK) WriteJSON(j *json.Stream) {}
 func (WatchStorageV1VolumeAttachmentListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
@@ -18031,10 +28222,48 @@ func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) ReadJSONFrom(r io.Rea
 }
 func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
 
-func (WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSON(j *json.Stream)        {}
-func (WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
-func (WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
-func (WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes WatchStorageV1VolumeAttachmentListUnauthorized json value to io.Writer.
+func (s WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads WatchStorageV1VolumeAttachmentListUnauthorized json value from io.Reader.
+func (s *WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WatchStorageV1VolumeAttachmentListUnauthorized from json stream.
+func (s *WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
 }
@@ -18096,16 +28325,47 @@ func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlO
 	return nil
 }
 
-func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized from json stream.
+func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
@@ -18168,16 +28428,47 @@ func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK
 	return nil
 }
 
-func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized json value to io.Writer.
+func (s WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized json value from io.Reader.
+func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized from json stream.
+func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -19259,7 +29550,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) WriteJSON(j *json.Strea
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "spec".
 	more.More()
 	j.WriteObjectField("status")
 	s.Status.WriteJSON(j)
@@ -19313,10 +29603,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(i *json.Itera
 				i.ReportError("Field Metadata", err.Error())
 				return false
 			}
-			return true
-		case "spec":
-			// Unsupported kind "alias" for field "Spec".
-			i.Skip()
 			return true
 		case "status":
 			if err := s.Status.ReadJSON(i); err != nil {
@@ -19519,14 +29805,48 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 	return i.Error
 }
 
-func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSON(j *json.Stream) {}
-func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec json value to io.Writer.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSONTo(w io.Writer) error { return nil }
+
+// ReadJSONFrom reads IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec json value from io.Reader.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec from json stream.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(j *json.Stream) {
@@ -19625,11 +29945,6 @@ func (s IoK8sAPIAppsV1ControllerRevision) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	if s.Data != nil {
-		more.More()
-		j.WriteObjectField("data")
-		s.Data.WriteJSON(j)
-	}
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
@@ -19679,10 +29994,6 @@ func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(i *json.Iterator) error {
 				i.ReportError("Field ApiVersion", err.Error())
 				return false
 			}
-			return true
-		case "data":
-			// Unsupported kind "pointer" for field "Data".
-			i.Skip()
 			return true
 		case "kind":
 			s.Kind.Reset()
@@ -61920,16 +72231,47 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	return i.Error
 }
 
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -61941,11 +72283,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 		more.More()
 		j.WriteObjectField("scale")
 		s.Scale.WriteJSON(j)
-	}
-	if s.Status != nil {
-		more.More()
-		j.WriteObjectField("status")
-		s.Status.WriteJSON(j)
 	}
 	j.WriteObjectEnd()
 }
@@ -61983,10 +72320,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 				i.ReportError("Field Scale", err.Error())
 				return false
 			}
-			return true
-		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
 			return true
 		default:
 			i.Skip()
@@ -62118,15 +72451,47 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 	return i.Error
 }
 
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSON(j *json.Stream) {}
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -62134,16 +72499,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.AdditionalItems != nil {
-		more.More()
-		j.WriteObjectField("additionalItems")
-		s.AdditionalItems.WriteJSON(j)
-	}
-	if s.AdditionalProperties != nil {
-		more.More()
-		j.WriteObjectField("additionalProperties")
-		s.AdditionalProperties.WriteJSON(j)
-	}
 	if s.AllOf != nil {
 		more.More()
 		j.WriteObjectField("allOf")
@@ -62168,11 +72523,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		j.WriteArrayEnd()
 		more.Up()
 	}
-	if s.Default != nil {
-		more.More()
-		j.WriteObjectField("default")
-		s.Default.WriteJSON(j)
-	}
 	if s.Description.Set {
 		more.More()
 		j.WriteObjectField("description")
@@ -62184,15 +72534,11 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		more.Down()
 		j.WriteArrayStart()
 		for _, elem := range s.Enum {
-			_ = elem // Unsupported kind "alias" for field "".
+			more.More()
+			elem.WriteJSON(j)
 		}
 		j.WriteArrayEnd()
 		more.Up()
-	}
-	if s.Example != nil {
-		more.More()
-		j.WriteObjectField("example")
-		s.Example.WriteJSON(j)
 	}
 	if s.ExclusiveMaximum.Set {
 		more.More()
@@ -62218,11 +72564,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		more.More()
 		j.WriteObjectField("id")
 		s.ID.WriteJSON(j)
-	}
-	if s.Items != nil {
-		more.More()
-		j.WriteObjectField("items")
-		s.Items.WriteJSON(j)
 	}
 	if s.MaxItems.Set {
 		more.More()
@@ -62400,24 +72741,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
-		case "additionalItems":
-			// Unsupported kind "pointer" for field "AdditionalItems".
-			i.Skip()
-			return true
-		case "additionalProperties":
-			// Unsupported kind "pointer" for field "AdditionalProperties".
-			i.Skip()
-			return true
 		case "allOf":
 			// Unsupported kind "array" for field "AllOf".
 			i.Skip()
 			return true
 		case "anyOf":
 			// Unsupported kind "array" for field "AnyOf".
-			i.Skip()
-			return true
-		case "default":
-			// Unsupported kind "pointer" for field "Default".
 			i.Skip()
 			return true
 		case "description":
@@ -62429,10 +72758,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			return true
 		case "enum":
 			// Unsupported kind "array" for field "Enum".
-			i.Skip()
-			return true
-		case "example":
-			// Unsupported kind "pointer" for field "Example".
 			i.Skip()
 			return true
 		case "exclusiveMaximum":
@@ -62469,10 +72794,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 				i.ReportError("Field ID", err.Error())
 				return false
 			}
-			return true
-		case "items":
-			// Unsupported kind "pointer" for field "Items".
-			i.Skip()
 			return true
 		case "maxItems":
 			s.MaxItems.Reset()
@@ -62645,28 +72966,90 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 	return i.Error
 }
 
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) WriteJSON(j *json.Stream) {
-}
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) WriteJSON(j *json.Stream) {
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
-func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool json value to io.Writer.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool json value from io.Reader.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool from json stream.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -63646,10 +74029,48 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 	return i.Error
 }
 
-func (IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSON(j *json.Stream)        {}
-func (IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSON(i *json.Iterator) error { return nil }
-func (IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1FieldsV1 json value to io.Writer.
+func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApimachineryPkgApisMetaV1FieldsV1 json value from io.Reader.
+func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApimachineryPkgApisMetaV1FieldsV1 from json stream.
+func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *json.Stream) {
@@ -63942,11 +74363,6 @@ func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) WriteJSON(j *json.Stre
 		j.WriteObjectField("fieldsType")
 		s.FieldsType.WriteJSON(j)
 	}
-	if s.FieldsV1 != nil {
-		more.More()
-		j.WriteObjectField("fieldsV1")
-		s.FieldsV1.WriteJSON(j)
-	}
 	if s.Manager.Set {
 		more.More()
 		j.WriteObjectField("manager")
@@ -64010,10 +74426,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 				i.ReportError("Field FieldsType", err.Error())
 				return false
 			}
-			return true
-		case "fieldsV1":
-			// Unsupported kind "pointer" for field "FieldsV1".
-			i.Skip()
 			return true
 		case "manager":
 			s.Manager.Reset()
@@ -64830,7 +75242,6 @@ func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "alias" for field "object".
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
@@ -64864,10 +75275,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) ReadJSONFrom(r io.Reader) err
 func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
-		case "object":
-			// Unsupported kind "alias" for field "Object".
-			i.Skip()
-			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
@@ -64879,10 +75286,48 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) ReadJSON(i *json.Iterator) er
 	return i.Error
 }
 
-func (IoK8sApimachineryPkgRuntimeRawExtension) WriteJSON(j *json.Stream)        {}
-func (IoK8sApimachineryPkgRuntimeRawExtension) ReadJSON(i *json.Iterator) error { return nil }
-func (IoK8sApimachineryPkgRuntimeRawExtension) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IoK8sApimachineryPkgRuntimeRawExtension) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s IoK8sApimachineryPkgRuntimeRawExtension) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IoK8sApimachineryPkgRuntimeRawExtension json value to io.Writer.
+func (s IoK8sApimachineryPkgRuntimeRawExtension) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IoK8sApimachineryPkgRuntimeRawExtension json value from io.Reader.
+func (s *IoK8sApimachineryPkgRuntimeRawExtension) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IoK8sApimachineryPkgRuntimeRawExtension from json stream.
+func (s *IoK8sApimachineryPkgRuntimeRawExtension) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (IoK8sApimachineryPkgUtilIntstrIntOrString) WriteJSON(j *json.Stream)        {}
 func (IoK8sApimachineryPkgUtilIntstrIntOrString) ReadJSON(i *json.Iterator) error { return nil }

@@ -141,30 +141,220 @@ func (s *APIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (Accepted) WriteJSON(j *json.Stream)        {}
-func (Accepted) ReadJSON(i *json.Iterator) error { return nil }
-func (Accepted) ReadJSONFrom(r io.Reader) error  { return nil }
-func (Accepted) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s Accepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSON(j *json.Stream)        {}
-func (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes Accepted json value to io.Writer.
+func (s Accepted) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ActionsAddSelectedRepoToOrgSecretConflict) WriteJSON(j *json.Stream)        {}
-func (ActionsAddSelectedRepoToOrgSecretConflict) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsAddSelectedRepoToOrgSecretConflict) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsAddSelectedRepoToOrgSecretConflict) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads Accepted json value from io.Reader.
+func (s *Accepted) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ActionsAddSelectedRepoToOrgSecretNoContent) WriteJSON(j *json.Stream)        {}
-func (ActionsAddSelectedRepoToOrgSecretNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsAddSelectedRepoToOrgSecretNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsAddSelectedRepoToOrgSecretNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ActionsAddSelfHostedRunnerToGroupForOrg) WriteJSON(j *json.Stream)        {}
-func (ActionsAddSelfHostedRunnerToGroupForOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsAddSelfHostedRunnerToGroupForOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsAddSelfHostedRunnerToGroupForOrg) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads Accepted from json stream.
+func (s *Accepted) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg json value to io.Writer.
+func (s ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg json value from io.Reader.
+func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg from json stream.
+func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsAddSelectedRepoToOrgSecretConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsAddSelectedRepoToOrgSecretConflict json value to io.Writer.
+func (s ActionsAddSelectedRepoToOrgSecretConflict) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsAddSelectedRepoToOrgSecretConflict json value from io.Reader.
+func (s *ActionsAddSelectedRepoToOrgSecretConflict) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsAddSelectedRepoToOrgSecretConflict from json stream.
+func (s *ActionsAddSelectedRepoToOrgSecretConflict) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsAddSelectedRepoToOrgSecretNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsAddSelectedRepoToOrgSecretNoContent json value to io.Writer.
+func (s ActionsAddSelectedRepoToOrgSecretNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsAddSelectedRepoToOrgSecretNoContent json value from io.Reader.
+func (s *ActionsAddSelectedRepoToOrgSecretNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsAddSelectedRepoToOrgSecretNoContent from json stream.
+func (s *ActionsAddSelectedRepoToOrgSecretNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsAddSelfHostedRunnerToGroupForOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsAddSelfHostedRunnerToGroupForOrg json value to io.Writer.
+func (s ActionsAddSelfHostedRunnerToGroupForOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsAddSelfHostedRunnerToGroupForOrg json value from io.Reader.
+func (s *ActionsAddSelfHostedRunnerToGroupForOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsAddSelfHostedRunnerToGroupForOrg from json stream.
+func (s *ActionsAddSelfHostedRunnerToGroupForOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ActionsApproveWorkflowRunApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (ActionsApproveWorkflowRunApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -255,10 +445,48 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) ReadJSON(i *json.Iterator) err
 	return i.Error
 }
 
-func (ActionsCancelWorkflowRun) WriteJSON(j *json.Stream)        {}
-func (ActionsCancelWorkflowRun) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsCancelWorkflowRun) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsCancelWorkflowRun) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsCancelWorkflowRun) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsCancelWorkflowRun json value to io.Writer.
+func (s ActionsCancelWorkflowRun) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsCancelWorkflowRun json value from io.Reader.
+func (s *ActionsCancelWorkflowRun) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsCancelWorkflowRun from json stream.
+func (s *ActionsCancelWorkflowRun) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -315,10 +543,48 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) ReadJSON(
 	return i.Error
 }
 
-func (ActionsCreateOrUpdateEnvironmentSecretNoContent) WriteJSON(j *json.Stream)        {}
-func (ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsCreateOrUpdateEnvironmentSecretNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsCreateOrUpdateEnvironmentSecretNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsCreateOrUpdateEnvironmentSecretNoContent json value to io.Writer.
+func (s ActionsCreateOrUpdateEnvironmentSecretNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsCreateOrUpdateEnvironmentSecretNoContent json value from io.Reader.
+func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsCreateOrUpdateEnvironmentSecretNoContent from json stream.
+func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -423,10 +689,48 @@ func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility) ReadJSO
 	return i.Error
 }
 
-func (ActionsCreateOrUpdateOrgSecretNoContent) WriteJSON(j *json.Stream)        {}
-func (ActionsCreateOrUpdateOrgSecretNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsCreateOrUpdateOrgSecretNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsCreateOrUpdateOrgSecretNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsCreateOrUpdateOrgSecretNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsCreateOrUpdateOrgSecretNoContent json value to io.Writer.
+func (s ActionsCreateOrUpdateOrgSecretNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsCreateOrUpdateOrgSecretNoContent json value from io.Reader.
+func (s *ActionsCreateOrUpdateOrgSecretNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsCreateOrUpdateOrgSecretNoContent from json stream.
+func (s *ActionsCreateOrUpdateOrgSecretNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -495,15 +799,91 @@ func (s *ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) ReadJSON(i *json
 	return i.Error
 }
 
-func (ActionsCreateOrUpdateRepoSecretCreated) WriteJSON(j *json.Stream)        {}
-func (ActionsCreateOrUpdateRepoSecretCreated) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsCreateOrUpdateRepoSecretCreated) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsCreateOrUpdateRepoSecretCreated) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsCreateOrUpdateRepoSecretCreated) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ActionsCreateOrUpdateRepoSecretNoContent) WriteJSON(j *json.Stream)        {}
-func (ActionsCreateOrUpdateRepoSecretNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsCreateOrUpdateRepoSecretNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsCreateOrUpdateRepoSecretNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ActionsCreateOrUpdateRepoSecretCreated json value to io.Writer.
+func (s ActionsCreateOrUpdateRepoSecretCreated) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsCreateOrUpdateRepoSecretCreated json value from io.Reader.
+func (s *ActionsCreateOrUpdateRepoSecretCreated) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsCreateOrUpdateRepoSecretCreated from json stream.
+func (s *ActionsCreateOrUpdateRepoSecretCreated) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsCreateOrUpdateRepoSecretNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsCreateOrUpdateRepoSecretNoContent json value to io.Writer.
+func (s ActionsCreateOrUpdateRepoSecretNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsCreateOrUpdateRepoSecretNoContent json value from io.Reader.
+func (s *ActionsCreateOrUpdateRepoSecretNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsCreateOrUpdateRepoSecretNoContent from json stream.
+func (s *ActionsCreateOrUpdateRepoSecretNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -609,86 +989,606 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilit
 	return i.Error
 }
 
-func (ActionsDeleteArtifact) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteArtifact) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteArtifact) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteArtifact) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteEnvironmentSecret) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteEnvironmentSecret) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteEnvironmentSecret) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteEnvironmentSecret) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteOrgSecret) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteOrgSecret) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteOrgSecret) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteOrgSecret) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteRepoSecret) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteRepoSecret) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteRepoSecret) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteRepoSecret) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteSelfHostedRunnerFromOrg) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteSelfHostedRunnerFromOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteSelfHostedRunnerFromOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteSelfHostedRunnerFromOrg) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteSelfHostedRunnerFromRepo) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteSelfHostedRunnerFromRepo) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteSelfHostedRunnerFromRepo) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteSelfHostedRunnerFromRepo) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteSelfHostedRunnerGroupFromOrg) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteSelfHostedRunnerGroupFromOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteSelfHostedRunnerGroupFromOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteSelfHostedRunnerGroupFromOrg) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteWorkflowRun) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteWorkflowRun) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteWorkflowRun) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteWorkflowRun) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDeleteWorkflowRunLogs) WriteJSON(j *json.Stream)        {}
-func (ActionsDeleteWorkflowRunLogs) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDeleteWorkflowRunLogs) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDeleteWorkflowRunLogs) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDisableSelectedRepositoryGithubActionsOrganization) WriteJSON(j *json.Stream) {}
-func (ActionsDisableSelectedRepositoryGithubActionsOrganization) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (ActionsDisableSelectedRepositoryGithubActionsOrganization) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (ActionsDisableSelectedRepositoryGithubActionsOrganization) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteArtifact) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (ActionsDownloadArtifact) WriteJSON(j *json.Stream)        {}
-func (ActionsDownloadArtifact) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDownloadArtifact) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDownloadArtifact) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDownloadJobLogsForWorkflowRun) WriteJSON(j *json.Stream)        {}
-func (ActionsDownloadJobLogsForWorkflowRun) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDownloadJobLogsForWorkflowRun) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDownloadJobLogsForWorkflowRun) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsDownloadWorkflowRunLogs) WriteJSON(j *json.Stream)        {}
-func (ActionsDownloadWorkflowRunLogs) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsDownloadWorkflowRunLogs) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsDownloadWorkflowRunLogs) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsEnableSelectedRepositoryGithubActionsOrganization) WriteJSON(j *json.Stream) {}
-func (ActionsEnableSelectedRepositoryGithubActionsOrganization) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSONTo writes ActionsDeleteArtifact json value to io.Writer.
+func (s ActionsDeleteArtifact) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ActionsEnableSelectedRepositoryGithubActionsOrganization) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads ActionsDeleteArtifact json value from io.Reader.
+func (s *ActionsDeleteArtifact) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (ActionsEnableSelectedRepositoryGithubActionsOrganization) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads ActionsDeleteArtifact from json stream.
+func (s *ActionsDeleteArtifact) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteEnvironmentSecret) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteEnvironmentSecret json value to io.Writer.
+func (s ActionsDeleteEnvironmentSecret) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteEnvironmentSecret json value from io.Reader.
+func (s *ActionsDeleteEnvironmentSecret) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteEnvironmentSecret from json stream.
+func (s *ActionsDeleteEnvironmentSecret) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteOrgSecret) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteOrgSecret json value to io.Writer.
+func (s ActionsDeleteOrgSecret) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteOrgSecret json value from io.Reader.
+func (s *ActionsDeleteOrgSecret) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteOrgSecret from json stream.
+func (s *ActionsDeleteOrgSecret) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteRepoSecret) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteRepoSecret json value to io.Writer.
+func (s ActionsDeleteRepoSecret) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteRepoSecret json value from io.Reader.
+func (s *ActionsDeleteRepoSecret) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteRepoSecret from json stream.
+func (s *ActionsDeleteRepoSecret) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteSelfHostedRunnerFromOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteSelfHostedRunnerFromOrg json value to io.Writer.
+func (s ActionsDeleteSelfHostedRunnerFromOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteSelfHostedRunnerFromOrg json value from io.Reader.
+func (s *ActionsDeleteSelfHostedRunnerFromOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteSelfHostedRunnerFromOrg from json stream.
+func (s *ActionsDeleteSelfHostedRunnerFromOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteSelfHostedRunnerFromRepo) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteSelfHostedRunnerFromRepo json value to io.Writer.
+func (s ActionsDeleteSelfHostedRunnerFromRepo) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteSelfHostedRunnerFromRepo json value from io.Reader.
+func (s *ActionsDeleteSelfHostedRunnerFromRepo) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteSelfHostedRunnerFromRepo from json stream.
+func (s *ActionsDeleteSelfHostedRunnerFromRepo) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteSelfHostedRunnerGroupFromOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteSelfHostedRunnerGroupFromOrg json value to io.Writer.
+func (s ActionsDeleteSelfHostedRunnerGroupFromOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteSelfHostedRunnerGroupFromOrg json value from io.Reader.
+func (s *ActionsDeleteSelfHostedRunnerGroupFromOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteSelfHostedRunnerGroupFromOrg from json stream.
+func (s *ActionsDeleteSelfHostedRunnerGroupFromOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteWorkflowRun) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteWorkflowRun json value to io.Writer.
+func (s ActionsDeleteWorkflowRun) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteWorkflowRun json value from io.Reader.
+func (s *ActionsDeleteWorkflowRun) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteWorkflowRun from json stream.
+func (s *ActionsDeleteWorkflowRun) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDeleteWorkflowRunLogs) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDeleteWorkflowRunLogs json value to io.Writer.
+func (s ActionsDeleteWorkflowRunLogs) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDeleteWorkflowRunLogs json value from io.Reader.
+func (s *ActionsDeleteWorkflowRunLogs) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDeleteWorkflowRunLogs from json stream.
+func (s *ActionsDeleteWorkflowRunLogs) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDisableSelectedRepositoryGithubActionsOrganization) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDisableSelectedRepositoryGithubActionsOrganization json value to io.Writer.
+func (s ActionsDisableSelectedRepositoryGithubActionsOrganization) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDisableSelectedRepositoryGithubActionsOrganization json value from io.Reader.
+func (s *ActionsDisableSelectedRepositoryGithubActionsOrganization) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDisableSelectedRepositoryGithubActionsOrganization from json stream.
+func (s *ActionsDisableSelectedRepositoryGithubActionsOrganization) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDownloadArtifact) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDownloadArtifact json value to io.Writer.
+func (s ActionsDownloadArtifact) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDownloadArtifact json value from io.Reader.
+func (s *ActionsDownloadArtifact) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDownloadArtifact from json stream.
+func (s *ActionsDownloadArtifact) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDownloadJobLogsForWorkflowRun) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDownloadJobLogsForWorkflowRun json value to io.Writer.
+func (s ActionsDownloadJobLogsForWorkflowRun) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDownloadJobLogsForWorkflowRun json value from io.Reader.
+func (s *ActionsDownloadJobLogsForWorkflowRun) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDownloadJobLogsForWorkflowRun from json stream.
+func (s *ActionsDownloadJobLogsForWorkflowRun) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsDownloadWorkflowRunLogs) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsDownloadWorkflowRunLogs json value to io.Writer.
+func (s ActionsDownloadWorkflowRunLogs) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsDownloadWorkflowRunLogs json value from io.Reader.
+func (s *ActionsDownloadWorkflowRunLogs) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsDownloadWorkflowRunLogs from json stream.
+func (s *ActionsDownloadWorkflowRunLogs) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsEnableSelectedRepositoryGithubActionsOrganization) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsEnableSelectedRepositoryGithubActionsOrganization json value to io.Writer.
+func (s ActionsEnableSelectedRepositoryGithubActionsOrganization) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsEnableSelectedRepositoryGithubActionsOrganization json value from io.Reader.
+func (s *ActionsEnableSelectedRepositoryGithubActionsOrganization) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsEnableSelectedRepositoryGithubActionsOrganization from json stream.
+func (s *ActionsEnableSelectedRepositoryGithubActionsOrganization) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1510,39 +2410,263 @@ func (s *ActionsListWorkflowRunArtifacts) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (ActionsReRunWorkflow) WriteJSON(j *json.Stream)        {}
-func (ActionsReRunWorkflow) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsReRunWorkflow) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsReRunWorkflow) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSON(j *json.Stream) {}
-func (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ActionsReRunWorkflow) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ActionsReRunWorkflow json value to io.Writer.
+func (s ActionsReRunWorkflow) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSONTo(w io.Writer) error { return nil }
 
-func (ActionsRemoveSelectedRepoFromOrgSecretConflict) WriteJSON(j *json.Stream)        {}
-func (ActionsRemoveSelectedRepoFromOrgSecretConflict) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsRemoveSelectedRepoFromOrgSecretConflict) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsRemoveSelectedRepoFromOrgSecretConflict) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ActionsReRunWorkflow json value from io.Reader.
+func (s *ActionsReRunWorkflow) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ActionsRemoveSelectedRepoFromOrgSecretNoContent) WriteJSON(j *json.Stream)        {}
-func (ActionsRemoveSelectedRepoFromOrgSecretNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsRemoveSelectedRepoFromOrgSecretNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsRemoveSelectedRepoFromOrgSecretNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ActionsRemoveSelfHostedRunnerFromGroupForOrg) WriteJSON(j *json.Stream)        {}
-func (ActionsRemoveSelfHostedRunnerFromGroupForOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsRemoveSelfHostedRunnerFromGroupForOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsRemoveSelfHostedRunnerFromGroupForOrg) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (ActionsRetryWorkflow) WriteJSON(j *json.Stream)        {}
-func (ActionsRetryWorkflow) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsRetryWorkflow) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsRetryWorkflow) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads ActionsReRunWorkflow from json stream.
+func (s *ActionsReRunWorkflow) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg json value to io.Writer.
+func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg json value from io.Reader.
+func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg from json stream.
+func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsRemoveSelectedRepoFromOrgSecretConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsRemoveSelectedRepoFromOrgSecretConflict json value to io.Writer.
+func (s ActionsRemoveSelectedRepoFromOrgSecretConflict) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsRemoveSelectedRepoFromOrgSecretConflict json value from io.Reader.
+func (s *ActionsRemoveSelectedRepoFromOrgSecretConflict) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretConflict from json stream.
+func (s *ActionsRemoveSelectedRepoFromOrgSecretConflict) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsRemoveSelectedRepoFromOrgSecretNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsRemoveSelectedRepoFromOrgSecretNoContent json value to io.Writer.
+func (s ActionsRemoveSelectedRepoFromOrgSecretNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsRemoveSelectedRepoFromOrgSecretNoContent json value from io.Reader.
+func (s *ActionsRemoveSelectedRepoFromOrgSecretNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsRemoveSelectedRepoFromOrgSecretNoContent from json stream.
+func (s *ActionsRemoveSelectedRepoFromOrgSecretNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsRemoveSelfHostedRunnerFromGroupForOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsRemoveSelfHostedRunnerFromGroupForOrg json value to io.Writer.
+func (s ActionsRemoveSelfHostedRunnerFromGroupForOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsRemoveSelfHostedRunnerFromGroupForOrg json value from io.Reader.
+func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsRemoveSelfHostedRunnerFromGroupForOrg from json stream.
+func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsRetryWorkflow) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsRetryWorkflow json value to io.Writer.
+func (s ActionsRetryWorkflow) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsRetryWorkflow json value from io.Reader.
+func (s *ActionsRetryWorkflow) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsRetryWorkflow from json stream.
+func (s *ActionsRetryWorkflow) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -1627,20 +2751,134 @@ func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState) ReadJ
 	return i.Error
 }
 
-func (ActionsSetAllowedActionsOrganization) WriteJSON(j *json.Stream)        {}
-func (ActionsSetAllowedActionsOrganization) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsSetAllowedActionsOrganization) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsSetAllowedActionsOrganization) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetAllowedActionsOrganization) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ActionsSetAllowedActionsRepository) WriteJSON(j *json.Stream)        {}
-func (ActionsSetAllowedActionsRepository) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsSetAllowedActionsRepository) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsSetAllowedActionsRepository) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ActionsSetAllowedActionsOrganization json value to io.Writer.
+func (s ActionsSetAllowedActionsOrganization) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ActionsSetGithubActionsPermissionsOrganization) WriteJSON(j *json.Stream)        {}
-func (ActionsSetGithubActionsPermissionsOrganization) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsSetGithubActionsPermissionsOrganization) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsSetGithubActionsPermissionsOrganization) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ActionsSetAllowedActionsOrganization json value from io.Reader.
+func (s *ActionsSetAllowedActionsOrganization) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetAllowedActionsOrganization from json stream.
+func (s *ActionsSetAllowedActionsOrganization) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetAllowedActionsRepository) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsSetAllowedActionsRepository json value to io.Writer.
+func (s ActionsSetAllowedActionsRepository) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsSetAllowedActionsRepository json value from io.Reader.
+func (s *ActionsSetAllowedActionsRepository) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetAllowedActionsRepository from json stream.
+func (s *ActionsSetAllowedActionsRepository) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetGithubActionsPermissionsOrganization) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsSetGithubActionsPermissionsOrganization json value to io.Writer.
+func (s ActionsSetGithubActionsPermissionsOrganization) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsSetGithubActionsPermissionsOrganization json value from io.Reader.
+func (s *ActionsSetGithubActionsPermissionsOrganization) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetGithubActionsPermissionsOrganization from json stream.
+func (s *ActionsSetGithubActionsPermissionsOrganization) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -1706,10 +2944,48 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) R
 	return i.Error
 }
 
-func (ActionsSetGithubActionsPermissionsRepository) WriteJSON(j *json.Stream)        {}
-func (ActionsSetGithubActionsPermissionsRepository) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsSetGithubActionsPermissionsRepository) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsSetGithubActionsPermissionsRepository) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetGithubActionsPermissionsRepository) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsSetGithubActionsPermissionsRepository json value to io.Writer.
+func (s ActionsSetGithubActionsPermissionsRepository) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsSetGithubActionsPermissionsRepository json value from io.Reader.
+func (s *ActionsSetGithubActionsPermissionsRepository) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetGithubActionsPermissionsRepository from json stream.
+func (s *ActionsSetGithubActionsPermissionsRepository) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -1771,10 +3047,48 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) Rea
 	return i.Error
 }
 
-func (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSON(j *json.Stream)        {}
-func (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg json value to io.Writer.
+func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg json value from io.Reader.
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg from json stream.
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -1833,10 +3147,48 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgApplicationJSONRequest)
 	return i.Error
 }
 
-func (ActionsSetSelectedReposForOrgSecret) WriteJSON(j *json.Stream)        {}
-func (ActionsSetSelectedReposForOrgSecret) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsSetSelectedReposForOrgSecret) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsSetSelectedReposForOrgSecret) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetSelectedReposForOrgSecret) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsSetSelectedReposForOrgSecret json value to io.Writer.
+func (s ActionsSetSelectedReposForOrgSecret) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsSetSelectedReposForOrgSecret json value from io.Reader.
+func (s *ActionsSetSelectedReposForOrgSecret) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetSelectedReposForOrgSecret from json stream.
+func (s *ActionsSetSelectedReposForOrgSecret) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -1895,15 +3247,47 @@ func (s *ActionsSetSelectedReposForOrgSecretApplicationJSONRequest) ReadJSON(i *
 	return i.Error
 }
 
-func (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) WriteJSON(j *json.Stream) {}
-func (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization json value to io.Writer.
+func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization json value from io.Reader.
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization from json stream.
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1963,10 +3347,48 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationApplicati
 	return i.Error
 }
 
-func (ActionsSetSelfHostedRunnersInGroupForOrg) WriteJSON(j *json.Stream)        {}
-func (ActionsSetSelfHostedRunnersInGroupForOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (ActionsSetSelfHostedRunnersInGroupForOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActionsSetSelfHostedRunnersInGroupForOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActionsSetSelfHostedRunnersInGroupForOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActionsSetSelfHostedRunnersInGroupForOrg json value to io.Writer.
+func (s ActionsSetSelfHostedRunnersInGroupForOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActionsSetSelfHostedRunnersInGroupForOrg json value from io.Reader.
+func (s *ActionsSetSelfHostedRunnersInGroupForOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActionsSetSelfHostedRunnersInGroupForOrg from json stream.
+func (s *ActionsSetSelfHostedRunnersInGroupForOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -2133,21 +3555,91 @@ func (ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) 
 	return nil
 }
 
-func (ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {}
-func (ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (ActivityDeleteRepoSubscription) WriteJSON(j *json.Stream)        {}
-func (ActivityDeleteRepoSubscription) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityDeleteRepoSubscription) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityDeleteRepoSubscription) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ActivityCheckRepoIsStarredByAuthenticatedUserNoContent json value to io.Writer.
+func (s ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityCheckRepoIsStarredByAuthenticatedUserNoContent json value from io.Reader.
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityCheckRepoIsStarredByAuthenticatedUserNoContent from json stream.
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActivityDeleteRepoSubscription) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActivityDeleteRepoSubscription json value to io.Writer.
+func (s ActivityDeleteRepoSubscription) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityDeleteRepoSubscription json value from io.Reader.
+func (s *ActivityDeleteRepoSubscription) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityDeleteRepoSubscription from json stream.
+func (s *ActivityDeleteRepoSubscription) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ActivityDeleteThreadSubscriptionApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (ActivityDeleteThreadSubscriptionApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -2171,15 +3663,91 @@ func (ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) WriteJSONTo(w
 	return nil
 }
 
-func (ActivityDeleteThreadSubscriptionNoContent) WriteJSON(j *json.Stream)        {}
-func (ActivityDeleteThreadSubscriptionNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityDeleteThreadSubscriptionNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityDeleteThreadSubscriptionNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActivityDeleteThreadSubscriptionNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ActivityGetRepoSubscriptionNotFound) WriteJSON(j *json.Stream)        {}
-func (ActivityGetRepoSubscriptionNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityGetRepoSubscriptionNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityGetRepoSubscriptionNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ActivityDeleteThreadSubscriptionNoContent json value to io.Writer.
+func (s ActivityDeleteThreadSubscriptionNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityDeleteThreadSubscriptionNoContent json value from io.Reader.
+func (s *ActivityDeleteThreadSubscriptionNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityDeleteThreadSubscriptionNoContent from json stream.
+func (s *ActivityDeleteThreadSubscriptionNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActivityGetRepoSubscriptionNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActivityGetRepoSubscriptionNotFound json value to io.Writer.
+func (s ActivityGetRepoSubscriptionNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityGetRepoSubscriptionNotFound json value from io.Reader.
+func (s *ActivityGetRepoSubscriptionNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityGetRepoSubscriptionNotFound from json stream.
+func (s *ActivityGetRepoSubscriptionNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ActivityGetThreadApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (ActivityGetThreadApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -2393,10 +3961,48 @@ func (ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) WriteJSONTo(w 
 	return nil
 }
 
-func (ActivityMarkNotificationsAsReadResetContent) WriteJSON(j *json.Stream)        {}
-func (ActivityMarkNotificationsAsReadResetContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityMarkNotificationsAsReadResetContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityMarkNotificationsAsReadResetContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActivityMarkNotificationsAsReadResetContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActivityMarkNotificationsAsReadResetContent json value to io.Writer.
+func (s ActivityMarkNotificationsAsReadResetContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityMarkNotificationsAsReadResetContent json value from io.Reader.
+func (s *ActivityMarkNotificationsAsReadResetContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityMarkNotificationsAsReadResetContent from json stream.
+func (s *ActivityMarkNotificationsAsReadResetContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActivityMarkRepoNotificationsAsReadAccepted) WriteJSON(j *json.Stream) {
@@ -2520,15 +4126,91 @@ func (s *ActivityMarkRepoNotificationsAsReadApplicationJSONRequest) ReadJSON(i *
 	return i.Error
 }
 
-func (ActivityMarkRepoNotificationsAsReadResetContent) WriteJSON(j *json.Stream)        {}
-func (ActivityMarkRepoNotificationsAsReadResetContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityMarkRepoNotificationsAsReadResetContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityMarkRepoNotificationsAsReadResetContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActivityMarkRepoNotificationsAsReadResetContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ActivityMarkThreadAsReadResetContent) WriteJSON(j *json.Stream)        {}
-func (ActivityMarkThreadAsReadResetContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityMarkThreadAsReadResetContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityMarkThreadAsReadResetContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ActivityMarkRepoNotificationsAsReadResetContent json value to io.Writer.
+func (s ActivityMarkRepoNotificationsAsReadResetContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityMarkRepoNotificationsAsReadResetContent json value from io.Reader.
+func (s *ActivityMarkRepoNotificationsAsReadResetContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityMarkRepoNotificationsAsReadResetContent from json stream.
+func (s *ActivityMarkRepoNotificationsAsReadResetContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActivityMarkThreadAsReadResetContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActivityMarkThreadAsReadResetContent json value to io.Writer.
+func (s ActivityMarkThreadAsReadResetContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityMarkThreadAsReadResetContent json value from io.Reader.
+func (s *ActivityMarkThreadAsReadResetContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityMarkThreadAsReadResetContent from json stream.
+func (s *ActivityMarkThreadAsReadResetContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ActivitySetRepoSubscriptionApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -2707,10 +4389,48 @@ func (ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) WriteJSON
 	return nil
 }
 
-func (ActivityStarRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream)        {}
-func (ActivityStarRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityStarRepoForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityStarRepoForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActivityStarRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActivityStarRepoForAuthenticatedUserNoContent json value to io.Writer.
+func (s ActivityStarRepoForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityStarRepoForAuthenticatedUserNoContent json value from io.Reader.
+func (s *ActivityStarRepoForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityStarRepoForAuthenticatedUserNoContent from json stream.
+func (s *ActivityStarRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -2745,10 +4465,48 @@ func (ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) WriteJS
 	return nil
 }
 
-func (ActivityUnstarRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream)        {}
-func (ActivityUnstarRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ActivityUnstarRepoForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ActivityUnstarRepoForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ActivityUnstarRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ActivityUnstarRepoForAuthenticatedUserNoContent json value to io.Writer.
+func (s ActivityUnstarRepoForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ActivityUnstarRepoForAuthenticatedUserNoContent json value from io.Reader.
+func (s *ActivityUnstarRepoForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ActivityUnstarRepoForAuthenticatedUserNoContent from json stream.
+func (s *ActivityUnstarRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s AppPermissionsActions) WriteJSON(j *json.Stream) {
@@ -3167,10 +4925,48 @@ func (AppsAddRepoToInstallationApplicationJSONNotFound) ReadJSON(i *json.Iterato
 func (AppsAddRepoToInstallationApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (AppsAddRepoToInstallationApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (AppsAddRepoToInstallationNoContent) WriteJSON(j *json.Stream)        {}
-func (AppsAddRepoToInstallationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsAddRepoToInstallationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsAddRepoToInstallationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsAddRepoToInstallationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsAddRepoToInstallationNoContent json value to io.Writer.
+func (s AppsAddRepoToInstallationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsAddRepoToInstallationNoContent json value from io.Reader.
+func (s *AppsAddRepoToInstallationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsAddRepoToInstallationNoContent from json stream.
+func (s *AppsAddRepoToInstallationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s AppsCheckTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -3276,10 +5072,48 @@ func (s *AppsCreateContentAttachmentApplicationJSONRequest) ReadJSON(i *json.Ite
 	return i.Error
 }
 
-func (AppsCreateFromManifestApplicationJSONRequest) WriteJSON(j *json.Stream)        {}
-func (AppsCreateFromManifestApplicationJSONRequest) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsCreateFromManifestApplicationJSONRequest) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsCreateFromManifestApplicationJSONRequest) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsCreateFromManifestApplicationJSONRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsCreateFromManifestApplicationJSONRequest json value to io.Writer.
+func (s AppsCreateFromManifestApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsCreateFromManifestApplicationJSONRequest json value from io.Reader.
+func (s *AppsCreateFromManifestApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsCreateFromManifestApplicationJSONRequest from json stream.
+func (s *AppsCreateFromManifestApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s AppsCreateInstallationAccessTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -3417,15 +5251,91 @@ func (s *AppsDeleteAuthorizationApplicationJSONRequest) ReadJSON(i *json.Iterato
 	return i.Error
 }
 
-func (AppsDeleteAuthorizationNoContent) WriteJSON(j *json.Stream)        {}
-func (AppsDeleteAuthorizationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsDeleteAuthorizationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsDeleteAuthorizationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsDeleteAuthorizationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (AppsDeleteInstallationNoContent) WriteJSON(j *json.Stream)        {}
-func (AppsDeleteInstallationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsDeleteInstallationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsDeleteInstallationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes AppsDeleteAuthorizationNoContent json value to io.Writer.
+func (s AppsDeleteAuthorizationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsDeleteAuthorizationNoContent json value from io.Reader.
+func (s *AppsDeleteAuthorizationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsDeleteAuthorizationNoContent from json stream.
+func (s *AppsDeleteAuthorizationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppsDeleteInstallationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsDeleteInstallationNoContent json value to io.Writer.
+func (s AppsDeleteInstallationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsDeleteInstallationNoContent json value from io.Reader.
+func (s *AppsDeleteInstallationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsDeleteInstallationNoContent from json stream.
+func (s *AppsDeleteInstallationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s AppsDeleteTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -3476,10 +5386,48 @@ func (s *AppsDeleteTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 	return i.Error
 }
 
-func (AppsDeleteTokenNoContent) WriteJSON(j *json.Stream)        {}
-func (AppsDeleteTokenNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsDeleteTokenNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsDeleteTokenNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsDeleteTokenNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsDeleteTokenNoContent json value to io.Writer.
+func (s AppsDeleteTokenNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsDeleteTokenNoContent json value from io.Reader.
+func (s *AppsDeleteTokenNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsDeleteTokenNoContent from json stream.
+func (s *AppsDeleteTokenNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (AppsGetBySlugApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (AppsGetBySlugApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -3513,10 +5461,48 @@ func (AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) WriteJSONTo(
 	return nil
 }
 
-func (AppsGetSubscriptionPlanForAccountStubbedNotFound) WriteJSON(j *json.Stream)        {}
-func (AppsGetSubscriptionPlanForAccountStubbedNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsGetSubscriptionPlanForAccountStubbedNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsGetSubscriptionPlanForAccountStubbedNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsGetSubscriptionPlanForAccountStubbedNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsGetSubscriptionPlanForAccountStubbedNotFound json value to io.Writer.
+func (s AppsGetSubscriptionPlanForAccountStubbedNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsGetSubscriptionPlanForAccountStubbedNotFound json value from io.Reader.
+func (s *AppsGetSubscriptionPlanForAccountStubbedNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsGetSubscriptionPlanForAccountStubbedNotFound from json stream.
+func (s *AppsGetSubscriptionPlanForAccountStubbedNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {
 }
@@ -3796,10 +5782,48 @@ func (AppsRemoveRepoFromInstallationApplicationJSONNotFound) WriteJSONTo(w io.Wr
 	return nil
 }
 
-func (AppsRemoveRepoFromInstallationNoContent) WriteJSON(j *json.Stream)        {}
-func (AppsRemoveRepoFromInstallationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsRemoveRepoFromInstallationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsRemoveRepoFromInstallationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsRemoveRepoFromInstallationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsRemoveRepoFromInstallationNoContent json value to io.Writer.
+func (s AppsRemoveRepoFromInstallationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsRemoveRepoFromInstallationNoContent json value from io.Reader.
+func (s *AppsRemoveRepoFromInstallationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsRemoveRepoFromInstallationNoContent from json stream.
+func (s *AppsRemoveRepoFromInstallationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s AppsResetTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -3850,10 +5874,48 @@ func (s *AppsResetTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 	return i.Error
 }
 
-func (AppsRevokeInstallationAccessToken) WriteJSON(j *json.Stream)        {}
-func (AppsRevokeInstallationAccessToken) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsRevokeInstallationAccessToken) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsRevokeInstallationAccessToken) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsRevokeInstallationAccessToken) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsRevokeInstallationAccessToken json value to io.Writer.
+func (s AppsRevokeInstallationAccessToken) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsRevokeInstallationAccessToken json value from io.Reader.
+func (s *AppsRevokeInstallationAccessToken) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsRevokeInstallationAccessToken from json stream.
+func (s *AppsRevokeInstallationAccessToken) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s AppsScopeTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -3972,15 +6034,134 @@ func (s *AppsScopeTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 	return i.Error
 }
 
-func (AppsSuspendInstallationNoContent) WriteJSON(j *json.Stream)        {}
-func (AppsSuspendInstallationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsSuspendInstallationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsSuspendInstallationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s AppsSuspendInstallationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (AppsUnsuspendInstallationNoContent) WriteJSON(j *json.Stream)        {}
-func (AppsUnsuspendInstallationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (AppsUnsuspendInstallationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (AppsUnsuspendInstallationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes AppsSuspendInstallationNoContent json value to io.Writer.
+func (s AppsSuspendInstallationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsSuspendInstallationNoContent json value from io.Reader.
+func (s *AppsSuspendInstallationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsSuspendInstallationNoContent from json stream.
+func (s *AppsSuspendInstallationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppsUnsuspendInstallationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AppsUnsuspendInstallationNoContent json value to io.Writer.
+func (s AppsUnsuspendInstallationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AppsUnsuspendInstallationNoContent json value from io.Reader.
+func (s *AppsUnsuspendInstallationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AppsUnsuspendInstallationNoContent from json stream.
+func (s *AppsUnsuspendInstallationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AuthenticationTokenPermissions) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes AuthenticationTokenPermissions json value to io.Writer.
+func (s AuthenticationTokenPermissions) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads AuthenticationTokenPermissions json value from io.Reader.
+func (s *AuthenticationTokenPermissions) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads AuthenticationTokenPermissions from json stream.
+func (s *AuthenticationTokenPermissions) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s AuthenticationTokenRepositorySelection) WriteJSON(j *json.Stream) {
@@ -4051,6 +6232,49 @@ func (s *AuthorizationApp) ReadJSON(i *json.Iterator) error {
 			}
 			s.URL = v
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s BaseGistFiles) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes BaseGistFiles json value to io.Writer.
+func (s BaseGistFiles) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads BaseGistFiles json value from io.Reader.
+func (s *BaseGistFiles) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads BaseGistFiles from json stream.
+func (s *BaseGistFiles) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -6022,10 +8246,48 @@ func (s *ChecksListSuitesForRef) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (ChecksRerequestSuite) WriteJSON(j *json.Stream)        {}
-func (ChecksRerequestSuite) ReadJSON(i *json.Iterator) error { return nil }
-func (ChecksRerequestSuite) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ChecksRerequestSuite) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ChecksRerequestSuite) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ChecksRerequestSuite json value to io.Writer.
+func (s ChecksRerequestSuite) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ChecksRerequestSuite json value from io.Reader.
+func (s *ChecksRerequestSuite) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ChecksRerequestSuite from json stream.
+func (s *ChecksRerequestSuite) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ChecksSetSuitesPreferencesApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -6232,10 +8494,48 @@ func (CodeScanningGetAnalysisOKApplicationJSONSarif) ReadJSON(i *json.Iterator) 
 func (CodeScanningGetAnalysisOKApplicationJSONSarif) ReadJSONFrom(r io.Reader) error  { return nil }
 func (CodeScanningGetAnalysisOKApplicationJSONSarif) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (CodeScanningGetSarifNotFound) WriteJSON(j *json.Stream)        {}
-func (CodeScanningGetSarifNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (CodeScanningGetSarifNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CodeScanningGetSarifNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CodeScanningGetSarifNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CodeScanningGetSarifNotFound json value to io.Writer.
+func (s CodeScanningGetSarifNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CodeScanningGetSarifNotFound json value from io.Reader.
+func (s *CodeScanningGetSarifNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CodeScanningGetSarifNotFound from json stream.
+func (s *CodeScanningGetSarifNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CodeScanningListAlertInstancesApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (CodeScanningListAlertInstancesApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -6470,15 +8770,91 @@ func (s *CodeScanningUploadSarifApplicationJSONRequest) ReadJSON(i *json.Iterato
 	return i.Error
 }
 
-func (CodeScanningUploadSarifBadRequest) WriteJSON(j *json.Stream)        {}
-func (CodeScanningUploadSarifBadRequest) ReadJSON(i *json.Iterator) error { return nil }
-func (CodeScanningUploadSarifBadRequest) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CodeScanningUploadSarifBadRequest) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CodeScanningUploadSarifBadRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (CodeScanningUploadSarifRequestEntityTooLarge) WriteJSON(j *json.Stream)        {}
-func (CodeScanningUploadSarifRequestEntityTooLarge) ReadJSON(i *json.Iterator) error { return nil }
-func (CodeScanningUploadSarifRequestEntityTooLarge) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CodeScanningUploadSarifRequestEntityTooLarge) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes CodeScanningUploadSarifBadRequest json value to io.Writer.
+func (s CodeScanningUploadSarifBadRequest) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CodeScanningUploadSarifBadRequest json value from io.Reader.
+func (s *CodeScanningUploadSarifBadRequest) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CodeScanningUploadSarifBadRequest from json stream.
+func (s *CodeScanningUploadSarifBadRequest) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CodeScanningUploadSarifRequestEntityTooLarge) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CodeScanningUploadSarifRequestEntityTooLarge json value to io.Writer.
+func (s CodeScanningUploadSarifRequestEntityTooLarge) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CodeScanningUploadSarifRequestEntityTooLarge json value from io.Reader.
+func (s *CodeScanningUploadSarifRequestEntityTooLarge) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CodeScanningUploadSarifRequestEntityTooLarge from json stream.
+func (s *CodeScanningUploadSarifRequestEntityTooLarge) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (CodesOfConductGetAllCodesOfConductOK) WriteJSON(j *json.Stream)        {}
 func (CodesOfConductGetAllCodesOfConductOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -7278,31 +9654,133 @@ func (s *DiffEntryStatus) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (EmojisGetOK) WriteJSON(j *json.Stream)        {}
-func (EmojisGetOK) ReadJSON(i *json.Iterator) error { return nil }
-func (EmojisGetOK) ReadJSONFrom(r io.Reader) error  { return nil }
-func (EmojisGetOK) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s EmojisGetOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSONTo writes EmojisGetOK json value to io.Writer.
+func (s EmojisGetOK) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads EmojisGetOK json value from io.Reader.
+func (s *EmojisGetOK) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads EmojisGetOK from json stream.
+func (s *EmojisGetOK) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise json value to io.Writer.
+func (s EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise json value from io.Reader.
+func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise from json stream.
+func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise json value to io.Writer.
+func (s EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise json value from io.Reader.
+func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise from json stream.
+func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -7409,56 +9887,262 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 	return i.Error
 }
 
-func (EnterpriseAdminDeleteScimGroupFromEnterprise) WriteJSON(j *json.Stream)        {}
-func (EnterpriseAdminDeleteScimGroupFromEnterprise) ReadJSON(i *json.Iterator) error { return nil }
-func (EnterpriseAdminDeleteScimGroupFromEnterprise) ReadJSONFrom(r io.Reader) error  { return nil }
-func (EnterpriseAdminDeleteScimGroupFromEnterprise) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) WriteJSONTo(w io.Writer) error { return nil }
-
-func (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminDeleteScimGroupFromEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (EnterpriseAdminDeleteUserFromEnterprise) WriteJSON(j *json.Stream)        {}
-func (EnterpriseAdminDeleteUserFromEnterprise) ReadJSON(i *json.Iterator) error { return nil }
-func (EnterpriseAdminDeleteUserFromEnterprise) ReadJSONFrom(r io.Reader) error  { return nil }
-func (EnterpriseAdminDeleteUserFromEnterprise) WriteJSONTo(w io.Writer) error   { return nil }
-
-func (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSONTo writes EnterpriseAdminDeleteScimGroupFromEnterprise json value to io.Writer.
+func (s EnterpriseAdminDeleteScimGroupFromEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
-func (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
+// ReadJSONFrom reads EnterpriseAdminDeleteScimGroupFromEnterprise json value from io.Reader.
+func (s *EnterpriseAdminDeleteScimGroupFromEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSON reads EnterpriseAdminDeleteScimGroupFromEnterprise from json stream.
+func (s *EnterpriseAdminDeleteScimGroupFromEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
-func (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise json value to io.Writer.
+func (s EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise json value from io.Reader.
+func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise from json stream.
+func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise json value to io.Writer.
+func (s EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise json value from io.Reader.
+func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise from json stream.
+func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminDeleteUserFromEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminDeleteUserFromEnterprise json value to io.Writer.
+func (s EnterpriseAdminDeleteUserFromEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminDeleteUserFromEnterprise json value from io.Reader.
+func (s *EnterpriseAdminDeleteUserFromEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminDeleteUserFromEnterprise from json stream.
+func (s *EnterpriseAdminDeleteUserFromEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise json value to io.Writer.
+func (s EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise json value from io.Reader.
+func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise from json stream.
+func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise json value to io.Writer.
+func (s EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise json value from io.Reader.
+func (s *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise from json stream.
+func (s *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8185,42 +10869,176 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestNa
 	return i.Error
 }
 
-func (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSONTo writes EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise json value to io.Writer.
+func (s EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
-func (EnterpriseAdminSetAllowedActionsEnterprise) WriteJSON(j *json.Stream)        {}
-func (EnterpriseAdminSetAllowedActionsEnterprise) ReadJSON(i *json.Iterator) error { return nil }
-func (EnterpriseAdminSetAllowedActionsEnterprise) ReadJSONFrom(r io.Reader) error  { return nil }
-func (EnterpriseAdminSetAllowedActionsEnterprise) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise json value from io.Reader.
+func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (EnterpriseAdminSetGithubActionsPermissionsEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminSetGithubActionsPermissionsEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (EnterpriseAdminSetGithubActionsPermissionsEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSON reads EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise from json stream.
+func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
-func (EnterpriseAdminSetGithubActionsPermissionsEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise json value to io.Writer.
+func (s EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise json value from io.Reader.
+func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise from json stream.
+func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminSetAllowedActionsEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminSetAllowedActionsEnterprise json value to io.Writer.
+func (s EnterpriseAdminSetAllowedActionsEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminSetAllowedActionsEnterprise json value from io.Reader.
+func (s *EnterpriseAdminSetAllowedActionsEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminSetAllowedActionsEnterprise from json stream.
+func (s *EnterpriseAdminSetAllowedActionsEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminSetGithubActionsPermissionsEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminSetGithubActionsPermissionsEnterprise json value to io.Writer.
+func (s EnterpriseAdminSetGithubActionsPermissionsEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminSetGithubActionsPermissionsEnterprise json value from io.Reader.
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminSetGithubActionsPermissionsEnterprise from json stream.
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8688,15 +11506,47 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSO
 	return i.Error
 }
 
-func (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise json value to io.Writer.
+func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise json value from io.Reader.
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise from json stream.
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8756,16 +11606,47 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseApplicati
 	return i.Error
 }
 
-func (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) WriteJSON(j *json.Stream) {
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
+
+// WriteJSONTo writes EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise json value to io.Writer.
+func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise json value from io.Reader.
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise from json stream.
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8825,15 +11706,47 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseAp
 	return i.Error
 }
 
-func (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) WriteJSON(j *json.Stream) {}
-func (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// WriteJSONTo writes EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise json value to io.Writer.
+func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSONFrom reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise json value from io.Reader.
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise from json stream.
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -8903,7 +11816,8 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) W
 	more.Down()
 	j.WriteArrayStart()
 	for _, elem := range s.Operations {
-		_ = elem // Unsupported kind "primitive" for field "".
+		more.More()
+		elem.WriteJSON(j)
 	}
 	j.WriteArrayEnd()
 	more.Up()
@@ -8955,6 +11869,49 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) 
 			// Unsupported kind "array" for field "Schemas".
 			i.Skip()
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem json value to io.Writer.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem json value from io.Reader.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem from json stream.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -10278,10 +13235,48 @@ func (s *ForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (Found) WriteJSON(j *json.Stream)        {}
-func (Found) ReadJSON(i *json.Iterator) error { return nil }
-func (Found) ReadJSONFrom(r io.Reader) error  { return nil }
-func (Found) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s Found) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes Found json value to io.Writer.
+func (s Found) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads Found json value from io.Reader.
+func (s *Found) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads Found from json stream.
+func (s *Found) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s FullRepositoryPermissions) WriteJSON(j *json.Stream) {
@@ -10646,15 +13641,91 @@ func (s *GistCommitChangeStatus) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (GistsCheckIsStarredNoContent) WriteJSON(j *json.Stream)        {}
-func (GistsCheckIsStarredNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (GistsCheckIsStarredNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GistsCheckIsStarredNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GistsCheckIsStarredNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (GistsCheckIsStarredNotFound) WriteJSON(j *json.Stream)        {}
-func (GistsCheckIsStarredNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (GistsCheckIsStarredNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GistsCheckIsStarredNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes GistsCheckIsStarredNoContent json value to io.Writer.
+func (s GistsCheckIsStarredNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GistsCheckIsStarredNoContent json value from io.Reader.
+func (s *GistsCheckIsStarredNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GistsCheckIsStarredNoContent from json stream.
+func (s *GistsCheckIsStarredNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GistsCheckIsStarredNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GistsCheckIsStarredNotFound json value to io.Writer.
+func (s GistsCheckIsStarredNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GistsCheckIsStarredNotFound json value from io.Reader.
+func (s *GistsCheckIsStarredNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GistsCheckIsStarredNotFound from json stream.
+func (s *GistsCheckIsStarredNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GistsCreateCommentApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (GistsCreateCommentApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -10735,15 +13806,91 @@ func (GistsDeleteCommentApplicationJSONNotFound) ReadJSON(i *json.Iterator) erro
 func (GistsDeleteCommentApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GistsDeleteCommentApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GistsDeleteCommentNoContent) WriteJSON(j *json.Stream)        {}
-func (GistsDeleteCommentNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (GistsDeleteCommentNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GistsDeleteCommentNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GistsDeleteCommentNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (GistsDeleteNoContent) WriteJSON(j *json.Stream)        {}
-func (GistsDeleteNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (GistsDeleteNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GistsDeleteNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes GistsDeleteCommentNoContent json value to io.Writer.
+func (s GistsDeleteCommentNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GistsDeleteCommentNoContent json value from io.Reader.
+func (s *GistsDeleteCommentNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GistsDeleteCommentNoContent from json stream.
+func (s *GistsDeleteCommentNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GistsDeleteNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GistsDeleteNoContent json value to io.Writer.
+func (s GistsDeleteNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GistsDeleteNoContent json value from io.Reader.
+func (s *GistsDeleteNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GistsDeleteNoContent from json stream.
+func (s *GistsDeleteNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GistsListCommentsApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (GistsListCommentsApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -10815,10 +13962,48 @@ func (GistsStarApplicationJSONNotFound) ReadJSON(i *json.Iterator) error { retur
 func (GistsStarApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GistsStarApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GistsStarNoContent) WriteJSON(j *json.Stream)        {}
-func (GistsStarNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (GistsStarNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GistsStarNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GistsStarNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GistsStarNoContent json value to io.Writer.
+func (s GistsStarNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GistsStarNoContent json value from io.Reader.
+func (s *GistsStarNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GistsStarNoContent from json stream.
+func (s *GistsStarNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GistsUnstarApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (GistsUnstarApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -10830,10 +14015,48 @@ func (GistsUnstarApplicationJSONNotFound) ReadJSON(i *json.Iterator) error { ret
 func (GistsUnstarApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GistsUnstarApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GistsUnstarNoContent) WriteJSON(j *json.Stream)        {}
-func (GistsUnstarNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (GistsUnstarNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GistsUnstarNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GistsUnstarNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GistsUnstarNoContent json value to io.Writer.
+func (s GistsUnstarNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GistsUnstarNoContent json value from io.Reader.
+func (s *GistsUnstarNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GistsUnstarNoContent from json stream.
+func (s *GistsUnstarNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s GistsUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -11955,10 +15178,48 @@ func (s *GitCreateTreeApplicationJSONRequestTreeItemType) ReadJSON(i *json.Itera
 	return i.Error
 }
 
-func (GitDeleteRefNoContent) WriteJSON(j *json.Stream)        {}
-func (GitDeleteRefNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (GitDeleteRefNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GitDeleteRefNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GitDeleteRefNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GitDeleteRefNoContent json value to io.Writer.
+func (s GitDeleteRefNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GitDeleteRefNoContent json value from io.Reader.
+func (s *GitDeleteRefNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GitDeleteRefNoContent from json stream.
+func (s *GitDeleteRefNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s GitRefObject) WriteJSON(j *json.Stream) {
@@ -12737,6 +15998,92 @@ func (s *HookDeliveryRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s HookDeliveryRequestHeaders) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes HookDeliveryRequestHeaders json value to io.Writer.
+func (s HookDeliveryRequestHeaders) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads HookDeliveryRequestHeaders json value from io.Reader.
+func (s *HookDeliveryRequestHeaders) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads HookDeliveryRequestHeaders from json stream.
+func (s *HookDeliveryRequestHeaders) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s HookDeliveryRequestPayload) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes HookDeliveryRequestPayload json value to io.Writer.
+func (s HookDeliveryRequestPayload) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads HookDeliveryRequestPayload json value from io.Reader.
+func (s *HookDeliveryRequestPayload) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads HookDeliveryRequestPayload from json stream.
+func (s *HookDeliveryRequestPayload) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s HookDeliveryResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -12780,6 +16127,49 @@ func (s *HookDeliveryResponse) ReadJSON(i *json.Iterator) error {
 				return false
 			}
 			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s HookDeliveryResponseHeaders) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes HookDeliveryResponseHeaders json value to io.Writer.
+func (s HookDeliveryResponseHeaders) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads HookDeliveryResponseHeaders json value from io.Reader.
+func (s *HookDeliveryResponseHeaders) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads HookDeliveryResponseHeaders from json stream.
+func (s *HookDeliveryResponseHeaders) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
 		default:
 			i.Skip()
 			return true
@@ -12992,32 +16382,220 @@ func (s *IntegrationPermissions) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (InteractionsRemoveRestrictionsForAuthenticatedUser) WriteJSON(j *json.Stream) {}
-func (InteractionsRemoveRestrictionsForAuthenticatedUser) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s InteractionsRemoveRestrictionsForAuthenticatedUser) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (InteractionsRemoveRestrictionsForAuthenticatedUser) ReadJSONFrom(r io.Reader) error { return nil }
-func (InteractionsRemoveRestrictionsForAuthenticatedUser) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (InteractionsRemoveRestrictionsForOrg) WriteJSON(j *json.Stream)        {}
-func (InteractionsRemoveRestrictionsForOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (InteractionsRemoveRestrictionsForOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (InteractionsRemoveRestrictionsForOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes InteractionsRemoveRestrictionsForAuthenticatedUser json value to io.Writer.
+func (s InteractionsRemoveRestrictionsForAuthenticatedUser) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (InteractionsRemoveRestrictionsForRepoConflict) WriteJSON(j *json.Stream)        {}
-func (InteractionsRemoveRestrictionsForRepoConflict) ReadJSON(i *json.Iterator) error { return nil }
-func (InteractionsRemoveRestrictionsForRepoConflict) ReadJSONFrom(r io.Reader) error  { return nil }
-func (InteractionsRemoveRestrictionsForRepoConflict) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads InteractionsRemoveRestrictionsForAuthenticatedUser json value from io.Reader.
+func (s *InteractionsRemoveRestrictionsForAuthenticatedUser) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (InteractionsRemoveRestrictionsForRepoNoContent) WriteJSON(j *json.Stream)        {}
-func (InteractionsRemoveRestrictionsForRepoNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (InteractionsRemoveRestrictionsForRepoNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (InteractionsRemoveRestrictionsForRepoNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (InteractionsSetRestrictionsForRepoConflict) WriteJSON(j *json.Stream)        {}
-func (InteractionsSetRestrictionsForRepoConflict) ReadJSON(i *json.Iterator) error { return nil }
-func (InteractionsSetRestrictionsForRepoConflict) ReadJSONFrom(r io.Reader) error  { return nil }
-func (InteractionsSetRestrictionsForRepoConflict) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads InteractionsRemoveRestrictionsForAuthenticatedUser from json stream.
+func (s *InteractionsRemoveRestrictionsForAuthenticatedUser) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InteractionsRemoveRestrictionsForOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes InteractionsRemoveRestrictionsForOrg json value to io.Writer.
+func (s InteractionsRemoveRestrictionsForOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads InteractionsRemoveRestrictionsForOrg json value from io.Reader.
+func (s *InteractionsRemoveRestrictionsForOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads InteractionsRemoveRestrictionsForOrg from json stream.
+func (s *InteractionsRemoveRestrictionsForOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InteractionsRemoveRestrictionsForRepoConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes InteractionsRemoveRestrictionsForRepoConflict json value to io.Writer.
+func (s InteractionsRemoveRestrictionsForRepoConflict) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads InteractionsRemoveRestrictionsForRepoConflict json value from io.Reader.
+func (s *InteractionsRemoveRestrictionsForRepoConflict) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads InteractionsRemoveRestrictionsForRepoConflict from json stream.
+func (s *InteractionsRemoveRestrictionsForRepoConflict) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InteractionsRemoveRestrictionsForRepoNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes InteractionsRemoveRestrictionsForRepoNoContent json value to io.Writer.
+func (s InteractionsRemoveRestrictionsForRepoNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads InteractionsRemoveRestrictionsForRepoNoContent json value from io.Reader.
+func (s *InteractionsRemoveRestrictionsForRepoNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads InteractionsRemoveRestrictionsForRepoNoContent from json stream.
+func (s *InteractionsRemoveRestrictionsForRepoNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InteractionsSetRestrictionsForRepoConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes InteractionsSetRestrictionsForRepoConflict json value to io.Writer.
+func (s InteractionsSetRestrictionsForRepoConflict) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads InteractionsSetRestrictionsForRepoConflict json value from io.Reader.
+func (s *InteractionsSetRestrictionsForRepoConflict) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads InteractionsSetRestrictionsForRepoConflict from json stream.
+func (s *InteractionsSetRestrictionsForRepoConflict) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s IssuesAddAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -13078,10 +16656,48 @@ func (s *IssuesAddAssigneesApplicationJSONRequest) ReadJSON(i *json.Iterator) er
 	return i.Error
 }
 
-func (IssuesCheckUserCanBeAssignedNoContent) WriteJSON(j *json.Stream)        {}
-func (IssuesCheckUserCanBeAssignedNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (IssuesCheckUserCanBeAssignedNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IssuesCheckUserCanBeAssignedNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s IssuesCheckUserCanBeAssignedNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IssuesCheckUserCanBeAssignedNoContent json value to io.Writer.
+func (s IssuesCheckUserCanBeAssignedNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IssuesCheckUserCanBeAssignedNoContent json value from io.Reader.
+func (s *IssuesCheckUserCanBeAssignedNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IssuesCheckUserCanBeAssignedNoContent from json stream.
+func (s *IssuesCheckUserCanBeAssignedNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s IssuesCreateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -13301,20 +16917,134 @@ func (s *IssuesCreateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iter
 	return i.Error
 }
 
-func (IssuesDeleteComment) WriteJSON(j *json.Stream)        {}
-func (IssuesDeleteComment) ReadJSON(i *json.Iterator) error { return nil }
-func (IssuesDeleteComment) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IssuesDeleteComment) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s IssuesDeleteComment) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (IssuesDeleteLabel) WriteJSON(j *json.Stream)        {}
-func (IssuesDeleteLabel) ReadJSON(i *json.Iterator) error { return nil }
-func (IssuesDeleteLabel) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IssuesDeleteLabel) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes IssuesDeleteComment json value to io.Writer.
+func (s IssuesDeleteComment) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (IssuesDeleteMilestoneNoContent) WriteJSON(j *json.Stream)        {}
-func (IssuesDeleteMilestoneNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (IssuesDeleteMilestoneNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IssuesDeleteMilestoneNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads IssuesDeleteComment json value from io.Reader.
+func (s *IssuesDeleteComment) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IssuesDeleteComment from json stream.
+func (s *IssuesDeleteComment) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IssuesDeleteLabel) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IssuesDeleteLabel json value to io.Writer.
+func (s IssuesDeleteLabel) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IssuesDeleteLabel json value from io.Reader.
+func (s *IssuesDeleteLabel) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IssuesDeleteLabel from json stream.
+func (s *IssuesDeleteLabel) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IssuesDeleteMilestoneNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IssuesDeleteMilestoneNoContent json value to io.Writer.
+func (s IssuesDeleteMilestoneNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IssuesDeleteMilestoneNoContent json value from io.Reader.
+func (s *IssuesDeleteMilestoneNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IssuesDeleteMilestoneNoContent from json stream.
+func (s *IssuesDeleteMilestoneNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (IssuesListAssigneesOK) WriteJSON(j *json.Stream)        {}
 func (IssuesListAssigneesOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -13412,15 +17142,91 @@ func (s *IssuesLockApplicationJSONRequestLockReason) ReadJSON(i *json.Iterator) 
 	return i.Error
 }
 
-func (IssuesLockNoContent) WriteJSON(j *json.Stream)        {}
-func (IssuesLockNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (IssuesLockNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IssuesLockNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s IssuesLockNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (IssuesRemoveAllLabelsNoContent) WriteJSON(j *json.Stream)        {}
-func (IssuesRemoveAllLabelsNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (IssuesRemoveAllLabelsNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IssuesRemoveAllLabelsNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes IssuesLockNoContent json value to io.Writer.
+func (s IssuesLockNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IssuesLockNoContent json value from io.Reader.
+func (s *IssuesLockNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IssuesLockNoContent from json stream.
+func (s *IssuesLockNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IssuesRemoveAllLabelsNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IssuesRemoveAllLabelsNoContent json value to io.Writer.
+func (s IssuesRemoveAllLabelsNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IssuesRemoveAllLabelsNoContent json value from io.Reader.
+func (s *IssuesRemoveAllLabelsNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IssuesRemoveAllLabelsNoContent from json stream.
+func (s *IssuesRemoveAllLabelsNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s IssuesRemoveAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -13506,10 +17312,48 @@ func (IssuesUnlockApplicationJSONNotFound) ReadJSON(i *json.Iterator) error { re
 func (IssuesUnlockApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (IssuesUnlockApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (IssuesUnlockNoContent) WriteJSON(j *json.Stream)        {}
-func (IssuesUnlockNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (IssuesUnlockNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (IssuesUnlockNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s IssuesUnlockNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes IssuesUnlockNoContent json value to io.Writer.
+func (s IssuesUnlockNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads IssuesUnlockNoContent json value from io.Reader.
+func (s *IssuesUnlockNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads IssuesUnlockNoContent from json stream.
+func (s *IssuesUnlockNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s IssuesUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -14551,10 +18395,48 @@ func (s *MetaRoot) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (MigrationsCancelImport) WriteJSON(j *json.Stream)        {}
-func (MigrationsCancelImport) ReadJSON(i *json.Iterator) error { return nil }
-func (MigrationsCancelImport) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MigrationsCancelImport) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s MigrationsCancelImport) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MigrationsCancelImport json value to io.Writer.
+func (s MigrationsCancelImport) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MigrationsCancelImport json value from io.Reader.
+func (s *MigrationsCancelImport) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MigrationsCancelImport from json stream.
+func (s *MigrationsCancelImport) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {
 }
@@ -14591,26 +18473,134 @@ func (MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Wr
 	return nil
 }
 
-func (MigrationsDeleteArchiveForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {}
-func (MigrationsDeleteArchiveForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (MigrationsDeleteArchiveForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (MigrationsDeleteArchiveForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s MigrationsDeleteArchiveForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (MigrationsDeleteArchiveForOrgNoContent) WriteJSON(j *json.Stream)        {}
-func (MigrationsDeleteArchiveForOrgNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (MigrationsDeleteArchiveForOrgNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MigrationsDeleteArchiveForOrgNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes MigrationsDeleteArchiveForAuthenticatedUserNoContent json value to io.Writer.
+func (s MigrationsDeleteArchiveForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (MigrationsDownloadArchiveForOrgFound) WriteJSON(j *json.Stream)        {}
-func (MigrationsDownloadArchiveForOrgFound) ReadJSON(i *json.Iterator) error { return nil }
-func (MigrationsDownloadArchiveForOrgFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MigrationsDownloadArchiveForOrgFound) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads MigrationsDeleteArchiveForAuthenticatedUserNoContent json value from io.Reader.
+func (s *MigrationsDeleteArchiveForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MigrationsDeleteArchiveForAuthenticatedUserNoContent from json stream.
+func (s *MigrationsDeleteArchiveForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsDeleteArchiveForOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MigrationsDeleteArchiveForOrgNoContent json value to io.Writer.
+func (s MigrationsDeleteArchiveForOrgNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MigrationsDeleteArchiveForOrgNoContent json value from io.Reader.
+func (s *MigrationsDeleteArchiveForOrgNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MigrationsDeleteArchiveForOrgNoContent from json stream.
+func (s *MigrationsDeleteArchiveForOrgNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsDownloadArchiveForOrgFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MigrationsDownloadArchiveForOrgFound json value to io.Writer.
+func (s MigrationsDownloadArchiveForOrgFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MigrationsDownloadArchiveForOrgFound json value from io.Reader.
+func (s *MigrationsDownloadArchiveForOrgFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MigrationsDownloadArchiveForOrgFound from json stream.
+func (s *MigrationsDownloadArchiveForOrgFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -14635,10 +18625,48 @@ func (MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Write
 	return nil
 }
 
-func (MigrationsGetArchiveForAuthenticatedUserFound) WriteJSON(j *json.Stream)        {}
-func (MigrationsGetArchiveForAuthenticatedUserFound) ReadJSON(i *json.Iterator) error { return nil }
-func (MigrationsGetArchiveForAuthenticatedUserFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MigrationsGetArchiveForAuthenticatedUserFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s MigrationsGetArchiveForAuthenticatedUserFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MigrationsGetArchiveForAuthenticatedUserFound json value to io.Writer.
+func (s MigrationsGetArchiveForAuthenticatedUserFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MigrationsGetArchiveForAuthenticatedUserFound json value from io.Reader.
+func (s *MigrationsGetArchiveForAuthenticatedUserFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MigrationsGetArchiveForAuthenticatedUserFound from json stream.
+func (s *MigrationsGetArchiveForAuthenticatedUserFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (MigrationsGetCommitAuthorsOK) WriteJSON(j *json.Stream)        {}
 func (MigrationsGetCommitAuthorsOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -15273,15 +19301,91 @@ func (MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Write
 	return nil
 }
 
-func (MigrationsUnlockRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream)        {}
-func (MigrationsUnlockRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (MigrationsUnlockRepoForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MigrationsUnlockRepoForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s MigrationsUnlockRepoForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (MigrationsUnlockRepoForOrgNoContent) WriteJSON(j *json.Stream)        {}
-func (MigrationsUnlockRepoForOrgNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (MigrationsUnlockRepoForOrgNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MigrationsUnlockRepoForOrgNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes MigrationsUnlockRepoForAuthenticatedUserNoContent json value to io.Writer.
+func (s MigrationsUnlockRepoForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MigrationsUnlockRepoForAuthenticatedUserNoContent json value from io.Reader.
+func (s *MigrationsUnlockRepoForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MigrationsUnlockRepoForAuthenticatedUserNoContent from json stream.
+func (s *MigrationsUnlockRepoForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsUnlockRepoForOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MigrationsUnlockRepoForOrgNoContent json value to io.Writer.
+func (s MigrationsUnlockRepoForOrgNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MigrationsUnlockRepoForOrgNoContent json value from io.Reader.
+func (s *MigrationsUnlockRepoForOrgNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MigrationsUnlockRepoForOrgNoContent from json stream.
+func (s *MigrationsUnlockRepoForOrgNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s MigrationsUpdateImportApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -16121,15 +20225,91 @@ func (o *NilURL) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-func (NoContent) WriteJSON(j *json.Stream)        {}
-func (NoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (NoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (NoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s NoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (NotModified) WriteJSON(j *json.Stream)        {}
-func (NotModified) ReadJSON(i *json.Iterator) error { return nil }
-func (NotModified) ReadJSONFrom(r io.Reader) error  { return nil }
-func (NotModified) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes NoContent json value to io.Writer.
+func (s NoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads NoContent json value from io.Reader.
+func (s *NoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads NoContent from json stream.
+func (s *NoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s NotModified) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes NotModified json value to io.Writer.
+func (s NotModified) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads NotModified json value from io.Reader.
+func (s *NotModified) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads NotModified from json stream.
+func (s *NotModified) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s NullableIntegrationPermissions) WriteJSON(j *json.Stream) {
@@ -17843,10 +22023,48 @@ func (OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) WriteJS
 	return nil
 }
 
-func (OAuthAuthorizationsDeleteAuthorizationNoContent) WriteJSON(j *json.Stream)        {}
-func (OAuthAuthorizationsDeleteAuthorizationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OAuthAuthorizationsDeleteAuthorizationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OAuthAuthorizationsDeleteAuthorizationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OAuthAuthorizationsDeleteAuthorizationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OAuthAuthorizationsDeleteAuthorizationNoContent json value to io.Writer.
+func (s OAuthAuthorizationsDeleteAuthorizationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OAuthAuthorizationsDeleteAuthorizationNoContent json value from io.Reader.
+func (s *OAuthAuthorizationsDeleteAuthorizationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OAuthAuthorizationsDeleteAuthorizationNoContent from json stream.
+func (s *OAuthAuthorizationsDeleteAuthorizationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -17870,10 +22088,48 @@ func (OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) WriteJSONTo(w i
 	return nil
 }
 
-func (OAuthAuthorizationsDeleteGrantNoContent) WriteJSON(j *json.Stream)        {}
-func (OAuthAuthorizationsDeleteGrantNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OAuthAuthorizationsDeleteGrantNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OAuthAuthorizationsDeleteGrantNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OAuthAuthorizationsDeleteGrantNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OAuthAuthorizationsDeleteGrantNoContent json value to io.Writer.
+func (s OAuthAuthorizationsDeleteGrantNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OAuthAuthorizationsDeleteGrantNoContent json value from io.Reader.
+func (s *OAuthAuthorizationsDeleteGrantNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OAuthAuthorizationsDeleteGrantNoContent from json stream.
+func (s *OAuthAuthorizationsDeleteGrantNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -22143,60 +26399,478 @@ func (s *OrganizationFullPlan) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (OrgsBlockUserNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsBlockUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsBlockUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsBlockUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OrgsBlockUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (OrgsCancelInvitationNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsCancelInvitationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsCancelInvitationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsCancelInvitationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes OrgsBlockUserNoContent json value to io.Writer.
+func (s OrgsBlockUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (OrgsCheckBlockedUserNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsCheckBlockedUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsCheckBlockedUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsCheckBlockedUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads OrgsBlockUserNoContent json value from io.Reader.
+func (s *OrgsBlockUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (OrgsCheckMembershipForUserFound) WriteJSON(j *json.Stream)        {}
-func (OrgsCheckMembershipForUserFound) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsCheckMembershipForUserFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsCheckMembershipForUserFound) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (OrgsCheckMembershipForUserNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsCheckMembershipForUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsCheckMembershipForUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsCheckMembershipForUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (OrgsCheckMembershipForUserNotFound) WriteJSON(j *json.Stream)        {}
-func (OrgsCheckMembershipForUserNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsCheckMembershipForUserNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsCheckMembershipForUserNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads OrgsBlockUserNoContent from json stream.
+func (s *OrgsBlockUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (OrgsCheckPublicMembershipForUserNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsCheckPublicMembershipForUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsCheckPublicMembershipForUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsCheckPublicMembershipForUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OrgsCancelInvitationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (OrgsCheckPublicMembershipForUserNotFound) WriteJSON(j *json.Stream)        {}
-func (OrgsCheckPublicMembershipForUserNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsCheckPublicMembershipForUserNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsCheckPublicMembershipForUserNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes OrgsCancelInvitationNoContent json value to io.Writer.
+func (s OrgsCancelInvitationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (OrgsConvertMemberToOutsideCollaboratorAccepted) WriteJSON(j *json.Stream)        {}
-func (OrgsConvertMemberToOutsideCollaboratorAccepted) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsConvertMemberToOutsideCollaboratorAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsConvertMemberToOutsideCollaboratorAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads OrgsCancelInvitationNoContent json value from io.Reader.
+func (s *OrgsCancelInvitationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (OrgsConvertMemberToOutsideCollaboratorForbidden) WriteJSON(j *json.Stream)        {}
-func (OrgsConvertMemberToOutsideCollaboratorForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsConvertMemberToOutsideCollaboratorForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsConvertMemberToOutsideCollaboratorForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (OrgsConvertMemberToOutsideCollaboratorNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsConvertMemberToOutsideCollaboratorNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsCancelInvitationNoContent from json stream.
+func (s *OrgsCancelInvitationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsCheckBlockedUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsCheckBlockedUserNoContent json value to io.Writer.
+func (s OrgsCheckBlockedUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsCheckBlockedUserNoContent json value from io.Reader.
+func (s *OrgsCheckBlockedUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsCheckBlockedUserNoContent from json stream.
+func (s *OrgsCheckBlockedUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsCheckMembershipForUserFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsCheckMembershipForUserFound json value to io.Writer.
+func (s OrgsCheckMembershipForUserFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsCheckMembershipForUserFound json value from io.Reader.
+func (s *OrgsCheckMembershipForUserFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsCheckMembershipForUserFound from json stream.
+func (s *OrgsCheckMembershipForUserFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsCheckMembershipForUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsCheckMembershipForUserNoContent json value to io.Writer.
+func (s OrgsCheckMembershipForUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsCheckMembershipForUserNoContent json value from io.Reader.
+func (s *OrgsCheckMembershipForUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsCheckMembershipForUserNoContent from json stream.
+func (s *OrgsCheckMembershipForUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsCheckMembershipForUserNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsCheckMembershipForUserNotFound json value to io.Writer.
+func (s OrgsCheckMembershipForUserNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsCheckMembershipForUserNotFound json value from io.Reader.
+func (s *OrgsCheckMembershipForUserNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsCheckMembershipForUserNotFound from json stream.
+func (s *OrgsCheckMembershipForUserNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsCheckPublicMembershipForUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsCheckPublicMembershipForUserNoContent json value to io.Writer.
+func (s OrgsCheckPublicMembershipForUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsCheckPublicMembershipForUserNoContent json value from io.Reader.
+func (s *OrgsCheckPublicMembershipForUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsCheckPublicMembershipForUserNoContent from json stream.
+func (s *OrgsCheckPublicMembershipForUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsCheckPublicMembershipForUserNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsCheckPublicMembershipForUserNotFound json value to io.Writer.
+func (s OrgsCheckPublicMembershipForUserNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsCheckPublicMembershipForUserNotFound json value from io.Reader.
+func (s *OrgsCheckPublicMembershipForUserNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsCheckPublicMembershipForUserNotFound from json stream.
+func (s *OrgsCheckPublicMembershipForUserNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsConvertMemberToOutsideCollaboratorAccepted) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsConvertMemberToOutsideCollaboratorAccepted json value to io.Writer.
+func (s OrgsConvertMemberToOutsideCollaboratorAccepted) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsConvertMemberToOutsideCollaboratorAccepted json value from io.Reader.
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorAccepted from json stream.
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsConvertMemberToOutsideCollaboratorForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsConvertMemberToOutsideCollaboratorForbidden json value to io.Writer.
+func (s OrgsConvertMemberToOutsideCollaboratorForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsConvertMemberToOutsideCollaboratorForbidden json value from io.Reader.
+func (s *OrgsConvertMemberToOutsideCollaboratorForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorForbidden from json stream.
+func (s *OrgsConvertMemberToOutsideCollaboratorForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsConvertMemberToOutsideCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsConvertMemberToOutsideCollaboratorNoContent json value to io.Writer.
+func (s OrgsConvertMemberToOutsideCollaboratorNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsConvertMemberToOutsideCollaboratorNoContent json value from io.Reader.
+func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsConvertMemberToOutsideCollaboratorNoContent from json stream.
+func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s OrgsCreateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -22304,10 +26978,48 @@ func (s *OrgsCreateInvitationApplicationJSONRequestRole) ReadJSON(i *json.Iterat
 	return i.Error
 }
 
-func (OrgsDeleteWebhookNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsDeleteWebhookNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsDeleteWebhookNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsDeleteWebhookNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OrgsDeleteWebhookNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsDeleteWebhookNoContent json value to io.Writer.
+func (s OrgsDeleteWebhookNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsDeleteWebhookNoContent json value from io.Reader.
+func (s *OrgsDeleteWebhookNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsDeleteWebhookNoContent from json stream.
+func (s *OrgsDeleteWebhookNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -22403,15 +27115,91 @@ func (OrgsListWebhooksOK) ReadJSON(i *json.Iterator) error { return nil }
 func (OrgsListWebhooksOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (OrgsListWebhooksOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (OrgsPingWebhookNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsPingWebhookNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsPingWebhookNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsPingWebhookNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OrgsPingWebhookNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (OrgsRemoveMemberNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsRemoveMemberNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsRemoveMemberNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsRemoveMemberNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes OrgsPingWebhookNoContent json value to io.Writer.
+func (s OrgsPingWebhookNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsPingWebhookNoContent json value from io.Reader.
+func (s *OrgsPingWebhookNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsPingWebhookNoContent from json stream.
+func (s *OrgsPingWebhookNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsRemoveMemberNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsRemoveMemberNoContent json value to io.Writer.
+func (s OrgsRemoveMemberNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsRemoveMemberNoContent json value from io.Reader.
+func (s *OrgsRemoveMemberNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsRemoveMemberNoContent from json stream.
+func (s *OrgsRemoveMemberNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (OrgsRemoveMembershipForUserApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (OrgsRemoveMembershipForUserApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -22429,15 +27217,91 @@ func (OrgsRemoveMembershipForUserApplicationJSONNotFound) ReadJSON(i *json.Itera
 func (OrgsRemoveMembershipForUserApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error { return nil }
 func (OrgsRemoveMembershipForUserApplicationJSONNotFound) WriteJSONTo(w io.Writer) error  { return nil }
 
-func (OrgsRemoveMembershipForUserNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsRemoveMembershipForUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsRemoveMembershipForUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsRemoveMembershipForUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OrgsRemoveMembershipForUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (OrgsRemoveOutsideCollaboratorNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsRemoveOutsideCollaboratorNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsRemoveOutsideCollaboratorNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsRemoveOutsideCollaboratorNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes OrgsRemoveMembershipForUserNoContent json value to io.Writer.
+func (s OrgsRemoveMembershipForUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsRemoveMembershipForUserNoContent json value from io.Reader.
+func (s *OrgsRemoveMembershipForUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsRemoveMembershipForUserNoContent from json stream.
+func (s *OrgsRemoveMembershipForUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsRemoveOutsideCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsRemoveOutsideCollaboratorNoContent json value to io.Writer.
+func (s OrgsRemoveOutsideCollaboratorNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsRemoveOutsideCollaboratorNoContent json value from io.Reader.
+func (s *OrgsRemoveOutsideCollaboratorNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsRemoveOutsideCollaboratorNoContent from json stream.
+func (s *OrgsRemoveOutsideCollaboratorNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) WriteJSON(j *json.Stream) {
@@ -22506,15 +27370,91 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) ReadJSON(i *json.Iter
 	return i.Error
 }
 
-func (OrgsRemovePublicMembershipForAuthenticatedUser) WriteJSON(j *json.Stream)        {}
-func (OrgsRemovePublicMembershipForAuthenticatedUser) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsRemovePublicMembershipForAuthenticatedUser) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsRemovePublicMembershipForAuthenticatedUser) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s OrgsRemovePublicMembershipForAuthenticatedUser) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (OrgsRemoveSamlSSOAuthorizationNoContent) WriteJSON(j *json.Stream)        {}
-func (OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsRemoveSamlSSOAuthorizationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes OrgsRemovePublicMembershipForAuthenticatedUser json value to io.Writer.
+func (s OrgsRemovePublicMembershipForAuthenticatedUser) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsRemovePublicMembershipForAuthenticatedUser json value from io.Reader.
+func (s *OrgsRemovePublicMembershipForAuthenticatedUser) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsRemovePublicMembershipForAuthenticatedUser from json stream.
+func (s *OrgsRemovePublicMembershipForAuthenticatedUser) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsRemoveSamlSSOAuthorizationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsRemoveSamlSSOAuthorizationNoContent json value to io.Writer.
+func (s OrgsRemoveSamlSSOAuthorizationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsRemoveSamlSSOAuthorizationNoContent json value from io.Reader.
+func (s *OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsRemoveSamlSSOAuthorizationNoContent from json stream.
+func (s *OrgsRemoveSamlSSOAuthorizationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s OrgsSetMembershipForUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -22582,21 +27522,91 @@ func (s *OrgsSetMembershipForUserApplicationJSONRequestRole) ReadJSON(i *json.It
 	return i.Error
 }
 
-func (OrgsSetPublicMembershipForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {}
-func (OrgsSetPublicMembershipForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
-	return nil
-}
-func (OrgsSetPublicMembershipForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
-	return nil
-}
-func (OrgsSetPublicMembershipForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s OrgsSetPublicMembershipForAuthenticatedUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
 
-func (OrgsUnblockUser) WriteJSON(j *json.Stream)        {}
-func (OrgsUnblockUser) ReadJSON(i *json.Iterator) error { return nil }
-func (OrgsUnblockUser) ReadJSONFrom(r io.Reader) error  { return nil }
-func (OrgsUnblockUser) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes OrgsSetPublicMembershipForAuthenticatedUserNoContent json value to io.Writer.
+func (s OrgsSetPublicMembershipForAuthenticatedUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsSetPublicMembershipForAuthenticatedUserNoContent json value from io.Reader.
+func (s *OrgsSetPublicMembershipForAuthenticatedUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsSetPublicMembershipForAuthenticatedUserNoContent from json stream.
+func (s *OrgsSetPublicMembershipForAuthenticatedUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsUnblockUser) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes OrgsUnblockUser json value to io.Writer.
+func (s OrgsUnblockUser) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads OrgsUnblockUser json value from io.Reader.
+func (s *OrgsUnblockUser) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads OrgsUnblockUser from json stream.
+func (s *OrgsUnblockUser) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s OrgsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -23996,10 +29006,48 @@ func (s *ProjectsAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *js
 	return i.Error
 }
 
-func (ProjectsAddCollaboratorNoContent) WriteJSON(j *json.Stream)        {}
-func (ProjectsAddCollaboratorNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsAddCollaboratorNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsAddCollaboratorNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ProjectsAddCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ProjectsAddCollaboratorNoContent json value to io.Writer.
+func (s ProjectsAddCollaboratorNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsAddCollaboratorNoContent json value from io.Reader.
+func (s *ProjectsAddCollaboratorNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsAddCollaboratorNoContent from json stream.
+func (s *ProjectsAddCollaboratorNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ProjectsCreateColumnApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (ProjectsCreateColumnApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -24413,10 +29461,48 @@ func (s *ProjectsDeleteCardForbidden) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (ProjectsDeleteCardNoContent) WriteJSON(j *json.Stream)        {}
-func (ProjectsDeleteCardNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsDeleteCardNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsDeleteCardNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ProjectsDeleteCardNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ProjectsDeleteCardNoContent json value to io.Writer.
+func (s ProjectsDeleteCardNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsDeleteCardNoContent json value from io.Reader.
+func (s *ProjectsDeleteCardNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsDeleteCardNoContent from json stream.
+func (s *ProjectsDeleteCardNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ProjectsDeleteColumnApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (ProjectsDeleteColumnApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -24428,10 +29514,48 @@ func (ProjectsDeleteColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iterator
 func (ProjectsDeleteColumnApplicationJSONUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ProjectsDeleteColumnApplicationJSONUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ProjectsDeleteColumnNoContent) WriteJSON(j *json.Stream)        {}
-func (ProjectsDeleteColumnNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsDeleteColumnNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsDeleteColumnNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ProjectsDeleteColumnNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ProjectsDeleteColumnNoContent json value to io.Writer.
+func (s ProjectsDeleteColumnNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsDeleteColumnNoContent json value from io.Reader.
+func (s *ProjectsDeleteColumnNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsDeleteColumnNoContent from json stream.
+func (s *ProjectsDeleteColumnNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsDeleteForbidden) WriteJSON(j *json.Stream) {
@@ -24516,10 +29640,48 @@ func (s *ProjectsDeleteForbidden) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (ProjectsDeleteNoContent) WriteJSON(j *json.Stream)        {}
-func (ProjectsDeleteNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsDeleteNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsDeleteNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ProjectsDeleteNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ProjectsDeleteNoContent json value to io.Writer.
+func (s ProjectsDeleteNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsDeleteNoContent json value from io.Reader.
+func (s *ProjectsDeleteNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsDeleteNoContent from json stream.
+func (s *ProjectsDeleteNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ProjectsGetApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (ProjectsGetApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -24637,10 +29799,48 @@ func (s *ProjectsMoveCardApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 	return i.Error
 }
 
-func (ProjectsMoveCardCreated) WriteJSON(j *json.Stream)        {}
-func (ProjectsMoveCardCreated) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsMoveCardCreated) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsMoveCardCreated) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ProjectsMoveCardCreated) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ProjectsMoveCardCreated json value to io.Writer.
+func (s ProjectsMoveCardCreated) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsMoveCardCreated json value from io.Reader.
+func (s *ProjectsMoveCardCreated) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsMoveCardCreated from json stream.
+func (s *ProjectsMoveCardCreated) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ProjectsMoveCardForbidden) WriteJSON(j *json.Stream) {
@@ -24875,15 +30075,91 @@ func (ProjectsMoveColumnApplicationJSONUnauthorized) ReadJSON(i *json.Iterator) 
 func (ProjectsMoveColumnApplicationJSONUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ProjectsMoveColumnApplicationJSONUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ProjectsMoveColumnCreated) WriteJSON(j *json.Stream)        {}
-func (ProjectsMoveColumnCreated) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsMoveColumnCreated) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsMoveColumnCreated) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ProjectsMoveColumnCreated) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ProjectsRemoveCollaboratorNoContent) WriteJSON(j *json.Stream)        {}
-func (ProjectsRemoveCollaboratorNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsRemoveCollaboratorNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsRemoveCollaboratorNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ProjectsMoveColumnCreated json value to io.Writer.
+func (s ProjectsMoveColumnCreated) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsMoveColumnCreated json value from io.Reader.
+func (s *ProjectsMoveColumnCreated) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsMoveColumnCreated from json stream.
+func (s *ProjectsMoveColumnCreated) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsRemoveCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ProjectsRemoveCollaboratorNoContent json value to io.Writer.
+func (s ProjectsRemoveCollaboratorNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsRemoveCollaboratorNoContent json value from io.Reader.
+func (s *ProjectsRemoveCollaboratorNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsRemoveCollaboratorNoContent from json stream.
+func (s *ProjectsRemoveCollaboratorNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ProjectsUpdateApplicationJSONGone) WriteJSON(j *json.Stream)        {}
 func (ProjectsUpdateApplicationJSONGone) ReadJSON(i *json.Iterator) error { return nil }
@@ -25233,10 +30509,48 @@ func (s *ProjectsUpdateForbidden) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (ProjectsUpdateNotFound) WriteJSON(j *json.Stream)        {}
-func (ProjectsUpdateNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (ProjectsUpdateNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ProjectsUpdateNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ProjectsUpdateNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ProjectsUpdateNotFound json value to io.Writer.
+func (s ProjectsUpdateNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ProjectsUpdateNotFound json value from io.Reader.
+func (s *ProjectsUpdateNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ProjectsUpdateNotFound from json stream.
+func (s *ProjectsUpdateNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ProtectedBranchAllowDeletions) WriteJSON(j *json.Stream) {
@@ -26540,15 +31854,91 @@ func (s *PullRequestReviewLinksPullRequest) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (PullsCheckIfMergedNoContent) WriteJSON(j *json.Stream)        {}
-func (PullsCheckIfMergedNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PullsCheckIfMergedNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PullsCheckIfMergedNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s PullsCheckIfMergedNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (PullsCheckIfMergedNotFound) WriteJSON(j *json.Stream)        {}
-func (PullsCheckIfMergedNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (PullsCheckIfMergedNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PullsCheckIfMergedNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes PullsCheckIfMergedNoContent json value to io.Writer.
+func (s PullsCheckIfMergedNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PullsCheckIfMergedNoContent json value from io.Reader.
+func (s *PullsCheckIfMergedNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PullsCheckIfMergedNoContent from json stream.
+func (s *PullsCheckIfMergedNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsCheckIfMergedNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PullsCheckIfMergedNotFound json value to io.Writer.
+func (s PullsCheckIfMergedNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PullsCheckIfMergedNotFound json value from io.Reader.
+func (s *PullsCheckIfMergedNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PullsCheckIfMergedNotFound from json stream.
+func (s *PullsCheckIfMergedNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s PullsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -27102,10 +32492,48 @@ func (s *PullsCreateReviewCommentApplicationJSONRequestStartSide) ReadJSON(i *js
 	return i.Error
 }
 
-func (PullsDeleteReviewCommentNoContent) WriteJSON(j *json.Stream)        {}
-func (PullsDeleteReviewCommentNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PullsDeleteReviewCommentNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PullsDeleteReviewCommentNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s PullsDeleteReviewCommentNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PullsDeleteReviewCommentNoContent json value to io.Writer.
+func (s PullsDeleteReviewCommentNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PullsDeleteReviewCommentNoContent json value from io.Reader.
+func (s *PullsDeleteReviewCommentNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PullsDeleteReviewCommentNoContent from json stream.
+func (s *PullsDeleteReviewCommentNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s PullsDismissReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -28649,35 +34077,263 @@ func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent) Re
 	return i.Error
 }
 
-func (ReactionsDeleteForCommitComment) WriteJSON(j *json.Stream)        {}
-func (ReactionsDeleteForCommitComment) ReadJSON(i *json.Iterator) error { return nil }
-func (ReactionsDeleteForCommitComment) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReactionsDeleteForCommitComment) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReactionsDeleteForCommitComment) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReactionsDeleteForIssue) WriteJSON(j *json.Stream)        {}
-func (ReactionsDeleteForIssue) ReadJSON(i *json.Iterator) error { return nil }
-func (ReactionsDeleteForIssue) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReactionsDeleteForIssue) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReactionsDeleteForCommitComment json value to io.Writer.
+func (s ReactionsDeleteForCommitComment) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReactionsDeleteForIssueComment) WriteJSON(j *json.Stream)        {}
-func (ReactionsDeleteForIssueComment) ReadJSON(i *json.Iterator) error { return nil }
-func (ReactionsDeleteForIssueComment) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReactionsDeleteForIssueComment) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReactionsDeleteForCommitComment json value from io.Reader.
+func (s *ReactionsDeleteForCommitComment) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ReactionsDeleteForPullRequestComment) WriteJSON(j *json.Stream)        {}
-func (ReactionsDeleteForPullRequestComment) ReadJSON(i *json.Iterator) error { return nil }
-func (ReactionsDeleteForPullRequestComment) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReactionsDeleteForPullRequestComment) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ReactionsDeleteForTeamDiscussion) WriteJSON(j *json.Stream)        {}
-func (ReactionsDeleteForTeamDiscussion) ReadJSON(i *json.Iterator) error { return nil }
-func (ReactionsDeleteForTeamDiscussion) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReactionsDeleteForTeamDiscussion) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (ReactionsDeleteForTeamDiscussionComment) WriteJSON(j *json.Stream)        {}
-func (ReactionsDeleteForTeamDiscussionComment) ReadJSON(i *json.Iterator) error { return nil }
-func (ReactionsDeleteForTeamDiscussionComment) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReactionsDeleteForTeamDiscussionComment) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads ReactionsDeleteForCommitComment from json stream.
+func (s *ReactionsDeleteForCommitComment) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionsDeleteForIssue) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReactionsDeleteForIssue json value to io.Writer.
+func (s ReactionsDeleteForIssue) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReactionsDeleteForIssue json value from io.Reader.
+func (s *ReactionsDeleteForIssue) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReactionsDeleteForIssue from json stream.
+func (s *ReactionsDeleteForIssue) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionsDeleteForIssueComment) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReactionsDeleteForIssueComment json value to io.Writer.
+func (s ReactionsDeleteForIssueComment) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReactionsDeleteForIssueComment json value from io.Reader.
+func (s *ReactionsDeleteForIssueComment) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReactionsDeleteForIssueComment from json stream.
+func (s *ReactionsDeleteForIssueComment) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionsDeleteForPullRequestComment) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReactionsDeleteForPullRequestComment json value to io.Writer.
+func (s ReactionsDeleteForPullRequestComment) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReactionsDeleteForPullRequestComment json value from io.Reader.
+func (s *ReactionsDeleteForPullRequestComment) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReactionsDeleteForPullRequestComment from json stream.
+func (s *ReactionsDeleteForPullRequestComment) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionsDeleteForTeamDiscussion) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReactionsDeleteForTeamDiscussion json value to io.Writer.
+func (s ReactionsDeleteForTeamDiscussion) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReactionsDeleteForTeamDiscussion json value from io.Reader.
+func (s *ReactionsDeleteForTeamDiscussion) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReactionsDeleteForTeamDiscussion from json stream.
+func (s *ReactionsDeleteForTeamDiscussion) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionsDeleteForTeamDiscussionComment) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReactionsDeleteForTeamDiscussionComment json value to io.Writer.
+func (s ReactionsDeleteForTeamDiscussionComment) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReactionsDeleteForTeamDiscussionComment json value from io.Reader.
+func (s *ReactionsDeleteForTeamDiscussionComment) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReactionsDeleteForTeamDiscussionComment from json stream.
+func (s *ReactionsDeleteForTeamDiscussionComment) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ReactionsDeleteLegacyApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (ReactionsDeleteLegacyApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -28694,10 +34350,48 @@ func (ReactionsDeleteLegacyApplicationJSONUnauthorized) ReadJSON(i *json.Iterato
 func (ReactionsDeleteLegacyApplicationJSONUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ReactionsDeleteLegacyApplicationJSONUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ReactionsDeleteLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (ReactionsDeleteLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReactionsDeleteLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReactionsDeleteLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReactionsDeleteLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReactionsDeleteLegacyNoContent json value to io.Writer.
+func (s ReactionsDeleteLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReactionsDeleteLegacyNoContent json value from io.Reader.
+func (s *ReactionsDeleteLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReactionsDeleteLegacyNoContent from json stream.
+func (s *ReactionsDeleteLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReleaseAssetState) WriteJSON(j *json.Stream) {
@@ -28725,10 +34419,48 @@ func (ReposAcceptInvitationApplicationJSONNotFound) ReadJSON(i *json.Iterator) e
 func (ReposAcceptInvitationApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ReposAcceptInvitationApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ReposAcceptInvitationNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposAcceptInvitationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposAcceptInvitationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposAcceptInvitationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposAcceptInvitationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposAcceptInvitationNoContent json value to io.Writer.
+func (s ReposAcceptInvitationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposAcceptInvitationNoContent json value from io.Reader.
+func (s *ReposAcceptInvitationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposAcceptInvitationNoContent from json stream.
+func (s *ReposAcceptInvitationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReposAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -28808,30 +34540,220 @@ func (s *ReposAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.
 	return i.Error
 }
 
-func (ReposAddCollaboratorNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposAddCollaboratorNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposAddCollaboratorNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposAddCollaboratorNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposAddCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposCheckCollaboratorNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposCheckCollaboratorNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposCheckCollaboratorNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposCheckCollaboratorNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposAddCollaboratorNoContent json value to io.Writer.
+func (s ReposAddCollaboratorNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposCheckCollaboratorNotFound) WriteJSON(j *json.Stream)        {}
-func (ReposCheckCollaboratorNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposCheckCollaboratorNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposCheckCollaboratorNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposAddCollaboratorNoContent json value from io.Reader.
+func (s *ReposAddCollaboratorNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ReposCheckVulnerabilityAlertsNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposCheckVulnerabilityAlertsNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposCheckVulnerabilityAlertsNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposCheckVulnerabilityAlertsNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ReposCheckVulnerabilityAlertsNotFound) WriteJSON(j *json.Stream)        {}
-func (ReposCheckVulnerabilityAlertsNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposCheckVulnerabilityAlertsNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposCheckVulnerabilityAlertsNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposAddCollaboratorNoContent from json stream.
+func (s *ReposAddCollaboratorNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCheckCollaboratorNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposCheckCollaboratorNoContent json value to io.Writer.
+func (s ReposCheckCollaboratorNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposCheckCollaboratorNoContent json value from io.Reader.
+func (s *ReposCheckCollaboratorNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposCheckCollaboratorNoContent from json stream.
+func (s *ReposCheckCollaboratorNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCheckCollaboratorNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposCheckCollaboratorNotFound json value to io.Writer.
+func (s ReposCheckCollaboratorNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposCheckCollaboratorNotFound json value from io.Reader.
+func (s *ReposCheckCollaboratorNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposCheckCollaboratorNotFound from json stream.
+func (s *ReposCheckCollaboratorNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCheckVulnerabilityAlertsNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposCheckVulnerabilityAlertsNoContent json value to io.Writer.
+func (s ReposCheckVulnerabilityAlertsNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposCheckVulnerabilityAlertsNoContent json value from io.Reader.
+func (s *ReposCheckVulnerabilityAlertsNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposCheckVulnerabilityAlertsNoContent from json stream.
+func (s *ReposCheckVulnerabilityAlertsNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCheckVulnerabilityAlertsNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposCheckVulnerabilityAlertsNotFound json value to io.Writer.
+func (s ReposCheckVulnerabilityAlertsNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposCheckVulnerabilityAlertsNotFound json value from io.Reader.
+func (s *ReposCheckVulnerabilityAlertsNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposCheckVulnerabilityAlertsNotFound from json stream.
+func (s *ReposCheckVulnerabilityAlertsNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ReposCompareCommitsApplicationJSONInternalServerError) WriteJSON(j *json.Stream) {}
 func (ReposCompareCommitsApplicationJSONInternalServerError) ReadJSON(i *json.Iterator) error {
@@ -29356,10 +35278,91 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) ReadJSON(i *json.Iterat
 	return i.Error
 }
 
-func (ReposCreateDispatchEventNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposCreateDispatchEventNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposCreateDispatchEventNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposCreateDispatchEventNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposCreateDispatchEventApplicationJSONRequestClientPayload) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposCreateDispatchEventApplicationJSONRequestClientPayload json value to io.Writer.
+func (s ReposCreateDispatchEventApplicationJSONRequestClientPayload) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposCreateDispatchEventApplicationJSONRequestClientPayload json value from io.Reader.
+func (s *ReposCreateDispatchEventApplicationJSONRequestClientPayload) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposCreateDispatchEventApplicationJSONRequestClientPayload from json stream.
+func (s *ReposCreateDispatchEventApplicationJSONRequestClientPayload) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCreateDispatchEventNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposCreateDispatchEventNoContent json value to io.Writer.
+func (s ReposCreateDispatchEventNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposCreateDispatchEventNoContent json value from io.Reader.
+func (s *ReposCreateDispatchEventNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposCreateDispatchEventNoContent from json stream.
+func (s *ReposCreateDispatchEventNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReposCreateForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -30527,25 +36530,177 @@ func (ReposDeclineInvitationApplicationJSONNotFound) ReadJSON(i *json.Iterator) 
 func (ReposDeclineInvitationApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ReposDeclineInvitationApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ReposDeclineInvitationNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeclineInvitationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeclineInvitationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeclineInvitationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposDeclineInvitationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposDeleteAccessRestrictions) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteAccessRestrictions) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteAccessRestrictions) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteAccessRestrictions) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposDeclineInvitationNoContent json value to io.Writer.
+func (s ReposDeclineInvitationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposDeleteAdminBranchProtectionNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteAdminBranchProtectionNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteAdminBranchProtectionNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteAdminBranchProtectionNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposDeclineInvitationNoContent json value from io.Reader.
+func (s *ReposDeclineInvitationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ReposDeleteAnEnvironment) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteAnEnvironment) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteAnEnvironment) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteAnEnvironment) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeclineInvitationNoContent from json stream.
+func (s *ReposDeclineInvitationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteAccessRestrictions) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteAccessRestrictions json value to io.Writer.
+func (s ReposDeleteAccessRestrictions) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteAccessRestrictions json value from io.Reader.
+func (s *ReposDeleteAccessRestrictions) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteAccessRestrictions from json stream.
+func (s *ReposDeleteAccessRestrictions) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteAdminBranchProtectionNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteAdminBranchProtectionNoContent json value to io.Writer.
+func (s ReposDeleteAdminBranchProtectionNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteAdminBranchProtectionNoContent json value from io.Reader.
+func (s *ReposDeleteAdminBranchProtectionNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteAdminBranchProtectionNoContent from json stream.
+func (s *ReposDeleteAdminBranchProtectionNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteAnEnvironment) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteAnEnvironment json value to io.Writer.
+func (s ReposDeleteAnEnvironment) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteAnEnvironment json value from io.Reader.
+func (s *ReposDeleteAnEnvironment) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteAnEnvironment from json stream.
+func (s *ReposDeleteAnEnvironment) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ReposDeleteApplicationJSONNotFound) WriteJSON(j *json.Stream)        {}
 func (ReposDeleteApplicationJSONNotFound) ReadJSON(i *json.Iterator) error { return nil }
@@ -30557,35 +36712,263 @@ func (ReposDeleteApplicationJSONTemporaryRedirect) ReadJSON(i *json.Iterator) er
 func (ReposDeleteApplicationJSONTemporaryRedirect) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ReposDeleteApplicationJSONTemporaryRedirect) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ReposDeleteAutolinkNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteAutolinkNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteAutolinkNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteAutolinkNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteAutolinkNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposDeleteBranchProtectionNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteBranchProtectionNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteBranchProtectionNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteBranchProtectionNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposDeleteAutolinkNoContent json value to io.Writer.
+func (s ReposDeleteAutolinkNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposDeleteCommitCommentNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteCommitCommentNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteCommitCommentNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteCommitCommentNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposDeleteAutolinkNoContent json value from io.Reader.
+func (s *ReposDeleteAutolinkNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ReposDeleteCommitSignatureProtectionNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteCommitSignatureProtectionNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteCommitSignatureProtectionNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteCommitSignatureProtectionNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ReposDeleteDeployKey) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteDeployKey) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteDeployKey) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteDeployKey) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (ReposDeleteDeploymentNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteDeploymentNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteDeploymentNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteDeploymentNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads ReposDeleteAutolinkNoContent from json stream.
+func (s *ReposDeleteAutolinkNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteBranchProtectionNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteBranchProtectionNoContent json value to io.Writer.
+func (s ReposDeleteBranchProtectionNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteBranchProtectionNoContent json value from io.Reader.
+func (s *ReposDeleteBranchProtectionNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteBranchProtectionNoContent from json stream.
+func (s *ReposDeleteBranchProtectionNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteCommitCommentNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteCommitCommentNoContent json value to io.Writer.
+func (s ReposDeleteCommitCommentNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteCommitCommentNoContent json value from io.Reader.
+func (s *ReposDeleteCommitCommentNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteCommitCommentNoContent from json stream.
+func (s *ReposDeleteCommitCommentNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteCommitSignatureProtectionNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteCommitSignatureProtectionNoContent json value to io.Writer.
+func (s ReposDeleteCommitSignatureProtectionNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteCommitSignatureProtectionNoContent json value from io.Reader.
+func (s *ReposDeleteCommitSignatureProtectionNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteCommitSignatureProtectionNoContent from json stream.
+func (s *ReposDeleteCommitSignatureProtectionNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteDeployKey) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteDeployKey json value to io.Writer.
+func (s ReposDeleteDeployKey) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteDeployKey json value from io.Reader.
+func (s *ReposDeleteDeployKey) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteDeployKey from json stream.
+func (s *ReposDeleteDeployKey) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteDeploymentNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteDeploymentNoContent json value to io.Writer.
+func (s ReposDeleteDeploymentNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteDeploymentNoContent json value from io.Reader.
+func (s *ReposDeleteDeploymentNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteDeploymentNoContent from json stream.
+func (s *ReposDeleteDeploymentNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReposDeleteFileApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -30879,80 +37262,650 @@ func (s *ReposDeleteForbidden) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (ReposDeleteInvitation) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteInvitation) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteInvitation) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteInvitation) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteInvitation) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposDeleteNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposDeleteInvitation json value to io.Writer.
+func (s ReposDeleteInvitation) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposDeletePagesSiteNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeletePagesSiteNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeletePagesSiteNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeletePagesSiteNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposDeleteInvitation json value from io.Reader.
+func (s *ReposDeleteInvitation) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ReposDeletePullRequestReviewProtectionNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeletePullRequestReviewProtectionNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeletePullRequestReviewProtectionNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeletePullRequestReviewProtectionNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ReposDeleteRelease) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteRelease) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteRelease) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteRelease) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (ReposDeleteReleaseAsset) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteReleaseAsset) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteReleaseAsset) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteReleaseAsset) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads ReposDeleteInvitation from json stream.
+func (s *ReposDeleteInvitation) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (ReposDeleteWebhookNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposDeleteWebhookNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDeleteWebhookNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDeleteWebhookNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposDisableAutomatedSecurityFixes) WriteJSON(j *json.Stream)        {}
-func (ReposDisableAutomatedSecurityFixes) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDisableAutomatedSecurityFixes) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDisableAutomatedSecurityFixes) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposDeleteNoContent json value to io.Writer.
+func (s ReposDeleteNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposDisableLfsForRepo) WriteJSON(j *json.Stream)        {}
-func (ReposDisableLfsForRepo) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDisableLfsForRepo) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDisableLfsForRepo) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposDeleteNoContent json value from io.Reader.
+func (s *ReposDeleteNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ReposDisableVulnerabilityAlerts) WriteJSON(j *json.Stream)        {}
-func (ReposDisableVulnerabilityAlerts) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDisableVulnerabilityAlerts) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDisableVulnerabilityAlerts) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ReposDownloadTarballArchive) WriteJSON(j *json.Stream)        {}
-func (ReposDownloadTarballArchive) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDownloadTarballArchive) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDownloadTarballArchive) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (ReposDownloadZipballArchive) WriteJSON(j *json.Stream)        {}
-func (ReposDownloadZipballArchive) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposDownloadZipballArchive) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposDownloadZipballArchive) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads ReposDeleteNoContent from json stream.
+func (s *ReposDeleteNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (ReposEnableAutomatedSecurityFixes) WriteJSON(j *json.Stream)        {}
-func (ReposEnableAutomatedSecurityFixes) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposEnableAutomatedSecurityFixes) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposEnableAutomatedSecurityFixes) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposDeletePagesSiteNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposEnableLfsForRepoForbidden) WriteJSON(j *json.Stream)        {}
-func (ReposEnableLfsForRepoForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposEnableLfsForRepoForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposEnableLfsForRepoForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposDeletePagesSiteNoContent json value to io.Writer.
+func (s ReposDeletePagesSiteNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposEnableVulnerabilityAlerts) WriteJSON(j *json.Stream)        {}
-func (ReposEnableVulnerabilityAlerts) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposEnableVulnerabilityAlerts) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposEnableVulnerabilityAlerts) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposDeletePagesSiteNoContent json value from io.Reader.
+func (s *ReposDeletePagesSiteNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeletePagesSiteNoContent from json stream.
+func (s *ReposDeletePagesSiteNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeletePullRequestReviewProtectionNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeletePullRequestReviewProtectionNoContent json value to io.Writer.
+func (s ReposDeletePullRequestReviewProtectionNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeletePullRequestReviewProtectionNoContent json value from io.Reader.
+func (s *ReposDeletePullRequestReviewProtectionNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeletePullRequestReviewProtectionNoContent from json stream.
+func (s *ReposDeletePullRequestReviewProtectionNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteRelease) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteRelease json value to io.Writer.
+func (s ReposDeleteRelease) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteRelease json value from io.Reader.
+func (s *ReposDeleteRelease) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteRelease from json stream.
+func (s *ReposDeleteRelease) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteReleaseAsset) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteReleaseAsset json value to io.Writer.
+func (s ReposDeleteReleaseAsset) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteReleaseAsset json value from io.Reader.
+func (s *ReposDeleteReleaseAsset) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteReleaseAsset from json stream.
+func (s *ReposDeleteReleaseAsset) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDeleteWebhookNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDeleteWebhookNoContent json value to io.Writer.
+func (s ReposDeleteWebhookNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDeleteWebhookNoContent json value from io.Reader.
+func (s *ReposDeleteWebhookNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDeleteWebhookNoContent from json stream.
+func (s *ReposDeleteWebhookNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDisableAutomatedSecurityFixes) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDisableAutomatedSecurityFixes json value to io.Writer.
+func (s ReposDisableAutomatedSecurityFixes) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDisableAutomatedSecurityFixes json value from io.Reader.
+func (s *ReposDisableAutomatedSecurityFixes) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDisableAutomatedSecurityFixes from json stream.
+func (s *ReposDisableAutomatedSecurityFixes) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDisableLfsForRepo) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDisableLfsForRepo json value to io.Writer.
+func (s ReposDisableLfsForRepo) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDisableLfsForRepo json value from io.Reader.
+func (s *ReposDisableLfsForRepo) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDisableLfsForRepo from json stream.
+func (s *ReposDisableLfsForRepo) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDisableVulnerabilityAlerts) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDisableVulnerabilityAlerts json value to io.Writer.
+func (s ReposDisableVulnerabilityAlerts) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDisableVulnerabilityAlerts json value from io.Reader.
+func (s *ReposDisableVulnerabilityAlerts) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDisableVulnerabilityAlerts from json stream.
+func (s *ReposDisableVulnerabilityAlerts) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDownloadTarballArchive) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDownloadTarballArchive json value to io.Writer.
+func (s ReposDownloadTarballArchive) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDownloadTarballArchive json value from io.Reader.
+func (s *ReposDownloadTarballArchive) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDownloadTarballArchive from json stream.
+func (s *ReposDownloadTarballArchive) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposDownloadZipballArchive) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposDownloadZipballArchive json value to io.Writer.
+func (s ReposDownloadZipballArchive) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposDownloadZipballArchive json value from io.Reader.
+func (s *ReposDownloadZipballArchive) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposDownloadZipballArchive from json stream.
+func (s *ReposDownloadZipballArchive) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposEnableAutomatedSecurityFixes) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposEnableAutomatedSecurityFixes json value to io.Writer.
+func (s ReposEnableAutomatedSecurityFixes) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposEnableAutomatedSecurityFixes json value from io.Reader.
+func (s *ReposEnableAutomatedSecurityFixes) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposEnableAutomatedSecurityFixes from json stream.
+func (s *ReposEnableAutomatedSecurityFixes) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposEnableLfsForRepoForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposEnableLfsForRepoForbidden json value to io.Writer.
+func (s ReposEnableLfsForRepoForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposEnableLfsForRepoForbidden json value from io.Reader.
+func (s *ReposEnableLfsForRepoForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposEnableLfsForRepoForbidden from json stream.
+func (s *ReposEnableLfsForRepoForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposEnableVulnerabilityAlerts) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposEnableVulnerabilityAlerts json value to io.Writer.
+func (s ReposEnableVulnerabilityAlerts) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposEnableVulnerabilityAlerts json value from io.Reader.
+func (s *ReposEnableVulnerabilityAlerts) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposEnableVulnerabilityAlerts from json stream.
+func (s *ReposEnableVulnerabilityAlerts) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ReposGetAllStatusCheckContextsOK) WriteJSON(j *json.Stream)        {}
 func (ReposGetAllStatusCheckContextsOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -31004,15 +37957,91 @@ func (ReposGetContributorsStatsOK) ReadJSON(i *json.Iterator) error { return nil
 func (ReposGetContributorsStatsOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ReposGetContributorsStatsOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ReposGetPagesHealthCheckBadRequest) WriteJSON(j *json.Stream)        {}
-func (ReposGetPagesHealthCheckBadRequest) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposGetPagesHealthCheckBadRequest) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposGetPagesHealthCheckBadRequest) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposGetPagesHealthCheckBadRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposGetPagesHealthCheckUnprocessableEntity) WriteJSON(j *json.Stream)        {}
-func (ReposGetPagesHealthCheckUnprocessableEntity) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposGetPagesHealthCheckUnprocessableEntity) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposGetPagesHealthCheckUnprocessableEntity) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposGetPagesHealthCheckBadRequest json value to io.Writer.
+func (s ReposGetPagesHealthCheckBadRequest) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposGetPagesHealthCheckBadRequest json value from io.Reader.
+func (s *ReposGetPagesHealthCheckBadRequest) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposGetPagesHealthCheckBadRequest from json stream.
+func (s *ReposGetPagesHealthCheckBadRequest) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposGetPagesHealthCheckUnprocessableEntity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposGetPagesHealthCheckUnprocessableEntity json value to io.Writer.
+func (s ReposGetPagesHealthCheckUnprocessableEntity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposGetPagesHealthCheckUnprocessableEntity json value from io.Reader.
+func (s *ReposGetPagesHealthCheckUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposGetPagesHealthCheckUnprocessableEntity from json stream.
+func (s *ReposGetPagesHealthCheckUnprocessableEntity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ReposGetPunchCardStatsOK) WriteJSON(j *json.Stream)        {}
 func (ReposGetPunchCardStatsOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -31091,10 +38120,48 @@ func (ReposListContributorsApplicationJSONNotFound) ReadJSON(i *json.Iterator) e
 func (ReposListContributorsApplicationJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ReposListContributorsApplicationJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ReposListContributorsNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposListContributorsNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposListContributorsNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposListContributorsNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposListContributorsNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposListContributorsNoContent json value to io.Writer.
+func (s ReposListContributorsNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposListContributorsNoContent json value from io.Reader.
+func (s *ReposListContributorsNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposListContributorsNoContent from json stream.
+func (s *ReposListContributorsNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (ReposListContributorsOK) WriteJSON(j *json.Stream)        {}
 func (ReposListContributorsOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -31227,20 +38294,134 @@ func (s *ReposMergeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (ReposMergeConflict) WriteJSON(j *json.Stream)        {}
-func (ReposMergeConflict) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposMergeConflict) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposMergeConflict) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposMergeNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposMergeNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposMergeNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposMergeNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposMergeConflict json value to io.Writer.
+func (s ReposMergeConflict) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposMergeNotFound) WriteJSON(j *json.Stream)        {}
-func (ReposMergeNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposMergeNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposMergeNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposMergeConflict json value from io.Reader.
+func (s *ReposMergeConflict) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposMergeConflict from json stream.
+func (s *ReposMergeConflict) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposMergeNoContent json value to io.Writer.
+func (s ReposMergeNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposMergeNoContent json value from io.Reader.
+func (s *ReposMergeNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposMergeNoContent from json stream.
+func (s *ReposMergeNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposMergeNotFound json value to io.Writer.
+func (s ReposMergeNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposMergeNotFound json value from io.Reader.
+func (s *ReposMergeNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposMergeNotFound from json stream.
+func (s *ReposMergeNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReposMergeUpstreamApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -31291,30 +38472,220 @@ func (s *ReposMergeUpstreamApplicationJSONRequest) ReadJSON(i *json.Iterator) er
 	return i.Error
 }
 
-func (ReposMergeUpstreamConflict) WriteJSON(j *json.Stream)        {}
-func (ReposMergeUpstreamConflict) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposMergeUpstreamConflict) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposMergeUpstreamConflict) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeUpstreamConflict) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (ReposMergeUpstreamUnprocessableEntity) WriteJSON(j *json.Stream)        {}
-func (ReposMergeUpstreamUnprocessableEntity) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposMergeUpstreamUnprocessableEntity) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposMergeUpstreamUnprocessableEntity) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes ReposMergeUpstreamConflict json value to io.Writer.
+func (s ReposMergeUpstreamConflict) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (ReposPingWebhookNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposPingWebhookNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposPingWebhookNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposPingWebhookNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads ReposMergeUpstreamConflict json value from io.Reader.
+func (s *ReposMergeUpstreamConflict) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (ReposRemoveCollaborator) WriteJSON(j *json.Stream)        {}
-func (ReposRemoveCollaborator) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposRemoveCollaborator) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposRemoveCollaborator) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (ReposRemoveStatusCheckProtection) WriteJSON(j *json.Stream)        {}
-func (ReposRemoveStatusCheckProtection) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposRemoveStatusCheckProtection) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposRemoveStatusCheckProtection) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposMergeUpstreamConflict from json stream.
+func (s *ReposMergeUpstreamConflict) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposMergeUpstreamUnprocessableEntity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposMergeUpstreamUnprocessableEntity json value to io.Writer.
+func (s ReposMergeUpstreamUnprocessableEntity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposMergeUpstreamUnprocessableEntity json value from io.Reader.
+func (s *ReposMergeUpstreamUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposMergeUpstreamUnprocessableEntity from json stream.
+func (s *ReposMergeUpstreamUnprocessableEntity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposPingWebhookNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposPingWebhookNoContent json value to io.Writer.
+func (s ReposPingWebhookNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposPingWebhookNoContent json value from io.Reader.
+func (s *ReposPingWebhookNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposPingWebhookNoContent from json stream.
+func (s *ReposPingWebhookNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposRemoveCollaborator) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposRemoveCollaborator json value to io.Writer.
+func (s ReposRemoveCollaborator) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposRemoveCollaborator json value from io.Reader.
+func (s *ReposRemoveCollaborator) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposRemoveCollaborator from json stream.
+func (s *ReposRemoveCollaborator) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposRemoveStatusCheckProtection) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposRemoveStatusCheckProtection json value to io.Writer.
+func (s ReposRemoveStatusCheckProtection) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposRemoveStatusCheckProtection json value from io.Reader.
+func (s *ReposRemoveStatusCheckProtection) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposRemoveStatusCheckProtection from json stream.
+func (s *ReposRemoveStatusCheckProtection) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReposRenameBranchApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -31422,10 +38793,48 @@ func (s *ReposReplaceAllTopicsApplicationJSONRequest) ReadJSON(i *json.Iterator)
 	return i.Error
 }
 
-func (ReposTestPushWebhookNoContent) WriteJSON(j *json.Stream)        {}
-func (ReposTestPushWebhookNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ReposTestPushWebhookNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ReposTestPushWebhookNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ReposTestPushWebhookNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ReposTestPushWebhookNoContent json value to io.Writer.
+func (s ReposTestPushWebhookNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ReposTestPushWebhookNoContent json value from io.Reader.
+func (s *ReposTestPushWebhookNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ReposTestPushWebhookNoContent from json stream.
+func (s *ReposTestPushWebhookNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ReposTransferApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -34635,10 +42044,48 @@ func (ScimDeleteUserFromOrgApplicationScimJSONNotFound) ReadJSON(i *json.Iterato
 func (ScimDeleteUserFromOrgApplicationScimJSONNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
 func (ScimDeleteUserFromOrgApplicationScimJSONNotFound) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (ScimDeleteUserFromOrgNoContent) WriteJSON(j *json.Stream)        {}
-func (ScimDeleteUserFromOrgNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (ScimDeleteUserFromOrgNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (ScimDeleteUserFromOrgNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s ScimDeleteUserFromOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ScimDeleteUserFromOrgNoContent json value to io.Writer.
+func (s ScimDeleteUserFromOrgNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ScimDeleteUserFromOrgNoContent json value from io.Reader.
+func (s *ScimDeleteUserFromOrgNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ScimDeleteUserFromOrgNoContent from json stream.
+func (s *ScimDeleteUserFromOrgNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ScimEnterpriseGroupMembersItem) WriteJSON(j *json.Stream) {
@@ -36394,10 +43841,48 @@ func (s *ScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Iterator) err
 	return i.Error
 }
 
-func (SecretScanningGetAlertNotFound) WriteJSON(j *json.Stream)        {}
-func (SecretScanningGetAlertNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (SecretScanningGetAlertNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (SecretScanningGetAlertNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s SecretScanningGetAlertNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes SecretScanningGetAlertNotFound json value to io.Writer.
+func (s SecretScanningGetAlertNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads SecretScanningGetAlertNotFound json value from io.Reader.
+func (s *SecretScanningGetAlertNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads SecretScanningGetAlertNotFound from json stream.
+func (s *SecretScanningGetAlertNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s SecretScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -36463,15 +43948,91 @@ func (s *SecretScanningUpdateAlertApplicationJSONRequest) ReadJSON(i *json.Itera
 	return i.Error
 }
 
-func (SecretScanningUpdateAlertNotFound) WriteJSON(j *json.Stream)        {}
-func (SecretScanningUpdateAlertNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (SecretScanningUpdateAlertNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (SecretScanningUpdateAlertNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s SecretScanningUpdateAlertNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (SecretScanningUpdateAlertUnprocessableEntity) WriteJSON(j *json.Stream)        {}
-func (SecretScanningUpdateAlertUnprocessableEntity) ReadJSON(i *json.Iterator) error { return nil }
-func (SecretScanningUpdateAlertUnprocessableEntity) ReadJSONFrom(r io.Reader) error  { return nil }
-func (SecretScanningUpdateAlertUnprocessableEntity) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes SecretScanningUpdateAlertNotFound json value to io.Writer.
+func (s SecretScanningUpdateAlertNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads SecretScanningUpdateAlertNotFound json value from io.Reader.
+func (s *SecretScanningUpdateAlertNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads SecretScanningUpdateAlertNotFound from json stream.
+func (s *SecretScanningUpdateAlertNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SecretScanningUpdateAlertUnprocessableEntity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes SecretScanningUpdateAlertUnprocessableEntity json value to io.Writer.
+func (s SecretScanningUpdateAlertUnprocessableEntity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads SecretScanningUpdateAlertUnprocessableEntity json value from io.Reader.
+func (s *SecretScanningUpdateAlertUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads SecretScanningUpdateAlertUnprocessableEntity from json stream.
+func (s *SecretScanningUpdateAlertUnprocessableEntity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s ServiceUnavailable) WriteJSON(j *json.Stream) {
@@ -37034,20 +44595,134 @@ func (s *TeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (TeamsAddMemberLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsAddMemberLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddMemberLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddMemberLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddMemberLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsAddMemberLegacyNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsAddMemberLegacyNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddMemberLegacyNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddMemberLegacyNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes TeamsAddMemberLegacyNoContent json value to io.Writer.
+func (s TeamsAddMemberLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (TeamsAddMemberLegacyUnprocessableEntity) WriteJSON(j *json.Stream)        {}
-func (TeamsAddMemberLegacyUnprocessableEntity) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddMemberLegacyUnprocessableEntity) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddMemberLegacyUnprocessableEntity) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads TeamsAddMemberLegacyNoContent json value from io.Reader.
+func (s *TeamsAddMemberLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddMemberLegacyNoContent from json stream.
+func (s *TeamsAddMemberLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddMemberLegacyNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsAddMemberLegacyNotFound json value to io.Writer.
+func (s TeamsAddMemberLegacyNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsAddMemberLegacyNotFound json value from io.Reader.
+func (s *TeamsAddMemberLegacyNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddMemberLegacyNotFound from json stream.
+func (s *TeamsAddMemberLegacyNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddMemberLegacyUnprocessableEntity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsAddMemberLegacyUnprocessableEntity json value to io.Writer.
+func (s TeamsAddMemberLegacyUnprocessableEntity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsAddMemberLegacyUnprocessableEntity json value from io.Reader.
+func (s *TeamsAddMemberLegacyUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddMemberLegacyUnprocessableEntity from json stream.
+func (s *TeamsAddMemberLegacyUnprocessableEntity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -37115,20 +44790,90 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) ReadJ
 	return i.Error
 }
 
-func (TeamsAddOrUpdateMembershipForUserInOrgForbidden) WriteJSON(j *json.Stream)        {}
-func (TeamsAddOrUpdateMembershipForUserInOrgForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddOrUpdateMembershipForUserInOrgForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddOrUpdateMembershipForUserInOrgForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateMembershipForUserInOrgForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) WriteJSON(j *json.Stream) {}
-func (TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserInOrgForbidden json value to io.Writer.
+func (s TeamsAddOrUpdateMembershipForUserInOrgForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserInOrgForbidden json value from io.Reader.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgForbidden from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity json value to io.Writer.
+func (s TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity json value from io.Reader.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -37197,20 +44942,90 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) Read
 	return i.Error
 }
 
-func (TeamsAddOrUpdateMembershipForUserLegacyForbidden) WriteJSON(j *json.Stream)        {}
-func (TeamsAddOrUpdateMembershipForUserLegacyForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddOrUpdateMembershipForUserLegacyForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddOrUpdateMembershipForUserLegacyForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateMembershipForUserLegacyForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) WriteJSON(j *json.Stream) {}
-func (TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserLegacyForbidden json value to io.Writer.
+func (s TeamsAddOrUpdateMembershipForUserLegacyForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
 }
-func (TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
-	return nil
+
+// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserLegacyForbidden json value from io.Reader.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
 }
-func (TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) WriteJSONTo(w io.Writer) error {
-	return nil
+
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyForbidden from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity json value to io.Writer.
+func (s TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity json value from io.Reader.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
@@ -37346,10 +45161,48 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) ReadJSON(i *json.Iter
 	return i.Error
 }
 
-func (TeamsAddOrUpdateProjectPermissionsInOrgNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddOrUpdateProjectPermissionsInOrgNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateProjectPermissionsInOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsAddOrUpdateProjectPermissionsInOrgNoContent json value to io.Writer.
+func (s TeamsAddOrUpdateProjectPermissionsInOrgNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsAddOrUpdateProjectPermissionsInOrgNoContent json value from io.Reader.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgNoContent from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -37484,15 +45337,91 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) ReadJSON(i *json.Ite
 	return i.Error
 }
 
-func (TeamsAddOrUpdateProjectPermissionsLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsAddOrUpdateProjectPermissionsLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddOrUpdateProjectPermissionsLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddOrUpdateProjectPermissionsLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateProjectPermissionsLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsAddOrUpdateRepoPermissionsInOrg) WriteJSON(j *json.Stream)        {}
-func (TeamsAddOrUpdateRepoPermissionsInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddOrUpdateRepoPermissionsInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddOrUpdateRepoPermissionsInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes TeamsAddOrUpdateProjectPermissionsLegacyNoContent json value to io.Writer.
+func (s TeamsAddOrUpdateProjectPermissionsLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsAddOrUpdateProjectPermissionsLegacyNoContent json value from io.Reader.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyNoContent from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateRepoPermissionsInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsAddOrUpdateRepoPermissionsInOrg json value to io.Writer.
+func (s TeamsAddOrUpdateRepoPermissionsInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsAddOrUpdateRepoPermissionsInOrg json value from io.Reader.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrg from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -37626,40 +45555,306 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) 
 	return i.Error
 }
 
-func (TeamsAddOrUpdateRepoPermissionsLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsAddOrUpdateRepoPermissionsLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsAddOrUpdateRepoPermissionsLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsAddOrUpdateRepoPermissionsLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateRepoPermissionsLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsCheckPermissionsForProjectInOrgNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsCheckPermissionsForProjectInOrgNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsCheckPermissionsForProjectInOrgNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsCheckPermissionsForProjectInOrgNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes TeamsAddOrUpdateRepoPermissionsLegacyNoContent json value to io.Writer.
+func (s TeamsAddOrUpdateRepoPermissionsLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (TeamsCheckPermissionsForProjectLegacyNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsCheckPermissionsForProjectLegacyNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsCheckPermissionsForProjectLegacyNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsCheckPermissionsForProjectLegacyNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads TeamsAddOrUpdateRepoPermissionsLegacyNoContent json value from io.Reader.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (TeamsCheckPermissionsForRepoInOrgNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsCheckPermissionsForRepoInOrgNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsCheckPermissionsForRepoInOrgNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsCheckPermissionsForRepoInOrgNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (TeamsCheckPermissionsForRepoInOrgNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsCheckPermissionsForRepoInOrgNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsCheckPermissionsForRepoInOrgNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsCheckPermissionsForRepoInOrgNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (TeamsCheckPermissionsForRepoLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsCheckPermissionsForRepoLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsCheckPermissionsForRepoLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsCheckPermissionsForRepoLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyNoContent from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (TeamsCheckPermissionsForRepoLegacyNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsCheckPermissionsForRepoLegacyNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsCheckPermissionsForProjectInOrgNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsCheckPermissionsForProjectInOrgNotFound json value to io.Writer.
+func (s TeamsCheckPermissionsForProjectInOrgNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsCheckPermissionsForProjectInOrgNotFound json value from io.Reader.
+func (s *TeamsCheckPermissionsForProjectInOrgNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsCheckPermissionsForProjectInOrgNotFound from json stream.
+func (s *TeamsCheckPermissionsForProjectInOrgNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsCheckPermissionsForProjectLegacyNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsCheckPermissionsForProjectLegacyNotFound json value to io.Writer.
+func (s TeamsCheckPermissionsForProjectLegacyNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsCheckPermissionsForProjectLegacyNotFound json value from io.Reader.
+func (s *TeamsCheckPermissionsForProjectLegacyNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsCheckPermissionsForProjectLegacyNotFound from json stream.
+func (s *TeamsCheckPermissionsForProjectLegacyNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsCheckPermissionsForRepoInOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsCheckPermissionsForRepoInOrgNoContent json value to io.Writer.
+func (s TeamsCheckPermissionsForRepoInOrgNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsCheckPermissionsForRepoInOrgNoContent json value from io.Reader.
+func (s *TeamsCheckPermissionsForRepoInOrgNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsCheckPermissionsForRepoInOrgNoContent from json stream.
+func (s *TeamsCheckPermissionsForRepoInOrgNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsCheckPermissionsForRepoInOrgNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsCheckPermissionsForRepoInOrgNotFound json value to io.Writer.
+func (s TeamsCheckPermissionsForRepoInOrgNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsCheckPermissionsForRepoInOrgNotFound json value from io.Reader.
+func (s *TeamsCheckPermissionsForRepoInOrgNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsCheckPermissionsForRepoInOrgNotFound from json stream.
+func (s *TeamsCheckPermissionsForRepoInOrgNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsCheckPermissionsForRepoLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsCheckPermissionsForRepoLegacyNoContent json value to io.Writer.
+func (s TeamsCheckPermissionsForRepoLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsCheckPermissionsForRepoLegacyNoContent json value from io.Reader.
+func (s *TeamsCheckPermissionsForRepoLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsCheckPermissionsForRepoLegacyNoContent from json stream.
+func (s *TeamsCheckPermissionsForRepoLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsCheckPermissionsForRepoLegacyNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsCheckPermissionsForRepoLegacyNotFound json value to io.Writer.
+func (s TeamsCheckPermissionsForRepoLegacyNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsCheckPermissionsForRepoLegacyNotFound json value from io.Reader.
+func (s *TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsCheckPermissionsForRepoLegacyNotFound from json stream.
+func (s *TeamsCheckPermissionsForRepoLegacyNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s TeamsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -38330,50 +46525,392 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroup
 	return i.Error
 }
 
-func (TeamsDeleteDiscussionCommentInOrg) WriteJSON(j *json.Stream)        {}
-func (TeamsDeleteDiscussionCommentInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsDeleteDiscussionCommentInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsDeleteDiscussionCommentInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsDeleteDiscussionCommentInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsDeleteDiscussionCommentLegacy) WriteJSON(j *json.Stream)        {}
-func (TeamsDeleteDiscussionCommentLegacy) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsDeleteDiscussionCommentLegacy) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsDeleteDiscussionCommentLegacy) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes TeamsDeleteDiscussionCommentInOrg json value to io.Writer.
+func (s TeamsDeleteDiscussionCommentInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (TeamsDeleteDiscussionInOrg) WriteJSON(j *json.Stream)        {}
-func (TeamsDeleteDiscussionInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsDeleteDiscussionInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsDeleteDiscussionInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads TeamsDeleteDiscussionCommentInOrg json value from io.Reader.
+func (s *TeamsDeleteDiscussionCommentInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (TeamsDeleteDiscussionLegacy) WriteJSON(j *json.Stream)        {}
-func (TeamsDeleteDiscussionLegacy) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsDeleteDiscussionLegacy) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsDeleteDiscussionLegacy) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (TeamsDeleteInOrg) WriteJSON(j *json.Stream)        {}
-func (TeamsDeleteInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsDeleteInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsDeleteInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (TeamsDeleteLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsDeleteLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsDeleteLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsDeleteLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads TeamsDeleteDiscussionCommentInOrg from json stream.
+func (s *TeamsDeleteDiscussionCommentInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (TeamsGetMemberLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsGetMemberLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsGetMemberLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsGetMemberLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsDeleteDiscussionCommentLegacy) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsGetMemberLegacyNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsGetMemberLegacyNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsGetMemberLegacyNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsGetMemberLegacyNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes TeamsDeleteDiscussionCommentLegacy json value to io.Writer.
+func (s TeamsDeleteDiscussionCommentLegacy) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (TeamsGetMembershipForUserInOrgNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsGetMembershipForUserInOrgNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsGetMembershipForUserInOrgNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsGetMembershipForUserInOrgNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads TeamsDeleteDiscussionCommentLegacy json value from io.Reader.
+func (s *TeamsDeleteDiscussionCommentLegacy) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsDeleteDiscussionCommentLegacy from json stream.
+func (s *TeamsDeleteDiscussionCommentLegacy) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsDeleteDiscussionInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsDeleteDiscussionInOrg json value to io.Writer.
+func (s TeamsDeleteDiscussionInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsDeleteDiscussionInOrg json value from io.Reader.
+func (s *TeamsDeleteDiscussionInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsDeleteDiscussionInOrg from json stream.
+func (s *TeamsDeleteDiscussionInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsDeleteDiscussionLegacy) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsDeleteDiscussionLegacy json value to io.Writer.
+func (s TeamsDeleteDiscussionLegacy) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsDeleteDiscussionLegacy json value from io.Reader.
+func (s *TeamsDeleteDiscussionLegacy) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsDeleteDiscussionLegacy from json stream.
+func (s *TeamsDeleteDiscussionLegacy) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsDeleteInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsDeleteInOrg json value to io.Writer.
+func (s TeamsDeleteInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsDeleteInOrg json value from io.Reader.
+func (s *TeamsDeleteInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsDeleteInOrg from json stream.
+func (s *TeamsDeleteInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsDeleteLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsDeleteLegacyNoContent json value to io.Writer.
+func (s TeamsDeleteLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsDeleteLegacyNoContent json value from io.Reader.
+func (s *TeamsDeleteLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsDeleteLegacyNoContent from json stream.
+func (s *TeamsDeleteLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsGetMemberLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsGetMemberLegacyNoContent json value to io.Writer.
+func (s TeamsGetMemberLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsGetMemberLegacyNoContent json value from io.Reader.
+func (s *TeamsGetMemberLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsGetMemberLegacyNoContent from json stream.
+func (s *TeamsGetMemberLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsGetMemberLegacyNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsGetMemberLegacyNotFound json value to io.Writer.
+func (s TeamsGetMemberLegacyNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsGetMemberLegacyNotFound json value from io.Reader.
+func (s *TeamsGetMemberLegacyNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsGetMemberLegacyNotFound from json stream.
+func (s *TeamsGetMemberLegacyNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsGetMembershipForUserInOrgNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsGetMembershipForUserInOrgNotFound json value to io.Writer.
+func (s TeamsGetMembershipForUserInOrgNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsGetMembershipForUserInOrgNotFound json value from io.Reader.
+func (s *TeamsGetMembershipForUserInOrgNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsGetMembershipForUserInOrgNotFound from json stream.
+func (s *TeamsGetMembershipForUserInOrgNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (TeamsListChildLegacyOK) WriteJSON(j *json.Stream)        {}
 func (TeamsListChildLegacyOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -38438,55 +46975,435 @@ func (TeamsListReposLegacyOK) ReadJSON(i *json.Iterator) error { return nil }
 func (TeamsListReposLegacyOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (TeamsListReposLegacyOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (TeamsRemoveMemberLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveMemberLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveMemberLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveMemberLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveMemberLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsRemoveMemberLegacyNotFound) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveMemberLegacyNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveMemberLegacyNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveMemberLegacyNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes TeamsRemoveMemberLegacyNoContent json value to io.Writer.
+func (s TeamsRemoveMemberLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (TeamsRemoveMembershipForUserInOrgForbidden) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveMembershipForUserInOrgForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveMembershipForUserInOrgForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveMembershipForUserInOrgForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads TeamsRemoveMemberLegacyNoContent json value from io.Reader.
+func (s *TeamsRemoveMemberLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (TeamsRemoveMembershipForUserInOrgNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveMembershipForUserInOrgNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveMembershipForUserInOrgNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveMembershipForUserInOrgNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (TeamsRemoveMembershipForUserLegacyForbidden) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveMembershipForUserLegacyForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveMembershipForUserLegacyForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveMembershipForUserLegacyForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (TeamsRemoveMembershipForUserLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveMembershipForUserLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveMembershipForUserLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveMembershipForUserLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads TeamsRemoveMemberLegacyNoContent from json stream.
+func (s *TeamsRemoveMemberLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (TeamsRemoveProjectInOrg) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveProjectInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveProjectInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveProjectInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveMemberLegacyNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (TeamsRemoveProjectLegacyNoContent) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveProjectLegacyNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveProjectLegacyNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveProjectLegacyNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes TeamsRemoveMemberLegacyNotFound json value to io.Writer.
+func (s TeamsRemoveMemberLegacyNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (TeamsRemoveRepoInOrg) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveRepoInOrg) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveRepoInOrg) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveRepoInOrg) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads TeamsRemoveMemberLegacyNotFound json value from io.Reader.
+func (s *TeamsRemoveMemberLegacyNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (TeamsRemoveRepoLegacy) WriteJSON(j *json.Stream)        {}
-func (TeamsRemoveRepoLegacy) ReadJSON(i *json.Iterator) error { return nil }
-func (TeamsRemoveRepoLegacy) ReadJSONFrom(r io.Reader) error  { return nil }
-func (TeamsRemoveRepoLegacy) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveMemberLegacyNotFound from json stream.
+func (s *TeamsRemoveMemberLegacyNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveMembershipForUserInOrgForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveMembershipForUserInOrgForbidden json value to io.Writer.
+func (s TeamsRemoveMembershipForUserInOrgForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveMembershipForUserInOrgForbidden json value from io.Reader.
+func (s *TeamsRemoveMembershipForUserInOrgForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveMembershipForUserInOrgForbidden from json stream.
+func (s *TeamsRemoveMembershipForUserInOrgForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveMembershipForUserInOrgNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveMembershipForUserInOrgNoContent json value to io.Writer.
+func (s TeamsRemoveMembershipForUserInOrgNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveMembershipForUserInOrgNoContent json value from io.Reader.
+func (s *TeamsRemoveMembershipForUserInOrgNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveMembershipForUserInOrgNoContent from json stream.
+func (s *TeamsRemoveMembershipForUserInOrgNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveMembershipForUserLegacyForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveMembershipForUserLegacyForbidden json value to io.Writer.
+func (s TeamsRemoveMembershipForUserLegacyForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveMembershipForUserLegacyForbidden json value from io.Reader.
+func (s *TeamsRemoveMembershipForUserLegacyForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveMembershipForUserLegacyForbidden from json stream.
+func (s *TeamsRemoveMembershipForUserLegacyForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveMembershipForUserLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveMembershipForUserLegacyNoContent json value to io.Writer.
+func (s TeamsRemoveMembershipForUserLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveMembershipForUserLegacyNoContent json value from io.Reader.
+func (s *TeamsRemoveMembershipForUserLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveMembershipForUserLegacyNoContent from json stream.
+func (s *TeamsRemoveMembershipForUserLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveProjectInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveProjectInOrg json value to io.Writer.
+func (s TeamsRemoveProjectInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveProjectInOrg json value from io.Reader.
+func (s *TeamsRemoveProjectInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveProjectInOrg from json stream.
+func (s *TeamsRemoveProjectInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveProjectLegacyNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveProjectLegacyNoContent json value to io.Writer.
+func (s TeamsRemoveProjectLegacyNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveProjectLegacyNoContent json value from io.Reader.
+func (s *TeamsRemoveProjectLegacyNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveProjectLegacyNoContent from json stream.
+func (s *TeamsRemoveProjectLegacyNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveRepoInOrg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveRepoInOrg json value to io.Writer.
+func (s TeamsRemoveRepoInOrg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveRepoInOrg json value from io.Reader.
+func (s *TeamsRemoveRepoInOrg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveRepoInOrg from json stream.
+func (s *TeamsRemoveRepoInOrg) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsRemoveRepoLegacy) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes TeamsRemoveRepoLegacy json value to io.Writer.
+func (s TeamsRemoveRepoLegacy) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads TeamsRemoveRepoLegacy json value from io.Reader.
+func (s *TeamsRemoveRepoLegacy) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads TeamsRemoveRepoLegacy from json stream.
+func (s *TeamsRemoveRepoLegacy) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -39031,10 +47948,48 @@ func (s *ThreadSubject) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (UsersBlockNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersBlockNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersBlockNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersBlockNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s UsersBlockNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersBlockNoContent json value to io.Writer.
+func (s UsersBlockNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersBlockNoContent json value from io.Reader.
+func (s *UsersBlockNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersBlockNoContent from json stream.
+func (s *UsersBlockNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (UsersCheckBlockedApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (UsersCheckBlockedApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -39051,20 +48006,134 @@ func (UsersCheckBlockedApplicationJSONUnauthorized) ReadJSON(i *json.Iterator) e
 func (UsersCheckBlockedApplicationJSONUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
 func (UsersCheckBlockedApplicationJSONUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (UsersCheckBlockedNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersCheckBlockedNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersCheckBlockedNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersCheckBlockedNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s UsersCheckBlockedNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (UsersCheckFollowingForUserNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersCheckFollowingForUserNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersCheckFollowingForUserNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersCheckFollowingForUserNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes UsersCheckBlockedNoContent json value to io.Writer.
+func (s UsersCheckBlockedNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (UsersCheckFollowingForUserNotFound) WriteJSON(j *json.Stream)        {}
-func (UsersCheckFollowingForUserNotFound) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersCheckFollowingForUserNotFound) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersCheckFollowingForUserNotFound) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads UsersCheckBlockedNoContent json value from io.Reader.
+func (s *UsersCheckBlockedNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersCheckBlockedNoContent from json stream.
+func (s *UsersCheckBlockedNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersCheckFollowingForUserNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersCheckFollowingForUserNoContent json value to io.Writer.
+func (s UsersCheckFollowingForUserNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersCheckFollowingForUserNoContent json value from io.Reader.
+func (s *UsersCheckFollowingForUserNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersCheckFollowingForUserNoContent from json stream.
+func (s *UsersCheckFollowingForUserNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersCheckFollowingForUserNotFound) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersCheckFollowingForUserNotFound json value to io.Writer.
+func (s UsersCheckFollowingForUserNotFound) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersCheckFollowingForUserNotFound json value from io.Reader.
+func (s *UsersCheckFollowingForUserNotFound) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersCheckFollowingForUserNotFound from json stream.
+func (s *UsersCheckFollowingForUserNotFound) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -39100,12 +48169,48 @@ func (UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Writ
 	return nil
 }
 
-func (UsersCheckPersonIsFollowedByAuthenticatedNoContent) WriteJSON(j *json.Stream) {}
-func (UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSON(i *json.Iterator) error {
-	return nil
+// WriteJSON implements json.Marshaler.
+func (s UsersCheckPersonIsFollowedByAuthenticatedNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
 }
-func (UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSONFrom(r io.Reader) error { return nil }
-func (UsersCheckPersonIsFollowedByAuthenticatedNoContent) WriteJSONTo(w io.Writer) error  { return nil }
+
+// WriteJSONTo writes UsersCheckPersonIsFollowedByAuthenticatedNoContent json value to io.Writer.
+func (s UsersCheckPersonIsFollowedByAuthenticatedNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersCheckPersonIsFollowedByAuthenticatedNoContent json value from io.Reader.
+func (s *UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersCheckPersonIsFollowedByAuthenticatedNoContent from json stream.
+func (s *UsersCheckPersonIsFollowedByAuthenticatedNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -39217,10 +48322,48 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) ReadJSON
 	return i.Error
 }
 
-func (UsersDeleteGpgKeyForAuthenticatedNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersDeleteGpgKeyForAuthenticatedNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersDeleteGpgKeyForAuthenticatedNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersDeleteGpgKeyForAuthenticatedNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s UsersDeleteGpgKeyForAuthenticatedNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersDeleteGpgKeyForAuthenticatedNoContent json value to io.Writer.
+func (s UsersDeleteGpgKeyForAuthenticatedNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersDeleteGpgKeyForAuthenticatedNoContent json value from io.Reader.
+func (s *UsersDeleteGpgKeyForAuthenticatedNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersDeleteGpgKeyForAuthenticatedNoContent from json stream.
+func (s *UsersDeleteGpgKeyForAuthenticatedNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -39255,10 +48398,48 @@ func (UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) WriteJ
 	return nil
 }
 
-func (UsersDeletePublicSSHKeyForAuthenticatedNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersDeletePublicSSHKeyForAuthenticatedNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersDeletePublicSSHKeyForAuthenticatedNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersDeletePublicSSHKeyForAuthenticatedNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s UsersDeletePublicSSHKeyForAuthenticatedNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersDeletePublicSSHKeyForAuthenticatedNoContent json value to io.Writer.
+func (s UsersDeletePublicSSHKeyForAuthenticatedNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersDeletePublicSSHKeyForAuthenticatedNoContent json value from io.Reader.
+func (s *UsersDeletePublicSSHKeyForAuthenticatedNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersDeletePublicSSHKeyForAuthenticatedNoContent from json stream.
+func (s *UsersDeletePublicSSHKeyForAuthenticatedNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (UsersFollowApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (UsersFollowApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -39275,10 +48456,48 @@ func (UsersFollowApplicationJSONUnauthorized) ReadJSON(i *json.Iterator) error {
 func (UsersFollowApplicationJSONUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
 func (UsersFollowApplicationJSONUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (UsersFollowNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersFollowNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersFollowNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersFollowNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s UsersFollowNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersFollowNoContent json value to io.Writer.
+func (s UsersFollowNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersFollowNoContent json value from io.Reader.
+func (s *UsersFollowNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersFollowNoContent from json stream.
+func (s *UsersFollowNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) WriteJSON(j *json.Stream) {}
 func (UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) ReadJSON(i *json.Iterator) error {
@@ -39678,10 +48897,48 @@ func (UsersUnblockApplicationJSONUnauthorized) ReadJSON(i *json.Iterator) error 
 func (UsersUnblockApplicationJSONUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
 func (UsersUnblockApplicationJSONUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (UsersUnblockNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersUnblockNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersUnblockNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersUnblockNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s UsersUnblockNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersUnblockNoContent json value to io.Writer.
+func (s UsersUnblockNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersUnblockNoContent json value from io.Reader.
+func (s *UsersUnblockNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersUnblockNoContent from json stream.
+func (s *UsersUnblockNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (UsersUnfollowApplicationJSONForbidden) WriteJSON(j *json.Stream)        {}
 func (UsersUnfollowApplicationJSONForbidden) ReadJSON(i *json.Iterator) error { return nil }
@@ -39698,10 +48955,48 @@ func (UsersUnfollowApplicationJSONUnauthorized) ReadJSON(i *json.Iterator) error
 func (UsersUnfollowApplicationJSONUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
 func (UsersUnfollowApplicationJSONUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (UsersUnfollowNoContent) WriteJSON(j *json.Stream)        {}
-func (UsersUnfollowNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (UsersUnfollowNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (UsersUnfollowNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s UsersUnfollowNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes UsersUnfollowNoContent json value to io.Writer.
+func (s UsersUnfollowNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads UsersUnfollowNoContent json value from io.Reader.
+func (s *UsersUnfollowNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads UsersUnfollowNoContent from json stream.
+func (s *UsersUnfollowNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s UsersUpdateAuthenticatedApplicationJSONRequest) WriteJSON(j *json.Stream) {
@@ -46570,10 +55865,48 @@ func (s *Email) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (EmptyObject) WriteJSON(j *json.Stream)        {}
-func (EmptyObject) ReadJSON(i *json.Iterator) error { return nil }
-func (EmptyObject) ReadJSONFrom(r io.Reader) error  { return nil }
-func (EmptyObject) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s EmptyObject) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes EmptyObject json value to io.Writer.
+func (s EmptyObject) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads EmptyObject json value from io.Reader.
+func (s *EmptyObject) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads EmptyObject from json stream.
+func (s *EmptyObject) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s EnabledOrganizations) WriteJSON(j *json.Stream) {
@@ -50250,10 +59583,48 @@ func (s *Label) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (Language) WriteJSON(j *json.Stream)        {}
-func (Language) ReadJSON(i *json.Iterator) error { return nil }
-func (Language) ReadJSONFrom(r io.Reader) error  { return nil }
-func (Language) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s Language) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes Language json value to io.Writer.
+func (s Language) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads Language json value from io.Reader.
+func (s *Language) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads Language from json stream.
+func (s *Language) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s License) WriteJSON(j *json.Stream) {

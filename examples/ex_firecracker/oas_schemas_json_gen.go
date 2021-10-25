@@ -486,15 +486,91 @@ func (s *CpuTemplate) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (CreateSnapshotNoContent) WriteJSON(j *json.Stream)        {}
-func (CreateSnapshotNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateSnapshotNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateSnapshotNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s CreateSnapshotNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (CreateSyncActionNoContent) WriteJSON(j *json.Stream)        {}
-func (CreateSyncActionNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (CreateSyncActionNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (CreateSyncActionNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes CreateSnapshotNoContent json value to io.Writer.
+func (s CreateSnapshotNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateSnapshotNoContent json value from io.Reader.
+func (s *CreateSnapshotNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateSnapshotNoContent from json stream.
+func (s *CreateSnapshotNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CreateSyncActionNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes CreateSyncActionNoContent json value to io.Writer.
+func (s CreateSyncActionNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads CreateSyncActionNoContent json value from io.Reader.
+func (s *CreateSyncActionNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads CreateSyncActionNoContent from json stream.
+func (s *CreateSyncActionNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s Drive) WriteJSON(j *json.Stream) {
@@ -1000,10 +1076,48 @@ func (s *InstanceInfoState) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (LoadSnapshotNoContent) WriteJSON(j *json.Stream)        {}
-func (LoadSnapshotNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (LoadSnapshotNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (LoadSnapshotNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s LoadSnapshotNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes LoadSnapshotNoContent json value to io.Writer.
+func (s LoadSnapshotNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads LoadSnapshotNoContent json value from io.Reader.
+func (s *LoadSnapshotNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads LoadSnapshotNoContent from json stream.
+func (s *LoadSnapshotNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s Logger) WriteJSON(j *json.Stream) {
@@ -1290,35 +1404,263 @@ func (s *MmdsConfig) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (MmdsConfigPutNoContent) WriteJSON(j *json.Stream)        {}
-func (MmdsConfigPutNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (MmdsConfigPutNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MmdsConfigPutNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s MmdsConfigPutNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (MmdsGetOK) WriteJSON(j *json.Stream)        {}
-func (MmdsGetOK) ReadJSON(i *json.Iterator) error { return nil }
-func (MmdsGetOK) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MmdsGetOK) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes MmdsConfigPutNoContent json value to io.Writer.
+func (s MmdsConfigPutNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (MmdsPatchApplicationJSONRequest) WriteJSON(j *json.Stream)        {}
-func (MmdsPatchApplicationJSONRequest) ReadJSON(i *json.Iterator) error { return nil }
-func (MmdsPatchApplicationJSONRequest) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MmdsPatchApplicationJSONRequest) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads MmdsConfigPutNoContent json value from io.Reader.
+func (s *MmdsConfigPutNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (MmdsPatchNoContent) WriteJSON(j *json.Stream)        {}
-func (MmdsPatchNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (MmdsPatchNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MmdsPatchNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (MmdsPutApplicationJSONRequest) WriteJSON(j *json.Stream)        {}
-func (MmdsPutApplicationJSONRequest) ReadJSON(i *json.Iterator) error { return nil }
-func (MmdsPutApplicationJSONRequest) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MmdsPutApplicationJSONRequest) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (MmdsPutNoContent) WriteJSON(j *json.Stream)        {}
-func (MmdsPutNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (MmdsPutNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (MmdsPutNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads MmdsConfigPutNoContent from json stream.
+func (s *MmdsConfigPutNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MmdsGetOK) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MmdsGetOK json value to io.Writer.
+func (s MmdsGetOK) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MmdsGetOK json value from io.Reader.
+func (s *MmdsGetOK) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MmdsGetOK from json stream.
+func (s *MmdsGetOK) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MmdsPatchApplicationJSONRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MmdsPatchApplicationJSONRequest json value to io.Writer.
+func (s MmdsPatchApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MmdsPatchApplicationJSONRequest json value from io.Reader.
+func (s *MmdsPatchApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MmdsPatchApplicationJSONRequest from json stream.
+func (s *MmdsPatchApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MmdsPatchNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MmdsPatchNoContent json value to io.Writer.
+func (s MmdsPatchNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MmdsPatchNoContent json value from io.Reader.
+func (s *MmdsPatchNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MmdsPatchNoContent from json stream.
+func (s *MmdsPatchNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MmdsPutApplicationJSONRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MmdsPutApplicationJSONRequest json value to io.Writer.
+func (s MmdsPutApplicationJSONRequest) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MmdsPutApplicationJSONRequest json value from io.Reader.
+func (s *MmdsPutApplicationJSONRequest) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MmdsPutApplicationJSONRequest from json stream.
+func (s *MmdsPutApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MmdsPutNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes MmdsPutNoContent json value to io.Writer.
+func (s MmdsPutNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads MmdsPutNoContent json value from io.Reader.
+func (s *MmdsPutNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads MmdsPutNoContent from json stream.
+func (s *MmdsPutNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s NetworkInterface) WriteJSON(j *json.Stream) {
@@ -1875,75 +2217,607 @@ func (s *PartialNetworkInterface) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (PatchBalloonNoContent) WriteJSON(j *json.Stream)        {}
-func (PatchBalloonNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PatchBalloonNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PatchBalloonNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s PatchBalloonNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (PatchBalloonStatsIntervalNoContent) WriteJSON(j *json.Stream)        {}
-func (PatchBalloonStatsIntervalNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PatchBalloonStatsIntervalNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PatchBalloonStatsIntervalNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes PatchBalloonNoContent json value to io.Writer.
+func (s PatchBalloonNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (PatchGuestDriveByIDNoContent) WriteJSON(j *json.Stream)        {}
-func (PatchGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PatchGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PatchGuestDriveByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads PatchBalloonNoContent json value from io.Reader.
+func (s *PatchBalloonNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (PatchGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream)        {}
-func (PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PatchGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PatchGuestNetworkInterfaceByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (PatchMachineConfigurationNoContent) WriteJSON(j *json.Stream)        {}
-func (PatchMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PatchMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PatchMachineConfigurationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (PatchVmNoContent) WriteJSON(j *json.Stream)        {}
-func (PatchVmNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PatchVmNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PatchVmNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads PatchBalloonNoContent from json stream.
+func (s *PatchBalloonNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (PutBalloonNoContent) WriteJSON(j *json.Stream)        {}
-func (PutBalloonNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutBalloonNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutBalloonNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s PatchBalloonStatsIntervalNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (PutGuestBootSourceNoContent) WriteJSON(j *json.Stream)        {}
-func (PutGuestBootSourceNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutGuestBootSourceNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutGuestBootSourceNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes PatchBalloonStatsIntervalNoContent json value to io.Writer.
+func (s PatchBalloonStatsIntervalNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
 
-func (PutGuestDriveByIDNoContent) WriteJSON(j *json.Stream)        {}
-func (PutGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutGuestDriveByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSONFrom reads PatchBalloonStatsIntervalNoContent json value from io.Reader.
+func (s *PatchBalloonStatsIntervalNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
 
-func (PutGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream)        {}
-func (PutGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutGuestNetworkInterfaceByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
 
-func (PutGuestVsockNoContent) WriteJSON(j *json.Stream)        {}
-func (PutGuestVsockNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutGuestVsockNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutGuestVsockNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+	return s.ReadJSON(i)
+}
 
-func (PutLoggerNoContent) WriteJSON(j *json.Stream)        {}
-func (PutLoggerNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutLoggerNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutLoggerNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// ReadJSON reads PatchBalloonStatsIntervalNoContent from json stream.
+func (s *PatchBalloonStatsIntervalNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
-func (PutMachineConfigurationNoContent) WriteJSON(j *json.Stream)        {}
-func (PutMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutMachineConfigurationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s PatchGuestDriveByIDNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (PutMetricsNoContent) WriteJSON(j *json.Stream)        {}
-func (PutMetricsNoContent) ReadJSON(i *json.Iterator) error { return nil }
-func (PutMetricsNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
-func (PutMetricsNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes PatchGuestDriveByIDNoContent json value to io.Writer.
+func (s PatchGuestDriveByIDNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PatchGuestDriveByIDNoContent json value from io.Reader.
+func (s *PatchGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PatchGuestDriveByIDNoContent from json stream.
+func (s *PatchGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PatchGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PatchGuestNetworkInterfaceByIDNoContent json value to io.Writer.
+func (s PatchGuestNetworkInterfaceByIDNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PatchGuestNetworkInterfaceByIDNoContent json value from io.Reader.
+func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PatchGuestNetworkInterfaceByIDNoContent from json stream.
+func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PatchMachineConfigurationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PatchMachineConfigurationNoContent json value to io.Writer.
+func (s PatchMachineConfigurationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PatchMachineConfigurationNoContent json value from io.Reader.
+func (s *PatchMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PatchMachineConfigurationNoContent from json stream.
+func (s *PatchMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PatchVmNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PatchVmNoContent json value to io.Writer.
+func (s PatchVmNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PatchVmNoContent json value from io.Reader.
+func (s *PatchVmNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PatchVmNoContent from json stream.
+func (s *PatchVmNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutBalloonNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutBalloonNoContent json value to io.Writer.
+func (s PutBalloonNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutBalloonNoContent json value from io.Reader.
+func (s *PutBalloonNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutBalloonNoContent from json stream.
+func (s *PutBalloonNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutGuestBootSourceNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutGuestBootSourceNoContent json value to io.Writer.
+func (s PutGuestBootSourceNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutGuestBootSourceNoContent json value from io.Reader.
+func (s *PutGuestBootSourceNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutGuestBootSourceNoContent from json stream.
+func (s *PutGuestBootSourceNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutGuestDriveByIDNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutGuestDriveByIDNoContent json value to io.Writer.
+func (s PutGuestDriveByIDNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutGuestDriveByIDNoContent json value from io.Reader.
+func (s *PutGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutGuestDriveByIDNoContent from json stream.
+func (s *PutGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutGuestNetworkInterfaceByIDNoContent json value to io.Writer.
+func (s PutGuestNetworkInterfaceByIDNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutGuestNetworkInterfaceByIDNoContent json value from io.Reader.
+func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutGuestNetworkInterfaceByIDNoContent from json stream.
+func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutGuestVsockNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutGuestVsockNoContent json value to io.Writer.
+func (s PutGuestVsockNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutGuestVsockNoContent json value from io.Reader.
+func (s *PutGuestVsockNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutGuestVsockNoContent from json stream.
+func (s *PutGuestVsockNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutLoggerNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutLoggerNoContent json value to io.Writer.
+func (s PutLoggerNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutLoggerNoContent json value from io.Reader.
+func (s *PutLoggerNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutLoggerNoContent from json stream.
+func (s *PutLoggerNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutMachineConfigurationNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutMachineConfigurationNoContent json value to io.Writer.
+func (s PutMachineConfigurationNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutMachineConfigurationNoContent json value from io.Reader.
+func (s *PutMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutMachineConfigurationNoContent from json stream.
+func (s *PutMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PutMetricsNoContent) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PutMetricsNoContent json value to io.Writer.
+func (s PutMetricsNoContent) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PutMetricsNoContent json value from io.Reader.
+func (s *PutMetricsNoContent) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PutMetricsNoContent from json stream.
+func (s *PutMetricsNoContent) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 // WriteJSON implements json.Marshaler.
 func (s RateLimiter) WriteJSON(j *json.Stream) {

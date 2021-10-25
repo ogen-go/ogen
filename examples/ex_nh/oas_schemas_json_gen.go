@@ -205,35 +205,187 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (GetBookForbidden) WriteJSON(j *json.Stream)        {}
-func (GetBookForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (GetBookForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetBookForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetBookForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
 
-func (GetPageCoverImageForbidden) WriteJSON(j *json.Stream)        {}
-func (GetPageCoverImageForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (GetPageCoverImageForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetPageCoverImageForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSONTo writes GetBookForbidden json value to io.Writer.
+func (s GetBookForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetBookForbidden json value from io.Reader.
+func (s *GetBookForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetBookForbidden from json stream.
+func (s *GetBookForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GetPageCoverImageForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetPageCoverImageForbidden json value to io.Writer.
+func (s GetPageCoverImageForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetPageCoverImageForbidden json value from io.Reader.
+func (s *GetPageCoverImageForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetPageCoverImageForbidden from json stream.
+func (s *GetPageCoverImageForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetPageCoverImageOK) WriteJSON(j *json.Stream)        {}
 func (GetPageCoverImageOK) ReadJSON(i *json.Iterator) error { return nil }
 func (GetPageCoverImageOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetPageCoverImageOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetPageImageForbidden) WriteJSON(j *json.Stream)        {}
-func (GetPageImageForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (GetPageImageForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetPageImageForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetPageImageForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetPageImageForbidden json value to io.Writer.
+func (s GetPageImageForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetPageImageForbidden json value from io.Reader.
+func (s *GetPageImageForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetPageImageForbidden from json stream.
+func (s *GetPageImageForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetPageImageOK) WriteJSON(j *json.Stream)        {}
 func (GetPageImageOK) ReadJSON(i *json.Iterator) error { return nil }
 func (GetPageImageOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (GetPageImageOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (GetPageThumbnailImageForbidden) WriteJSON(j *json.Stream)        {}
-func (GetPageThumbnailImageForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (GetPageThumbnailImageForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (GetPageThumbnailImageForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s GetPageThumbnailImageForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes GetPageThumbnailImageForbidden json value to io.Writer.
+func (s GetPageThumbnailImageForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads GetPageThumbnailImageForbidden json value from io.Reader.
+func (s *GetPageThumbnailImageForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads GetPageThumbnailImageForbidden from json stream.
+func (s *GetPageThumbnailImageForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (GetPageThumbnailImageOK) WriteJSON(j *json.Stream)        {}
 func (GetPageThumbnailImageOK) ReadJSON(i *json.Iterator) error { return nil }
@@ -516,20 +668,96 @@ func (o *OptTitle) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-func (SearchByTagIDForbidden) WriteJSON(j *json.Stream)        {}
-func (SearchByTagIDForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (SearchByTagIDForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (SearchByTagIDForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s SearchByTagIDForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes SearchByTagIDForbidden json value to io.Writer.
+func (s SearchByTagIDForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads SearchByTagIDForbidden json value from io.Reader.
+func (s *SearchByTagIDForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads SearchByTagIDForbidden from json stream.
+func (s *SearchByTagIDForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (SearchByTagIDOK) WriteJSON(j *json.Stream)        {}
 func (SearchByTagIDOK) ReadJSON(i *json.Iterator) error { return nil }
 func (SearchByTagIDOK) ReadJSONFrom(r io.Reader) error  { return nil }
 func (SearchByTagIDOK) WriteJSONTo(w io.Writer) error   { return nil }
 
-func (SearchForbidden) WriteJSON(j *json.Stream)        {}
-func (SearchForbidden) ReadJSON(i *json.Iterator) error { return nil }
-func (SearchForbidden) ReadJSONFrom(r io.Reader) error  { return nil }
-func (SearchForbidden) WriteJSONTo(w io.Writer) error   { return nil }
+// WriteJSON implements json.Marshaler.
+func (s SearchForbidden) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes SearchForbidden json value to io.Writer.
+func (s SearchForbidden) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads SearchForbidden json value from io.Reader.
+func (s *SearchForbidden) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads SearchForbidden from json stream.
+func (s *SearchForbidden) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
 
 func (SearchOK) WriteJSON(j *json.Stream)        {}
 func (SearchOK) ReadJSON(i *json.Iterator) error { return nil }

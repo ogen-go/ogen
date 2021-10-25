@@ -929,6 +929,8 @@ type AppsUnsuspendInstallationNoContent struct{}
 
 func (*AppsUnsuspendInstallationNoContent) appsUnsuspendInstallationResponse() {}
 
+type AuthenticationTokenPermissions struct{}
+
 type AuthenticationTokenRepositorySelection string
 
 const (
@@ -941,6 +943,8 @@ type AuthorizationApp struct {
 	Name     string  `json:"name"`
 	URL      url.URL `json:"url"`
 }
+
+type BaseGistFiles struct{}
 
 type BranchProtectionAllowDeletions struct {
 	Enabled OptBool `json:"enabled"`
@@ -1511,9 +1515,11 @@ type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReque
 }
 
 type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest struct {
-	Operations []struct{} `json:"Operations"`
-	Schemas    []string   `json:"schemas"`
+	Operations []EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem `json:"Operations"`
+	Schemas    []string                                                                              `json:"schemas"`
 }
+
+type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequestOperationsItem struct{}
 
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
 	Name       OptString                                                                                  `json:"name"`
@@ -1987,14 +1993,20 @@ type GroupMappingGroupsItem struct {
 }
 
 type HookDeliveryRequest struct {
-	Headers *struct{} `json:"headers"`
-	Payload *struct{} `json:"payload"`
+	Headers *HookDeliveryRequestHeaders `json:"headers"`
+	Payload *HookDeliveryRequestPayload `json:"payload"`
 }
 
+type HookDeliveryRequestHeaders struct{}
+
+type HookDeliveryRequestPayload struct{}
+
 type HookDeliveryResponse struct {
-	Headers *struct{} `json:"headers"`
-	Payload NilString `json:"payload"`
+	Headers *HookDeliveryResponseHeaders `json:"headers"`
+	Payload NilString                    `json:"payload"`
 }
+
+type HookDeliveryResponseHeaders struct{}
 
 type ImportProjectChoicesItem struct {
 	HumanName   OptString `json:"human_name"`
@@ -12388,11 +12400,13 @@ const (
 )
 
 type ReposCreateDispatchEventApplicationJSONRequest struct {
-	ClientPayload *struct{} `json:"client_payload"`
-	EventType     string    `json:"event_type"`
+	ClientPayload *ReposCreateDispatchEventApplicationJSONRequestClientPayload `json:"client_payload"`
+	EventType     string                                                       `json:"event_type"`
 }
 
 func (*ReposCreateDispatchEventApplicationJSONRequest) reposCreateDispatchEventRequest() {}
+
+type ReposCreateDispatchEventApplicationJSONRequestClientPayload struct{}
 
 type ReposCreateDispatchEventNoContent struct{}
 
@@ -14301,7 +14315,7 @@ type Artifact struct {
 // AuthenticationToken describes #/components/schemas/authentication-token.
 type AuthenticationToken struct {
 	ExpiresAt           time.Time                                 `json:"expires_at"`
-	Permissions         *struct{}                                 `json:"permissions"`
+	Permissions         *AuthenticationTokenPermissions           `json:"permissions"`
 	Repositories        []Repository                              `json:"repositories"`
 	RepositorySelection OptAuthenticationTokenRepositorySelection `json:"repository_selection"`
 	SingleFile          OptNilString                              `json:"single_file"`
@@ -14358,7 +14372,7 @@ type BaseGist struct {
 	CommitsURL  url.URL            `json:"commits_url"`
 	CreatedAt   time.Time          `json:"created_at"`
 	Description NilString          `json:"description"`
-	Files       struct{}           `json:"files"`
+	Files       BaseGistFiles      `json:"files"`
 	Forks       []string           `json:"forks"`
 	ForksURL    url.URL            `json:"forks_url"`
 	GitPullURL  url.URL            `json:"git_pull_url"`
@@ -15018,6 +15032,7 @@ type Email struct {
 	Visibility NilString `json:"visibility"`
 }
 
+// EmptyObject describes #/components/schemas/empty-object.
 type EmptyObject struct{}
 
 func (*EmptyObject) actionsApproveWorkflowRunResponse()              {}
@@ -15478,6 +15493,7 @@ type Label struct {
 
 func (*Label) issuesGetLabelResponse() {}
 
+// Language describes #/components/schemas/language.
 type Language struct{}
 
 // License describes #/components/schemas/license.
