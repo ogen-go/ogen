@@ -53,7 +53,7 @@ func TestGenerate(t *testing.T) {
 			Name: "sample_1.json",
 		},
 		{
-			Name: "nh.jqon",
+			Name: "nh.json",
 			Options: gen.Options{
 				IgnoreNotImplemented: []string{
 					"requestBody with primitive type",
