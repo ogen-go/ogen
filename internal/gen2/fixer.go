@@ -99,7 +99,7 @@ func (g *Generator) fixEqualResponses(m *ir.Method) {
 		candidate.typ.Unimplement(m.Response.Type)
 		alias := ir.Alias(candidate.renameTo, candidate.typ)
 		alias.Implement(m.Response.Type)
-		g.structs[alias.Name] = alias
+		g.types[alias.Name] = alias
 		if candidate.replaceNoc {
 			candidate.response.NoContent = alias
 			continue

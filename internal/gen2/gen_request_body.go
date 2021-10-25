@@ -35,6 +35,7 @@ func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Req
 
 	iface := ir.Iface(name)
 	iface.AddMethod(camel(name))
+	g.types[iface.Name] = iface
 	for contentType, typ := range types {
 		if typ.Is(ir.KindPrimitive, ir.KindArray) {
 			// Primitive types cannot have methods, wrap it with alias.
@@ -42,7 +43,7 @@ func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Req
 		}
 
 		typ.Implement(iface)
-		g.structs[typ.Name] = typ
+		g.types[typ.Name] = typ
 	}
 
 	return &ir.Request{

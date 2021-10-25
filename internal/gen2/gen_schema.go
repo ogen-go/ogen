@@ -38,7 +38,7 @@ func (g *Generator) object2IR(name string, schema *ast.Schema) (*ir.Type, error)
 
 		if field.Schema.Type == ast.Object {
 			if field.Schema.Ref != "" {
-				g.structs[field.Schema.Ref] = typ
+				g.types[field.Schema.Ref] = typ
 			} else {
 				g.refs[typ.Name] = typ
 			}

@@ -10,7 +10,7 @@ import (
 
 type Generator struct {
 	methods []*ir.Method
-	structs map[string]*ir.Type
+	types   map[string]*ir.Type
 	refs    map[string]*ir.Type
 }
 
@@ -21,8 +21,8 @@ func New(spec *ogen.Spec) (*Generator, error) {
 	}
 
 	g := &Generator{
-		structs: map[string]*ir.Type{},
-		refs:    map[string]*ir.Type{},
+		types: map[string]*ir.Type{},
+		refs:  map[string]*ir.Type{},
 	}
 
 	if err := g.makeIR(methods); err != nil {
