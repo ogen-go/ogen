@@ -53,15 +53,15 @@ var (
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
 	// Search implements search operation.
-	Search(ctx context.Context, params SearchParams) (SearchResponse, error)
+	Search(ctx context.Context, params SearchParams) (SearchRes, error)
 	// SearchByTagID implements searchByTagID operation.
-	SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDResponse, error)
+	SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error)
 	// GetBook implements getBook operation.
-	GetBook(ctx context.Context, params GetBookParams) (GetBookResponse, error)
+	GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error)
 	// GetPageCoverImage implements getPageCoverImage operation.
-	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageResponse, error)
+	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error)
 	// GetPageImage implements getPageImage operation.
-	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageResponse, error)
+	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error)
 	// GetPageThumbnailImage implements getPageThumbnailImage operation.
-	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageResponse, error)
+	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error)
 }

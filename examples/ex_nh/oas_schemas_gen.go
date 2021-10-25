@@ -63,35 +63,35 @@ type Book struct {
 	UploadDate   OptInt    `json:"upload_date"`
 }
 
-func (*Book) getBookResponse() {}
+func (*Book) getBookRes() {}
 
 type GetBookForbidden struct{}
 
-func (*GetBookForbidden) getBookResponse() {}
+func (*GetBookForbidden) getBookRes() {}
 
 type GetPageCoverImageForbidden struct{}
 
-func (*GetPageCoverImageForbidden) getPageCoverImageResponse() {}
+func (*GetPageCoverImageForbidden) getPageCoverImageRes() {}
 
 type GetPageCoverImageOK string
 
-func (*GetPageCoverImageOK) getPageCoverImageResponse() {}
+func (*GetPageCoverImageOK) getPageCoverImageRes() {}
 
 type GetPageImageForbidden struct{}
 
-func (*GetPageImageForbidden) getPageImageResponse() {}
+func (*GetPageImageForbidden) getPageImageRes() {}
 
 type GetPageImageOK string
 
-func (*GetPageImageOK) getPageImageResponse() {}
+func (*GetPageImageOK) getPageImageRes() {}
 
 type GetPageThumbnailImageForbidden struct{}
 
-func (*GetPageThumbnailImageForbidden) getPageThumbnailImageResponse() {}
+func (*GetPageThumbnailImageForbidden) getPageThumbnailImageRes() {}
 
 type GetPageThumbnailImageOK string
 
-func (*GetPageThumbnailImageOK) getPageThumbnailImageResponse() {}
+func (*GetPageThumbnailImageOK) getPageThumbnailImageRes() {}
 
 // Image describes #/components/schemas/Image.
 type Image struct {
@@ -337,19 +337,19 @@ func (o OptTitle) Get() (v Title, ok bool) {
 
 type SearchByTagIDForbidden struct{}
 
-func (*SearchByTagIDForbidden) searchByTagIDResponse() {}
+func (*SearchByTagIDForbidden) searchByTagIDRes() {}
 
 type SearchByTagIDOK []SearchResponse
 
-func (*SearchByTagIDOK) searchByTagIDResponse() {}
+func (*SearchByTagIDOK) searchByTagIDRes() {}
 
 type SearchForbidden struct{}
 
-func (*SearchForbidden) searchResponse() {}
+func (*SearchForbidden) searchRes() {}
 
 type SearchOK []SearchResponse
 
-func (*SearchOK) searchResponse() {}
+func (*SearchOK) searchRes() {}
 
 // SearchResponse describes #/components/schemas/SearchResponse.
 type SearchResponse struct {

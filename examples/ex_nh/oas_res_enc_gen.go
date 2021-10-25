@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func encodeSearchResponse(response SearchResponse, w http.ResponseWriter) error {
+func encodeSearchResponse(response SearchRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SearchOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -67,7 +67,7 @@ func encodeSearchResponse(response SearchResponse, w http.ResponseWriter) error 
 	}
 }
 
-func encodeSearchByTagIDResponse(response SearchByTagIDResponse, w http.ResponseWriter) error {
+func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SearchByTagIDOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -84,7 +84,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDResponse, w http.Response
 	}
 }
 
-func encodeGetBookResponse(response GetBookResponse, w http.ResponseWriter) error {
+func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Book:
 		w.Header().Set("Content-Type", "application/json")
@@ -101,7 +101,7 @@ func encodeGetBookResponse(response GetBookResponse, w http.ResponseWriter) erro
 	}
 }
 
-func encodeGetPageCoverImageResponse(response GetPageCoverImageResponse, w http.ResponseWriter) error {
+func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetPageCoverImageOK:
 		w.Header().Set("Content-Type", "image/*")
@@ -115,7 +115,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageResponse, w http.
 	}
 }
 
-func encodeGetPageImageResponse(response GetPageImageResponse, w http.ResponseWriter) error {
+func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetPageImageOK:
 		w.Header().Set("Content-Type", "image/*")
@@ -129,7 +129,7 @@ func encodeGetPageImageResponse(response GetPageImageResponse, w http.ResponseWr
 	}
 }
 
-func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageResponse, w http.ResponseWriter) error {
+func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GetPageThumbnailImageOK:
 		w.Header().Set("Content-Type", "image/*")

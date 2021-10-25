@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeSearchResponse(resp *http.Response) (res SearchResponse, err error) {
+func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -71,7 +71,7 @@ func decodeSearchResponse(resp *http.Response) (res SearchResponse, err error) {
 	}
 }
 
-func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDResponse, err error) {
+func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -92,7 +92,7 @@ func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDResponse
 	}
 }
 
-func decodeGetBookResponse(resp *http.Response) (res GetBookResponse, err error) {
+func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -113,7 +113,7 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookResponse, err error)
 	}
 }
 
-func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImageResponse, err error) {
+func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -129,7 +129,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImage
 	}
 }
 
-func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageResponse, err error) {
+func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -145,7 +145,7 @@ func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageResponse, 
 	}
 }
 
-func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbnailImageResponse, err error) {
+func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbnailImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

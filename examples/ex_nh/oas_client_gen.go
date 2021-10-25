@@ -72,7 +72,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchResponse, err error) {
+func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/search"
 
@@ -116,7 +116,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	return result, nil
 }
 
-func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDResponse, err error) {
+func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/tagged"
 
@@ -160,7 +160,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	return result, nil
 }
 
-func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookResponse, err error) {
+func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/gallery/"
 	{
@@ -190,7 +190,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	return result, nil
 }
 
-func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageResponse, err error) {
+func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -230,7 +230,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	return result, nil
 }
 
-func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageResponse, err error) {
+func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -280,7 +280,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	return result, nil
 }
 
-func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageResponse, err error) {
+func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
