@@ -86,16 +86,26 @@ func (s *HelloWorld) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads HelloWorld from json stream.
 func (s *HelloWorld) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message":
-			s.Message = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Message = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -138,18 +148,34 @@ func (s *WorldObject) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads WorldObject from json stream.
 func (s *WorldObject) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "id":
-			s.ID = i.ReadInt64()
-			return i.Error == nil
+			if err := func() error {
+				s.ID = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "randomNumber":
-			s.RandomNumber = i.ReadInt64()
-			return i.Error == nil
+			if err := func() error {
+				s.RandomNumber = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }

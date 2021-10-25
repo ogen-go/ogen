@@ -135,65 +135,120 @@ func (s *Book) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Book from json stream.
 func (s *Book) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "id":
-			s.ID.Reset()
-			if err := s.ID.ReadJSON(i); err != nil {
-				i.ReportError("Field ID", err.Error())
+			if err := func() error {
+				if err := s.ID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "images":
-			s.Images.Reset()
-			if err := s.Images.ReadJSON(i); err != nil {
-				i.ReportError("Field Images", err.Error())
+			if err := func() error {
+				if err := s.Images.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "media_id":
-			s.MediaID.Reset()
-			if err := s.MediaID.ReadJSON(i); err != nil {
-				i.ReportError("Field MediaID", err.Error())
+			if err := func() error {
+				if err := s.MediaID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "num_favorites":
-			s.NumFavorites.Reset()
-			if err := s.NumFavorites.ReadJSON(i); err != nil {
-				i.ReportError("Field NumFavorites", err.Error())
+			if err := func() error {
+				if err := s.NumFavorites.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "num_pages":
-			s.NumPages.Reset()
-			if err := s.NumPages.ReadJSON(i); err != nil {
-				i.ReportError("Field NumPages", err.Error())
+			if err := func() error {
+				if err := s.NumPages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "scanlator":
-			s.Scanlator.Reset()
-			if err := s.Scanlator.ReadJSON(i); err != nil {
-				i.ReportError("Field Scanlator", err.Error())
+			if err := func() error {
+				if err := s.Scanlator.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "tags":
-			// Unsupported kind "array" for field "Tags".
-			i.Skip()
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem Tag
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Tags = append(s.Tags, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "title":
-			s.Title.Reset()
-			if err := s.Title.ReadJSON(i); err != nil {
-				i.ReportError("Field Title", err.Error())
+			if err := func() error {
+				if err := s.Title.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "upload_date":
-			s.UploadDate.Reset()
-			if err := s.UploadDate.ReadJSON(i); err != nil {
-				i.ReportError("Field UploadDate", err.Error())
+			if err := func() error {
+				if err := s.UploadDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -202,6 +257,9 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -238,6 +296,7 @@ func (s *GetBookForbidden) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetBookForbidden from json stream.
 func (s *GetBookForbidden) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -245,6 +304,9 @@ func (s *GetBookForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -281,6 +343,7 @@ func (s *GetPageCoverImageForbidden) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetPageCoverImageForbidden from json stream.
 func (s *GetPageCoverImageForbidden) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -288,6 +351,9 @@ func (s *GetPageCoverImageForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -329,6 +395,7 @@ func (s *GetPageImageForbidden) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetPageImageForbidden from json stream.
 func (s *GetPageImageForbidden) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -336,6 +403,9 @@ func (s *GetPageImageForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -377,6 +447,7 @@ func (s *GetPageThumbnailImageForbidden) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetPageThumbnailImageForbidden from json stream.
 func (s *GetPageThumbnailImageForbidden) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -384,6 +455,9 @@ func (s *GetPageThumbnailImageForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -440,26 +514,39 @@ func (s *Image) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Image from json stream.
 func (s *Image) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "h":
-			s.H.Reset()
-			if err := s.H.ReadJSON(i); err != nil {
-				i.ReportError("Field H", err.Error())
+			if err := func() error {
+				if err := s.H.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "t":
-			s.T.Reset()
-			if err := s.T.ReadJSON(i); err != nil {
-				i.ReportError("Field T", err.Error())
+			if err := func() error {
+				if err := s.T.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "w":
-			s.W.Reset()
-			if err := s.W.ReadJSON(i); err != nil {
-				i.ReportError("Field W", err.Error())
+			if err := func() error {
+				if err := s.W.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -468,6 +555,9 @@ func (s *Image) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -526,23 +616,54 @@ func (s *Images) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Images from json stream.
 func (s *Images) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cover":
-			s.Cover.Reset()
-			if err := s.Cover.ReadJSON(i); err != nil {
-				i.ReportError("Field Cover", err.Error())
+			if err := func() error {
+				if err := s.Cover.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "pages":
-			// Unsupported kind "array" for field "Pages".
-			i.Skip()
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem Image
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Pages = append(s.Pages, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "thumbnail":
-			s.Thumbnail.Reset()
-			if err := s.Thumbnail.ReadJSON(i); err != nil {
-				i.ReportError("Field Thumbnail", err.Error())
+			if err := func() error {
+				if err := s.Thumbnail.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -551,6 +672,9 @@ func (s *Images) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -701,6 +825,7 @@ func (s *SearchByTagIDForbidden) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SearchByTagIDForbidden from json stream.
 func (s *SearchByTagIDForbidden) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -708,6 +833,9 @@ func (s *SearchByTagIDForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -749,6 +877,7 @@ func (s *SearchForbidden) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SearchForbidden from json stream.
 func (s *SearchForbidden) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -756,6 +885,9 @@ func (s *SearchForbidden) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -819,31 +951,65 @@ func (s *SearchResponse) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SearchResponse from json stream.
 func (s *SearchResponse) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "num_pages":
-			s.NumPages.Reset()
-			if err := s.NumPages.ReadJSON(i); err != nil {
-				i.ReportError("Field NumPages", err.Error())
+			if err := func() error {
+				if err := s.NumPages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "per_page":
-			s.PerPage.Reset()
-			if err := s.PerPage.ReadJSON(i); err != nil {
-				i.ReportError("Field PerPage", err.Error())
+			if err := func() error {
+				if err := s.PerPage.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "result":
-			// Unsupported kind "array" for field "Result".
-			i.Skip()
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem Book
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Result = append(s.Result, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -905,40 +1071,61 @@ func (s *Tag) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Tag from json stream.
 func (s *Tag) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "count":
-			s.Count.Reset()
-			if err := s.Count.ReadJSON(i); err != nil {
-				i.ReportError("Field Count", err.Error())
+			if err := func() error {
+				if err := s.Count.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "id":
-			s.ID.Reset()
-			if err := s.ID.ReadJSON(i); err != nil {
-				i.ReportError("Field ID", err.Error())
+			if err := func() error {
+				if err := s.ID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "name":
-			s.Name.Reset()
-			if err := s.Name.ReadJSON(i); err != nil {
-				i.ReportError("Field Name", err.Error())
+			if err := func() error {
+				if err := s.Name.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "type":
-			s.Type.Reset()
-			if err := s.Type.ReadJSON(i); err != nil {
-				i.ReportError("Field Type", err.Error())
+			if err := func() error {
+				if err := s.Type.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "url":
-			s.URL.Reset()
-			if err := s.URL.ReadJSON(i); err != nil {
-				i.ReportError("Field URL", err.Error())
+			if err := func() error {
+				if err := s.URL.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -947,6 +1134,9 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1009,26 +1199,39 @@ func (s *Title) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Title from json stream.
 func (s *Title) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "english":
-			s.English.Reset()
-			if err := s.English.ReadJSON(i); err != nil {
-				i.ReportError("Field English", err.Error())
+			if err := func() error {
+				if err := s.English.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "japanese":
-			s.Japanese.Reset()
-			if err := s.Japanese.ReadJSON(i); err != nil {
-				i.ReportError("Field Japanese", err.Error())
+			if err := func() error {
+				if err := s.Japanese.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "pretty":
-			s.Pretty.Reset()
-			if err := s.Pretty.ReadJSON(i); err != nil {
-				i.ReportError("Field Pretty", err.Error())
+			if err := func() error {
+				if err := s.Pretty.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -1037,5 +1240,8 @@ func (s *Title) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }

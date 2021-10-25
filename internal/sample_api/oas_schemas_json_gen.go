@@ -88,12 +88,17 @@ func (s *Data) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Data from json stream.
 func (s *Data) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
-			s.Description.Reset()
-			if err := s.Description.ReadJSON(i); err != nil {
-				i.ReportError("Field Description", err.Error())
+			if err := func() error {
+				if err := s.Description.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -102,6 +107,9 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -144,19 +152,35 @@ func (s *Error) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Error from json stream.
 func (s *Error) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "code":
-			s.Code = i.ReadInt64()
-			return i.Error == nil
+			if err := func() error {
+				s.Code = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "message":
-			s.Message = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Message = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -193,6 +217,7 @@ func (s *ErrorStatusCode) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ErrorStatusCode from json stream.
 func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -200,6 +225,9 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -236,6 +264,7 @@ func (s *FoobarPutDefault) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads FoobarPutDefault from json stream.
 func (s *FoobarPutDefault) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -243,6 +272,9 @@ func (s *FoobarPutDefault) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -307,6 +339,7 @@ func (s *NotFound) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads NotFound from json stream.
 func (s *NotFound) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -314,6 +347,9 @@ func (s *NotFound) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -657,169 +693,336 @@ func (s *Pet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Pet from json stream.
 func (s *Pet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "birthday":
-			v, err := json.ReadDate(i)
-			if err != nil {
-				i.ReportError("Field Birthday", err.Error())
+			if err := func() error {
+				v, err := json.ReadDate(i)
+				if err != nil {
+					return err
+				}
+
+				s.Birthday = v
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
-			s.Birthday = v
 			return true
 		case "friends":
-			// Unsupported kind "array" for field "Friends".
-			i.Skip()
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem Pet
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.Friends = append(s.Friends, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "id":
-			s.ID = i.ReadInt64()
-			return i.Error == nil
-		case "ip":
-			v, err := json.ReadIP(i)
-			if err != nil {
-				i.ReportError("Field IP", err.Error())
+			if err := func() error {
+				s.ID = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
-			s.IP = v
+			return true
+		case "ip":
+			if err := func() error {
+				v, err := json.ReadIP(i)
+				if err != nil {
+					return err
+				}
+
+				s.IP = v
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "ip_v4":
-			v, err := json.ReadIP(i)
-			if err != nil {
-				i.ReportError("Field IPV4", err.Error())
+			if err := func() error {
+				v, err := json.ReadIP(i)
+				if err != nil {
+					return err
+				}
+
+				s.IPV4 = v
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
-			s.IPV4 = v
 			return true
 		case "ip_v6":
-			v, err := json.ReadIP(i)
-			if err != nil {
-				i.ReportError("Field IPV6", err.Error())
+			if err := func() error {
+				v, err := json.ReadIP(i)
+				if err != nil {
+					return err
+				}
+
+				s.IPV6 = v
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
-			s.IPV6 = v
 			return true
 		case "kind":
-			if err := s.Kind.ReadJSON(i); err != nil {
-				i.ReportError("Field Kind", err.Error())
+			if err := func() error {
+				s.Kind = PetKind(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "name":
-			s.Name = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Name = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "next":
-			s.Next.Reset()
-			if err := s.Next.ReadJSON(i); err != nil {
-				i.ReportError("Field Next", err.Error())
+			if err := func() error {
+				if err := s.Next.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "nickname":
-			if err := s.Nickname.ReadJSON(i); err != nil {
-				i.ReportError("Field Nickname", err.Error())
+			if err := func() error {
+				if err := s.Nickname.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "nullStr":
-			s.NullStr.Reset()
-			if err := s.NullStr.ReadJSON(i); err != nil {
-				i.ReportError("Field NullStr", err.Error())
+			if err := func() error {
+				if err := s.NullStr.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "primary":
-			// Unsupported kind "pointer" for field "Primary".
-			i.Skip()
-			return true
-		case "rate":
-			v, err := json.ReadDuration(i)
-			if err != nil {
-				i.ReportError("Field Rate", err.Error())
+			if err := func() error {
+				return fmt.Errorf(`decoding of "*Pet" (pointer) is not implemented`)
+			}(); err != nil {
+				retErr = err
 				return false
 			}
-			s.Rate = v
+			return true
+		case "rate":
+			if err := func() error {
+				v, err := json.ReadDuration(i)
+				if err != nil {
+					return err
+				}
+
+				s.Rate = v
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "tag":
-			s.Tag.Reset()
-			if err := s.Tag.ReadJSON(i); err != nil {
-				i.ReportError("Field Tag", err.Error())
+			if err := func() error {
+				if err := s.Tag.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "testArray1":
-			// Unsupported kind "array" for field "TestArray1".
-			i.Skip()
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem []string
+					if err := func() error {
+						var retErr error
+						i.ReadArrayCB(func(i *json.Iterator) bool {
+							var elemElem string
+							if err := func() error {
+								elemElem = string(i.ReadString())
+								return i.Error
+							}(); err != nil {
+								retErr = err
+								return false
+							}
+							elem = append(elem, elemElem)
+							return true
+						})
+						if retErr != nil {
+							return retErr
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.TestArray1 = append(s.TestArray1, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "testDate":
-			s.TestDate.Reset()
-			if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
-				i.ReportError("Field TestDate", err.Error())
+			if err := func() error {
+				if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "testDateTime":
-			s.TestDateTime.Reset()
-			if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
-				i.ReportError("Field TestDateTime", err.Error())
+			if err := func() error {
+				if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "testDuration":
-			s.TestDuration.Reset()
-			if err := s.TestDuration.ReadJSON(i); err != nil {
-				i.ReportError("Field TestDuration", err.Error())
+			if err := func() error {
+				if err := s.TestDuration.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "testFloat1":
-			s.TestFloat1.Reset()
-			if err := s.TestFloat1.ReadJSON(i); err != nil {
-				i.ReportError("Field TestFloat1", err.Error())
+			if err := func() error {
+				if err := s.TestFloat1.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "testInteger1":
-			s.TestInteger1.Reset()
-			if err := s.TestInteger1.ReadJSON(i); err != nil {
-				i.ReportError("Field TestInteger1", err.Error())
+			if err := func() error {
+				if err := s.TestInteger1.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "testTime":
-			s.TestTime.Reset()
-			if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
-				i.ReportError("Field TestTime", err.Error())
+			if err := func() error {
+				if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "type":
-			s.Type.Reset()
-			if err := s.Type.ReadJSON(i); err != nil {
-				i.ReportError("Field Type", err.Error())
+			if err := func() error {
+				if err := s.Type.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "uri":
-			v, err := json.ReadURI(i)
-			if err != nil {
-				i.ReportError("Field URI", err.Error())
+			if err := func() error {
+				v, err := json.ReadURI(i)
+				if err != nil {
+					return err
+				}
+
+				s.URI = v
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
-			s.URI = v
 			return true
 		case "unique_id":
-			v, err := json.ReadUUID(i)
-			if err != nil {
-				i.ReportError("Field UniqueID", err.Error())
+			if err := func() error {
+				v, err := json.ReadUUID(i)
+				if err != nil {
+					return err
+				}
+
+				s.UniqueID = v
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
-			s.UniqueID = v
 			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -856,6 +1059,7 @@ func (s *PetCreateTextPlainReq) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PetCreateTextPlainReq from json stream.
 func (s *PetCreateTextPlainReq) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -863,6 +1067,9 @@ func (s *PetCreateTextPlainReq) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -902,16 +1109,26 @@ func (s *PetGetDefault) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PetGetDefault from json stream.
 func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message":
-			s.Message = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Message = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -948,6 +1165,7 @@ func (s *PetGetDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PetGetDefaultStatusCode from json stream.
 func (s *PetGetDefaultStatusCode) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -955,6 +1173,9 @@ func (s *PetGetDefaultStatusCode) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 

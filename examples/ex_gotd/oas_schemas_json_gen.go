@@ -118,56 +118,106 @@ func (s *Animation) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Animation from json stream.
 func (s *Animation) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Duration = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(i); err != nil {
-				i.ReportError("Field FileName", err.Error())
+			if err := func() error {
+				if err := s.FileName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "height":
-			s.Height = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Height = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(i); err != nil {
-				i.ReportError("Field MimeType", err.Error())
+			if err := func() error {
+				if err := s.MimeType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(i); err != nil {
-				i.ReportError("Field Thumb", err.Error())
+			if err := func() error {
+				if err := s.Thumb.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "width":
-			s.Width = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Width = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -243,56 +293,99 @@ func (s *Audio) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Audio from json stream.
 func (s *Audio) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Duration = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(i); err != nil {
-				i.ReportError("Field FileName", err.Error())
+			if err := func() error {
+				if err := s.FileName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(i); err != nil {
-				i.ReportError("Field MimeType", err.Error())
+			if err := func() error {
+				if err := s.MimeType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "performer":
-			s.Performer.Reset()
-			if err := s.Performer.ReadJSON(i); err != nil {
-				i.ReportError("Field Performer", err.Error())
+			if err := func() error {
+				if err := s.Performer.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(i); err != nil {
-				i.ReportError("Field Thumb", err.Error())
+			if err := func() error {
+				if err := s.Thumb.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title.Reset()
-			if err := s.Title.ReadJSON(i); err != nil {
-				i.ReportError("Field Title", err.Error())
+			if err := func() error {
+				if err := s.Title.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -301,6 +394,9 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -337,6 +433,7 @@ func (s *BotCommandScope) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads BotCommandScope from json stream.
 func (s *BotCommandScope) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -344,6 +441,9 @@ func (s *BotCommandScope) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -466,123 +566,200 @@ func (s *Chat) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Chat from json stream.
 func (s *Chat) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "bio":
-			s.Bio.Reset()
-			if err := s.Bio.ReadJSON(i); err != nil {
-				i.ReportError("Field Bio", err.Error())
+			if err := func() error {
+				if err := s.Bio.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_set_sticker_set":
-			s.CanSetStickerSet.Reset()
-			if err := s.CanSetStickerSet.ReadJSON(i); err != nil {
-				i.ReportError("Field CanSetStickerSet", err.Error())
+			if err := func() error {
+				if err := s.CanSetStickerSet.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "description":
-			s.Description.Reset()
-			if err := s.Description.ReadJSON(i); err != nil {
-				i.ReportError("Field Description", err.Error())
+			if err := func() error {
+				if err := s.Description.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "first_name":
-			s.FirstName.Reset()
-			if err := s.FirstName.ReadJSON(i); err != nil {
-				i.ReportError("Field FirstName", err.Error())
+			if err := func() error {
+				if err := s.FirstName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "id":
-			s.ID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.ID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "invite_link":
-			s.InviteLink.Reset()
-			if err := s.InviteLink.ReadJSON(i); err != nil {
-				i.ReportError("Field InviteLink", err.Error())
+			if err := func() error {
+				if err := s.InviteLink.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "last_name":
-			s.LastName.Reset()
-			if err := s.LastName.ReadJSON(i); err != nil {
-				i.ReportError("Field LastName", err.Error())
+			if err := func() error {
+				if err := s.LastName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "linked_chat_id":
-			s.LinkedChatID.Reset()
-			if err := s.LinkedChatID.ReadJSON(i); err != nil {
-				i.ReportError("Field LinkedChatID", err.Error())
+			if err := func() error {
+				if err := s.LinkedChatID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "location":
-			s.Location.Reset()
-			if err := s.Location.ReadJSON(i); err != nil {
-				i.ReportError("Field Location", err.Error())
+			if err := func() error {
+				if err := s.Location.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_auto_delete_time":
-			s.MessageAutoDeleteTime.Reset()
-			if err := s.MessageAutoDeleteTime.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageAutoDeleteTime", err.Error())
+			if err := func() error {
+				if err := s.MessageAutoDeleteTime.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "permissions":
-			s.Permissions.Reset()
-			if err := s.Permissions.ReadJSON(i); err != nil {
-				i.ReportError("Field Permissions", err.Error())
+			if err := func() error {
+				if err := s.Permissions.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "photo":
-			s.Photo.Reset()
-			if err := s.Photo.ReadJSON(i); err != nil {
-				i.ReportError("Field Photo", err.Error())
+			if err := func() error {
+				if err := s.Photo.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "pinned_message":
-			s.PinnedMessage.Reset()
-			if err := s.PinnedMessage.ReadJSON(i); err != nil {
-				i.ReportError("Field PinnedMessage", err.Error())
+			if err := func() error {
+				if err := s.PinnedMessage.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "slow_mode_delay":
-			s.SlowModeDelay.Reset()
-			if err := s.SlowModeDelay.ReadJSON(i); err != nil {
-				i.ReportError("Field SlowModeDelay", err.Error())
+			if err := func() error {
+				if err := s.SlowModeDelay.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "sticker_set_name":
-			s.StickerSetName.Reset()
-			if err := s.StickerSetName.ReadJSON(i); err != nil {
-				i.ReportError("Field StickerSetName", err.Error())
+			if err := func() error {
+				if err := s.StickerSetName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title.Reset()
-			if err := s.Title.ReadJSON(i); err != nil {
-				i.ReportError("Field Title", err.Error())
+			if err := func() error {
+				if err := s.Title.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "type":
-			s.Type = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Type = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "username":
-			s.Username.Reset()
-			if err := s.Username.ReadJSON(i); err != nil {
-				i.ReportError("Field Username", err.Error())
+			if err := func() error {
+				if err := s.Username.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -591,6 +768,9 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -633,14 +813,26 @@ func (s *ChatLocation) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ChatLocation from json stream.
 func (s *ChatLocation) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "address":
-			s.Address = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Address = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "location":
-			if err := s.Location.ReadJSON(i); err != nil {
-				i.ReportError("Field Location", err.Error())
+			if err := func() error {
+				if err := s.Location.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -649,6 +841,9 @@ func (s *ChatLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -725,61 +920,94 @@ func (s *ChatPermissions) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ChatPermissions from json stream.
 func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "can_add_web_page_previews":
-			s.CanAddWebPagePreviews.Reset()
-			if err := s.CanAddWebPagePreviews.ReadJSON(i); err != nil {
-				i.ReportError("Field CanAddWebPagePreviews", err.Error())
+			if err := func() error {
+				if err := s.CanAddWebPagePreviews.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_change_info":
-			s.CanChangeInfo.Reset()
-			if err := s.CanChangeInfo.ReadJSON(i); err != nil {
-				i.ReportError("Field CanChangeInfo", err.Error())
+			if err := func() error {
+				if err := s.CanChangeInfo.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_invite_users":
-			s.CanInviteUsers.Reset()
-			if err := s.CanInviteUsers.ReadJSON(i); err != nil {
-				i.ReportError("Field CanInviteUsers", err.Error())
+			if err := func() error {
+				if err := s.CanInviteUsers.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_pin_messages":
-			s.CanPinMessages.Reset()
-			if err := s.CanPinMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanPinMessages", err.Error())
+			if err := func() error {
+				if err := s.CanPinMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_send_media_messages":
-			s.CanSendMediaMessages.Reset()
-			if err := s.CanSendMediaMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanSendMediaMessages", err.Error())
+			if err := func() error {
+				if err := s.CanSendMediaMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_send_messages":
-			s.CanSendMessages.Reset()
-			if err := s.CanSendMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanSendMessages", err.Error())
+			if err := func() error {
+				if err := s.CanSendMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_send_other_messages":
-			s.CanSendOtherMessages.Reset()
-			if err := s.CanSendOtherMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanSendOtherMessages", err.Error())
+			if err := func() error {
+				if err := s.CanSendOtherMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_send_polls":
-			s.CanSendPolls.Reset()
-			if err := s.CanSendPolls.ReadJSON(i); err != nil {
-				i.ReportError("Field CanSendPolls", err.Error())
+			if err := func() error {
+				if err := s.CanSendPolls.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -788,6 +1016,9 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -836,25 +1067,53 @@ func (s *ChatPhoto) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ChatPhoto from json stream.
 func (s *ChatPhoto) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "big_file_id":
-			s.BigFileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.BigFileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "big_file_unique_id":
-			s.BigFileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.BigFileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "small_file_id":
-			s.SmallFileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.SmallFileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "small_file_unique_id":
-			s.SmallFileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.SmallFileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -912,32 +1171,57 @@ func (s *Contact) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Contact from json stream.
 func (s *Contact) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "first_name":
-			s.FirstName = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FirstName = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "last_name":
-			s.LastName.Reset()
-			if err := s.LastName.ReadJSON(i); err != nil {
-				i.ReportError("Field LastName", err.Error())
+			if err := func() error {
+				if err := s.LastName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "phone_number":
-			s.PhoneNumber = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.PhoneNumber = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "user_id":
-			s.UserID.Reset()
-			if err := s.UserID.ReadJSON(i); err != nil {
-				i.ReportError("Field UserID", err.Error())
+			if err := func() error {
+				if err := s.UserID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "vcard":
-			s.Vcard.Reset()
-			if err := s.Vcard.ReadJSON(i); err != nil {
-				i.ReportError("Field Vcard", err.Error())
+			if err := func() error {
+				if err := s.Vcard.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -946,6 +1230,9 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -988,19 +1275,35 @@ func (s *Dice) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Dice from json stream.
 func (s *Dice) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "emoji":
-			s.Emoji = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Emoji = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "value":
-			s.Value = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Value = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1063,39 +1366,68 @@ func (s *Document) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Document from json stream.
 func (s *Document) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(i); err != nil {
-				i.ReportError("Field FileName", err.Error())
+			if err := func() error {
+				if err := s.FileName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(i); err != nil {
-				i.ReportError("Field MimeType", err.Error())
+			if err := func() error {
+				if err := s.MimeType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(i); err != nil {
-				i.ReportError("Field Thumb", err.Error())
+			if err := func() error {
+				if err := s.Thumb.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -1104,6 +1436,9 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1149,22 +1484,44 @@ func (s *EncryptedCredentials) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads EncryptedCredentials from json stream.
 func (s *EncryptedCredentials) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "data":
-			s.Data = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Data = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "hash":
-			s.Hash = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Hash = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "secret":
-			s.Secret = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Secret = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1217,33 +1574,57 @@ func (s *Game) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Game from json stream.
 func (s *Game) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "animation":
-			s.Animation.Reset()
-			if err := s.Animation.ReadJSON(i); err != nil {
-				i.ReportError("Field Animation", err.Error())
+			if err := func() error {
+				if err := s.Animation.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "description":
-			s.Description = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Description = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "text":
-			s.Text.Reset()
-			if err := s.Text.ReadJSON(i); err != nil {
-				i.ReportError("Field Text", err.Error())
+			if err := func() error {
+				if err := s.Text.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Title = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1280,6 +1661,7 @@ func (s *InlineKeyboardMarkup) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads InlineKeyboardMarkup from json stream.
 func (s *InlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1287,6 +1669,9 @@ func (s *InlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1323,6 +1708,7 @@ func (s *InputMedia) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads InputMedia from json stream.
 func (s *InputMedia) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1330,6 +1716,9 @@ func (s *InputMedia) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1381,28 +1770,62 @@ func (s *Invoice) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Invoice from json stream.
 func (s *Invoice) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "currency":
-			s.Currency = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Currency = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "description":
-			s.Description = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Description = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "start_parameter":
-			s.StartParameter = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.StartParameter = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Title = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "total_amount":
-			s.TotalAmount = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.TotalAmount = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1465,39 +1888,68 @@ func (s *Location) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Location from json stream.
 func (s *Location) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "heading":
-			s.Heading.Reset()
-			if err := s.Heading.ReadJSON(i); err != nil {
-				i.ReportError("Field Heading", err.Error())
+			if err := func() error {
+				if err := s.Heading.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "horizontal_accuracy":
-			s.HorizontalAccuracy.Reset()
-			if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
-				i.ReportError("Field HorizontalAccuracy", err.Error())
+			if err := func() error {
+				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "latitude":
-			s.Latitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Latitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "live_period":
-			s.LivePeriod.Reset()
-			if err := s.LivePeriod.ReadJSON(i); err != nil {
-				i.ReportError("Field LivePeriod", err.Error())
+			if err := func() error {
+				if err := s.LivePeriod.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "longitude":
-			s.Longitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Longitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "proximity_alert_radius":
-			s.ProximityAlertRadius.Reset()
-			if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
-				i.ReportError("Field ProximityAlertRadius", err.Error())
+			if err := func() error {
+				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -1506,6 +1958,9 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1554,25 +2009,53 @@ func (s *MaskPosition) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MaskPosition from json stream.
 func (s *MaskPosition) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "point":
-			s.Point = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Point = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "scale":
-			s.Scale = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Scale = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "x_shift":
-			s.XShift = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.XShift = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "y_shift":
-			s.YShift = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.YShift = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1845,318 +2328,515 @@ func (s *Message) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Message from json stream.
 func (s *Message) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "animation":
-			s.Animation.Reset()
-			if err := s.Animation.ReadJSON(i); err != nil {
-				i.ReportError("Field Animation", err.Error())
+			if err := func() error {
+				if err := s.Animation.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "audio":
-			s.Audio.Reset()
-			if err := s.Audio.ReadJSON(i); err != nil {
-				i.ReportError("Field Audio", err.Error())
+			if err := func() error {
+				if err := s.Audio.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "author_signature":
-			s.AuthorSignature.Reset()
-			if err := s.AuthorSignature.ReadJSON(i); err != nil {
-				i.ReportError("Field AuthorSignature", err.Error())
+			if err := func() error {
+				if err := s.AuthorSignature.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "channel_chat_created":
-			s.ChannelChatCreated.Reset()
-			if err := s.ChannelChatCreated.ReadJSON(i); err != nil {
-				i.ReportError("Field ChannelChatCreated", err.Error())
+			if err := func() error {
+				if err := s.ChannelChatCreated.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "chat":
-			// Unsupported kind "pointer" for field "Chat".
-			i.Skip()
+			if err := func() error {
+				return fmt.Errorf(`decoding of "*Chat" (pointer) is not implemented`)
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "connected_website":
-			s.ConnectedWebsite.Reset()
-			if err := s.ConnectedWebsite.ReadJSON(i); err != nil {
-				i.ReportError("Field ConnectedWebsite", err.Error())
+			if err := func() error {
+				if err := s.ConnectedWebsite.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "contact":
-			s.Contact.Reset()
-			if err := s.Contact.ReadJSON(i); err != nil {
-				i.ReportError("Field Contact", err.Error())
+			if err := func() error {
+				if err := s.Contact.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "date":
-			s.Date = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Date = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "delete_chat_photo":
-			s.DeleteChatPhoto.Reset()
-			if err := s.DeleteChatPhoto.ReadJSON(i); err != nil {
-				i.ReportError("Field DeleteChatPhoto", err.Error())
+			if err := func() error {
+				if err := s.DeleteChatPhoto.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "dice":
-			s.Dice.Reset()
-			if err := s.Dice.ReadJSON(i); err != nil {
-				i.ReportError("Field Dice", err.Error())
+			if err := func() error {
+				if err := s.Dice.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "document":
-			s.Document.Reset()
-			if err := s.Document.ReadJSON(i); err != nil {
-				i.ReportError("Field Document", err.Error())
+			if err := func() error {
+				if err := s.Document.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "edit_date":
-			s.EditDate.Reset()
-			if err := s.EditDate.ReadJSON(i); err != nil {
-				i.ReportError("Field EditDate", err.Error())
+			if err := func() error {
+				if err := s.EditDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "forward_date":
-			s.ForwardDate.Reset()
-			if err := s.ForwardDate.ReadJSON(i); err != nil {
-				i.ReportError("Field ForwardDate", err.Error())
+			if err := func() error {
+				if err := s.ForwardDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "forward_from":
-			s.ForwardFrom.Reset()
-			if err := s.ForwardFrom.ReadJSON(i); err != nil {
-				i.ReportError("Field ForwardFrom", err.Error())
+			if err := func() error {
+				if err := s.ForwardFrom.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "forward_from_chat":
-			// Unsupported kind "pointer" for field "ForwardFromChat".
-			i.Skip()
+			if err := func() error {
+				return fmt.Errorf(`decoding of "*Chat" (pointer) is not implemented`)
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "forward_from_message_id":
-			s.ForwardFromMessageID.Reset()
-			if err := s.ForwardFromMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ForwardFromMessageID", err.Error())
+			if err := func() error {
+				if err := s.ForwardFromMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "forward_sender_name":
-			s.ForwardSenderName.Reset()
-			if err := s.ForwardSenderName.ReadJSON(i); err != nil {
-				i.ReportError("Field ForwardSenderName", err.Error())
+			if err := func() error {
+				if err := s.ForwardSenderName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "forward_signature":
-			s.ForwardSignature.Reset()
-			if err := s.ForwardSignature.ReadJSON(i); err != nil {
-				i.ReportError("Field ForwardSignature", err.Error())
+			if err := func() error {
+				if err := s.ForwardSignature.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "from":
-			s.From.Reset()
-			if err := s.From.ReadJSON(i); err != nil {
-				i.ReportError("Field From", err.Error())
+			if err := func() error {
+				if err := s.From.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "game":
-			s.Game.Reset()
-			if err := s.Game.ReadJSON(i); err != nil {
-				i.ReportError("Field Game", err.Error())
+			if err := func() error {
+				if err := s.Game.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "group_chat_created":
-			s.GroupChatCreated.Reset()
-			if err := s.GroupChatCreated.ReadJSON(i); err != nil {
-				i.ReportError("Field GroupChatCreated", err.Error())
+			if err := func() error {
+				if err := s.GroupChatCreated.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "invoice":
-			s.Invoice.Reset()
-			if err := s.Invoice.ReadJSON(i); err != nil {
-				i.ReportError("Field Invoice", err.Error())
+			if err := func() error {
+				if err := s.Invoice.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "left_chat_member":
-			s.LeftChatMember.Reset()
-			if err := s.LeftChatMember.ReadJSON(i); err != nil {
-				i.ReportError("Field LeftChatMember", err.Error())
+			if err := func() error {
+				if err := s.LeftChatMember.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "location":
-			s.Location.Reset()
-			if err := s.Location.ReadJSON(i); err != nil {
-				i.ReportError("Field Location", err.Error())
+			if err := func() error {
+				if err := s.Location.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "media_group_id":
-			s.MediaGroupID.Reset()
-			if err := s.MediaGroupID.ReadJSON(i); err != nil {
-				i.ReportError("Field MediaGroupID", err.Error())
+			if err := func() error {
+				if err := s.MediaGroupID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_auto_delete_timer_changed":
-			s.MessageAutoDeleteTimerChanged.Reset()
-			if err := s.MessageAutoDeleteTimerChanged.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageAutoDeleteTimerChanged", err.Error())
+			if err := func() error {
+				if err := s.MessageAutoDeleteTimerChanged.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MessageID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "migrate_from_chat_id":
-			s.MigrateFromChatID.Reset()
-			if err := s.MigrateFromChatID.ReadJSON(i); err != nil {
-				i.ReportError("Field MigrateFromChatID", err.Error())
+			if err := func() error {
+				if err := s.MigrateFromChatID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "migrate_to_chat_id":
-			s.MigrateToChatID.Reset()
-			if err := s.MigrateToChatID.ReadJSON(i); err != nil {
-				i.ReportError("Field MigrateToChatID", err.Error())
+			if err := func() error {
+				if err := s.MigrateToChatID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "new_chat_title":
-			s.NewChatTitle.Reset()
-			if err := s.NewChatTitle.ReadJSON(i); err != nil {
-				i.ReportError("Field NewChatTitle", err.Error())
+			if err := func() error {
+				if err := s.NewChatTitle.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "passport_data":
-			s.PassportData.Reset()
-			if err := s.PassportData.ReadJSON(i); err != nil {
-				i.ReportError("Field PassportData", err.Error())
+			if err := func() error {
+				if err := s.PassportData.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "pinned_message":
-			// Unsupported kind "pointer" for field "PinnedMessage".
-			i.Skip()
+			if err := func() error {
+				return fmt.Errorf(`decoding of "*Message" (pointer) is not implemented`)
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "poll":
-			s.Poll.Reset()
-			if err := s.Poll.ReadJSON(i); err != nil {
-				i.ReportError("Field Poll", err.Error())
+			if err := func() error {
+				if err := s.Poll.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "proximity_alert_triggered":
-			s.ProximityAlertTriggered.Reset()
-			if err := s.ProximityAlertTriggered.ReadJSON(i); err != nil {
-				i.ReportError("Field ProximityAlertTriggered", err.Error())
+			if err := func() error {
+				if err := s.ProximityAlertTriggered.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message":
-			// Unsupported kind "pointer" for field "ReplyToMessage".
-			i.Skip()
+			if err := func() error {
+				return fmt.Errorf(`decoding of "*Message" (pointer) is not implemented`)
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "sender_chat":
-			// Unsupported kind "pointer" for field "SenderChat".
-			i.Skip()
+			if err := func() error {
+				return fmt.Errorf(`decoding of "*Chat" (pointer) is not implemented`)
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "sticker":
-			s.Sticker.Reset()
-			if err := s.Sticker.ReadJSON(i); err != nil {
-				i.ReportError("Field Sticker", err.Error())
+			if err := func() error {
+				if err := s.Sticker.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "successful_payment":
-			s.SuccessfulPayment.Reset()
-			if err := s.SuccessfulPayment.ReadJSON(i); err != nil {
-				i.ReportError("Field SuccessfulPayment", err.Error())
+			if err := func() error {
+				if err := s.SuccessfulPayment.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "supergroup_chat_created":
-			s.SupergroupChatCreated.Reset()
-			if err := s.SupergroupChatCreated.ReadJSON(i); err != nil {
-				i.ReportError("Field SupergroupChatCreated", err.Error())
+			if err := func() error {
+				if err := s.SupergroupChatCreated.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "text":
-			s.Text.Reset()
-			if err := s.Text.ReadJSON(i); err != nil {
-				i.ReportError("Field Text", err.Error())
+			if err := func() error {
+				if err := s.Text.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "venue":
-			s.Venue.Reset()
-			if err := s.Venue.ReadJSON(i); err != nil {
-				i.ReportError("Field Venue", err.Error())
+			if err := func() error {
+				if err := s.Venue.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "via_bot":
-			s.ViaBot.Reset()
-			if err := s.ViaBot.ReadJSON(i); err != nil {
-				i.ReportError("Field ViaBot", err.Error())
+			if err := func() error {
+				if err := s.ViaBot.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "video":
-			s.Video.Reset()
-			if err := s.Video.ReadJSON(i); err != nil {
-				i.ReportError("Field Video", err.Error())
+			if err := func() error {
+				if err := s.Video.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "video_note":
-			s.VideoNote.Reset()
-			if err := s.VideoNote.ReadJSON(i); err != nil {
-				i.ReportError("Field VideoNote", err.Error())
+			if err := func() error {
+				if err := s.VideoNote.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "voice":
-			s.Voice.Reset()
-			if err := s.Voice.ReadJSON(i); err != nil {
-				i.ReportError("Field Voice", err.Error())
+			if err := func() error {
+				if err := s.Voice.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "voice_chat_ended":
-			s.VoiceChatEnded.Reset()
-			if err := s.VoiceChatEnded.ReadJSON(i); err != nil {
-				i.ReportError("Field VoiceChatEnded", err.Error())
+			if err := func() error {
+				if err := s.VoiceChatEnded.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "voice_chat_scheduled":
-			s.VoiceChatScheduled.Reset()
-			if err := s.VoiceChatScheduled.ReadJSON(i); err != nil {
-				i.ReportError("Field VoiceChatScheduled", err.Error())
+			if err := func() error {
+				if err := s.VoiceChatScheduled.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -2165,6 +2845,9 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2204,16 +2887,26 @@ func (s *MessageAutoDeleteTimerChanged) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MessageAutoDeleteTimerChanged from json stream.
 func (s *MessageAutoDeleteTimerChanged) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message_auto_delete_time":
-			s.MessageAutoDeleteTime = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MessageAutoDeleteTime = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2922,33 +3615,50 @@ func (s *OrderInfo) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads OrderInfo from json stream.
 func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "email":
-			s.Email.Reset()
-			if err := s.Email.ReadJSON(i); err != nil {
-				i.ReportError("Field Email", err.Error())
+			if err := func() error {
+				if err := s.Email.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "name":
-			s.Name.Reset()
-			if err := s.Name.ReadJSON(i); err != nil {
-				i.ReportError("Field Name", err.Error())
+			if err := func() error {
+				if err := s.Name.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "phone_number":
-			s.PhoneNumber.Reset()
-			if err := s.PhoneNumber.ReadJSON(i); err != nil {
-				i.ReportError("Field PhoneNumber", err.Error())
+			if err := func() error {
+				if err := s.PhoneNumber.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "shipping_address":
-			s.ShippingAddress.Reset()
-			if err := s.ShippingAddress.ReadJSON(i); err != nil {
-				i.ReportError("Field ShippingAddress", err.Error())
+			if err := func() error {
+				if err := s.ShippingAddress.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -2957,6 +3667,9 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2996,11 +3709,17 @@ func (s *PassportData) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PassportData from json stream.
 func (s *PassportData) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "credentials":
-			if err := s.Credentials.ReadJSON(i); err != nil {
-				i.ReportError("Field Credentials", err.Error())
+			if err := func() error {
+				if err := s.Credentials.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -3009,6 +3728,9 @@ func (s *PassportData) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3062,32 +3784,64 @@ func (s *PhotoSize) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PhotoSize from json stream.
 func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "height":
-			s.Height = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Height = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "width":
-			s.Width = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Width = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3165,62 +3919,124 @@ func (s *Poll) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Poll from json stream.
 func (s *Poll) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allows_multiple_answers":
-			s.AllowsMultipleAnswers = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.AllowsMultipleAnswers = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "close_date":
-			s.CloseDate.Reset()
-			if err := s.CloseDate.ReadJSON(i); err != nil {
-				i.ReportError("Field CloseDate", err.Error())
+			if err := func() error {
+				if err := s.CloseDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "correct_option_id":
-			s.CorrectOptionID.Reset()
-			if err := s.CorrectOptionID.ReadJSON(i); err != nil {
-				i.ReportError("Field CorrectOptionID", err.Error())
+			if err := func() error {
+				if err := s.CorrectOptionID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "explanation":
-			s.Explanation.Reset()
-			if err := s.Explanation.ReadJSON(i); err != nil {
-				i.ReportError("Field Explanation", err.Error())
+			if err := func() error {
+				if err := s.Explanation.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "id":
-			s.ID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.ID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "is_anonymous":
-			s.IsAnonymous = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.IsAnonymous = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "is_closed":
-			s.IsClosed = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.IsClosed = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "open_period":
-			s.OpenPeriod.Reset()
-			if err := s.OpenPeriod.ReadJSON(i); err != nil {
-				i.ReportError("Field OpenPeriod", err.Error())
+			if err := func() error {
+				if err := s.OpenPeriod.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "question":
-			s.Question = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Question = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "total_voter_count":
-			s.TotalVoterCount = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.TotalVoterCount = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "type":
-			s.Type = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Type = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3266,20 +4082,37 @@ func (s *ProximityAlertTriggered) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ProximityAlertTriggered from json stream.
 func (s *ProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "distance":
-			s.Distance = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Distance = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "traveler":
-			if err := s.Traveler.ReadJSON(i); err != nil {
-				i.ReportError("Field Traveler", err.Error())
+			if err := func() error {
+				if err := s.Traveler.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "watcher":
-			if err := s.Watcher.ReadJSON(i); err != nil {
-				i.ReportError("Field Watcher", err.Error())
+			if err := func() error {
+				if err := s.Watcher.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -3288,6 +4121,9 @@ func (s *ProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3332,15 +4168,26 @@ func (s *Result) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Result from json stream.
 func (s *Result) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ok":
-			s.Ok = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.Ok = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "result":
-			s.Result.Reset()
-			if err := s.Result.ReadJSON(i); err != nil {
-				i.ReportError("Field Result", err.Error())
+			if err := func() error {
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -3349,6 +4196,9 @@ func (s *Result) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3403,31 +4253,71 @@ func (s *ShippingAddress) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ShippingAddress from json stream.
 func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "city":
-			s.City = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.City = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "country_code":
-			s.CountryCode = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.CountryCode = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "post_code":
-			s.PostCode = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.PostCode = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.State = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "street_line1":
-			s.StreetLine1 = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.StreetLine1 = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "street_line2":
-			s.StreetLine2 = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.StreetLine2 = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3504,63 +4394,117 @@ func (s *Sticker) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Sticker from json stream.
 func (s *Sticker) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "emoji":
-			s.Emoji.Reset()
-			if err := s.Emoji.ReadJSON(i); err != nil {
-				i.ReportError("Field Emoji", err.Error())
+			if err := func() error {
+				if err := s.Emoji.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "height":
-			s.Height = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Height = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "is_animated":
-			s.IsAnimated = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.IsAnimated = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mask_position":
-			s.MaskPosition.Reset()
-			if err := s.MaskPosition.ReadJSON(i); err != nil {
-				i.ReportError("Field MaskPosition", err.Error())
+			if err := func() error {
+				if err := s.MaskPosition.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "set_name":
-			s.SetName.Reset()
-			if err := s.SetName.ReadJSON(i); err != nil {
-				i.ReportError("Field SetName", err.Error())
+			if err := func() error {
+				if err := s.SetName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(i); err != nil {
-				i.ReportError("Field Thumb", err.Error())
+			if err := func() error {
+				if err := s.Thumb.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "width":
-			s.Width = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Width = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3622,42 +4566,84 @@ func (s *SuccessfulPayment) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SuccessfulPayment from json stream.
 func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "currency":
-			s.Currency = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Currency = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "invoice_payload":
-			s.InvoicePayload = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.InvoicePayload = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "order_info":
-			s.OrderInfo.Reset()
-			if err := s.OrderInfo.ReadJSON(i); err != nil {
-				i.ReportError("Field OrderInfo", err.Error())
+			if err := func() error {
+				if err := s.OrderInfo.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "provider_payment_charge_id":
-			s.ProviderPaymentChargeID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.ProviderPaymentChargeID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "shipping_option_id":
-			s.ShippingOptionID.Reset()
-			if err := s.ShippingOptionID.ReadJSON(i); err != nil {
-				i.ReportError("Field ShippingOptionID", err.Error())
+			if err := func() error {
+				if err := s.ShippingOptionID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "telegram_payment_charge_id":
-			s.TelegramPaymentChargeID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.TelegramPaymentChargeID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "total_amount":
-			s.TotalAmount = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.TotalAmount = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3733,56 +4719,99 @@ func (s *User) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads User from json stream.
 func (s *User) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "can_join_groups":
-			s.CanJoinGroups.Reset()
-			if err := s.CanJoinGroups.ReadJSON(i); err != nil {
-				i.ReportError("Field CanJoinGroups", err.Error())
+			if err := func() error {
+				if err := s.CanJoinGroups.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_read_all_group_messages":
-			s.CanReadAllGroupMessages.Reset()
-			if err := s.CanReadAllGroupMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanReadAllGroupMessages", err.Error())
+			if err := func() error {
+				if err := s.CanReadAllGroupMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "first_name":
-			s.FirstName = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FirstName = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "id":
-			s.ID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.ID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "is_bot":
-			s.IsBot = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.IsBot = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.ReadJSON(i); err != nil {
-				i.ReportError("Field LanguageCode", err.Error())
+			if err := func() error {
+				if err := s.LanguageCode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "last_name":
-			s.LastName.Reset()
-			if err := s.LastName.ReadJSON(i); err != nil {
-				i.ReportError("Field LastName", err.Error())
+			if err := func() error {
+				if err := s.LastName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "supports_inline_queries":
-			s.SupportsInlineQueries.Reset()
-			if err := s.SupportsInlineQueries.ReadJSON(i); err != nil {
-				i.ReportError("Field SupportsInlineQueries", err.Error())
+			if err := func() error {
+				if err := s.SupportsInlineQueries.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "username":
-			s.Username.Reset()
-			if err := s.Username.ReadJSON(i); err != nil {
-				i.ReportError("Field Username", err.Error())
+			if err := func() error {
+				if err := s.Username.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -3791,6 +4820,9 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3856,53 +4888,90 @@ func (s *Venue) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Venue from json stream.
 func (s *Venue) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "address":
-			s.Address = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Address = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "foursquare_id":
-			s.FoursquareID.Reset()
-			if err := s.FoursquareID.ReadJSON(i); err != nil {
-				i.ReportError("Field FoursquareID", err.Error())
+			if err := func() error {
+				if err := s.FoursquareID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "foursquare_type":
-			s.FoursquareType.Reset()
-			if err := s.FoursquareType.ReadJSON(i); err != nil {
-				i.ReportError("Field FoursquareType", err.Error())
+			if err := func() error {
+				if err := s.FoursquareType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "google_place_id":
-			s.GooglePlaceID.Reset()
-			if err := s.GooglePlaceID.ReadJSON(i); err != nil {
-				i.ReportError("Field GooglePlaceID", err.Error())
+			if err := func() error {
+				if err := s.GooglePlaceID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "google_place_type":
-			s.GooglePlaceType.Reset()
-			if err := s.GooglePlaceType.ReadJSON(i); err != nil {
-				i.ReportError("Field GooglePlaceType", err.Error())
+			if err := func() error {
+				if err := s.GooglePlaceType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "location":
-			if err := s.Location.ReadJSON(i); err != nil {
-				i.ReportError("Field Location", err.Error())
+			if err := func() error {
+				if err := s.Location.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Title = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3974,56 +5043,106 @@ func (s *Video) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Video from json stream.
 func (s *Video) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Duration = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_name":
-			s.FileName.Reset()
-			if err := s.FileName.ReadJSON(i); err != nil {
-				i.ReportError("Field FileName", err.Error())
+			if err := func() error {
+				if err := s.FileName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "height":
-			s.Height = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Height = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(i); err != nil {
-				i.ReportError("Field MimeType", err.Error())
+			if err := func() error {
+				if err := s.MimeType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(i); err != nil {
-				i.ReportError("Field Thumb", err.Error())
+			if err := func() error {
+				if err := s.Thumb.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "width":
-			s.Width = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Width = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4082,31 +5201,64 @@ func (s *VideoNote) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads VideoNote from json stream.
 func (s *VideoNote) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Duration = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "length":
-			s.Length = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Length = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "thumb":
-			s.Thumb.Reset()
-			if err := s.Thumb.ReadJSON(i); err != nil {
-				i.ReportError("Field Thumb", err.Error())
+			if err := func() error {
+				if err := s.Thumb.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -4115,6 +5267,9 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4170,28 +5325,55 @@ func (s *Voice) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Voice from json stream.
 func (s *Voice) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Duration = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "file_size":
-			s.FileSize.Reset()
-			if err := s.FileSize.ReadJSON(i); err != nil {
-				i.ReportError("Field FileSize", err.Error())
+			if err := func() error {
+				if err := s.FileSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "file_unique_id":
-			s.FileUniqueID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileUniqueID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mime_type":
-			s.MimeType.Reset()
-			if err := s.MimeType.ReadJSON(i); err != nil {
-				i.ReportError("Field MimeType", err.Error())
+			if err := func() error {
+				if err := s.MimeType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -4200,6 +5382,9 @@ func (s *Voice) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4239,16 +5424,26 @@ func (s *VoiceChatEnded) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads VoiceChatEnded from json stream.
 func (s *VoiceChatEnded) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Duration = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4285,6 +5480,7 @@ func (s *VoiceChatParticipantsInvited) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads VoiceChatParticipantsInvited from json stream.
 func (s *VoiceChatParticipantsInvited) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -4292,6 +5488,9 @@ func (s *VoiceChatParticipantsInvited) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4331,16 +5530,26 @@ func (s *VoiceChatScheduled) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads VoiceChatScheduled from json stream.
 func (s *VoiceChatScheduled) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "start_date":
-			s.StartDate = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.StartDate = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4377,6 +5586,7 @@ func (s *VoiceChatStarted) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads VoiceChatStarted from json stream.
 func (s *VoiceChatStarted) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -4384,6 +5594,9 @@ func (s *VoiceChatStarted) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4439,36 +5652,66 @@ func (s *AddStickerToSet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads AddStickerToSet from json stream.
 func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "emojis":
-			s.Emojis = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Emojis = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mask_position":
-			s.MaskPosition.Reset()
-			if err := s.MaskPosition.ReadJSON(i); err != nil {
-				i.ReportError("Field MaskPosition", err.Error())
+			if err := func() error {
+				if err := s.MaskPosition.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "name":
-			s.Name = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Name = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "tgs_sticker":
-			s.TgsSticker.Reset()
-			if err := s.TgsSticker.ReadJSON(i); err != nil {
-				i.ReportError("Field TgsSticker", err.Error())
+			if err := func() error {
+				if err := s.TgsSticker.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4528,36 +5771,59 @@ func (s *AnswerCallbackQuery) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads AnswerCallbackQuery from json stream.
 func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_time":
-			s.CacheTime.Reset()
-			if err := s.CacheTime.ReadJSON(i); err != nil {
-				i.ReportError("Field CacheTime", err.Error())
+			if err := func() error {
+				if err := s.CacheTime.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "callback_query_id":
-			s.CallbackQueryID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.CallbackQueryID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "show_alert":
-			s.ShowAlert.Reset()
-			if err := s.ShowAlert.ReadJSON(i); err != nil {
-				i.ReportError("Field ShowAlert", err.Error())
+			if err := func() error {
+				if err := s.ShowAlert.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "text":
-			s.Text.Reset()
-			if err := s.Text.ReadJSON(i); err != nil {
-				i.ReportError("Field Text", err.Error())
+			if err := func() error {
+				if err := s.Text.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "url":
-			s.URL.Reset()
-			if err := s.URL.ReadJSON(i); err != nil {
-				i.ReportError("Field URL", err.Error())
+			if err := func() error {
+				if err := s.URL.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -4566,6 +5832,9 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4630,43 +5899,70 @@ func (s *AnswerInlineQuery) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads AnswerInlineQuery from json stream.
 func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_time":
-			s.CacheTime.Reset()
-			if err := s.CacheTime.ReadJSON(i); err != nil {
-				i.ReportError("Field CacheTime", err.Error())
+			if err := func() error {
+				if err := s.CacheTime.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "inline_query_id":
-			s.InlineQueryID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.InlineQueryID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "is_personal":
-			s.IsPersonal.Reset()
-			if err := s.IsPersonal.ReadJSON(i); err != nil {
-				i.ReportError("Field IsPersonal", err.Error())
+			if err := func() error {
+				if err := s.IsPersonal.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "next_offset":
-			s.NextOffset.Reset()
-			if err := s.NextOffset.ReadJSON(i); err != nil {
-				i.ReportError("Field NextOffset", err.Error())
+			if err := func() error {
+				if err := s.NextOffset.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "switch_pm_parameter":
-			s.SwitchPmParameter.Reset()
-			if err := s.SwitchPmParameter.ReadJSON(i); err != nil {
-				i.ReportError("Field SwitchPmParameter", err.Error())
+			if err := func() error {
+				if err := s.SwitchPmParameter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "switch_pm_text":
-			s.SwitchPmText.Reset()
-			if err := s.SwitchPmText.ReadJSON(i); err != nil {
-				i.ReportError("Field SwitchPmText", err.Error())
+			if err := func() error {
+				if err := s.SwitchPmText.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -4675,6 +5971,9 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4722,26 +6021,46 @@ func (s *AnswerPreCheckoutQuery) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads AnswerPreCheckoutQuery from json stream.
 func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(i); err != nil {
-				i.ReportError("Field ErrorMessage", err.Error())
+			if err := func() error {
+				if err := s.ErrorMessage.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "ok":
-			s.Ok = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.Ok = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "pre_checkout_query_id":
-			s.PreCheckoutQueryID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.PreCheckoutQueryID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4789,26 +6108,46 @@ func (s *AnswerShippingQuery) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads AnswerShippingQuery from json stream.
 func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
-			s.ErrorMessage.Reset()
-			if err := s.ErrorMessage.ReadJSON(i); err != nil {
-				i.ReportError("Field ErrorMessage", err.Error())
+			if err := func() error {
+				if err := s.ErrorMessage.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "ok":
-			s.Ok = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.Ok = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "shipping_query_id":
-			s.ShippingQueryID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.ShippingQueryID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4858,30 +6197,48 @@ func (s *BanChatMember) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads BanChatMember from json stream.
 func (s *BanChatMember) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "revoke_messages":
-			s.RevokeMessages.Reset()
-			if err := s.RevokeMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field RevokeMessages", err.Error())
+			if err := func() error {
+				if err := s.RevokeMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "until_date":
-			s.UntilDate.Reset()
-			if err := s.UntilDate.ReadJSON(i); err != nil {
-				i.ReportError("Field UntilDate", err.Error())
+			if err := func() error {
+				if err := s.UntilDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -4946,43 +6303,70 @@ func (s *CopyMessage) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads CopyMessage from json stream.
 func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MessageID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -4991,6 +6375,9 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5037,19 +6424,28 @@ func (s *CreateChatInviteLink) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads CreateChatInviteLink from json stream.
 func (s *CreateChatInviteLink) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "expire_date":
-			s.ExpireDate.Reset()
-			if err := s.ExpireDate.ReadJSON(i); err != nil {
-				i.ReportError("Field ExpireDate", err.Error())
+			if err := func() error {
+				if err := s.ExpireDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "member_limit":
-			s.MemberLimit.Reset()
-			if err := s.MemberLimit.ReadJSON(i); err != nil {
-				i.ReportError("Field MemberLimit", err.Error())
+			if err := func() error {
+				if err := s.MemberLimit.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5058,6 +6454,9 @@ func (s *CreateChatInviteLink) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5121,46 +6520,86 @@ func (s *CreateNewStickerSet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads CreateNewStickerSet from json stream.
 func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "contains_masks":
-			s.ContainsMasks.Reset()
-			if err := s.ContainsMasks.ReadJSON(i); err != nil {
-				i.ReportError("Field ContainsMasks", err.Error())
+			if err := func() error {
+				if err := s.ContainsMasks.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "emojis":
-			s.Emojis = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Emojis = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mask_position":
-			s.MaskPosition.Reset()
-			if err := s.MaskPosition.ReadJSON(i); err != nil {
-				i.ReportError("Field MaskPosition", err.Error())
+			if err := func() error {
+				if err := s.MaskPosition.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "name":
-			s.Name = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Name = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "tgs_sticker":
-			s.TgsSticker.Reset()
-			if err := s.TgsSticker.ReadJSON(i); err != nil {
-				i.ReportError("Field TgsSticker", err.Error())
+			if err := func() error {
+				if err := s.TgsSticker.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Title = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5197,6 +6636,7 @@ func (s *DeleteChatPhoto) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads DeleteChatPhoto from json stream.
 func (s *DeleteChatPhoto) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -5204,6 +6644,9 @@ func (s *DeleteChatPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5240,6 +6683,7 @@ func (s *DeleteChatStickerSet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads DeleteChatStickerSet from json stream.
 func (s *DeleteChatStickerSet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -5247,6 +6691,9 @@ func (s *DeleteChatStickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5286,16 +6733,26 @@ func (s *DeleteMessage) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads DeleteMessage from json stream.
 func (s *DeleteMessage) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MessageID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5337,12 +6794,17 @@ func (s *DeleteMyCommands) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads DeleteMyCommands from json stream.
 func (s *DeleteMyCommands) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.ReadJSON(i); err != nil {
-				i.ReportError("Field LanguageCode", err.Error())
+			if err := func() error {
+				if err := s.LanguageCode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5351,6 +6813,9 @@ func (s *DeleteMyCommands) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5390,16 +6855,26 @@ func (s *DeleteStickerFromSet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads DeleteStickerFromSet from json stream.
 func (s *DeleteStickerFromSet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "sticker":
-			s.Sticker = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Sticker = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5441,12 +6916,17 @@ func (s *DeleteWebhook) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads DeleteWebhook from json stream.
 func (s *DeleteWebhook) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "drop_pending_updates":
-			s.DropPendingUpdates.Reset()
-			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
-				i.ReportError("Field DropPendingUpdates", err.Error())
+			if err := func() error {
+				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5455,6 +6935,9 @@ func (s *DeleteWebhook) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5504,22 +6987,37 @@ func (s *EditChatInviteLink) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads EditChatInviteLink from json stream.
 func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "expire_date":
-			s.ExpireDate.Reset()
-			if err := s.ExpireDate.ReadJSON(i); err != nil {
-				i.ReportError("Field ExpireDate", err.Error())
+			if err := func() error {
+				if err := s.ExpireDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "invite_link":
-			s.InviteLink = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.InviteLink = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "member_limit":
-			s.MemberLimit.Reset()
-			if err := s.MemberLimit.ReadJSON(i); err != nil {
-				i.ReportError("Field MemberLimit", err.Error())
+			if err := func() error {
+				if err := s.MemberLimit.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5528,6 +7026,9 @@ func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5584,33 +7085,50 @@ func (s *EditMessageCaption) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads EditMessageCaption from json stream.
 func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5619,6 +7137,9 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5686,46 +7207,79 @@ func (s *EditMessageLiveLocation) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads EditMessageLiveLocation from json stream.
 func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "heading":
-			s.Heading.Reset()
-			if err := s.Heading.ReadJSON(i); err != nil {
-				i.ReportError("Field Heading", err.Error())
+			if err := func() error {
+				if err := s.Heading.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "horizontal_accuracy":
-			s.HorizontalAccuracy.Reset()
-			if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
-				i.ReportError("Field HorizontalAccuracy", err.Error())
+			if err := func() error {
+				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "latitude":
-			s.Latitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Latitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "longitude":
-			s.Longitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Longitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "proximity_alert_radius":
-			s.ProximityAlertRadius.Reset()
-			if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
-				i.ReportError("Field ProximityAlertRadius", err.Error())
+			if err := func() error {
+				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5734,6 +7288,9 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5780,19 +7337,28 @@ func (s *EditMessageMedia) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads EditMessageMedia from json stream.
 func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5801,6 +7367,9 @@ func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5847,19 +7416,28 @@ func (s *EditMessageReplyMarkup) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads EditMessageReplyMarkup from json stream.
 func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -5868,6 +7446,9 @@ func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -5927,44 +7508,70 @@ func (s *EditMessageText) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads EditMessageText from json stream.
 func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "disable_web_page_preview":
-			s.DisableWebPagePreview.Reset()
-			if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableWebPagePreview", err.Error())
+			if err := func() error {
+				if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "text":
-			s.Text = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Text = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6001,6 +7608,7 @@ func (s *ExportChatInviteLink) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ExportChatInviteLink from json stream.
 func (s *ExportChatInviteLink) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -6008,6 +7616,9 @@ func (s *ExportChatInviteLink) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6052,23 +7663,37 @@ func (s *ForwardMessage) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ForwardMessage from json stream.
 func (s *ForwardMessage) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MessageID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6105,6 +7730,7 @@ func (s *GetChat) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetChat from json stream.
 func (s *GetChat) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -6112,6 +7738,9 @@ func (s *GetChat) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6148,6 +7777,7 @@ func (s *GetChatAdministrators) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetChatAdministrators from json stream.
 func (s *GetChatAdministrators) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -6155,6 +7785,9 @@ func (s *GetChatAdministrators) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6194,16 +7827,26 @@ func (s *GetChatMember) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetChatMember from json stream.
 func (s *GetChatMember) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6240,6 +7883,7 @@ func (s *GetChatMemberCount) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetChatMemberCount from json stream.
 func (s *GetChatMemberCount) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -6247,6 +7891,9 @@ func (s *GetChatMemberCount) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6286,16 +7933,26 @@ func (s *GetFile) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetFile from json stream.
 func (s *GetFile) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "file_id":
-			s.FileID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FileID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6350,37 +8007,59 @@ func (s *GetGameHighScores) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetGameHighScores from json stream.
 func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
-			s.ChatID.Reset()
-			if err := s.ChatID.ReadJSON(i); err != nil {
-				i.ReportError("Field ChatID", err.Error())
+			if err := func() error {
+				if err := s.ChatID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6422,12 +8101,17 @@ func (s *GetMyCommands) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetMyCommands from json stream.
 func (s *GetMyCommands) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.ReadJSON(i); err != nil {
-				i.ReportError("Field LanguageCode", err.Error())
+			if err := func() error {
+				if err := s.LanguageCode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -6436,6 +8120,9 @@ func (s *GetMyCommands) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6475,16 +8162,26 @@ func (s *GetStickerSet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetStickerSet from json stream.
 func (s *GetStickerSet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
-			s.Name = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Name = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6536,26 +8233,39 @@ func (s *GetUpdates) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetUpdates from json stream.
 func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(i); err != nil {
-				i.ReportError("Field Limit", err.Error())
+			if err := func() error {
+				if err := s.Limit.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "offset":
-			s.Offset.Reset()
-			if err := s.Offset.ReadJSON(i); err != nil {
-				i.ReportError("Field Offset", err.Error())
+			if err := func() error {
+				if err := s.Offset.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "timeout":
-			s.Timeout.Reset()
-			if err := s.Timeout.ReadJSON(i); err != nil {
-				i.ReportError("Field Timeout", err.Error())
+			if err := func() error {
+				if err := s.Timeout.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -6564,6 +8274,9 @@ func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6613,30 +8326,48 @@ func (s *GetUserProfilePhotos) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads GetUserProfilePhotos from json stream.
 func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limit":
-			s.Limit.Reset()
-			if err := s.Limit.ReadJSON(i); err != nil {
-				i.ReportError("Field Limit", err.Error())
+			if err := func() error {
+				if err := s.Limit.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "offset":
-			s.Offset.Reset()
-			if err := s.Offset.ReadJSON(i); err != nil {
-				i.ReportError("Field Offset", err.Error())
+			if err := func() error {
+				if err := s.Offset.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6673,6 +8404,7 @@ func (s *LeaveChat) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads LeaveChat from json stream.
 func (s *LeaveChat) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -6680,6 +8412,9 @@ func (s *LeaveChat) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6724,23 +8459,37 @@ func (s *PinChatMessage) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PinChatMessage from json stream.
 func (s *PinChatMessage) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MessageID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6835,93 +8584,147 @@ func (s *PromoteChatMember) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PromoteChatMember from json stream.
 func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "can_change_info":
-			s.CanChangeInfo.Reset()
-			if err := s.CanChangeInfo.ReadJSON(i); err != nil {
-				i.ReportError("Field CanChangeInfo", err.Error())
+			if err := func() error {
+				if err := s.CanChangeInfo.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_delete_messages":
-			s.CanDeleteMessages.Reset()
-			if err := s.CanDeleteMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanDeleteMessages", err.Error())
+			if err := func() error {
+				if err := s.CanDeleteMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_edit_messages":
-			s.CanEditMessages.Reset()
-			if err := s.CanEditMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanEditMessages", err.Error())
+			if err := func() error {
+				if err := s.CanEditMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_invite_users":
-			s.CanInviteUsers.Reset()
-			if err := s.CanInviteUsers.ReadJSON(i); err != nil {
-				i.ReportError("Field CanInviteUsers", err.Error())
+			if err := func() error {
+				if err := s.CanInviteUsers.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_manage_chat":
-			s.CanManageChat.Reset()
-			if err := s.CanManageChat.ReadJSON(i); err != nil {
-				i.ReportError("Field CanManageChat", err.Error())
+			if err := func() error {
+				if err := s.CanManageChat.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_manage_voice_chats":
-			s.CanManageVoiceChats.Reset()
-			if err := s.CanManageVoiceChats.ReadJSON(i); err != nil {
-				i.ReportError("Field CanManageVoiceChats", err.Error())
+			if err := func() error {
+				if err := s.CanManageVoiceChats.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_pin_messages":
-			s.CanPinMessages.Reset()
-			if err := s.CanPinMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanPinMessages", err.Error())
+			if err := func() error {
+				if err := s.CanPinMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_post_messages":
-			s.CanPostMessages.Reset()
-			if err := s.CanPostMessages.ReadJSON(i); err != nil {
-				i.ReportError("Field CanPostMessages", err.Error())
+			if err := func() error {
+				if err := s.CanPostMessages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_promote_members":
-			s.CanPromoteMembers.Reset()
-			if err := s.CanPromoteMembers.ReadJSON(i); err != nil {
-				i.ReportError("Field CanPromoteMembers", err.Error())
+			if err := func() error {
+				if err := s.CanPromoteMembers.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "can_restrict_members":
-			s.CanRestrictMembers.Reset()
-			if err := s.CanRestrictMembers.ReadJSON(i); err != nil {
-				i.ReportError("Field CanRestrictMembers", err.Error())
+			if err := func() error {
+				if err := s.CanRestrictMembers.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "is_anonymous":
-			s.IsAnonymous.Reset()
-			if err := s.IsAnonymous.ReadJSON(i); err != nil {
-				i.ReportError("Field IsAnonymous", err.Error())
+			if err := func() error {
+				if err := s.IsAnonymous.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -6969,29 +8772,48 @@ func (s *RestrictChatMember) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads RestrictChatMember from json stream.
 func (s *RestrictChatMember) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permissions":
-			if err := s.Permissions.ReadJSON(i); err != nil {
-				i.ReportError("Field Permissions", err.Error())
+			if err := func() error {
+				if err := s.Permissions.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "until_date":
-			s.UntilDate.Reset()
-			if err := s.UntilDate.ReadJSON(i); err != nil {
-				i.ReportError("Field UntilDate", err.Error())
+			if err := func() error {
+				if err := s.UntilDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7031,16 +8853,26 @@ func (s *RevokeChatInviteLink) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads RevokeChatInviteLink from json stream.
 func (s *RevokeChatInviteLink) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "invite_link":
-			s.InviteLink = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.InviteLink = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7117,61 +8949,94 @@ func (s *SendAnimation) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendAnimation from json stream.
 func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.ReadJSON(i); err != nil {
-				i.ReportError("Field Duration", err.Error())
+			if err := func() error {
+				if err := s.Duration.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "height":
-			s.Height.Reset()
-			if err := s.Height.ReadJSON(i); err != nil {
-				i.ReportError("Field Height", err.Error())
+			if err := func() error {
+				if err := s.Height.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "width":
-			s.Width.Reset()
-			if err := s.Width.ReadJSON(i); err != nil {
-				i.ReportError("Field Width", err.Error())
+			if err := func() error {
+				if err := s.Width.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -7180,6 +9045,9 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7256,61 +9124,94 @@ func (s *SendAudio) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendAudio from json stream.
 func (s *SendAudio) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.ReadJSON(i); err != nil {
-				i.ReportError("Field Duration", err.Error())
+			if err := func() error {
+				if err := s.Duration.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "performer":
-			s.Performer.Reset()
-			if err := s.Performer.ReadJSON(i); err != nil {
-				i.ReportError("Field Performer", err.Error())
+			if err := func() error {
+				if err := s.Performer.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title.Reset()
-			if err := s.Title.ReadJSON(i); err != nil {
-				i.ReportError("Field Title", err.Error())
+			if err := func() error {
+				if err := s.Title.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -7319,6 +9220,9 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7358,16 +9262,26 @@ func (s *SendChatAction) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendChatAction from json stream.
 func (s *SendChatAction) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "action":
-			s.Action = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Action = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7435,46 +9349,79 @@ func (s *SendContact) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendContact from json stream.
 func (s *SendContact) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "first_name":
-			s.FirstName = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.FirstName = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "last_name":
-			s.LastName.Reset()
-			if err := s.LastName.ReadJSON(i); err != nil {
-				i.ReportError("Field LastName", err.Error())
+			if err := func() error {
+				if err := s.LastName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "phone_number":
-			s.PhoneNumber = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.PhoneNumber = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "vcard":
-			s.Vcard.Reset()
-			if err := s.Vcard.ReadJSON(i); err != nil {
-				i.ReportError("Field Vcard", err.Error())
+			if err := func() error {
+				if err := s.Vcard.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -7483,6 +9430,9 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7539,33 +9489,50 @@ func (s *SendDice) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendDice from json stream.
 func (s *SendDice) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "emoji":
-			s.Emoji.Reset()
-			if err := s.Emoji.ReadJSON(i); err != nil {
-				i.ReportError("Field Emoji", err.Error())
+			if err := func() error {
+				if err := s.Emoji.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -7574,6 +9541,9 @@ func (s *SendDice) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7640,47 +9610,72 @@ func (s *SendDocument) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendDocument from json stream.
 func (s *SendDocument) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_content_type_detection":
-			s.DisableContentTypeDetection.Reset()
-			if err := s.DisableContentTypeDetection.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableContentTypeDetection", err.Error())
+			if err := func() error {
+				if err := s.DisableContentTypeDetection.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -7689,6 +9684,9 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7746,32 +9744,57 @@ func (s *SendGame) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendGame from json stream.
 func (s *SendGame) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "chat_id":
-			s.ChatID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.ChatID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "game_short_name":
-			s.GameShortName = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.GameShortName = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -7780,6 +9803,9 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -7916,147 +9942,249 @@ func (s *SendInvoice) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendInvoice from json stream.
 func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "currency":
-			s.Currency = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Currency = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "description":
-			s.Description = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Description = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "is_flexible":
-			s.IsFlexible.Reset()
-			if err := s.IsFlexible.ReadJSON(i); err != nil {
-				i.ReportError("Field IsFlexible", err.Error())
+			if err := func() error {
+				if err := s.IsFlexible.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "max_tip_amount":
-			s.MaxTipAmount.Reset()
-			if err := s.MaxTipAmount.ReadJSON(i); err != nil {
-				i.ReportError("Field MaxTipAmount", err.Error())
+			if err := func() error {
+				if err := s.MaxTipAmount.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "need_email":
-			s.NeedEmail.Reset()
-			if err := s.NeedEmail.ReadJSON(i); err != nil {
-				i.ReportError("Field NeedEmail", err.Error())
+			if err := func() error {
+				if err := s.NeedEmail.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "need_name":
-			s.NeedName.Reset()
-			if err := s.NeedName.ReadJSON(i); err != nil {
-				i.ReportError("Field NeedName", err.Error())
+			if err := func() error {
+				if err := s.NeedName.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "need_phone_number":
-			s.NeedPhoneNumber.Reset()
-			if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
-				i.ReportError("Field NeedPhoneNumber", err.Error())
+			if err := func() error {
+				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "need_shipping_address":
-			s.NeedShippingAddress.Reset()
-			if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
-				i.ReportError("Field NeedShippingAddress", err.Error())
+			if err := func() error {
+				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "payload":
-			s.Payload = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Payload = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "photo_height":
-			s.PhotoHeight.Reset()
-			if err := s.PhotoHeight.ReadJSON(i); err != nil {
-				i.ReportError("Field PhotoHeight", err.Error())
+			if err := func() error {
+				if err := s.PhotoHeight.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "photo_size":
-			s.PhotoSize.Reset()
-			if err := s.PhotoSize.ReadJSON(i); err != nil {
-				i.ReportError("Field PhotoSize", err.Error())
+			if err := func() error {
+				if err := s.PhotoSize.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "photo_url":
-			s.PhotoURL.Reset()
-			if err := s.PhotoURL.ReadJSON(i); err != nil {
-				i.ReportError("Field PhotoURL", err.Error())
+			if err := func() error {
+				if err := s.PhotoURL.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "photo_width":
-			s.PhotoWidth.Reset()
-			if err := s.PhotoWidth.ReadJSON(i); err != nil {
-				i.ReportError("Field PhotoWidth", err.Error())
+			if err := func() error {
+				if err := s.PhotoWidth.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "provider_data":
-			s.ProviderData.Reset()
-			if err := s.ProviderData.ReadJSON(i); err != nil {
-				i.ReportError("Field ProviderData", err.Error())
+			if err := func() error {
+				if err := s.ProviderData.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "provider_token":
-			s.ProviderToken = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.ProviderToken = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "send_email_to_provider":
-			s.SendEmailToProvider.Reset()
-			if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
-				i.ReportError("Field SendEmailToProvider", err.Error())
+			if err := func() error {
+				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "send_phone_number_to_provider":
-			s.SendPhoneNumberToProvider.Reset()
-			if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
-				i.ReportError("Field SendPhoneNumberToProvider", err.Error())
+			if err := func() error {
+				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "start_parameter":
-			s.StartParameter.Reset()
-			if err := s.StartParameter.ReadJSON(i); err != nil {
-				i.ReportError("Field StartParameter", err.Error())
+			if err := func() error {
+				if err := s.StartParameter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Title = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8134,60 +10262,101 @@ func (s *SendLocation) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendLocation from json stream.
 func (s *SendLocation) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "heading":
-			s.Heading.Reset()
-			if err := s.Heading.ReadJSON(i); err != nil {
-				i.ReportError("Field Heading", err.Error())
+			if err := func() error {
+				if err := s.Heading.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "horizontal_accuracy":
-			s.HorizontalAccuracy.Reset()
-			if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
-				i.ReportError("Field HorizontalAccuracy", err.Error())
+			if err := func() error {
+				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "latitude":
-			s.Latitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Latitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "live_period":
-			s.LivePeriod.Reset()
-			if err := s.LivePeriod.ReadJSON(i); err != nil {
-				i.ReportError("Field LivePeriod", err.Error())
+			if err := func() error {
+				if err := s.LivePeriod.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "longitude":
-			s.Longitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Longitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "proximity_alert_radius":
-			s.ProximityAlertRadius.Reset()
-			if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
-				i.ReportError("Field ProximityAlertRadius", err.Error())
+			if err := func() error {
+				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -8196,6 +10365,9 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8247,26 +10419,39 @@ func (s *SendMediaGroup) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendMediaGroup from json stream.
 func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -8275,6 +10460,9 @@ func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8339,51 +10527,81 @@ func (s *SendMessage) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendMessage from json stream.
 func (s *SendMessage) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_web_page_preview":
-			s.DisableWebPagePreview.Reset()
-			if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableWebPagePreview", err.Error())
+			if err := func() error {
+				if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "text":
-			s.Text = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Text = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8445,40 +10663,61 @@ func (s *SendPhoto) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendPhoto from json stream.
 func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -8487,6 +10726,9 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8586,92 +10828,147 @@ func (s *SendPoll) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendPoll from json stream.
 func (s *SendPoll) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "allows_multiple_answers":
-			s.AllowsMultipleAnswers.Reset()
-			if err := s.AllowsMultipleAnswers.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowsMultipleAnswers", err.Error())
+			if err := func() error {
+				if err := s.AllowsMultipleAnswers.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "close_date":
-			s.CloseDate.Reset()
-			if err := s.CloseDate.ReadJSON(i); err != nil {
-				i.ReportError("Field CloseDate", err.Error())
+			if err := func() error {
+				if err := s.CloseDate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "correct_option_id":
-			s.CorrectOptionID.Reset()
-			if err := s.CorrectOptionID.ReadJSON(i); err != nil {
-				i.ReportError("Field CorrectOptionID", err.Error())
+			if err := func() error {
+				if err := s.CorrectOptionID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "explanation":
-			s.Explanation.Reset()
-			if err := s.Explanation.ReadJSON(i); err != nil {
-				i.ReportError("Field Explanation", err.Error())
+			if err := func() error {
+				if err := s.Explanation.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "explanation_parse_mode":
-			s.ExplanationParseMode.Reset()
-			if err := s.ExplanationParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ExplanationParseMode", err.Error())
+			if err := func() error {
+				if err := s.ExplanationParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "is_anonymous":
-			s.IsAnonymous.Reset()
-			if err := s.IsAnonymous.ReadJSON(i); err != nil {
-				i.ReportError("Field IsAnonymous", err.Error())
+			if err := func() error {
+				if err := s.IsAnonymous.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "is_closed":
-			s.IsClosed.Reset()
-			if err := s.IsClosed.ReadJSON(i); err != nil {
-				i.ReportError("Field IsClosed", err.Error())
+			if err := func() error {
+				if err := s.IsClosed.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "open_period":
-			s.OpenPeriod.Reset()
-			if err := s.OpenPeriod.ReadJSON(i); err != nil {
-				i.ReportError("Field OpenPeriod", err.Error())
+			if err := func() error {
+				if err := s.OpenPeriod.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "question":
-			s.Question = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Question = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "type":
-			s.Type.Reset()
-			if err := s.Type.ReadJSON(i); err != nil {
-				i.ReportError("Field Type", err.Error())
+			if err := func() error {
+				if err := s.Type.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -8680,6 +10977,9 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8731,26 +11031,39 @@ func (s *SendSticker) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendSticker from json stream.
 func (s *SendSticker) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -8759,6 +11072,9 @@ func (s *SendSticker) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8842,74 +11158,130 @@ func (s *SendVenue) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendVenue from json stream.
 func (s *SendVenue) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "address":
-			s.Address = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Address = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "foursquare_id":
-			s.FoursquareID.Reset()
-			if err := s.FoursquareID.ReadJSON(i); err != nil {
-				i.ReportError("Field FoursquareID", err.Error())
+			if err := func() error {
+				if err := s.FoursquareID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "foursquare_type":
-			s.FoursquareType.Reset()
-			if err := s.FoursquareType.ReadJSON(i); err != nil {
-				i.ReportError("Field FoursquareType", err.Error())
+			if err := func() error {
+				if err := s.FoursquareType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "google_place_id":
-			s.GooglePlaceID.Reset()
-			if err := s.GooglePlaceID.ReadJSON(i); err != nil {
-				i.ReportError("Field GooglePlaceID", err.Error())
+			if err := func() error {
+				if err := s.GooglePlaceID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "google_place_type":
-			s.GooglePlaceType.Reset()
-			if err := s.GooglePlaceType.ReadJSON(i); err != nil {
-				i.ReportError("Field GooglePlaceType", err.Error())
+			if err := func() error {
+				if err := s.GooglePlaceType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "latitude":
-			s.Latitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Latitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "longitude":
-			s.Longitude = i.ReadFloat64()
-			return i.Error == nil
+			if err := func() error {
+				s.Longitude = float64(i.ReadFloat64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Title = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -8991,68 +11363,105 @@ func (s *SendVideo) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendVideo from json stream.
 func (s *SendVideo) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.ReadJSON(i); err != nil {
-				i.ReportError("Field Duration", err.Error())
+			if err := func() error {
+				if err := s.Duration.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "height":
-			s.Height.Reset()
-			if err := s.Height.ReadJSON(i); err != nil {
-				i.ReportError("Field Height", err.Error())
+			if err := func() error {
+				if err := s.Height.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "supports_streaming":
-			s.SupportsStreaming.Reset()
-			if err := s.SupportsStreaming.ReadJSON(i); err != nil {
-				i.ReportError("Field SupportsStreaming", err.Error())
+			if err := func() error {
+				if err := s.SupportsStreaming.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "width":
-			s.Width.Reset()
-			if err := s.Width.ReadJSON(i); err != nil {
-				i.ReportError("Field Width", err.Error())
+			if err := func() error {
+				if err := s.Width.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -9061,6 +11470,9 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9122,40 +11534,61 @@ func (s *SendVideoNote) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendVideoNote from json stream.
 func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.ReadJSON(i); err != nil {
-				i.ReportError("Field Duration", err.Error())
+			if err := func() error {
+				if err := s.Duration.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "length":
-			s.Length.Reset()
-			if err := s.Length.ReadJSON(i); err != nil {
-				i.ReportError("Field Length", err.Error())
+			if err := func() error {
+				if err := s.Length.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -9164,6 +11597,9 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9230,47 +11666,72 @@ func (s *SendVoice) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SendVoice from json stream.
 func (s *SendVoice) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply.Reset()
-			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+			if err := func() error {
+				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "caption":
-			s.Caption.Reset()
-			if err := s.Caption.ReadJSON(i); err != nil {
-				i.ReportError("Field Caption", err.Error())
+			if err := func() error {
+				if err := s.Caption.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_notification":
-			s.DisableNotification.Reset()
-			if err := s.DisableNotification.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableNotification", err.Error())
+			if err := func() error {
+				if err := s.DisableNotification.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "duration":
-			s.Duration.Reset()
-			if err := s.Duration.ReadJSON(i); err != nil {
-				i.ReportError("Field Duration", err.Error())
+			if err := func() error {
+				if err := s.Duration.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "parse_mode":
-			s.ParseMode.Reset()
-			if err := s.ParseMode.ReadJSON(i); err != nil {
-				i.ReportError("Field ParseMode", err.Error())
+			if err := func() error {
+				if err := s.ParseMode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID.Reset()
-			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field ReplyToMessageID", err.Error())
+			if err := func() error {
+				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -9279,6 +11740,9 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9321,19 +11785,35 @@ func (s *SetChatAdministratorCustomTitle) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetChatAdministratorCustomTitle from json stream.
 func (s *SetChatAdministratorCustomTitle) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "custom_title":
-			s.CustomTitle = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.CustomTitle = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9375,12 +11855,17 @@ func (s *SetChatDescription) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetChatDescription from json stream.
 func (s *SetChatDescription) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
-			s.Description.Reset()
-			if err := s.Description.ReadJSON(i); err != nil {
-				i.ReportError("Field Description", err.Error())
+			if err := func() error {
+				if err := s.Description.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -9389,6 +11874,9 @@ func (s *SetChatDescription) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9428,11 +11916,17 @@ func (s *SetChatPermissions) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetChatPermissions from json stream.
 func (s *SetChatPermissions) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permissions":
-			if err := s.Permissions.ReadJSON(i); err != nil {
-				i.ReportError("Field Permissions", err.Error())
+			if err := func() error {
+				if err := s.Permissions.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -9441,6 +11935,9 @@ func (s *SetChatPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9480,16 +11977,26 @@ func (s *SetChatPhoto) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetChatPhoto from json stream.
 func (s *SetChatPhoto) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "photo":
-			s.Photo = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Photo = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9529,16 +12036,26 @@ func (s *SetChatStickerSet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetChatStickerSet from json stream.
 func (s *SetChatStickerSet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "sticker_set_name":
-			s.StickerSetName = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.StickerSetName = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9578,16 +12095,26 @@ func (s *SetChatTitle) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetChatTitle from json stream.
 func (s *SetChatTitle) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Title = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9655,54 +12182,90 @@ func (s *SetGameScore) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetGameScore from json stream.
 func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
-			s.ChatID.Reset()
-			if err := s.ChatID.ReadJSON(i); err != nil {
-				i.ReportError("Field ChatID", err.Error())
+			if err := func() error {
+				if err := s.ChatID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disable_edit_message":
-			s.DisableEditMessage.Reset()
-			if err := s.DisableEditMessage.ReadJSON(i); err != nil {
-				i.ReportError("Field DisableEditMessage", err.Error())
+			if err := func() error {
+				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "force":
-			s.Force.Reset()
-			if err := s.Force.ReadJSON(i); err != nil {
-				i.ReportError("Field Force", err.Error())
+			if err := func() error {
+				if err := s.Force.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "score":
-			s.Score = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Score = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9744,12 +12307,17 @@ func (s *SetMyCommands) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetMyCommands from json stream.
 func (s *SetMyCommands) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "language_code":
-			s.LanguageCode.Reset()
-			if err := s.LanguageCode.ReadJSON(i); err != nil {
-				i.ReportError("Field LanguageCode", err.Error())
+			if err := func() error {
+				if err := s.LanguageCode.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -9758,6 +12326,9 @@ func (s *SetMyCommands) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9797,16 +12368,26 @@ func (s *SetPassportDataErrors) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetPassportDataErrors from json stream.
 func (s *SetPassportDataErrors) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9849,19 +12430,35 @@ func (s *SetStickerPositionInSet) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetStickerPositionInSet from json stream.
 func (s *SetStickerPositionInSet) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "position":
-			s.Position = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.Position = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "sticker":
-			s.Sticker = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Sticker = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9904,19 +12501,35 @@ func (s *SetStickerSetThumb) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetStickerSetThumb from json stream.
 func (s *SetStickerSetThumb) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "name":
-			s.Name = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.Name = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -9976,44 +12589,70 @@ func (s *SetWebhook) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SetWebhook from json stream.
 func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "certificate":
-			s.Certificate.Reset()
-			if err := s.Certificate.ReadJSON(i); err != nil {
-				i.ReportError("Field Certificate", err.Error())
+			if err := func() error {
+				if err := s.Certificate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "drop_pending_updates":
-			s.DropPendingUpdates.Reset()
-			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
-				i.ReportError("Field DropPendingUpdates", err.Error())
+			if err := func() error {
+				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "ip_address":
-			s.IPAddress.Reset()
-			if err := s.IPAddress.ReadJSON(i); err != nil {
-				i.ReportError("Field IPAddress", err.Error())
+			if err := func() error {
+				if err := s.IPAddress.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "max_connections":
-			s.MaxConnections.Reset()
-			if err := s.MaxConnections.ReadJSON(i); err != nil {
-				i.ReportError("Field MaxConnections", err.Error())
+			if err := func() error {
+				if err := s.MaxConnections.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.URL = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -10060,19 +12699,28 @@ func (s *StopMessageLiveLocation) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads StopMessageLiveLocation from json stream.
 func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "inline_message_id":
-			s.InlineMessageID.Reset()
-			if err := s.InlineMessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field InlineMessageID", err.Error())
+			if err := func() error {
+				if err := s.InlineMessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -10081,6 +12729,9 @@ func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -10120,16 +12771,26 @@ func (s *StopPoll) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads StopPoll from json stream.
 func (s *StopPoll) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MessageID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -10174,23 +12835,37 @@ func (s *UnbanChatMember) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads UnbanChatMember from json stream.
 func (s *UnbanChatMember) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "only_if_banned":
-			s.OnlyIfBanned.Reset()
-			if err := s.OnlyIfBanned.ReadJSON(i); err != nil {
-				i.ReportError("Field OnlyIfBanned", err.Error())
+			if err := func() error {
+				if err := s.OnlyIfBanned.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -10227,6 +12902,7 @@ func (s *UnpinAllChatMessages) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads UnpinAllChatMessages from json stream.
 func (s *UnpinAllChatMessages) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -10234,6 +12910,9 @@ func (s *UnpinAllChatMessages) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -10275,12 +12954,17 @@ func (s *UnpinChatMessage) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads UnpinChatMessage from json stream.
 func (s *UnpinChatMessage) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message_id":
-			s.MessageID.Reset()
-			if err := s.MessageID.ReadJSON(i); err != nil {
-				i.ReportError("Field MessageID", err.Error())
+			if err := func() error {
+				if err := s.MessageID.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -10289,6 +12973,9 @@ func (s *UnpinChatMessage) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -10331,18 +13018,34 @@ func (s *UploadStickerFile) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads UploadStickerFile from json stream.
 func (s *UploadStickerFile) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "png_sticker":
-			s.PNGSticker = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.PNGSticker = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "user_id":
-			s.UserID = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.UserID = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }

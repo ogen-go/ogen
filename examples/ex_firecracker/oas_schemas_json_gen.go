@@ -94,18 +94,35 @@ func (s *Balloon) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Balloon from json stream.
 func (s *Balloon) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "amount_mib":
-			s.AmountMib = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.AmountMib = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "deflate_on_oom":
-			s.DeflateOnOom = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.DeflateOnOom = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "stats_polling_interval_s":
-			s.StatsPollingIntervalS.Reset()
-			if err := s.StatsPollingIntervalS.ReadJSON(i); err != nil {
-				i.ReportError("Field StatsPollingIntervalS", err.Error())
+			if err := func() error {
+				if err := s.StatsPollingIntervalS.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -114,6 +131,9 @@ func (s *Balloon) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -212,87 +232,152 @@ func (s *BalloonStats) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads BalloonStats from json stream.
 func (s *BalloonStats) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "actual_mib":
-			s.ActualMib = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.ActualMib = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "actual_pages":
-			s.ActualPages = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.ActualPages = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "available_memory":
-			s.AvailableMemory.Reset()
-			if err := s.AvailableMemory.ReadJSON(i); err != nil {
-				i.ReportError("Field AvailableMemory", err.Error())
+			if err := func() error {
+				if err := s.AvailableMemory.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "disk_caches":
-			s.DiskCaches.Reset()
-			if err := s.DiskCaches.ReadJSON(i); err != nil {
-				i.ReportError("Field DiskCaches", err.Error())
+			if err := func() error {
+				if err := s.DiskCaches.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "free_memory":
-			s.FreeMemory.Reset()
-			if err := s.FreeMemory.ReadJSON(i); err != nil {
-				i.ReportError("Field FreeMemory", err.Error())
+			if err := func() error {
+				if err := s.FreeMemory.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "hugetlb_allocations":
-			s.HugetlbAllocations.Reset()
-			if err := s.HugetlbAllocations.ReadJSON(i); err != nil {
-				i.ReportError("Field HugetlbAllocations", err.Error())
+			if err := func() error {
+				if err := s.HugetlbAllocations.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "hugetlb_failures":
-			s.HugetlbFailures.Reset()
-			if err := s.HugetlbFailures.ReadJSON(i); err != nil {
-				i.ReportError("Field HugetlbFailures", err.Error())
+			if err := func() error {
+				if err := s.HugetlbFailures.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "major_faults":
-			s.MajorFaults.Reset()
-			if err := s.MajorFaults.ReadJSON(i); err != nil {
-				i.ReportError("Field MajorFaults", err.Error())
+			if err := func() error {
+				if err := s.MajorFaults.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "minor_faults":
-			s.MinorFaults.Reset()
-			if err := s.MinorFaults.ReadJSON(i); err != nil {
-				i.ReportError("Field MinorFaults", err.Error())
+			if err := func() error {
+				if err := s.MinorFaults.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "swap_in":
-			s.SwapIn.Reset()
-			if err := s.SwapIn.ReadJSON(i); err != nil {
-				i.ReportError("Field SwapIn", err.Error())
+			if err := func() error {
+				if err := s.SwapIn.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "swap_out":
-			s.SwapOut.Reset()
-			if err := s.SwapOut.ReadJSON(i); err != nil {
-				i.ReportError("Field SwapOut", err.Error())
+			if err := func() error {
+				if err := s.SwapOut.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "target_mib":
-			s.TargetMib = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.TargetMib = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "target_pages":
-			s.TargetPages = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.TargetPages = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "total_memory":
-			s.TotalMemory.Reset()
-			if err := s.TotalMemory.ReadJSON(i); err != nil {
-				i.ReportError("Field TotalMemory", err.Error())
+			if err := func() error {
+				if err := s.TotalMemory.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -301,6 +386,9 @@ func (s *BalloonStats) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -340,16 +428,26 @@ func (s *BalloonStatsUpdate) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads BalloonStatsUpdate from json stream.
 func (s *BalloonStatsUpdate) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "stats_polling_interval_s":
-			s.StatsPollingIntervalS = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.StatsPollingIntervalS = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -389,16 +487,26 @@ func (s *BalloonUpdate) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads BalloonUpdate from json stream.
 func (s *BalloonUpdate) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "amount_mib":
-			s.AmountMib = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.AmountMib = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -448,30 +556,48 @@ func (s *BootSource) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads BootSource from json stream.
 func (s *BootSource) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "boot_args":
-			s.BootArgs.Reset()
-			if err := s.BootArgs.ReadJSON(i); err != nil {
-				i.ReportError("Field BootArgs", err.Error())
+			if err := func() error {
+				if err := s.BootArgs.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "initrd_path":
-			s.InitrdPath.Reset()
-			if err := s.InitrdPath.ReadJSON(i); err != nil {
-				i.ReportError("Field InitrdPath", err.Error())
+			if err := func() error {
+				if err := s.InitrdPath.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "kernel_image_path":
-			s.KernelImagePath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.KernelImagePath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -519,6 +645,7 @@ func (s *CreateSnapshotNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads CreateSnapshotNoContent from json stream.
 func (s *CreateSnapshotNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -526,6 +653,9 @@ func (s *CreateSnapshotNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -562,6 +692,7 @@ func (s *CreateSyncActionNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads CreateSyncActionNoContent from json stream.
 func (s *CreateSyncActionNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -569,6 +700,9 @@ func (s *CreateSyncActionNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -632,38 +766,75 @@ func (s *Drive) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Drive from json stream.
 func (s *Drive) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_type":
-			s.CacheType.Reset()
-			if err := s.CacheType.ReadJSON(i); err != nil {
-				i.ReportError("Field CacheType", err.Error())
+			if err := func() error {
+				if err := s.CacheType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "drive_id":
-			s.DriveID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.DriveID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "is_read_only":
-			s.IsReadOnly = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.IsReadOnly = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "is_root_device":
-			s.IsRootDevice = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.IsRootDevice = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "partuuid":
-			s.Partuuid.Reset()
-			if err := s.Partuuid.ReadJSON(i); err != nil {
-				i.ReportError("Field Partuuid", err.Error())
+			if err := func() error {
+				if err := s.Partuuid.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "path_on_host":
-			s.PathOnHost = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.PathOnHost = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "rate_limiter":
-			s.RateLimiter.Reset()
-			if err := s.RateLimiter.ReadJSON(i); err != nil {
-				i.ReportError("Field RateLimiter", err.Error())
+			if err := func() error {
+				if err := s.RateLimiter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -672,6 +843,9 @@ func (s *Drive) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -713,12 +887,17 @@ func (s *Error) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Error from json stream.
 func (s *Error) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "fault_message":
-			s.FaultMessage.Reset()
-			if err := s.FaultMessage.ReadJSON(i); err != nil {
-				i.ReportError("Field FaultMessage", err.Error())
+			if err := func() error {
+				if err := s.FaultMessage.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -727,6 +906,9 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -763,6 +945,7 @@ func (s *ErrorStatusCode) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads ErrorStatusCode from json stream.
 func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -770,6 +953,9 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -865,62 +1051,135 @@ func (s *FullVmConfiguration) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads FullVmConfiguration from json stream.
 func (s *FullVmConfiguration) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "balloon_device":
-			s.BalloonDevice.Reset()
-			if err := s.BalloonDevice.ReadJSON(i); err != nil {
-				i.ReportError("Field BalloonDevice", err.Error())
+			if err := func() error {
+				if err := s.BalloonDevice.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "block_devices":
-			// Unsupported kind "array" for field "BlockDevices".
-			i.Skip()
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem Drive
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.BlockDevices = append(s.BlockDevices, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "boot_source":
-			s.BootSource.Reset()
-			if err := s.BootSource.ReadJSON(i); err != nil {
-				i.ReportError("Field BootSource", err.Error())
+			if err := func() error {
+				if err := s.BootSource.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "logger":
-			s.Logger.Reset()
-			if err := s.Logger.ReadJSON(i); err != nil {
-				i.ReportError("Field Logger", err.Error())
+			if err := func() error {
+				if err := s.Logger.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "machine_config":
-			s.MachineConfig.Reset()
-			if err := s.MachineConfig.ReadJSON(i); err != nil {
-				i.ReportError("Field MachineConfig", err.Error())
+			if err := func() error {
+				if err := s.MachineConfig.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "metrics":
-			s.Metrics.Reset()
-			if err := s.Metrics.ReadJSON(i); err != nil {
-				i.ReportError("Field Metrics", err.Error())
+			if err := func() error {
+				if err := s.Metrics.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "mmds_config":
-			s.MmdsConfig.Reset()
-			if err := s.MmdsConfig.ReadJSON(i); err != nil {
-				i.ReportError("Field MmdsConfig", err.Error())
+			if err := func() error {
+				if err := s.MmdsConfig.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "net_devices":
-			// Unsupported kind "array" for field "NetDevices".
-			i.Skip()
+			if err := func() error {
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem NetworkInterface
+					if err := func() error {
+						if err := elem.ReadJSON(i); err != nil {
+							return err
+						}
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					s.NetDevices = append(s.NetDevices, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
 			return true
 		case "vsock_device":
-			s.VsockDevice.Reset()
-			if err := s.VsockDevice.ReadJSON(i); err != nil {
-				i.ReportError("Field VsockDevice", err.Error())
+			if err := func() error {
+				if err := s.VsockDevice.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -929,6 +1188,9 @@ func (s *FullVmConfiguration) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -968,11 +1230,15 @@ func (s *InstanceActionInfo) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads InstanceActionInfo from json stream.
 func (s *InstanceActionInfo) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "action_type":
-			if err := s.ActionType.ReadJSON(i); err != nil {
-				i.ReportError("Field ActionType", err.Error())
+			if err := func() error {
+				s.ActionType = InstanceActionInfoActionType(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -981,6 +1247,9 @@ func (s *InstanceActionInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1040,28 +1309,53 @@ func (s *InstanceInfo) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads InstanceInfo from json stream.
 func (s *InstanceInfo) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "app_name":
-			s.AppName = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.AppName = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "id":
-			s.ID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.ID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "state":
-			if err := s.State.ReadJSON(i); err != nil {
-				i.ReportError("Field State", err.Error())
+			if err := func() error {
+				s.State = InstanceInfoState(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "vmm_version":
-			s.VmmVersion = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.VmmVersion = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1109,6 +1403,7 @@ func (s *LoadSnapshotNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads LoadSnapshotNoContent from json stream.
 func (s *LoadSnapshotNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1116,6 +1411,9 @@ func (s *LoadSnapshotNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1170,29 +1468,48 @@ func (s *Logger) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Logger from json stream.
 func (s *Logger) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "level":
-			s.Level.Reset()
-			if err := s.Level.ReadJSON(i); err != nil {
-				i.ReportError("Field Level", err.Error())
+			if err := func() error {
+				if err := s.Level.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "log_path":
-			s.LogPath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.LogPath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "show_level":
-			s.ShowLevel.Reset()
-			if err := s.ShowLevel.ReadJSON(i); err != nil {
-				i.ReportError("Field ShowLevel", err.Error())
+			if err := func() error {
+				if err := s.ShowLevel.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "show_log_origin":
-			s.ShowLogOrigin.Reset()
-			if err := s.ShowLogOrigin.ReadJSON(i); err != nil {
-				i.ReportError("Field ShowLogOrigin", err.Error())
+			if err := func() error {
+				if err := s.ShowLogOrigin.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -1201,6 +1518,9 @@ func (s *Logger) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1267,36 +1587,66 @@ func (s *MachineConfiguration) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MachineConfiguration from json stream.
 func (s *MachineConfiguration) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cpu_template":
-			s.CPUTemplate.Reset()
-			if err := s.CPUTemplate.ReadJSON(i); err != nil {
-				i.ReportError("Field CPUTemplate", err.Error())
+			if err := func() error {
+				if err := s.CPUTemplate.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "ht_enabled":
-			s.HtEnabled = i.ReadBool()
-			return i.Error == nil
+			if err := func() error {
+				s.HtEnabled = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "mem_size_mib":
-			s.MemSizeMib = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.MemSizeMib = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "track_dirty_pages":
-			s.TrackDirtyPages.Reset()
-			if err := s.TrackDirtyPages.ReadJSON(i); err != nil {
-				i.ReportError("Field TrackDirtyPages", err.Error())
+			if err := func() error {
+				if err := s.TrackDirtyPages.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "vcpu_count":
-			s.VcpuCount = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.VcpuCount = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1336,16 +1686,26 @@ func (s *Metrics) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Metrics from json stream.
 func (s *Metrics) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "metrics_path":
-			s.MetricsPath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.MetricsPath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1387,12 +1747,17 @@ func (s *MmdsConfig) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MmdsConfig from json stream.
 func (s *MmdsConfig) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ipv4_address":
-			s.Ipv4Address.Reset()
-			if err := s.Ipv4Address.ReadJSON(i); err != nil {
-				i.ReportError("Field Ipv4Address", err.Error())
+			if err := func() error {
+				if err := s.Ipv4Address.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -1401,6 +1766,9 @@ func (s *MmdsConfig) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1437,6 +1805,7 @@ func (s *MmdsConfigPutNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MmdsConfigPutNoContent from json stream.
 func (s *MmdsConfigPutNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1444,6 +1813,9 @@ func (s *MmdsConfigPutNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1480,6 +1852,7 @@ func (s *MmdsGetOK) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MmdsGetOK from json stream.
 func (s *MmdsGetOK) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1487,6 +1860,9 @@ func (s *MmdsGetOK) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1523,6 +1899,7 @@ func (s *MmdsPatchApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MmdsPatchApplicationJSONReq from json stream.
 func (s *MmdsPatchApplicationJSONReq) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1530,6 +1907,9 @@ func (s *MmdsPatchApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1566,6 +1946,7 @@ func (s *MmdsPatchNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MmdsPatchNoContent from json stream.
 func (s *MmdsPatchNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1573,6 +1954,9 @@ func (s *MmdsPatchNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1609,6 +1993,7 @@ func (s *MmdsPutApplicationJSONReq) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MmdsPutApplicationJSONReq from json stream.
 func (s *MmdsPutApplicationJSONReq) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1616,6 +2001,9 @@ func (s *MmdsPutApplicationJSONReq) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1652,6 +2040,7 @@ func (s *MmdsPutNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads MmdsPutNoContent from json stream.
 func (s *MmdsPutNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -1659,6 +2048,9 @@ func (s *MmdsPutNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -1721,39 +2113,68 @@ func (s *NetworkInterface) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads NetworkInterface from json stream.
 func (s *NetworkInterface) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_mmds_requests":
-			s.AllowMmdsRequests.Reset()
-			if err := s.AllowMmdsRequests.ReadJSON(i); err != nil {
-				i.ReportError("Field AllowMmdsRequests", err.Error())
+			if err := func() error {
+				if err := s.AllowMmdsRequests.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "guest_mac":
-			s.GuestMAC.Reset()
-			if err := s.GuestMAC.ReadJSON(i); err != nil {
-				i.ReportError("Field GuestMAC", err.Error())
+			if err := func() error {
+				if err := s.GuestMAC.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "host_dev_name":
-			s.HostDevName = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.HostDevName = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "iface_id":
-			s.IfaceID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.IfaceID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "rx_rate_limiter":
-			s.RxRateLimiter.Reset()
-			if err := s.RxRateLimiter.ReadJSON(i); err != nil {
-				i.ReportError("Field RxRateLimiter", err.Error())
+			if err := func() error {
+				if err := s.RxRateLimiter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "tx_rate_limiter":
-			s.TxRateLimiter.Reset()
-			if err := s.TxRateLimiter.ReadJSON(i); err != nil {
-				i.ReportError("Field TxRateLimiter", err.Error())
+			if err := func() error {
+				if err := s.TxRateLimiter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -1762,6 +2183,9 @@ func (s *NetworkInterface) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2117,22 +2541,37 @@ func (s *PartialDrive) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PartialDrive from json stream.
 func (s *PartialDrive) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "drive_id":
-			s.DriveID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.DriveID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "path_on_host":
-			s.PathOnHost.Reset()
-			if err := s.PathOnHost.ReadJSON(i); err != nil {
-				i.ReportError("Field PathOnHost", err.Error())
+			if err := func() error {
+				if err := s.PathOnHost.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "rate_limiter":
-			s.RateLimiter.Reset()
-			if err := s.RateLimiter.ReadJSON(i); err != nil {
-				i.ReportError("Field RateLimiter", err.Error())
+			if err := func() error {
+				if err := s.RateLimiter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -2141,6 +2580,9 @@ func (s *PartialDrive) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2190,22 +2632,37 @@ func (s *PartialNetworkInterface) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PartialNetworkInterface from json stream.
 func (s *PartialNetworkInterface) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "iface_id":
-			s.IfaceID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.IfaceID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "rx_rate_limiter":
-			s.RxRateLimiter.Reset()
-			if err := s.RxRateLimiter.ReadJSON(i); err != nil {
-				i.ReportError("Field RxRateLimiter", err.Error())
+			if err := func() error {
+				if err := s.RxRateLimiter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "tx_rate_limiter":
-			s.TxRateLimiter.Reset()
-			if err := s.TxRateLimiter.ReadJSON(i); err != nil {
-				i.ReportError("Field TxRateLimiter", err.Error())
+			if err := func() error {
+				if err := s.TxRateLimiter.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -2214,6 +2671,9 @@ func (s *PartialNetworkInterface) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2250,6 +2710,7 @@ func (s *PatchBalloonNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PatchBalloonNoContent from json stream.
 func (s *PatchBalloonNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2257,6 +2718,9 @@ func (s *PatchBalloonNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2293,6 +2757,7 @@ func (s *PatchBalloonStatsIntervalNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PatchBalloonStatsIntervalNoContent from json stream.
 func (s *PatchBalloonStatsIntervalNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2300,6 +2765,9 @@ func (s *PatchBalloonStatsIntervalNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2336,6 +2804,7 @@ func (s *PatchGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PatchGuestDriveByIDNoContent from json stream.
 func (s *PatchGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2343,6 +2812,9 @@ func (s *PatchGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2379,6 +2851,7 @@ func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) erro
 
 // ReadJSON reads PatchGuestNetworkInterfaceByIDNoContent from json stream.
 func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2386,6 +2859,9 @@ func (s *PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) err
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2422,6 +2898,7 @@ func (s *PatchMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PatchMachineConfigurationNoContent from json stream.
 func (s *PatchMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2429,6 +2906,9 @@ func (s *PatchMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2465,6 +2945,7 @@ func (s *PatchVmNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PatchVmNoContent from json stream.
 func (s *PatchVmNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2472,6 +2953,9 @@ func (s *PatchVmNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2508,6 +2992,7 @@ func (s *PutBalloonNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PutBalloonNoContent from json stream.
 func (s *PutBalloonNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2515,6 +3000,9 @@ func (s *PutBalloonNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2551,6 +3039,7 @@ func (s *PutGuestBootSourceNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PutGuestBootSourceNoContent from json stream.
 func (s *PutGuestBootSourceNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2558,6 +3047,9 @@ func (s *PutGuestBootSourceNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2594,6 +3086,7 @@ func (s *PutGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PutGuestDriveByIDNoContent from json stream.
 func (s *PutGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2601,6 +3094,9 @@ func (s *PutGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2637,6 +3133,7 @@ func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) error 
 
 // ReadJSON reads PutGuestNetworkInterfaceByIDNoContent from json stream.
 func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2644,6 +3141,9 @@ func (s *PutGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2680,6 +3180,7 @@ func (s *PutGuestVsockNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PutGuestVsockNoContent from json stream.
 func (s *PutGuestVsockNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2687,6 +3188,9 @@ func (s *PutGuestVsockNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2723,6 +3227,7 @@ func (s *PutLoggerNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PutLoggerNoContent from json stream.
 func (s *PutLoggerNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2730,6 +3235,9 @@ func (s *PutLoggerNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2766,6 +3274,7 @@ func (s *PutMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PutMachineConfigurationNoContent from json stream.
 func (s *PutMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2773,6 +3282,9 @@ func (s *PutMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2809,6 +3321,7 @@ func (s *PutMetricsNoContent) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads PutMetricsNoContent from json stream.
 func (s *PutMetricsNoContent) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
@@ -2816,6 +3329,9 @@ func (s *PutMetricsNoContent) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2862,19 +3378,28 @@ func (s *RateLimiter) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads RateLimiter from json stream.
 func (s *RateLimiter) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "bandwidth":
-			s.Bandwidth.Reset()
-			if err := s.Bandwidth.ReadJSON(i); err != nil {
-				i.ReportError("Field Bandwidth", err.Error())
+			if err := func() error {
+				if err := s.Bandwidth.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "ops":
-			s.Ops.Reset()
-			if err := s.Ops.ReadJSON(i); err != nil {
-				i.ReportError("Field Ops", err.Error())
+			if err := func() error {
+				if err := s.Ops.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -2883,6 +3408,9 @@ func (s *RateLimiter) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -2935,25 +3463,46 @@ func (s *SnapshotCreateParams) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SnapshotCreateParams from json stream.
 func (s *SnapshotCreateParams) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "mem_file_path":
-			s.MemFilePath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.MemFilePath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "snapshot_path":
-			s.SnapshotPath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.SnapshotPath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "snapshot_type":
-			s.SnapshotType.Reset()
-			if err := s.SnapshotType.ReadJSON(i); err != nil {
-				i.ReportError("Field SnapshotType", err.Error())
+			if err := func() error {
+				if err := s.SnapshotType.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "version":
-			s.Version.Reset()
-			if err := s.Version.ReadJSON(i); err != nil {
-				i.ReportError("Field Version", err.Error())
+			if err := func() error {
+				if err := s.Version.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -2962,6 +3511,9 @@ func (s *SnapshotCreateParams) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3025,33 +3577,57 @@ func (s *SnapshotLoadParams) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads SnapshotLoadParams from json stream.
 func (s *SnapshotLoadParams) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "enable_diff_snapshots":
-			s.EnableDiffSnapshots.Reset()
-			if err := s.EnableDiffSnapshots.ReadJSON(i); err != nil {
-				i.ReportError("Field EnableDiffSnapshots", err.Error())
+			if err := func() error {
+				if err := s.EnableDiffSnapshots.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "mem_file_path":
-			s.MemFilePath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.MemFilePath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "resume_vm":
-			s.ResumeVM.Reset()
-			if err := s.ResumeVM.ReadJSON(i); err != nil {
-				i.ReportError("Field ResumeVM", err.Error())
+			if err := func() error {
+				if err := s.ResumeVM.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "snapshot_path":
-			s.SnapshotPath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.SnapshotPath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3099,26 +3675,46 @@ func (s *TokenBucket) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads TokenBucket from json stream.
 func (s *TokenBucket) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "one_time_burst":
-			s.OneTimeBurst.Reset()
-			if err := s.OneTimeBurst.ReadJSON(i); err != nil {
-				i.ReportError("Field OneTimeBurst", err.Error())
+			if err := func() error {
+				if err := s.OneTimeBurst.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
 		case "refill_time":
-			s.RefillTime = i.ReadInt64()
-			return i.Error == nil
+			if err := func() error {
+				s.RefillTime = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "size":
-			s.Size = i.ReadInt64()
-			return i.Error == nil
+			if err := func() error {
+				s.Size = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3169,11 +3765,15 @@ func (s *VM) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads VM from json stream.
 func (s *VM) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "state":
-			if err := s.State.ReadJSON(i); err != nil {
-				i.ReportError("Field State", err.Error())
+			if err := func() error {
+				s.State = VMState(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
 				return false
 			}
 			return true
@@ -3182,6 +3782,9 @@ func (s *VM) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
@@ -3227,21 +3830,43 @@ func (s *Vsock) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads Vsock from json stream.
 func (s *Vsock) ReadJSON(i *json.Iterator) error {
+	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "guest_cid":
-			s.GuestCid = i.ReadInt()
-			return i.Error == nil
+			if err := func() error {
+				s.GuestCid = int(i.ReadInt())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "uds_path":
-			s.UdsPath = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.UdsPath = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		case "vsock_id":
-			s.VsockID = i.ReadString()
-			return i.Error == nil
+			if err := func() error {
+				s.VsockID = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }

@@ -71,7 +71,6 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem WorldObject
 					if err := func() error {
-
 						if err := elem.ReadJSON(i); err != nil {
 							return err
 						}
@@ -189,7 +188,6 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem WorldObject
 					if err := func() error {
-
 						if err := elem.ReadJSON(i); err != nil {
 							return err
 						}
@@ -239,7 +237,6 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem WorldObject
 					if err := func() error {
-
 						if err := elem.ReadJSON(i); err != nil {
 							return err
 						}

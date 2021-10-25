@@ -1,7 +1,7 @@
 {{- define "dec_json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     {{- if $.Schema.JSONRead -}}
-        {{ $.Var }} = i.{{ $.Schema.JSONRead }}()
+        {{ $.Var }} = {{ $.Schema.Type }}(i.{{ $.Schema.JSONRead }}())
         return i.Error
     {{- else if $.Schema.JSONHelper }}
         v, err := json.Read{{ $.Schema.JSONHelper }}(i)
@@ -19,20 +19,33 @@
     {{- else if $.Schema.IsArray }}
         var retErr error
         i.ReadArrayCB(func(i *json.Iterator) bool {
-           var elem {{ $.Schema.Item.Type }}
+           var {{ $.NextVar }} {{ $.Schema.Item.Type }}
            if err := func() error {
-              {{ template "dec_json_value" array_elem $.Schema.Item }}
+              {{- template "dec_json_value" sub_array_elem $ $.Schema.Item }}
            }(); err != nil {
                retErr = err
                return false
            }
-           {{ $.Var }} = append({{ $.Var }}, elem)
+           {{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
            return true
         })
         if retErr != nil {
            return retErr
         }
         return i.Error
+    {{- else if $.Schema.GenericOf }}
+        {{- $g := $.Schema.GenericOf }}
+        {{- if $g.FormatCustom }}
+          if err := {{ $.Var }}.ReadJSON(i, json.Read{{ $g.JSONHelper }}); err != nil {
+            return err
+          }
+          return nil
+        {{- else }}
+          if err := {{ $.Var }}.ReadJSON(i); err != nil {
+            return err
+          }
+          return nil
+        {{- end }}
     {{- else  -}}
         return fmt.Errorf(`decoding of "{{ $.Schema.Type }}" ({{ $.Schema.Kind }}) is not implemented`)
     {{- end }}

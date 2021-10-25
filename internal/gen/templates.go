@@ -28,17 +28,37 @@ type Elem struct {
 	Var     string
 }
 
+func (e Elem) NextVar() string {
+	if !e.ArrElem {
+		return "elem"
+	}
+	return e.Var + "Elem"
+}
+
 // templateFuncs returns functions which used in templates.
 func templateFuncs() template.FuncMap {
 	return template.FuncMap{
-		"trim":            strings.TrimSpace,
-		"lower":           strings.ToLower,
-		"trimPrefix":      strings.TrimPrefix,
-		"trimSuffix":      strings.TrimSuffix,
-		"hasPrefix":       strings.HasPrefix,
-		"hasSuffix":       strings.HasSuffix,
-		"pascalMP":        pascalMP,
-		"array_elem":      func(s *ast.Schema) Elem { return Elem{Schema: s, ArrElem: true, Var: "elem"} },
+		"trim":       strings.TrimSpace,
+		"lower":      strings.ToLower,
+		"trimPrefix": strings.TrimPrefix,
+		"trimSuffix": strings.TrimSuffix,
+		"hasPrefix":  strings.HasPrefix,
+		"hasSuffix":  strings.HasSuffix,
+		"pascalMP":   pascalMP,
+		"sub_array_elem": func(parent Elem, s *ast.Schema) Elem {
+			return Elem{
+				Schema:  s,
+				ArrElem: true,
+				Var:     parent.NextVar(),
+			}
+		},
+		"array_elem": func(s *ast.Schema) Elem {
+			return Elem{
+				Schema:  s,
+				ArrElem: true,
+				Var:     "elem",
+			}
+		},
 		"req_elem":        func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "response"} },
 		"req_decode_elem": func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "request"} },
 		"res_elem": func(i *ast.ResponseInfo) Elem {

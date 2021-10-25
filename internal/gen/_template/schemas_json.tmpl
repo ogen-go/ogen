@@ -42,56 +42,27 @@ func (s *{{ $s.Name }}) ReadJSONFrom(r io.Reader) error {
 
 // ReadJSON reads {{ $s.Name }} from json stream.
 func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
+    var retErr error
     i.ReadObjectCB(func(i *json.Iterator, k string) bool {
         switch k {
 {{- range $f := $s.JSONFields }}
     case "{{ $f.Tag }}":
-    {{- if $f.Type.GenericVariant.Optional }}
-        s.{{ $f.Name }}.Reset()
-    {{- end }}
-    {{- if or ($f.Type.IsStruct) ($f.Type.IsEnum) }}
-        if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
-            i.ReportError("Field {{ $f.Name }}", err.Error())
-            return false
-        }
-        return true
-    {{- else if $f.Type.GenericOf }}
-    {{- $g := $f.Type.GenericOf }}
-    {{- if $g.FormatCustom }}
-        if err := s.{{ $f.Name }}.ReadJSON(i, json.Read{{ $g.JSONHelper }}); err != nil {
-            i.ReportError("Field {{ $f.Name }}", err.Error())
-            return false
-        }
-        return true
-    {{- else }}
-        if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
-            i.ReportError("Field {{ $f.Name }}", err.Error())
-            return false
-        }
-        return true
-    {{- end }}
-    {{- else if $f.Type.JSONRead }}
-        s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
-        return i.Error == nil
-    {{- else if $f.Type.JSONHelper }}
-        v, err := json.Read{{ $f.Type.JSONHelper }}(i)
-        if err != nil {
-            i.ReportError("Field {{ $f.Name }}", err.Error())
-            return false
-        }
-        s.{{ $f.Name }} = v
-        return true
-    {{- else }}
-        // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
-        i.Skip()
-        return true
-    {{- end }}
+    if err := func() error {
+        {{- template "dec_json_value" field_elem $f }}
+    }(); err != nil {
+        retErr = err
+        return false
+    }
+    return true
 {{- end }}
         default:
             i.Skip()
             return true
         }
     })
+    if retErr != nil {
+        return retErr
+    }
     return i.Error
 }
 {{- else if $s.IsGeneric }}

@@ -264,7 +264,7 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
 					if err := func() error {
-						elem = i.ReadString()
+						elem = string(i.ReadString())
 						return i.Error
 					}(); err != nil {
 						retErr = err
@@ -307,7 +307,7 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 
 			var response string
 			if err := func() error {
-				response = i.ReadString()
+				response = string(i.ReadString())
 				return i.Error
 			}(); err != nil {
 				return res, err
