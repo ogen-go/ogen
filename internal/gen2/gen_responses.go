@@ -29,6 +29,14 @@ func (g *Generator) generateResponses(name string, responses *ast.MethodResponse
 			return nil, xerrors.Errorf("default: %w", err)
 		}
 
+		for contentType, typ := range resp.Contents {
+			resp.Contents[contentType] = g.wrapStatusCode(typ)
+		}
+
+		if noc := resp.NoContent; noc != nil {
+			resp.NoContent = g.wrapStatusCode(noc)
+		}
+
 		result.Default = resp
 	}
 
@@ -60,4 +68,27 @@ func (g *Generator) response2IR(name string, resp *ast.Response) (*ir.StatusResp
 		Contents: types,
 		Spec:     resp,
 	}, nil
+}
+
+func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
+	if !typ.Is(ir.KindStruct, ir.KindAlias) {
+		panic("unreachable")
+	}
+
+	return &ir.Type{
+		Kind: ir.KindStruct,
+		Name: typ.Name + "Default",
+		Fields: []*ir.StructField{
+			{
+				Name: "StatusCode",
+				Type: ir.Primitive(ir.Int, nil),
+				Tag:  "-",
+			},
+			{
+				Name: "Response",
+				Type: typ,
+				Tag:  "-",
+			},
+		},
+	}
 }
