@@ -188,7 +188,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	return result, nil
 }
 
-func (c *Client) PetCreate(ctx context.Context) (res PetGetResOKApplicationJSON, err error) {
+func (c *Client) PetCreate(ctx context.Context) (res Pet, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
@@ -209,7 +209,7 @@ func (c *Client) PetCreate(ctx context.Context) (res PetGetResOKApplicationJSON,
 	return result, nil
 }
 
-func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res PetGetResOKApplicationJSON, err error) {
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/"
 	{

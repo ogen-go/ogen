@@ -74,7 +74,7 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter)
 
 func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *PetGetResOKApplicationJSON:
+	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -97,7 +97,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 	}
 }
 
-func encodePetCreateResponse(response PetGetResOKApplicationJSON, w http.ResponseWriter) error {
+func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -108,7 +108,7 @@ func encodePetCreateResponse(response PetGetResOKApplicationJSON, w http.Respons
 	return nil
 }
 
-func encodePetGetByNameResponse(response PetGetResOKApplicationJSON, w http.ResponseWriter) error {
+func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -121,7 +121,7 @@ func encodePetGetByNameResponse(response PetGetResOKApplicationJSON, w http.Resp
 
 func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *PetGetResOKApplicationJSON:
+	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -145,7 +145,7 @@ func encodeFoobarPutResponse(response FoobarPutResDefaultStatusCode, w http.Resp
 
 func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *PetGetResOKApplicationJSON:
+	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)

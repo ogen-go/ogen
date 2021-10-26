@@ -127,7 +127,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetResOKApplicationJSON
+			var response Pet
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -160,7 +160,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 	}
 }
 
-func decodePetCreateResponse(resp *http.Response) (res PetGetResOKApplicationJSON, err error) {
+func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -175,7 +175,7 @@ func decodePetCreateResponse(resp *http.Response) (res PetGetResOKApplicationJSO
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetResOKApplicationJSON
+			var response Pet
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -191,7 +191,7 @@ func decodePetCreateResponse(resp *http.Response) (res PetGetResOKApplicationJSO
 	}
 }
 
-func decodePetGetByNameResponse(resp *http.Response) (res PetGetResOKApplicationJSON, err error) {
+func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -206,7 +206,7 @@ func decodePetGetByNameResponse(resp *http.Response) (res PetGetResOKApplication
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetResOKApplicationJSON
+			var response Pet
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -237,7 +237,7 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetResOKApplicationJSON
+			var response Pet
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -283,7 +283,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetResOKApplicationJSON
+			var response Pet
 			if err := func() error {
 				return nil
 			}(); err != nil {

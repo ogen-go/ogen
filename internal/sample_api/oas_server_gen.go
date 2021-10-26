@@ -59,9 +59,9 @@ type Server interface {
 	// PetGet implements petGet operation.
 	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
 	// PetCreate implements petCreate operation.
-	PetCreate(ctx context.Context) (PetGetResOKApplicationJSON, error)
+	PetCreate(ctx context.Context) (Pet, error)
 	// PetGetByName implements petGetByName operation.
-	PetGetByName(ctx context.Context, params PetGetByNameParams) (PetGetResOKApplicationJSON, error)
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
 	// FoobarGet implements foobarGet operation.
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
 	// FoobarPut implements  operation.

@@ -1,11 +1,11 @@
 package gen
 
 import (
-	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateSchema(name string, schema *ast.Schema) (*ir.Type, error) {
+func (g *Generator) generateSchema(name string, schema *oas.Schema) (*ir.Type, error) {
 	gen := &schemaGen{
 		localRefs:  map[string]*ir.Type{},
 		globalRefs: g.refs,

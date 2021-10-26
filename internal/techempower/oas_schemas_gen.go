@@ -51,14 +51,14 @@ var (
 )
 
 // '#/components/schemas/HelloWorld'
-type JSONResOKApplicationJSON struct {
+type HelloWorld struct {
 	Message string `json:"message"`
 }
 
-type QueriesResOKApplicationJSON []QueriesResOKApplicationJSONItem
-
 // '#/components/schemas/WorldObject'
-type QueriesResOKApplicationJSONItem struct {
+type WorldObject struct {
 	ID           int64 `json:"id"`
 	RandomNumber int64 `json:"randomNumber"`
 }
+
+type WorldObjects []WorldObject

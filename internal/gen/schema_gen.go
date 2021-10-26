@@ -30,6 +30,8 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		if t, ok := g.localRefs[ref]; ok {
 			return t, nil
 		}
+
+		name = strings.TrimPrefix(ref, "#/components/schemas/")
 	}
 
 	switch {
@@ -105,7 +107,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			}
 			v := ir.GenericVariant{
 				Nullable: prop.Nullable,
-				Optional: prop.Nullable,
+				Optional: prop.Optional,
 			}
 			if v.Any() {
 				if typ.CanGeneric() && !s.RecursiveTo(typ) {
@@ -152,8 +154,9 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 
 	case oas.Array:
 		array := &ir.Type{
-			Kind:   ir.KindArray,
-			Schema: schema,
+			Kind:        ir.KindArray,
+			Schema:      schema,
+			NilSemantic: ir.NilInvalid,
 		}
 
 		ret := side(array)
@@ -227,7 +230,7 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 	case oas.String:
 		switch format {
 		case oas.FormatByte:
-			return ir.Array(ir.Primitive(ir.Byte, nil), schema), nil
+			return ir.Array(ir.Primitive(ir.Byte, nil), ir.NilInvalid, schema), nil
 		case oas.FormatDateTime, oas.FormatDate, oas.FormatTime:
 			return ir.Primitive(ir.Time, schema), nil
 		case oas.FormatDuration:

@@ -72,7 +72,49 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) Queries(ctx context.Context, params QueriesParams) (res QueriesResOKApplicationJSON, err error) {
+func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/json"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeJSONResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/db"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDBResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
 
@@ -106,7 +148,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res Queries
 	return result, nil
 }
 
-func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res QueriesResOKApplicationJSON, err error) {
+func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/updates"
 
@@ -140,7 +182,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res Queries
 	return result, nil
 }
 
-func (c *Client) Caching(ctx context.Context, params CachingParams) (res QueriesResOKApplicationJSON, err error) {
+func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/cached-worlds"
 
@@ -167,48 +209,6 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res Queries
 	defer resp.Body.Close()
 
 	result, err := decodeCachingResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) JSON(ctx context.Context) (res JSONResOKApplicationJSON, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/json"
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeJSONResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) DB(ctx context.Context) (res QueriesResOKApplicationJSONItem, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/db"
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeDBResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}

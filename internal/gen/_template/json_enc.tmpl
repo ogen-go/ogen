@@ -22,8 +22,8 @@
     {{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) -}}
         {{- if or (eq $t.NilSemantic "invalid") (eq $t.NilSemantic "optional") -}}
           if {{ $.Var }} != nil {
-          {{- template "enc_json_start" $ }}
-          {{ $.Var }}.WriteJSON(j)
+            {{- template "enc_json_start" $ }}
+            {{ $.Var }}.WriteJSON(j)
           }
         {{- else if eq $t.NilSemantic "null" -}}
             {{- template "enc_json_start" $ }}
@@ -70,6 +70,8 @@
           } else {
             {{- template "enc_json_array" $ -}}
           }
+        {{- else -}}
+        Unexpected nil semantic
         {{- end -}}
     {{- else -}}
         {{- if $.Sub -}}

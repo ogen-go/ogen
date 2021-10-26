@@ -51,7 +51,7 @@ var (
 )
 
 // WriteJSON implements json.Marshaler.
-func (s JSONResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s HelloWorld) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -62,31 +62,8 @@ func (s JSONResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes JSONResOKApplicationJSON json value to io.Writer.
-func (s JSONResOKApplicationJSON) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads JSONResOKApplicationJSON json value from io.Reader.
-func (s *JSONResOKApplicationJSON) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads JSONResOKApplicationJSON from json stream.
-func (s *JSONResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads HelloWorld from json stream.
+func (s *HelloWorld) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -110,13 +87,8 @@ func (s *JSONResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (QueriesResOKApplicationJSON) WriteJSON(j *json.Stream)        {}
-func (QueriesResOKApplicationJSON) ReadJSON(i *json.Iterator) error { return nil }
-func (QueriesResOKApplicationJSON) ReadJSONFrom(r io.Reader) error  { return nil }
-func (QueriesResOKApplicationJSON) WriteJSONTo(w io.Writer) error   { return nil }
-
 // WriteJSON implements json.Marshaler.
-func (s QueriesResOKApplicationJSONItem) WriteJSON(j *json.Stream) {
+func (s WorldObject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -131,31 +103,8 @@ func (s QueriesResOKApplicationJSONItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes QueriesResOKApplicationJSONItem json value to io.Writer.
-func (s QueriesResOKApplicationJSONItem) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads QueriesResOKApplicationJSONItem json value from io.Reader.
-func (s *QueriesResOKApplicationJSONItem) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads QueriesResOKApplicationJSONItem from json stream.
-func (s *QueriesResOKApplicationJSONItem) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads WorldObject from json stream.
+func (s *WorldObject) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -187,3 +136,6 @@ func (s *QueriesResOKApplicationJSONItem) ReadJSON(i *json.Iterator) error {
 	}
 	return i.Error
 }
+
+func (WorldObjects) WriteJSON(j *json.Stream)        {}
+func (WorldObjects) ReadJSON(i *json.Iterator) error { return nil }

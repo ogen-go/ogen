@@ -17,29 +17,6 @@ func (s {{ $t.Name }}) WriteJSON(j *json.Stream) {
     j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes {{ $t.Name }} json value to io.Writer.
-func (s {{ $t.Name }}) WriteJSONTo(w io.Writer) error {
-    j := json.GetStream(w)
-    defer json.PutStream(j)
-    s.WriteJSON(j)
-    return j.Flush()
-}
-
-// ReadJSONFrom reads {{ $t.Name }} json value from io.Reader.
-func (s *{{ $t.Name }}) ReadJSONFrom(r io.Reader) error {
-    buf := json.GetBuffer()
-    defer json.PutBuffer(buf)
-
-    if _, err := buf.ReadFrom(r); err != nil {
-        return err
-    }
-    i := json.GetIterator()
-    i.ResetBytes(buf.Bytes())
-    defer json.PutIterator(i)
-
-    return s.ReadJSON(i)
-}
-
 // ReadJSON reads {{ $t.Name }} from json stream.
 func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
     var retErr error
@@ -69,7 +46,7 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
 {{ $g := $t.GenericOf }}
 {{ $v := $t.GenericVariant }}
 // WriteJSON writes json value of {{ $g.Go }} to json stream.
-func (o {{ $t.Name }}) WriteJSON(j *json.Stream{{ if $g.Format }}, format func(*json.Stream, {{ $g.Type }}){{ end }}) {
+func (o {{ $t.Name }}) WriteJSON(j *json.Stream{{ if $g.Format }}, format func(*json.Stream, {{ $g.Go }}){{ end }}) {
 {{- if $v.Nullable }}
     if o.Null {
         j.WriteNil()
@@ -88,7 +65,7 @@ func (o {{ $t.Name }}) WriteJSON(j *json.Stream{{ if $g.Format }}, format func(*
 }
 
 // ReadJSON reads json value of {{ $g.Go }} from json iterator.
-func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
+func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func(*json.Iterator) ({{ $g.Go }}, error){{ end }}) error {
     switch i.WhatIsNext() {
     case json.{{ $g.JSON.Type }}:
     {{- if $v.Optional }}
@@ -147,8 +124,6 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
 {{- else if $t.IsAlias }}
 func ({{ $t.Name }}) WriteJSON(j *json.Stream) {}
 func ({{ $t.Name }}) ReadJSON(i *json.Iterator) error { return nil }
-func ({{ $t.Name }}) ReadJSONFrom(r io.Reader) error { return nil }
-func ({{ $t.Name }}) WriteJSONTo(w io.Writer) error { return nil }
 {{- end }}
 
 {{- end }}

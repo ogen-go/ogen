@@ -16,7 +16,7 @@ import (
 type server struct {
 }
 
-func (s server) Caching(ctx context.Context, params techempower.CachingParams) ([]techempower.WorldObject, error) {
+func (s server) Caching(ctx context.Context, params techempower.CachingParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }
 
@@ -28,11 +28,11 @@ func (s server) JSON(ctx context.Context) (techempower.HelloWorld, error) {
 	return techempower.HelloWorld{Message: "Hello, world"}, nil
 }
 
-func (s server) Queries(ctx context.Context, params techempower.QueriesParams) ([]techempower.WorldObject, error) {
+func (s server) Queries(ctx context.Context, params techempower.QueriesParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }
 
-func (s server) Updates(ctx context.Context, params techempower.UpdatesParams) ([]techempower.WorldObject, error) {
+func (s server) Updates(ctx context.Context, params techempower.UpdatesParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }
 

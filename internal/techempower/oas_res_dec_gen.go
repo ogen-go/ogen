@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeQueriesResponse(resp *http.Response) (res QueriesResOKApplicationJSON, err error) {
+func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -65,7 +65,7 @@ func decodeQueriesResponse(resp *http.Response) (res QueriesResOKApplicationJSON
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response QueriesResOKApplicationJSON
+			var response HelloWorld
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -81,7 +81,7 @@ func decodeQueriesResponse(resp *http.Response) (res QueriesResOKApplicationJSON
 	}
 }
 
-func decodeUpdatesResponse(resp *http.Response) (res QueriesResOKApplicationJSON, err error) {
+func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -96,7 +96,7 @@ func decodeUpdatesResponse(resp *http.Response) (res QueriesResOKApplicationJSON
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response QueriesResOKApplicationJSON
+			var response WorldObject
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -112,7 +112,7 @@ func decodeUpdatesResponse(resp *http.Response) (res QueriesResOKApplicationJSON
 	}
 }
 
-func decodeCachingResponse(resp *http.Response) (res QueriesResOKApplicationJSON, err error) {
+func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -127,7 +127,7 @@ func decodeCachingResponse(resp *http.Response) (res QueriesResOKApplicationJSON
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response QueriesResOKApplicationJSON
+			var response WorldObjects
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -143,7 +143,7 @@ func decodeCachingResponse(resp *http.Response) (res QueriesResOKApplicationJSON
 	}
 }
 
-func decodeJSONResponse(resp *http.Response) (res JSONResOKApplicationJSON, err error) {
+func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -158,7 +158,7 @@ func decodeJSONResponse(resp *http.Response) (res JSONResOKApplicationJSON, err 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response JSONResOKApplicationJSON
+			var response WorldObjects
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -174,7 +174,7 @@ func decodeJSONResponse(resp *http.Response) (res JSONResOKApplicationJSON, err 
 	}
 }
 
-func decodeDBResponse(resp *http.Response) (res QueriesResOKApplicationJSONItem, err error) {
+func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -189,7 +189,7 @@ func decodeDBResponse(resp *http.Response) (res QueriesResOKApplicationJSONItem,
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response QueriesResOKApplicationJSONItem
+			var response WorldObjects
 			if err := func() error {
 				return nil
 			}(); err != nil {

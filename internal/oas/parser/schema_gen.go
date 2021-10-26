@@ -261,28 +261,28 @@ func (g *schemaGen) validateTypeFormat(typ, format string) error {
 		case "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected object format: '%s'", format)
+			return xerrors.Errorf("unexpected object format: %q", format)
 		}
 	case "array":
 		switch format {
 		case "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected array format: '%s'", format)
+			return xerrors.Errorf("unexpected array format: %q", format)
 		}
 	case "integer":
 		switch format {
 		case "int32", "int64", "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected integer format: '%s'", format)
+			return xerrors.Errorf("unexpected integer format: %q", format)
 		}
 	case "number":
 		switch format {
 		case "float", "double", "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected number format: '%s'", format)
+			return xerrors.Errorf("unexpected number format: %q", format)
 		}
 	case "string":
 		switch format {
@@ -301,7 +301,7 @@ func (g *schemaGen) validateTypeFormat(typ, format string) error {
 		case "password", "":
 			return nil
 		default:
-			// return nil, xerrors.Errorf("unexpected string format: '%s'", format)
+			// return nil, xerrors.Errorf("unexpected string format: %q", format)
 			return nil
 		}
 	case "boolean":
@@ -309,9 +309,9 @@ func (g *schemaGen) validateTypeFormat(typ, format string) error {
 		case "":
 			return nil
 		default:
-			return xerrors.Errorf("unexpected bool format: '%s'", format)
+			return xerrors.Errorf("unexpected bool format: %q", format)
 		}
 	default:
-		return xerrors.Errorf("unexpected type: '%s'", typ)
+		return xerrors.Errorf("unexpected type: %q", typ)
 	}
 }

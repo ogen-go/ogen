@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func (s *PetGetResOKApplicationJSON) Validate() error {
+func (s *Pet) Validate() error {
 	var failures []validate.FieldError
 	{
 		// Validate 'id' property.
@@ -76,42 +76,6 @@ func (s *PetGetResOKApplicationJSON) Validate() error {
 		}
 		if err := validator.Validate(string(s.Name)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "name", Error: err})
-		}
-	}
-	if s.Primary == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "primary",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	{
-		// Validate 'testFloat1' property.
-		validator := validate.Int{
-			MinSet:       true,
-			Min:          15,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
-		}
-		if err := validator.Validate(int64(s.TestFloat1)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "testFloat1", Error: err})
-		}
-	}
-	{
-		// Validate 'testInteger1' property.
-		validator := validate.Int{
-			MinSet:       false,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
-		}
-		if err := validator.Validate(int64(s.TestInteger1)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "testInteger1", Error: err})
 		}
 	}
 	if len(failures) > 0 {

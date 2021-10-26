@@ -12,12 +12,12 @@ import (
 func (p *parser) parseParams(params []ogen.Parameter) ([]*ast.Parameter, error) {
 	var result []*ast.Parameter
 	for _, param := range params {
-		param, err := p.parseParameter(param)
+		parsed, err := p.parseParameter(param)
 		if err != nil {
 			return nil, xerrors.Errorf("parse parameter '%s': %w", param.Name, err)
 		}
 
-		result = append(result, param)
+		result = append(result, parsed)
 	}
 
 	return result, nil
@@ -25,11 +25,11 @@ func (p *parser) parseParams(params []ogen.Parameter) ([]*ast.Parameter, error) 
 
 func (p *parser) parseParameter(param ogen.Parameter) (*ast.Parameter, error) {
 	if ref := param.Ref; ref != "" {
-		p, err := p.resolveParameter(ref)
+		parsed, err := p.resolveParameter(ref)
 		if err != nil {
 			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
 		}
-		return p, nil
+		return parsed, nil
 	}
 
 	types := map[string]ast.ParameterLocation{

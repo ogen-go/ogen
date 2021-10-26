@@ -10,11 +10,12 @@ func Primitive(typ PrimitiveType, schema *oas.Schema) *Type {
 	}
 }
 
-func Array(item *Type, schema *oas.Schema) *Type {
+func Array(item *Type, sem NilSemantic, schema *oas.Schema) *Type {
 	return &Type{
-		Kind:   KindArray,
-		Item:   item,
-		Schema: schema,
+		Kind:        KindArray,
+		Item:        item,
+		Schema:      schema,
+		NilSemantic: sem,
 	}
 }
 
