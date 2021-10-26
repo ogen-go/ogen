@@ -50,6 +50,15 @@ var (
 	_ = net.IP{}
 )
 
+// Ref: #/components/schemas/addStickerToSet
+type AddStickerToSet struct {
+	Emojis       string          `json:"emojis"`
+	MaskPosition OptMaskPosition `json:"mask_position"`
+	Name         string          `json:"name"`
+	TgsSticker   OptString       `json:"tgs_sticker"`
+	UserID       int             `json:"user_id"`
+}
+
 type AddStickerToSetResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
@@ -68,9 +77,28 @@ type Animation struct {
 	Width        int          `json:"width"`
 }
 
+// Ref: #/components/schemas/answerCallbackQuery
+type AnswerCallbackQuery struct {
+	CacheTime       OptInt    `json:"cache_time"`
+	CallbackQueryID string    `json:"callback_query_id"`
+	ShowAlert       OptBool   `json:"show_alert"`
+	Text            OptString `json:"text"`
+	URL             OptString `json:"url"`
+}
+
 type AnswerCallbackQueryResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/answerInlineQuery
+type AnswerInlineQuery struct {
+	CacheTime         OptInt    `json:"cache_time"`
+	InlineQueryID     string    `json:"inline_query_id"`
+	IsPersonal        OptBool   `json:"is_personal"`
+	NextOffset        OptString `json:"next_offset"`
+	SwitchPmParameter OptString `json:"switch_pm_parameter"`
+	SwitchPmText      OptString `json:"switch_pm_text"`
 }
 
 type AnswerInlineQueryResOKApplicationJSON struct {
@@ -78,9 +106,23 @@ type AnswerInlineQueryResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/answerPreCheckoutQuery
+type AnswerPreCheckoutQuery struct {
+	ErrorMessage       OptString `json:"error_message"`
+	Ok                 bool      `json:"ok"`
+	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
+}
+
 type AnswerPreCheckoutQueryResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/answerShippingQuery
+type AnswerShippingQuery struct {
+	ErrorMessage    OptString `json:"error_message"`
+	Ok              bool      `json:"ok"`
+	ShippingQueryID string    `json:"shipping_query_id"`
 }
 
 type AnswerShippingQueryResOKApplicationJSON struct {
@@ -99,6 +141,13 @@ type Audio struct {
 	Performer    OptString    `json:"performer"`
 	Thumb        OptPhotoSize `json:"thumb"`
 	Title        OptString    `json:"title"`
+}
+
+// Ref: #/components/schemas/banChatMember
+type BanChatMember struct {
+	RevokeMessages OptBool `json:"revoke_messages"`
+	UntilDate      OptInt  `json:"until_date"`
+	UserID         int     `json:"user_id"`
 }
 
 type BanChatMemberResOKApplicationJSON struct {
@@ -166,9 +215,25 @@ type Contact struct {
 	Vcard       OptString `json:"vcard"`
 }
 
+// Ref: #/components/schemas/copyMessage
+type CopyMessage struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	Caption                  OptString `json:"caption"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	MessageID                int       `json:"message_id"`
+	ParseMode                OptString `json:"parse_mode"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+}
+
 type CopyMessageResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/createChatInviteLink
+type CreateChatInviteLink struct {
+	ExpireDate  OptInt `json:"expire_date"`
+	MemberLimit OptInt `json:"member_limit"`
 }
 
 type CreateChatInviteLinkResOKApplicationJSON struct {
@@ -176,19 +241,41 @@ type CreateChatInviteLinkResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/createNewStickerSet
+type CreateNewStickerSet struct {
+	ContainsMasks OptBool         `json:"contains_masks"`
+	Emojis        string          `json:"emojis"`
+	MaskPosition  OptMaskPosition `json:"mask_position"`
+	Name          string          `json:"name"`
+	TgsSticker    OptString       `json:"tgs_sticker"`
+	Title         string          `json:"title"`
+	UserID        int             `json:"user_id"`
+}
+
 type CreateNewStickerSetResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
+
+// Ref: #/components/schemas/deleteChatPhoto
+type DeleteChatPhoto struct{}
 
 type DeleteChatPhotoResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/deleteChatStickerSet
+type DeleteChatStickerSet struct{}
+
 type DeleteChatStickerSetResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/deleteMessage
+type DeleteMessage struct {
+	MessageID int `json:"message_id"`
 }
 
 type DeleteMessageResOKApplicationJSON struct {
@@ -196,14 +283,30 @@ type DeleteMessageResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/deleteMyCommands
+type DeleteMyCommands struct {
+	LanguageCode OptString        `json:"language_code"`
+	Scope        *BotCommandScope `json:"scope"`
+}
+
 type DeleteMyCommandsResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/deleteStickerFromSet
+type DeleteStickerFromSet struct {
+	Sticker string `json:"sticker"`
+}
+
 type DeleteStickerFromSetResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/deleteWebhook
+type DeleteWebhook struct {
+	DropPendingUpdates OptBool `json:"drop_pending_updates"`
 }
 
 type DeleteWebhookResOKApplicationJSON struct {
@@ -227,9 +330,25 @@ type Document struct {
 	Thumb        OptPhotoSize `json:"thumb"`
 }
 
+// Ref: #/components/schemas/editChatInviteLink
+type EditChatInviteLink struct {
+	ExpireDate  OptInt `json:"expire_date"`
+	InviteLink  string `json:"invite_link"`
+	MemberLimit OptInt `json:"member_limit"`
+}
+
 type EditChatInviteLinkResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/editMessageCaption
+type EditMessageCaption struct {
+	Caption         OptString             `json:"caption"`
+	InlineMessageID OptString             `json:"inline_message_id"`
+	MessageID       OptInt                `json:"message_id"`
+	ParseMode       OptString             `json:"parse_mode"`
+	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
 type EditMessageCaptionResOKApplicationJSON struct {
@@ -237,9 +356,29 @@ type EditMessageCaptionResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/editMessageLiveLocation
+type EditMessageLiveLocation struct {
+	Heading              OptInt                `json:"heading"`
+	HorizontalAccuracy   OptFloat64            `json:"horizontal_accuracy"`
+	InlineMessageID      OptString             `json:"inline_message_id"`
+	Latitude             float64               `json:"latitude"`
+	Longitude            float64               `json:"longitude"`
+	MessageID            OptInt                `json:"message_id"`
+	ProximityAlertRadius OptInt                `json:"proximity_alert_radius"`
+	ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup"`
+}
+
 type EditMessageLiveLocationResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/editMessageMedia
+type EditMessageMedia struct {
+	InlineMessageID OptString             `json:"inline_message_id"`
+	Media           InputMedia            `json:"media"`
+	MessageID       OptInt                `json:"message_id"`
+	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
 type EditMessageMediaResOKApplicationJSON struct {
@@ -247,9 +386,26 @@ type EditMessageMediaResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/editMessageReplyMarkup
+type EditMessageReplyMarkup struct {
+	InlineMessageID OptString             `json:"inline_message_id"`
+	MessageID       OptInt                `json:"message_id"`
+	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
+}
+
 type EditMessageReplyMarkupResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/editMessageText
+type EditMessageText struct {
+	DisableWebPagePreview OptBool               `json:"disable_web_page_preview"`
+	InlineMessageID       OptString             `json:"inline_message_id"`
+	MessageID             OptInt                `json:"message_id"`
+	ParseMode             OptString             `json:"parse_mode"`
+	ReplyMarkup           *InlineKeyboardMarkup `json:"reply_markup"`
+	Text                  string                `json:"text"`
 }
 
 type EditMessageTextResOKApplicationJSON struct {
@@ -264,9 +420,18 @@ type EncryptedCredentials struct {
 	Secret string `json:"secret"`
 }
 
+// Ref: #/components/schemas/exportChatInviteLink
+type ExportChatInviteLink struct{}
+
 type ExportChatInviteLinkResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/forwardMessage
+type ForwardMessage struct {
+	DisableNotification OptBool `json:"disable_notification"`
+	MessageID           int     `json:"message_id"`
 }
 
 type ForwardMessageResOKApplicationJSON struct {
@@ -282,10 +447,24 @@ type Game struct {
 	Title       string       `json:"title"`
 }
 
+// Ref: #/components/schemas/getChat
+type GetChat struct{}
+
+// Ref: #/components/schemas/getChatAdministrators
+type GetChatAdministrators struct{}
+
 type GetChatAdministratorsResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
+
+// Ref: #/components/schemas/getChatMember
+type GetChatMember struct {
+	UserID int `json:"user_id"`
+}
+
+// Ref: #/components/schemas/getChatMemberCount
+type GetChatMemberCount struct{}
 
 type GetChatMemberCountResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
@@ -302,9 +481,22 @@ type GetChatResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/getFile
+type GetFile struct {
+	FileID string `json:"file_id"`
+}
+
 type GetFileResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/getGameHighScores
+type GetGameHighScores struct {
+	ChatID          OptInt    `json:"chat_id"`
+	InlineMessageID OptString `json:"inline_message_id"`
+	MessageID       OptInt    `json:"message_id"`
+	UserID          int       `json:"user_id"`
 }
 
 type GetGameHighScoresResOKApplicationJSON struct {
@@ -317,9 +509,20 @@ type GetMeResOKApplicationJSON struct {
 	Result OptUser `json:"result"`
 }
 
+// Ref: #/components/schemas/getMyCommands
+type GetMyCommands struct {
+	LanguageCode OptString        `json:"language_code"`
+	Scope        *BotCommandScope `json:"scope"`
+}
+
 type GetMyCommandsResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/getStickerSet
+type GetStickerSet struct {
+	Name string `json:"name"`
 }
 
 type GetStickerSetResOKApplicationJSON struct {
@@ -327,9 +530,23 @@ type GetStickerSetResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/getUpdates
+type GetUpdates struct {
+	Limit   OptInt `json:"limit"`
+	Offset  OptInt `json:"offset"`
+	Timeout OptInt `json:"timeout"`
+}
+
 type GetUpdatesResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/getUserProfilePhotos
+type GetUserProfilePhotos struct {
+	Limit  OptInt `json:"limit"`
+	Offset OptInt `json:"offset"`
+	UserID int    `json:"user_id"`
 }
 
 type GetUserProfilePhotosResOKApplicationJSON struct {
@@ -351,6 +568,9 @@ type Invoice struct {
 	Title          string `json:"title"`
 	TotalAmount    int    `json:"total_amount"`
 }
+
+// Ref: #/components/schemas/leaveChat
+type LeaveChat struct{}
 
 type LeaveChatResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
@@ -1711,6 +1931,12 @@ type PhotoSize struct {
 	Width        int    `json:"width"`
 }
 
+// Ref: #/components/schemas/pinChatMessage
+type PinChatMessage struct {
+	DisableNotification OptBool `json:"disable_notification"`
+	MessageID           int     `json:"message_id"`
+}
+
 type PinChatMessageResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
@@ -1731,6 +1957,22 @@ type Poll struct {
 	Type                  string    `json:"type"`
 }
 
+// Ref: #/components/schemas/promoteChatMember
+type PromoteChatMember struct {
+	CanChangeInfo       OptBool `json:"can_change_info"`
+	CanDeleteMessages   OptBool `json:"can_delete_messages"`
+	CanEditMessages     OptBool `json:"can_edit_messages"`
+	CanInviteUsers      OptBool `json:"can_invite_users"`
+	CanManageChat       OptBool `json:"can_manage_chat"`
+	CanManageVoiceChats OptBool `json:"can_manage_voice_chats"`
+	CanPinMessages      OptBool `json:"can_pin_messages"`
+	CanPostMessages     OptBool `json:"can_post_messages"`
+	CanPromoteMembers   OptBool `json:"can_promote_members"`
+	CanRestrictMembers  OptBool `json:"can_restrict_members"`
+	IsAnonymous         OptBool `json:"is_anonymous"`
+	UserID              int     `json:"user_id"`
+}
+
 type PromoteChatMemberResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
@@ -1743,9 +1985,21 @@ type ProximityAlertTriggered struct {
 	Watcher  User `json:"watcher"`
 }
 
+// Ref: #/components/schemas/restrictChatMember
+type RestrictChatMember struct {
+	Permissions ChatPermissions `json:"permissions"`
+	UntilDate   OptInt          `json:"until_date"`
+	UserID      int             `json:"user_id"`
+}
+
 type RestrictChatMemberResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/revokeChatInviteLink
+type RevokeChatInviteLink struct {
+	InviteLink string `json:"invite_link"`
 }
 
 type RevokeChatInviteLinkResOKApplicationJSON struct {
@@ -1753,9 +2007,33 @@ type RevokeChatInviteLinkResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/sendAnimation
+type SendAnimation struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	Caption                  OptString `json:"caption"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	Duration                 OptInt    `json:"duration"`
+	Height                   OptInt    `json:"height"`
+	ParseMode                OptString `json:"parse_mode"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	Width                    OptInt    `json:"width"`
+}
+
 type SendAnimationResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/sendAudio
+type SendAudio struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	Caption                  OptString `json:"caption"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	Duration                 OptInt    `json:"duration"`
+	ParseMode                OptString `json:"parse_mode"`
+	Performer                OptString `json:"performer"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	Title                    OptString `json:"title"`
 }
 
 type SendAudioResOKApplicationJSON struct {
@@ -1763,9 +2041,25 @@ type SendAudioResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/sendChatAction
+type SendChatAction struct {
+	Action string `json:"action"`
+}
+
 type SendChatActionResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/sendContact
+type SendContact struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	FirstName                string    `json:"first_name"`
+	LastName                 OptString `json:"last_name"`
+	PhoneNumber              string    `json:"phone_number"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	Vcard                    OptString `json:"vcard"`
 }
 
 type SendContactResOKApplicationJSON struct {
@@ -1773,9 +2067,27 @@ type SendContactResOKApplicationJSON struct {
 	Result OptMessage `json:"result"`
 }
 
+// Ref: #/components/schemas/sendDice
+type SendDice struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	Emoji                    OptString `json:"emoji"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+}
+
 type SendDiceResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/sendDocument
+type SendDocument struct {
+	AllowSendingWithoutReply    OptBool   `json:"allow_sending_without_reply"`
+	Caption                     OptString `json:"caption"`
+	DisableContentTypeDetection OptBool   `json:"disable_content_type_detection"`
+	DisableNotification         OptBool   `json:"disable_notification"`
+	ParseMode                   OptString `json:"parse_mode"`
+	ReplyToMessageID            OptInt    `json:"reply_to_message_id"`
 }
 
 type SendDocumentResOKApplicationJSON struct {
@@ -1783,9 +2095,46 @@ type SendDocumentResOKApplicationJSON struct {
 	Result OptMessage `json:"result"`
 }
 
+// Ref: #/components/schemas/sendGame
+type SendGame struct {
+	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
+	ChatID                   int                   `json:"chat_id"`
+	DisableNotification      OptBool               `json:"disable_notification"`
+	GameShortName            string                `json:"game_short_name"`
+	ReplyMarkup              *InlineKeyboardMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+}
+
 type SendGameResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/sendInvoice
+type SendInvoice struct {
+	AllowSendingWithoutReply  OptBool               `json:"allow_sending_without_reply"`
+	Currency                  string                `json:"currency"`
+	Description               string                `json:"description"`
+	DisableNotification       OptBool               `json:"disable_notification"`
+	IsFlexible                OptBool               `json:"is_flexible"`
+	MaxTipAmount              OptInt                `json:"max_tip_amount"`
+	NeedEmail                 OptBool               `json:"need_email"`
+	NeedName                  OptBool               `json:"need_name"`
+	NeedPhoneNumber           OptBool               `json:"need_phone_number"`
+	NeedShippingAddress       OptBool               `json:"need_shipping_address"`
+	Payload                   string                `json:"payload"`
+	PhotoHeight               OptInt                `json:"photo_height"`
+	PhotoSize                 OptInt                `json:"photo_size"`
+	PhotoURL                  OptString             `json:"photo_url"`
+	PhotoWidth                OptInt                `json:"photo_width"`
+	ProviderData              OptString             `json:"provider_data"`
+	ProviderToken             string                `json:"provider_token"`
+	ReplyMarkup               *InlineKeyboardMarkup `json:"reply_markup"`
+	ReplyToMessageID          OptInt                `json:"reply_to_message_id"`
+	SendEmailToProvider       OptBool               `json:"send_email_to_provider"`
+	SendPhoneNumberToProvider OptBool               `json:"send_phone_number_to_provider"`
+	StartParameter            OptString             `json:"start_parameter"`
+	Title                     string                `json:"title"`
 }
 
 type SendInvoiceResOKApplicationJSON struct {
@@ -1793,9 +2142,29 @@ type SendInvoiceResOKApplicationJSON struct {
 	Result OptMessage `json:"result"`
 }
 
+// Ref: #/components/schemas/sendLocation
+type SendLocation struct {
+	AllowSendingWithoutReply OptBool    `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool    `json:"disable_notification"`
+	Heading                  OptInt     `json:"heading"`
+	HorizontalAccuracy       OptFloat64 `json:"horizontal_accuracy"`
+	Latitude                 float64    `json:"latitude"`
+	LivePeriod               OptInt     `json:"live_period"`
+	Longitude                float64    `json:"longitude"`
+	ProximityAlertRadius     OptInt     `json:"proximity_alert_radius"`
+	ReplyToMessageID         OptInt     `json:"reply_to_message_id"`
+}
+
 type SendLocationResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/sendMediaGroup
+type SendMediaGroup struct {
+	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool `json:"disable_notification"`
+	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
 }
 
 type SendMediaGroupResOKApplicationJSON struct {
@@ -1803,9 +2172,28 @@ type SendMediaGroupResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/sendMessage
+type SendMessage struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	DisableWebPagePreview    OptBool   `json:"disable_web_page_preview"`
+	ParseMode                OptString `json:"parse_mode"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	Text                     string    `json:"text"`
+}
+
 type SendMessageResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/sendPhoto
+type SendPhoto struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	Caption                  OptString `json:"caption"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	ParseMode                OptString `json:"parse_mode"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 }
 
 type SendPhotoResOKApplicationJSON struct {
@@ -1813,9 +2201,33 @@ type SendPhotoResOKApplicationJSON struct {
 	Result OptMessage `json:"result"`
 }
 
+// Ref: #/components/schemas/sendPoll
+type SendPoll struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	AllowsMultipleAnswers    OptBool   `json:"allows_multiple_answers"`
+	CloseDate                OptInt    `json:"close_date"`
+	CorrectOptionID          OptInt    `json:"correct_option_id"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	Explanation              OptString `json:"explanation"`
+	ExplanationParseMode     OptString `json:"explanation_parse_mode"`
+	IsAnonymous              OptBool   `json:"is_anonymous"`
+	IsClosed                 OptBool   `json:"is_closed"`
+	OpenPeriod               OptInt    `json:"open_period"`
+	Question                 string    `json:"question"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	Type                     OptString `json:"type"`
+}
+
 type SendPollResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/sendSticker
+type SendSticker struct {
+	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool `json:"disable_notification"`
+	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
 }
 
 type SendStickerResOKApplicationJSON struct {
@@ -1823,9 +2235,46 @@ type SendStickerResOKApplicationJSON struct {
 	Result OptMessage `json:"result"`
 }
 
+// Ref: #/components/schemas/sendVenue
+type SendVenue struct {
+	Address                  string    `json:"address"`
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	FoursquareID             OptString `json:"foursquare_id"`
+	FoursquareType           OptString `json:"foursquare_type"`
+	GooglePlaceID            OptString `json:"google_place_id"`
+	GooglePlaceType          OptString `json:"google_place_type"`
+	Latitude                 float64   `json:"latitude"`
+	Longitude                float64   `json:"longitude"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	Title                    string    `json:"title"`
+}
+
 type SendVenueResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/sendVideo
+type SendVideo struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	Caption                  OptString `json:"caption"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	Duration                 OptInt    `json:"duration"`
+	Height                   OptInt    `json:"height"`
+	ParseMode                OptString `json:"parse_mode"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	SupportsStreaming        OptBool   `json:"supports_streaming"`
+	Width                    OptInt    `json:"width"`
+}
+
+// Ref: #/components/schemas/sendVideoNote
+type SendVideoNote struct {
+	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
+	DisableNotification      OptBool `json:"disable_notification"`
+	Duration                 OptInt  `json:"duration"`
+	Length                   OptInt  `json:"length"`
+	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
 }
 
 type SendVideoNoteResOKApplicationJSON struct {
@@ -1838,9 +2287,25 @@ type SendVideoResOKApplicationJSON struct {
 	Result OptMessage `json:"result"`
 }
 
+// Ref: #/components/schemas/sendVoice
+type SendVoice struct {
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	Caption                  OptString `json:"caption"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	Duration                 OptInt    `json:"duration"`
+	ParseMode                OptString `json:"parse_mode"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+}
+
 type SendVoiceResOKApplicationJSON struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
+}
+
+// Ref: #/components/schemas/setChatAdministratorCustomTitle
+type SetChatAdministratorCustomTitle struct {
+	CustomTitle string `json:"custom_title"`
+	UserID      int    `json:"user_id"`
 }
 
 type SetChatAdministratorCustomTitleResOKApplicationJSON struct {
@@ -1848,9 +2313,19 @@ type SetChatAdministratorCustomTitleResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/setChatDescription
+type SetChatDescription struct {
+	Description OptString `json:"description"`
+}
+
 type SetChatDescriptionResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/setChatPermissions
+type SetChatPermissions struct {
+	Permissions ChatPermissions `json:"permissions"`
 }
 
 type SetChatPermissionsResOKApplicationJSON struct {
@@ -1858,9 +2333,19 @@ type SetChatPermissionsResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/setChatPhoto
+type SetChatPhoto struct {
+	Photo string `json:"photo"`
+}
+
 type SetChatPhotoResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/setChatStickerSet
+type SetChatStickerSet struct {
+	StickerSetName string `json:"sticker_set_name"`
 }
 
 type SetChatStickerSetResOKApplicationJSON struct {
@@ -1868,9 +2353,25 @@ type SetChatStickerSetResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/setChatTitle
+type SetChatTitle struct {
+	Title string `json:"title"`
+}
+
 type SetChatTitleResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/setGameScore
+type SetGameScore struct {
+	ChatID             OptInt    `json:"chat_id"`
+	DisableEditMessage OptBool   `json:"disable_edit_message"`
+	Force              OptBool   `json:"force"`
+	InlineMessageID    OptString `json:"inline_message_id"`
+	MessageID          OptInt    `json:"message_id"`
+	Score              int       `json:"score"`
+	UserID             int       `json:"user_id"`
 }
 
 type SetGameScoreResOKApplicationJSON struct {
@@ -1878,9 +2379,20 @@ type SetGameScoreResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/setMyCommands
+type SetMyCommands struct {
+	LanguageCode OptString        `json:"language_code"`
+	Scope        *BotCommandScope `json:"scope"`
+}
+
 type SetMyCommandsResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/setPassportDataErrors
+type SetPassportDataErrors struct {
+	UserID int `json:"user_id"`
 }
 
 type SetPassportDataErrorsResOKApplicationJSON struct {
@@ -1888,14 +2400,35 @@ type SetPassportDataErrorsResOKApplicationJSON struct {
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/setStickerPositionInSet
+type SetStickerPositionInSet struct {
+	Position int    `json:"position"`
+	Sticker  string `json:"sticker"`
+}
+
 type SetStickerPositionInSetResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/setStickerSetThumb
+type SetStickerSetThumb struct {
+	Name   string `json:"name"`
+	UserID int    `json:"user_id"`
+}
+
 type SetStickerSetThumbResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/setWebhook
+type SetWebhook struct {
+	Certificate        OptString `json:"certificate"`
+	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
+	IPAddress          OptString `json:"ip_address"`
+	MaxConnections     OptInt    `json:"max_connections"`
+	URL                string    `json:"url"`
 }
 
 type SetWebhookResOKApplicationJSON struct {
@@ -1927,9 +2460,22 @@ type Sticker struct {
 	Width        int             `json:"width"`
 }
 
+// Ref: #/components/schemas/stopMessageLiveLocation
+type StopMessageLiveLocation struct {
+	InlineMessageID OptString             `json:"inline_message_id"`
+	MessageID       OptInt                `json:"message_id"`
+	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
+}
+
 type StopMessageLiveLocationResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/stopPoll
+type StopPoll struct {
+	MessageID   int                   `json:"message_id"`
+	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
 type StopPollResOKApplicationJSON struct {
@@ -1948,19 +2494,39 @@ type SuccessfulPayment struct {
 	TotalAmount             int          `json:"total_amount"`
 }
 
+// Ref: #/components/schemas/unbanChatMember
+type UnbanChatMember struct {
+	OnlyIfBanned OptBool `json:"only_if_banned"`
+	UserID       int     `json:"user_id"`
+}
+
 type UnbanChatMemberResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
+
+// Ref: #/components/schemas/unpinAllChatMessages
+type UnpinAllChatMessages struct{}
 
 type UnpinAllChatMessagesResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
 
+// Ref: #/components/schemas/unpinChatMessage
+type UnpinChatMessage struct {
+	MessageID OptInt `json:"message_id"`
+}
+
 type UnpinChatMessageResOKApplicationJSON struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
+}
+
+// Ref: #/components/schemas/uploadStickerFile
+type UploadStickerFile struct {
+	PNGSticker string `json:"png_sticker"`
+	UserID     int    `json:"user_id"`
 }
 
 type UploadStickerFileResOKApplicationJSON struct {
@@ -2039,569 +2605,3 @@ type VoiceChatScheduled struct {
 
 // Ref: #/components/schemas/VoiceChatStarted
 type VoiceChatStarted struct{}
-
-// Ref: #/components/schemas/addStickerToSet
-type addStickerToSet struct {
-	Emojis       string          `json:"emojis"`
-	MaskPosition OptMaskPosition `json:"mask_position"`
-	Name         string          `json:"name"`
-	TgsSticker   OptString       `json:"tgs_sticker"`
-	UserID       int             `json:"user_id"`
-}
-
-// Ref: #/components/schemas/answerCallbackQuery
-type answerCallbackQuery struct {
-	CacheTime       OptInt    `json:"cache_time"`
-	CallbackQueryID string    `json:"callback_query_id"`
-	ShowAlert       OptBool   `json:"show_alert"`
-	Text            OptString `json:"text"`
-	URL             OptString `json:"url"`
-}
-
-// Ref: #/components/schemas/answerInlineQuery
-type answerInlineQuery struct {
-	CacheTime         OptInt    `json:"cache_time"`
-	InlineQueryID     string    `json:"inline_query_id"`
-	IsPersonal        OptBool   `json:"is_personal"`
-	NextOffset        OptString `json:"next_offset"`
-	SwitchPmParameter OptString `json:"switch_pm_parameter"`
-	SwitchPmText      OptString `json:"switch_pm_text"`
-}
-
-// Ref: #/components/schemas/answerPreCheckoutQuery
-type answerPreCheckoutQuery struct {
-	ErrorMessage       OptString `json:"error_message"`
-	Ok                 bool      `json:"ok"`
-	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
-}
-
-// Ref: #/components/schemas/answerShippingQuery
-type answerShippingQuery struct {
-	ErrorMessage    OptString `json:"error_message"`
-	Ok              bool      `json:"ok"`
-	ShippingQueryID string    `json:"shipping_query_id"`
-}
-
-// Ref: #/components/schemas/banChatMember
-type banChatMember struct {
-	RevokeMessages OptBool `json:"revoke_messages"`
-	UntilDate      OptInt  `json:"until_date"`
-	UserID         int     `json:"user_id"`
-}
-
-// Ref: #/components/schemas/copyMessage
-type copyMessage struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	MessageID                int       `json:"message_id"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/createChatInviteLink
-type createChatInviteLink struct {
-	ExpireDate  OptInt `json:"expire_date"`
-	MemberLimit OptInt `json:"member_limit"`
-}
-
-// Ref: #/components/schemas/createNewStickerSet
-type createNewStickerSet struct {
-	ContainsMasks OptBool         `json:"contains_masks"`
-	Emojis        string          `json:"emojis"`
-	MaskPosition  OptMaskPosition `json:"mask_position"`
-	Name          string          `json:"name"`
-	TgsSticker    OptString       `json:"tgs_sticker"`
-	Title         string          `json:"title"`
-	UserID        int             `json:"user_id"`
-}
-
-// Ref: #/components/schemas/deleteChatPhoto
-type deleteChatPhoto struct{}
-
-// Ref: #/components/schemas/deleteChatStickerSet
-type deleteChatStickerSet struct{}
-
-// Ref: #/components/schemas/deleteMessage
-type deleteMessage struct {
-	MessageID int `json:"message_id"`
-}
-
-// Ref: #/components/schemas/deleteMyCommands
-type deleteMyCommands struct {
-	LanguageCode OptString        `json:"language_code"`
-	Scope        *BotCommandScope `json:"scope"`
-}
-
-// Ref: #/components/schemas/deleteStickerFromSet
-type deleteStickerFromSet struct {
-	Sticker string `json:"sticker"`
-}
-
-// Ref: #/components/schemas/deleteWebhook
-type deleteWebhook struct {
-	DropPendingUpdates OptBool `json:"drop_pending_updates"`
-}
-
-// Ref: #/components/schemas/editChatInviteLink
-type editChatInviteLink struct {
-	ExpireDate  OptInt `json:"expire_date"`
-	InviteLink  string `json:"invite_link"`
-	MemberLimit OptInt `json:"member_limit"`
-}
-
-// Ref: #/components/schemas/editMessageCaption
-type editMessageCaption struct {
-	Caption         OptString             `json:"caption"`
-	InlineMessageID OptString             `json:"inline_message_id"`
-	MessageID       OptInt                `json:"message_id"`
-	ParseMode       OptString             `json:"parse_mode"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-// Ref: #/components/schemas/editMessageLiveLocation
-type editMessageLiveLocation struct {
-	Heading              OptInt                `json:"heading"`
-	HorizontalAccuracy   OptFloat64            `json:"horizontal_accuracy"`
-	InlineMessageID      OptString             `json:"inline_message_id"`
-	Latitude             float64               `json:"latitude"`
-	Longitude            float64               `json:"longitude"`
-	MessageID            OptInt                `json:"message_id"`
-	ProximityAlertRadius OptInt                `json:"proximity_alert_radius"`
-	ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-// Ref: #/components/schemas/editMessageMedia
-type editMessageMedia struct {
-	InlineMessageID OptString             `json:"inline_message_id"`
-	Media           InputMedia            `json:"media"`
-	MessageID       OptInt                `json:"message_id"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-// Ref: #/components/schemas/editMessageReplyMarkup
-type editMessageReplyMarkup struct {
-	InlineMessageID OptString             `json:"inline_message_id"`
-	MessageID       OptInt                `json:"message_id"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-// Ref: #/components/schemas/editMessageText
-type editMessageText struct {
-	DisableWebPagePreview OptBool               `json:"disable_web_page_preview"`
-	InlineMessageID       OptString             `json:"inline_message_id"`
-	MessageID             OptInt                `json:"message_id"`
-	ParseMode             OptString             `json:"parse_mode"`
-	ReplyMarkup           *InlineKeyboardMarkup `json:"reply_markup"`
-	Text                  string                `json:"text"`
-}
-
-// Ref: #/components/schemas/exportChatInviteLink
-type exportChatInviteLink struct{}
-
-// Ref: #/components/schemas/forwardMessage
-type forwardMessage struct {
-	DisableNotification OptBool `json:"disable_notification"`
-	MessageID           int     `json:"message_id"`
-}
-
-// Ref: #/components/schemas/getChat
-type getChat struct{}
-
-// Ref: #/components/schemas/getChatAdministrators
-type getChatAdministrators struct{}
-
-// Ref: #/components/schemas/getChatMember
-type getChatMember struct {
-	UserID int `json:"user_id"`
-}
-
-// Ref: #/components/schemas/getChatMemberCount
-type getChatMemberCount struct{}
-
-// Ref: #/components/schemas/getFile
-type getFile struct {
-	FileID string `json:"file_id"`
-}
-
-// Ref: #/components/schemas/getGameHighScores
-type getGameHighScores struct {
-	ChatID          OptInt    `json:"chat_id"`
-	InlineMessageID OptString `json:"inline_message_id"`
-	MessageID       OptInt    `json:"message_id"`
-	UserID          int       `json:"user_id"`
-}
-
-// Ref: #/components/schemas/getMyCommands
-type getMyCommands struct {
-	LanguageCode OptString        `json:"language_code"`
-	Scope        *BotCommandScope `json:"scope"`
-}
-
-// Ref: #/components/schemas/getStickerSet
-type getStickerSet struct {
-	Name string `json:"name"`
-}
-
-// Ref: #/components/schemas/getUpdates
-type getUpdates struct {
-	Limit   OptInt `json:"limit"`
-	Offset  OptInt `json:"offset"`
-	Timeout OptInt `json:"timeout"`
-}
-
-// Ref: #/components/schemas/getUserProfilePhotos
-type getUserProfilePhotos struct {
-	Limit  OptInt `json:"limit"`
-	Offset OptInt `json:"offset"`
-	UserID int    `json:"user_id"`
-}
-
-// Ref: #/components/schemas/leaveChat
-type leaveChat struct{}
-
-// Ref: #/components/schemas/pinChatMessage
-type pinChatMessage struct {
-	DisableNotification OptBool `json:"disable_notification"`
-	MessageID           int     `json:"message_id"`
-}
-
-// Ref: #/components/schemas/promoteChatMember
-type promoteChatMember struct {
-	CanChangeInfo       OptBool `json:"can_change_info"`
-	CanDeleteMessages   OptBool `json:"can_delete_messages"`
-	CanEditMessages     OptBool `json:"can_edit_messages"`
-	CanInviteUsers      OptBool `json:"can_invite_users"`
-	CanManageChat       OptBool `json:"can_manage_chat"`
-	CanManageVoiceChats OptBool `json:"can_manage_voice_chats"`
-	CanPinMessages      OptBool `json:"can_pin_messages"`
-	CanPostMessages     OptBool `json:"can_post_messages"`
-	CanPromoteMembers   OptBool `json:"can_promote_members"`
-	CanRestrictMembers  OptBool `json:"can_restrict_members"`
-	IsAnonymous         OptBool `json:"is_anonymous"`
-	UserID              int     `json:"user_id"`
-}
-
-// Ref: #/components/schemas/restrictChatMember
-type restrictChatMember struct {
-	Permissions ChatPermissions `json:"permissions"`
-	UntilDate   OptInt          `json:"until_date"`
-	UserID      int             `json:"user_id"`
-}
-
-// Ref: #/components/schemas/revokeChatInviteLink
-type revokeChatInviteLink struct {
-	InviteLink string `json:"invite_link"`
-}
-
-// Ref: #/components/schemas/sendAnimation
-type sendAnimation struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	Height                   OptInt    `json:"height"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Width                    OptInt    `json:"width"`
-}
-
-// Ref: #/components/schemas/sendAudio
-type sendAudio struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	ParseMode                OptString `json:"parse_mode"`
-	Performer                OptString `json:"performer"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Title                    OptString `json:"title"`
-}
-
-// Ref: #/components/schemas/sendChatAction
-type sendChatAction struct {
-	Action string `json:"action"`
-}
-
-// Ref: #/components/schemas/sendContact
-type sendContact struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	FirstName                string    `json:"first_name"`
-	LastName                 OptString `json:"last_name"`
-	PhoneNumber              string    `json:"phone_number"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Vcard                    OptString `json:"vcard"`
-}
-
-// Ref: #/components/schemas/sendDice
-type sendDice struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Emoji                    OptString `json:"emoji"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendDocument
-type sendDocument struct {
-	AllowSendingWithoutReply    OptBool   `json:"allow_sending_without_reply"`
-	Caption                     OptString `json:"caption"`
-	DisableContentTypeDetection OptBool   `json:"disable_content_type_detection"`
-	DisableNotification         OptBool   `json:"disable_notification"`
-	ParseMode                   OptString `json:"parse_mode"`
-	ReplyToMessageID            OptInt    `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendGame
-type sendGame struct {
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
-	ChatID                   int                   `json:"chat_id"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	GameShortName            string                `json:"game_short_name"`
-	ReplyMarkup              *InlineKeyboardMarkup `json:"reply_markup"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendInvoice
-type sendInvoice struct {
-	AllowSendingWithoutReply  OptBool               `json:"allow_sending_without_reply"`
-	Currency                  string                `json:"currency"`
-	Description               string                `json:"description"`
-	DisableNotification       OptBool               `json:"disable_notification"`
-	IsFlexible                OptBool               `json:"is_flexible"`
-	MaxTipAmount              OptInt                `json:"max_tip_amount"`
-	NeedEmail                 OptBool               `json:"need_email"`
-	NeedName                  OptBool               `json:"need_name"`
-	NeedPhoneNumber           OptBool               `json:"need_phone_number"`
-	NeedShippingAddress       OptBool               `json:"need_shipping_address"`
-	Payload                   string                `json:"payload"`
-	PhotoHeight               OptInt                `json:"photo_height"`
-	PhotoSize                 OptInt                `json:"photo_size"`
-	PhotoURL                  OptString             `json:"photo_url"`
-	PhotoWidth                OptInt                `json:"photo_width"`
-	ProviderData              OptString             `json:"provider_data"`
-	ProviderToken             string                `json:"provider_token"`
-	ReplyMarkup               *InlineKeyboardMarkup `json:"reply_markup"`
-	ReplyToMessageID          OptInt                `json:"reply_to_message_id"`
-	SendEmailToProvider       OptBool               `json:"send_email_to_provider"`
-	SendPhoneNumberToProvider OptBool               `json:"send_phone_number_to_provider"`
-	StartParameter            OptString             `json:"start_parameter"`
-	Title                     string                `json:"title"`
-}
-
-// Ref: #/components/schemas/sendLocation
-type sendLocation struct {
-	AllowSendingWithoutReply OptBool    `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool    `json:"disable_notification"`
-	Heading                  OptInt     `json:"heading"`
-	HorizontalAccuracy       OptFloat64 `json:"horizontal_accuracy"`
-	Latitude                 float64    `json:"latitude"`
-	LivePeriod               OptInt     `json:"live_period"`
-	Longitude                float64    `json:"longitude"`
-	ProximityAlertRadius     OptInt     `json:"proximity_alert_radius"`
-	ReplyToMessageID         OptInt     `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendMediaGroup
-type sendMediaGroup struct {
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool `json:"disable_notification"`
-	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendMessage
-type sendMessage struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	DisableWebPagePreview    OptBool   `json:"disable_web_page_preview"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Text                     string    `json:"text"`
-}
-
-// Ref: #/components/schemas/sendPhoto
-type sendPhoto struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendPoll
-type sendPoll struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	AllowsMultipleAnswers    OptBool   `json:"allows_multiple_answers"`
-	CloseDate                OptInt    `json:"close_date"`
-	CorrectOptionID          OptInt    `json:"correct_option_id"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Explanation              OptString `json:"explanation"`
-	ExplanationParseMode     OptString `json:"explanation_parse_mode"`
-	IsAnonymous              OptBool   `json:"is_anonymous"`
-	IsClosed                 OptBool   `json:"is_closed"`
-	OpenPeriod               OptInt    `json:"open_period"`
-	Question                 string    `json:"question"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Type                     OptString `json:"type"`
-}
-
-// Ref: #/components/schemas/sendSticker
-type sendSticker struct {
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool `json:"disable_notification"`
-	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendVenue
-type sendVenue struct {
-	Address                  string    `json:"address"`
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	FoursquareID             OptString `json:"foursquare_id"`
-	FoursquareType           OptString `json:"foursquare_type"`
-	GooglePlaceID            OptString `json:"google_place_id"`
-	GooglePlaceType          OptString `json:"google_place_type"`
-	Latitude                 float64   `json:"latitude"`
-	Longitude                float64   `json:"longitude"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Title                    string    `json:"title"`
-}
-
-// Ref: #/components/schemas/sendVideo
-type sendVideo struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	Height                   OptInt    `json:"height"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	SupportsStreaming        OptBool   `json:"supports_streaming"`
-	Width                    OptInt    `json:"width"`
-}
-
-// Ref: #/components/schemas/sendVideoNote
-type sendVideoNote struct {
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool `json:"disable_notification"`
-	Duration                 OptInt  `json:"duration"`
-	Length                   OptInt  `json:"length"`
-	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/sendVoice
-type sendVoice struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-}
-
-// Ref: #/components/schemas/setChatAdministratorCustomTitle
-type setChatAdministratorCustomTitle struct {
-	CustomTitle string `json:"custom_title"`
-	UserID      int    `json:"user_id"`
-}
-
-// Ref: #/components/schemas/setChatDescription
-type setChatDescription struct {
-	Description OptString `json:"description"`
-}
-
-// Ref: #/components/schemas/setChatPermissions
-type setChatPermissions struct {
-	Permissions ChatPermissions `json:"permissions"`
-}
-
-// Ref: #/components/schemas/setChatPhoto
-type setChatPhoto struct {
-	Photo string `json:"photo"`
-}
-
-// Ref: #/components/schemas/setChatStickerSet
-type setChatStickerSet struct {
-	StickerSetName string `json:"sticker_set_name"`
-}
-
-// Ref: #/components/schemas/setChatTitle
-type setChatTitle struct {
-	Title string `json:"title"`
-}
-
-// Ref: #/components/schemas/setGameScore
-type setGameScore struct {
-	ChatID             OptInt    `json:"chat_id"`
-	DisableEditMessage OptBool   `json:"disable_edit_message"`
-	Force              OptBool   `json:"force"`
-	InlineMessageID    OptString `json:"inline_message_id"`
-	MessageID          OptInt    `json:"message_id"`
-	Score              int       `json:"score"`
-	UserID             int       `json:"user_id"`
-}
-
-// Ref: #/components/schemas/setMyCommands
-type setMyCommands struct {
-	LanguageCode OptString        `json:"language_code"`
-	Scope        *BotCommandScope `json:"scope"`
-}
-
-// Ref: #/components/schemas/setPassportDataErrors
-type setPassportDataErrors struct {
-	UserID int `json:"user_id"`
-}
-
-// Ref: #/components/schemas/setStickerPositionInSet
-type setStickerPositionInSet struct {
-	Position int    `json:"position"`
-	Sticker  string `json:"sticker"`
-}
-
-// Ref: #/components/schemas/setStickerSetThumb
-type setStickerSetThumb struct {
-	Name   string `json:"name"`
-	UserID int    `json:"user_id"`
-}
-
-// Ref: #/components/schemas/setWebhook
-type setWebhook struct {
-	Certificate        OptString `json:"certificate"`
-	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
-	IPAddress          OptString `json:"ip_address"`
-	MaxConnections     OptInt    `json:"max_connections"`
-	URL                string    `json:"url"`
-}
-
-// Ref: #/components/schemas/stopMessageLiveLocation
-type stopMessageLiveLocation struct {
-	InlineMessageID OptString             `json:"inline_message_id"`
-	MessageID       OptInt                `json:"message_id"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-// Ref: #/components/schemas/stopPoll
-type stopPoll struct {
-	MessageID   int                   `json:"message_id"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-// Ref: #/components/schemas/unbanChatMember
-type unbanChatMember struct {
-	OnlyIfBanned OptBool `json:"only_if_banned"`
-	UserID       int     `json:"user_id"`
-}
-
-// Ref: #/components/schemas/unpinAllChatMessages
-type unpinAllChatMessages struct{}
-
-// Ref: #/components/schemas/unpinChatMessage
-type unpinChatMessage struct {
-	MessageID OptInt `json:"message_id"`
-}
-
-// Ref: #/components/schemas/uploadStickerFile
-type uploadStickerFile struct {
-	PNGSticker string `json:"png_sticker"`
-	UserID     int    `json:"user_id"`
-}
