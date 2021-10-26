@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func (s *PetGetByNameResponseOKApplicationJSON) Validate() error {
+func (s *PetGetResOKApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	{
 		// Validate 'id' property.

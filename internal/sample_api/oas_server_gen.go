@@ -52,20 +52,20 @@ var (
 
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
-	// PetGetByName implements petGetByName operation.
-	PetGetByName(ctx context.Context, params PetGetByNameParams) (PetGetByNameResponseOKApplicationJSON, error)
-	// FoobarGet implements foobarGet operation.
-	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetResponse, error)
-	// FoobarPut implements  operation.
-	FoobarPut(ctx context.Context) (FoobarPutResponseDefaultStatusCode, error)
-	// FoobarPost implements foobarPost operation.
-	FoobarPost(ctx context.Context) (FoobarPostResponse, error)
 	// PetNameByID implements petNameByID operation.
 	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
 	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
 	// PetGet implements petGet operation.
-	PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error)
+	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
 	// PetCreate implements petCreate operation.
-	PetCreate(ctx context.Context) (PetGetByNameResponseOKApplicationJSON, error)
+	PetCreate(ctx context.Context) (PetGetResOKApplicationJSON, error)
+	// PetGetByName implements petGetByName operation.
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (PetGetResOKApplicationJSON, error)
+	// FoobarGet implements foobarGet operation.
+	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
+	// FoobarPut implements  operation.
+	FoobarPut(ctx context.Context) (FoobarPutResDefaultStatusCode, error)
+	// FoobarPost implements foobarPost operation.
+	FoobarPost(ctx context.Context) (FoobarPostRes, error)
 }

@@ -51,23 +51,23 @@ var (
 )
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarGetResponseNotFound) WriteJSON(j *json.Stream) {
+func (s FoobarGetResNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes FoobarGetResponseNotFound json value to io.Writer.
-func (s FoobarGetResponseNotFound) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarGetResNotFound json value to io.Writer.
+func (s FoobarGetResNotFound) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads FoobarGetResponseNotFound json value from io.Reader.
-func (s *FoobarGetResponseNotFound) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarGetResNotFound json value from io.Reader.
+func (s *FoobarGetResNotFound) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -81,8 +81,8 @@ func (s *FoobarGetResponseNotFound) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads FoobarGetResponseNotFound from json stream.
-func (s *FoobarGetResponseNotFound) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarGetResNotFound from json stream.
+func (s *FoobarGetResNotFound) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -98,7 +98,7 @@ func (s *FoobarGetResponseNotFound) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPostResponseDefaultApplicationJSON) WriteJSON(j *json.Stream) {
+func (s FoobarPostResDefaultApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -113,16 +113,16 @@ func (s FoobarPostResponseDefaultApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes FoobarPostResponseDefaultApplicationJSON json value to io.Writer.
-func (s FoobarPostResponseDefaultApplicationJSON) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPostResDefaultApplicationJSON json value to io.Writer.
+func (s FoobarPostResDefaultApplicationJSON) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads FoobarPostResponseDefaultApplicationJSON json value from io.Reader.
-func (s *FoobarPostResponseDefaultApplicationJSON) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPostResDefaultApplicationJSON json value from io.Reader.
+func (s *FoobarPostResDefaultApplicationJSON) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -136,8 +136,8 @@ func (s *FoobarPostResponseDefaultApplicationJSON) ReadJSONFrom(r io.Reader) err
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads FoobarPostResponseDefaultApplicationJSON from json stream.
-func (s *FoobarPostResponseDefaultApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostResDefaultApplicationJSON from json stream.
+func (s *FoobarPostResDefaultApplicationJSON) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -171,23 +171,23 @@ func (s *FoobarPostResponseDefaultApplicationJSON) ReadJSON(i *json.Iterator) er
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPostResponseDefaultApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
+func (s FoobarPostResDefaultApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes FoobarPostResponseDefaultApplicationJSONStatusCode json value to io.Writer.
-func (s FoobarPostResponseDefaultApplicationJSONStatusCode) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPostResDefaultApplicationJSONStatusCode json value to io.Writer.
+func (s FoobarPostResDefaultApplicationJSONStatusCode) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads FoobarPostResponseDefaultApplicationJSONStatusCode json value from io.Reader.
-func (s *FoobarPostResponseDefaultApplicationJSONStatusCode) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPostResDefaultApplicationJSONStatusCode json value from io.Reader.
+func (s *FoobarPostResDefaultApplicationJSONStatusCode) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -201,8 +201,8 @@ func (s *FoobarPostResponseDefaultApplicationJSONStatusCode) ReadJSONFrom(r io.R
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads FoobarPostResponseDefaultApplicationJSONStatusCode from json stream.
-func (s *FoobarPostResponseDefaultApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostResDefaultApplicationJSONStatusCode from json stream.
+func (s *FoobarPostResDefaultApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -218,23 +218,23 @@ func (s *FoobarPostResponseDefaultApplicationJSONStatusCode) ReadJSON(i *json.It
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPostResponseNotFound) WriteJSON(j *json.Stream) {
+func (s FoobarPostResNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes FoobarPostResponseNotFound json value to io.Writer.
-func (s FoobarPostResponseNotFound) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPostResNotFound json value to io.Writer.
+func (s FoobarPostResNotFound) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads FoobarPostResponseNotFound json value from io.Reader.
-func (s *FoobarPostResponseNotFound) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPostResNotFound json value from io.Reader.
+func (s *FoobarPostResNotFound) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -248,8 +248,8 @@ func (s *FoobarPostResponseNotFound) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads FoobarPostResponseNotFound from json stream.
-func (s *FoobarPostResponseNotFound) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostResNotFound from json stream.
+func (s *FoobarPostResNotFound) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -265,23 +265,23 @@ func (s *FoobarPostResponseNotFound) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPutResponseDefault) WriteJSON(j *json.Stream) {
+func (s FoobarPutResDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes FoobarPutResponseDefault json value to io.Writer.
-func (s FoobarPutResponseDefault) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPutResDefault json value to io.Writer.
+func (s FoobarPutResDefault) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads FoobarPutResponseDefault json value from io.Reader.
-func (s *FoobarPutResponseDefault) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPutResDefault json value from io.Reader.
+func (s *FoobarPutResDefault) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -295,8 +295,8 @@ func (s *FoobarPutResponseDefault) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads FoobarPutResponseDefault from json stream.
-func (s *FoobarPutResponseDefault) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPutResDefault from json stream.
+func (s *FoobarPutResDefault) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -312,23 +312,23 @@ func (s *FoobarPutResponseDefault) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPutResponseDefaultStatusCode) WriteJSON(j *json.Stream) {
+func (s FoobarPutResDefaultStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes FoobarPutResponseDefaultStatusCode json value to io.Writer.
-func (s FoobarPutResponseDefaultStatusCode) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPutResDefaultStatusCode json value to io.Writer.
+func (s FoobarPutResDefaultStatusCode) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads FoobarPutResponseDefaultStatusCode json value from io.Reader.
-func (s *FoobarPutResponseDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPutResDefaultStatusCode json value from io.Reader.
+func (s *FoobarPutResDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -342,8 +342,8 @@ func (s *FoobarPutResponseDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads FoobarPutResponseDefaultStatusCode from json stream.
-func (s *FoobarPutResponseDefaultStatusCode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPutResDefaultStatusCode from json stream.
+func (s *FoobarPutResDefaultStatusCode) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -389,7 +389,114 @@ func (o *OptNilString) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetByNameResponseOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s PetGetResDefaultApplicationJSON) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PetGetResDefaultApplicationJSON json value to io.Writer.
+func (s PetGetResDefaultApplicationJSON) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PetGetResDefaultApplicationJSON json value from io.Reader.
+func (s *PetGetResDefaultApplicationJSON) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PetGetResDefaultApplicationJSON from json stream.
+func (s *PetGetResDefaultApplicationJSON) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "message":
+			if err := func() error {
+				s.Message = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetGetResDefaultApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PetGetResDefaultApplicationJSONStatusCode json value to io.Writer.
+func (s PetGetResDefaultApplicationJSONStatusCode) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PetGetResDefaultApplicationJSONStatusCode json value from io.Reader.
+func (s *PetGetResDefaultApplicationJSONStatusCode) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PetGetResDefaultApplicationJSONStatusCode from json stream.
+func (s *PetGetResDefaultApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetGetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -490,16 +597,16 @@ func (s PetGetByNameResponseOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PetGetByNameResponseOKApplicationJSON json value to io.Writer.
-func (s PetGetByNameResponseOKApplicationJSON) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PetGetResOKApplicationJSON json value to io.Writer.
+func (s PetGetResOKApplicationJSON) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PetGetByNameResponseOKApplicationJSON json value from io.Reader.
-func (s *PetGetByNameResponseOKApplicationJSON) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PetGetResOKApplicationJSON json value from io.Reader.
+func (s *PetGetResOKApplicationJSON) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -513,8 +620,8 @@ func (s *PetGetByNameResponseOKApplicationJSON) ReadJSONFrom(r io.Reader) error 
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PetGetByNameResponseOKApplicationJSON from json stream.
-func (s *PetGetByNameResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PetGetResOKApplicationJSON from json stream.
+func (s *PetGetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -536,7 +643,7 @@ func (s *PetGetByNameResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error
 				s.Friends = s.Friends[:0]
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
-					var elem PetGetByNameResponseOKApplicationJSON
+					var elem PetGetResOKApplicationJSON
 					if err := func() error {
 						// Struct or enum.
 						if err := elem.ReadJSON(i); err != nil {
@@ -609,7 +716,7 @@ func (s *PetGetByNameResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error
 			return true
 		case "kind":
 			if err := func() error {
-				s.Kind = PetGetByNameResponseOKApplicationJSONKind(i.ReadString())
+				s.Kind = PetGetResOKApplicationJSONKind(i.ReadString())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -664,7 +771,7 @@ func (s *PetGetByNameResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error
 		case "primary":
 			if err := func() error {
 				s.Primary = nil
-				var elem PetGetByNameResponseOKApplicationJSON
+				var elem PetGetResOKApplicationJSON
 				if err := func() error {
 					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
@@ -820,7 +927,7 @@ func (s *PetGetByNameResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = PetGetByNameResponseOKApplicationJSONType(i.ReadString())
+				s.Type = PetGetResOKApplicationJSONType(i.ReadString())
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -865,18 +972,18 @@ func (s *PetGetByNameResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetByNameResponseOKApplicationJSONKind) WriteJSON(j *json.Stream) {
+func (s PetGetResOKApplicationJSONKind) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PetGetByNameResponseOKApplicationJSONKind from json stream.
-func (s *PetGetByNameResponseOKApplicationJSONKind) ReadJSON(i *json.Iterator) error {
-	*s = PetGetByNameResponseOKApplicationJSONKind(i.ReadString())
+// ReadJSON reads PetGetResOKApplicationJSONKind from json stream.
+func (s *PetGetResOKApplicationJSONKind) ReadJSON(i *json.Iterator) error {
+	*s = PetGetResOKApplicationJSONKind(i.ReadString())
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetByNameResponseOKApplicationJSONNext) WriteJSON(j *json.Stream) {
+func (s PetGetResOKApplicationJSONNext) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -887,16 +994,16 @@ func (s PetGetByNameResponseOKApplicationJSONNext) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PetGetByNameResponseOKApplicationJSONNext json value to io.Writer.
-func (s PetGetByNameResponseOKApplicationJSONNext) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PetGetResOKApplicationJSONNext json value to io.Writer.
+func (s PetGetResOKApplicationJSONNext) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PetGetByNameResponseOKApplicationJSONNext json value from io.Reader.
-func (s *PetGetByNameResponseOKApplicationJSONNext) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PetGetResOKApplicationJSONNext json value from io.Reader.
+func (s *PetGetResOKApplicationJSONNext) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -910,8 +1017,8 @@ func (s *PetGetByNameResponseOKApplicationJSONNext) ReadJSONFrom(r io.Reader) er
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PetGetByNameResponseOKApplicationJSONNext from json stream.
-func (s *PetGetByNameResponseOKApplicationJSONNext) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PetGetResOKApplicationJSONNext from json stream.
+func (s *PetGetResOKApplicationJSONNext) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -936,119 +1043,12 @@ func (s *PetGetByNameResponseOKApplicationJSONNext) ReadJSON(i *json.Iterator) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetByNameResponseOKApplicationJSONType) WriteJSON(j *json.Stream) {
+func (s PetGetResOKApplicationJSONType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PetGetByNameResponseOKApplicationJSONType from json stream.
-func (s *PetGetByNameResponseOKApplicationJSONType) ReadJSON(i *json.Iterator) error {
-	*s = PetGetByNameResponseOKApplicationJSONType(i.ReadString())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PetGetResponseDefaultApplicationJSON) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	more.More()
-	j.WriteObjectField("message")
-	j.WriteString(s.Message)
-	j.WriteObjectEnd()
-}
-
-// WriteJSONTo writes PetGetResponseDefaultApplicationJSON json value to io.Writer.
-func (s PetGetResponseDefaultApplicationJSON) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads PetGetResponseDefaultApplicationJSON json value from io.Reader.
-func (s *PetGetResponseDefaultApplicationJSON) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads PetGetResponseDefaultApplicationJSON from json stream.
-func (s *PetGetResponseDefaultApplicationJSON) ReadJSON(i *json.Iterator) error {
-	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
-		switch k {
-		case "message":
-			if err := func() error {
-				s.Message = string(i.ReadString())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PetGetResponseDefaultApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// WriteJSONTo writes PetGetResponseDefaultApplicationJSONStatusCode json value to io.Writer.
-func (s PetGetResponseDefaultApplicationJSONStatusCode) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads PetGetResponseDefaultApplicationJSONStatusCode json value from io.Reader.
-func (s *PetGetResponseDefaultApplicationJSONStatusCode) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads PetGetResponseDefaultApplicationJSONStatusCode from json stream.
-func (s *PetGetResponseDefaultApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
-	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
+// ReadJSON reads PetGetResOKApplicationJSONType from json stream.
+func (s *PetGetResOKApplicationJSONType) ReadJSON(i *json.Iterator) error {
+	*s = PetGetResOKApplicationJSONType(i.ReadString())
 	return i.Error
 }

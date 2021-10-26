@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func encodeCachingResponse(response CachingResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodeJSONResponse(response JSONResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -61,7 +61,7 @@ func encodeCachingResponse(response CachingResponseOKApplicationJSON, w http.Res
 	return nil
 }
 
-func encodeJSONResponse(response JSONResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodeDBResponse(response DBResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -72,7 +72,7 @@ func encodeJSONResponse(response JSONResponseOKApplicationJSON, w http.ResponseW
 	return nil
 }
 
-func encodeDBResponse(response CachingResponseOKApplicationJSONItem, w http.ResponseWriter) error {
+func encodeQueriesResponse(response QueriesResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -83,7 +83,7 @@ func encodeDBResponse(response CachingResponseOKApplicationJSONItem, w http.Resp
 	return nil
 }
 
-func encodeQueriesResponse(response CachingResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodeUpdatesResponse(response QueriesResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -94,7 +94,7 @@ func encodeQueriesResponse(response CachingResponseOKApplicationJSON, w http.Res
 	return nil
 }
 
-func encodeUpdatesResponse(response CachingResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodeCachingResponse(response QueriesResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)

@@ -50,80 +50,6 @@ var (
 	_ = net.IP{}
 )
 
-func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePetGetByNameParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.PetGetByName(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodePetGetByNameResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeFoobarGetParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.FoobarGet(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeFoobarGetResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewFoobarPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.FoobarPut(r.Context())
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeFoobarPutResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.FoobarPost(r.Context())
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeFoobarPostResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewPetNameByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodePetNameByIDParams(r)
@@ -197,6 +123,80 @@ func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 		}
 
 		if err := encodePetCreateResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodePetGetByNameParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetGetByName(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetGetByNameResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodeFoobarGetParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.FoobarGet(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeFoobarGetResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewFoobarPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.FoobarPut(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeFoobarPutResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.FoobarPost(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeFoobarPostResponse(response, w); err != nil {
 			_ = err
 			return
 		}
