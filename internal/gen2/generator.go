@@ -3,11 +3,12 @@ package gen
 import (
 	"strings"
 
+	"golang.org/x/xerrors"
+
 	"github.com/ogen-go/ogen"
 	ast "github.com/ogen-go/ogen/internal/ast2"
 	"github.com/ogen-go/ogen/internal/ast2/parser"
 	"github.com/ogen-go/ogen/internal/ir"
-	"golang.org/x/xerrors"
 )
 
 type Generator struct {
@@ -31,6 +32,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	g := &Generator{
+		opt:        opts,
 		types:      map[string]*ir.Type{},
 		interfaces: map[string]*ir.Type{},
 		refs:       map[string]*ir.Type{},
@@ -45,13 +47,13 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 }
 
 func (g *Generator) makeIR(ops []*ast.Operation) error {
-	for _, opspec := range ops {
-		op, err := g.generateOperation(opspec)
+	for _, spec := range ops {
+		op, err := g.generateOperation(spec)
 		if err != nil {
 			if g.shouldFail(err) {
 				return xerrors.Errorf("'%s': %s: %w",
-					opspec.Path(),
-					strings.ToLower(opspec.HTTPMethod),
+					spec.Path(),
+					strings.ToLower(spec.HTTPMethod),
 					err,
 				)
 			}

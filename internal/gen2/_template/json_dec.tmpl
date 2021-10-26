@@ -1,0 +1,65 @@
+{{- define "dec_json_value" -}}
+    {{- /*gotype: github.com/ogen-go/ogen/internal/gen2.Elem*/ -}}
+    {{- if $.Schema.IsPointer -}}
+        {{ $.Var }} = nil
+        var {{ $.NextVar }} {{ $.Schema.PointerTo.Type }}
+        if err := func() error {
+          {{- template "dec_json_value" pointer_elem $ }}
+        }(); err != nil {
+          return err
+        }
+        {{ $.Var }} = &{{ $.NextVar }}
+        return i.Error
+    {{- else if $.Schema.JSONRead -}}
+        {{ $.Var }} = {{ $.Schema.Type }}(i.{{ $.Schema.JSONRead }}())
+        return i.Error
+    {{- else if $.Schema.JSONHelper }}
+        v, err := json.Read{{ $.Schema.JSONHelper }}(i)
+        {{ $.Var }} = v
+        if err != nil {
+            return err
+        }
+        return i.Error
+    {{- else if or ($.Schema.IsStruct) ($.Schema.IsEnum) }}
+        if err := {{ $.Var }}.ReadJSON(i); err != nil {
+            return err
+        }
+        return i.Error
+    {{- else if $.Schema.IsArray }}
+        {{ $.Var }} = {{ $.Var }}[:0]
+        var retErr error
+        i.ReadArrayCB(func(i *json.Iterator) bool {
+           var {{ $.NextVar }} {{ $.Schema.Item.Type }}
+           if err := func() error {
+              {{- template "dec_json_value" sub_array_elem $ $.Schema.Item }}
+           }(); err != nil {
+               retErr = err
+               return false
+           }
+           {{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
+           return true
+        })
+        if retErr != nil {
+           return retErr
+        }
+        return i.Error
+    {{- else if $.Schema.GenericOf }}
+        {{- if $.Schema.GenericVariant.Optional }}
+          {{ $.Var }}.Reset()
+        {{- end }}
+        {{- $g := $.Schema.GenericOf }}
+        {{- if $g.FormatCustom }}
+          if err := {{ $.Var }}.ReadJSON(i, json.Read{{ $g.JSONHelper }}); err != nil {
+            return err
+          }
+          return nil
+        {{- else }}
+          if err := {{ $.Var }}.ReadJSON(i); err != nil {
+            return err
+          }
+          return nil
+        {{- end }}
+    {{- else  -}}
+        return fmt.Errorf(`decoding of "{{ $.Schema.Type }}" ({{ $.Schema.Kind }}) is not implemented`)
+    {{- end }}
+{{- end -}}
