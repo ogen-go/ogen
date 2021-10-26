@@ -50,6 +50,17 @@ var (
 	_ = net.IP{}
 )
 
+func encodeCachingResponse(response CachingResponseOKApplicationJSON, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	return nil
+}
+
 func encodeJSONResponse(response JSONResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -61,7 +72,7 @@ func encodeJSONResponse(response JSONResponseOKApplicationJSON, w http.ResponseW
 	return nil
 }
 
-func encodeDBResponse(response DBResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodeDBResponse(response CachingResponseOKApplicationJSONItem, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -72,7 +83,7 @@ func encodeDBResponse(response DBResponseOKApplicationJSON, w http.ResponseWrite
 	return nil
 }
 
-func encodeQueriesResponse(response QueriesResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodeQueriesResponse(response CachingResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -83,18 +94,7 @@ func encodeQueriesResponse(response QueriesResponseOKApplicationJSON, w http.Res
 	return nil
 }
 
-func encodeUpdatesResponse(response QueriesResponseOKApplicationJSON, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	return nil
-}
-
-func encodeCachingResponse(response QueriesResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodeUpdatesResponse(response CachingResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)

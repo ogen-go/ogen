@@ -97,7 +97,7 @@ func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 		unsupported parameter location: {{ $p.Spec.In }}
 		{{- end }}
 
-		params.{{ $p.Name }} = {{ $p.Type.GoType }}(v)
+		params.{{ $p.Name }} = {{ $p.Type.Go }}(v)
 		return nil
 	}(); err != nil {
 		return params, err

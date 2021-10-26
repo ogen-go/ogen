@@ -1,10 +1,10 @@
 {{- define "dec_json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    {{ $t := $.Type }}
-    {{ $j := $t.JSON }}
+    {{- $t := $.Type -}}
+    {{- $j := $t.JSON -}}
     {{- if $t.IsPointer -}}
         {{ $.Var }} = nil
-        var {{ $.NextVar }} {{ $t.PointerTo.GoType }}
+        var {{ $.NextVar }} {{ $t.PointerTo.Go }}
         if err := func() error {
           {{- template "dec_json_value" pointer_elem $ }}
         }(); err != nil {
@@ -13,16 +13,17 @@
         {{ $.Var }} = &{{ $.NextVar }}
         return i.Error
     {{- else if $j.Read -}}
-        {{ $.Var }} = {{ $t.GoType }}(i.{{ $j.Read }}())
+        {{ $.Var }} = {{ $t.Go }}(i.{{ $j.Read }}())
         return i.Error
     {{- else if $j.Format }}
-        v, err := json.Read{{ $t.Format }}(i)
+        v, err := json.Read{{ $j.Format }}(i)
         {{ $.Var }} = v
         if err != nil {
             return err
         }
         return i.Error
     {{- else if or ($t.IsStruct) ($t.IsEnum) }}
+        // Struct or enum.
         if err := {{ $.Var }}.ReadJSON(i); err != nil {
             return err
         }
@@ -31,7 +32,7 @@
         {{ $.Var }} = {{ $.Var }}[:0]
         var retErr error
         i.ReadArrayCB(func(i *json.Iterator) bool {
-           var {{ $.NextVar }} {{ $t.Item.GoType }}
+           var {{ $.NextVar }} {{ $t.Item.Go }}
            if err := func() error {
               {{- template "dec_json_value" sub_array_elem $ $t.Item }}
            }(); err != nil {
@@ -62,6 +63,6 @@
           return nil
         {{- end }}
     {{- else  -}}
-        return fmt.Errorf(`decoding of "{{ $t.GoType }}" ({{ $t.Kind }}) is not implemented`)
+        return fmt.Errorf(`decoding of "{{ $t.Go }}" ({{ $t.Kind }}) is not implemented`)
     {{- end }}
 {{- end -}}

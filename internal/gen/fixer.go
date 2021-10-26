@@ -63,10 +63,10 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 				rcontents []string
 			)
 			for ct := range lresp.Contents {
-				lcontents = append(lcontents, ct)
+				lcontents = append(lcontents, string(ct))
 			}
 			for ct := range rresp.Contents {
-				rcontents = append(rcontents, ct)
+				rcontents = append(rcontents, string(ct))
 			}
 			sort.Strings(lcontents)
 			sort.Strings(rcontents)
@@ -75,7 +75,7 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 					if lcode == rcode && lct == rct {
 						continue
 					}
-					lschema, rschema := lresp.Contents[lct], rresp.Contents[rct]
+					lschema, rschema := lresp.Contents[ir.ContentType(lct)], rresp.Contents[ir.ContentType(rct)]
 					if reflect.DeepEqual(lschema, rschema) {
 						candidates = append(candidates, candidate{
 							renameTo:     pascal(op.Name, lct, http.StatusText(lcode)),
@@ -105,6 +105,6 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 			continue
 		}
 
-		candidate.response.Contents[candidate.replaceCtype] = alias
+		candidate.response.Contents[ir.ContentType(candidate.replaceCtype)] = alias
 	}
 }

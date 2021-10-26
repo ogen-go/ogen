@@ -6,7 +6,7 @@
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
-func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Response.Type.GoType }}, err error) {
+func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Response.Type.Go }}, err error) {
     buf := json.GetBuffer()
     defer json.PutBuffer(buf)
     if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -27,7 +27,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Response.Type
             defer json.PutIterator(i)
             i.ResetBytes(buf.Bytes())
 
-            var response {{ $type.GoType }}
+            var response {{ $type.Go }}
             if err := func() error {
                 return nil
                 {{- /* template "dec_json_value" req_elem $schema */}}
@@ -59,7 +59,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Response.Type
             defer json.PutIterator(i)
             i.ResetBytes(buf.Bytes())
 
-            var response {{ $type.GoType }}
+            var response {{ $type.Go }}
             if err := func() error {
                 return nil
                 {{- /* template "dec_json_value" req_elem $type */}}

@@ -8,7 +8,7 @@
 {{ if $op.Params }}{{/* Check parameters existence */}}
 type {{ $op.Name }}Params struct {
 	{{- range $p := $op.Params }}
-	{{ $p.Name }} {{ $p.Type.GoType }}
+	{{ $p.Name }} {{ $p.Type.Go }}
 	{{- end}}
 }
 

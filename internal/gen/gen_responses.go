@@ -88,16 +88,15 @@ func (g *Generator) responseToIR(name string, resp *ast.Response) (*ir.StatusRes
 		}, nil
 	}
 
-	types := make(map[string]*ir.Type)
+	types := make(map[ir.ContentType]*ir.Type)
 	for contentType, schema := range resp.Contents {
 		typ, err := g.generateSchema(pascal(name, contentType), schema)
 		if err != nil {
 			return nil, xerrors.Errorf("contents: %s: %w", contentType, err)
 		}
 
-		types[contentType] = typ
+		types[ir.ContentType(contentType)] = typ
 	}
-
 	return &ir.StatusResponse{
 		Contents: types,
 		Spec:     resp,

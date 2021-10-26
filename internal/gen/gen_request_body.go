@@ -8,7 +8,7 @@ import (
 )
 
 func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Request, error) {
-	types := make(map[string]*ir.Type)
+	types := make(map[ir.ContentType]*ir.Type)
 	for contentType, schema := range body.Contents {
 		sName := name
 		if len(body.Contents) > 1 {
@@ -20,7 +20,7 @@ func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Req
 			return nil, xerrors.Errorf("contents: %s: %w", contentType, err)
 		}
 
-		types[contentType] = typ
+		types[ir.ContentType(contentType)] = typ
 	}
 
 	if len(types) == 1 {
@@ -40,7 +40,7 @@ func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Req
 	for contentType, typ := range types {
 		if typ.Is(ir.KindPrimitive, ir.KindArray) {
 			// Primitive types cannot have methods, wrap it with alias.
-			typ = ir.Alias(pascal(name, contentType), typ)
+			typ = ir.Alias(pascal(name, string(contentType)), typ)
 			g.saveType(typ)
 		}
 

@@ -52,14 +52,14 @@ var (
 
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
+	// Caching implements Caching operation.
+	Caching(ctx context.Context, params CachingParams) (CachingResponseOKApplicationJSON, error)
 	// JSON implements json operation.
 	JSON(ctx context.Context) (JSONResponseOKApplicationJSON, error)
 	// DB implements DB operation.
-	DB(ctx context.Context) (DBResponseOKApplicationJSON, error)
+	DB(ctx context.Context) (CachingResponseOKApplicationJSONItem, error)
 	// Queries implements Queries operation.
-	Queries(ctx context.Context, params QueriesParams) (QueriesResponseOKApplicationJSON, error)
+	Queries(ctx context.Context, params QueriesParams) (CachingResponseOKApplicationJSON, error)
 	// Updates implements Updates operation.
-	Updates(ctx context.Context, params UpdatesParams) (QueriesResponseOKApplicationJSON, error)
-	// Caching implements Caching operation.
-	Caching(ctx context.Context, params CachingParams) (QueriesResponseOKApplicationJSON, error)
+	Updates(ctx context.Context, params UpdatesParams) (CachingResponseOKApplicationJSON, error)
 }

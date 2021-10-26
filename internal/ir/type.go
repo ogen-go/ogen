@@ -39,6 +39,10 @@ type Type struct {
 	Validators       Validators
 }
 
+func (t *Type) Pointer(sem NilSemantic) *Type {
+	return Pointer(t, sem)
+}
+
 // Format denotes whether custom formatting for Type is required while encoding
 // or decoding.
 //
@@ -97,15 +101,15 @@ func (t *Type) AddMethod(name string) {
 	t.InterfaceMethods[name] = struct{}{}
 }
 
-func (t *Type) GoType() string {
+func (t *Type) Go() string {
 	switch t.Kind {
-	case KindPrimitive, KindEnum:
+	case KindPrimitive:
 		return t.Primitive.String()
 	case KindArray:
-		return "[]" + t.Item.GoType()
+		return "[]" + t.Item.Go()
 	case KindPointer:
-		return "*" + t.PointerTo.GoType()
-	case KindStruct, KindAlias, KindInterface:
+		return "*" + t.PointerTo.Go()
+	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum:
 		return t.Name
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
@@ -117,7 +121,7 @@ func (t *Type) Methods() []string {
 	switch t.Kind {
 	case KindInterface:
 		ms = t.InterfaceMethods
-	case KindStruct, KindAlias, KindEnum:
+	case KindStruct, KindAlias, KindEnum, KindGeneric:
 		for i := range t.Implements {
 			for m := range i.InterfaceMethods {
 				ms[m] = struct{}{}

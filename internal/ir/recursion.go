@@ -16,7 +16,7 @@ func (t *Type) Equal(target *Type) bool {
 	if t.Primitive != target.Primitive {
 		return false
 	}
-	return t.GoType() == target.GoType()
+	return t.Go() == target.Go()
 }
 
 func (t *Type) recurse(parent, target *Type) bool {

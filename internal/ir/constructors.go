@@ -34,3 +34,11 @@ func Interface(name string) *Type {
 		Implementations:  map[*Type]struct{}{},
 	}
 }
+
+func Pointer(typ *Type, sem NilSemantic) *Type {
+	return &Type{
+		Kind:        KindPointer,
+		PointerTo:   typ,
+		NilSemantic: sem,
+	}
+}

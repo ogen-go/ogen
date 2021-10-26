@@ -6,7 +6,7 @@
 {{/* Range over all methods */}}
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func encode{{ $op.Name }}Request(req {{ $op.Request.Type.GoType }}) (data []byte, contentType string, err error) {
+func encode{{ $op.Name }}Request(req {{ $op.Request.Type.Go }}) (data []byte, contentType string, err error) {
     {{- $requestsLength := len $op.Request.Contents }}
     {{- if eq $requestsLength 1 }}
     {{- range $contentType, $type := $op.Request.Contents }}
@@ -22,7 +22,7 @@ func encode{{ $op.Name }}Request(req {{ $op.Request.Type.GoType }}) (data []byte
     {{- /* Multiple requests */}}
     switch req := req.(type) {
     {{- range $contentType, $type := $op.Request.Contents }}
-    case *{{ $type.GoType }}:
+    case *{{ $type.Go }}:
         {{- if eq $contentType "application/json" }}
         return json.Encode(req), "{{ $contentType }}", nil
         {{- else }}

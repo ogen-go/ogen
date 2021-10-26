@@ -6,7 +6,7 @@
 {{/* Range over all methods */}}
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.GoType }}, err error) {
+func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.Go }}, err error) {
     buf := json.GetBuffer()
     defer json.PutBuffer(buf)
     if _, err := io.Copy(buf, r.Body); err != nil {
@@ -19,7 +19,7 @@ func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.GoTyp
     case "{{ $contentType }}":
         var request {{ $type.GoType }}
         {{- /* Decode json */ -}}
-        {{- if eq $contentType "application/json" }}
+        {{- if $contentType.JSON }}
         i := json.GetIterator()
         defer json.PutIterator(i)
         i.ResetBytes(buf.Bytes())

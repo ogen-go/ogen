@@ -51,9 +51,9 @@ var (
 )
 
 func Register(r chi.Router, s Server) {
+	r.MethodFunc("GET", "/cached-worlds", NewCachingHandler(s))
 	r.MethodFunc("GET", "/json", NewJSONHandler(s))
 	r.MethodFunc("GET", "/db", NewDBHandler(s))
 	r.MethodFunc("GET", "/queries", NewQueriesHandler(s))
 	r.MethodFunc("GET", "/updates", NewUpdatesHandler(s))
-	r.MethodFunc("GET", "/cached-worlds", NewCachingHandler(s))
 }

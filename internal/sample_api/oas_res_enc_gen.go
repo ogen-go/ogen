@@ -50,43 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PetGetResponseOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
-
-		return nil
-	case *PetGetResponseDefaultApplicationJSONStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
-
-		return nil
-	default:
-		return fmt.Errorf("/pet: unexpected response type: %T", response)
-	}
-}
-
-func encodePetCreateResponse(response PetGetResponseOKApplicationJSON, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	return nil
-}
-
-func encodePetGetByNameResponse(response PetGetResponseOKApplicationJSON, w http.ResponseWriter) error {
+func encodePetGetByNameResponse(response PetGetByNameResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -99,7 +63,7 @@ func encodePetGetByNameResponse(response PetGetResponseOKApplicationJSON, w http
 
 func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *PetGetResponseOKApplicationJSON:
+	case *PetGetByNameResponseOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -123,7 +87,7 @@ func encodeFoobarPutResponse(response FoobarPutResponseDefaultStatusCode, w http
 
 func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *PetGetResponseOKApplicationJSON:
+	case *PetGetByNameResponseOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -161,6 +125,42 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 }
 
 func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	return nil
+}
+
+func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *PetGetByNameResponseOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	case *PetGetResponseDefaultApplicationJSONStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	default:
+		return fmt.Errorf("/pet: unexpected response type: %T", response)
+	}
+}
+
+func encodePetCreateResponse(response PetGetByNameResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)

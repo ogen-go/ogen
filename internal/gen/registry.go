@@ -19,11 +19,11 @@ func (g *Generator) saveIface(typ *ir.Type) {
 }
 
 func (g *Generator) saveType(typ *ir.Type) {
-	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias) {
+	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric) {
 		panic("unreachable")
 	}
 
-	if _, ok := g.types[typ.Name]; ok {
+	if _, ok := g.types[typ.Name]; ok && !typ.IsGeneric() {
 		panic(fmt.Sprintf("schema name conflict: '%s'", typ.Name))
 	}
 
@@ -31,11 +31,11 @@ func (g *Generator) saveType(typ *ir.Type) {
 }
 
 func (g *Generator) saveRef(ref string, typ *ir.Type) {
-	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias) {
+	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric) {
 		panic("unreachable")
 	}
 
-	if _, ok := g.refs[ref]; ok {
+	if _, ok := g.refs[ref]; ok && !typ.IsGeneric() {
 		panic(fmt.Sprintf("ref conflict: '%s'", ref))
 	}
 

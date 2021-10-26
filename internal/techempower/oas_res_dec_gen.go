@@ -50,6 +50,37 @@ var (
 	_ = net.IP{}
 )
 
+func decodeCachingResponse(resp *http.Response) (res CachingResponseOKApplicationJSON, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response CachingResponseOKApplicationJSON
+			if err := func() error {
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodeJSONResponse(resp *http.Response) (res JSONResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
@@ -81,7 +112,7 @@ func decodeJSONResponse(resp *http.Response) (res JSONResponseOKApplicationJSON,
 	}
 }
 
-func decodeDBResponse(resp *http.Response) (res DBResponseOKApplicationJSON, err error) {
+func decodeDBResponse(resp *http.Response) (res CachingResponseOKApplicationJSONItem, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -96,7 +127,7 @@ func decodeDBResponse(resp *http.Response) (res DBResponseOKApplicationJSON, err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response DBResponseOKApplicationJSON
+			var response CachingResponseOKApplicationJSONItem
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -112,7 +143,7 @@ func decodeDBResponse(resp *http.Response) (res DBResponseOKApplicationJSON, err
 	}
 }
 
-func decodeQueriesResponse(resp *http.Response) (res QueriesResponseOKApplicationJSON, err error) {
+func decodeQueriesResponse(resp *http.Response) (res CachingResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -127,7 +158,7 @@ func decodeQueriesResponse(resp *http.Response) (res QueriesResponseOKApplicatio
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response QueriesResponseOKApplicationJSON
+			var response CachingResponseOKApplicationJSON
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -143,7 +174,7 @@ func decodeQueriesResponse(resp *http.Response) (res QueriesResponseOKApplicatio
 	}
 }
 
-func decodeUpdatesResponse(resp *http.Response) (res QueriesResponseOKApplicationJSON, err error) {
+func decodeUpdatesResponse(resp *http.Response) (res CachingResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -158,38 +189,7 @@ func decodeUpdatesResponse(resp *http.Response) (res QueriesResponseOKApplicatio
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response QueriesResponseOKApplicationJSON
-			if err := func() error {
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeCachingResponse(resp *http.Response) (res QueriesResponseOKApplicationJSON, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response QueriesResponseOKApplicationJSON
+			var response CachingResponseOKApplicationJSON
 			if err := func() error {
 				return nil
 			}(); err != nil {

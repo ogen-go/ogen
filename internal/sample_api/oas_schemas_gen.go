@@ -77,6 +77,104 @@ type FoobarPutResponseDefaultStatusCode struct {
 	Response   FoobarPutResponseDefault
 }
 
+// NewOptNilString returns new OptNilString with value set to v.
+func NewOptNilString(v string) OptNilString {
+	return OptNilString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilString is optional nullable string.
+type OptNilString struct {
+	Value string
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilString was set.
+func (o OptNilString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilString) SetTo(v string) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilString) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilString) Get() (v string, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// '#/components/schemas/Pet'
+type PetGetByNameResponseOKApplicationJSON struct {
+	Birthday     time.Time                                 `json:"birthday"`
+	Friends      []PetGetByNameResponseOKApplicationJSON   `json:"friends"`
+	ID           int64                                     `json:"id"`
+	IP           net.IP                                    `json:"ip"`
+	IPV4         net.IP                                    `json:"ip_v4"`
+	IPV6         net.IP                                    `json:"ip_v6"`
+	Kind         PetGetByNameResponseOKApplicationJSONKind `json:"kind"`
+	Name         string                                    `json:"name"`
+	Next         PetGetByNameResponseOKApplicationJSONNext `json:"next"`
+	Nickname     OptNilString                              `json:"nickname"`
+	NullStr      OptNilString                              `json:"nullStr"`
+	Primary      *PetGetByNameResponseOKApplicationJSON    `json:"primary"`
+	Rate         time.Duration                             `json:"rate"`
+	Tag          uuid.UUID                                 `json:"tag"`
+	TestArray1   [][]string                                `json:"testArray1"`
+	TestDate     time.Time                                 `json:"testDate"`
+	TestDateTime time.Time                                 `json:"testDateTime"`
+	TestDuration time.Duration                             `json:"testDuration"`
+	TestFloat1   float64                                   `json:"testFloat1"`
+	TestInteger1 int                                       `json:"testInteger1"`
+	TestTime     time.Time                                 `json:"testTime"`
+	Type         PetGetByNameResponseOKApplicationJSONType `json:"type"`
+	UniqueID     uuid.UUID                                 `json:"unique_id"`
+	URI          url.URL                                   `json:"uri"`
+}
+
+func (*PetGetByNameResponseOKApplicationJSON) foobarGetResponse()  {}
+func (*PetGetByNameResponseOKApplicationJSON) foobarPostResponse() {}
+func (*PetGetByNameResponseOKApplicationJSON) petGetResponse()     {}
+
+type PetGetByNameResponseOKApplicationJSONKind string
+
+const (
+	PetGetByNameResponseOKApplicationJSONKindBig  PetGetByNameResponseOKApplicationJSONKind = "big"
+	PetGetByNameResponseOKApplicationJSONKindSmol PetGetByNameResponseOKApplicationJSONKind = "smol"
+)
+
+// '#/components/schemas/Data'
+type PetGetByNameResponseOKApplicationJSONNext struct {
+	Description string `json:"description"`
+}
+
+type PetGetByNameResponseOKApplicationJSONType string
+
+const (
+	PetGetByNameResponseOKApplicationJSONTypeFifa PetGetByNameResponseOKApplicationJSONType = "fifa"
+	PetGetByNameResponseOKApplicationJSONTypeFofa PetGetByNameResponseOKApplicationJSONType = "fofa"
+)
+
 type PetGetResponseDefaultApplicationJSON struct {
 	Message string `json:"message"`
 }
@@ -87,54 +185,3 @@ type PetGetResponseDefaultApplicationJSONStatusCode struct {
 }
 
 func (*PetGetResponseDefaultApplicationJSONStatusCode) petGetResponse() {}
-
-// '#/components/schemas/Pet'
-type PetGetResponseOKApplicationJSON struct {
-	Birthday     time.Time                            `json:"birthday"`
-	Friends      *[]PetGetResponseOKApplicationJSON   `json:"friends"`
-	ID           int64                                `json:"id"`
-	IP           net.IP                               `json:"ip"`
-	IPV4         net.IP                               `json:"ip_v4"`
-	IPV6         net.IP                               `json:"ip_v6"`
-	Kind         string                               `json:"kind"`
-	Name         string                               `json:"name"`
-	Next         *PetGetResponseOKApplicationJSONNext `json:"next"`
-	Nickname     string                               `json:"nickname"`
-	NullStr      *string                              `json:"nullStr"`
-	Primary      *PetGetResponseOKApplicationJSON     `json:"primary"`
-	Rate         time.Duration                        `json:"rate"`
-	Tag          *uuid.UUID                           `json:"tag"`
-	TestArray1   *[][]string                          `json:"testArray1"`
-	TestDate     *time.Time                           `json:"testDate"`
-	TestDateTime *time.Time                           `json:"testDateTime"`
-	TestDuration *time.Duration                       `json:"testDuration"`
-	TestFloat1   *float64                             `json:"testFloat1"`
-	TestInteger1 *int                                 `json:"testInteger1"`
-	TestTime     *time.Time                           `json:"testTime"`
-	Type         *string                              `json:"type"`
-	UniqueID     uuid.UUID                            `json:"unique_id"`
-	URI          url.URL                              `json:"uri"`
-}
-
-func (*PetGetResponseOKApplicationJSON) foobarGetResponse()  {}
-func (*PetGetResponseOKApplicationJSON) foobarPostResponse() {}
-func (*PetGetResponseOKApplicationJSON) petGetResponse()     {}
-
-type PetGetResponseOKApplicationJSONKind string
-
-const (
-	PetGetResponseOKApplicationJSONKindBig  PetGetResponseOKApplicationJSONKind = "big"
-	PetGetResponseOKApplicationJSONKindSmol PetGetResponseOKApplicationJSONKind = "smol"
-)
-
-// '#/components/schemas/Data'
-type PetGetResponseOKApplicationJSONNext struct {
-	Description *string `json:"description"`
-}
-
-type PetGetResponseOKApplicationJSONType string
-
-const (
-	PetGetResponseOKApplicationJSONTypeFifa PetGetResponseOKApplicationJSONType = "fifa"
-	PetGetResponseOKApplicationJSONTypeFofa PetGetResponseOKApplicationJSONType = "fofa"
-)

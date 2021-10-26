@@ -1,6 +1,8 @@
 package gen
 
 import (
+	"strings"
+
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/internal/ast"
@@ -11,6 +13,13 @@ type schemaGen struct {
 	side       []*ir.Type
 	localRefs  map[string]*ir.Type
 	globalRefs map[string]*ir.Type
+}
+
+func genericPostfix(name string) string {
+	if idx := strings.Index(name, "."); idx > 0 {
+		name = name[idx+1:]
+	}
+	return pascal(name)
 }
 
 func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) {
@@ -94,24 +103,49 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 			if err != nil {
 				return nil, xerrors.Errorf("field '%s': %w", prop.Name, err)
 			}
-
-			if prop.Optional {
-				typ = &ir.Type{
-					Kind:      ir.KindPointer,
-					PointerTo: typ,
+			v := ir.GenericVariant{
+				Nullable: prop.Nullable,
+				Optional: prop.Nullable,
+			}
+			if v.Any() {
+				if typ.CanGeneric() && !s.RecursiveTo(typ) {
+					typ = ir.Generic(genericPostfix(typ.Go()),
+						typ, v,
+					)
+					g.side = append(g.side, typ)
+				} else if typ.IsArray() {
+					// Using special case for array nil value if possible.
+					switch {
+					case v.OnlyOptional():
+						typ.NilSemantic = ir.NilOptional
+					case v.OnlyNullable():
+						typ.NilSemantic = ir.NilNull
+					default:
+						// TODO(ernado): fallback to boxing
+						return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{Name: "optional nullable array"})
+					}
+				} else {
+					switch {
+					case v.OnlyOptional():
+						typ = typ.Pointer(ir.NilOptional)
+					case v.OnlyNullable():
+						typ = typ.Pointer(ir.NilNull)
+					default:
+						panic("unreachable")
+					}
 				}
 			}
-
-			f := &ir.Field{
+			if s.RecursiveTo(typ) {
+				typ = typ.Pointer(ir.NilInvalid)
+			}
+			s.Fields = append(s.Fields, &ir.Field{
 				Property: prop.Name,
 				Name:     pascalMP(prop.Name),
 				Type:     typ,
 				Tag: ir.Tag{
 					JSON: prop.Name,
 				},
-			}
-
-			s.Fields = append(s.Fields, f)
+			})
 		}
 
 		return s, nil

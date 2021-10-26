@@ -9,7 +9,7 @@ type ResponseInfo struct {
 	Type        *Type
 	StatusCode  int
 	Default     bool
-	ContentType string
+	ContentType ContentType
 	NoContent   bool
 }
 
@@ -62,7 +62,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 		if l.StatusCode != r.StatusCode {
 			return l.StatusCode < r.StatusCode
 		}
-		return strings.Compare(l.ContentType, r.ContentType) < 0
+		return strings.Compare(string(l.ContentType), string(r.ContentType)) < 0
 	})
 
 	return result

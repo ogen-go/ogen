@@ -43,6 +43,7 @@ func Generic(name string, of *Type, v GenericVariant) *Type {
 	}
 }
 
+// CanGeneric reports whether Type can be boxed to KindGeneric.
 func (t Type) CanGeneric() bool {
 	switch t.Kind {
 	case KindStruct:

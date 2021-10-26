@@ -154,6 +154,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 				Name:     propName,
 				Schema:   prop,
 				Optional: optional(propName),
+				Nullable: propSchema.Nullable,
 			})
 		}
 		sort.SliceStable(s.Properties, func(i, j int) bool {

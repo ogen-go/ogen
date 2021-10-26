@@ -19,25 +19,25 @@
 {{- end }}
 
 {{- /* Define struct */ -}}
-{{- if eq $.Kind "struct" }}
+{{- if $.IsStruct }}
 {{- if eq (len $.Fields) 0 }}{{/* Blank struct */}}
 type {{ $.Name }} struct{}
 {{- else }}
 type {{ $.Name }} struct {
 {{- range $f := $.Fields }}
-    {{ $f.Name }} {{ $f.Type.GoType }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
+    {{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
 {{- end }}
 }
 {{- end }}
 {{/* Define struct */}}
 
 {{/* Define alias */}}
-{{- else if eq $.Kind "alias" }}
-type {{ $.Name }} {{ $.AliasTo.GoType }}
+{{- else if $.IsAlias }}
+type {{ $.Name }} {{ $.AliasTo.Go }}
 {{/* Define alias */}}
 
 {{/* Define enum */}}
-{{- else if eq $.Kind "enum" }}
+{{- else if $.IsEnum }}
 type {{ $.Name }} {{ $.Primitive }}
 
 const (
@@ -47,7 +47,78 @@ const (
 {{- end }}
 )
 {{/* Define enum */}}
+{{/* Define generic */}}
+{{- else if $.IsGeneric }}
+{{- $g := $.GenericOf }}
+{{- $v := $.GenericVariant }}
 
+// New{{ $.Name }} returns new {{ $.Name }} with value set to v.
+func New{{ $.Name }}(v {{ $g.Go }}) {{ $.Name }} {
+    return {{ $.Name }} {
+        Value: v,
+    {{- if $v.Optional }}
+        Set: true,
+    {{- end }}
+    }
+}
+
+// {{ $.Name }} is{{ if $v.Optional }} optional{{ end }}{{ if $v.Nullable }} nullable{{ end }} {{ $g.Go }}.
+type {{ $.Name }} struct {
+    Value {{ $g.Go }}
+{{- if $v.Optional }}
+    Set bool
+{{- end }}
+{{- if $v.Nullable }}
+    Null bool
+{{- end }}
+}
+
+{{- if $v.Optional }}
+// IsSet returns true if {{ $.Go }} was set.
+func (o {{ $.Name }}) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *{{ $.Name }}) Reset() {
+    var v {{ $g.Go }}
+    o.Value = v
+    o.Set = false
+{{- if $v.Nullable }}
+    o.Null = false
+{{- end }}
+}
+{{- end }}
+
+// SetTo sets value to v.
+func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
+{{- if $v.Optional }}
+    o.Set = true
+{{- end }}
+{{- if $v.Nullable }}
+    o.Null = false
+{{- end }}
+    o.Value = v
+}
+
+{{- if $v.Nullable  }}
+// IsSet returns true if value is Null.
+func (o {{ $.Name }}) IsNull() bool { return o.Null }
+{{ end }}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
+{{- if $v.Nullable }}
+    if o.Null {
+        return v, false
+    }
+{{- end }}
+{{- if $v.Optional }}
+    if !o.Set {
+        return v, false
+    }
+{{- end }}
+    return o.Value, true
+}
+{{/* end define generic */}}
 {{- else }}
 // Unexpected kind {{ $.Kind }} of {{ $.Name }}
 {{- end }}
@@ -57,5 +128,6 @@ const (
 func (*{{ $.Name }}) {{ $method }}() {}
 {{- end }}
 {{/* end define methods */}}
+
 
 {{- end }}

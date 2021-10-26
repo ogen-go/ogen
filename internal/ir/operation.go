@@ -1,6 +1,8 @@
 package ir
 
-import "github.com/ogen-go/ogen/internal/ast"
+import (
+	"github.com/ogen-go/ogen/internal/ast"
+)
 
 type Operation struct {
 	Name      string
@@ -24,10 +26,23 @@ type Parameter struct {
 
 type Request struct {
 	Type     *Type
-	Contents map[string]*Type
+	Contents map[ContentType]*Type
 	Required bool
 	Spec     *ast.RequestBody
 }
+
+type Content struct {
+	ContentType ContentType
+	Type        *Type
+}
+
+// ContentType of body.
+type ContentType string
+
+// ContentTypeJSON is ContentType for json.
+const ContentTypeJSON ContentType = "application/json"
+
+func (t ContentType) JSON() bool { return t == ContentTypeJSON }
 
 type Response struct {
 	Type       *Type
@@ -38,6 +53,6 @@ type Response struct {
 
 type StatusResponse struct {
 	NoContent *Type
-	Contents  map[string]*Type
+	Contents  map[ContentType]*Type
 	Spec      *ast.Response
 }

@@ -68,7 +68,7 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
 {{- else if $t.IsGeneric }}
 {{ $g := $t.GenericOf }}
 {{ $v := $t.GenericVariant }}
-// WriteJSON writes json value of {{ $g.GoType }} to json stream.
+// WriteJSON writes json value of {{ $g.Go }} to json stream.
 func (o {{ $t.Name }}) WriteJSON(j *json.Stream{{ if $g.Format }}, format func(*json.Stream, {{ $g.Type }}){{ end }}) {
 {{- if $v.Nullable }}
     if o.Null {
@@ -87,7 +87,7 @@ func (o {{ $t.Name }}) WriteJSON(j *json.Stream{{ if $g.Format }}, format func(*
 {{- end }}
 }
 
-// ReadJSON reads json value of {{ $g.GoType }} from json iterator.
+// ReadJSON reads json value of {{ $g.Go }} from json iterator.
 func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
     switch i.WhatIsNext() {
     case json.{{ $g.JSON.Type }}:
@@ -110,7 +110,7 @@ func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func
         }
         o.Value = v
     {{- else if $g.JSON.Read }}
-        o.Value = {{ $g.Type }}(i.{{ $g.JSON.Read }}())
+        o.Value = {{ $g.Go }}(i.{{ $g.JSON.Read }}())
     {{- else if $g.IsStruct }}
         if err := o.Value.ReadJSON(i); err != nil {
             return err
@@ -119,7 +119,7 @@ func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func
         return i.Error
     {{- if $v.Nullable }}
     case json.NilValue:
-        var v {{ $g.GoType }}
+        var v {{ $g.Go }}
         o.Value = v
         {{- if $v.Optional }}
         o.Set = true

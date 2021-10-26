@@ -50,8 +50,13 @@ var (
 	_ = net.IP{}
 )
 
+func (CachingResponseOKApplicationJSON) WriteJSON(j *json.Stream)        {}
+func (CachingResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error { return nil }
+func (CachingResponseOKApplicationJSON) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CachingResponseOKApplicationJSON) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
-func (s DBResponseOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s CachingResponseOKApplicationJSONItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -66,16 +71,16 @@ func (s DBResponseOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes DBResponseOKApplicationJSON json value to io.Writer.
-func (s DBResponseOKApplicationJSON) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes CachingResponseOKApplicationJSONItem json value to io.Writer.
+func (s CachingResponseOKApplicationJSONItem) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads DBResponseOKApplicationJSON json value from io.Reader.
-func (s *DBResponseOKApplicationJSON) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads CachingResponseOKApplicationJSONItem json value from io.Reader.
+func (s *CachingResponseOKApplicationJSONItem) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -89,8 +94,8 @@ func (s *DBResponseOKApplicationJSON) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads DBResponseOKApplicationJSON from json stream.
-func (s *DBResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads CachingResponseOKApplicationJSONItem from json stream.
+func (s *CachingResponseOKApplicationJSONItem) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -182,8 +187,3 @@ func (s *JSONResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error {
 	}
 	return i.Error
 }
-
-func (QueriesResponseOKApplicationJSON) WriteJSON(j *json.Stream)        {}
-func (QueriesResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error { return nil }
-func (QueriesResponseOKApplicationJSON) ReadJSONFrom(r io.Reader) error  { return nil }
-func (QueriesResponseOKApplicationJSON) WriteJSONTo(w io.Writer) error   { return nil }
