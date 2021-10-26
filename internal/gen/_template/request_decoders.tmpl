@@ -4,9 +4,9 @@
 {{ template "header" $ }}
 
 {{/* Range over all methods */}}
-{{- range $m := $.Methods }}
-{{- if $m.RequestType }}
-func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }}, err error) {
+{{- range $op := $.Operations }}
+{{- if $op.Request }}
+func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.GoType }}, err error) {
     buf := json.GetBuffer()
     defer json.PutBuffer(buf)
     if _, err := io.Copy(buf, r.Body); err != nil {
@@ -15,26 +15,26 @@ func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }},
 
     switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
-    {{- range $contentType, $schema := $m.RequestBody.Contents }}
+    {{- range $contentType, $type := $op.Request.Contents }}
     case "{{ $contentType }}":
-        var request {{ $schema.Type }}
+        var request {{ $type.GoType }}
         {{- /* Decode json */ -}}
         {{- if eq $contentType "application/json" }}
         i := json.GetIterator()
         defer json.PutIterator(i)
         i.ResetBytes(buf.Bytes())
         if err := func() error {
-            {{- template "dec_json_value" req_decode_elem $schema }}
+            {{- template "dec_json_value" req_decode_elem $type }}
         }(); err != nil {
             return req, err
         }
-        {{- if $schema.NeedValidation }}
+        {{- if $type.NeedValidation }}
         if err := request.Validate(); err != nil {
             return req, fmt.Errorf("validate: %w", err)
         }
         {{- end }}
 
-        return {{ if or (not $m.RequestBody.Required) ($m.IsRequestIface) }}&{{ end }}request, nil
+        return {{ if or (not $op.Request.Required) ($op.IsRequestIface) }}&{{ end }}request, nil
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request

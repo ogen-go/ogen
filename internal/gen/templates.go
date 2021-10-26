@@ -8,77 +8,47 @@ import (
 
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func fieldElem(s *ast.SchemaField) Elem {
-	return Elem{
-		SubElem: false,
-		Field:   s.Tag,
-		Schema:  s.Type,
-		Var:     fmt.Sprintf("s.%s", s.Name),
-	}
-}
-
-// Elem variable helper for recursive array or object encoding.
+// Elem variable helper for recursive array or object encoding or decoding.
 type Elem struct {
-	SubElem bool
-	Field   string
-	Schema  *ast.Schema
-	Var     string
+	Sub  bool // true if Elem has parent Elem
+	Type *ir.Type
+	Var  string
 }
 
+// NextVar returns name of variable for decoding recursive call.
+//
+// Needed to make variable names unique.
 func (e Elem) NextVar() string {
-	if !e.SubElem {
+	if !e.Sub {
+		// No recursion, returning default name.
 		return "elem"
 	}
 	return e.Var + "Elem"
 }
 
-// templateFuncs returns functions which used in templates.
-func templateFuncs() template.FuncMap {
+// templateFunctions returns functions which used in templates.
+func templateFunctions() template.FuncMap {
 	return template.FuncMap{
-		"trim":       strings.TrimSpace,
-		"lower":      strings.ToLower,
+		"trim": strings.TrimSpace,
+		"lower": func(v interface{}) string {
+			switch v := v.(type) {
+			case ast.ParameterLocation:
+				return strings.ToLower(string(v))
+			case string:
+				return strings.ToLower(v)
+			default:
+				panic(fmt.Sprintf("unexpected value: %T", v))
+			}
+		},
 		"trimPrefix": strings.TrimPrefix,
 		"trimSuffix": strings.TrimSuffix,
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
-		"pointer_elem": func(parent Elem) Elem {
-			return Elem{
-				Schema:  parent.Schema.PointerTo,
-				SubElem: true,
-				Var:     parent.NextVar(),
-			}
-		},
-		"sub_array_elem": func(parent Elem, s *ast.Schema) Elem {
-			return Elem{
-				Schema:  s,
-				SubElem: true,
-				Var:     parent.NextVar(),
-			}
-		},
-		"array_elem": func(s *ast.Schema) Elem {
-			return Elem{
-				Schema:  s,
-				SubElem: true,
-				Var:     "elem",
-			}
-		},
-		"req_elem":        func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "response"} },
-		"req_decode_elem": func(s *ast.Schema) Elem { return Elem{Schema: s, Var: "request"} },
-		"res_elem": func(i *ast.ResponseInfo) Elem {
-			v := "response"
-			if i.Default {
-				v = v + ".Response"
-			}
-			return Elem{
-				Schema: i.Schema,
-				Var:    v,
-			}
-		},
-		"field_elem": fieldElem,
 		"toString":   func(v interface{}) string { return fmt.Sprintf("%v", v) },
 		"enumString": func(v interface{}) string {
 			switch v := v.(type) {
@@ -107,6 +77,50 @@ func templateFuncs() template.FuncMap {
 			return dict, nil
 		},
 		"sprintf": fmt.Sprintf,
+
+		// Helpers for recursive encoding and decoding.
+		"pointer_elem": func(parent Elem) Elem {
+			return Elem{
+				Type: parent.Type.PointerTo,
+				Sub:  true,
+				Var:  parent.NextVar(),
+			}
+		},
+		// Recursive array element (e.g. array of arrays).
+		"sub_array_elem": func(parent Elem, t *ir.Type) Elem {
+			return Elem{
+				Type: t,
+				Sub:  true,
+				Var:  parent.NextVar(),
+			}
+		},
+		// Initial array element.
+		"array_elem": func(t *ir.Type) Elem {
+			return Elem{
+				Type: t,
+				Sub:  true,
+				Var:  "elem",
+			}
+		},
+		"req_elem":        func(t *ir.Type) Elem { return Elem{Type: t, Var: "response"} },
+		"req_decode_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request"} },
+		"res_elem": func(i *ir.ResponseInfo) Elem {
+			v := "response"
+			if i.Default {
+				v = v + ".Response"
+			}
+			return Elem{
+				Type: i.Type,
+				Var:  v,
+			}
+		},
+		// Field of structure.
+		"field_elem": func(s *ir.Field) Elem {
+			return Elem{
+				Type: s.Type,
+				Var:  fmt.Sprintf("s.%s", s.Name),
+			}
+		},
 	}
 }
 
@@ -115,7 +129,7 @@ var templates embed.FS
 
 // vendoredTemplates parses and returns vendored code generation templates.
 func vendoredTemplates() *template.Template {
-	tmpl := template.New("templates").Funcs(templateFuncs())
+	tmpl := template.New("templates").Funcs(templateFunctions())
 	tmpl = template.Must(tmpl.ParseFS(templates, "_template/*.tmpl"))
 	return tmpl
 }

@@ -4,12 +4,12 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $s := $.Schemas }}{{/*Range schemas*/}}
-{{- if $s.NeedValidation }}{{/*Need validation*/}}
-{{- if $s.IsStruct }}{{/*If struct*/}}
-func (s *{{ $s.Name }}) Validate() error {
+{{- range $t := $.Types }}{{/*Range schemas*/}}
+{{- if $t.NeedValidation }}{{/*Need validation*/}}
+{{- if $t.IsStruct }}{{/*If struct*/}}
+func (s *{{ $t.Name }}) Validate() error {
     var failures []validate.FieldError
-    {{- range $f := $s.Fields }}{{/*Range fields*/}}
+    {{- range $f := $t.Fields }}{{/*Range fields*/}}
     {{- if $f.Type.NeedValidation }}
         {{- $fieldName := $f.Name }}
         {{- $validated := false }}
@@ -19,7 +19,7 @@ func (s *{{ $s.Name }}) Validate() error {
             {{- /*TODO: continue validation instead return*/ -}}
             return &validate.Error{
                 Fields: append(failures, validate.FieldError{
-                    Name: "{{ $f.Tag }}",
+                    Name: "{{ $f.Property }}",
                     Error: fmt.Errorf("required, can't be nil"),
                 }),
             }
@@ -28,7 +28,7 @@ func (s *{{ $s.Name }}) Validate() error {
         {{- if $f.Type.Validators.String.Set }}
         {{- $validated = true }}
         {
-            // Validate '{{ $f.Tag }}' field.
+            // Validate '{{ $f.Property }}' property.
             validator := validate.String{
                 MinLength:    {{ $f.Type.Validators.String.MinLength }},
                 MinLengthSet: {{ $f.Type.Validators.String.MinLengthSet }},
@@ -36,14 +36,14 @@ func (s *{{ $s.Name }}) Validate() error {
                 MaxLengthSet: {{ $f.Type.Validators.String.MaxLengthSet }},
             }
             if err := validator.Validate(string(s.{{ $fieldName }})); err != nil {
-                failures = append(failures, validate.FieldError{Name: "{{ $f.Tag }}", Error: err})
+                failures = append(failures, validate.FieldError{Name: "{{ $f.Property }}", Error: err})
             }
         }
         {{- end }}
         {{- if $f.Type.Validators.Int.Set }}
         {{- $validated = true }}
         {
-            // Validate '{{ $f.Tag }}' field.
+            // Validate '{{ $f.Property }}' property.
             validator := validate.Int{
                 MinSet:         {{ $f.Type.Validators.Int.MinSet }},
                 Min:            {{ $f.Type.Validators.Int.Min }},
@@ -53,7 +53,7 @@ func (s *{{ $s.Name }}) Validate() error {
                 MaxExclusive:   {{ $f.Type.Validators.Int.MaxExclusive }},
             }
             if err := validator.Validate(int64(s.{{ $fieldName }})); err != nil {
-                failures = append(failures, validate.FieldError{Name: "{{ $f.Tag }}", Error: err})
+                failures = append(failures, validate.FieldError{Name: "{{ $f.Property }}", Error: err})
             }
         }
         {{- end }}

@@ -1,35 +1,22 @@
 package gen
 
 import (
+	"strings"
+
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ast/parser"
+	"github.com/ogen-go/ogen/internal/ir"
 )
 
 type Generator struct {
-	opt           Options
-	spec          *ogen.Spec
-	methods       []*ast.Method
-	schemas       map[string]*ast.Schema
-	schemaRefs    map[string]*ast.Schema
-	requestBodies map[string]*ast.RequestBody
-	responses     map[string]*ast.Response
-	interfaces    map[string]*ast.Interface
-}
-
-func (g *Generator) hasSchema(name string) bool {
-	_, ok := g.schemas[name]
-	return ok
-}
-
-func (g *Generator) freeSchemaName(names []string) (string, error) {
-	for _, name := range names {
-		if !g.hasSchema(name) {
-			return name, nil
-		}
-	}
-	return "", xerrors.Errorf("all of good names %v are taken", names)
+	opt        Options
+	operations []*ir.Operation
+	types      map[string]*ir.Type
+	interfaces map[string]*ir.Type
+	refs       map[string]*ir.Type
 }
 
 type Options struct {
@@ -39,25 +26,43 @@ type Options struct {
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
-	spec.Init()
+	operations, err := parser.Parse(spec)
+	if err != nil {
+		return nil, err
+	}
+
 	g := &Generator{
-		opt:           opts,
-		spec:          spec,
-		schemas:       map[string]*ast.Schema{},
-		schemaRefs:    map[string]*ast.Schema{},
-		requestBodies: map[string]*ast.RequestBody{},
-		responses:     map[string]*ast.Response{},
-		interfaces:    map[string]*ast.Interface{},
+		opt:        opts,
+		types:      map[string]*ir.Type{},
+		interfaces: map[string]*ir.Type{},
+		refs:       map[string]*ir.Type{},
 	}
 
-	if err := g.generateMethods(); err != nil {
-		return nil, xerrors.Errorf("methods: %w", err)
+	if err := g.makeIR(operations); err != nil {
+		return nil, err
 	}
 
-	g.simplify()
-	if err := g.fix(); err != nil {
-		return nil, xerrors.Errorf("fix: %w", err)
-	}
-
+	g.fix()
 	return g, nil
+}
+
+func (g *Generator) makeIR(ops []*ast.Operation) error {
+	for _, spec := range ops {
+		op, err := g.generateOperation(spec)
+		if err != nil {
+			if g.shouldFail(err) {
+				return xerrors.Errorf("'%s': %s: %w",
+					spec.Path(),
+					strings.ToLower(spec.HTTPMethod),
+					err,
+				)
+			}
+
+			continue
+		}
+
+		g.operations = append(g.operations, op)
+	}
+
+	return nil
 }

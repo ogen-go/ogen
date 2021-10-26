@@ -4,26 +4,26 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $m := $.Methods }}
-func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Request) {
+{{- range $op := $.Operations }}
+func New{{ $op.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		{{- if $m.Parameters }}
-        params, err := decode{{ $m.Name }}Params(r)
+		{{- if $op.Params }}
+        params, err := decode{{ $op.Name }}Params(r)
         if err != nil {
             respondError(w, http.StatusBadRequest, err)
             return
         }
         {{- end }}
 
-        {{- if $m.RequestType }}
-        request, err := decode{{ $m.Name }}Request(r)
+        {{- if $op.Request }}
+        request, err := decode{{ $op.Name }}Request(r)
         if err != nil {
             respondError(w, http.StatusBadRequest, err)
             return
         }
         {{- end }}
 
-        response, err := s.{{$m.Name}}(r.Context(){{ if $m.RequestType }}, request{{ end }}{{if $m.Parameters}}, params {{ end }})
+        response, err := s.{{$op.Name}}(r.Context(){{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})
         if err != nil {
             {{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
             {{- /* TODO: Replace with logging when appropriate */ -}}
@@ -31,7 +31,7 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
             return
         }
 
-        if err := encode{{ $m.Name }}Response(response, w); err != nil {
+        if err := encode{{ $op.Name }}Response(response, w); err != nil {
             _ = err
             return
         }

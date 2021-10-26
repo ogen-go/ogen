@@ -6,9 +6,9 @@
 
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
-{{- range $m := $.Methods }}
-    // {{ $m.Name }} implements {{ $m.OperationID }} operation.
-    {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType.Type }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) ({{ $m.ResponseType.Type }}, error)
+{{- range $op := $.Operations }}
+    // {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
+    {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Response.Type.GoType }}, error)
 {{- end }}
 }
 

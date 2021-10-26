@@ -5,9 +5,8 @@
 package {{ $.Package }}
 
 {{- range $_, $iface := $.Interfaces }}
-// {{ $iface.Doc }}
 type {{ $iface.Name }} interface {
-{{- range $method, $_ := $iface.Methods }} {{ $method }}() {{- end }}
+{{- range $method, $_ := $iface.IfaceMethods }} {{ $method }}() {{- end }}
 }
 {{ end }}
 

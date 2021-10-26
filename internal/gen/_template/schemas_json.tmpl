@@ -4,29 +4,29 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $s := $.Schemas }}
-{{ if $s.IsStruct }}
+{{- range $t := $.Types }}
+{{ if $t.IsStruct }}
 // WriteJSON implements json.Marshaler.
-func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
+func (s {{ $t.Name }}) WriteJSON(j *json.Stream) {
     j.WriteObjectStart()
     more := json.NewMore(j)
     defer more.Reset()
-    {{- range $f := $s.JSONFields }}
+    {{- range $f := $t.JSON.Fields }}
         {{ template "enc_json_value" field_elem $f -}}
     {{- end }}
     j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes {{ $s.Name }} json value to io.Writer.
-func (s {{ $s.Name }}) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes {{ $t.Name }} json value to io.Writer.
+func (s {{ $t.Name }}) WriteJSONTo(w io.Writer) error {
     j := json.GetStream(w)
     defer json.PutStream(j)
     s.WriteJSON(j)
     return j.Flush()
 }
 
-// ReadJSONFrom reads {{ $s.Name }} json value from io.Reader.
-func (s *{{ $s.Name }}) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads {{ $t.Name }} json value from io.Reader.
+func (s *{{ $t.Name }}) ReadJSONFrom(r io.Reader) error {
     buf := json.GetBuffer()
     defer json.PutBuffer(buf)
 
@@ -40,13 +40,13 @@ func (s *{{ $s.Name }}) ReadJSONFrom(r io.Reader) error {
     return s.ReadJSON(i)
 }
 
-// ReadJSON reads {{ $s.Name }} from json stream.
-func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads {{ $t.Name }} from json stream.
+func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
     var retErr error
     i.ReadObjectCB(func(i *json.Iterator, k string) bool {
         switch k {
-{{- range $f := $s.JSONFields }}
-    case "{{ $f.Tag }}":
+{{- range $f := $t.JSON.Fields }}
+    case "{{ $f.Tag.JSON }}":
     if err := func() error {
         {{- template "dec_json_value" field_elem $f }}
     }(); err != nil {
@@ -65,52 +65,52 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
     }
     return i.Error
 }
-{{- else if $s.IsGeneric }}
-{{ $g := $s.GenericOf }}
-{{ $v := $s.GenericVariant }}
-// WriteJSON writes json value of {{ $g.Type }} to json stream.
-func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format func(*json.Stream, {{ $g.Type }}){{ end }}) {
+{{- else if $t.IsGeneric }}
+{{ $g := $t.GenericOf }}
+{{ $v := $t.GenericVariant }}
+// WriteJSON writes json value of {{ $g.GoType }} to json stream.
+func (o {{ $t.Name }}) WriteJSON(j *json.Stream{{ if $g.Format }}, format func(*json.Stream, {{ $g.Type }}){{ end }}) {
 {{- if $v.Nullable }}
     if o.Null {
         j.WriteNil()
         return
     }
 {{- end }}
-{{- if $g.FormatCustom }}
+{{- if $g.Format }}
     format(j, o.Value)
-{{- else if $g.JSONHelper }}
-    json.Write{{ $g.JSONHelper }}(j, o.Value)
-{{- else if $g.JSONWrite }}
-    j.{{ $g.JSONWrite }}({{ $g.Primitive }}(o.Value))
+{{- else if $g.JSON.Format }}
+    json.Write{{ $g.JSON.Format }}(j, o.Value)
+{{- else if $g.JSON.Write }}
+    j.{{ $g.JSON.Write }}({{ $g.Primitive }}(o.Value))
 {{- else if $g.IsStruct }}
     o.Value.WriteJSON(j)
 {{- end }}
 }
 
-// ReadJSON reads json value of {{ $g.Type }} from json iterator.
-func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
+// ReadJSON reads json value of {{ $g.GoType }} from json iterator.
+func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
     switch i.WhatIsNext() {
-    case json.{{ $g.JSONType }}:
+    case json.{{ $g.JSON.Type }}:
     {{- if $v.Optional }}
         o.Set = true
     {{- end }}
     {{- if $v.Nullable }}
         o.Null = false
     {{- end }}
-    {{- if $g.FormatCustom }}
+    {{- if $g.Format }}
         v, err := format(i)
         if err != nil {
             return err
         }
         o.Value = v
-    {{- else if $g.JSONHelper }}
-        v, err := json.Read{{ $g.JSONHelper }}(i)
+    {{- else if $g.JSON.Format }}
+        v, err := json.Read{{ $g.JSON.Format }}(i)
         if err != nil {
             return err
         }
         o.Value = v
-    {{- else if $g.JSONRead }}
-        o.Value = {{ $g.Type }}(i.{{ $g.JSONRead }}())
+    {{- else if $g.JSON.Read }}
+        o.Value = {{ $g.Type }}(i.{{ $g.JSON.Read }}())
     {{- else if $g.IsStruct }}
         if err := o.Value.ReadJSON(i); err != nil {
             return err
@@ -119,7 +119,7 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
         return i.Error
     {{- if $v.Nullable }}
     case json.NilValue:
-        var v {{ $g.Type }}
+        var v {{ $g.GoType }}
         o.Value = v
         {{- if $v.Optional }}
         o.Set = true
@@ -129,26 +129,26 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
         return i.Error
     {{- end }}
     default:
-        return fmt.Errorf("unexpected type %d while reading {{ $s.Name }}", i.WhatIsNext())
+        return fmt.Errorf("unexpected type %d while reading {{ $t.Name }}", i.WhatIsNext())
     }
     return nil
 }
-{{- else if $s.IsEnum }}
+{{- else if $t.IsEnum }}
 // WriteJSON implements json.Marshaler.
-func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
-    j.{{ $s.JSONWrite }}({{ $s.Primitive }}(s))
+func (s {{ $t.Name }}) WriteJSON(j *json.Stream) {
+    j.{{ $t.JSON.Write }}({{ $t.Primitive }}(s))
 }
 
-// ReadJSON reads {{ $s.Name }} from json stream.
-func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
-    *s = {{ $s.Name }}(i.{{ $s.JSONRead }}())
+// ReadJSON reads {{ $t.Name }} from json stream.
+func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
+    *s = {{ $t.Name }}(i.{{ $t.JSON.Read }}())
     return i.Error
 }
-{{- else if $s.IsAlias }}
-func ({{ $s.Name }}) WriteJSON(j *json.Stream) {}
-func ({{ $s.Name }}) ReadJSON(i *json.Iterator) error { return nil }
-func ({{ $s.Name }}) ReadJSONFrom(r io.Reader) error { return nil }
-func ({{ $s.Name }}) WriteJSONTo(w io.Writer) error { return nil }
+{{- else if $t.IsAlias }}
+func ({{ $t.Name }}) WriteJSON(j *json.Stream) {}
+func ({{ $t.Name }}) ReadJSON(i *json.Iterator) error { return nil }
+func ({{ $t.Name }}) ReadJSONFrom(r io.Reader) error { return nil }
+func ({{ $t.Name }}) WriteJSONTo(w io.Writer) error { return nil }
 {{- end }}
 
 {{- end }}

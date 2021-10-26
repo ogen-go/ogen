@@ -26,25 +26,25 @@ func NewClient(serverURL string) *Client {
     }
 }
 
-{{ range $m := $.Methods }}
-func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType.Type }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (res {{ $m.ResponseType.Type }}, err error) {
-    {{- if $m.RequestBody }}
-    body, contentType, err := encode{{ $m.Name }}Request(req)
+{{ range $op := $.Operations }}
+func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.GoType }}, err error) {
+    {{- if $op.Request }}
+    body, contentType, err := encode{{ $op.Name }}Request(req)
     if err != nil {
         return res, err
     }
     {{ end }}
 
-    {{- template "params_encode_path" $m }}
-    {{- template "params_encode_query" $m }}
+    {{- template "params_encode_path" $op }}
+    {{- template "params_encode_query" $op }}
 
-    r := ht.NewRequest(ctx, "{{ $m.HTTPMethod }}", u, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
+    r := ht.NewRequest(ctx, "{{ $op.Spec.HTTPMethod }}", u, {{ if $op.Request }}bytes.NewReader(body){{ else }}nil{{ end }})
     defer ht.PutRequest(r)
 
-    {{ if $m.RequestBody }}r.Header.Set("Content-Type", contentType){{ end }}
+    {{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
 
-    {{- template "encode_header_params" $m }}
-    {{- template "encode_cookie_params" $m }}
+    {{- template "encode_header_params" $op }}
+    {{- template "encode_cookie_params" $op }}
 
     resp, err := c.http.Do(r)
     if err != nil {
@@ -52,7 +52,7 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
     }
     defer resp.Body.Close()
 
-    result, err := decode{{ $m.Name }}Response(resp)
+    result, err := decode{{ $op.Name }}Response(resp)
     if err != nil {
         return res, fmt.Errorf("decode response: %w", err)
     }
@@ -66,16 +66,16 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
 {{ define "encode_cookie_params" }}
 {{- range $param := $.CookieParams }}{{/* Range over params */}}
 {
-value := conv.{{ $param.Schema.ToString }}(params.{{ $param.Name }})
-{{- if eq $param.Schema.Kind "array" }}
+value := conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})
+{{- if eq $param.Type.Kind "array" }}
 r.AddCookie(&http.Cookie{
-    Name: "{{ $param.SourceName }}",
+    Name: "{{ $param.Spec.Name }}",
     Value: strings.Join(value, "/"),
     MaxAge: 1337,
 })
 {{- else }}
 r.AddCookie(&http.Cookie{
-    Name: "{{ $param.SourceName }}",
+    Name: "{{ $param.Spec.Name }}",
     Value: value,
     MaxAge: 1337,
 })
@@ -88,13 +88,13 @@ r.AddCookie(&http.Cookie{
 {{ define "encode_header_params" }}
 {{- range $param := $.HeaderParams }}{{/* Range over params */}}
 {
-value := conv.{{ $param.Schema.ToString }}(params.{{ $param.Name }})
-{{- if eq $param.Schema.Kind "array" }}
+value := conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})
+{{- if eq $param.Type.Kind "array" }}
 for _, v := range value {
-    r.Header.Add("{{ $param.SourceName }}", v)
+    r.Header.Add("{{ $param.Spec.Name }}", v)
 }
 {{- else }}
-r.Header.Set("{{ $param.SourceName }}", value)
+r.Header.Set("{{ $param.Spec.Name }}", value)
 {{- end }}
 }
 {{- end }}{{/* Range over params */}}

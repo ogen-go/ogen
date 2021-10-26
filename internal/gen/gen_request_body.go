@@ -3,52 +3,54 @@ package gen
 import (
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*ast.RequestBody, error) {
-	if ref := body.Ref; ref != "" {
-		reqBody, err := g.resolveRequestBody(ref)
-		if err != nil {
-			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
+func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Request, error) {
+	types := make(map[string]*ir.Type)
+	for contentType, schema := range body.Contents {
+		sName := name
+		if len(body.Contents) > 1 {
+			sName = pascal(name, contentType)
 		}
 
-		return reqBody, nil
+		typ, err := g.generateSchema(sName, schema)
+		if err != nil {
+			return nil, xerrors.Errorf("contents: %s: %w", contentType, err)
+		}
+
+		types[contentType] = typ
 	}
 
-	reqBody := ast.CreateRequestBody()
-	reqBody.Required = body.Required
-
-	// Iterate through request body contents...
-	for contentType, media := range body.Content {
-		schemaName := pascal(name, contentType, "Req")
-		schema, err := g.generateSchema(schemaName, media.Schema)
-		if err != nil {
-			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
+	if len(types) == 1 {
+		for _, typ := range types {
+			return &ir.Request{
+				Type:     typ,
+				Contents: types,
+				Required: body.Required,
+				Spec:     body,
+			}, nil
 		}
-
-		if isUnderlyingPrimitive(schema) {
-			return nil, &ErrNotImplemented{"requestBody with primitive type"}
-		}
-
-		if inlined := media.Schema.Ref == ""; inlined {
-			// Wrap scalar type with an alias.
-			// It is necessary because schema should satisfy
-			// <methodName>Request interface.
-			//
-			// Alias can be removed later in the simplification stage
-			// if there's no other requests.
-			if schema.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
-				schema = ast.Alias(schemaName, schema)
-			}
-
-			// Register schema.
-			g.schemas[schema.Name] = schema
-		}
-
-		reqBody.Contents[contentType] = schema
 	}
 
-	return reqBody, nil
+	iface := ir.Interface(name)
+	iface.AddMethod(camel(name))
+	g.saveIface(iface)
+	for contentType, typ := range types {
+		if typ.Is(ir.KindPrimitive, ir.KindArray) {
+			// Primitive types cannot have methods, wrap it with alias.
+			typ = ir.Alias(pascal(name, contentType), typ)
+			g.saveType(typ)
+		}
+
+		typ.Implement(iface)
+	}
+
+	return &ir.Request{
+		Type:     iface,
+		Contents: types,
+		Required: body.Required,
+		Spec:     body,
+	}, nil
 }

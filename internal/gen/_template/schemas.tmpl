@@ -4,24 +4,28 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $_, $s := $.Schemas }}
+{{- range $_, $s := $.Types }}
 {{- template "define_schema" $s }}
 {{- end }}
 {{- end }}
 
 {{- define "define_schema" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Schema*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+
+{{- if $.Schema }}
+    {{- if not (eq $.Schema.Ref "") }}
+    // '{{ $.Schema.Ref }}'
+    {{- end }}
+{{- end }}
+
 {{- /* Define struct */ -}}
 {{- if eq $.Kind "struct" }}
-{{- if $.Doc -}}
-// {{ $.Doc }}
-{{- end }}
 {{- if eq (len $.Fields) 0 }}{{/* Blank struct */}}
 type {{ $.Name }} struct{}
 {{- else }}
 type {{ $.Name }} struct {
 {{- range $f := $.Fields }}
-    {{ $f.Name }} {{ $f.Type.Type }} `json:"{{ $f.Tag }}"`
+    {{ $f.Name }} {{ $f.Type.GoType }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
 {{- end }}
 }
 {{- end }}
@@ -29,7 +33,7 @@ type {{ $.Name }} struct {
 
 {{/* Define alias */}}
 {{- else if eq $.Kind "alias" }}
-type {{ $.Name }} {{ $.AliasTo.Type }}
+type {{ $.Name }} {{ $.AliasTo.GoType }}
 {{/* Define alias */}}
 
 {{/* Define enum */}}
@@ -44,81 +48,8 @@ const (
 )
 {{/* Define enum */}}
 
-{{/* Define generic */}}
-{{- else if eq $.Kind "generic" }}
-
-{{- $g := $.GenericOf }}
-{{- $v := $.GenericVariant }}
-
-// New{{ $.Name }} returns new {{ $.Name }} with value set to v.
-func New{{ $.Name }}(v {{ $g.Type }}) {{ $.Name }} {
-    return {{ $.Name }} {
-        Value: v,
-    {{- if $v.Optional }}
-        Set: true,
-    {{- end }}
-    }
-}
-
-// {{ $.Name }} is{{ if $v.Optional }} optional{{ end }}{{ if $v.Nullable }} nullable{{ end }} {{ $g.Type }}.
-type {{ $.Name }} struct {
-    Value {{ $g.Type }}
-{{- if $v.Optional }}
-    Set bool
-{{- end }}
-{{- if $v.Nullable }}
-    Null bool
-{{- end }}
-}
-
-{{- if $v.Optional }}
-// IsSet returns true if {{ $.Type }} was set.
-func (o {{ $.Name }}) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *{{ $.Name }}) Reset() {
-    var v {{ $.GenericOf.Type }}
-    o.Value = v
-    o.Set = false
-{{- if $v.Nullable }}
-    o.Null = false
-{{- end }}
-}
-{{- end }}
-
-// SetTo sets value to v.
-func (o *{{ $.Name }}) SetTo(v {{ $g.Type }}) {
-{{- if $v.Optional }}
-    o.Set = true
-{{- end }}
-{{- if $v.Nullable }}
-    o.Null = false
-{{- end }}
-    o.Value = v
-}
-
-{{- if $v.Nullable  }}
-// IsSet returns true if value is Null.
-func (o {{ $.Name }}) IsNull() bool { return o.Null }
-{{ end }}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o {{ $.Name }}) Get() (v {{ $g.Type }}, ok bool) {
-{{- if $v.Nullable }}
-    if o.Null {
-        return v, false
-    }
-{{- end }}
-{{- if $v.Optional }}
-    if !o.Set {
-        return v, false
-    }
-{{- end }}
-    return o.Value, true
-}
-
-
-{{/* end define generic */}}
+{{- else }}
+// Unexpected kind {{ $.Kind }} of {{ $.Name }}
 {{- end }}
 
 {{/* Define methods */}}

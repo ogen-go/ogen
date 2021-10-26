@@ -5,55 +5,33 @@ import (
 	"reflect"
 	"sort"
 
-	"golang.org/x/xerrors"
-
-	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func (g *Generator) fix() error {
-	for _, m := range g.methods {
-		g.fixEqualResponses(m)
-		if err := g.fixInterfaceCollision(m); err != nil {
-			return err
-		}
+func (g *Generator) fix() {
+	for _, op := range g.operations {
+		g.fixEqualResponses(op)
 	}
-
-	return nil
 }
 
-func (g *Generator) fixInterfaceCollision(m *ast.Method) error {
-	iface, ok := m.ResponseType.(*ast.Interface)
-	if !ok {
-		return nil
-	}
-	if !g.hasSchema(iface.Name) {
-		return nil
-	}
-
-	// TODO(ernado): pick different name
-	_, _ = g.freeSchemaName(nil)
-	return xerrors.Errorf("interface %s collides with schema", iface.Name)
-}
-
-func (g *Generator) fixEqualResponses(m *ast.Method) {
-	iface, ok := m.ResponseType.(*ast.Interface)
-	if !ok {
+func (g *Generator) fixEqualResponses(op *ir.Operation) {
+	if !op.Response.Type.Is(ir.KindInterface) {
 		return
 	}
 
 	var statusCodes []int
-	for code := range m.Responses.StatusCode {
+	for code := range op.Response.StatusCode {
 		statusCodes = append(statusCodes, code)
 	}
 	sort.Ints(statusCodes)
 
 	type candidate struct {
 		renameTo string
-		schema   *ast.Schema
+		typ      *ir.Type
 
 		replaceNoc   bool
 		replaceCtype string
-		response     *ast.Response
+		response     *ir.StatusResponse
 	}
 
 	var candidates []candidate
@@ -61,18 +39,18 @@ func (g *Generator) fixEqualResponses(m *ast.Method) {
 		lcode := statusCodes[i]
 		for j := i; j < len(statusCodes); j++ {
 			rcode := statusCodes[j]
-			lresp, rresp := m.Responses.StatusCode[lcode], m.Responses.StatusCode[rcode]
+			lresp, rresp := op.Response.StatusCode[lcode], op.Response.StatusCode[rcode]
 			if (lresp.NoContent != nil && rresp.NoContent != nil) && lcode != rcode {
 				if reflect.DeepEqual(lresp.NoContent, rresp.NoContent) {
 					candidates = append(candidates, candidate{
-						renameTo:   pascal(m.Name, http.StatusText(lcode)),
-						schema:     lresp.NoContent,
+						renameTo:   pascal(op.Name, http.StatusText(lcode)),
+						typ:        lresp.NoContent,
 						replaceNoc: true,
 						response:   lresp,
 					})
 					candidates = append(candidates, candidate{
-						renameTo:   pascal(m.Name, http.StatusText(rcode)),
-						schema:     rresp.NoContent,
+						renameTo:   pascal(op.Name, http.StatusText(rcode)),
+						typ:        rresp.NoContent,
 						replaceNoc: true,
 						response:   rresp,
 					})
@@ -100,14 +78,14 @@ func (g *Generator) fixEqualResponses(m *ast.Method) {
 					lschema, rschema := lresp.Contents[lct], rresp.Contents[rct]
 					if reflect.DeepEqual(lschema, rschema) {
 						candidates = append(candidates, candidate{
-							renameTo:     pascal(m.Name, lct, http.StatusText(lcode)),
-							schema:       lschema,
+							renameTo:     pascal(op.Name, lct, http.StatusText(lcode)),
+							typ:          lschema,
 							replaceCtype: lct,
 							response:     lresp,
 						})
 						candidates = append(candidates, candidate{
-							renameTo:     pascal(m.Name, rct, http.StatusText(rcode)),
-							schema:       rschema,
+							renameTo:     pascal(op.Name, rct, http.StatusText(rcode)),
+							typ:          rschema,
 							replaceCtype: rct,
 							response:     rresp,
 						})
@@ -118,10 +96,10 @@ func (g *Generator) fixEqualResponses(m *ast.Method) {
 	}
 
 	for _, candidate := range candidates {
-		candidate.schema.Unimplement(iface)
-		alias := ast.Alias(candidate.renameTo, candidate.schema)
-		alias.Implement(iface)
-		g.schemas[alias.Name] = alias
+		candidate.typ.Unimplement(op.Response.Type)
+		alias := ir.Alias(candidate.renameTo, candidate.typ)
+		alias.Implement(op.Response.Type)
+		g.saveType(alias)
 		if candidate.replaceNoc {
 			candidate.response.NoContent = alias
 			continue

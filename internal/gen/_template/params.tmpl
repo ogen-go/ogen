@@ -4,14 +4,14 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $m := $.Methods }}{{/* Range over methods */}}
-{{ if $m.Parameters }}{{/* Check parameters existence */}}
-type {{ $m.Name }}Params struct {
-	{{- range $p := $m.Parameters }}
-	{{ $p.Name }} {{ $p.Schema.Type }}
+{{- range $op := $.Operations }}{{/* Range over operations */}}
+{{ if $op.Params }}{{/* Check parameters existence */}}
+type {{ $op.Name }}Params struct {
+	{{- range $p := $op.Params }}
+	{{ $p.Name }} {{ $p.Type.GoType }}
 	{{- end}}
 }
 
 {{ end }}{{/* Check parameters existence */}}
-{{ end }}{{/* Range over methods */}}
+{{ end }}{{/* Range over operations */}}
 {{ end }}

@@ -4,24 +4,24 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $m := $.Methods }}{{/* Range over all methods */}}
+{{- range $op := $.Operations }}{{/* Range over all methods */}}
 
-func encode{{ $m.Name }}Response(response {{ $m.ResponseType.Type }}, w http.ResponseWriter) error {
-    {{- $schemasLength := len $m.ListResponseSchemas }}
-    {{- if eq $schemasLength 1 }}
+func encode{{ $op.Name }}Response(response {{ $op.Response.Type.GoType }}, w http.ResponseWriter) error {
+    {{- $typesCount := len $op.ListResponseTypes }}
+    {{- if eq $typesCount 1 }}
 
-    {{- range $info := $m.ListResponseSchemas }}
+    {{- range $info := $op.ListResponseTypes }}
         {{- template "respond" $info }}
     {{- end }}
 
     {{- else }}
     switch response := response.(type) {
-    {{- range $info := $m.ListResponseSchemas }}
-    case *{{ $info.Schema.Name }}:
+    {{- range $info := $op.ListResponseTypes }}
+    case *{{ $info.Type.Name }}:
         {{- template "respond" $info }}
     {{- end }}
     default:
-        return fmt.Errorf("{{ $m.RawPath}}: unexpected response type: %T", response)
+        return fmt.Errorf("{{ $op.Spec.Path}}: unexpected response type: %T", response)
     }
     {{- end }}
 }
@@ -31,7 +31,7 @@ func encode{{ $m.Name }}Response(response {{ $m.ResponseType.Type }}, w http.Res
 {{ end }}
 
 {{ define "respond" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ast.ResponseInfo*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.ResponseInfo*/ -}}
 {{- if not $.NoContent }}{{- /* Set content-type */}}
 w.Header().Set("Content-Type", "{{ $.ContentType }}")
 {{- end }}{{- /* Set content-type */}}
@@ -49,10 +49,12 @@ j := json.NewStream(w)
 defer json.PutStream(j)
 more := json.NewMore(j)
 defer more.Reset()
-{{ template "enc_json_value" res_elem $ }}
+{{/* template "enc_json_value" res_elem $ */}}
+{{/*
 if err := j.Flush(); err != nil {
     return err
 }
+*/}}
 return nil
 {{- else }}
 return fmt.Errorf("{{ $.ContentType }} encoder not implemented")

@@ -4,12 +4,12 @@
 {{ template "header" $ }}
 
 {{/* Range over all methods */}}
-{{- range $m := $.Methods }}
-{{- if $m.RequestType }}
-func encode{{ $m.Name }}Request(req {{ $m.RequestType.Type }}) (data []byte, contentType string, err error) {
-    {{- $requestsLength := len $m.RequestBody.Contents }}
+{{- range $op := $.Operations }}
+{{- if $op.Request }}
+func encode{{ $op.Name }}Request(req {{ $op.Request.Type.GoType }}) (data []byte, contentType string, err error) {
+    {{- $requestsLength := len $op.Request.Contents }}
     {{- if eq $requestsLength 1 }}
-    {{- range $ctype, $schema := $m.RequestBody.Contents }}
+    {{- range $ctype, $type := $op.Request.Contents }}
 
     {{- if eq $ctype "application/json" }}
     return json.Encode(req), "{{ $ctype }}", nil
@@ -21,12 +21,12 @@ func encode{{ $m.Name }}Request(req {{ $m.RequestType.Type }}) (data []byte, con
     {{- else }}
     {{- /* Multiple requests */}}
     switch req := req.(type) {
-    {{- range $ctype, $schema := $m.RequestBody.Contents }}
-    case *{{ $schema.Type }}:
-        {{- if eq $ctype "application/json" }}
-        return json.Encode(req), "{{ $ctype }}", nil
+    {{- range $contentType, $type := $op.Request.Contents }}
+    case *{{ $type.GoType }}:
+        {{- if eq $contentType "application/json" }}
+        return json.Encode(req), "{{ $contentType }}", nil
         {{- else }}
-        return nil, "", fmt.Errorf("{{ $ctype }} encoder not implemented")
+        return nil, "", fmt.Errorf("{{ $contentType }} encoder not implemented")
         {{- end }}
     {{- end }}
     default:

@@ -5,8 +5,8 @@
 {{ template "header" $ }}
 
 func Register(r chi.Router, s Server) {
-{{- range $m := $.Methods }}
-    r.MethodFunc("{{ $m.HTTPMethod }}", "{{ $m.RawPath }}", New{{ $m.Name }}Handler(s))
+{{- range $op := $.Operations }}
+    r.MethodFunc("{{ $op.Spec.HTTPMethod }}", "{{ $op.Spec.Path }}", New{{ $op.Name }}Handler(s))
 {{- end }}
 }
 {{ end }}

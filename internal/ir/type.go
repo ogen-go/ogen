@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	ast "github.com/ogen-go/ogen/internal/ast2"
+	ast "github.com/ogen-go/ogen/internal/ast"
 )
 
 type Kind string

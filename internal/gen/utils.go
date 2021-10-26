@@ -1,39 +1,27 @@
 package gen
 
 import (
-	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/ast"
+	"net/http"
+
+	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func forEachOps(item ogen.PathItem, f func(method string, op ogen.Operation) error) error {
-	var err error
-	handle := func(method string, op *ogen.Operation) {
-		if err != nil || op == nil {
-			return
+func walkResponseTypes(r *ir.Response, walkFn func(rname string, typ *ir.Type) *ir.Type) {
+	for code, r := range r.StatusCode {
+		for contentType, typ := range r.Contents {
+			r.Contents[contentType] = walkFn(pascal(http.StatusText(code), contentType), typ)
 		}
-		err = f(method, *op)
+		if r.NoContent != nil {
+			r.NoContent = walkFn(pascal(http.StatusText(code)), r.NoContent)
+		}
 	}
 
-	handle("get", item.Get)
-	handle("put", item.Put)
-	handle("post", item.Post)
-	handle("delete", item.Delete)
-	handle("options", item.Options)
-	handle("head", item.Head)
-	handle("patch", item.Patch)
-	handle("trace", item.Trace)
-	return err
-}
-
-func isUnderlyingPrimitive(s *ast.Schema) bool {
-	switch s.Kind {
-	case ast.KindPrimitive, ast.KindEnum:
-		return true
-	case ast.KindAlias:
-		return isUnderlyingPrimitive(s.AliasTo)
-	case ast.KindPointer:
-		return isUnderlyingPrimitive(s.PointerTo)
-	default:
-		return false
+	if def := r.Default; def != nil {
+		for contentType, typ := range def.Contents {
+			def.Contents[contentType] = walkFn(pascal("Default", contentType), typ)
+		}
+		if def.NoContent != nil {
+			def.NoContent = walkFn("Default", def.NoContent)
+		}
 	}
 }
