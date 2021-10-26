@@ -10,8 +10,8 @@ import (
 	ast "github.com/ogen-go/ogen/internal/ast2"
 )
 
-func (p *parser) parseResponses(responses ogen.Responses) (*ast.MethodResponse, error) {
-	result := ast.CreateMethodResponse()
+func (p *parser) parseResponses(responses ogen.Responses) (*ast.OperationResponse, error) {
+	result := ast.CreateOperationResponse()
 	if len(responses) == 0 {
 		return nil, fmt.Errorf("no responses")
 	}

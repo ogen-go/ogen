@@ -50,31 +50,74 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		return nil, err
 	}
 
+	onret := func(s *ast.Schema) *ast.Schema {
+		if ref != "" {
+			g.localRefs[ref] = s
+		}
+		return s
+	}
+
 	switch {
 	case len(schema.Enum) > 0:
-		enum := &ast.Schema{
-			Type:        ast.SchemaType(schema.Type),
-			Format:      schema.Format,
-			Description: schema.Description,
-			Ref:         ref,
-		}
-
 		values, err := g.parseEnumValues(ast.SchemaType(schema.Type), schema.Enum)
 		if err != nil {
 			return nil, err
 		}
 
-		enum.EnumValues = values
-		if ref != "" {
-			g.localRefs[ref] = enum
-		}
-		return enum, nil
+		return onret(&ast.Schema{
+			Type:        ast.SchemaType(schema.Type),
+			Format:      schema.Format,
+			Description: schema.Description,
+			Enum:        values,
+		}), nil
 	case len(schema.OneOf) > 0:
-		return nil, &ErrNotImplemented{"oneOf"}
+		var schemas []*ast.Schema
+		for i, s := range schema.OneOf {
+			schema, err := g.generate(s, "")
+			if err != nil {
+				return nil, xerrors.Errorf("oneOf: %d: %w", i, err)
+			}
+
+			schemas = append(schemas, schema)
+		}
+
+		return onret(&ast.Schema{
+			OneOf:       schemas,
+			Ref:         schema.Ref,
+			Description: schema.Description,
+		}), nil
 	case len(schema.AnyOf) > 0:
-		return nil, &ErrNotImplemented{"anyOf"}
+		var schemas []*ast.Schema
+		for i, s := range schema.AnyOf {
+			schema, err := g.generate(s, "")
+			if err != nil {
+				return nil, xerrors.Errorf("anyOf: %d: %w", i, err)
+			}
+
+			schemas = append(schemas, schema)
+		}
+
+		return onret(&ast.Schema{
+			AnyOf:       schemas,
+			Ref:         schema.Ref,
+			Description: schema.Description,
+		}), nil
 	case len(schema.AllOf) > 0:
-		return nil, &ErrNotImplemented{"allOf"}
+		var schemas []*ast.Schema
+		for i, s := range schema.AllOf {
+			schema, err := g.generate(s, "")
+			if err != nil {
+				return nil, xerrors.Errorf("allOf: %d: %w", i, err)
+			}
+
+			schemas = append(schemas, schema)
+		}
+
+		return onret(&ast.Schema{
+			AllOf:       schemas,
+			Ref:         schema.Ref,
+			Description: schema.Description,
+		}), nil
 	}
 
 	switch schema.Type {
@@ -107,14 +150,14 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
-			s.Fields = append(s.Fields, ast.SchemaField{
+			s.Properties = append(s.Properties, ast.Property{
 				Name:     propName,
 				Schema:   prop,
 				Optional: optional(propName),
 			})
 		}
-		sort.SliceStable(s.Fields, func(i, j int) bool {
-			return strings.Compare(s.Fields[i].Name, s.Fields[j].Name) < 0
+		sort.SliceStable(s.Properties, func(i, j int) bool {
+			return strings.Compare(s.Properties[i].Name, s.Properties[j].Name) < 0
 		})
 		return s, nil
 
@@ -149,7 +192,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		return array, nil
 
 	case "number", "integer":
-		n := &ast.Schema{
+		return onret(&ast.Schema{
 			Type:             ast.SchemaType(schema.Type),
 			Format:           schema.Format,
 			Description:      schema.Description,
@@ -159,42 +202,28 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 			ExclusiveMinimum: schema.ExclusiveMinimum,
 			ExclusiveMaximum: schema.ExclusiveMaximum,
 			MultipleOf:       schema.MultipleOf,
-		}
-
-		if ref != "" {
-			g.localRefs[ref] = n
-		}
-
-		return n, nil
+		}), nil
 
 	case "boolean":
-		s := &ast.Schema{
+		return onret(&ast.Schema{
 			Type:        ast.Boolean,
 			Format:      schema.Format,
 			Description: schema.Description,
 			Ref:         ref,
-		}
-		if ref != "" {
-			g.localRefs[ref] = s
-		}
-		return s, nil
+		}), nil
 
 	case "string":
-		s := &ast.Schema{
+		return onret(&ast.Schema{
 			Type:        ast.String,
 			Format:      schema.Format,
 			Description: schema.Description,
 			Ref:         ref,
 			MaxLength:   schema.MaxLength,
 			Pattern:     schema.Pattern,
-		}
-		if ref != "" {
-			g.localRefs[ref] = s
-		}
-		return s, nil
+		}), nil
 
 	case "":
-		return &ast.Schema{Type: ast.String}, nil
+		return onret(&ast.Schema{Type: ast.String}), nil
 
 	default:
 		return nil, xerrors.Errorf("unexpected schema type: '%s'", schema.Type)

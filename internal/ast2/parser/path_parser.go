@@ -1,9 +1,21 @@
 package parser
 
 import (
+	"fmt"
+
 	ast "github.com/ogen-go/ogen/internal/ast2"
 	"golang.org/x/xerrors"
 )
+
+// ErrPathParameterNotSpecified indicates that the path parameter
+// is not declared in the Operation parameters section.
+type ErrPathParameterNotSpecified struct {
+	ParamName string
+}
+
+func (e ErrPathParameterNotSpecified) Error() string {
+	return fmt.Sprintf("path parameter '%s' not found in parameters", e.ParamName)
+}
 
 type pathParser struct {
 	path   string           // immutable

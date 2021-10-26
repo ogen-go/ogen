@@ -26,13 +26,13 @@ func TestSchemaSimple(t *testing.T) {
 
 	expect := &ast.Schema{
 		Type: ast.Object,
-		Fields: []ast.SchemaField{
+		Properties: []ast.Property{
 			{
-				Name: "id",
+				Name:   "id",
 				Schema: &ast.Schema{Type: ast.Integer},
 			},
 			{
-				Name: "name",
+				Name:   "name",
 				Schema: &ast.Schema{Type: ast.String},
 			},
 		},
@@ -67,7 +67,7 @@ func TestSchemaRecursive(t *testing.T) {
 		Type: ast.Object,
 		Ref:  "#/components/schemas/Pet",
 	}
-	pet.Fields = []ast.SchemaField{
+	pet.Properties = []ast.Property{
 		{
 			Name: "friends",
 			Schema: &ast.Schema{
@@ -76,11 +76,11 @@ func TestSchemaRecursive(t *testing.T) {
 			},
 		},
 		{
-			Name: "id",
+			Name:   "id",
 			Schema: &ast.Schema{Type: ast.Integer},
 		},
 		{
-			Name: "name",
+			Name:   "name",
 			Schema: &ast.Schema{Type: ast.String},
 		},
 	}
@@ -89,7 +89,7 @@ func TestSchemaRecursive(t *testing.T) {
 		"#/components/schemas/Pet": {
 			Type: ast.Object,
 			Ref:  "#/components/schemas/Pet",
-			Fields: []ast.SchemaField{
+			Properties: []ast.Property{
 				{
 					Name: "friends",
 					Schema: &ast.Schema{
@@ -98,11 +98,11 @@ func TestSchemaRecursive(t *testing.T) {
 					},
 				},
 				{
-					Name: "id",
+					Name:   "id",
 					Schema: &ast.Schema{Type: ast.Integer},
 				},
 				{
-					Name: "name",
+					Name:   "name",
 					Schema: &ast.Schema{Type: ast.String},
 				},
 			},
@@ -126,17 +126,17 @@ func TestSchemaSideEffects(t *testing.T) {
 	expectSide := []*ast.Schema{
 		{
 			Type: ast.Object,
-			Fields: []ast.SchemaField{
+			Properties: []ast.Property{
 				{
-					Name: "age",
+					Name:   "age",
 					Schema: &ast.Schema{Type: ast.Integer},
 				},
 				{
-					Name: "id",
+					Name:   "id",
 					Schema: &ast.Schema{Type: ast.Integer},
 				},
 				{
-					Name: "name",
+					Name:   "name",
 					Schema: &ast.Schema{Type: ast.String},
 				},
 			},
@@ -145,13 +145,13 @@ func TestSchemaSideEffects(t *testing.T) {
 
 	expect := &ast.Schema{
 		Type: ast.Object,
-		Fields: []ast.SchemaField{
+		Properties: []ast.Property{
 			{
-				Name: "name",
+				Name:   "name",
 				Schema: &ast.Schema{Type: ast.String},
 			},
 			{
-				Name: "owner",
+				Name:   "owner",
 				Schema: expectSide[0],
 			},
 		},
@@ -208,9 +208,9 @@ func TestSchemaReferencedArray(t *testing.T) {
 
 	expect := &ast.Schema{
 		Type: ast.Object,
-		Fields: []ast.SchemaField{
+		Properties: []ast.Property{
 			{
-				Name: "pets",
+				Name:   "pets",
 				Schema: pets,
 			},
 		},

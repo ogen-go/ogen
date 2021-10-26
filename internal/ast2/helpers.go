@@ -6,8 +6,8 @@ func CreateRequestBody() *RequestBody {
 	}
 }
 
-func CreateMethodResponse() *MethodResponse {
-	return &MethodResponse{
+func CreateOperationResponse() *OperationResponse {
+	return &OperationResponse{
 		StatusCode: map[int]*Response{},
 	}
 }
