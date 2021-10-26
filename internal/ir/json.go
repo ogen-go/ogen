@@ -12,9 +12,20 @@ type JSON struct {
 	t *Type
 }
 
+// Fields return all fields of Type that should be encoded via json.
+func (j JSON) Fields() (fields []*Field) {
+	for _, f := range j.t.Fields {
+		if f.Tag.JSON == "" {
+			continue
+		}
+		fields = append(fields, f)
+	}
+	return fields
+}
+
 // Format returns format name for handling json encoding or decoding.
 //
-// Mostly used for encoding or decoding of string formats, like "json.WriteUUID",
+// Mostly used for encoding or decoding of string formats, like `json.WriteUUID`,
 // where UUID is Format.
 func (j JSON) Format() string {
 	if j.t.Schema == nil {
@@ -42,7 +53,8 @@ func (j JSON) Format() string {
 
 // Type returns json value type that can represent Type.
 //
-// E.g. string primitive can be represented by StringValue.
+// E.g. string primitive can be represented by StringValue which is commonly
+// returned from `i.WhatIsNext()` method.
 // Blank string is returned if there is no appropriate json type.
 func (j JSON) Type() string {
 	if j.t.IsNumeric() {
