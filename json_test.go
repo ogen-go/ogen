@@ -116,8 +116,6 @@ func TestJSONExample(t *testing.T) {
 		IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 		Next:         api.NewOptData(api.Data{Description: api.NewOptString("Foo")}),
 	}
-	buf := new(bytes.Buffer)
-	require.NoError(t, pet.WriteJSONTo(buf))
-	t.Logf("%s", buf)
-	require.True(t, jsoniter.Valid(buf.Bytes()), "invalid json")
+	t.Logf("%s", json.Encode(pet))
+	require.True(t, jsoniter.Valid(json.Encode(pet)), "invalid json")
 }

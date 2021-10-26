@@ -494,9 +494,7 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		more.Down()
 		j.WriteArrayStart()
 		for _, elem := range s.Friends {
-
 			more.More()
-			j.WriteObjectField("")
 			elem.WriteJSON(j)
 		}
 		j.WriteArrayEnd()
@@ -565,15 +563,11 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		more.Down()
 		j.WriteArrayStart()
 		for _, elem := range s.TestArray1 {
-
 			more.More()
-			j.WriteObjectField("")
 			more.Down()
 			j.WriteArrayStart()
 			for _, elem := range elem {
-
 				more.More()
-				j.WriteObjectField("")
 				j.WriteString(elem)
 			}
 			j.WriteArrayEnd()
@@ -660,7 +654,6 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Pet
 					if err := func() error {
-						// Struct or enum.
 						if err := elem.ReadJSON(i); err != nil {
 							return err
 						}
@@ -787,7 +780,6 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				s.Primary = nil
 				var elem Pet
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}

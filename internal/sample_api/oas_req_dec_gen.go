@@ -64,7 +64,6 @@ func decodeFoobarPostRequest(r *http.Request) (req Pet, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -95,7 +94,6 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateReq, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}

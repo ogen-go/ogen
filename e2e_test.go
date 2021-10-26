@@ -1,7 +1,6 @@
 package ogen
 
 import (
-	"bytes"
 	"context"
 	_ "embed"
 	"net"
@@ -19,20 +18,21 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
 	"github.com/ogen-go/ogen/internal/techempower"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
 )
 
 type techEmpowerServer struct{}
 
-func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) ([]techempower.WorldObject, error) {
+func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }
 
-func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) ([]techempower.WorldObject, error) {
+func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }
 
-func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) ([]techempower.WorldObject, error) {
+func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) (techempower.WorldObjects, error) {
 	return nil, nil
 }
 
@@ -72,11 +72,11 @@ func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetPara
 	panic("implement me")
 }
 
-func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDef, error) {
+func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDefStatusCode, error) {
 	panic("implement me")
 }
 
-func (s sampleAPIServer) FoobarPost(ctx context.Context, req *api.Pet) (api.FoobarPostRes, error) {
+func (s sampleAPIServer) FoobarPost(ctx context.Context, req api.Pet) (api.FoobarPostRes, error) {
 	panic("implement me")
 }
 
@@ -175,10 +175,9 @@ func TestIntegration(t *testing.T) {
 		}
 
 		t.Run("Valid", func(t *testing.T) {
-			buf := new(bytes.Buffer)
-			require.NoError(t, pet.WriteJSONTo(buf))
-			require.True(t, jsoniter.Valid(buf.Bytes()), "json should be valid")
-			require.JSONEq(t, petTestData, buf.String(), "should be equal to golden json")
+			data := json.Encode(pet)
+			require.True(t, jsoniter.Valid(data), "json should be valid")
+			require.JSONEq(t, petTestData, string(data), "should be equal to golden json")
 		})
 
 		// Can't use assert.Equal due to time.Time type equality checks.

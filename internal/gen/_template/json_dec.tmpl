@@ -23,7 +23,6 @@
         }
         return i.Error
     {{- else if or ($t.IsStruct) ($t.IsEnum) }}
-        // Struct or enum.
         if err := {{ $.Var }}.ReadJSON(i); err != nil {
             return err
         }

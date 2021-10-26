@@ -29,12 +29,15 @@ func TestGenerate(t *testing.T) {
 	for _, tc := range []struct {
 		Name    string
 		Options gen.Options
+		Skip    bool
 	}{
 		{
 			Name: "firecracker.json",
+			Skip: true,
 		},
 		{
 			Name: "api.github.com.json",
+			Skip: true,
 			Options: gen.Options{
 				IgnoreNotImplemented: []string{
 					"complex parameter types",
@@ -52,12 +55,14 @@ func TestGenerate(t *testing.T) {
 		},
 		{
 			Name: "nh.json",
+			Skip: true,
 		},
 		{
 			Name: "techempower.json",
 		},
 		{
 			Name: "telegram_bot_api.json",
+			Skip: true,
 			Options: gen.Options{
 				IgnoreNotImplemented: []string{"anyOf"},
 			},
@@ -72,6 +77,7 @@ func TestGenerate(t *testing.T) {
 			// https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec
 			// Generated from OpenAPI v2 (swagger) spec.
 			Name: "k8s.json",
+			Skip: true,
 			Options: gen.Options{
 				IgnoreUnspecifiedParams: true,
 				IgnoreNotImplemented: []string{
@@ -83,6 +89,10 @@ func TestGenerate(t *testing.T) {
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			t.Parallel()
+
+			if tc.Skip {
+				t.Skip("Skipped")
+			}
 
 			f, err := testdata.Open(path.Join("_testdata", tc.Name))
 			require.NoError(t, err)
