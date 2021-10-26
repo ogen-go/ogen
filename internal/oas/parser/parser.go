@@ -3,9 +3,10 @@ package parser
 import (
 	"strings"
 
+	"golang.org/x/xerrors"
+
 	"github.com/ogen-go/ogen"
 	ast "github.com/ogen-go/ogen/internal/oas"
-	"golang.org/x/xerrors"
 )
 
 type parser struct {
@@ -75,7 +76,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (err erro
 		return xerrors.Errorf("parse path: %w", err)
 	}
 
-	if op.RequestBody != nil {
+	if spec.RequestBody != nil {
 		op.RequestBody, err = p.parseRequestBody(spec.RequestBody)
 		if err != nil {
 			return xerrors.Errorf("requestBody: %w", err)

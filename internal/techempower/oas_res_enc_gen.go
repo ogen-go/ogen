@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
+func encodeCachingResponse(response WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -62,6 +62,17 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 }
 
 func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	return nil
+}
+
+func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -84,17 +95,6 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter) error {
 }
 
 func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	return nil
-}
-
-func encodeCachingResponse(response WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)

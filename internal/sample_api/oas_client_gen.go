@@ -72,18 +72,32 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
+func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
 	u := uri.Clone(c.serverURL)
-	u.Path += "/pet/name/"
+	u.Path += "/foobar"
+
+	q := u.Query()
 	{
-		// Encode 'id' parameter.
-		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param:   "id",
-			Style:   uri.PathStyleSimple,
-			Explode: false,
+		// Encode "inlinedParam" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
 		})
-		u.Path += e.EncodeInt(params.ID)
+		v := params.InlinedParam
+		param := e.EncodeInt64(v)
+		q.Set("inlinedParam", param)
 	}
+	{
+		// Encode "skip" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.Skip
+		param := e.EncodeInt32(v)
+		q.Set("skip", param)
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -94,7 +108,84 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetNameByIDResponse(resp)
+	result, err := decodeFoobarGetResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, err error) {
+	body, contentType, err := encodeFoobarPostRequest(req)
+	if err != nil {
+		return res, err
+	}
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/foobar"
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeFoobarPostResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/foobar"
+
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeFoobarPutResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err error) {
+	body, contentType, err := encodePetCreateRequest(req)
+	if err != nil {
+		return res, err
+	}
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet"
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetCreateResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}
@@ -106,7 +197,7 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/friendNames/"
 	{
-		// Encode 'id' parameter.
+		// Encode "id" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
 			Param:   "id",
 			Style:   uri.PathStyleSimple,
@@ -138,7 +229,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 
 	q := u.Query()
 	{
-		// Encode 'petID' parameter.
+		// Encode "petID" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
 			Style:   uri.QueryStyleForm,
 			Explode: true,
@@ -188,32 +279,11 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	return result, nil
 }
 
-func (c *Client) PetCreate(ctx context.Context) (res Pet, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet"
-
-	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodePetCreateResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/"
 	{
-		// Encode 'name' parameter.
+		// Encode "name" parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
 			Param:   "name",
 			Style:   uri.PathStyleSimple,
@@ -239,32 +309,18 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	return result, nil
 }
 
-func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
+func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
 	u := uri.Clone(c.serverURL)
-	u.Path += "/foobar"
-
-	q := u.Query()
+	u.Path += "/pet/name/"
 	{
-		// Encode 'inlinedParam' parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
+		// Encode "id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
 		})
-		v := params.InlinedParam
-		param := e.EncodeInt64(v)
-		q.Set("inlinedParam", param)
+		u.Path += e.EncodeInt(params.ID)
 	}
-	{
-		// Encode 'skip' parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		v := params.Skip
-		param := e.EncodeInt32(v)
-		q.Set("skip", param)
-	}
-	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -275,49 +331,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeFoobarGetResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutResDefaultStatusCode, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/foobar"
-
-	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeFoobarPutResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) FoobarPost(ctx context.Context) (res FoobarPostRes, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/foobar"
-
-	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeFoobarPostResponse(resp)
+	result, err := decodePetNameByIDResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}

@@ -50,12 +50,12 @@ var (
 	_ = net.IP{}
 )
 
-// '#/components/schemas/HelloWorld'
+// Ref: #/components/schemas/HelloWorld
 type HelloWorld struct {
 	Message string `json:"message"`
 }
 
-// '#/components/schemas/WorldObject'
+// Ref: #/components/schemas/WorldObject
 type WorldObject struct {
 	ID           int64 `json:"id"`
 	RandomNumber int64 `json:"randomNumber"`

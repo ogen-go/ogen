@@ -52,20 +52,20 @@ var (
 
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
-	// PetNameByID implements petNameByID operation.
-	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
+	// FoobarGet implements foobarGet operation.
+	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
+	// FoobarPost implements foobarPost operation.
+	FoobarPost(ctx context.Context, req Pet) (FoobarPostRes, error)
+	// FoobarPut implements  operation.
+	FoobarPut(ctx context.Context) (FoobarPutDefStatusCode, error)
+	// PetCreate implements petCreate operation.
+	PetCreate(ctx context.Context, req PetCreateReq) (Pet, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
 	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
 	// PetGet implements petGet operation.
 	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
-	// PetCreate implements petCreate operation.
-	PetCreate(ctx context.Context) (Pet, error)
 	// PetGetByName implements petGetByName operation.
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
-	// FoobarGet implements foobarGet operation.
-	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
-	// FoobarPut implements  operation.
-	FoobarPut(ctx context.Context) (FoobarPutResDefaultStatusCode, error)
-	// FoobarPost implements foobarPost operation.
-	FoobarPost(ctx context.Context) (FoobarPostRes, error)
+	// PetNameByID implements petNameByID operation.
+	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
 }

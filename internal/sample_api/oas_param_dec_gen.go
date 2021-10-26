@@ -50,28 +50,50 @@ var (
 	_ = net.IP{}
 )
 
-func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
-	var params PetNameByIDParams
-	// Decode param 'id' located in 'Path'.
+func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
+	var params FoobarGetParams
+	// Decode param "inlinedParam" located in "Query".
 	if err := func() error {
-		param := chi.URLParam(r, "id")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'id' not specified")
+		values, ok := r.URL.Query()["inlinedParam"]
+		if !ok {
+			return fmt.Errorf("query parameter 'inlinedParam' not specified")
 		}
 
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "id",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
+		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+			Values:  values,
+			Style:   uri.QueryStyleForm,
+			Explode: true,
 		})
 
-		v, err := d.DecodeInt()
+		v, err := d.DecodeInt64()
 		if err != nil {
 			return err
 		}
 
-		params.ID = int(v)
+		params.InlinedParam = int64(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	// Decode param "skip" located in "Query".
+	if err := func() error {
+		values, ok := r.URL.Query()["skip"]
+		if !ok {
+			return fmt.Errorf("query parameter 'skip' not specified")
+		}
+
+		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+			Values:  values,
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+
+		v, err := d.DecodeInt32()
+		if err != nil {
+			return err
+		}
+
+		params.Skip = int32(v)
 		return nil
 	}(); err != nil {
 		return params, err
@@ -81,7 +103,7 @@ func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
 
 func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams, error) {
 	var params PetFriendsNamesByIDParams
-	// Decode param 'id' located in 'Path'.
+	// Decode param "id" located in "Path".
 	if err := func() error {
 		param := chi.URLParam(r, "id")
 		if len(param) == 0 {
@@ -110,7 +132,7 @@ func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams
 
 func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	var params PetGetParams
-	// Decode param 'petID' located in 'Query'.
+	// Decode param "petID" located in "Query".
 	if err := func() error {
 		values, ok := r.URL.Query()["petID"]
 		if !ok {
@@ -133,7 +155,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	}(); err != nil {
 		return params, err
 	}
-	// Decode param 'x-tags' located in 'Header'.
+	// Decode param "x-tags" located in "Header".
 	if err := func() error {
 		param := r.Header.Values("x-tags")
 
@@ -151,7 +173,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	}(); err != nil {
 		return params, err
 	}
-	// Decode param 'x-scope' located in 'Header'.
+	// Decode param "x-scope" located in "Header".
 	if err := func() error {
 		param := r.Header.Values("x-scope")
 
@@ -169,7 +191,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	}(); err != nil {
 		return params, err
 	}
-	// Decode param 'token' located in 'Cookie'.
+	// Decode param "token" located in "Cookie".
 	if err := func() error {
 		c, err := r.Cookie("token")
 		if err != nil {
@@ -196,7 +218,7 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 
 func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 	var params PetGetByNameParams
-	// Decode param 'name' located in 'Path'.
+	// Decode param "name" located in "Path".
 	if err := func() error {
 		param := chi.URLParam(r, "name")
 		if len(param) == 0 {
@@ -223,50 +245,28 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 	return params, nil
 }
 
-func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
-	var params FoobarGetParams
-	// Decode param 'inlinedParam' located in 'Query'.
+func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
+	var params PetNameByIDParams
+	// Decode param "id" located in "Path".
 	if err := func() error {
-		values, ok := r.URL.Query()["inlinedParam"]
-		if !ok {
-			return fmt.Errorf("query parameter 'inlinedParam' not specified")
+		param := chi.URLParam(r, "id")
+		if len(param) == 0 {
+			return fmt.Errorf("path parameter 'id' not specified")
 		}
 
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
+		d := uri.NewPathDecoder(uri.PathDecoderConfig{
+			Param:   "id",
+			Value:   param,
+			Style:   uri.PathStyleSimple,
+			Explode: false,
 		})
 
-		v, err := d.DecodeInt64()
+		v, err := d.DecodeInt()
 		if err != nil {
 			return err
 		}
 
-		params.InlinedParam = int64(v)
-		return nil
-	}(); err != nil {
-		return params, err
-	}
-	// Decode param 'skip' located in 'Query'.
-	if err := func() error {
-		values, ok := r.URL.Query()["skip"]
-		if !ok {
-			return fmt.Errorf("query parameter 'skip' not specified")
-		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		v, err := d.DecodeInt32()
-		if err != nil {
-			return err
-		}
-
-		params.Skip = int32(v)
+		params.ID = int(v)
 		return nil
 	}(); err != nil {
 		return params, err

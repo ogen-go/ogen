@@ -50,7 +50,59 @@ var (
 	_ = net.IP{}
 )
 
-func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
+func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Pet:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	case *FoobarGetResNotFound:
+		w.WriteHeader(404)
+		return nil
+	default:
+		return fmt.Errorf("/foobar: unexpected response type: %T", response)
+	}
+}
+
+func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Pet:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	case *FoobarPostResNotFound:
+		w.WriteHeader(404)
+		return nil
+	case *FoobarPostDefApplicationJSONStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	default:
+		return fmt.Errorf("/foobar: unexpected response type: %T", response)
+	}
+}
+
+func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWriter) error {
+	w.WriteHeader(response.StatusCode)
+	return nil
+}
+
+func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -83,7 +135,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 		defer more.Reset()
 
 		return nil
-	case *PetGetResDefaultApplicationJSONStatusCode:
+	case *PetGetDefApplicationJSONStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
 		j := json.NewStream(w)
@@ -97,17 +149,6 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 	}
 }
 
-func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	return nil
-}
-
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -119,54 +160,13 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Pet:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
+func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
 
-		return nil
-	case *FoobarGetResNotFound:
-		w.WriteHeader(404)
-		return nil
-	default:
-		return fmt.Errorf("/foobar: unexpected response type: %T", response)
-	}
-}
-
-func encodeFoobarPutResponse(response FoobarPutResDefaultStatusCode, w http.ResponseWriter) error {
-	w.WriteHeader(response.StatusCode)
 	return nil
-}
-
-func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Pet:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
-
-		return nil
-	case *FoobarPostResNotFound:
-		w.WriteHeader(404)
-		return nil
-	case *FoobarPostResDefaultApplicationJSONStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
-
-		return nil
-	default:
-		return fmt.Errorf("/foobar: unexpected response type: %T", response)
-	}
 }

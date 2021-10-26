@@ -50,36 +50,41 @@ var (
 	_ = net.IP{}
 )
 
-// '#/components/schemas/Data'
+// Ref: #/components/schemas/Data
 type Data struct {
 	Description OptString `json:"description"`
 }
 
+// FoobarGetResNotFound is response for FoobarGet operation.
 type FoobarGetResNotFound struct{}
 
 func (*FoobarGetResNotFound) foobarGetRes() {}
 
-type FoobarPostResDefaultApplicationJSON struct {
+type FoobarPostDefApplicationJSON struct {
 	Code    int64  `json:"code"`
 	Message string `json:"message"`
 }
 
-type FoobarPostResDefaultApplicationJSONStatusCode struct {
+// FoobarPostDefApplicationJSONStatusCode wraps FoobarPostDefApplicationJSON with StatusCode.
+type FoobarPostDefApplicationJSONStatusCode struct {
 	StatusCode int
-	Response   FoobarPostResDefaultApplicationJSON
+	Response   FoobarPostDefApplicationJSON
 }
 
-func (*FoobarPostResDefaultApplicationJSONStatusCode) foobarPostRes() {}
+func (*FoobarPostDefApplicationJSONStatusCode) foobarPostRes() {}
 
+// FoobarPostResNotFound is response for FoobarPost operation.
 type FoobarPostResNotFound struct{}
 
 func (*FoobarPostResNotFound) foobarPostRes() {}
 
-type FoobarPutResDefault struct{}
+// FoobarPutDef is default response for FoobarPut operation.
+type FoobarPutDef struct{}
 
-type FoobarPutResDefaultStatusCode struct {
+// FoobarPutDefStatusCode wraps FoobarPutDef with StatusCode.
+type FoobarPutDefStatusCode struct {
 	StatusCode int
-	Response   FoobarPutResDefault
+	Response   FoobarPutDef
 }
 
 // NewNilString returns new NilString with value set to v.
@@ -463,7 +468,7 @@ func (o OptUUID) Get() (v uuid.UUID, ok bool) {
 	return o.Value, true
 }
 
-// '#/components/schemas/Pet'
+// Ref: #/components/schemas/Pet
 type Pet struct {
 	Birthday     time.Time     `json:"birthday"`
 	Friends      []Pet         `json:"friends"`
@@ -493,18 +498,24 @@ type Pet struct {
 
 func (*Pet) foobarGetRes()  {}
 func (*Pet) foobarPostRes() {}
+func (*Pet) petCreateReq()  {}
 func (*Pet) petGetRes()     {}
 
-type PetGetResDefaultApplicationJSON struct {
+type PetCreateReqTextPlain struct{}
+
+func (*PetCreateReqTextPlain) petCreateReq() {}
+
+type PetGetDefApplicationJSON struct {
 	Message string `json:"message"`
 }
 
-type PetGetResDefaultApplicationJSONStatusCode struct {
+// PetGetDefApplicationJSONStatusCode wraps PetGetDefApplicationJSON with StatusCode.
+type PetGetDefApplicationJSONStatusCode struct {
 	StatusCode int
-	Response   PetGetResDefaultApplicationJSON
+	Response   PetGetDefApplicationJSON
 }
 
-func (*PetGetResDefaultApplicationJSONStatusCode) petGetRes() {}
+func (*PetGetDefApplicationJSONStatusCode) petGetRes() {}
 
 type PetKind string
 

@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"reflect"
 	"sort"
+	"strings"
 
 	"github.com/ogen-go/ogen/internal/ir"
 )
@@ -12,6 +13,10 @@ func (g *Generator) fix() {
 	for _, op := range g.operations {
 		g.fixEqualResponses(op)
 	}
+	sort.SliceStable(g.operations, func(i, j int) bool {
+		a, b := g.operations[i], g.operations[j]
+		return strings.Compare(a.Name, b.Name) < 0
+	})
 }
 
 func (g *Generator) fixEqualResponses(op *ir.Operation) {

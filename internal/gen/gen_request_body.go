@@ -7,7 +7,9 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateRequest(name string, body *oas.RequestBody) (*ir.Request, error) {
+func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.Request, error) {
+	name := opName + "Req"
+
 	types := make(map[ir.ContentType]*ir.Type)
 	for contentType, schema := range body.Contents {
 		sName := name

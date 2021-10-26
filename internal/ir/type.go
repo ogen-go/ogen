@@ -21,7 +21,8 @@ const (
 )
 
 type Type struct {
-	Kind             Kind
+	Doc              string              // documentation
+	Kind             Kind                // kind
 	Name             string              // only for struct, alias, interface, enum
 	Primitive        PrimitiveType       // only for primitive, enum
 	AliasTo          *Type               // only for alias

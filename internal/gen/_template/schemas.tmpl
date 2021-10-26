@@ -12,9 +12,12 @@
 {{- define "define_schema" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 
+{{- if $.Doc -}}
+// {{ $.Doc }}
+{{- end }}
 {{- if $.Schema }}
-    {{- if not (eq $.Schema.Ref "") }}
-    // '{{ $.Schema.Ref }}'
+    {{- if $.Schema.Ref }}
+    // Ref: {{ $.Schema.Ref }}
     {{- end }}
 {{- end }}
 

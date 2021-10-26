@@ -43,6 +43,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	g.fix()
+
 	return g, nil
 }
 

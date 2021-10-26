@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"net/http"
 
 	"golang.org/x/xerrors"
@@ -9,23 +10,32 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateResponses(name string, responses *oas.OperationResponse) (*ir.Response, error) {
+func (g *Generator) generateResponses(opName string, responses *oas.OperationResponse) (*ir.Response, error) {
+	name := opName + "Res"
 	result := &ir.Response{
 		Spec:       responses,
 		StatusCode: map[int]*ir.StatusResponse{},
 	}
 
 	for code, resp := range responses.StatusCode {
-		resp, err := g.responseToIR(pascal(name, http.StatusText(code)), resp)
+		var (
+			respName = pascal(name, http.StatusText(code))
+			doc      = fmt.Sprintf("%s is response for %s operation.", respName, opName)
+		)
+		r, err := g.responseToIR(respName, doc, resp)
 		if err != nil {
 			return nil, xerrors.Errorf("%d: %w", code, err)
 		}
 
-		result.StatusCode[code] = resp
+		result.StatusCode[code] = r
 	}
 
 	if def := responses.Default; def != nil {
-		resp, err := g.responseToIR(name+"Default", def)
+		var (
+			respName = opName + "Def"
+			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)
+		)
+		resp, err := g.responseToIR(respName, doc, def)
 		if err != nil {
 			return nil, xerrors.Errorf("default: %w", err)
 		}
@@ -62,7 +72,7 @@ func (g *Generator) generateResponses(name string, responses *oas.OperationRespo
 	g.saveIface(iface)
 	walkResponseTypes(result, func(resName string, typ *ir.Type) *ir.Type {
 		if typ.Is(ir.KindPrimitive, ir.KindArray) {
-			typ = ir.Alias(pascal(name, resName), typ)
+			typ = ir.Alias(pascal(resName, resName), typ)
 			g.saveType(typ)
 		}
 
@@ -74,11 +84,12 @@ func (g *Generator) generateResponses(name string, responses *oas.OperationRespo
 	return result, nil
 }
 
-func (g *Generator) responseToIR(name string, resp *oas.Response) (*ir.StatusResponse, error) {
+func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (*ir.StatusResponse, error) {
 	if len(resp.Contents) == 0 {
 		typ := &ir.Type{
 			Kind: ir.KindStruct,
 			Name: name,
+			Doc:  doc,
 		}
 
 		g.saveType(typ)
@@ -108,9 +119,11 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 		panic("unreachable")
 	}
 
+	name := typ.Name + "StatusCode"
 	t := &ir.Type{
 		Kind: ir.KindStruct,
-		Name: typ.Name + "StatusCode",
+		Name: name,
+		Doc:  fmt.Sprintf("%s wraps %s with StatusCode.", name, typ.Name),
 		Fields: []*ir.Field{
 			{
 				Name: "StatusCode",

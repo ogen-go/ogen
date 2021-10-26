@@ -72,7 +72,7 @@ func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetPara
 	panic("implement me")
 }
 
-func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDefault, error) {
+func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDef, error) {
 	panic("implement me")
 }
 

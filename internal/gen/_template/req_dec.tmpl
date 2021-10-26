@@ -15,26 +15,26 @@ func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.Go }}
 
     switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
-    {{- range $contentType, $type := $op.Request.Contents }}
+    {{- range $contentType, $t := $op.Request.Contents }}
     case "{{ $contentType }}":
-        var request {{ $type.GoType }}
+        var request {{ $t.Go }}
         {{- /* Decode json */ -}}
         {{- if $contentType.JSON }}
         i := json.GetIterator()
         defer json.PutIterator(i)
         i.ResetBytes(buf.Bytes())
         if err := func() error {
-            {{- template "dec_json_value" req_decode_elem $type }}
+            {{- template "dec_json_value" req_decode_elem $t }}
         }(); err != nil {
             return req, err
         }
-        {{- if $type.NeedValidation }}
+        {{- if $t.NeedValidation }}
         if err := request.Validate(); err != nil {
             return req, fmt.Errorf("validate: %w", err)
         }
         {{- end }}
 
-        return {{ if or (not $op.Request.Required) ($op.IsRequestIface) }}&{{ end }}request, nil
+        return {{ if or (not $op.Request.Required) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request

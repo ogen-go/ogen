@@ -72,9 +72,22 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
+func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	u := uri.Clone(c.serverURL)
-	u.Path += "/json"
+	u.Path += "/cached-worlds"
+
+	q := u.Query()
+	{
+		// Encode "count" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.Count
+		param := e.EncodeInt64(v)
+		q.Set("count", param)
+	}
+	u.RawQuery = q.Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -85,7 +98,7 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeJSONResponse(resp)
+	result, err := decodeCachingResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}
@@ -114,13 +127,34 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	return result, nil
 }
 
+func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/json"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeJSONResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
 
 	q := u.Query()
 	{
-		// Encode 'queries' parameter.
+		// Encode "queries" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
 			Style:   uri.QueryStyleForm,
 			Explode: true,
@@ -154,7 +188,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 
 	q := u.Query()
 	{
-		// Encode 'queries' parameter.
+		// Encode "queries" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
 			Style:   uri.QueryStyleForm,
 			Explode: true,
@@ -175,40 +209,6 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	defer resp.Body.Close()
 
 	result, err := decodeUpdatesResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/cached-worlds"
-
-	q := u.Query()
-	{
-		// Encode 'count' parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		v := params.Count
-		param := e.EncodeInt64(v)
-		q.Set("count", param)
-	}
-	u.RawQuery = q.Encode()
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeCachingResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}

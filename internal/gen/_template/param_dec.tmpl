@@ -10,7 +10,7 @@
 func decode{{ $op.Name }}Params(r *http.Request) ({{ $op.Name }}Params, error) {
 	var params {{ $op.Name }}Params
 	{{- range $p := $op.Params }}
-	// Decode param '{{ $p.Spec.Name }}' located in '{{ $p.Spec.In }}'.
+	// Decode param "{{ $p.Spec.Name }}" located in "{{ $p.Spec.In }}".
 	if err := func() error {
 		{{- if eq $p.Spec.In "Query" }}
 		values, ok := r.URL.Query()["{{ $p.Spec.Name }}"]

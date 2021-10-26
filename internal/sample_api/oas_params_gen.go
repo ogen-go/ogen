@@ -50,8 +50,9 @@ var (
 	_ = net.IP{}
 )
 
-type PetNameByIDParams struct {
-	ID int
+type FoobarGetParams struct {
+	InlinedParam int64
+	Skip         int32
 }
 
 type PetFriendsNamesByIDParams struct {
@@ -69,7 +70,6 @@ type PetGetByNameParams struct {
 	Name string
 }
 
-type FoobarGetParams struct {
-	InlinedParam int64
-	Skip         int32
+type PetNameByIDParams struct {
+	ID int
 }

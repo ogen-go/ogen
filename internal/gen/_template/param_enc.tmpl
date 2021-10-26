@@ -7,7 +7,7 @@ u.Path += "{{ $part.Raw }}"
 {{- else }}
 {
 	{{- $param := $part.Param }}
-    // Encode '{{ $param.Spec.Name }}' parameter.
+    // Encode "{{ $param.Spec.Name }}" parameter.
     e := uri.NewPathEncoder(uri.PathEncoderConfig{
         Param: "{{ $param.Spec.Name }}",
         Style: uri.PathStyle{{ pascalMP $param.Spec.Style }},
@@ -25,7 +25,7 @@ u.Path += "{{ $part.Raw }}"
 q := u.Query()
 {{- range $param := $.QueryParams }}{{/* Range over params */}}
 {
-    // Encode '{{ $param.Spec.Name }}' parameter.
+    // Encode "{{ $param.Spec.Name }}" parameter.
     e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
         Style:uri.QueryStyle{{ pascalMP $param.Spec.Style }},
         Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
