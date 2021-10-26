@@ -112,16 +112,14 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 	t := &ir.Type{
 		Kind: ir.KindStruct,
 		Name: typ.Name + "StatusCode",
-		Fields: []*ir.StructField{
+		Fields: []*ir.Field{
 			{
 				Name: "StatusCode",
 				Type: ir.Primitive(ir.Int, nil),
-				Tag:  "-",
 			},
 			{
 				Name: "Response",
 				Type: typ,
-				Tag:  "-",
 			},
 		},
 	}

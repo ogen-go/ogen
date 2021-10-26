@@ -102,10 +102,12 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 				}
 			}
 
-			f := &ir.StructField{
+			f := &ir.Field{
 				Name: pascalMP(prop.Name),
 				Type: typ,
-				Tag:  prop.Name,
+				Tag: ir.Tag{
+					JSON: prop.Name,
+				},
 			}
 
 			s.Fields = append(s.Fields, f)

@@ -17,32 +17,37 @@ const (
 	KindStruct    Kind = "struct"
 	KindPointer   Kind = "pointer"
 	KindInterface Kind = "interface"
-	KindGeneric   Kind = "generic" // ?
+	KindGeneric   Kind = "generic"
 )
 
 type Type struct {
-	Kind            Kind
-	Name            string              // only for struct, alias, interface, enum
-	Primitive       PrimitiveType       // only for primitive, enum
-	AliasTo         *Type               // only for alias
-	PointerTo       *Type               // only for pointer
-	Item            *Type               // only for array
-	EnumValues      []interface{}       // only for enum
-	Fields          []*StructField      // only for struct
-	Implements      map[*Type]struct{}  // only for struct, alias, enum
-	Implementations map[*Type]struct{}  // only for interface
-	IfaceMethods    map[string]struct{} // only for interface
-	Schema          *ast.Schema         // for all kinds except pointer, interface. Can be nil.
-	Validators      Validators
-	NilSemantic     NilSemantic
-	GenericOf       *Type          // only for generic
-	GenericVariant  GenericVariant // only for generic
+	Kind             Kind
+	Name             string              // only for struct, alias, interface, enum
+	Primitive        PrimitiveType       // only for primitive, enum
+	AliasTo          *Type               // only for alias
+	PointerTo        *Type               // only for pointer
+	Item             *Type               // only for array
+	EnumValues       []interface{}       // only for enum
+	Fields           []*Field            // only for struct
+	Implements       map[*Type]struct{}  // only for struct, alias, enum
+	Implementations  map[*Type]struct{}  // only for interface
+	InterfaceMethods map[string]struct{} // only for interface
+	Schema           *ast.Schema         // for all kinds except pointer, interface. Can be nil.
+	NilSemantic      NilSemantic         // only for pointer
+	GenericOf        *Type               // only for generic
+	GenericVariant   GenericVariant      // only for generic
+	Validators       Validators
 }
 
-type StructField struct {
+// Tag of Field.
+type Tag struct {
+	JSON string // json tag, empty for none
+}
+
+type Field struct {
 	Name string
 	Type *Type
-	Tag  string
+	Tag  Tag
 }
 
 func (t *Type) Is(vs ...Kind) bool {
@@ -54,8 +59,8 @@ func (t *Type) Is(vs ...Kind) bool {
 	return false
 }
 
-func (t *Type) Implement(iface *Type) {
-	if !t.Is(KindStruct, KindAlias) || !iface.Is(KindInterface) {
+func (t *Type) Implement(i *Type) {
+	if !t.Is(KindStruct, KindAlias) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
@@ -63,17 +68,17 @@ func (t *Type) Implement(iface *Type) {
 		t.Implements = map[*Type]struct{}{}
 	}
 
-	iface.Implementations[t] = struct{}{}
-	t.Implements[iface] = struct{}{}
+	i.Implementations[t] = struct{}{}
+	t.Implements[i] = struct{}{}
 }
 
-func (t *Type) Unimplement(iface *Type) {
-	if !t.Is(KindStruct, KindAlias) || !iface.Is(KindInterface) {
+func (t *Type) Unimplement(i *Type) {
+	if !t.Is(KindStruct, KindAlias) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
-	delete(iface.Implementations, t)
-	delete(t.Implements, iface)
+	delete(i.Implementations, t)
+	delete(t.Implements, i)
 }
 
 func (t *Type) AddMethod(name string) {
@@ -81,7 +86,7 @@ func (t *Type) AddMethod(name string) {
 		panic("unreachable")
 	}
 
-	t.IfaceMethods[name] = struct{}{}
+	t.InterfaceMethods[name] = struct{}{}
 }
 
 func (t *Type) GoType() string {
@@ -103,10 +108,10 @@ func (t *Type) Methods() []string {
 	ms := make(map[string]struct{})
 	switch t.Kind {
 	case KindInterface:
-		ms = t.IfaceMethods
+		ms = t.InterfaceMethods
 	case KindStruct, KindAlias, KindEnum:
-		for iface := range t.Implements {
-			for m := range iface.IfaceMethods {
+		for i := range t.Implements {
+			for m := range i.InterfaceMethods {
 				ms[m] = struct{}{}
 			}
 		}

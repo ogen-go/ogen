@@ -28,9 +28,9 @@ func Alias(name string, to *Type) *Type {
 
 func Interface(name string) *Type {
 	return &Type{
-		Name:            name,
-		Kind:            KindInterface,
-		IfaceMethods:    map[string]struct{}{},
-		Implementations: map[*Type]struct{}{},
+		Name:             name,
+		Kind:             KindInterface,
+		InterfaceMethods: map[string]struct{}{},
+		Implementations:  map[*Type]struct{}{},
 	}
 }

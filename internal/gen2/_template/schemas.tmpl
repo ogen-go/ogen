@@ -25,7 +25,7 @@ type {{ $.Name }} struct{}
 {{- else }}
 type {{ $.Name }} struct {
 {{- range $f := $.Fields }}
-    {{ $f.Name }} {{ $f.Type.GoType }} `json:"{{ $f.Tag }}"`
+    {{ $f.Name }} {{ $f.Type.GoType }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
 {{- end }}
 }
 {{- end }}
