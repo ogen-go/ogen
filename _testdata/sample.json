@@ -284,9 +284,25 @@
   },
   "components": {
     "schemas": {
+      "ID": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
       "Data": {
         "type": "object",
+        "required": [
+          "id"
+        ],
         "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "description": {
             "type": "string"
           }

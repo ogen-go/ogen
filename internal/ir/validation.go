@@ -34,6 +34,13 @@ func (t *Type) needValidation(visited map[*Type]struct{}) (result bool) {
 		return false
 	case KindEnum:
 		return true
+	case KindSum:
+		for _, s := range t.SumOf {
+			if s.needValidation(visited) {
+				return true
+			}
+		}
+		return false
 	case KindAlias:
 		return t.AliasTo.needValidation(visited)
 	case KindPointer:

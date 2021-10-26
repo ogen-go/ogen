@@ -18,6 +18,7 @@ const (
 	KindPointer   Kind = "pointer"
 	KindInterface Kind = "interface"
 	KindGeneric   Kind = "generic"
+	KindSum       Kind = "sum"
 )
 
 type Type struct {
@@ -27,6 +28,7 @@ type Type struct {
 	Primitive        PrimitiveType       // only for primitive, enum
 	AliasTo          *Type               // only for alias
 	PointerTo        *Type               // only for pointer
+	SumOf            []*Type             // only for sum
 	Item             *Type               // only for array
 	EnumValues       []interface{}       // only for enum
 	Fields           []*Field            // only for struct
@@ -73,7 +75,7 @@ func (t *Type) Is(vs ...Kind) bool {
 }
 
 func (t *Type) Implement(i *Type) {
-	if !t.Is(KindStruct, KindAlias) || !i.Is(KindInterface) {
+	if !t.Is(KindStruct, KindAlias, KindSum) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
@@ -86,7 +88,7 @@ func (t *Type) Implement(i *Type) {
 }
 
 func (t *Type) Unimplement(i *Type) {
-	if !t.Is(KindStruct, KindAlias) || !i.Is(KindInterface) {
+	if !t.Is(KindStruct, KindAlias, KindSum) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
@@ -110,7 +112,7 @@ func (t *Type) Go() string {
 		return "[]" + t.Item.Go()
 	case KindPointer:
 		return "*" + t.PointerTo.Go()
-	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum:
+	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum:
 		return t.Name
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
@@ -122,7 +124,7 @@ func (t *Type) Methods() []string {
 	switch t.Kind {
 	case KindInterface:
 		ms = t.InterfaceMethods
-	case KindStruct, KindAlias, KindEnum, KindGeneric:
+	case KindStruct, KindAlias, KindEnum, KindGeneric, KindSum:
 		for i := range t.Implements {
 			for m := range i.InterfaceMethods {
 				ms[m] = struct{}{}

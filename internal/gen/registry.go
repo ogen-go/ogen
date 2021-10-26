@@ -19,7 +19,7 @@ func (g *Generator) saveIface(typ *ir.Type) {
 }
 
 func (g *Generator) saveType(typ *ir.Type) {
-	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric) {
+	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum) {
 		panic("unreachable")
 	}
 
@@ -31,7 +31,7 @@ func (g *Generator) saveType(typ *ir.Type) {
 }
 
 func (g *Generator) saveRef(ref string, typ *ir.Type) {
-	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric) {
+	if !typ.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum) {
 		panic("unreachable")
 	}
 

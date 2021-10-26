@@ -78,4 +78,5 @@ func (t *Type) IsEnum() bool      { return t.Is(KindEnum) }
 func (t *Type) IsGeneric() bool   { return t.Is(KindGeneric) }
 func (t *Type) IsAlias() bool     { return t.Is(KindAlias) }
 func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
+func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }

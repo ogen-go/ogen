@@ -1,7 +1,9 @@
 package gen
 
 import (
+	"fmt"
 	"strings"
+	"unicode"
 
 	"golang.org/x/xerrors"
 
@@ -35,8 +37,6 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 	}
 
 	switch {
-	case len(schema.OneOf) > 0:
-		return nil, &ErrNotImplemented{"oneOf"}
 	case len(schema.AnyOf) > 0:
 		return nil, &ErrNotImplemented{"anyOf"}
 	case len(schema.AllOf) > 0:
@@ -83,7 +83,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			return t
 		}
 
-		if t.Is(ir.KindStruct, ir.KindEnum) {
+		if t.Is(ir.KindStruct, ir.KindEnum, ir.KindSum) {
 			g.side = append(g.side, t)
 		}
 
@@ -176,6 +176,29 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 
 		return side(prim), nil
 
+	case oas.Empty:
+		sum := &ir.Type{
+			Name:   name,
+			Kind:   ir.KindSum,
+			Schema: schema,
+		}
+		for i, s := range schema.OneOf {
+			t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
+			if err != nil {
+				return nil, xerrors.Errorf("oneOf[%d]: %w", i, err)
+			}
+			var result []rune
+			for i, c := range t.Go() {
+				if i == 0 {
+					c = unicode.ToUpper(c)
+				}
+				result = append(result, c)
+			}
+			t.Name = string(result)
+			sum.Name += t.Name
+			sum.SumOf = append(sum.SumOf, t)
+		}
+		return side(sum), nil
 	default:
 		panic("unreachable")
 	}

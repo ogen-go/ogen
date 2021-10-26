@@ -50,6 +50,32 @@ const (
 {{- end }}
 )
 {{/* Define enum */}}
+{{/* Define sum */}}
+{{- else if $.IsSum }}
+// {{ $.Name }} represents sum type.
+type {{ $.Name }} struct {
+    Type {{ $.Name }}Type // switch on this field
+{{- range $s := $.SumOf }}
+    {{ $s.Name }} {{ $s.Go }}
+{{- end }}
+}
+
+// {{ $.Name }}Type is oneOf type of {{ $.Name }}.
+type {{ $.Name }}Type string
+
+// Possible values for {{ $.Name }}Type.
+const (
+{{- range $s := $.SumOf }}
+    {{ $.Name }}{{ $s.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
+{{- end }}
+)
+
+{{- range $s := $.SumOf }}
+// Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
+func (s {{ $.Name }}) Is{{ $s.Name }}() bool { return s.Type == {{ $.Name }}{{ $s.Name }} }
+{{- end }}
+
+{{/* Define sum */}}
 {{/* Define generic */}}
 {{- else if $.IsGeneric }}
 {{- $g := $.GenericOf }}
