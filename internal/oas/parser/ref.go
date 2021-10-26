@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"strings"
 
-	ast "github.com/ogen-go/ogen/internal/oas"
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) resolveRequestBody(ref string) (*ast.RequestBody, error) {
+func (p *parser) resolveRequestBody(ref string) (*oas.RequestBody, error) {
 	const prefix = "#/components/requestBodies/"
 	if !strings.HasPrefix(ref, prefix) {
 		return nil, xerrors.Errorf("invalid requestBody reference: '%s'", ref)
@@ -33,7 +34,7 @@ func (p *parser) resolveRequestBody(ref string) (*ast.RequestBody, error) {
 	return r, nil
 }
 
-func (p *parser) resolveResponse(ref string) (*ast.Response, error) {
+func (p *parser) resolveResponse(ref string) (*oas.Response, error) {
 	const prefix = "#/components/responses/"
 	if !strings.HasPrefix(ref, prefix) {
 		return nil, xerrors.Errorf("invalid response reference: '%s'", ref)
@@ -58,7 +59,7 @@ func (p *parser) resolveResponse(ref string) (*ast.Response, error) {
 	return r, nil
 }
 
-func (p *parser) resolveParameter(ref string) (*ast.Parameter, error) {
+func (p *parser) resolveParameter(ref string) (*oas.Parameter, error) {
 	const prefix = "#/components/parameters/"
 	if !strings.HasPrefix(ref, prefix) {
 		return nil, xerrors.Errorf("invalid parameter reference: '%s'", ref)

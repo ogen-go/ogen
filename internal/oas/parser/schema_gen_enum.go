@@ -4,11 +4,12 @@ import (
 	"encoding/json"
 
 	jsoniter "github.com/json-iterator/go"
-	ast "github.com/ogen-go/ogen/internal/oas"
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func parseEnumValues(typ ast.SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
+func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
 	var (
 		values []interface{}
 		uniq   = map[interface{}]struct{}{}
@@ -35,7 +36,7 @@ func parseEnumValues(typ ast.SchemaType, rawValues []json.RawMessage) ([]interfa
 
 var errNullValue = xerrors.New("json null value")
 
-func parseJSONValue(typ ast.SchemaType, v json.RawMessage) (interface{}, error) {
+func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
 		iter = jsoniter.ParseBytes(jsoniter.ConfigDefault, v)
 		next = iter.WhatIsNext()
@@ -67,13 +68,13 @@ func parseJSONValue(typ ast.SchemaType, v json.RawMessage) (interface{}, error) 
 	}
 
 	switch typ {
-	case ast.String:
+	case oas.String:
 		if next != jsoniter.StringValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
 		}
 		return iter.ReadString(), nil
-	case ast.Integer:
+	case oas.Integer:
 		if next != jsoniter.NumberValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
@@ -85,7 +86,7 @@ func parseJSONValue(typ ast.SchemaType, v json.RawMessage) (interface{}, error) 
 		}
 
 		return iter.ReadNumber().Int64()
-	case ast.Number:
+	case oas.Number:
 		if next != jsoniter.NumberValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
@@ -97,7 +98,7 @@ func parseJSONValue(typ ast.SchemaType, v json.RawMessage) (interface{}, error) 
 		}
 
 		return iter.ReadNumber().Float64()
-	case ast.Boolean:
+	case oas.Boolean:
 		if next != jsoniter.BoolValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)

@@ -6,11 +6,11 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) parseParams(params []ogen.Parameter) ([]*ast.Parameter, error) {
-	var result []*ast.Parameter
+func (p *parser) parseParams(params []ogen.Parameter) ([]*oas.Parameter, error) {
+	var result []*oas.Parameter
 	for _, param := range params {
 		parsed, err := p.parseParameter(param)
 		if err != nil {
@@ -23,7 +23,7 @@ func (p *parser) parseParams(params []ogen.Parameter) ([]*ast.Parameter, error) 
 	return result, nil
 }
 
-func (p *parser) parseParameter(param ogen.Parameter) (*ast.Parameter, error) {
+func (p *parser) parseParameter(param ogen.Parameter) (*oas.Parameter, error) {
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref)
 		if err != nil {
@@ -32,11 +32,11 @@ func (p *parser) parseParameter(param ogen.Parameter) (*ast.Parameter, error) {
 		return parsed, nil
 	}
 
-	types := map[string]ast.ParameterLocation{
-		"query":  ast.LocationQuery,
-		"header": ast.LocationHeader,
-		"path":   ast.LocationPath,
-		"cookie": ast.LocationCookie,
+	types := map[string]oas.ParameterLocation{
+		"query":  oas.LocationQuery,
+		"header": oas.LocationHeader,
+		"path":   oas.LocationPath,
+		"cookie": oas.LocationCookie,
 	}
 
 	locatedIn, exists := types[strings.ToLower(param.In)]
@@ -54,7 +54,7 @@ func (p *parser) parseParameter(param ogen.Parameter) (*ast.Parameter, error) {
 		return nil, xerrors.Errorf("style: %w", err)
 	}
 
-	return &ast.Parameter{
+	return &oas.Parameter{
 		Name:     param.Name,
 		In:       locatedIn,
 		Schema:   schema,
@@ -66,35 +66,35 @@ func (p *parser) parseParameter(param ogen.Parameter) (*ast.Parameter, error) {
 
 // paramStyle checks parameter style field.
 // https://swagger.io/docs/specification/serialization/
-func paramStyle(locatedIn ast.ParameterLocation, style string) (string, error) {
+func paramStyle(locatedIn oas.ParameterLocation, style string) (string, error) {
 	if style == "" {
-		defaultStyles := map[ast.ParameterLocation]string{
-			ast.LocationPath:   "simple",
-			ast.LocationQuery:  "form",
-			ast.LocationHeader: "simple",
-			ast.LocationCookie: "form",
+		defaultStyles := map[oas.ParameterLocation]string{
+			oas.LocationPath:   "simple",
+			oas.LocationQuery:  "form",
+			oas.LocationHeader: "simple",
+			oas.LocationCookie: "form",
 		}
 
 		return defaultStyles[locatedIn], nil
 	}
 
-	allowedStyles := map[ast.ParameterLocation]map[string]struct{}{
-		ast.LocationPath: {
+	allowedStyles := map[oas.ParameterLocation]map[string]struct{}{
+		oas.LocationPath: {
 			"simple": struct{}{},
 			"label":  struct{}{},
 			"matrix": struct{}{},
 		},
-		ast.LocationQuery: {
+		oas.LocationQuery: {
 			"form": struct{}{},
 			// Not supported.
 			// "spaceDelimited": struct{}{},
 			"pipeDelimited": struct{}{},
 			"deepObject":    struct{}{},
 		},
-		ast.LocationHeader: {
+		oas.LocationHeader: {
 			"simple": struct{}{},
 		},
-		ast.LocationCookie: {
+		oas.LocationCookie: {
 			"form": struct{}{},
 		},
 	}
@@ -108,14 +108,14 @@ func paramStyle(locatedIn ast.ParameterLocation, style string) (string, error) {
 
 // paramExplode checks parameter explode field.
 // https://swagger.io/docs/specification/serialization/
-func paramExplode(locatedIn ast.ParameterLocation, explode *bool) bool {
+func paramExplode(locatedIn oas.ParameterLocation, explode *bool) bool {
 	if explode != nil {
 		return *explode
 	}
 
 	// When style is form, the default value is true.
 	// For all other styles, the default value is false.
-	if locatedIn == ast.LocationQuery || locatedIn == ast.LocationCookie {
+	if locatedIn == oas.LocationQuery || locatedIn == oas.LocationCookie {
 		return true
 	}
 

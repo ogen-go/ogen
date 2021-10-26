@@ -3,36 +3,37 @@ package parser
 import (
 	"testing"
 
-	ast "github.com/ogen-go/ogen/internal/oas"
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 func TestPathParser(t *testing.T) {
 	var (
-		bar = &ast.Parameter{
+		bar = &oas.Parameter{
 			Name:   "bar",
-			Schema: &ast.Schema{Type: ast.Integer},
-			In:     ast.LocationPath,
+			Schema: &oas.Schema{Type: oas.Integer},
+			In:     oas.LocationPath,
 		}
-		baz = &ast.Parameter{
+		baz = &oas.Parameter{
 			Name:   "baz",
-			Schema: &ast.Schema{Type: ast.String},
-			In:     ast.LocationPath,
+			Schema: &oas.Schema{Type: oas.String},
+			In:     oas.LocationPath,
 		}
 	)
 
 	tests := []struct {
 		Name      string
 		Path      string
-		Params    []*ast.Parameter
-		Expect    []ast.PathPart
+		Params    []*oas.Parameter
+		Expect    []oas.PathPart
 		ExpectErr string
 	}{
 		{
 			Name:   "test1",
 			Path:   "/foo/{bar}",
-			Params: []*ast.Parameter{bar},
-			Expect: []ast.PathPart{
+			Params: []*oas.Parameter{bar},
+			Expect: []oas.PathPart{
 				{Raw: "/foo/"},
 				{Param: bar},
 			},
@@ -40,8 +41,8 @@ func TestPathParser(t *testing.T) {
 		{
 			Name:   "test2",
 			Path:   "/foo.{bar}",
-			Params: []*ast.Parameter{bar},
-			Expect: []ast.PathPart{
+			Params: []*oas.Parameter{bar},
+			Expect: []oas.PathPart{
 				{Raw: "/foo."},
 				{Param: bar},
 			},
@@ -49,8 +50,8 @@ func TestPathParser(t *testing.T) {
 		{
 			Name:   "test3",
 			Path:   "/foo.{bar}.{baz}abc/def",
-			Params: []*ast.Parameter{bar, baz},
-			Expect: []ast.PathPart{
+			Params: []*oas.Parameter{bar, baz},
+			Expect: []oas.PathPart{
 				{Raw: "/foo."},
 				{Param: bar},
 				{Raw: "."},
@@ -61,7 +62,7 @@ func TestPathParser(t *testing.T) {
 		{
 			Name:      "test4",
 			Path:      "/foo/{bar}/{baz}",
-			Params:    []*ast.Parameter{bar},
+			Params:    []*oas.Parameter{bar},
 			ExpectErr: "path parameter 'baz' not found in parameters",
 		},
 	}

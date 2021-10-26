@@ -6,7 +6,7 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 type parser struct {
@@ -14,13 +14,13 @@ type parser struct {
 	// schema specification, immutable.
 	spec *ogen.Spec
 	// parsed operations.
-	operations []*ast.Operation
+	operations []*oas.Operation
 	// refs contains lazy-initialized referenced components.
 	refs struct {
-		schemas       map[string]*ast.Schema
-		requestBodies map[string]*ast.RequestBody
-		responses     map[string]*ast.Response
-		parameters    map[string]*ast.Parameter
+		schemas       map[string]*oas.Schema
+		requestBodies map[string]*oas.RequestBody
+		responses     map[string]*oas.Response
+		parameters    map[string]*oas.Parameter
 	}
 }
 
@@ -28,21 +28,21 @@ type Options struct {
 	IgnoreUnspecifiedParams bool
 }
 
-func Parse(spec *ogen.Spec, opts Options) ([]*ast.Operation, error) {
+func Parse(spec *ogen.Spec, opts Options) ([]*oas.Operation, error) {
 	spec.Init()
 	p := &parser{
 		ops:  opts,
 		spec: spec,
 		refs: struct {
-			schemas       map[string]*ast.Schema
-			requestBodies map[string]*ast.RequestBody
-			responses     map[string]*ast.Response
-			parameters    map[string]*ast.Parameter
+			schemas       map[string]*oas.Schema
+			requestBodies map[string]*oas.RequestBody
+			responses     map[string]*oas.Response
+			parameters    map[string]*oas.Parameter
 		}{
-			schemas:       map[string]*ast.Schema{},
-			requestBodies: map[string]*ast.RequestBody{},
-			responses:     map[string]*ast.Response{},
-			parameters:    map[string]*ast.Parameter{},
+			schemas:       map[string]*oas.Schema{},
+			requestBodies: map[string]*oas.RequestBody{},
+			responses:     map[string]*oas.Response{},
+			parameters:    map[string]*oas.Parameter{},
 		},
 	}
 
@@ -78,8 +78,8 @@ func (p *parser) parse() error {
 	return nil
 }
 
-func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (_ *ast.Operation, err error) {
-	op := &ast.Operation{
+func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (_ *oas.Operation, err error) {
+	op := &oas.Operation{
 		OperationID: spec.OperationID,
 		HTTPMethod:  httpMethod,
 	}

@@ -3,8 +3,9 @@ package parser
 import (
 	"fmt"
 
-	ast "github.com/ogen-go/ogen/internal/oas"
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 // ErrPathParameterNotSpecified indicates that the path parameter
@@ -19,21 +20,21 @@ func (e ErrPathParameterNotSpecified) Error() string {
 
 type pathParser struct {
 	path   string           // immutable
-	params []*ast.Parameter // immutable
+	params []*oas.Parameter // immutable
 
-	parts []ast.PathPart // parsed parts
+	parts []oas.PathPart // parsed parts
 	part  []rune         // current part
 	param bool           // current part is param name?
 }
 
-func parsePath(path string, params []*ast.Parameter) ([]ast.PathPart, error) {
+func parsePath(path string, params []*oas.Parameter) ([]oas.PathPart, error) {
 	return (&pathParser{
 		path:   path,
 		params: params,
 	}).Parse()
 }
 
-func (p *pathParser) Parse() ([]ast.PathPart, error) {
+func (p *pathParser) Parse() ([]oas.PathPart, error) {
 	err := p.parse()
 	return p.parts, err
 }
@@ -84,7 +85,7 @@ func (p *pathParser) push() error {
 	defer func() { p.part = nil }()
 
 	if !p.param {
-		p.parts = append(p.parts, ast.PathPart{Raw: string(p.part)})
+		p.parts = append(p.parts, oas.PathPart{Raw: string(p.part)})
 		return nil
 	}
 
@@ -95,13 +96,13 @@ func (p *pathParser) push() error {
 		}
 	}
 
-	p.parts = append(p.parts, ast.PathPart{Param: param})
+	p.parts = append(p.parts, oas.PathPart{Param: param})
 	return nil
 }
 
-func (p *pathParser) lookupParam(name string) (*ast.Parameter, bool) {
+func (p *pathParser) lookupParam(name string) (*oas.Parameter, bool) {
 	for _, p := range p.params {
-		if p.Name == name && p.In == ast.LocationPath {
+		if p.Name == name && p.In == oas.LocationPath {
 			return p, true
 		}
 	}

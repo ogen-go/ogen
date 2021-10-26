@@ -4,10 +4,10 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) parseRequestBody(body *ogen.RequestBody) (*ast.RequestBody, error) {
+func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, error) {
 	if ref := body.Ref; ref != "" {
 		reqBody, err := p.resolveRequestBody(ref)
 		if err != nil {

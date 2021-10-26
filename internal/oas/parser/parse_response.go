@@ -7,10 +7,10 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) parseResponses(responses ogen.Responses) (*ast.OperationResponse, error) {
+func (p *parser) parseResponses(responses ogen.Responses) (*oas.OperationResponse, error) {
 	result := createAstOpResponse()
 	if len(responses) == 0 {
 		return nil, fmt.Errorf("no responses")
@@ -45,7 +45,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (*ast.OperationRespons
 	return result, nil
 }
 
-func (p *parser) parseResponse(resp ogen.Response) (*ast.Response, error) {
+func (p *parser) parseResponse(resp ogen.Response) (*oas.Response, error) {
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref)
 		if err != nil {

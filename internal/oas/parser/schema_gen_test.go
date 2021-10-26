@@ -6,12 +6,12 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 func TestSchemaSimple(t *testing.T) {
 	gen := &schemaGen{
-		localRefs: make(map[string]*ast.Schema),
+		localRefs: make(map[string]*oas.Schema),
 	}
 
 	out, err := gen.Generate(ogen.Schema{
@@ -24,17 +24,17 @@ func TestSchemaSimple(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	expect := &ast.Schema{
-		Type: ast.Object,
-		Properties: []ast.Property{
+	expect := &oas.Schema{
+		Type: oas.Object,
+		Properties: []oas.Property{
 			{
 				Name:     "id",
-				Schema:   &ast.Schema{Type: ast.Integer},
+				Schema:   &oas.Schema{Type: oas.Integer},
 				Required: true,
 			},
 			{
 				Name:     "name",
-				Schema:   &ast.Schema{Type: ast.String},
+				Schema:   &oas.Schema{Type: oas.String},
 				Required: true,
 			},
 		},
@@ -65,52 +65,52 @@ func TestSchemaRecursive(t *testing.T) {
 		},
 	}
 
-	pet := &ast.Schema{
-		Type: ast.Object,
+	pet := &oas.Schema{
+		Type: oas.Object,
 		Ref:  "#/components/schemas/Pet",
 	}
-	pet.Properties = []ast.Property{
+	pet.Properties = []oas.Property{
 		{
 			Name: "friends",
-			Schema: &ast.Schema{
-				Type: ast.Array,
+			Schema: &oas.Schema{
+				Type: oas.Array,
 				Item: pet,
 			},
 			Required: true,
 		},
 		{
 			Name:     "id",
-			Schema:   &ast.Schema{Type: ast.Integer},
+			Schema:   &oas.Schema{Type: oas.Integer},
 			Required: true,
 		},
 		{
 			Name:     "name",
-			Schema:   &ast.Schema{Type: ast.String},
+			Schema:   &oas.Schema{Type: oas.String},
 			Required: true,
 		},
 	}
 
-	expectLocalRefs := map[string]*ast.Schema{
+	expectLocalRefs := map[string]*oas.Schema{
 		"#/components/schemas/Pet": {
-			Type: ast.Object,
+			Type: oas.Object,
 			Ref:  "#/components/schemas/Pet",
-			Properties: []ast.Property{
+			Properties: []oas.Property{
 				{
 					Name: "friends",
-					Schema: &ast.Schema{
-						Type: ast.Array,
+					Schema: &oas.Schema{
+						Type: oas.Array,
 						Item: pet,
 					},
 					Required: true,
 				},
 				{
 					Name:     "id",
-					Schema:   &ast.Schema{Type: ast.Integer},
+					Schema:   &oas.Schema{Type: oas.Integer},
 					Required: true,
 				},
 				{
 					Name:     "name",
-					Schema:   &ast.Schema{Type: ast.String},
+					Schema:   &oas.Schema{Type: oas.String},
 					Required: true,
 				},
 			},
@@ -119,7 +119,7 @@ func TestSchemaRecursive(t *testing.T) {
 
 	gen := &schemaGen{
 		spec:      spec,
-		localRefs: make(map[string]*ast.Schema),
+		localRefs: make(map[string]*oas.Schema),
 	}
 
 	out, err := gen.Generate(ogen.Schema{
@@ -131,35 +131,35 @@ func TestSchemaRecursive(t *testing.T) {
 }
 
 func TestSchemaSideEffects(t *testing.T) {
-	expectSide := []*ast.Schema{
+	expectSide := []*oas.Schema{
 		{
-			Type: ast.Object,
-			Properties: []ast.Property{
+			Type: oas.Object,
+			Properties: []oas.Property{
 				{
 					Name:     "age",
-					Schema:   &ast.Schema{Type: ast.Integer},
+					Schema:   &oas.Schema{Type: oas.Integer},
 					Required: true,
 				},
 				{
 					Name:     "id",
-					Schema:   &ast.Schema{Type: ast.Integer},
+					Schema:   &oas.Schema{Type: oas.Integer},
 					Required: true,
 				},
 				{
 					Name:     "name",
-					Schema:   &ast.Schema{Type: ast.String},
+					Schema:   &oas.Schema{Type: oas.String},
 					Required: true,
 				},
 			},
 		},
 	}
 
-	expect := &ast.Schema{
-		Type: ast.Object,
-		Properties: []ast.Property{
+	expect := &oas.Schema{
+		Type: oas.Object,
+		Properties: []oas.Property{
 			{
 				Name:     "name",
-				Schema:   &ast.Schema{Type: ast.String},
+				Schema:   &oas.Schema{Type: oas.String},
 				Required: true,
 			},
 			{
@@ -171,7 +171,7 @@ func TestSchemaSideEffects(t *testing.T) {
 	}
 
 	gen := &schemaGen{
-		localRefs: make(map[string]*ast.Schema),
+		localRefs: make(map[string]*oas.Schema),
 	}
 
 	out, err := gen.Generate(ogen.Schema{
@@ -209,19 +209,19 @@ func TestSchemaReferencedArray(t *testing.T) {
 		},
 	}
 
-	pets := &ast.Schema{
-		Type: ast.Array,
+	pets := &oas.Schema{
+		Type: oas.Array,
 		Ref:  "#/components/schemas/Pets",
-		Item: &ast.Schema{Type: ast.String},
+		Item: &oas.Schema{Type: oas.String},
 	}
 
-	expectLocalRefs := map[string]*ast.Schema{
+	expectLocalRefs := map[string]*oas.Schema{
 		"#/components/schemas/Pets": pets,
 	}
 
-	expect := &ast.Schema{
-		Type: ast.Object,
-		Properties: []ast.Property{
+	expect := &oas.Schema{
+		Type: oas.Object,
+		Properties: []oas.Property{
 			{
 				Name:     "pets",
 				Schema:   pets,
@@ -232,7 +232,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 
 	gen := &schemaGen{
 		spec:      spec,
-		localRefs: make(map[string]*ast.Schema),
+		localRefs: make(map[string]*oas.Schema),
 	}
 
 	out, err := gen.Generate(ogen.Schema{

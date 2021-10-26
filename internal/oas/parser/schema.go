@@ -6,14 +6,14 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (p *parser) parseSchema(schema ogen.Schema) (*ast.Schema, error) {
+func (p *parser) parseSchema(schema ogen.Schema) (*oas.Schema, error) {
 	gen := &schemaGen{
 		spec:       p.spec,
 		globalRefs: p.refs.schemas,
-		localRefs:  make(map[string]*ast.Schema),
+		localRefs:  make(map[string]*oas.Schema),
 	}
 
 	s, err := gen.Generate(schema)
