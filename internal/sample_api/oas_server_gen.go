@@ -52,6 +52,12 @@ var (
 
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
+	// PetGet implements petGet operation.
+	PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error)
+	// PetCreate implements petCreate operation.
+	PetCreate(ctx context.Context) (PetGetResponseOKApplicationJSON, error)
+	// PetGetByName implements petGetByName operation.
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (PetGetResponseOKApplicationJSON, error)
 	// FoobarGet implements foobarGet operation.
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetResponse, error)
 	// FoobarPut implements  operation.
@@ -62,10 +68,4 @@ type Server interface {
 	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
 	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
-	// PetGet implements petGet operation.
-	PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error)
-	// PetCreate implements petCreate operation.
-	PetCreate(ctx context.Context) (FoobarGetResponseOKApplicationJSON, error)
-	// PetGetByName implements petGetByName operation.
-	PetGetByName(ctx context.Context, params PetGetByNameParams) (FoobarGetResponseOKApplicationJSON, error)
 }

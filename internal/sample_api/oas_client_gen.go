@@ -72,6 +72,113 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
+func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetResponse, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet"
+
+	q := u.Query()
+	{
+		// Encode 'petID' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.PetID
+		param := e.EncodeInt64(v)
+		q.Set("petID", param)
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	{
+		value := conv.UUIDArrayToString(params.XTags)
+		for _, v := range value {
+			r.Header.Add("x-tags", v)
+		}
+	}
+	{
+		value := conv.StringArrayToString(params.XScope)
+		for _, v := range value {
+			r.Header.Add("x-scope", v)
+		}
+	}
+
+	{
+		value := conv.StringToString(params.Token)
+		r.AddCookie(&http.Cookie{
+			Name:   "token",
+			Value:  value,
+			MaxAge: 1337,
+		})
+	}
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetGetResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) PetCreate(ctx context.Context) (res PetGetResponseOKApplicationJSON, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet"
+
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetCreateResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res PetGetResponseOKApplicationJSON, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/"
+	{
+		// Encode 'name' parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "name",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		u.Path += e.EncodeString(params.Name)
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetGetByNameResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetResponse, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
@@ -211,113 +318,6 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	defer resp.Body.Close()
 
 	result, err := decodePetFriendsNamesByIDResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetResponse, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet"
-
-	q := u.Query()
-	{
-		// Encode 'petID' parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-		v := params.PetID
-		param := e.EncodeInt64(v)
-		q.Set("petID", param)
-	}
-	u.RawQuery = q.Encode()
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	{
-		value := conv.UUIDArrayToString(params.XTags)
-		for _, v := range value {
-			r.Header.Add("x-tags", v)
-		}
-	}
-	{
-		value := conv.StringArrayToString(params.XScope)
-		for _, v := range value {
-			r.Header.Add("x-scope", v)
-		}
-	}
-
-	{
-		value := conv.StringToString(params.Token)
-		r.AddCookie(&http.Cookie{
-			Name:   "token",
-			Value:  value,
-			MaxAge: 1337,
-		})
-	}
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodePetGetResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) PetCreate(ctx context.Context) (res FoobarGetResponseOKApplicationJSON, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet"
-
-	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodePetCreateResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res FoobarGetResponseOKApplicationJSON, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet/"
-	{
-		// Encode 'name' parameter.
-		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param:   "name",
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-		u.Path += e.EncodeString(params.Name)
-	}
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodePetGetByNameResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}

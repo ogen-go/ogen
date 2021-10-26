@@ -50,6 +50,22 @@ var (
 	_ = net.IP{}
 )
 
+func NewJSONHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.JSON(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeJSONResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func NewDBHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -123,22 +139,6 @@ func NewCachingHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := encodeCachingResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewJSONHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.JSON(r.Context())
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeJSONResponse(response, w); err != nil {
 			_ = err
 			return
 		}

@@ -6,6 +6,8 @@ import (
 	"os"
 	"text/template"
 
+	"golang.org/x/xerrors"
+
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
@@ -62,30 +64,25 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Types:      g.types,
 		Interfaces: g.interfaces,
 	}
-
-	templates := []struct {
-		name string
-		file string
-	}{
-		{"schemas", "oas_schemas_gen.go"},
-		{"interfaces", "oas_interfaces_gen.go"},
-		{"params", "oas_params_gen.go"},
-		{"param_decoders", "oas_param_dec_gen.go"},
-		{"handlers", "oas_handlers_gen.go"},
-		{"router", "oas_router_gen.go"},
-		{"request_encoders", "oas_req_enc_gen.go"},
-		{"request_decoders", "oas_req_dec_gen.go"},
-		{"response_encoders", "oas_res_enc_gen.go"},
-		{"response_decoders", "oas_res_dec_gen.go"},
-		{"validators", "oas_validators_gen.go"},
-		{"schemas_json", "oas_schemas_json_gen.go"},
-		{"server", "oas_server_gen.go"},
-		{"client", "oas_client_gen.go"},
-	}
-
-	for _, t := range templates {
-		if err := w.Generate(t.name, t.file, cfg); err != nil {
-			return err
+	for _, name := range []string{
+		"schemas",
+		"schemas_json",
+		"interfaces",
+		"params",
+		"param_dec",
+		"handlers",
+		"router",
+		"req_enc",
+		"req_dec",
+		"res_enc",
+		"res_dec",
+		"validators",
+		"server",
+		"client",
+	} {
+		fileName := fmt.Sprintf("oas_%s_gen.go", name)
+		if err := w.Generate(name, fileName, cfg); err != nil {
+			return xerrors.Errorf("%s: %w", name, err)
 		}
 	}
 
