@@ -68,6 +68,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			Type:        oas.SchemaType(schema.Type),
 			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
+			Nullable:    schema.Nullable,
 			Enum:        values,
 		}), nil
 	case len(schema.OneOf) > 0:
@@ -83,6 +84,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 		return onret(&oas.Schema{
 			OneOf:       schemas,
+			Nullable:    schema.Nullable,
 			Ref:         schema.Ref,
 			Description: schema.Description,
 		}), nil
@@ -99,6 +101,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 		return onret(&oas.Schema{
 			AnyOf:       schemas,
+			Nullable:    schema.Nullable,
 			Ref:         schema.Ref,
 			Description: schema.Description,
 		}), nil
@@ -115,6 +118,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 		return onret(&oas.Schema{
 			AllOf:       schemas,
+			Nullable:    schema.Nullable,
 			Ref:         schema.Ref,
 			Description: schema.Description,
 		}), nil
@@ -135,6 +139,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		}
 		s := &oas.Schema{
 			Type:          oas.Object,
+			Nullable:      schema.Nullable,
 			Description:   schema.Description,
 			Ref:           ref,
 			MinProperties: schema.MinProperties,
@@ -164,6 +169,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 	case "array":
 		array := &oas.Schema{
 			Type:        oas.Array,
+			Nullable:    schema.Nullable,
 			Description: schema.Description,
 			Ref:         ref,
 			MinItems:    schema.MinItems,
@@ -201,6 +207,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			Format:           oas.Format(schema.Format),
 			Description:      schema.Description,
 			Ref:              ref,
+			Nullable:         schema.Nullable,
 			Minimum:          schema.Minimum,
 			Maximum:          schema.Maximum,
 			ExclusiveMinimum: schema.ExclusiveMinimum,
@@ -218,6 +225,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
 			Ref:         ref,
+			Nullable:    schema.Nullable,
 		}), nil
 
 	case "string":
@@ -233,6 +241,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			MaxLength:   schema.MaxLength,
 			MinLength:   schema.MinLength,
 			Pattern:     schema.Pattern,
+			Nullable:    schema.Nullable,
 		}), nil
 
 	case "":
