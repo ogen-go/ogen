@@ -1,9 +1,10 @@
 package gen
 
 import (
-	ast "github.com/ogen-go/ogen/internal/ast"
-	"github.com/ogen-go/ogen/internal/ir"
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ir"
 )
 
 func (g *Generator) generateParameters(params []*ast.Parameter) ([]*ir.Parameter, error) {

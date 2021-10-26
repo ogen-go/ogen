@@ -3,7 +3,7 @@ package gen
 import (
 	"golang.org/x/xerrors"
 
-	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
 )
 

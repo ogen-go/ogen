@@ -6,7 +6,7 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ast/parser"
 	"github.com/ogen-go/ogen/internal/ir"
 )

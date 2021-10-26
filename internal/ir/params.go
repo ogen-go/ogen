@@ -1,6 +1,6 @@
 package ir
 
-import ast "github.com/ogen-go/ogen/internal/ast"
+import "github.com/ogen-go/ogen/internal/ast"
 
 func (op *Operation) PathParams() []*Parameter   { return op.getParams(ast.LocationPath) }
 func (op *Operation) QueryParams() []*Parameter  { return op.getParams(ast.LocationQuery) }

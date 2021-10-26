@@ -1,6 +1,6 @@
 package ir
 
-import ast "github.com/ogen-go/ogen/internal/ast"
+import "github.com/ogen-go/ogen/internal/ast"
 
 func Primitive(typ PrimitiveType, schema *ast.Schema) *Type {
 	return &Type{

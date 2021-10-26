@@ -1,7 +1,7 @@
 package gen
 
 import (
-	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
 )
 

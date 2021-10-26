@@ -3,9 +3,10 @@ package gen
 import (
 	"strings"
 
-	ast "github.com/ogen-go/ogen/internal/ast"
-	"github.com/ogen-go/ogen/internal/ir"
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ir"
 )
 
 func (g *Generator) generateOperation(spec *ast.Operation) (_ *ir.Operation, err error) {

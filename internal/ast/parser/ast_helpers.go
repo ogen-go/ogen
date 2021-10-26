@@ -1,6 +1,6 @@
 package parser
 
-import ast "github.com/ogen-go/ogen/internal/ast"
+import "github.com/ogen-go/ogen/internal/ast"
 
 func createAstRBody() *ast.RequestBody {
 	return &ast.RequestBody{
