@@ -57,10 +57,10 @@ type Tag struct {
 
 // Field of structure.
 type Field struct {
-	Property string // original property name
-	Name     string
-	Type     *Type
-	Tag      Tag
+	Name string
+	Type *Type
+	Tag  Tag
+	Spec oas.Property
 }
 
 func (t *Type) Is(vs ...Kind) bool {

@@ -141,12 +141,12 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 				typ = typ.Pointer(ir.NilInvalid)
 			}
 			s.Fields = append(s.Fields, &ir.Field{
-				Property: prop.Name,
-				Name:     pascalMP(prop.Name),
-				Type:     typ,
+				Name: pascalMP(prop.Name),
+				Type: typ,
 				Tag: ir.Tag{
 					JSON: prop.Name,
 				},
+				Spec: prop,
 			})
 		}
 
