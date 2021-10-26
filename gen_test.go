@@ -33,7 +33,6 @@ func TestGenerate(t *testing.T) {
 	}{
 		{
 			Name: "firecracker.json",
-			Skip: true,
 		},
 		{
 			Name: "api.github.com.json",
@@ -55,14 +54,12 @@ func TestGenerate(t *testing.T) {
 		},
 		{
 			Name: "nh.json",
-			Skip: true,
 		},
 		{
 			Name: "techempower.json",
 		},
 		{
 			Name: "telegram_bot_api.json",
-			Skip: true,
 			Options: gen.Options{
 				IgnoreNotImplemented: []string{"anyOf"},
 			},
@@ -77,7 +74,6 @@ func TestGenerate(t *testing.T) {
 			// https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec
 			// Generated from OpenAPI v2 (swagger) spec.
 			Name: "k8s.json",
-			Skip: true,
 			Options: gen.Options{
 				IgnoreUnspecifiedParams: true,
 				IgnoreNotImplemented: []string{

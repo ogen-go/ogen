@@ -151,6 +151,8 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 
 	if ref, ok := isRef(); ok {
 		g.wrapped[ref] = t
+	} else {
+		g.saveType(t)
 	}
 	return t
 }
