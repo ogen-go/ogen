@@ -3,7 +3,7 @@
     more.Down()
     j.WriteArrayStart()
     for _, elem := range {{ $.Var }} {
-      {{- template "enc_json_value" array_elem $.Type.Item -}}
+      {{- template "enc_json_value" array_elem $.Type.Item }}
     }
     j.WriteArrayEnd()
     more.Up()
