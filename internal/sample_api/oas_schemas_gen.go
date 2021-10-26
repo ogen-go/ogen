@@ -52,8 +52,31 @@ var (
 
 // Ref: #/components/schemas/Data
 type Data struct {
-	Description OptString `json:"description"`
+	Description OptString       `json:"description"`
+	ID          DataIDStringInt `json:"id"`
 }
+
+// DataIDStringInt represents sum type.
+type DataIDStringInt struct {
+	Type   DataIDStringIntType // switch on this field
+	String string
+	Int    int
+}
+
+// DataIDStringIntType is oneOf type of DataIDStringInt.
+type DataIDStringIntType string
+
+// Possible values for DataIDStringIntType.
+const (
+	DataIDStringIntString DataIDStringIntType = "string"
+	DataIDStringIntInt    DataIDStringIntType = "int"
+)
+
+// IsString reports whether DataIDStringInt is string.
+func (s DataIDStringInt) IsString() bool { return s.Type == DataIDStringIntString }
+
+// IsInt reports whether DataIDStringInt is int.
+func (s DataIDStringInt) IsInt() bool { return s.Type == DataIDStringIntInt }
 
 // FoobarGetResNotFound is response for FoobarGet operation.
 type FoobarGetResNotFound struct{}

@@ -61,6 +61,8 @@ func (s Data) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
+
+	// Unsupported kind "sum".
 	j.WriteObjectEnd()
 }
 
@@ -76,6 +78,14 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 					return err
 				}
 				return nil
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "id":
+			if err := func() error {
+				return fmt.Errorf(`decoding of "DataIDStringInt" (sum) is not implemented`)
 			}(); err != nil {
 				retErr = err
 				return false
