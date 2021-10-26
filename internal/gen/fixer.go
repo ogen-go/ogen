@@ -104,7 +104,11 @@ func (g *Generator) fixEqualResponses(op *ir.Operation) {
 		candidate.typ.Unimplement(op.Response.Type)
 		alias := ir.Alias(candidate.renameTo, candidate.typ)
 		alias.Implement(op.Response.Type)
-		g.saveType(alias)
+
+		// TODO: Fix duplicates.
+		// g.saveType(alias)
+		g.types[alias.Name] = alias
+
 		if candidate.replaceNoc {
 			candidate.response.NoContent = alias
 			continue
