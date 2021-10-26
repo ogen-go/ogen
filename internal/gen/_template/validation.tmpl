@@ -28,7 +28,7 @@ func (s *{{ $t.Name }}) Validate() error {
         {{- if $f.Type.Validators.String.Set }}
         {{- $validated = true }}
         {
-            // Validate '{{ $f.Property }}' property.
+            // Validate "{{ $f.Property }}" property.
             validator := validate.String{
                 MinLength:    {{ $f.Type.Validators.String.MinLength }},
                 MinLengthSet: {{ $f.Type.Validators.String.MinLengthSet }},
@@ -43,7 +43,7 @@ func (s *{{ $t.Name }}) Validate() error {
         {{- if $f.Type.Validators.Int.Set }}
         {{- $validated = true }}
         {
-            // Validate '{{ $f.Property }}' property.
+            // Validate "{{ $f.Property }}" property.
             validator := validate.Int{
                 MinSet:         {{ $f.Type.Validators.Int.MinSet }},
                 Min:            {{ $f.Type.Validators.Int.Min }},

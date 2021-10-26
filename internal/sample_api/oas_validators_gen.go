@@ -53,7 +53,7 @@ var (
 func (s *Pet) Validate() error {
 	var failures []validate.FieldError
 	{
-		// Validate 'id' property.
+		// Validate "id" property.
 		validator := validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -67,10 +67,10 @@ func (s *Pet) Validate() error {
 		}
 	}
 	{
-		// Validate 'name' property.
+		// Validate "name" property.
 		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
+			MinLength:    4,
+			MinLengthSet: true,
 			MaxLength:    24,
 			MaxLengthSet: true,
 		}

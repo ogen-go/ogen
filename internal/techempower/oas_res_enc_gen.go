@@ -58,6 +58,10 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	// Unsupported kind "alias".
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -69,6 +73,11 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -80,6 +89,11 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -91,6 +105,10 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	// Unsupported kind "alias".
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -102,5 +120,9 @@ func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	// Unsupported kind "alias".
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }

@@ -220,6 +220,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			Description: schema.Description,
 			Ref:         ref,
 			MaxLength:   schema.MaxLength,
+			MinLength:   schema.MinLength,
 			Pattern:     schema.Pattern,
 		}), nil
 

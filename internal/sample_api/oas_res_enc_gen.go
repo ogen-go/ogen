@@ -60,6 +60,11 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error
 		more := json.NewMore(j)
 		defer more.Reset()
 
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
 		return nil
 	case *FoobarGetResNotFound:
 		w.WriteHeader(404)
@@ -79,6 +84,11 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 		more := json.NewMore(j)
 		defer more.Reset()
 
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
 		return nil
 	case *FoobarPostResNotFound:
 		w.WriteHeader(404)
@@ -91,6 +101,11 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 		more := json.NewMore(j)
 		defer more.Reset()
 
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return fmt.Errorf("/foobar: unexpected response type: %T", response)
@@ -110,6 +125,11 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -121,6 +141,18 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter)
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range response {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -134,6 +166,11 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 		more := json.NewMore(j)
 		defer more.Reset()
 
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
 		return nil
 	case *PetGetDefApplicationJSONStatusCode:
 		w.Header().Set("Content-Type", "application/json")
@@ -143,6 +180,11 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 		more := json.NewMore(j)
 		defer more.Reset()
 
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return fmt.Errorf("/pet: unexpected response type: %T", response)
@@ -157,6 +199,11 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -168,5 +215,10 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	j.WriteString(response)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
