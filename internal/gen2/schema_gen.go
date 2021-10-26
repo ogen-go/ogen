@@ -1,9 +1,10 @@
 package gen
 
 import (
+	"golang.org/x/xerrors"
+
 	ast "github.com/ogen-go/ogen/internal/ast2"
 	"github.com/ogen-go/ogen/internal/ir"
-	"golang.org/x/xerrors"
 )
 
 type schemaGen struct {
@@ -62,7 +63,7 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 			t.Validators.String.SetMinLength(int(*schema.MinLength))
 		}
 
-		if ref := t.Spec.Ref; ref != "" {
+		if ref := t.Schema.Ref; ref != "" {
 			if t.Is(ir.KindPrimitive, ir.KindArray) {
 				t = ir.Alias(name, t)
 			}
@@ -81,9 +82,9 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 	switch schema.Type {
 	case ast.Object:
 		s := &ir.Type{
-			Kind: ir.KindStruct,
-			Name: name,
-			Spec: schema,
+			Kind:   ir.KindStruct,
+			Name:   name,
+			Schema: schema,
 		}
 
 		s = side(s)
@@ -114,8 +115,8 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 
 	case ast.Array:
 		array := &ir.Type{
-			Kind: ir.KindArray,
-			Spec: schema,
+			Kind:   ir.KindArray,
+			Schema: schema,
 		}
 
 		ret := side(array)
@@ -156,7 +157,7 @@ func (g *schemaGen) primitive(name string, schema *ast.Schema) (*ir.Type, error)
 			Name:       name,
 			Primitive:  typ.Primitive,
 			EnumValues: schema.Enum,
-			Spec:       schema,
+			Schema:     schema,
 		}, nil
 	}
 

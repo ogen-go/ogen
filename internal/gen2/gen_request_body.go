@@ -1,20 +1,21 @@
 package gen
 
 import (
+	"golang.org/x/xerrors"
+
 	ast "github.com/ogen-go/ogen/internal/ast2"
 	"github.com/ogen-go/ogen/internal/ir"
-	"golang.org/x/xerrors"
 )
 
 func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Request, error) {
 	types := make(map[string]*ir.Type)
 	for contentType, schema := range body.Contents {
-		sname := name
+		sName := name
 		if len(body.Contents) > 1 {
-			sname = pascal(name, contentType)
+			sName = pascal(name, contentType)
 		}
 
-		typ, err := g.generateSchema(sname, schema)
+		typ, err := g.generateSchema(sName, schema)
 		if err != nil {
 			return nil, xerrors.Errorf("contents: %s: %w", contentType, err)
 		}
@@ -33,7 +34,7 @@ func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Req
 		}
 	}
 
-	iface := ir.Iface(name)
+	iface := ir.Interface(name)
 	iface.AddMethod(camel(name))
 	g.saveIface(iface)
 	for contentType, typ := range types {

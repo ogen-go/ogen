@@ -2,19 +2,19 @@ package ir
 
 import ast "github.com/ogen-go/ogen/internal/ast2"
 
-func Primitive(typ PrimitiveType, spec *ast.Schema) *Type {
+func Primitive(typ PrimitiveType, schema *ast.Schema) *Type {
 	return &Type{
 		Kind:      KindPrimitive,
 		Primitive: typ,
-		Spec:      spec,
+		Schema:    schema,
 	}
 }
 
-func Array(item *Type, spec *ast.Schema) *Type {
+func Array(item *Type, schema *ast.Schema) *Type {
 	return &Type{
-		Kind: KindArray,
-		Item: item,
-		Spec: spec,
+		Kind:   KindArray,
+		Item:   item,
+		Schema: schema,
 	}
 }
 
@@ -26,7 +26,7 @@ func Alias(name string, to *Type) *Type {
 	}
 }
 
-func Iface(name string) *Type {
+func Interface(name string) *Type {
 	return &Type{
 		Name:            name,
 		Kind:            KindInterface,

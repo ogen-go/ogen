@@ -3,9 +3,10 @@ package gen
 import (
 	"net/http"
 
+	"golang.org/x/xerrors"
+
 	ast "github.com/ogen-go/ogen/internal/ast2"
 	"github.com/ogen-go/ogen/internal/ir"
-	"golang.org/x/xerrors"
 )
 
 func (g *Generator) generateResponses(name string, responses *ast.OperationResponse) (*ir.Response, error) {
@@ -15,7 +16,7 @@ func (g *Generator) generateResponses(name string, responses *ast.OperationRespo
 	}
 
 	for code, resp := range responses.StatusCode {
-		resp, err := g.response2IR(pascal(name, http.StatusText(code)), resp)
+		resp, err := g.responseToIR(pascal(name, http.StatusText(code)), resp)
 		if err != nil {
 			return nil, xerrors.Errorf("%d: %w", code, err)
 		}
@@ -24,7 +25,7 @@ func (g *Generator) generateResponses(name string, responses *ast.OperationRespo
 	}
 
 	if def := responses.Default; def != nil {
-		resp, err := g.response2IR(name+"Default", def)
+		resp, err := g.responseToIR(name+"Default", def)
 		if err != nil {
 			return nil, xerrors.Errorf("default: %w", err)
 		}
@@ -56,7 +57,7 @@ func (g *Generator) generateResponses(name string, responses *ast.OperationRespo
 		return result, nil
 	}
 
-	iface := ir.Iface(name)
+	iface := ir.Interface(name)
 	iface.AddMethod(camel(name))
 	g.saveIface(iface)
 	walkResponseTypes(result, func(rname string, typ *ir.Type) *ir.Type {
@@ -73,7 +74,7 @@ func (g *Generator) generateResponses(name string, responses *ast.OperationRespo
 	return result, nil
 }
 
-func (g *Generator) response2IR(name string, resp *ast.Response) (*ir.StatusResponse, error) {
+func (g *Generator) responseToIR(name string, resp *ast.Response) (*ir.StatusResponse, error) {
 	if len(resp.Contents) == 0 {
 		typ := &ir.Type{
 			Kind: ir.KindStruct,

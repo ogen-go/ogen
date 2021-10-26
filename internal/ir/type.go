@@ -7,21 +7,21 @@ import (
 	ast "github.com/ogen-go/ogen/internal/ast2"
 )
 
-type TypeKind = string
+type Kind string
 
 const (
-	KindPrimitive TypeKind = "primitive"
-	KindArray     TypeKind = "array"
-	KindAlias     TypeKind = "alias"
-	KindEnum      TypeKind = "enum"
-	KindStruct    TypeKind = "struct"
-	KindPointer   TypeKind = "pointer"
-	KindInterface TypeKind = "interface"
-	KindGeneric   TypeKind = "generic" // ?
+	KindPrimitive Kind = "primitive"
+	KindArray     Kind = "array"
+	KindAlias     Kind = "alias"
+	KindEnum      Kind = "enum"
+	KindStruct    Kind = "struct"
+	KindPointer   Kind = "pointer"
+	KindInterface Kind = "interface"
+	KindGeneric   Kind = "generic" // ?
 )
 
 type Type struct {
-	Kind            TypeKind
+	Kind            Kind
 	Name            string              // only for struct, alias, interface, enum
 	Primitive       PrimitiveType       // only for primitive, enum
 	AliasTo         *Type               // only for alias
@@ -32,12 +32,11 @@ type Type struct {
 	Implements      map[*Type]struct{}  // only for struct, alias, enum
 	Implementations map[*Type]struct{}  // only for interface
 	IfaceMethods    map[string]struct{} // only for interface
-	Spec            *ast.Schema         // for all kinds except pointer, interface. Can be nil.
-
-	Validators     Validators
-	NilSemantic    NilSemantic
-	GenericOf      *Type
-	GenericVariant GenericVariant
+	Schema          *ast.Schema         // for all kinds except pointer, interface. Can be nil.
+	Validators      Validators
+	NilSemantic     NilSemantic
+	GenericOf       *Type          // only for generic
+	GenericVariant  GenericVariant // only for generic
 }
 
 type StructField struct {
@@ -46,7 +45,7 @@ type StructField struct {
 	Tag  string
 }
 
-func (t *Type) Is(vs ...TypeKind) bool {
+func (t *Type) Is(vs ...Kind) bool {
 	for _, v := range vs {
 		if t.Kind == v {
 			return true
