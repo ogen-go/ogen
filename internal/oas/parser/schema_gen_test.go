@@ -28,12 +28,14 @@ func TestSchemaSimple(t *testing.T) {
 		Type: ast.Object,
 		Properties: []ast.Property{
 			{
-				Name:   "id",
-				Schema: &ast.Schema{Type: ast.Integer},
+				Name:     "id",
+				Schema:   &ast.Schema{Type: ast.Integer},
+				Required: true,
 			},
 			{
-				Name:   "name",
-				Schema: &ast.Schema{Type: ast.String},
+				Name:     "name",
+				Schema:   &ast.Schema{Type: ast.String},
+				Required: true,
 			},
 		},
 	}
@@ -74,14 +76,17 @@ func TestSchemaRecursive(t *testing.T) {
 				Type: ast.Array,
 				Item: pet,
 			},
+			Required: true,
 		},
 		{
-			Name:   "id",
-			Schema: &ast.Schema{Type: ast.Integer},
+			Name:     "id",
+			Schema:   &ast.Schema{Type: ast.Integer},
+			Required: true,
 		},
 		{
-			Name:   "name",
-			Schema: &ast.Schema{Type: ast.String},
+			Name:     "name",
+			Schema:   &ast.Schema{Type: ast.String},
+			Required: true,
 		},
 	}
 
@@ -96,14 +101,17 @@ func TestSchemaRecursive(t *testing.T) {
 						Type: ast.Array,
 						Item: pet,
 					},
+					Required: true,
 				},
 				{
-					Name:   "id",
-					Schema: &ast.Schema{Type: ast.Integer},
+					Name:     "id",
+					Schema:   &ast.Schema{Type: ast.Integer},
+					Required: true,
 				},
 				{
-					Name:   "name",
-					Schema: &ast.Schema{Type: ast.String},
+					Name:     "name",
+					Schema:   &ast.Schema{Type: ast.String},
+					Required: true,
 				},
 			},
 		},
@@ -128,16 +136,19 @@ func TestSchemaSideEffects(t *testing.T) {
 			Type: ast.Object,
 			Properties: []ast.Property{
 				{
-					Name:   "age",
-					Schema: &ast.Schema{Type: ast.Integer},
+					Name:     "age",
+					Schema:   &ast.Schema{Type: ast.Integer},
+					Required: true,
 				},
 				{
-					Name:   "id",
-					Schema: &ast.Schema{Type: ast.Integer},
+					Name:     "id",
+					Schema:   &ast.Schema{Type: ast.Integer},
+					Required: true,
 				},
 				{
-					Name:   "name",
-					Schema: &ast.Schema{Type: ast.String},
+					Name:     "name",
+					Schema:   &ast.Schema{Type: ast.String},
+					Required: true,
 				},
 			},
 		},
@@ -147,12 +158,14 @@ func TestSchemaSideEffects(t *testing.T) {
 		Type: ast.Object,
 		Properties: []ast.Property{
 			{
-				Name:   "name",
-				Schema: &ast.Schema{Type: ast.String},
+				Name:     "name",
+				Schema:   &ast.Schema{Type: ast.String},
+				Required: true,
 			},
 			{
-				Name:   "owner",
-				Schema: expectSide[0],
+				Name:     "owner",
+				Schema:   expectSide[0],
+				Required: true,
 			},
 		},
 	}
@@ -210,8 +223,9 @@ func TestSchemaReferencedArray(t *testing.T) {
 		Type: ast.Object,
 		Properties: []ast.Property{
 			{
-				Name:   "pets",
-				Schema: pets,
+				Name:     "pets",
+				Schema:   pets,
+				Required: true,
 			},
 		},
 	}
