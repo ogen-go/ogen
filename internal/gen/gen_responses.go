@@ -72,7 +72,7 @@ func (g *Generator) generateResponses(opName string, responses *oas.OperationRes
 	g.saveIface(iface)
 	walkResponseTypes(result, func(resName string, typ *ir.Type) *ir.Type {
 		if typ.Is(ir.KindPrimitive, ir.KindArray) {
-			typ = ir.Alias(pascal(resName, resName), typ)
+			typ = ir.Alias(pascal(opName, resName), typ)
 			g.saveType(typ)
 		}
 

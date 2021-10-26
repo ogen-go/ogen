@@ -19,7 +19,7 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	}
 
 	// Convert []oas.Parameter to []ir.Parameter.
-	op.Params, err = g.generateParameters(spec.Parameters)
+	op.Params, err = g.generateParameters(op.Name, spec.Parameters)
 	if err != nil {
 		return nil, xerrors.Errorf("parameters: %w", err)
 	}
@@ -27,20 +27,15 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	// Convert []oas.PathPart to []ir.PathPart.
 	for _, part := range spec.PathParts {
 		if part.Raw != "" {
-			op.PathParts = append(op.PathParts, &ir.PathPart{
-				Raw: part.Raw,
-			})
+			op.PathParts = append(op.PathParts, &ir.PathPart{Raw: part.Raw})
 			continue
 		}
 
-		param, err := g.generateParameter(part.Param)
-		if err != nil {
-			return nil, xerrors.Errorf("param: %w", err)
+		param, found := findParam(op.Params, part.Param.Name)
+		if !found {
+			panic("unreachable")
 		}
-
-		op.PathParts = append(op.PathParts, &ir.PathPart{
-			Param: param,
-		})
+		op.PathParts = append(op.PathParts, &ir.PathPart{Param: param})
 	}
 
 	if spec.RequestBody != nil {
@@ -56,4 +51,13 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	}
 
 	return op, nil
+}
+
+func findParam(params []*ir.Parameter, specName string) (*ir.Parameter, bool) {
+	for _, p := range params {
+		if p.Spec.Name == specName {
+			return p, true
+		}
+	}
+	return nil, false
 }
