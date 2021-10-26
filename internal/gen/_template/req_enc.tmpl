@@ -23,7 +23,7 @@ func encode{{ $op.Name }}Request(req {{ $op.Request.Type.Go }}) (data []byte, co
     switch req := req.(type) {
     {{- range $contentType, $type := $op.Request.Contents }}
     case *{{ $type.Go }}:
-        {{- if eq $contentType "application/json" }}
+        {{- if $contentType.JSON }}
         return json.Encode(req), "{{ $contentType }}", nil
         {{- else }}
         return nil, "", fmt.Errorf("{{ $contentType }} encoder not implemented")

@@ -67,7 +67,10 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) 
 
 			var response Pet
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -100,7 +103,10 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 
 			var response Pet
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -120,7 +126,10 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 
 			var response FoobarPostDefApplicationJSONStatusCode
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -163,7 +172,10 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 
 			var response Pet
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -194,7 +206,24 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 
 			var response []string
 			if err := func() error {
-				return nil
+				response = response[:0]
+				var retErr error
+				i.ReadArrayCB(func(i *json.Iterator) bool {
+					var elem string
+					if err := func() error {
+						elem = string(i.ReadString())
+						return i.Error
+					}(); err != nil {
+						retErr = err
+						return false
+					}
+					response = append(response, elem)
+					return true
+				})
+				if retErr != nil {
+					return retErr
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -225,7 +254,10 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 
 			var response Pet
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -243,7 +275,10 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 
 			var response PetGetDefApplicationJSONStatusCode
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -273,7 +308,10 @@ func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 
 			var response Pet
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -304,7 +342,8 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 
 			var response string
 			if err := func() error {
-				return nil
+				response = string(i.ReadString())
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
