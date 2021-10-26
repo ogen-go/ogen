@@ -14,17 +14,16 @@ import (
 
 // Elem variable helper for recursive array or object encoding or decoding.
 type Elem struct {
-	SubElem bool
-	Tag     ir.Tag
-	Type    *ir.Type
-	Var     string
+	Sub  bool // true if Elem has parent Elem
+	Type *ir.Type
+	Var  string
 }
 
 // NextVar returns name of variable for decoding recursive call.
 //
 // Needed to make variable names unique.
 func (e Elem) NextVar() string {
-	if !e.SubElem {
+	if !e.Sub {
 		// No recursion, returning default name.
 		return "elem"
 	}
@@ -82,25 +81,25 @@ func templateFunctions() template.FuncMap {
 		// Helpers for recursive encoding and decoding.
 		"pointer_elem": func(parent Elem) Elem {
 			return Elem{
-				Type:    parent.Type.PointerTo,
-				SubElem: true,
-				Var:     parent.NextVar(),
+				Type: parent.Type.PointerTo,
+				Sub:  true,
+				Var:  parent.NextVar(),
 			}
 		},
 		// Recursive array element (e.g. array of arrays).
 		"sub_array_elem": func(parent Elem, t *ir.Type) Elem {
 			return Elem{
-				Type:    t,
-				SubElem: true,
-				Var:     parent.NextVar(),
+				Type: t,
+				Sub:  true,
+				Var:  parent.NextVar(),
 			}
 		},
 		// Initial array element.
 		"array_elem": func(t *ir.Type) Elem {
 			return Elem{
-				Type:    t,
-				SubElem: true,
-				Var:     "elem",
+				Type: t,
+				Sub:  true,
+				Var:  "elem",
 			}
 		},
 		"req_elem":        func(t *ir.Type) Elem { return Elem{Type: t, Var: "response"} },
@@ -118,7 +117,6 @@ func templateFunctions() template.FuncMap {
 		// Field of structure.
 		"field_elem": func(s *ir.Field) Elem {
 			return Elem{
-				Tag:  s.Tag,
 				Type: s.Type,
 				Var:  fmt.Sprintf("s.%s", s.Name),
 			}

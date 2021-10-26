@@ -39,6 +39,12 @@ type Type struct {
 	Validators       Validators
 }
 
+// Format denotes whether custom formatting for Type is required while encoding
+// or decoding.
+//
+// TODO(ernado): can we use t.JSON here?
+func (t Type) Format() bool { return t.Primitive == Time }
+
 // Tag of Field.
 type Tag struct {
 	JSON string // json tag, empty for none

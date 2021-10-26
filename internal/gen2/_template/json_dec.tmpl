@@ -1,8 +1,10 @@
 {{- define "dec_json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen2.Elem*/ -}}
-    {{- if $.Schema.IsPointer -}}
+    {{ $t := $.Type }}
+    {{ $j := $t.JSON }}
+    {{- if $t.IsPointer -}}
         {{ $.Var }} = nil
-        var {{ $.NextVar }} {{ $.Schema.PointerTo.Type }}
+        var {{ $.NextVar }} {{ $t.PointerTo.Type }}
         if err := func() error {
           {{- template "dec_json_value" pointer_elem $ }}
         }(); err != nil {
@@ -10,28 +12,28 @@
         }
         {{ $.Var }} = &{{ $.NextVar }}
         return i.Error
-    {{- else if $.Schema.JSONRead -}}
-        {{ $.Var }} = {{ $.Schema.Type }}(i.{{ $.Schema.JSONRead }}())
+    {{- else if $j.Read -}}
+        {{ $.Var }} = {{ $t.GoType }}(i.{{ $j.Read }}())
         return i.Error
-    {{- else if $.Schema.JSONHelper }}
-        v, err := json.Read{{ $.Schema.JSONHelper }}(i)
+    {{- else if $j.Format }}
+        v, err := json.Read{{ $t.Format }}(i)
         {{ $.Var }} = v
         if err != nil {
             return err
         }
         return i.Error
-    {{- else if or ($.Schema.IsStruct) ($.Schema.IsEnum) }}
+    {{- else if or ($t.IsStruct) ($t.IsEnum) }}
         if err := {{ $.Var }}.ReadJSON(i); err != nil {
             return err
         }
         return i.Error
-    {{- else if $.Schema.IsArray }}
+    {{- else if $t.IsArray }}
         {{ $.Var }} = {{ $.Var }}[:0]
         var retErr error
         i.ReadArrayCB(func(i *json.Iterator) bool {
-           var {{ $.NextVar }} {{ $.Schema.Item.Type }}
+           var {{ $.NextVar }} {{ $t.Item.Type }}
            if err := func() error {
-              {{- template "dec_json_value" sub_array_elem $ $.Schema.Item }}
+              {{- template "dec_json_value" sub_array_elem $ $t.Item }}
            }(); err != nil {
                retErr = err
                return false
@@ -43,13 +45,13 @@
            return retErr
         }
         return i.Error
-    {{- else if $.Schema.GenericOf }}
-        {{- if $.Schema.GenericVariant.Optional }}
+    {{- else if $t.GenericOf }}
+        {{- if $t.GenericVariant.Optional }}
           {{ $.Var }}.Reset()
         {{- end }}
-        {{- $g := $.Schema.GenericOf }}
-        {{- if $g.FormatCustom }}
-          if err := {{ $.Var }}.ReadJSON(i, json.Read{{ $g.JSONHelper }}); err != nil {
+        {{- $g := $t.GenericOf }}
+        {{- if $g.Format }}
+          if err := {{ $.Var }}.ReadJSON(i, json.Read{{ $g.JSON.Format }}); err != nil {
             return err
           }
           return nil
@@ -60,6 +62,6 @@
           return nil
         {{- end }}
     {{- else  -}}
-        return fmt.Errorf(`decoding of "{{ $.Schema.Type }}" ({{ $.Schema.Kind }}) is not implemented`)
+        return fmt.Errorf(`decoding of "{{ $t.GoType }}" ({{ $t.Kind }}) is not implemented`)
     {{- end }}
 {{- end -}}
