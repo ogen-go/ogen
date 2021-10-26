@@ -51,9 +51,10 @@ type Tag struct {
 }
 
 type Field struct {
-	Name string
-	Type *Type
-	Tag  Tag
+	Property string // original property name
+	Name     string
+	Type     *Type
+	Tag      Tag
 }
 
 func (t *Type) Is(vs ...Kind) bool {
