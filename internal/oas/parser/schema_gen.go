@@ -125,13 +125,13 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		if schema.Items != nil {
 			return nil, xerrors.New("object cannot contain 'items' field")
 		}
-		optional := func(name string) bool {
+		required := func(name string) bool {
 			for _, p := range schema.Required {
 				if p == name {
-					return false
+					return true
 				}
 			}
-			return true
+			return false
 		}
 		s := &oas.Schema{
 			Type:          oas.Object,
@@ -153,8 +153,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			s.Properties = append(s.Properties, oas.Property{
 				Name:     propName,
 				Schema:   prop,
-				Optional: optional(propName),
-				Nullable: propSchema.Nullable,
+				Required: required(propName),
 			})
 		}
 		sort.SliceStable(s.Properties, func(i, j int) bool {

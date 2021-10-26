@@ -106,8 +106,8 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 				return nil, xerrors.Errorf("field '%s': %w", prop.Name, err)
 			}
 			v := ir.GenericVariant{
-				Nullable: prop.Nullable,
-				Optional: prop.Optional,
+				Nullable: prop.Schema.Nullable,
+				Optional: !prop.Required,
 			}
 			if v.Any() {
 				if typ.CanGeneric() && !s.RecursiveTo(typ) {
