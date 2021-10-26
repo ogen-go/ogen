@@ -22,7 +22,46 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 		}
 	}
 
+	switch {
+	case len(schema.OneOf) > 0:
+		return nil, &ErrNotImplemented{"oneOf"}
+	case len(schema.AnyOf) > 0:
+		return nil, &ErrNotImplemented{"anyOf"}
+	case len(schema.AllOf) > 0:
+		return nil, &ErrNotImplemented{"allOf"}
+	}
+
 	side := func(t *ir.Type) *ir.Type {
+		// Set validation fields.
+		if schema.MultipleOf != nil {
+			t.Validators.Int.MultipleOf = *schema.MultipleOf
+			t.Validators.Int.MultipleOfSet = true
+		}
+		if schema.Maximum != nil {
+			t.Validators.Int.Max = *schema.Maximum
+			t.Validators.Int.MaxSet = true
+		}
+		if schema.Minimum != nil {
+			t.Validators.Int.Min = *schema.Minimum
+			t.Validators.Int.MinSet = true
+		}
+		t.Validators.Int.MaxExclusive = schema.ExclusiveMaximum
+		t.Validators.Int.MinExclusive = schema.ExclusiveMinimum
+
+		if schema.MaxItems != nil {
+			t.Validators.Array.SetMaxLength(int(*schema.MaxItems))
+		}
+		if schema.MinItems != nil {
+			t.Validators.Array.SetMinLength(int(*schema.MinItems))
+		}
+
+		if schema.MaxLength != nil {
+			t.Validators.String.SetMaxLength(int(*schema.MaxLength))
+		}
+		if schema.MinLength != nil {
+			t.Validators.String.SetMinLength(int(*schema.MinLength))
+		}
+
 		if ref := t.Spec.Ref; ref != "" {
 			if t.Is(ir.KindPrimitive, ir.KindArray) {
 				t = ir.Alias(name, t)

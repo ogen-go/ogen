@@ -6,14 +6,49 @@ import (
 	"strings"
 	"text/template"
 
+	ast "github.com/ogen-go/ogen/internal/ast2"
+	"github.com/ogen-go/ogen/internal/ir"
 	"golang.org/x/xerrors"
 )
+
+func fieldElem(s *ir.StructField) Elem {
+	return Elem{
+		SubElem: false,
+		Field:   s.Tag,
+		Type:    s.Type,
+		Var:     fmt.Sprintf("s.%s", s.Name),
+	}
+}
+
+// Elem variable helper for recursive array or object encoding.
+type Elem struct {
+	SubElem bool
+	Field   string
+	Type    *ir.Type
+	Var     string
+}
+
+func (e Elem) NextVar() string {
+	if !e.SubElem {
+		return "elem"
+	}
+	return e.Var + "Elem"
+}
 
 // templateFuncs returns functions which used in templates.
 func templateFuncs() template.FuncMap {
 	return template.FuncMap{
-		"trim":       strings.TrimSpace,
-		"lower":      strings.ToLower,
+		"trim": strings.TrimSpace,
+		"lower": func(v interface{}) string {
+			switch v := v.(type) {
+			case ast.ParameterLocation:
+				return strings.ToLower(string(v))
+			case string:
+				return strings.ToLower(v)
+			default:
+				panic(fmt.Sprintf("unexpected value: %T", v))
+			}
+		},
 		"trimPrefix": strings.TrimPrefix,
 		"trimSuffix": strings.TrimSuffix,
 		"hasPrefix":  strings.HasPrefix,
@@ -47,6 +82,42 @@ func templateFuncs() template.FuncMap {
 			return dict, nil
 		},
 		"sprintf": fmt.Sprintf,
+
+		// catent extra
+		"pointer_elem": func(parent Elem) Elem {
+			return Elem{
+				Type:    parent.Type.PointerTo,
+				SubElem: true,
+				Var:     parent.NextVar(),
+			}
+		},
+		"sub_array_elem": func(parent Elem, t *ir.Type) Elem {
+			return Elem{
+				Type:    t,
+				SubElem: true,
+				Var:     parent.NextVar(),
+			}
+		},
+		"array_elem": func(t *ir.Type) Elem {
+			return Elem{
+				Type:    t,
+				SubElem: true,
+				Var:     "elem",
+			}
+		},
+		"req_elem":        func(t *ir.Type) Elem { return Elem{Type: t, Var: "response"} },
+		"req_decode_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request"} },
+		"res_elem": func(i *ir.ResponseInfo) Elem {
+			v := "response"
+			if i.Default {
+				v = v + ".Response"
+			}
+			return Elem{
+				Type: i.Type,
+				Var:  v,
+			}
+		},
+		"field_elem": fieldElem,
 	}
 }
 

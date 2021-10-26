@@ -1,0 +1,87 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+
+{{ define "response_decoders" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $op := $.Operations }}{{/* Range over all methods */}}
+
+func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Response.Type.GoType }}, err error) {
+    buf := json.GetBuffer()
+    defer json.PutBuffer(buf)
+    if _, err := io.Copy(buf, resp.Body); err != nil {
+        return res, err
+    }
+
+    switch resp.StatusCode {
+    {{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
+    case {{ $statusCode }}:
+        {{- if $response.NoContent }}{{/* Decode NoContent response */}}
+        return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
+        {{- else }}{{/* Decode content response */}}
+        switch resp.Header.Get("Content-Type") {
+        {{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
+        case "{{ $contentType }}":
+            {{- if eq $contentType "application/json" }}{{/* Decode */}}
+            i := json.GetIterator()
+            defer json.PutIterator(i)
+            i.ResetBytes(buf.Bytes())
+
+            var response {{ $type.GoType }}
+            if err := func() error {
+                return nil
+                {{- /* template "dec_json_value" req_elem $schema */}}
+            }(); err != nil {
+                return res, err
+            }
+
+            return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
+            {{- else }}
+            return res, fmt.Errorf("{{ $contentType }} decoder not implemented")
+            {{- end }}{{/* Decode */}}
+        {{- end }}{{/* Range over contents */}}
+        default:
+            return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+        }
+        {{- end }}{{/* Decode content response */}}
+    {{- end }}{{/* Range over responses */}}
+    default:
+        {{- $def := $op.Response.Default }}
+        {{- if $def }}{{/* Decode default response */}}
+        {{- if $def.NoContent }}{{/* Decode NoContent response */}}
+        return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}{{ $def.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
+        {{- else }}{{/* Decode content response */}}
+        switch resp.Header.Get("Content-Type") {
+        {{- range $contentType, $type := $def.Contents }}{{/* Range over contents */}}
+        case "{{ $contentType }}":
+            {{- if eq $contentType "application/json" }}{{/* Decode */}}
+            i := json.GetIterator()
+            defer json.PutIterator(i)
+            i.ResetBytes(buf.Bytes())
+
+            var response {{ $type.GoType }}
+            if err := func() error {
+                return nil
+                {{- /* template "dec_json_value" req_elem $type */}}
+            }(); err != nil {
+                return res, err
+            }
+
+            response.StatusCode = resp.StatusCode
+            return {{ if eq $op.Response.Type.Kind "interface" }}&{{ end }}response, nil
+            {{- else }}
+            return res, fmt.Errorf("{{ $contentType }} decoder not implemented")
+            {{- end }}{{/* Decode */}}
+        {{- end }}{{/* Range over contents */}}
+        default:
+            return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+        }
+        {{- end }}{{/* Decode content response */}}
+        {{- else }}
+        return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+        {{- end }}{{- /* Decode default response */}}
+    }
+}
+
+{{- end }}{{/* Range over all methods */}}
+{{ end }}

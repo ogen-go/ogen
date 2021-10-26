@@ -7,7 +7,7 @@ import (
 	ast "github.com/ogen-go/ogen/internal/ast2"
 )
 
-type TypeKind string
+type TypeKind = string
 
 const (
 	KindPrimitive TypeKind = "primitive"
@@ -17,6 +17,7 @@ const (
 	KindStruct    TypeKind = "struct"
 	KindPointer   TypeKind = "pointer"
 	KindInterface TypeKind = "interface"
+	KindGeneric   TypeKind = "generic" // ?
 )
 
 type Type struct {
@@ -32,6 +33,11 @@ type Type struct {
 	Implementations map[*Type]struct{}  // only for interface
 	IfaceMethods    map[string]struct{} // only for interface
 	Spec            *ast.Schema         // for all kinds except pointer, interface. Can be nil.
+
+	Validators     Validators
+	NilSemantic    NilSemantic
+	GenericOf      *Type
+	GenericVariant GenericVariant
 }
 
 type StructField struct {

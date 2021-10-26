@@ -1,0 +1,54 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+
+{{ define "handlers" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $op := $.Operations }}
+func New{{ $op.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		{{- if $op.Params }}
+        params, err := decode{{ $op.Name }}Params(r)
+        if err != nil {
+            respondError(w, http.StatusBadRequest, err)
+            return
+        }
+        {{- end }}
+
+        {{- if $op.Request }}
+        request, err := decode{{ $op.Name }}Request(r)
+        if err != nil {
+            respondError(w, http.StatusBadRequest, err)
+            return
+        }
+        {{- end }}
+
+        response, err := s.{{$op.Name}}(r.Context(){{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})
+        if err != nil {
+            {{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
+            {{- /* TODO: Replace with logging when appropriate */ -}}
+            respondError(w, http.StatusInternalServerError, err)
+            return
+        }
+
+        if err := encode{{ $op.Name }}Response(response, w); err != nil {
+            _ = err
+            return
+        }
+	}
+}
+{{ end }}
+
+func respondError(w http.ResponseWriter, code int, err error) {
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(code)
+    data, writeErr := json.Marshal(struct{
+        ErrorMessage string `json:"error_message"`
+    }{
+        ErrorMessage: err.Error(),
+    })
+    if writeErr == nil {
+      w.Write(data)
+    }
+}
+{{ end }}

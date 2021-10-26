@@ -6,26 +6,35 @@ import (
 	"golang.org/x/xerrors"
 )
 
-func (g *Generator) generateParameters(name string, params []*ast.Parameter) ([]*ir.Parameter, error) {
+func (g *Generator) generateParameters(params []*ast.Parameter) ([]*ir.Parameter, error) {
 	var result []*ir.Parameter
 	for _, p := range params {
-		typ, err := g.generateSchema(pascal(name, p.Name), p.Schema)
+		param, err := g.generateParameter(p)
 		if err != nil {
 			return nil, xerrors.Errorf("'%s': %w", p.Name, err)
 		}
 
-		if !isUnderlyingPrimitive(typ) {
-			return nil, &ErrNotImplemented{"complex parameter types"}
-		}
-
-		result = append(result, &ir.Parameter{
-			Name: pascal(p.Name),
-			Type: typ,
-			Spec: p,
-		})
+		result = append(result, param)
 	}
 
 	return result, nil
+}
+
+func (g *Generator) generateParameter(p *ast.Parameter) (*ir.Parameter, error) {
+	typ, err := g.generateSchema(pascal(p.Name), p.Schema)
+	if err != nil {
+		return nil, xerrors.Errorf("'%s': %w", p.Name, err)
+	}
+
+	if !isUnderlyingPrimitive(typ) {
+		return nil, &ErrNotImplemented{"complex parameter types"}
+	}
+
+	return &ir.Parameter{
+		Name: pascal(p.Name),
+		Type: typ,
+		Spec: p,
+	}, nil
 }
 
 func isUnderlyingPrimitive(typ *ir.Type) bool {

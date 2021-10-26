@@ -17,9 +17,29 @@ func (g *Generator) generateOperation(spec *ast.Operation) (_ *ir.Operation, err
 		op.Name = pascal(spec.OperationID)
 	}
 
-	op.Params, err = g.generateParameters(op.Name+"Param", spec.Parameters)
+	// Convert []ast.Parameter to []ir.Parameter.
+	op.Params, err = g.generateParameters(spec.Parameters)
 	if err != nil {
 		return nil, xerrors.Errorf("parameters: %w", err)
+	}
+
+	// Convert []ast.PathPart to []ir.PathPart.
+	for _, part := range spec.PathParts {
+		if part.Raw != "" {
+			op.PathParts = append(op.PathParts, &ir.PathPart{
+				Raw: part.Raw,
+			})
+			continue
+		}
+
+		param, err := g.generateParameter(part.Param)
+		if err != nil {
+			return nil, xerrors.Errorf("")
+		}
+
+		op.PathParts = append(op.PathParts, &ir.PathPart{
+			Param: param,
+		})
 	}
 
 	if spec.RequestBody != nil {

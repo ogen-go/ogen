@@ -1,0 +1,45 @@
+{{ define "params_encode_path" }}
+u := uri.Clone(c.serverURL)
+{{- range $part := $.PathParts }}{{/* Range over path parts */}}
+{{- if $part.Raw }}
+u.Path += "{{ $part.Raw }}"
+
+{{- else }}
+{
+	{{- $param := $part.Param }}
+    // Encode '{{ $param.Spec.Name }}' parameter.
+    e := uri.NewPathEncoder(uri.PathEncoderConfig{
+        Param: "{{ $param.Spec.Name }}",
+        Style: uri.PathStyle{{ pascalMP $param.Spec.Style }},
+        Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+    })
+    u.Path += e.Encode{{ $param.Type.EncodeFn }}(params.{{ $param.Name }})
+}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{ define "params_encode_query" }}
+{{ $pcount := len $.QueryParams }}
+{{ if ne $pcount 0 }}{{/* Check params existence */}}
+q := u.Query()
+{{- range $param := $.QueryParams }}{{/* Range over params */}}
+{
+    // Encode '{{ $param.Spec.Name }}' parameter.
+    e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+        Style:uri.QueryStyle{{ pascalMP $param.Spec.Style }},
+        Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+    })
+    v := params.{{ $param.Name }}
+		param := e.Encode{{ $param.Type.EncodeFn }}(v)
+    {{- if eq $param.Type.Kind "array" }}
+    q["{{ $param.Spec.Name }}"] = param
+    {{- else }}
+    q.Set("{{ $param.Spec.Name }}", param)
+    {{- end }}
+}
+{{- end }}{{/* Range over params */}}
+u.RawQuery = q.Encode()
+{{- end }}{{/* Check params existence */}}
+{{- end }}
+

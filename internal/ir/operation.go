@@ -3,11 +3,17 @@ package ir
 import ast "github.com/ogen-go/ogen/internal/ast2"
 
 type Operation struct {
-	Name     string
-	Params   []*Parameter
-	Request  *Request
-	Response *Response
-	Spec     *ast.Operation
+	Name      string
+	PathParts []*PathPart
+	Params    []*Parameter
+	Request   *Request
+	Response  *Response
+	Spec      *ast.Operation
+}
+
+type PathPart struct {
+	Raw   string
+	Param *Parameter
 }
 
 type Parameter struct {
