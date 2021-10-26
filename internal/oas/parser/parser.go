@@ -10,6 +10,7 @@ import (
 )
 
 type parser struct {
+	ops Options
 	// schema specification, immutable.
 	spec *ogen.Spec
 	// parsed operations.
@@ -23,9 +24,14 @@ type parser struct {
 	}
 }
 
-func Parse(spec *ogen.Spec) ([]*ast.Operation, error) {
+type Options struct {
+	IgnoreUnspecifiedParams bool
+}
+
+func Parse(spec *ogen.Spec, opts Options) ([]*ast.Operation, error) {
 	spec.Init()
 	p := &parser{
+		ops:  opts,
 		spec: spec,
 		refs: struct {
 			schemas       map[string]*ast.Schema
@@ -51,7 +57,19 @@ func (p *parser) parse() error {
 		}
 
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
-			return p.parseOp(path, strings.ToUpper(method), op)
+			parsedOp, err := p.parseOp(path, strings.ToUpper(method), op)
+			if err != nil {
+				var paramNotSpecified *ErrPathParameterNotSpecified
+				if xerrors.As(err, &paramNotSpecified) {
+					if p.ops.IgnoreUnspecifiedParams {
+						return nil
+					}
+				}
+				return err
+			}
+
+			p.operations = append(p.operations, parsedOp)
+			return nil
 		}); err != nil {
 			return xerrors.Errorf("paths: %s: %w", path, err)
 		}
@@ -60,7 +78,7 @@ func (p *parser) parse() error {
 	return nil
 }
 
-func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (err error) {
+func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (_ *ast.Operation, err error) {
 	op := &ast.Operation{
 		OperationID: spec.OperationID,
 		HTTPMethod:  httpMethod,
@@ -68,28 +86,27 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (err erro
 
 	op.Parameters, err = p.parseParams(spec.Parameters)
 	if err != nil {
-		return xerrors.Errorf("parameters: %w", err)
+		return nil, xerrors.Errorf("parameters: %w", err)
 	}
 
 	op.PathParts, err = parsePath(path, op.Parameters)
 	if err != nil {
-		return xerrors.Errorf("parse path: %w", err)
+		return nil, xerrors.Errorf("parse path: %w", err)
 	}
 
 	if spec.RequestBody != nil {
 		op.RequestBody, err = p.parseRequestBody(spec.RequestBody)
 		if err != nil {
-			return xerrors.Errorf("requestBody: %w", err)
+			return nil, xerrors.Errorf("requestBody: %w", err)
 		}
 	}
 
 	if len(spec.Responses) > 0 {
 		op.Responses, err = p.parseResponses(spec.Responses)
 		if err != nil {
-			return xerrors.Errorf("responses: %w", err)
+			return nil, xerrors.Errorf("responses: %w", err)
 		}
 	}
 
-	p.operations = append(p.operations, op)
-	return nil
+	return op, nil
 }

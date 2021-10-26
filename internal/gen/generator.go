@@ -26,7 +26,9 @@ type Options struct {
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
-	operations, err := parser.Parse(spec)
+	operations, err := parser.Parse(spec, parser.Options{
+		IgnoreUnspecifiedParams: opts.IgnoreUnspecifiedParams,
+	})
 	if err != nil {
 		return nil, err
 	}
