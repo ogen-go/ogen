@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 type Kind string
@@ -50,6 +50,7 @@ type Tag struct {
 	JSON string // json tag, empty for none
 }
 
+// Field of structure.
 type Field struct {
 	Property string // original property name
 	Name     string
