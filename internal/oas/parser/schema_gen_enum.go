@@ -8,7 +8,7 @@ import (
 	"golang.org/x/xerrors"
 )
 
-func (g *schemaGen) parseEnumValues(typ ast.SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
+func parseEnumValues(typ ast.SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
 	var (
 		values []interface{}
 		uniq   = map[interface{}]struct{}{}

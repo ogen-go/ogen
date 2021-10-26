@@ -55,7 +55,11 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 	switch {
 	case len(schema.Enum) > 0:
-		values, err := g.parseEnumValues(oas.SchemaType(schema.Type), schema.Enum)
+		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
+			return nil, xerrors.Errorf("validate format: %w", err)
+		}
+
+		values, err := parseEnumValues(oas.SchemaType(schema.Type), schema.Enum)
 		if err != nil {
 			return nil, xerrors.Errorf("parse enum: %w", err)
 		}
@@ -114,10 +118,6 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			Ref:         schema.Ref,
 			Description: schema.Description,
 		}), nil
-	}
-
-	if err := g.validateTypeFormat(schema.Type, schema.Format); err != nil {
-		return nil, xerrors.Errorf("validate format: %w", err)
 	}
 
 	switch schema.Type {
@@ -192,6 +192,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		return array, nil
 
 	case "number", "integer":
+		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
+			return nil, xerrors.Errorf("validate format: %w", err)
+		}
+
 		return onret(&oas.Schema{
 			Type:             oas.SchemaType(schema.Type),
 			Format:           oas.Format(schema.Format),
@@ -205,6 +209,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		}), nil
 
 	case "boolean":
+		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
+			return nil, xerrors.Errorf("validate format: %w", err)
+		}
+
 		return onret(&oas.Schema{
 			Type:        oas.Boolean,
 			Format:      oas.Format(schema.Format),
@@ -213,6 +221,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		}), nil
 
 	case "string":
+		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
+			return nil, xerrors.Errorf("validate format: %w", err)
+		}
+
 		return onret(&oas.Schema{
 			Type:        oas.String,
 			Format:      oas.Format(schema.Format),
@@ -254,7 +266,7 @@ func (g *schemaGen) ref(ref string) (*oas.Schema, error) {
 	return g.generate(component, ref)
 }
 
-func (g *schemaGen) validateTypeFormat(typ, format string) error {
+func validateTypeFormat(typ, format string) error {
 	switch typ {
 	case "object":
 		switch format {
