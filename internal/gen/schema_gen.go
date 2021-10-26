@@ -172,39 +172,39 @@ func parseSimple(schema *ast.Schema) (*ir.Type, error) {
 	switch typ {
 	case ast.Integer:
 		switch format {
-		case "int32":
+		case ast.FormatInt32:
 			return ir.Primitive(ir.Int32, schema), nil
-		case "int64":
+		case ast.FormatInt64:
 			return ir.Primitive(ir.Int64, schema), nil
-		case "":
+		case ast.FormatNone:
 			return ir.Primitive(ir.Int, schema), nil
 		default:
-			return nil, xerrors.Errorf("unexpected integer format: '%s'", format)
+			return nil, xerrors.Errorf("unexpected integer format: %q", format)
 		}
 	case ast.Number:
 		switch format {
-		case "float":
+		case ast.FormatFloat:
 			return ir.Primitive(ir.Float32, schema), nil
-		case "double", "":
+		case ast.FormatDouble, ast.FormatNone:
 			return ir.Primitive(ir.Float64, schema), nil
 		default:
-			return nil, xerrors.Errorf("unexpected number format: '%s'", format)
+			return nil, xerrors.Errorf("unexpected number format: %q", format)
 		}
 	case ast.String:
 		switch format {
-		case "byte":
+		case ast.FormatByte:
 			return ir.Array(ir.Primitive(ir.Byte, nil), schema), nil
-		case "date-time", "time", "date":
+		case ast.FormatDateTime, ast.FormatDate, ast.FormatTime:
 			return ir.Primitive(ir.Time, schema), nil
-		case "duration":
+		case ast.FormatDuration:
 			return ir.Primitive(ir.Duration, schema), nil
-		case "uuid":
+		case ast.FormatUUID:
 			return ir.Primitive(ir.UUID, schema), nil
-		case "ipv4", "ipv6", "ip":
+		case ast.FormatIP, ast.FormatIPv4, ast.FormatIPv6:
 			return ir.Primitive(ir.IP, schema), nil
-		case "uri":
+		case ast.FormatURI:
 			return ir.Primitive(ir.URL, schema), nil
-		case "password", "":
+		case ast.FormatPassword, ast.FormatNone:
 			return ir.Primitive(ir.String, schema), nil
 		default:
 			// return nil, xerrors.Errorf("unexpected string format: '%s'", format)
@@ -212,12 +212,12 @@ func parseSimple(schema *ast.Schema) (*ir.Type, error) {
 		}
 	case ast.Boolean:
 		switch format {
-		case "":
+		case ast.FormatNone:
 			return ir.Primitive(ir.Bool, schema), nil
 		default:
-			return nil, xerrors.Errorf("unexpected bool format: '%s'", format)
+			return nil, xerrors.Errorf("unexpected bool format: %q", format)
 		}
 	default:
-		return nil, xerrors.Errorf("unexpected type: '%s'", typ)
+		return nil, xerrors.Errorf("unexpected type: %q", typ)
 	}
 }

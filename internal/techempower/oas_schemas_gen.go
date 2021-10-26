@@ -50,15 +50,15 @@ var (
 	_ = net.IP{}
 )
 
+// '#/components/schemas/WorldObject'
+type DBResponseOKApplicationJSON struct {
+	ID           int64 `json:"id"`
+	RandomNumber int64 `json:"randomNumber"`
+}
+
 // '#/components/schemas/HelloWorld'
 type JSONResponseOKApplicationJSON struct {
 	Message string `json:"message"`
 }
 
-type QueriesResponseOKApplicationJSON []QueriesResponseOKApplicationJSONItem
-
-// '#/components/schemas/WorldObject'
-type QueriesResponseOKApplicationJSONItem struct {
-	ID           int64 `json:"id"`
-	RandomNumber int64 `json:"randomNumber"`
-}
+type QueriesResponseOKApplicationJSON []DBResponseOKApplicationJSON

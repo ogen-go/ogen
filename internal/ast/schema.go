@@ -16,7 +16,7 @@ const (
 // Schema is an OpenAPI JSON Schema.
 type Schema struct {
 	Type        SchemaType
-	Format      string // Schema format, optional.
+	Format      Format // Schema format, optional.
 	Description string // Schema description, optional.
 	Ref         string // Whether schema is referenced.
 

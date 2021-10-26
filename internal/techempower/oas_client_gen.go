@@ -72,6 +72,27 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
+func (c *Client) DB(ctx context.Context) (res DBResponseOKApplicationJSON, err error) {
+	u := uri.Clone(c.serverURL)
+	u.Path += "/db"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDBResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (res QueriesResponseOKApplicationJSON, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
@@ -188,27 +209,6 @@ func (c *Client) JSON(ctx context.Context) (res JSONResponseOKApplicationJSON, e
 	defer resp.Body.Close()
 
 	result, err := decodeJSONResponse(resp)
-	if err != nil {
-		return res, fmt.Errorf("decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-func (c *Client) DB(ctx context.Context) (res QueriesResponseOKApplicationJSONItem, err error) {
-	u := uri.Clone(c.serverURL)
-	u.Path += "/db"
-
-	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
-
-	resp, err := c.http.Do(r)
-	if err != nil {
-		return res, fmt.Errorf("do request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	result, err := decodeDBResponse(resp)
 	if err != nil {
 		return res, fmt.Errorf("decode response: %w", err)
 	}

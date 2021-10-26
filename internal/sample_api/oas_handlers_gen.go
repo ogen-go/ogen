@@ -50,64 +50,6 @@ var (
 	_ = net.IP{}
 )
 
-func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePetGetParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.PetGet(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodePetGetResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.PetCreate(r.Context())
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodePetCreateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePetGetByNameParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.PetGetByName(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodePetGetByNameResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeFoobarGetParams(r)
@@ -197,6 +139,64 @@ func NewPetFriendsNamesByIDHandler(s Server) func(w http.ResponseWriter, r *http
 		}
 
 		if err := encodePetFriendsNamesByIDResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodePetGetParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetGet(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetGetResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.PetCreate(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetCreateResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodePetGetByNameParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetGetByName(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetGetByNameResponse(response, w); err != nil {
 			_ = err
 			return
 		}

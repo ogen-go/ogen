@@ -50,116 +50,6 @@ var (
 	_ = net.IP{}
 )
 
-func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response PetGetResponseOKApplicationJSON
-			if err := func() error {
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response PetGetResponseDefaultApplicationJSONStatusCode
-			if err := func() error {
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			response.StatusCode = resp.StatusCode
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	}
-}
-
-func decodePetCreateResponse(resp *http.Response) (res PetGetResponseOKApplicationJSON, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response PetGetResponseOKApplicationJSON
-			if err := func() error {
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodePetGetByNameResponse(resp *http.Response) (res PetGetResponseOKApplicationJSON, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response PetGetResponseOKApplicationJSON
-			if err := func() error {
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetResponse, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
@@ -175,7 +65,7 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetResponse, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetResponseOKApplicationJSON
+			var response FoobarGetResponseOKApplicationJSON
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -221,7 +111,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetResponseOKApplicationJSON
+			var response FoobarGetResponseOKApplicationJSON
 			if err := func() error {
 				return nil
 			}(); err != nil {
@@ -303,6 +193,116 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 			i.ResetBytes(buf.Bytes())
 
 			var response []string
+			if err := func() error {
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response FoobarGetResponseOKApplicationJSON
+			if err := func() error {
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response PetGetResponseDefaultApplicationJSONStatusCode
+			if err := func() error {
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			response.StatusCode = resp.StatusCode
+			return &response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	}
+}
+
+func decodePetCreateResponse(resp *http.Response) (res FoobarGetResponseOKApplicationJSON, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response FoobarGetResponseOKApplicationJSON
+			if err := func() error {
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodePetGetByNameResponse(resp *http.Response) (res FoobarGetResponseOKApplicationJSON, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response FoobarGetResponseOKApplicationJSON
 			if err := func() error {
 				return nil
 			}(); err != nil {

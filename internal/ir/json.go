@@ -1,5 +1,9 @@
 package ir
 
+import (
+	"github.com/ogen-go/ogen/internal/ast"
+)
+
 // JSON returns json encoding/decoding rules for t.
 func (t *Type) JSON() JSON {
 	return JSON{
@@ -32,19 +36,19 @@ func (j JSON) Format() string {
 		return ""
 	}
 	switch j.t.Schema.Format {
-	case "uuid":
+	case ast.FormatUUID:
 		return "UUID"
-	case "date":
+	case ast.FormatDate:
 		return "Date"
-	case "time":
+	case ast.FormatTime:
 		return "Time"
-	case "date-time":
+	case ast.FormatDateTime:
 		return "DateTime"
-	case "duration":
+	case ast.FormatDuration:
 		return "Duration"
-	case "ip", "ipv4", "ipv6":
+	case ast.FormatIP, ast.FormatIPv4, ast.FormatIPv6:
 		return "IP"
-	case "uri":
+	case ast.FormatURI:
 		return "URI"
 	default:
 		return ""

@@ -8,7 +8,7 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 // schemaGen is used to convert openapi schemas into ast representation.
@@ -66,7 +66,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 
 		return onret(&ast.Schema{
 			Type:        ast.SchemaType(schema.Type),
-			Format:      schema.Format,
+			Format:      ast.Format(schema.Format),
 			Description: schema.Description,
 			Enum:        values,
 		}), nil
@@ -194,7 +194,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 	case "number", "integer":
 		return onret(&ast.Schema{
 			Type:             ast.SchemaType(schema.Type),
-			Format:           schema.Format,
+			Format:           ast.Format(schema.Format),
 			Description:      schema.Description,
 			Ref:              ref,
 			Minimum:          schema.Minimum,
@@ -207,7 +207,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 	case "boolean":
 		return onret(&ast.Schema{
 			Type:        ast.Boolean,
-			Format:      schema.Format,
+			Format:      ast.Format(schema.Format),
 			Description: schema.Description,
 			Ref:         ref,
 		}), nil
@@ -215,7 +215,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 	case "string":
 		return onret(&ast.Schema{
 			Type:        ast.String,
-			Format:      schema.Format,
+			Format:      ast.Format(schema.Format),
 			Description: schema.Description,
 			Ref:         ref,
 			MaxLength:   schema.MaxLength,
