@@ -50,64 +50,6 @@ var (
 	_ = net.IP{}
 )
 
-func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
-	var params PetNameByIDParams
-	// Decode param 'id' located in 'Path'.
-	if err := func() error {
-		param := chi.URLParam(r, "id")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'id' not specified")
-		}
-
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "id",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-
-		v, err := d.DecodeInt()
-		if err != nil {
-			return err
-		}
-
-		params.ID = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
-	}
-	return params, nil
-}
-
-func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams, error) {
-	var params PetFriendsNamesByIDParams
-	// Decode param 'id' located in 'Path'.
-	if err := func() error {
-		param := chi.URLParam(r, "id")
-		if len(param) == 0 {
-			return fmt.Errorf("path parameter 'id' not specified")
-		}
-
-		d := uri.NewPathDecoder(uri.PathDecoderConfig{
-			Param:   "id",
-			Value:   param,
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-
-		v, err := d.DecodeInt()
-		if err != nil {
-			return err
-		}
-
-		params.ID = int(v)
-		return nil
-	}(); err != nil {
-		return params, err
-	}
-	return params, nil
-}
-
 func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	var params PetGetParams
 	// Decode param 'petID' located in 'Query'.
@@ -267,6 +209,64 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 		}
 
 		params.Skip = int32(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	return params, nil
+}
+
+func decodePetNameByIDParams(r *http.Request) (PetNameByIDParams, error) {
+	var params PetNameByIDParams
+	// Decode param 'id' located in 'Path'.
+	if err := func() error {
+		param := chi.URLParam(r, "id")
+		if len(param) == 0 {
+			return fmt.Errorf("path parameter 'id' not specified")
+		}
+
+		d := uri.NewPathDecoder(uri.PathDecoderConfig{
+			Param:   "id",
+			Value:   param,
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+
+		v, err := d.DecodeInt()
+		if err != nil {
+			return err
+		}
+
+		params.ID = int(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	return params, nil
+}
+
+func decodePetFriendsNamesByIDParams(r *http.Request) (PetFriendsNamesByIDParams, error) {
+	var params PetFriendsNamesByIDParams
+	// Decode param 'id' located in 'Path'.
+	if err := func() error {
+		param := chi.URLParam(r, "id")
+		if len(param) == 0 {
+			return fmt.Errorf("path parameter 'id' not specified")
+		}
+
+		d := uri.NewPathDecoder(uri.PathDecoderConfig{
+			Param:   "id",
+			Value:   param,
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+
+		v, err := d.DecodeInt()
+		if err != nil {
+			return err
+		}
+
+		params.ID = int(v)
 		return nil
 	}(); err != nil {
 		return params, err
