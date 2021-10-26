@@ -50,22 +50,6 @@ var (
 	_ = net.IP{}
 )
 
-func NewDBHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.DB(r.Context())
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodeDBResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewQueriesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeQueriesParams(r)
@@ -139,6 +123,22 @@ func NewJSONHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := encodeJSONResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewDBHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.DB(r.Context())
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodeDBResponse(response, w); err != nil {
 			_ = err
 			return
 		}

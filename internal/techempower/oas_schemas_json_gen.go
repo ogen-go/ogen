@@ -51,79 +51,6 @@ var (
 )
 
 // WriteJSON implements json.Marshaler.
-func (s DBResOKApplicationJSON) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	more.More()
-	j.WriteObjectField("id")
-	j.WriteInt64(s.ID)
-
-	more.More()
-	j.WriteObjectField("randomNumber")
-	j.WriteInt64(s.RandomNumber)
-	j.WriteObjectEnd()
-}
-
-// WriteJSONTo writes DBResOKApplicationJSON json value to io.Writer.
-func (s DBResOKApplicationJSON) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads DBResOKApplicationJSON json value from io.Reader.
-func (s *DBResOKApplicationJSON) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads DBResOKApplicationJSON from json stream.
-func (s *DBResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
-	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
-		switch k {
-		case "id":
-			if err := func() error {
-				s.ID = int64(i.ReadInt64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "randomNumber":
-			if err := func() error {
-				s.RandomNumber = int64(i.ReadInt64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
 func (s JSONResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -187,3 +114,76 @@ func (QueriesResOKApplicationJSON) WriteJSON(j *json.Stream)        {}
 func (QueriesResOKApplicationJSON) ReadJSON(i *json.Iterator) error { return nil }
 func (QueriesResOKApplicationJSON) ReadJSONFrom(r io.Reader) error  { return nil }
 func (QueriesResOKApplicationJSON) WriteJSONTo(w io.Writer) error   { return nil }
+
+// WriteJSON implements json.Marshaler.
+func (s QueriesResOKApplicationJSONItem) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("id")
+	j.WriteInt64(s.ID)
+
+	more.More()
+	j.WriteObjectField("randomNumber")
+	j.WriteInt64(s.RandomNumber)
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes QueriesResOKApplicationJSONItem json value to io.Writer.
+func (s QueriesResOKApplicationJSONItem) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads QueriesResOKApplicationJSONItem json value from io.Reader.
+func (s *QueriesResOKApplicationJSONItem) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads QueriesResOKApplicationJSONItem from json stream.
+func (s *QueriesResOKApplicationJSONItem) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "id":
+			if err := func() error {
+				s.ID = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "randomNumber":
+			if err := func() error {
+				s.RandomNumber = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}

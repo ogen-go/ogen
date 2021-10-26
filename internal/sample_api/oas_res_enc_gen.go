@@ -50,6 +50,28 @@ var (
 	_ = net.IP{}
 )
 
+func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	return nil
+}
+
+func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	return nil
+}
+
 func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PetGetResOKApplicationJSON:
@@ -147,26 +169,4 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 	default:
 		return fmt.Errorf("/foobar: unexpected response type: %T", response)
 	}
-}
-
-func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	return nil
-}
-
-func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-
-	return nil
 }

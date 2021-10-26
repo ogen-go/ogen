@@ -50,6 +50,48 @@ var (
 	_ = net.IP{}
 )
 
+func NewPetNameByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodePetNameByIDParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetNameByID(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetNameByIDResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewPetFriendsNamesByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodePetFriendsNamesByIDParams(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetFriendsNamesByID(r.Context(), params)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetFriendsNamesByIDResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodePetGetParams(r)
@@ -155,48 +197,6 @@ func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request)
 		}
 
 		if err := encodeFoobarPostResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPetNameByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePetNameByIDParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.PetNameByID(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodePetNameByIDResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPetFriendsNamesByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePetFriendsNamesByIDParams(r)
-		if err != nil {
-			respondError(w, http.StatusBadRequest, err)
-			return
-		}
-
-		response, err := s.PetFriendsNamesByID(r.Context(), params)
-		if err != nil {
-			respondError(w, http.StatusInternalServerError, err)
-			return
-		}
-
-		if err := encodePetFriendsNamesByIDResponse(response, w); err != nil {
 			_ = err
 			return
 		}
