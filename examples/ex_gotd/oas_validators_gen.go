@@ -57,6 +57,32 @@ func (s *Chat) Validate() error {
 	}
 	return nil
 }
+func (s *ChatLocation) Validate() error {
+	var failures []validate.FieldError
+	{
+		// Validate 'address' field.
+		validator := validate.String{
+			MinLength:    1,
+			MinLengthSet: true,
+			MaxLength:    64,
+			MaxLengthSet: true,
+		}
+		if err := validator.Validate(string(s.Address)); err != nil {
+			failures = append(failures, validate.FieldError{Name: "address", Error: err})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Game) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s *Message) Validate() error {
 	var failures []validate.FieldError
 	if s.Chat == nil {
@@ -67,6 +93,32 @@ func (s *Message) Validate() error {
 			}),
 		}
 	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Poll) Validate() error {
+	var failures []validate.FieldError
+	{
+		// Validate 'question' field.
+		validator := validate.String{
+			MinLength:    1,
+			MinLengthSet: true,
+			MaxLength:    300,
+			MaxLengthSet: true,
+		}
+		if err := validator.Validate(string(s.Question)); err != nil {
+			failures = append(failures, validate.FieldError{Name: "question", Error: err})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ResultMsg) Validate() error {
+	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}

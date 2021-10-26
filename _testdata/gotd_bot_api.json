@@ -29,14 +29,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -57,14 +50,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -85,14 +71,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -113,14 +92,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -141,14 +113,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -169,14 +134,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -197,14 +155,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -225,14 +176,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -253,14 +197,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -281,14 +218,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -309,14 +239,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -337,14 +260,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -365,14 +281,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -393,14 +302,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -421,14 +323,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -449,14 +344,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -477,14 +365,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -505,14 +386,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -533,14 +407,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -561,14 +428,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -589,14 +449,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -617,14 +470,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -645,14 +491,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -673,14 +512,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -701,14 +533,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -729,14 +554,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -757,14 +575,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -785,14 +596,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -813,32 +617,18 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
     },
     "/getMe": {
-      "description": "A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.",
+      "description": "A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object.",
       "post": {
         "operationId": "getMe",
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultUsr"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultUsr"
           }
         }
       }
@@ -859,14 +649,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -887,14 +670,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -915,14 +691,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -943,14 +712,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -971,14 +733,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -999,14 +754,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1027,14 +775,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1055,14 +796,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1083,14 +817,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1111,14 +838,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1139,14 +859,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1167,14 +880,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1195,14 +901,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1223,14 +922,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1251,14 +943,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1279,14 +964,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1307,14 +985,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1335,14 +1006,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1363,14 +1027,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1391,14 +1048,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1419,14 +1069,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1447,14 +1090,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1475,14 +1111,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1503,14 +1132,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1531,14 +1153,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1559,14 +1174,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1587,14 +1195,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResultMsg"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultMsg"
           }
         }
       }
@@ -1615,14 +1216,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1643,14 +1237,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1671,14 +1258,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1699,14 +1279,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1727,14 +1300,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1755,14 +1321,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1783,14 +1342,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1811,14 +1363,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1839,14 +1384,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1867,14 +1405,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1895,14 +1426,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1923,14 +1447,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1951,14 +1468,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -1979,14 +1489,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -2007,14 +1510,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -2035,14 +1531,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -2063,14 +1552,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -2091,14 +1573,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Result"
           }
         }
       }
@@ -2208,11 +1683,15 @@
         "properties": {
           "command": {
             "description": "Text of the command, 1-32 characters. Can contain only lowercase English letters, digits and underscores",
-            "type": "string"
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1
           },
           "description": {
             "description": "Description of the command, 3-256 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 3
           }
         },
         "required": [
@@ -2427,7 +1906,7 @@
             "description": "The most recent pinned message (by sending date). Returned only in getChat"
           },
           "slow_mode_delay": {
-            "description": "For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user. Returned only in getChat",
+            "description": "For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged user. Returned only in getChat",
             "type": "integer"
           },
           "sticker_set_name": {
@@ -2494,7 +1973,9 @@
         "properties": {
           "address": {
             "description": "Location address; 1-64 characters, as defined by the chat owner",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "location": {
             "$ref": "#/components/schemas/Location",
@@ -3060,7 +2541,9 @@
           },
           "input_field_placeholder": {
             "description": "The placeholder to be shown in the input field when the reply is active; 1-64 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "selective": {
             "description": "Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message",
@@ -3085,7 +2568,8 @@
           },
           "text": {
             "description": "Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 4096
           },
           "title": {
             "description": "Title of the game",
@@ -3154,7 +2638,8 @@
           },
           "url": {
             "description": "HTTP or tg:// url to be opened when button is pressed",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": [
@@ -3230,8 +2715,9 @@
             "type": "integer"
           },
           "thumb_url": {
-            "description": "Url of the thumbnail for the result",
-            "type": "string"
+            "description": "URL of the thumbnail for the result",
+            "type": "string",
+            "format": "uri"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3248,7 +2734,8 @@
           },
           "url": {
             "description": "URL of the result",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": [
@@ -3268,11 +2755,13 @@
           },
           "audio_url": {
             "description": "A valid URL for the audio file",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "caption": {
             "description": "Caption, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -3321,7 +2810,8 @@
           },
           "caption": {
             "description": "Caption, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -3357,7 +2847,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the document to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "description": {
             "description": "Short description of the result",
@@ -3406,7 +2897,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the GIF file to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "gif_file_id": {
             "description": "A valid file identifier for the GIF file",
@@ -3450,7 +2942,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -3494,7 +2987,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the photo to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "description": {
             "description": "Short description of the result",
@@ -3574,7 +3068,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the video to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "description": {
             "description": "Short description of the result",
@@ -3623,7 +3118,8 @@
         "properties": {
           "caption": {
             "description": "Caption, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -3695,8 +3191,9 @@
             "type": "integer"
           },
           "thumb_url": {
-            "description": "Url of the thumbnail for the result",
-            "type": "string"
+            "description": "URL of the thumbnail for the result",
+            "type": "string",
+            "format": "uri"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3725,7 +3222,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the document to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "description": {
             "description": "Short description of the result",
@@ -3733,7 +3231,8 @@
           },
           "document_url": {
             "description": "A valid URL for the file",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -3761,7 +3260,8 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail (JPEG only) for the file",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3819,7 +3319,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the GIF file to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "gif_duration": {
             "description": "Duration of the GIF in seconds",
@@ -3831,7 +3332,8 @@
           },
           "gif_url": {
             "description": "A valid URL for the GIF file. File size must not exceed 1MB",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "gif_width": {
             "description": "Width of the GIF",
@@ -3859,7 +3361,8 @@
           },
           "thumb_url": {
             "description": "URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "title": {
             "description": "Title for the result",
@@ -3923,8 +3426,9 @@
             "type": "integer"
           },
           "thumb_url": {
-            "description": "Url of the thumbnail for the result",
-            "type": "string"
+            "description": "URL of the thumbnail for the result",
+            "type": "string",
+            "format": "uri"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3954,7 +3458,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -3974,7 +3479,8 @@
           },
           "mpeg4_url": {
             "description": "A valid URL for the MP4 file. File size must not exceed 1MB",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "mpeg4_width": {
             "description": "Video width",
@@ -3994,7 +3500,8 @@
           },
           "thumb_url": {
             "description": "URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "title": {
             "description": "Title for the result",
@@ -4019,7 +3526,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the photo to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "description": {
             "description": "Short description of the result",
@@ -4043,7 +3551,8 @@
           },
           "photo_url": {
             "description": "A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "photo_width": {
             "description": "Width of the photo",
@@ -4055,7 +3564,8 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the photo",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "title": {
             "description": "Title for the result",
@@ -4123,8 +3633,9 @@
             "type": "integer"
           },
           "thumb_url": {
-            "description": "Url of the thumbnail for the result",
-            "type": "string"
+            "description": "URL of the thumbnail for the result",
+            "type": "string",
+            "format": "uri"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -4155,7 +3666,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the video to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "description": {
             "description": "Short description of the result",
@@ -4183,7 +3695,8 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail (JPEG only) for the video",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "title": {
             "description": "Title for the result",
@@ -4204,7 +3717,8 @@
           },
           "video_url": {
             "description": "A valid URL for the embedded video player or video file",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "video_width": {
             "description": "Video width",
@@ -4226,7 +3740,8 @@
         "properties": {
           "caption": {
             "description": "Caption, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -4259,7 +3774,8 @@
           },
           "voice_url": {
             "description": "A valid URL for the voice recording",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": [
@@ -4305,7 +3821,9 @@
           },
           "description": {
             "description": "Product description, 1-255 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
           },
           "is_flexible": {
             "description": "Pass True, if the final price depends on the shipping method",
@@ -4345,7 +3863,8 @@
           },
           "photo_url": {
             "description": "URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service. People like it better when they see what they are paying for",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "photo_width": {
             "description": "Photo width",
@@ -4369,7 +3888,9 @@
           },
           "title": {
             "description": "Product name, 1-32 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1
           }
         },
         "required": [
@@ -4424,7 +3945,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the animation to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "duration": {
             "description": "Animation duration in seconds",
@@ -4463,7 +3985,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the audio to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "duration": {
             "description": "Duration of the audio in seconds",
@@ -4502,7 +4025,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the document to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_content_type_detection": {
             "description": "Disables automatic server-side content type detection for files uploaded using multipart/form-data. Always true, if the document is sent as part of an album",
@@ -4533,7 +4057,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the photo to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "media": {
             "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
@@ -4560,7 +4085,8 @@
         "properties": {
           "caption": {
             "description": "Caption of the video to be sent, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "duration": {
             "description": "Video duration in seconds",
@@ -4611,7 +4137,9 @@
           },
           "message_text": {
             "description": "Text of the message to be sent, 1-4096 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 4096,
+            "minLength": 1
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the message text. See formatting options for more details",
@@ -4804,7 +4332,8 @@
           },
           "url": {
             "description": "An HTTP URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data.NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": [
@@ -4857,7 +4386,8 @@
           },
           "caption": {
             "description": "Caption for the animation, audio, document, photo, video or voice, 0-1024 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "channel_chat_created": {
             "description": "Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel",
@@ -5009,7 +4539,8 @@
           },
           "text": {
             "description": "For text messages, the actual UTF-8 text of the message, 0-4096 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 4096
           },
           "venue": {
             "$ref": "#/components/schemas/Venue",
@@ -5089,7 +4620,8 @@
           },
           "url": {
             "description": "For “text_link” only, url that will be opened after user taps on the text",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "user": {
             "$ref": "#/components/schemas/User",
@@ -5488,7 +5020,8 @@
           },
           "explanation": {
             "description": "Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 200
           },
           "id": {
             "description": "Unique poll identifier",
@@ -5508,7 +5041,9 @@
           },
           "question": {
             "description": "Poll question, 1-300 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 1
           },
           "total_voter_count": {
             "description": "Total number of users that voted in the poll",
@@ -5553,7 +5088,9 @@
         "properties": {
           "text": {
             "description": "Option text, 1-100 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1
           },
           "voter_count": {
             "description": "Number of users that voted for this option",
@@ -5635,7 +5172,9 @@
         "properties": {
           "input_field_placeholder": {
             "description": "The placeholder to be shown in the input field when the keyboard is active; 1-64 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "one_time_keyboard": {
             "description": "Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be available, but clients will automatically display the usual letter-keyboard in the chat – the user can press a special button in the input field to see the custom keyboard again. Defaults to false",
@@ -5698,7 +5237,19 @@
         ]
       },
       "ResultMsg": {
-        "$ref": "#/components/schemas/Message"
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "default": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/Message"
+          }
+        },
+        "required": [
+          "ok"
+        ]
       },
       "ResultStr": {
         "type": "object",
@@ -5716,7 +5267,19 @@
         ]
       },
       "ResultUsr": {
-        "$ref": "#/components/schemas/User"
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "default": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "ok"
+        ]
       },
       "ShippingAddress": {
         "description": "This object represents a shipping address.",
@@ -6272,7 +5835,8 @@
           },
           "url": {
             "description": "Webhook URL, may be empty if webhook is not set up",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": [
@@ -6362,7 +5926,7 @@
             "type": "string"
           },
           "switch_pm_parameter": {
-            "description": "Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an oauth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities",
+            "description": "Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities",
             "type": "string"
           },
           "switch_pm_text": {
@@ -7980,6 +7544,96 @@
           "user_id",
           "png_sticker"
         ]
+      }
+    },
+    "responses": {
+      "Result": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ok": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "result": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "ok"
+              ]
+            }
+          }
+        }
+      },
+      "ResultMsg": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ok": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "result": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              },
+              "required": [
+                "ok"
+              ]
+            }
+          }
+        }
+      },
+      "ResultStr": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ok": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "result": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ok"
+              ]
+            }
+          }
+        }
+      },
+      "ResultUsr": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ok": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "result": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "required": [
+                "ok"
+              ]
+            }
+          }
+        }
       }
     }
   }

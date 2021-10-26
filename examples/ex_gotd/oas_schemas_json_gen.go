@@ -4356,6 +4356,158 @@ func (s *Result) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ResultMsg) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	if s.Result.Set {
+		more.More()
+		j.WriteObjectField("result")
+		s.Result.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ResultMsg json value to io.Writer.
+func (s ResultMsg) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ResultMsg json value from io.Reader.
+func (s *ResultMsg) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ResultMsg from json stream.
+func (s *ResultMsg) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				s.Result.Reset()
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ResultUsr) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("ok")
+	j.WriteBool(s.Ok)
+	if s.Result.Set {
+		more.More()
+		j.WriteObjectField("result")
+		s.Result.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes ResultUsr json value to io.Writer.
+func (s ResultUsr) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads ResultUsr json value from io.Reader.
+func (s *ResultUsr) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ResultUsr from json stream.
+func (s *ResultUsr) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "ok":
+			if err := func() error {
+				s.Ok = bool(i.ReadBool())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "result":
+			if err := func() error {
+				s.Result.Reset()
+				if err := s.Result.ReadJSON(i); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ShippingAddress) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)

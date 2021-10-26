@@ -380,7 +380,7 @@ func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter) 
 	return nil
 }
 
-func encodeForwardMessageResponse(response Message, w http.ResponseWriter) error {
+func encodeForwardMessageResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -485,7 +485,7 @@ func encodeGetGameHighScoresResponse(response Result, w http.ResponseWriter) err
 	return nil
 }
 
-func encodeGetMeResponse(response User, w http.ResponseWriter) error {
+func encodeGetMeResponse(response ResultUsr, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -635,7 +635,7 @@ func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter) 
 	return nil
 }
 
-func encodeSendAnimationResponse(response Message, w http.ResponseWriter) error {
+func encodeSendAnimationResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -680,7 +680,7 @@ func encodeSendChatActionResponse(response Result, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeSendContactResponse(response Message, w http.ResponseWriter) error {
+func encodeSendContactResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -695,7 +695,7 @@ func encodeSendContactResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendDiceResponse(response Message, w http.ResponseWriter) error {
+func encodeSendDiceResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -710,7 +710,7 @@ func encodeSendDiceResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendDocumentResponse(response Message, w http.ResponseWriter) error {
+func encodeSendDocumentResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -725,7 +725,7 @@ func encodeSendDocumentResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendGameResponse(response Message, w http.ResponseWriter) error {
+func encodeSendGameResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -740,7 +740,7 @@ func encodeSendGameResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendInvoiceResponse(response Message, w http.ResponseWriter) error {
+func encodeSendInvoiceResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -755,7 +755,7 @@ func encodeSendInvoiceResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendLocationResponse(response Message, w http.ResponseWriter) error {
+func encodeSendLocationResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -785,7 +785,7 @@ func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeSendMessageResponse(response Message, w http.ResponseWriter) error {
+func encodeSendMessageResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -800,7 +800,7 @@ func encodeSendMessageResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendPhotoResponse(response Message, w http.ResponseWriter) error {
+func encodeSendPhotoResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -815,7 +815,7 @@ func encodeSendPhotoResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendPollResponse(response Message, w http.ResponseWriter) error {
+func encodeSendPollResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -830,7 +830,7 @@ func encodeSendPollResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendStickerResponse(response Message, w http.ResponseWriter) error {
+func encodeSendStickerResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -845,7 +845,7 @@ func encodeSendStickerResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendVenueResponse(response Message, w http.ResponseWriter) error {
+func encodeSendVenueResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -860,7 +860,7 @@ func encodeSendVenueResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendVideoResponse(response Message, w http.ResponseWriter) error {
+func encodeSendVideoResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -875,7 +875,7 @@ func encodeSendVideoResponse(response Message, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendVideoNoteResponse(response Message, w http.ResponseWriter) error {
+func encodeSendVideoNoteResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -890,7 +890,7 @@ func encodeSendVideoNoteResponse(response Message, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeSendVoiceResponse(response Message, w http.ResponseWriter) error {
+func encodeSendVoiceResponse(response ResultMsg, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)

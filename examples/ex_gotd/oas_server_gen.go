@@ -97,7 +97,7 @@ type Server interface {
 	// ExportChatInviteLink implements exportChatInviteLink operation.
 	ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (Result, error)
 	// ForwardMessage implements forwardMessage operation.
-	ForwardMessage(ctx context.Context, req ForwardMessage) (Message, error)
+	ForwardMessage(ctx context.Context, req ForwardMessage) (ResultMsg, error)
 	// GetChat implements getChat operation.
 	GetChat(ctx context.Context, req GetChat) (Result, error)
 	// GetChatAdministrators implements getChatAdministrators operation.
@@ -111,7 +111,7 @@ type Server interface {
 	// GetGameHighScores implements getGameHighScores operation.
 	GetGameHighScores(ctx context.Context, req GetGameHighScores) (Result, error)
 	// GetMe implements getMe operation.
-	GetMe(ctx context.Context) (User, error)
+	GetMe(ctx context.Context) (ResultUsr, error)
 	// GetMyCommands implements getMyCommands operation.
 	GetMyCommands(ctx context.Context, req GetMyCommands) (Result, error)
 	// GetStickerSet implements getStickerSet operation.
@@ -131,41 +131,41 @@ type Server interface {
 	// RevokeChatInviteLink implements revokeChatInviteLink operation.
 	RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (Result, error)
 	// SendAnimation implements sendAnimation operation.
-	SendAnimation(ctx context.Context, req SendAnimation) (Message, error)
+	SendAnimation(ctx context.Context, req SendAnimation) (ResultMsg, error)
 	// SendAudio implements sendAudio operation.
 	SendAudio(ctx context.Context, req SendAudio) (Result, error)
 	// SendChatAction implements sendChatAction operation.
 	SendChatAction(ctx context.Context, req SendChatAction) (Result, error)
 	// SendContact implements sendContact operation.
-	SendContact(ctx context.Context, req SendContact) (Message, error)
+	SendContact(ctx context.Context, req SendContact) (ResultMsg, error)
 	// SendDice implements sendDice operation.
-	SendDice(ctx context.Context, req SendDice) (Message, error)
+	SendDice(ctx context.Context, req SendDice) (ResultMsg, error)
 	// SendDocument implements sendDocument operation.
-	SendDocument(ctx context.Context, req SendDocument) (Message, error)
+	SendDocument(ctx context.Context, req SendDocument) (ResultMsg, error)
 	// SendGame implements sendGame operation.
-	SendGame(ctx context.Context, req SendGame) (Message, error)
+	SendGame(ctx context.Context, req SendGame) (ResultMsg, error)
 	// SendInvoice implements sendInvoice operation.
-	SendInvoice(ctx context.Context, req SendInvoice) (Message, error)
+	SendInvoice(ctx context.Context, req SendInvoice) (ResultMsg, error)
 	// SendLocation implements sendLocation operation.
-	SendLocation(ctx context.Context, req SendLocation) (Message, error)
+	SendLocation(ctx context.Context, req SendLocation) (ResultMsg, error)
 	// SendMediaGroup implements sendMediaGroup operation.
 	SendMediaGroup(ctx context.Context, req SendMediaGroup) (Result, error)
 	// SendMessage implements sendMessage operation.
-	SendMessage(ctx context.Context, req SendMessage) (Message, error)
+	SendMessage(ctx context.Context, req SendMessage) (ResultMsg, error)
 	// SendPhoto implements sendPhoto operation.
-	SendPhoto(ctx context.Context, req SendPhoto) (Message, error)
+	SendPhoto(ctx context.Context, req SendPhoto) (ResultMsg, error)
 	// SendPoll implements sendPoll operation.
-	SendPoll(ctx context.Context, req SendPoll) (Message, error)
+	SendPoll(ctx context.Context, req SendPoll) (ResultMsg, error)
 	// SendSticker implements sendSticker operation.
-	SendSticker(ctx context.Context, req SendSticker) (Message, error)
+	SendSticker(ctx context.Context, req SendSticker) (ResultMsg, error)
 	// SendVenue implements sendVenue operation.
-	SendVenue(ctx context.Context, req SendVenue) (Message, error)
+	SendVenue(ctx context.Context, req SendVenue) (ResultMsg, error)
 	// SendVideo implements sendVideo operation.
-	SendVideo(ctx context.Context, req SendVideo) (Message, error)
+	SendVideo(ctx context.Context, req SendVideo) (ResultMsg, error)
 	// SendVideoNote implements sendVideoNote operation.
-	SendVideoNote(ctx context.Context, req SendVideoNote) (Message, error)
+	SendVideoNote(ctx context.Context, req SendVideoNote) (ResultMsg, error)
 	// SendVoice implements sendVoice operation.
-	SendVoice(ctx context.Context, req SendVoice) (Message, error)
+	SendVoice(ctx context.Context, req SendVoice) (ResultMsg, error)
 	// SetChatAdministratorCustomTitle implements setChatAdministratorCustomTitle operation.
 	SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (Result, error)
 	// SetChatDescription implements setChatDescription operation.
