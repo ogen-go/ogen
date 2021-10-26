@@ -14,6 +14,7 @@ type parser struct {
 		schemas       map[string]*ast.Schema
 		requestBodies map[string]*ast.RequestBody
 		responses     map[string]*ast.Response
+		parameters    map[string]*ast.Parameter
 	}
 	methods []*ast.Method
 }
@@ -26,10 +27,12 @@ func Parse(spec *ogen.Spec) ([]*ast.Method, error) {
 			schemas       map[string]*ast.Schema
 			requestBodies map[string]*ast.RequestBody
 			responses     map[string]*ast.Response
+			parameters    map[string]*ast.Parameter
 		}{
 			schemas:       map[string]*ast.Schema{},
 			requestBodies: map[string]*ast.RequestBody{},
 			responses:     map[string]*ast.Response{},
+			parameters:    map[string]*ast.Parameter{},
 		},
 	}
 

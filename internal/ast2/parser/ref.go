@@ -18,8 +18,8 @@ func (p *parser) resolveRequestBody(ref string) (*ast.RequestBody, error) {
 		return r, nil
 	}
 
-	componentName := strings.TrimPrefix(ref, prefix)
-	component, found := p.spec.Components.RequestBodies[componentName]
+	name := strings.TrimPrefix(ref, prefix)
+	component, found := p.spec.Components.RequestBodies[name]
 	if !found {
 		return nil, fmt.Errorf("component by reference '%s' not found", ref)
 	}
@@ -40,37 +40,11 @@ func (p *parser) resolveResponse(ref string) (*ast.Response, error) {
 	}
 
 	if r, ok := p.refs.responses[ref]; ok {
-		// Example:
-		//   ...
-		//   responses:
-		//     200:
-		//       #/components/responses/Foo
-		//     203:
-		//       #/components/responses/Foo
-		//
-		// responses:
-		//   Foo:
-		//     contents:
-		//       application/json:
-		//         schema:
-		//           type: string
-		//
-		// These responses (200, 203) in our ast representation
-		// would point to the same *ast.Response struct.
-		// It is bad because if we want to change response 200 *ast.Response.Contents map,
-		// response 203 also changes, which can be unexpected.
-		//
-		// So, we need to create new *ast.Response and copy schemas into it.
-		newR := ast.CreateResponse()
-		newR.Contents = make(map[string]*ast.Schema)
-		for ctype, s := range r.Contents {
-			newR.Contents[ctype] = s
-		}
-		return newR, nil
+		return r, nil
 	}
 
-	componentName := strings.TrimPrefix(ref, prefix)
-	component, found := p.spec.Components.Responses[componentName]
+	name := strings.TrimPrefix(ref, prefix)
+	component, found := p.spec.Components.Responses[name]
 	if !found {
 		return nil, fmt.Errorf("component by reference '%s' not found", ref)
 	}
@@ -90,11 +64,21 @@ func (p *parser) resolveParameter(ref string) (*ast.Parameter, error) {
 		return nil, xerrors.Errorf("invalid parameter reference: '%s'", ref)
 	}
 
-	componentName := strings.TrimPrefix(ref, prefix)
-	component, found := p.spec.Components.Parameters[componentName]
+	if param, ok := p.refs.parameters[ref]; ok {
+		return param, nil
+	}
+
+	name := strings.TrimPrefix(ref, prefix)
+	component, found := p.spec.Components.Parameters[name]
 	if !found {
 		return nil, fmt.Errorf("component by reference '%s' not found", ref)
 	}
 
-	return p.parseParameter(component)
+	param, err := p.parseParameter(component)
+	if err != nil {
+		return nil, err
+	}
+
+	p.refs.parameters[ref] = param
+	return param, nil
 }
