@@ -44,13 +44,13 @@ func (g *Generator) generateOperation(spec *ast.Operation) (_ *ir.Operation, err
 	}
 
 	if spec.RequestBody != nil {
-		op.Request, err = g.generateRequest(op.Name+"Request", spec.RequestBody)
+		op.Request, err = g.generateRequest(op.Name+"Req", spec.RequestBody)
 		if err != nil {
 			return nil, xerrors.Errorf("requestBody: %w", err)
 		}
 	}
 
-	op.Response, err = g.generateResponses(op.Name+"Response", spec.Responses)
+	op.Response, err = g.generateResponses(op.Name+"Res", spec.Responses)
 	if err != nil {
 		return nil, xerrors.Errorf("responses: %w", err)
 	}
