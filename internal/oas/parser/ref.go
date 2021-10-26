@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	ast "github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/oas"
 	"golang.org/x/xerrors"
 )
 

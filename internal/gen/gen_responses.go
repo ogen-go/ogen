@@ -5,11 +5,11 @@ import (
 
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateResponses(name string, responses *ast.OperationResponse) (*ir.Response, error) {
+func (g *Generator) generateResponses(name string, responses *oas.OperationResponse) (*ir.Response, error) {
 	result := &ir.Response{
 		Spec:       responses,
 		StatusCode: map[int]*ir.StatusResponse{},
@@ -74,7 +74,7 @@ func (g *Generator) generateResponses(name string, responses *ast.OperationRespo
 	return result, nil
 }
 
-func (g *Generator) responseToIR(name string, resp *ast.Response) (*ir.StatusResponse, error) {
+func (g *Generator) responseToIR(name string, resp *oas.Response) (*ir.StatusResponse, error) {
 	if len(resp.Contents) == 0 {
 		typ := &ir.Type{
 			Kind: ir.KindStruct,

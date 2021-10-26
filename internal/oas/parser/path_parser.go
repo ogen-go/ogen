@@ -3,7 +3,7 @@ package parser
 import (
 	"fmt"
 
-	ast "github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/oas"
 	"golang.org/x/xerrors"
 )
 

@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/oas"
 )
 
 func TestSchemaSimple(t *testing.T) {

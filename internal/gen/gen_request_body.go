@@ -3,11 +3,11 @@ package gen
 import (
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateRequest(name string, body *ast.RequestBody) (*ir.Request, error) {
+func (g *Generator) generateRequest(name string, body *oas.RequestBody) (*ir.Request, error) {
 	types := make(map[ir.ContentType]*ir.Type)
 	for contentType, schema := range body.Contents {
 		sName := name

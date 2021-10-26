@@ -1,13 +1,13 @@
 package ir
 
-import "github.com/ogen-go/ogen/internal/ast"
+import "github.com/ogen-go/ogen/internal/oas"
 
-func (op *Operation) PathParams() []*Parameter   { return op.getParams(ast.LocationPath) }
-func (op *Operation) QueryParams() []*Parameter  { return op.getParams(ast.LocationQuery) }
-func (op *Operation) CookieParams() []*Parameter { return op.getParams(ast.LocationCookie) }
-func (op *Operation) HeaderParams() []*Parameter { return op.getParams(ast.LocationHeader) }
+func (op *Operation) PathParams() []*Parameter   { return op.getParams(oas.LocationPath) }
+func (op *Operation) QueryParams() []*Parameter  { return op.getParams(oas.LocationQuery) }
+func (op *Operation) CookieParams() []*Parameter { return op.getParams(oas.LocationCookie) }
+func (op *Operation) HeaderParams() []*Parameter { return op.getParams(oas.LocationHeader) }
 
-func (op *Operation) getParams(locatedIn ast.ParameterLocation) []*Parameter {
+func (op *Operation) getParams(locatedIn oas.ParameterLocation) []*Parameter {
 	var params []*Parameter
 	for _, p := range op.Params {
 		if p.Spec.In == locatedIn {

@@ -6,9 +6,9 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/ast"
-	"github.com/ogen-go/ogen/internal/ast/parser"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/oas/parser"
 )
 
 type Generator struct {
@@ -46,7 +46,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	return g, nil
 }
 
-func (g *Generator) makeIR(ops []*ast.Operation) error {
+func (g *Generator) makeIR(ops []*oas.Operation) error {
 	for _, spec := range ops {
 		op, err := g.generateOperation(spec)
 		if err != nil {

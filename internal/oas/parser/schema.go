@@ -6,7 +6,7 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	ast "github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/oas"
 )
 
 func (p *parser) parseSchema(schema ogen.Schema) (*ast.Schema, error) {

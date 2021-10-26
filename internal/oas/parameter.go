@@ -1,4 +1,4 @@
-package ast
+package oas
 
 // ParameterLocation defines where OpenAPI parameter is located.
 type ParameterLocation string

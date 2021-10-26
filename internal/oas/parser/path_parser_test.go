@@ -3,7 +3,7 @@ package parser
 import (
 	"testing"
 
-	ast "github.com/ogen-go/ogen/internal/ast"
+	ast "github.com/ogen-go/ogen/internal/oas"
 	"github.com/stretchr/testify/require"
 )
 

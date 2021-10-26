@@ -1,4 +1,4 @@
-package ast
+package oas
 
 // Operation is an OpenAPI Operation.
 type Operation struct {

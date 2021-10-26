@@ -8,8 +8,8 @@ import (
 
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 // Elem variable helper for recursive array or object encoding or decoding.
@@ -37,7 +37,7 @@ func templateFunctions() template.FuncMap {
 		"trim": strings.TrimSpace,
 		"lower": func(v interface{}) string {
 			switch v := v.(type) {
-			case ast.ParameterLocation:
+			case oas.ParameterLocation:
 				return strings.ToLower(string(v))
 			case string:
 				return strings.ToLower(v)

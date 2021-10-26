@@ -5,8 +5,8 @@ import (
 
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 type schemaGen struct {
@@ -22,7 +22,7 @@ func genericPostfix(name string) string {
 	return pascal(name)
 }
 
-func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) {
+func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) {
 	if ref := schema.Ref; ref != "" {
 		if t, ok := g.globalRefs[ref]; ok {
 			return t, nil
@@ -89,7 +89,7 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 	}
 
 	switch schema.Type {
-	case ast.Object:
+	case oas.Object:
 		s := &ir.Type{
 			Kind:   ir.KindStruct,
 			Name:   name,
@@ -150,7 +150,7 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 
 		return s, nil
 
-	case ast.Array:
+	case oas.Array:
 		array := &ir.Type{
 			Kind:   ir.KindArray,
 			Schema: schema,
@@ -165,7 +165,7 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 		array.Item = item
 		return ret, nil
 
-	case ast.String, ast.Integer, ast.Number, ast.Boolean:
+	case oas.String, oas.Integer, oas.Number, oas.Boolean:
 		prim, err := g.primitive(name, schema)
 		if err != nil {
 			return nil, err
@@ -178,7 +178,7 @@ func (g *schemaGen) generate(name string, schema *ast.Schema) (*ir.Type, error) 
 	}
 }
 
-func (g *schemaGen) primitive(name string, schema *ast.Schema) (*ir.Type, error) {
+func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error) {
 	typ, err := parseSimple(schema)
 	if err != nil {
 		return nil, err
@@ -201,52 +201,52 @@ func (g *schemaGen) primitive(name string, schema *ast.Schema) (*ir.Type, error)
 	return typ, nil
 }
 
-func parseSimple(schema *ast.Schema) (*ir.Type, error) {
+func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 	typ, format := schema.Type, schema.Format
 	switch typ {
-	case ast.Integer:
+	case oas.Integer:
 		switch format {
-		case ast.FormatInt32:
+		case oas.FormatInt32:
 			return ir.Primitive(ir.Int32, schema), nil
-		case ast.FormatInt64:
+		case oas.FormatInt64:
 			return ir.Primitive(ir.Int64, schema), nil
-		case ast.FormatNone:
+		case oas.FormatNone:
 			return ir.Primitive(ir.Int, schema), nil
 		default:
 			return nil, xerrors.Errorf("unexpected integer format: %q", format)
 		}
-	case ast.Number:
+	case oas.Number:
 		switch format {
-		case ast.FormatFloat:
+		case oas.FormatFloat:
 			return ir.Primitive(ir.Float32, schema), nil
-		case ast.FormatDouble, ast.FormatNone:
+		case oas.FormatDouble, oas.FormatNone:
 			return ir.Primitive(ir.Float64, schema), nil
 		default:
 			return nil, xerrors.Errorf("unexpected number format: %q", format)
 		}
-	case ast.String:
+	case oas.String:
 		switch format {
-		case ast.FormatByte:
+		case oas.FormatByte:
 			return ir.Array(ir.Primitive(ir.Byte, nil), schema), nil
-		case ast.FormatDateTime, ast.FormatDate, ast.FormatTime:
+		case oas.FormatDateTime, oas.FormatDate, oas.FormatTime:
 			return ir.Primitive(ir.Time, schema), nil
-		case ast.FormatDuration:
+		case oas.FormatDuration:
 			return ir.Primitive(ir.Duration, schema), nil
-		case ast.FormatUUID:
+		case oas.FormatUUID:
 			return ir.Primitive(ir.UUID, schema), nil
-		case ast.FormatIP, ast.FormatIPv4, ast.FormatIPv6:
+		case oas.FormatIP, oas.FormatIPv4, oas.FormatIPv6:
 			return ir.Primitive(ir.IP, schema), nil
-		case ast.FormatURI:
+		case oas.FormatURI:
 			return ir.Primitive(ir.URL, schema), nil
-		case ast.FormatPassword, ast.FormatNone:
+		case oas.FormatPassword, oas.FormatNone:
 			return ir.Primitive(ir.String, schema), nil
 		default:
 			// return nil, xerrors.Errorf("unexpected string format: '%s'", format)
 			return ir.Primitive(ir.String, schema), nil
 		}
-	case ast.Boolean:
+	case oas.Boolean:
 		switch format {
-		case ast.FormatNone:
+		case oas.FormatNone:
 			return ir.Primitive(ir.Bool, schema), nil
 		default:
 			return nil, xerrors.Errorf("unexpected bool format: %q", format)

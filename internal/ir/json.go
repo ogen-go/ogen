@@ -1,7 +1,7 @@
 package ir
 
 import (
-	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 // JSON returns json encoding/decoding rules for t.
@@ -36,19 +36,19 @@ func (j JSON) Format() string {
 		return ""
 	}
 	switch j.t.Schema.Format {
-	case ast.FormatUUID:
+	case oas.FormatUUID:
 		return "UUID"
-	case ast.FormatDate:
+	case oas.FormatDate:
 		return "Date"
-	case ast.FormatTime:
+	case oas.FormatTime:
 		return "Time"
-	case ast.FormatDateTime:
+	case oas.FormatDateTime:
 		return "DateTime"
-	case ast.FormatDuration:
+	case oas.FormatDuration:
 		return "Duration"
-	case ast.FormatIP, ast.FormatIPv4, ast.FormatIPv6:
+	case oas.FormatIP, oas.FormatIPv4, oas.FormatIPv6:
 		return "IP"
-	case ast.FormatURI:
+	case oas.FormatURI:
 		return "URI"
 	default:
 		return ""

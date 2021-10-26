@@ -1,4 +1,4 @@
-package ast
+package oas
 
 // SchemaType is an OpenAPI JSON Schema type.
 type SchemaType string

@@ -5,11 +5,11 @@ import (
 
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateOperation(spec *ast.Operation) (_ *ir.Operation, err error) {
+func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err error) {
 	op := &ir.Operation{
 		Name: pascal(spec.Path(), strings.ToLower(spec.HTTPMethod)),
 		Spec: spec,
@@ -18,13 +18,13 @@ func (g *Generator) generateOperation(spec *ast.Operation) (_ *ir.Operation, err
 		op.Name = pascal(spec.OperationID)
 	}
 
-	// Convert []ast.Parameter to []ir.Parameter.
+	// Convert []oas.Parameter to []ir.Parameter.
 	op.Params, err = g.generateParameters(spec.Parameters)
 	if err != nil {
 		return nil, xerrors.Errorf("parameters: %w", err)
 	}
 
-	// Convert []ast.PathPart to []ir.PathPart.
+	// Convert []oas.PathPart to []ir.PathPart.
 	for _, part := range spec.PathParts {
 		if part.Raw != "" {
 			op.PathParts = append(op.PathParts, &ir.PathPart{

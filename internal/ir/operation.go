@@ -1,7 +1,7 @@
 package ir
 
 import (
-	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 type Operation struct {
@@ -10,7 +10,7 @@ type Operation struct {
 	Params    []*Parameter
 	Request   *Request
 	Response  *Response
-	Spec      *ast.Operation
+	Spec      *oas.Operation
 }
 
 type PathPart struct {
@@ -21,14 +21,14 @@ type PathPart struct {
 type Parameter struct {
 	Name string
 	Type *Type
-	Spec *ast.Parameter
+	Spec *oas.Parameter
 }
 
 type Request struct {
 	Type     *Type
 	Contents map[ContentType]*Type
 	Required bool
-	Spec     *ast.RequestBody
+	Spec     *oas.RequestBody
 }
 
 type Content struct {
@@ -48,11 +48,11 @@ type Response struct {
 	Type       *Type
 	StatusCode map[int]*StatusResponse
 	Default    *StatusResponse
-	Spec       *ast.OperationResponse
+	Spec       *oas.OperationResponse
 }
 
 type StatusResponse struct {
 	NoContent *Type
 	Contents  map[ContentType]*Type
-	Spec      *ast.Response
+	Spec      *oas.Response
 }

@@ -8,27 +8,27 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-// schemaGen is used to convert openapi schemas into ast representation.
+// schemaGen is used to convert openapi schemas into oas representation.
 type schemaGen struct {
 	// Spec is used to lookup for schema components
 	// which is not in the 'refs' cache.
 	spec *ogen.Spec
 
 	// Global schema reference cache from *Generator (readonly).
-	globalRefs map[string]*ast.Schema
+	globalRefs map[string]*oas.Schema
 
 	// Local schema reference cache.
-	localRefs map[string]*ast.Schema
+	localRefs map[string]*oas.Schema
 }
 
-// Generate converts ogen.Schema into *ast.Schema.
+// Generate converts ogen.Schema into *oas.Schema.
 //
 // If ogen.Schema contains references to schema components,
 // these referenced schemas will be saved in g.localRefs.
-func (g *schemaGen) Generate(schema ogen.Schema) (*ast.Schema, error) {
+func (g *schemaGen) Generate(schema ogen.Schema) (*oas.Schema, error) {
 	s, err := g.generate(schema, "")
 	if err != nil {
 		return nil, xerrors.Errorf("gen: %w", err)
@@ -37,7 +37,7 @@ func (g *schemaGen) Generate(schema ogen.Schema) (*ast.Schema, error) {
 	return s, nil
 }
 
-func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error) {
+func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error) {
 	if ref := schema.Ref; ref != "" {
 		s, err := g.ref(ref)
 		if err != nil {
@@ -50,7 +50,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		return nil, err
 	}
 
-	onret := func(s *ast.Schema) *ast.Schema {
+	onret := func(s *oas.Schema) *oas.Schema {
 		if ref != "" {
 			g.localRefs[ref] = s
 		}
@@ -59,19 +59,19 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 
 	switch {
 	case len(schema.Enum) > 0:
-		values, err := g.parseEnumValues(ast.SchemaType(schema.Type), schema.Enum)
+		values, err := g.parseEnumValues(oas.SchemaType(schema.Type), schema.Enum)
 		if err != nil {
 			return nil, err
 		}
 
-		return onret(&ast.Schema{
-			Type:        ast.SchemaType(schema.Type),
-			Format:      ast.Format(schema.Format),
+		return onret(&oas.Schema{
+			Type:        oas.SchemaType(schema.Type),
+			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
 			Enum:        values,
 		}), nil
 	case len(schema.OneOf) > 0:
-		var schemas []*ast.Schema
+		var schemas []*oas.Schema
 		for i, s := range schema.OneOf {
 			schema, err := g.generate(s, "")
 			if err != nil {
@@ -81,13 +81,13 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return onret(&ast.Schema{
+		return onret(&oas.Schema{
 			OneOf:       schemas,
 			Ref:         schema.Ref,
 			Description: schema.Description,
 		}), nil
 	case len(schema.AnyOf) > 0:
-		var schemas []*ast.Schema
+		var schemas []*oas.Schema
 		for i, s := range schema.AnyOf {
 			schema, err := g.generate(s, "")
 			if err != nil {
@@ -97,13 +97,13 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return onret(&ast.Schema{
+		return onret(&oas.Schema{
 			AnyOf:       schemas,
 			Ref:         schema.Ref,
 			Description: schema.Description,
 		}), nil
 	case len(schema.AllOf) > 0:
-		var schemas []*ast.Schema
+		var schemas []*oas.Schema
 		for i, s := range schema.AllOf {
 			schema, err := g.generate(s, "")
 			if err != nil {
@@ -113,7 +113,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return onret(&ast.Schema{
+		return onret(&oas.Schema{
 			AllOf:       schemas,
 			Ref:         schema.Ref,
 			Description: schema.Description,
@@ -133,8 +133,8 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 			}
 			return true
 		}
-		s := &ast.Schema{
-			Type:          ast.Object,
+		s := &oas.Schema{
+			Type:          oas.Object,
 			Description:   schema.Description,
 			Ref:           ref,
 			MinProperties: schema.MinProperties,
@@ -150,7 +150,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
-			s.Properties = append(s.Properties, ast.Property{
+			s.Properties = append(s.Properties, oas.Property{
 				Name:     propName,
 				Schema:   prop,
 				Optional: optional(propName),
@@ -163,8 +163,8 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		return s, nil
 
 	case "array":
-		array := &ast.Schema{
-			Type:        ast.Array,
+		array := &oas.Schema{
+			Type:        oas.Array,
 			Description: schema.Description,
 			Ref:         ref,
 			MinItems:    schema.MinItems,
@@ -173,7 +173,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		}
 		if schema.Items == nil {
 			// Fallback to string.
-			array.Item = &ast.Schema{Type: ast.String}
+			array.Item = &oas.Schema{Type: oas.String}
 			return array, nil
 		}
 		if len(schema.Properties) > 0 {
@@ -193,9 +193,9 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		return array, nil
 
 	case "number", "integer":
-		return onret(&ast.Schema{
-			Type:             ast.SchemaType(schema.Type),
-			Format:           ast.Format(schema.Format),
+		return onret(&oas.Schema{
+			Type:             oas.SchemaType(schema.Type),
+			Format:           oas.Format(schema.Format),
 			Description:      schema.Description,
 			Ref:              ref,
 			Minimum:          schema.Minimum,
@@ -206,17 +206,17 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		}), nil
 
 	case "boolean":
-		return onret(&ast.Schema{
-			Type:        ast.Boolean,
-			Format:      ast.Format(schema.Format),
+		return onret(&oas.Schema{
+			Type:        oas.Boolean,
+			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
 			Ref:         ref,
 		}), nil
 
 	case "string":
-		return onret(&ast.Schema{
-			Type:        ast.String,
-			Format:      ast.Format(schema.Format),
+		return onret(&oas.Schema{
+			Type:        oas.String,
+			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
 			Ref:         ref,
 			MaxLength:   schema.MaxLength,
@@ -224,14 +224,14 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*ast.Schema, error
 		}), nil
 
 	case "":
-		return onret(&ast.Schema{Type: ast.String}), nil
+		return onret(&oas.Schema{Type: oas.String}), nil
 
 	default:
 		return nil, xerrors.Errorf("unexpected schema type: '%s'", schema.Type)
 	}
 }
 
-func (g *schemaGen) ref(ref string) (*ast.Schema, error) {
+func (g *schemaGen) ref(ref string) (*oas.Schema, error) {
 	const prefix = "#/components/schemas/"
 	if !strings.HasPrefix(ref, prefix) {
 		return nil, fmt.Errorf("invalid schema reference '%s'", ref)

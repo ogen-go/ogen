@@ -1,4 +1,4 @@
-package ast
+package oas
 
 // Format of Schema.
 type Format string

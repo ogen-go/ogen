@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
 type Kind string
@@ -32,7 +32,7 @@ type Type struct {
 	Implements       map[*Type]struct{}  // only for struct, alias, enum
 	Implementations  map[*Type]struct{}  // only for interface
 	InterfaceMethods map[string]struct{} // only for interface
-	Schema           *ast.Schema         // for all kinds except pointer, interface. Can be nil.
+	Schema           *oas.Schema         // for all kinds except pointer, interface. Can be nil.
 	NilSemantic      NilSemantic         // only for pointer
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic

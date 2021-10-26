@@ -3,11 +3,11 @@ package gen
 import (
 	"golang.org/x/xerrors"
 
-	"github.com/ogen-go/ogen/internal/ast"
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateParameters(params []*ast.Parameter) ([]*ir.Parameter, error) {
+func (g *Generator) generateParameters(params []*oas.Parameter) ([]*ir.Parameter, error) {
 	var result []*ir.Parameter
 	for _, p := range params {
 		param, err := g.generateParameter(p)
@@ -21,7 +21,7 @@ func (g *Generator) generateParameters(params []*ast.Parameter) ([]*ir.Parameter
 	return result, nil
 }
 
-func (g *Generator) generateParameter(p *ast.Parameter) (*ir.Parameter, error) {
+func (g *Generator) generateParameter(p *oas.Parameter) (*ir.Parameter, error) {
 	typ, err := g.generateSchema(pascal(p.Name), p.Schema)
 	if err != nil {
 		return nil, xerrors.Errorf("'%s': %w", p.Name, err)
