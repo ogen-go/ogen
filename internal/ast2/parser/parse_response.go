@@ -11,7 +11,7 @@ import (
 )
 
 func (p *parser) parseResponses(responses ogen.Responses) (*ast.OperationResponse, error) {
-	result := ast.CreateOperationResponse()
+	result := createAstOpResponse()
 	if len(responses) == 0 {
 		return nil, fmt.Errorf("no responses")
 	}
@@ -55,7 +55,7 @@ func (p *parser) parseResponse(resp ogen.Response) (*ast.Response, error) {
 		return resp, nil
 	}
 
-	response := ast.CreateResponse()
+	response := createAstResponse()
 	for contentType, media := range resp.Content {
 		schema, err := p.parseSchema(media.Schema)
 		if err != nil {

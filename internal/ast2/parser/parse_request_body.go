@@ -17,7 +17,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*ast.RequestBody, err
 		return reqBody, nil
 	}
 
-	reqBody := ast.CreateRequestBody()
+	reqBody := createAstRBody()
 	reqBody.Required = body.Required
 
 	// Iterate through request body contents...
