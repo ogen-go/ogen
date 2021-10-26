@@ -51,7 +51,7 @@ func (g *Generator) makeIR(ops []*ast.Operation) error {
 		op, err := g.generateOperation(spec)
 		if err != nil {
 			if g.shouldFail(err) {
-				return xerrors.Errorf("'%s': %s: %w",
+				return xerrors.Errorf("%q: %s: %w",
 					spec.Path(),
 					strings.ToLower(spec.HTTPMethod),
 					err,
