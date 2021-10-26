@@ -17,6 +17,7 @@ type Generator struct {
 	types      map[string]*ir.Type
 	interfaces map[string]*ir.Type
 	refs       map[string]*ir.Type
+	wrapped    map[string]*ir.Type
 }
 
 type Options struct {
@@ -38,6 +39,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		types:      map[string]*ir.Type{},
 		interfaces: map[string]*ir.Type{},
 		refs:       map[string]*ir.Type{},
+		wrapped:    map[string]*ir.Type{},
 	}
 
 	if err := g.makeIR(operations); err != nil {
@@ -45,7 +47,9 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	g.fix()
-
+	for _, w := range g.wrapped {
+		g.saveType(w)
+	}
 	return g, nil
 }
 

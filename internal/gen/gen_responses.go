@@ -119,6 +119,19 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 		panic("unreachable")
 	}
 
+	isRef := func() (string, bool) {
+		if typ.Schema != nil && typ.Schema.Ref != "" {
+			return typ.Schema.Ref, true
+		}
+		return "", false
+	}
+
+	if ref, ok := isRef(); ok {
+		if t, ok := g.wrapped[ref]; ok {
+			return t
+		}
+	}
+
 	name := typ.Name + "StatusCode"
 	t := &ir.Type{
 		Kind: ir.KindStruct,
@@ -136,6 +149,8 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 		},
 	}
 
-	g.saveType(t)
+	if ref, ok := isRef(); ok {
+		g.wrapped[ref] = t
+	}
 	return t
 }
