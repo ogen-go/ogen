@@ -50,11 +50,6 @@ var (
 	_ = net.IP{}
 )
 
-type FoobarGetParams struct {
-	InlinedParam int64
-	Skip         int32
-}
-
 type PetGetParams struct {
 	PetID  int64
 	XTags  []uuid.UUID
@@ -62,14 +57,19 @@ type PetGetParams struct {
 	Token  string
 }
 
-type PetFriendsNamesByIDParams struct {
-	ID int
+type PetGetByNameParams struct {
+	Name string
+}
+
+type FoobarGetParams struct {
+	InlinedParam int64
+	Skip         int32
 }
 
 type PetNameByIDParams struct {
 	ID int
 }
 
-type PetGetByNameParams struct {
-	Name string
+type PetFriendsNamesByIDParams struct {
+	ID int
 }

@@ -3,7 +3,7 @@
     more.Down()
     j.WriteArrayStart()
     for _, elem := range {{ $.Var }} {
-    {{ template "enc_json_value" array_elem $t.Item }}
+      {{ template "enc_json_value" array_elem $.Type.Item }}
     }
     j.WriteArrayEnd()
     more.Up()
@@ -12,9 +12,7 @@
 {{- define "enc_json_start" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     more.More()
-    {{- if $.Field }}
-      j.WriteObjectField("{{ $.Field }}")
-    {{- end -}}
+    j.WriteObjectField("{{ $.Tag.JSON }}")
 {{- end -}}
 
 {{- define "enc_json_value" -}}

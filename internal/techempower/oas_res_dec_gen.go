@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
+func decodeQueriesResponse(resp *http.Response) (res QueriesResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -65,28 +65,9 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response []WorldObject
+			var response QueriesResponseOKApplicationJSON
 			if err := func() error {
-				response = response[:0]
-				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
-					var elem WorldObject
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -100,7 +81,7 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 	}
 }
 
-func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
+func decodeUpdatesResponse(resp *http.Response) (res QueriesResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -115,12 +96,9 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response WorldObject
+			var response QueriesResponseOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -134,7 +112,7 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 	}
 }
 
-func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
+func decodeCachingResponse(resp *http.Response) (res QueriesResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -149,12 +127,9 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response HelloWorld
+			var response QueriesResponseOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -168,7 +143,7 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 	}
 }
 
-func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
+func decodeJSONResponse(resp *http.Response) (res JSONResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -183,28 +158,9 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response []WorldObject
+			var response JSONResponseOKApplicationJSON
 			if err := func() error {
-				response = response[:0]
-				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
-					var elem WorldObject
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -218,7 +174,7 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 	}
 }
 
-func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
+func decodeDBResponse(resp *http.Response) (res QueriesResponseOKApplicationJSONItem, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -233,28 +189,9 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response []WorldObject
+			var response QueriesResponseOKApplicationJSONItem
 			if err := func() error {
-				response = response[:0]
-				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
-					var elem WorldObject
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}

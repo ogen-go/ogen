@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) {
+func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -65,12 +65,9 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Pet
+			var response PetGetResponseOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -79,27 +76,60 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) 
 		default:
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
-	case 404:
-		return &NotFound{}, nil
+	default:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response PetGetResponseDefaultApplicationJSONStatusCode
+			if err := func() error {
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			response.StatusCode = resp.StatusCode
+			return &response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	}
+}
+
+func decodePetCreateResponse(resp *http.Response) (res PetGetResponseOKApplicationJSON, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response PetGetResponseOKApplicationJSON
+			if err := func() error {
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDefault, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	default:
-		return FoobarPutDefault{StatusCode: resp.StatusCode}, nil
-	}
-}
-
-func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error) {
+func decodePetGetByNameResponse(resp *http.Response) (res PetGetResponseOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -114,12 +144,40 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Pet
+			var response PetGetResponseOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		}
+	default:
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
+func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetResponse, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	case 200:
+		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			i := json.GetIterator()
+			defer json.PutIterator(i)
+			i.ResetBytes(buf.Bytes())
+
+			var response PetGetResponseOKApplicationJSON
+			if err := func() error {
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -129,33 +187,26 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	case 404:
-		return &NotFound{}, nil
+		return &FoobarGetResponseNotFound{}, nil
 	default:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response ErrorStatusCode
-			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				return res, err
-			}
-
-			response.StatusCode = resp.StatusCode
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
+func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutResponseDefaultStatusCode, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	default:
+		return FoobarPutResponseDefaultStatusCode{StatusCode: resp.StatusCode}, nil
+	}
+}
+
+func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -170,12 +221,9 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Pet
+			var response PetGetResponseOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -184,6 +232,8 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 		default:
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
+	case 404:
+		return &FoobarPostResponseNotFound{}, nil
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -191,12 +241,9 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetDefaultStatusCode
+			var response FoobarPostResponseDefaultApplicationJSONStatusCode
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -209,7 +256,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 	}
 }
 
-func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
+func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -224,12 +271,9 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Pet
+			var response string
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -260,90 +304,7 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 
 			var response []string
 			if err := func() error {
-				response = response[:0]
-				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
-					var elem string
-					if err := func() error {
-						elem = string(i.ReadString())
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					response = append(response, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response string
-			if err := func() error {
-				response = string(i.ReadString())
-				return i.Error
-			}(); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-	if _, err := io.Copy(buf, resp.Body); err != nil {
-		return res, err
-	}
-
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			i := json.GetIterator()
-			defer json.PutIterator(i)
-			i.ResetBytes(buf.Bytes())
-
-			var response Pet
-			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}

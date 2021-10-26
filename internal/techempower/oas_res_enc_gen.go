@@ -50,98 +50,57 @@ var (
 	_ = net.IP{}
 )
 
-func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error {
+func encodeQueriesResponse(response QueriesResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
+func encodeUpdatesResponse(response QueriesResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
+func encodeCachingResponse(response QueriesResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error {
+func encodeJSONResponse(response JSONResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeUpdatesResponse(response []WorldObject, w http.ResponseWriter) error {
+func encodeDBResponse(response QueriesResponseOKApplicationJSONItem, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		elem.WriteJSON(j)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }

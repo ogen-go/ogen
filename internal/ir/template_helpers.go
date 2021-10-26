@@ -75,4 +75,6 @@ func (t *Type) IsArray() bool   { return t.Is(KindArray) }
 func (t *Type) IsStruct() bool  { return t.Is(KindStruct) }
 func (t *Type) IsPointer() bool { return t.Is(KindPointer) }
 func (t *Type) IsEnum() bool    { return t.Is(KindEnum) }
+func (t *Type) IsGeneric() bool { return t.Is(KindGeneric) }
+func (t *Type) IsAlias() bool   { return t.Is(KindAlias) }
 func (t *Type) IsNumeric() bool { return t.IsInteger() || t.IsFloat() }

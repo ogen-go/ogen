@@ -77,8 +77,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"request_decoders", "oas_req_dec_gen.go"},
 		{"response_encoders", "oas_res_enc_gen.go"},
 		{"response_decoders", "oas_res_dec_gen.go"},
-		// {"validators", "oas_validators_gen.go"},
-		// {"schemas_json", "oas_schemas_json_gen.go"},
+		{"validators", "oas_validators_gen.go"},
+		{"schemas_json", "oas_schemas_json_gen.go"},
 		{"server", "oas_server_gen.go"},
 		{"client", "oas_client_gen.go"},
 	}

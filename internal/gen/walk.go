@@ -6,7 +6,7 @@ import (
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func walkResponseTypes(r *ir.Response, walkFn func(rname string, typ *ir.Type) *ir.Type) {
+func walkResponseTypes(r *ir.Response, walkFn func(name string, typ *ir.Type) *ir.Type) {
 	for code, r := range r.StatusCode {
 		for contentType, typ := range r.Contents {
 			r.Contents[contentType] = walkFn(pascal(http.StatusText(code), contentType), typ)

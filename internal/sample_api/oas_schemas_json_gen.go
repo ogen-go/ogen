@@ -51,28 +51,23 @@ var (
 )
 
 // WriteJSON implements json.Marshaler.
-func (s Data) WriteJSON(j *json.Stream) {
+func (s FoobarGetResponseNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.Description.Set {
-		more.More()
-		j.WriteObjectField("description")
-		s.Description.WriteJSON(j)
-	}
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes Data json value to io.Writer.
-func (s Data) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarGetResponseNotFound json value to io.Writer.
+func (s FoobarGetResponseNotFound) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads Data json value from io.Reader.
-func (s *Data) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarGetResponseNotFound json value from io.Reader.
+func (s *FoobarGetResponseNotFound) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -86,23 +81,11 @@ func (s *Data) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads Data from json stream.
-func (s *Data) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarGetResponseNotFound from json stream.
+func (s *FoobarGetResponseNotFound) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
-		case "description":
-			if err := func() error {
-				s.Description.Reset()
-				if err := s.Description.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
 		default:
 			i.Skip()
 			return true
@@ -115,29 +98,31 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s Error) WriteJSON(j *json.Stream) {
+func (s FoobarPostResponseDefaultApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
+
 	more.More()
 	j.WriteObjectField("code")
 	j.WriteInt64(s.Code)
+
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes Error json value to io.Writer.
-func (s Error) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPostResponseDefaultApplicationJSON json value to io.Writer.
+func (s FoobarPostResponseDefaultApplicationJSON) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads Error json value from io.Reader.
-func (s *Error) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPostResponseDefaultApplicationJSON json value from io.Reader.
+func (s *FoobarPostResponseDefaultApplicationJSON) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -151,8 +136,8 @@ func (s *Error) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads Error from json stream.
-func (s *Error) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostResponseDefaultApplicationJSON from json stream.
+func (s *FoobarPostResponseDefaultApplicationJSON) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -186,23 +171,23 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
+func (s FoobarPostResponseDefaultApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes ErrorStatusCode json value to io.Writer.
-func (s ErrorStatusCode) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPostResponseDefaultApplicationJSONStatusCode json value to io.Writer.
+func (s FoobarPostResponseDefaultApplicationJSONStatusCode) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads ErrorStatusCode json value from io.Reader.
-func (s *ErrorStatusCode) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPostResponseDefaultApplicationJSONStatusCode json value from io.Reader.
+func (s *FoobarPostResponseDefaultApplicationJSONStatusCode) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -216,8 +201,8 @@ func (s *ErrorStatusCode) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads ErrorStatusCode from json stream.
-func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostResponseDefaultApplicationJSONStatusCode from json stream.
+func (s *FoobarPostResponseDefaultApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -233,23 +218,23 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPutDefault) WriteJSON(j *json.Stream) {
+func (s FoobarPostResponseNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes FoobarPutDefault json value to io.Writer.
-func (s FoobarPutDefault) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes FoobarPostResponseNotFound json value to io.Writer.
+func (s FoobarPostResponseNotFound) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads FoobarPutDefault json value from io.Reader.
-func (s *FoobarPutDefault) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads FoobarPostResponseNotFound json value from io.Reader.
+func (s *FoobarPostResponseNotFound) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -263,820 +248,8 @@ func (s *FoobarPutDefault) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads FoobarPutDefault from json stream.
-func (s *FoobarPutDefault) ReadJSON(i *json.Iterator) error {
-	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON writes json value of string to json stream.
-func (o NilString) WriteJSON(j *json.Stream) {
-	if o.Null {
-		j.WriteNil()
-		return
-	}
-	j.WriteString(string(o.Value))
-}
-
-// ReadJSON reads json value of string from json iterator.
-func (o *NilString) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Null = false
-		o.Value = string(i.ReadString())
-		return i.Error
-	case json.NilValue:
-		var v string
-		o.Value = v
-		o.Null = true
-		i.Skip()
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading NilString", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s NotFound) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// WriteJSONTo writes NotFound json value to io.Writer.
-func (s NotFound) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads NotFound json value from io.Reader.
-func (s *NotFound) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads NotFound from json stream.
-func (s *NotFound) ReadJSON(i *json.Iterator) error {
-	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
-		switch k {
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON writes json value of Data to json stream.
-func (o OptData) WriteJSON(j *json.Stream) {
-	o.Value.WriteJSON(j)
-}
-
-// ReadJSON reads json value of Data from json iterator.
-func (o *OptData) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.ObjectValue:
-		o.Set = true
-		if err := o.Value.ReadJSON(i); err != nil {
-			return err
-		}
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptData", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of time.Duration to json stream.
-func (o OptDuration) WriteJSON(j *json.Stream) {
-	json.WriteDuration(j, o.Value)
-}
-
-// ReadJSON reads json value of time.Duration from json iterator.
-func (o *OptDuration) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Set = true
-		v, err := json.ReadDuration(i)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptDuration", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of float64 to json stream.
-func (o OptFloat64) WriteJSON(j *json.Stream) {
-	j.WriteFloat64(float64(o.Value))
-}
-
-// ReadJSON reads json value of float64 from json iterator.
-func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.NumberValue:
-		o.Set = true
-		o.Value = float64(i.ReadFloat64())
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of int to json stream.
-func (o OptInt) WriteJSON(j *json.Stream) {
-	j.WriteInt(int(o.Value))
-}
-
-// ReadJSON reads json value of int from json iterator.
-func (o *OptInt) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.NumberValue:
-		o.Set = true
-		o.Value = int(i.ReadInt())
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of string to json stream.
-func (o OptNilString) WriteJSON(j *json.Stream) {
-	if o.Null {
-		j.WriteNil()
-		return
-	}
-	j.WriteString(string(o.Value))
-}
-
-// ReadJSON reads json value of string from json iterator.
-func (o *OptNilString) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Set = true
-		o.Null = false
-		o.Value = string(i.ReadString())
-		return i.Error
-	case json.NilValue:
-		var v string
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		i.Skip()
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptNilString", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of PetType to json stream.
-func (o OptPetType) WriteJSON(j *json.Stream) {
-	j.WriteString(string(o.Value))
-}
-
-// ReadJSON reads json value of PetType from json iterator.
-func (o *OptPetType) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Set = true
-		o.Value = PetType(i.ReadString())
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptPetType", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of string to json stream.
-func (o OptString) WriteJSON(j *json.Stream) {
-	j.WriteString(string(o.Value))
-}
-
-// ReadJSON reads json value of string from json iterator.
-func (o *OptString) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Set = true
-		o.Value = string(i.ReadString())
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of time.Time to json stream.
-func (o OptTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
-	format(j, o.Value)
-}
-
-// ReadJSON reads json value of time.Time from json iterator.
-func (o *OptTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Set = true
-		v, err := format(i)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptTime", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of uuid.UUID to json stream.
-func (o OptUUID) WriteJSON(j *json.Stream) {
-	json.WriteUUID(j, o.Value)
-}
-
-// ReadJSON reads json value of uuid.UUID from json iterator.
-func (o *OptUUID) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Set = true
-		v, err := json.ReadUUID(i)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptUUID", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
-func (s Pet) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("birthday")
-	json.WriteDate(j, s.Birthday)
-	if s.Friends != nil {
-		more.More()
-		j.WriteObjectField("friends")
-		more.Down()
-		j.WriteArrayStart()
-		for _, elem := range s.Friends {
-			more.More()
-			elem.WriteJSON(j)
-		}
-		j.WriteArrayEnd()
-		more.Up()
-	}
-	more.More()
-	j.WriteObjectField("id")
-	j.WriteInt64(s.ID)
-	more.More()
-	j.WriteObjectField("ip")
-	json.WriteIP(j, s.IP)
-	more.More()
-	j.WriteObjectField("ip_v4")
-	json.WriteIP(j, s.IPV4)
-	more.More()
-	j.WriteObjectField("ip_v6")
-	json.WriteIP(j, s.IPV6)
-	more.More()
-	j.WriteObjectField("kind")
-	s.Kind.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("name")
-	j.WriteString(s.Name)
-	if s.Next.Set {
-		more.More()
-		j.WriteObjectField("next")
-		s.Next.WriteJSON(j)
-	}
-	more.More()
-	j.WriteObjectField("nickname")
-	s.Nickname.WriteJSON(j)
-	if s.NullStr.Set {
-		more.More()
-		j.WriteObjectField("nullStr")
-		s.NullStr.WriteJSON(j)
-	}
-	if s.Primary != nil {
-		more.More()
-		j.WriteObjectField("primary")
-		s.Primary.WriteJSON(j)
-	}
-	more.More()
-	j.WriteObjectField("rate")
-	json.WriteDuration(j, s.Rate)
-	if s.Tag.Set {
-		more.More()
-		j.WriteObjectField("tag")
-		s.Tag.WriteJSON(j)
-	}
-	if s.TestArray1 != nil {
-		more.More()
-		j.WriteObjectField("testArray1")
-		more.Down()
-		j.WriteArrayStart()
-		for _, elem := range s.TestArray1 {
-			more.More()
-			more.Down()
-			j.WriteArrayStart()
-			for _, elem := range elem {
-				more.More()
-				j.WriteString(elem)
-			}
-			j.WriteArrayEnd()
-			more.Up()
-		}
-		j.WriteArrayEnd()
-		more.Up()
-	}
-	if s.TestDate.Set {
-		more.More()
-		j.WriteObjectField("testDate")
-		s.TestDate.WriteJSON(j, json.WriteDate)
-	}
-	if s.TestDateTime.Set {
-		more.More()
-		j.WriteObjectField("testDateTime")
-		s.TestDateTime.WriteJSON(j, json.WriteDateTime)
-	}
-	if s.TestDuration.Set {
-		more.More()
-		j.WriteObjectField("testDuration")
-		s.TestDuration.WriteJSON(j)
-	}
-	if s.TestFloat1.Set {
-		more.More()
-		j.WriteObjectField("testFloat1")
-		s.TestFloat1.WriteJSON(j)
-	}
-	if s.TestInteger1.Set {
-		more.More()
-		j.WriteObjectField("testInteger1")
-		s.TestInteger1.WriteJSON(j)
-	}
-	if s.TestTime.Set {
-		more.More()
-		j.WriteObjectField("testTime")
-		s.TestTime.WriteJSON(j, json.WriteTime)
-	}
-	if s.Type.Set {
-		more.More()
-		j.WriteObjectField("type")
-		s.Type.WriteJSON(j)
-	}
-	more.More()
-	j.WriteObjectField("uri")
-	json.WriteURI(j, s.URI)
-	more.More()
-	j.WriteObjectField("unique_id")
-	json.WriteUUID(j, s.UniqueID)
-	j.WriteObjectEnd()
-}
-
-// WriteJSONTo writes Pet json value to io.Writer.
-func (s Pet) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads Pet json value from io.Reader.
-func (s *Pet) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads Pet from json stream.
-func (s *Pet) ReadJSON(i *json.Iterator) error {
-	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
-		switch k {
-		case "birthday":
-			if err := func() error {
-				v, err := json.ReadDate(i)
-				s.Birthday = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "friends":
-			if err := func() error {
-				s.Friends = s.Friends[:0]
-				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
-					var elem Pet
-					if err := func() error {
-						if err := elem.ReadJSON(i); err != nil {
-							return err
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.Friends = append(s.Friends, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "id":
-			if err := func() error {
-				s.ID = int64(i.ReadInt64())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "ip":
-			if err := func() error {
-				v, err := json.ReadIP(i)
-				s.IP = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "ip_v4":
-			if err := func() error {
-				v, err := json.ReadIP(i)
-				s.IPV4 = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "ip_v6":
-			if err := func() error {
-				v, err := json.ReadIP(i)
-				s.IPV6 = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "kind":
-			if err := func() error {
-				s.Kind = PetKind(i.ReadString())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "name":
-			if err := func() error {
-				s.Name = string(i.ReadString())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "next":
-			if err := func() error {
-				s.Next.Reset()
-				if err := s.Next.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "nickname":
-			if err := func() error {
-				if err := s.Nickname.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "nullStr":
-			if err := func() error {
-				s.NullStr.Reset()
-				if err := s.NullStr.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "primary":
-			if err := func() error {
-				s.Primary = nil
-				var elem Pet
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
-						return err
-					}
-					return i.Error
-				}(); err != nil {
-					return err
-				}
-				s.Primary = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "rate":
-			if err := func() error {
-				v, err := json.ReadDuration(i)
-				s.Rate = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "tag":
-			if err := func() error {
-				s.Tag.Reset()
-				if err := s.Tag.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testArray1":
-			if err := func() error {
-				s.TestArray1 = s.TestArray1[:0]
-				var retErr error
-				i.ReadArrayCB(func(i *json.Iterator) bool {
-					var elem []string
-					if err := func() error {
-						elem = elem[:0]
-						var retErr error
-						i.ReadArrayCB(func(i *json.Iterator) bool {
-							var elemElem string
-							if err := func() error {
-								elemElem = string(i.ReadString())
-								return i.Error
-							}(); err != nil {
-								retErr = err
-								return false
-							}
-							elem = append(elem, elemElem)
-							return true
-						})
-						if retErr != nil {
-							return retErr
-						}
-						return i.Error
-					}(); err != nil {
-						retErr = err
-						return false
-					}
-					s.TestArray1 = append(s.TestArray1, elem)
-					return true
-				})
-				if retErr != nil {
-					return retErr
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testDate":
-			if err := func() error {
-				s.TestDate.Reset()
-				if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testDateTime":
-			if err := func() error {
-				s.TestDateTime.Reset()
-				if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testDuration":
-			if err := func() error {
-				s.TestDuration.Reset()
-				if err := s.TestDuration.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testFloat1":
-			if err := func() error {
-				s.TestFloat1.Reset()
-				if err := s.TestFloat1.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testInteger1":
-			if err := func() error {
-				s.TestInteger1.Reset()
-				if err := s.TestInteger1.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "testTime":
-			if err := func() error {
-				s.TestTime.Reset()
-				if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "type":
-			if err := func() error {
-				s.Type.Reset()
-				if err := s.Type.ReadJSON(i); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "uri":
-			if err := func() error {
-				v, err := json.ReadURI(i)
-				s.URI = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "unique_id":
-			if err := func() error {
-				v, err := json.ReadUUID(i)
-				s.UniqueID = v
-				if err != nil {
-					return err
-				}
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s PetCreateTextPlainReq) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	j.WriteObjectEnd()
-}
-
-// WriteJSONTo writes PetCreateTextPlainReq json value to io.Writer.
-func (s PetCreateTextPlainReq) WriteJSONTo(w io.Writer) error {
-	j := json.GetStream(w)
-	defer json.PutStream(j)
-	s.WriteJSON(j)
-	return j.Flush()
-}
-
-// ReadJSONFrom reads PetCreateTextPlainReq json value from io.Reader.
-func (s *PetCreateTextPlainReq) ReadJSONFrom(r io.Reader) error {
-	buf := json.GetBuffer()
-	defer json.PutBuffer(buf)
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		return err
-	}
-	i := json.GetIterator()
-	i.ResetBytes(buf.Bytes())
-	defer json.PutIterator(i)
-
-	return s.ReadJSON(i)
-}
-
-// ReadJSON reads PetCreateTextPlainReq from json stream.
-func (s *PetCreateTextPlainReq) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostResponseNotFound from json stream.
+func (s *FoobarPostResponseNotFound) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1092,26 +265,121 @@ func (s *PetCreateTextPlainReq) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetDefault) WriteJSON(j *json.Stream) {
+func (s FoobarPutResponseDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes FoobarPutResponseDefault json value to io.Writer.
+func (s FoobarPutResponseDefault) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads FoobarPutResponseDefault json value from io.Reader.
+func (s *FoobarPutResponseDefault) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads FoobarPutResponseDefault from json stream.
+func (s *FoobarPutResponseDefault) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s FoobarPutResponseDefaultStatusCode) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes FoobarPutResponseDefaultStatusCode json value to io.Writer.
+func (s FoobarPutResponseDefaultStatusCode) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads FoobarPutResponseDefaultStatusCode json value from io.Reader.
+func (s *FoobarPutResponseDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads FoobarPutResponseDefaultStatusCode from json stream.
+func (s *FoobarPutResponseDefaultStatusCode) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetGetResponseDefaultApplicationJSON) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PetGetDefault json value to io.Writer.
-func (s PetGetDefault) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PetGetResponseDefaultApplicationJSON json value to io.Writer.
+func (s PetGetResponseDefaultApplicationJSON) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PetGetDefault json value from io.Reader.
-func (s *PetGetDefault) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PetGetResponseDefaultApplicationJSON json value from io.Reader.
+func (s *PetGetResponseDefaultApplicationJSON) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -1125,8 +393,8 @@ func (s *PetGetDefault) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PetGetDefault from json stream.
-func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PetGetResponseDefaultApplicationJSON from json stream.
+func (s *PetGetResponseDefaultApplicationJSON) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1151,23 +419,23 @@ func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetDefaultStatusCode) WriteJSON(j *json.Stream) {
+func (s PetGetResponseDefaultApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// WriteJSONTo writes PetGetDefaultStatusCode json value to io.Writer.
-func (s PetGetDefaultStatusCode) WriteJSONTo(w io.Writer) error {
+// WriteJSONTo writes PetGetResponseDefaultApplicationJSONStatusCode json value to io.Writer.
+func (s PetGetResponseDefaultApplicationJSONStatusCode) WriteJSONTo(w io.Writer) error {
 	j := json.GetStream(w)
 	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
 
-// ReadJSONFrom reads PetGetDefaultStatusCode json value from io.Reader.
-func (s *PetGetDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
+// ReadJSONFrom reads PetGetResponseDefaultApplicationJSONStatusCode json value from io.Reader.
+func (s *PetGetResponseDefaultApplicationJSONStatusCode) ReadJSONFrom(r io.Reader) error {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 
@@ -1181,8 +449,8 @@ func (s *PetGetDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
 	return s.ReadJSON(i)
 }
 
-// ReadJSON reads PetGetDefaultStatusCode from json stream.
-func (s *PetGetDefaultStatusCode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PetGetResponseDefaultApplicationJSONStatusCode from json stream.
+func (s *PetGetResponseDefaultApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1198,23 +466,674 @@ func (s *PetGetDefaultStatusCode) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetKind) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
+func (s PetGetResponseOKApplicationJSON) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("birthday")
+	json.WriteDate(j, s.Birthday)
+
+	more.More()
+	j.WriteObjectField("friends")
+	s.Friends.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("id")
+	j.WriteInt64(s.ID)
+
+	more.More()
+	j.WriteObjectField("ip")
+	json.WriteIP(j, s.IP)
+
+	more.More()
+	j.WriteObjectField("ip_v4")
+	json.WriteIP(j, s.IPV4)
+
+	more.More()
+	j.WriteObjectField("ip_v6")
+	json.WriteIP(j, s.IPV6)
+
+	more.More()
+	j.WriteObjectField("kind")
+	s.Kind.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("name")
+	j.WriteString(s.Name)
+
+	more.More()
+	j.WriteObjectField("next")
+	s.Next.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("nickname")
+	j.WriteString(s.Nickname)
+
+	more.More()
+	j.WriteObjectField("nullStr")
+	s.NullStr.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("primary")
+	s.Primary.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("rate")
+	json.WriteDuration(j, s.Rate)
+
+	more.More()
+	j.WriteObjectField("tag")
+	s.Tag.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("testArray1")
+	s.TestArray1.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("testDate")
+	s.TestDate.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("testDateTime")
+	s.TestDateTime.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("testDuration")
+	s.TestDuration.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("testFloat1")
+	s.TestFloat1.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("testInteger1")
+	s.TestInteger1.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("testTime")
+	s.TestTime.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("type")
+	s.Type.WriteJSON(j)
+
+	more.More()
+	j.WriteObjectField("unique_id")
+	json.WriteUUID(j, s.UniqueID)
+
+	more.More()
+	j.WriteObjectField("uri")
+	json.WriteURI(j, s.URI)
+	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PetKind from json stream.
-func (s *PetKind) ReadJSON(i *json.Iterator) error {
-	*s = PetKind(i.ReadString())
+// WriteJSONTo writes PetGetResponseOKApplicationJSON json value to io.Writer.
+func (s PetGetResponseOKApplicationJSON) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PetGetResponseOKApplicationJSON json value from io.Reader.
+func (s *PetGetResponseOKApplicationJSON) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PetGetResponseOKApplicationJSON from json stream.
+func (s *PetGetResponseOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "birthday":
+			if err := func() error {
+
+				v, err := json.Readtrue(i)
+				s.Birthday = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "friends":
+			if err := func() error {
+				s.Friends = nil
+				var elem []PetGetResponseOKApplicationJSON
+				if err := func() error {
+
+					elem = elem[:0]
+					var retErr error
+					i.ReadArrayCB(func(i *json.Iterator) bool {
+						var elemElem PetGetResponseOKApplicationJSON
+						if err := func() error {
+
+							if err := elemElem.ReadJSON(i); err != nil {
+								return err
+							}
+							return i.Error
+						}(); err != nil {
+							retErr = err
+							return false
+						}
+						elem = append(elem, elemElem)
+						return true
+					})
+					if retErr != nil {
+						return retErr
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Friends = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "id":
+			if err := func() error {
+				s.ID = int64(i.ReadInt64())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "ip":
+			if err := func() error {
+
+				v, err := json.Readfalse(i)
+				s.IP = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "ip_v4":
+			if err := func() error {
+
+				v, err := json.Readfalse(i)
+				s.IPV4 = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "ip_v6":
+			if err := func() error {
+
+				v, err := json.Readfalse(i)
+				s.IPV6 = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "kind":
+			if err := func() error {
+				s.Kind = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "name":
+			if err := func() error {
+				s.Name = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "next":
+			if err := func() error {
+				s.Next = nil
+				var elem PetGetResponseOKApplicationJSONNext
+				if err := func() error {
+
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Next = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "nickname":
+			if err := func() error {
+				s.Nickname = string(i.ReadString())
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "nullStr":
+			if err := func() error {
+				s.NullStr = nil
+				var elem string
+				if err := func() error {
+					elem = string(i.ReadString())
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.NullStr = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "primary":
+			if err := func() error {
+				s.Primary = nil
+				var elem PetGetResponseOKApplicationJSON
+				if err := func() error {
+
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Primary = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "rate":
+			if err := func() error {
+
+				v, err := json.Readfalse(i)
+				s.Rate = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "tag":
+			if err := func() error {
+				s.Tag = nil
+				var elem uuid.UUID
+				if err := func() error {
+
+					v, err := json.Readfalse(i)
+					elem = v
+					if err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Tag = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "testArray1":
+			if err := func() error {
+				s.TestArray1 = nil
+				var elem [][]string
+				if err := func() error {
+
+					elem = elem[:0]
+					var retErr error
+					i.ReadArrayCB(func(i *json.Iterator) bool {
+						var elemElem []string
+						if err := func() error {
+
+							elemElem = elemElem[:0]
+							var retErr error
+							i.ReadArrayCB(func(i *json.Iterator) bool {
+								var elemElemElem string
+								if err := func() error {
+									elemElemElem = string(i.ReadString())
+									return i.Error
+								}(); err != nil {
+									retErr = err
+									return false
+								}
+								elemElem = append(elemElem, elemElemElem)
+								return true
+							})
+							if retErr != nil {
+								return retErr
+							}
+							return i.Error
+						}(); err != nil {
+							retErr = err
+							return false
+						}
+						elem = append(elem, elemElem)
+						return true
+					})
+					if retErr != nil {
+						return retErr
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TestArray1 = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "testDate":
+			if err := func() error {
+				s.TestDate = nil
+				var elem time.Time
+				if err := func() error {
+
+					v, err := json.Readtrue(i)
+					elem = v
+					if err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TestDate = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "testDateTime":
+			if err := func() error {
+				s.TestDateTime = nil
+				var elem time.Time
+				if err := func() error {
+
+					v, err := json.Readtrue(i)
+					elem = v
+					if err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TestDateTime = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "testDuration":
+			if err := func() error {
+				s.TestDuration = nil
+				var elem time.Duration
+				if err := func() error {
+
+					v, err := json.Readfalse(i)
+					elem = v
+					if err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TestDuration = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "testFloat1":
+			if err := func() error {
+				s.TestFloat1 = nil
+				var elem float64
+				if err := func() error {
+					elem = float64(i.ReadFloat64())
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TestFloat1 = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "testInteger1":
+			if err := func() error {
+				s.TestInteger1 = nil
+				var elem int
+				if err := func() error {
+					elem = int(i.ReadInt())
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TestInteger1 = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "testTime":
+			if err := func() error {
+				s.TestTime = nil
+				var elem time.Time
+				if err := func() error {
+
+					v, err := json.Readtrue(i)
+					elem = v
+					if err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.TestTime = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "type":
+			if err := func() error {
+				s.Type = nil
+				var elem string
+				if err := func() error {
+					elem = string(i.ReadString())
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Type = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "unique_id":
+			if err := func() error {
+
+				v, err := json.Readfalse(i)
+				s.UniqueID = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		case "uri":
+			if err := func() error {
+
+				v, err := json.Readfalse(i)
+				s.URI = v
+				if err != nil {
+					return err
+				}
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetType) WriteJSON(j *json.Stream) {
+func (s PetGetResponseOKApplicationJSONKind) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
 }
 
-// ReadJSON reads PetType from json stream.
-func (s *PetType) ReadJSON(i *json.Iterator) error {
-	*s = PetType(i.ReadString())
+// ReadJSON reads PetGetResponseOKApplicationJSONKind from json stream.
+func (s *PetGetResponseOKApplicationJSONKind) ReadJSON(i *json.Iterator) error {
+	*s = PetGetResponseOKApplicationJSONKind(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetGetResponseOKApplicationJSONNext) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("description")
+	s.Description.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes PetGetResponseOKApplicationJSONNext json value to io.Writer.
+func (s PetGetResponseOKApplicationJSONNext) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads PetGetResponseOKApplicationJSONNext json value from io.Reader.
+func (s *PetGetResponseOKApplicationJSONNext) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PetGetResponseOKApplicationJSONNext from json stream.
+func (s *PetGetResponseOKApplicationJSONNext) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "description":
+			if err := func() error {
+				s.Description = nil
+				var elem string
+				if err := func() error {
+					elem = string(i.ReadString())
+					return i.Error
+				}(); err != nil {
+					return err
+				}
+				s.Description = &elem
+				return i.Error
+			}(); err != nil {
+				retErr = err
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetGetResponseOKApplicationJSONType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PetGetResponseOKApplicationJSONType from json stream.
+func (s *PetGetResponseOKApplicationJSONType) ReadJSON(i *json.Iterator) error {
+	*s = PetGetResponseOKApplicationJSONType(i.ReadString())
 	return i.Error
 }

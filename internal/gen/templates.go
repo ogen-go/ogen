@@ -17,6 +17,7 @@ type Elem struct {
 	Sub  bool // true if Elem has parent Elem
 	Type *ir.Type
 	Var  string
+	Tag  ir.Tag
 }
 
 // NextVar returns name of variable for decoding recursive call.
@@ -115,10 +116,11 @@ func templateFunctions() template.FuncMap {
 			}
 		},
 		// Field of structure.
-		"field_elem": func(s *ir.Field) Elem {
+		"field_elem": func(f *ir.Field) Elem {
 			return Elem{
-				Type: s.Type,
-				Var:  fmt.Sprintf("s.%s", s.Name),
+				Type: f.Type,
+				Var:  fmt.Sprintf("s.%s", f.Name),
+				Tag:  f.Tag,
 			}
 		},
 	}

@@ -50,10 +50,10 @@ var (
 	_ = net.IP{}
 )
 
-func (s *Pet) Validate() error {
+func (s *PetGetResponseOKApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	{
-		// Validate 'id' field.
+		// Validate 'id' property.
 		validator := validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -67,10 +67,10 @@ func (s *Pet) Validate() error {
 		}
 	}
 	{
-		// Validate 'name' field.
+		// Validate 'name' property.
 		validator := validate.String{
-			MinLength:    4,
-			MinLengthSet: true,
+			MinLength:    0,
+			MinLengthSet: false,
 			MaxLength:    24,
 			MaxLengthSet: true,
 		}

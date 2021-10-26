@@ -46,7 +46,7 @@ func (g *Generator) generateResponses(name string, responses *ast.OperationRespo
 		lastWalked *ir.Type
 	)
 
-	walkResponseTypes(result, func(rname string, typ *ir.Type) *ir.Type {
+	walkResponseTypes(result, func(name string, typ *ir.Type) *ir.Type {
 		countTypes += 1
 		lastWalked = typ
 		return typ
@@ -60,9 +60,9 @@ func (g *Generator) generateResponses(name string, responses *ast.OperationRespo
 	iface := ir.Interface(name)
 	iface.AddMethod(camel(name))
 	g.saveIface(iface)
-	walkResponseTypes(result, func(rname string, typ *ir.Type) *ir.Type {
+	walkResponseTypes(result, func(resName string, typ *ir.Type) *ir.Type {
 		if typ.Is(ir.KindPrimitive, ir.KindArray) {
-			typ = ir.Alias(pascal(name, rname), typ)
+			typ = ir.Alias(pascal(name, resName), typ)
 			g.saveType(typ)
 		}
 

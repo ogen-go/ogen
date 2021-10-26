@@ -50,34 +50,6 @@ var (
 	_ = net.IP{}
 )
 
-func decodeCachingParams(r *http.Request) (CachingParams, error) {
-	var params CachingParams
-	// Decode param 'count' located in 'Query'.
-	if err := func() error {
-		values, ok := r.URL.Query()["count"]
-		if !ok {
-			return nil
-		}
-
-		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-			Values:  values,
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		})
-
-		v, err := d.DecodeInt64()
-		if err != nil {
-			return err
-		}
-
-		params.Count = int64(v)
-		return nil
-	}(); err != nil {
-		return params, err
-	}
-	return params, nil
-}
-
 func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 	var params QueriesParams
 	// Decode param 'queries' located in 'Query'.
@@ -127,6 +99,34 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 		}
 
 		params.Queries = int64(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
+	return params, nil
+}
+
+func decodeCachingParams(r *http.Request) (CachingParams, error) {
+	var params CachingParams
+	// Decode param 'count' located in 'Query'.
+	if err := func() error {
+		values, ok := r.URL.Query()["count"]
+		if !ok {
+			return nil
+		}
+
+		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+			Values:  values,
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+
+		v, err := d.DecodeInt64()
+		if err != nil {
+			return err
+		}
+
+		params.Count = int64(v)
 		return nil
 	}(); err != nil {
 		return params, err

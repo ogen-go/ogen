@@ -50,13 +50,15 @@ var (
 	_ = net.IP{}
 )
 
-// HelloWorld describes #/components/schemas/HelloWorld.
-type HelloWorld struct {
+// '#/components/schemas/HelloWorld'
+type JSONResponseOKApplicationJSON struct {
 	Message string `json:"message"`
 }
 
-// WorldObject describes #/components/schemas/WorldObject.
-type WorldObject struct {
+type QueriesResponseOKApplicationJSON []QueriesResponseOKApplicationJSONItem
+
+// '#/components/schemas/WorldObject'
+type QueriesResponseOKApplicationJSONItem struct {
 	ID           int64 `json:"id"`
 	RandomNumber int64 `json:"randomNumber"`
 }

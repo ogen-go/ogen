@@ -50,115 +50,113 @@ var (
 	_ = net.IP{}
 )
 
-func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error {
+func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *Pet:
+	case *PetGetResponseOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
-			return err
-		}
-		return nil
-	case *NotFound:
-		w.WriteHeader(404)
-		return nil
-	default:
-		return fmt.Errorf("/foobar: unexpected response type: %T", response)
-	}
-}
 
-func encodeFoobarPutResponse(response FoobarPutDefault, w http.ResponseWriter) error {
-	w.WriteHeader(response.StatusCode)
-	return nil
-}
-
-func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Pet:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
-		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
-			return err
-		}
 		return nil
-	case *NotFound:
-		w.WriteHeader(404)
-		return nil
-	case *ErrorStatusCode:
+	case *PetGetResponseDefaultApplicationJSONStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
 		j := json.NewStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/foobar: unexpected response type: %T", response)
-	}
-}
 
-func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Pet:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
-		more.More()
-		response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
-			return err
-		}
-		return nil
-	case *PetGetDefaultStatusCode:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
-		defer json.PutStream(j)
-		more := json.NewMore(j)
-		defer more.Reset()
-		more.More()
-		response.Response.WriteJSON(j)
-		if err := j.Flush(); err != nil {
-			return err
-		}
 		return nil
 	default:
 		return fmt.Errorf("/pet: unexpected response type: %T", response)
 	}
 }
 
-func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
+func encodePetCreateResponse(response PetGetResponseOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
+
+	return nil
+}
+
+func encodePetGetByNameResponse(response PetGetResponseOKApplicationJSON, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	return nil
+}
+
+func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *PetGetResponseOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	case *FoobarGetResponseNotFound:
+		w.WriteHeader(404)
+		return nil
+	default:
+		return fmt.Errorf("/foobar: unexpected response type: %T", response)
 	}
+}
+
+func encodeFoobarPutResponse(response FoobarPutResponseDefaultStatusCode, w http.ResponseWriter) error {
+	w.WriteHeader(response.StatusCode)
+	return nil
+}
+
+func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *PetGetResponseOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	case *FoobarPostResponseNotFound:
+		w.WriteHeader(404)
+		return nil
+	case *FoobarPostResponseDefaultApplicationJSONStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+
+		return nil
+	default:
+		return fmt.Errorf("/foobar: unexpected response type: %T", response)
+	}
+}
+
+func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	j := json.NewStream(w)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+
 	return nil
 }
 
@@ -169,47 +167,6 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	more.Down()
-	j.WriteArrayStart()
-	for _, elem := range response {
-		more.More()
-		j.WriteString(elem)
-	}
-	j.WriteArrayEnd()
-	more.Up()
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
 
-func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteString(response)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
 	return nil
 }

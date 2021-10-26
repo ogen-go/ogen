@@ -4,7 +4,7 @@
     {{ $j := $t.JSON }}
     {{- if $t.IsPointer -}}
         {{ $.Var }} = nil
-        var {{ $.NextVar }} {{ $t.PointerTo.Type }}
+        var {{ $.NextVar }} {{ $t.PointerTo.GoType }}
         if err := func() error {
           {{- template "dec_json_value" pointer_elem $ }}
         }(); err != nil {
@@ -31,7 +31,7 @@
         {{ $.Var }} = {{ $.Var }}[:0]
         var retErr error
         i.ReadArrayCB(func(i *json.Iterator) bool {
-           var {{ $.NextVar }} {{ $t.Item.Type }}
+           var {{ $.NextVar }} {{ $t.Item.GoType }}
            if err := func() error {
               {{- template "dec_json_value" sub_array_elem $ $t.Item }}
            }(); err != nil {
