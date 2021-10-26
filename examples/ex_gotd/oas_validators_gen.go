@@ -60,10 +60,10 @@ func (s *Chat) Validate() error {
 func (s *ChatLocation) Validate() error {
 	var failures []validate.FieldError
 	{
-		// Validate 'address' property.
+		// Validate "address" property.
 		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
+			MinLength:    1,
+			MinLengthSet: true,
 			MaxLength:    64,
 			MaxLengthSet: true,
 		}
@@ -108,10 +108,10 @@ func (s *Message) Validate() error {
 func (s *Poll) Validate() error {
 	var failures []validate.FieldError
 	{
-		// Validate 'question' property.
+		// Validate "question" property.
 		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
+			MinLength:    1,
+			MinLengthSet: true,
 			MaxLength:    300,
 			MaxLengthSet: true,
 		}

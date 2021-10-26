@@ -1106,7 +1106,6 @@ func (s *ChatLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -4106,7 +4105,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.Chat = nil
 				var elem Chat
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -4231,7 +4229,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.ForwardFromChat = nil
 				var elem Chat
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -4440,7 +4437,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.PinnedMessage = nil
 				var elem Message
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -4484,7 +4480,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -4504,7 +4499,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.ReplyToMessage = nil
 				var elem Message
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -4524,7 +4518,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.SenderChat = nil
 				var elem Chat
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -4664,7 +4657,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.VoiceChatParticipantsInvited = nil
 				var elem VoiceChatParticipantsInvited
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -4696,7 +4688,6 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				s.VoiceChatStarted = nil
 				var elem VoiceChatStarted
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -5526,7 +5517,6 @@ func (s *PassportData) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "credentials":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Credentials.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5974,7 +5964,6 @@ func (s *ProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
 			return true
 		case "traveler":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Traveler.ReadJSON(i); err != nil {
 					return err
 				}
@@ -5986,7 +5975,6 @@ func (s *ProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
 			return true
 		case "watcher":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Watcher.ReadJSON(i); err != nil {
 					return err
 				}
@@ -8782,7 +8770,6 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 			return true
 		case "location":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10294,7 +10281,6 @@ func (s *deleteMyCommands) ReadJSON(i *json.Iterator) error {
 				s.Scope = nil
 				var elem BotCommandScope
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -10568,7 +10554,6 @@ func (s *editMessageCaption) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -10734,7 +10719,6 @@ func (s *editMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -10809,7 +10793,6 @@ func (s *editMessageMedia) ReadJSON(i *json.Iterator) error {
 			return true
 		case "media":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Media.ReadJSON(i); err != nil {
 					return err
 				}
@@ -10836,7 +10819,6 @@ func (s *editMessageMedia) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -10922,7 +10904,6 @@ func (s *editMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -11048,7 +11029,6 @@ func (s *editMessageText) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -11441,7 +11421,6 @@ func (s *getMyCommands) ReadJSON(i *json.Iterator) error {
 				s.Scope = nil
 				var elem BotCommandScope
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -11998,7 +11977,6 @@ func (s *restrictChatMember) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "permissions":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -12910,7 +12888,6 @@ func (s *sendGame) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -13286,7 +13263,6 @@ func (s *sendInvoice) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -14940,7 +14916,6 @@ func (s *setChatPermissions) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "permissions":
 			if err := func() error {
-				// Struct or enum.
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
@@ -15254,7 +15229,6 @@ func (s *setMyCommands) ReadJSON(i *json.Iterator) error {
 				s.Scope = nil
 				var elem BotCommandScope
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -15586,7 +15560,6 @@ func (s *stopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}
@@ -15649,7 +15622,6 @@ func (s *stopPoll) ReadJSON(i *json.Iterator) error {
 				s.ReplyMarkup = nil
 				var elem InlineKeyboardMarkup
 				if err := func() error {
-					// Struct or enum.
 					if err := elem.ReadJSON(i); err != nil {
 						return err
 					}

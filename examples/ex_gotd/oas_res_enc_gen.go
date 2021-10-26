@@ -58,6 +58,11 @@ func encodeAddStickerToSetResponse(response AddStickerToSetResOKApplicationJSON,
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -69,6 +74,11 @@ func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryResOKApplicat
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -80,6 +90,11 @@ func encodeAnswerInlineQueryResponse(response AnswerInlineQueryResOKApplicationJ
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -91,6 +106,11 @@ func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryResOKAp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -102,6 +122,11 @@ func encodeAnswerShippingQueryResponse(response AnswerShippingQueryResOKApplicat
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -113,6 +138,11 @@ func encodeBanChatMemberResponse(response BanChatMemberResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -124,6 +154,11 @@ func encodeCopyMessageResponse(response CopyMessageResOKApplicationJSON, w http.
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -135,6 +170,11 @@ func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkResOKApplic
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -146,6 +186,11 @@ func encodeCreateNewStickerSetResponse(response CreateNewStickerSetResOKApplicat
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -157,6 +202,11 @@ func encodeDeleteChatPhotoResponse(response DeleteChatPhotoResOKApplicationJSON,
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -168,6 +218,11 @@ func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetResOKApplic
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -179,6 +234,11 @@ func encodeDeleteMessageResponse(response DeleteMessageResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -190,6 +250,11 @@ func encodeDeleteMyCommandsResponse(response DeleteMyCommandsResOKApplicationJSO
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -201,6 +266,11 @@ func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetResOKApplic
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -212,6 +282,11 @@ func encodeDeleteWebhookResponse(response DeleteWebhookResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -223,6 +298,11 @@ func encodeEditChatInviteLinkResponse(response EditChatInviteLinkResOKApplicatio
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -234,6 +314,11 @@ func encodeEditMessageCaptionResponse(response EditMessageCaptionResOKApplicatio
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -245,6 +330,11 @@ func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationResOK
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -256,6 +346,11 @@ func encodeEditMessageMediaResponse(response EditMessageMediaResOKApplicationJSO
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -267,6 +362,11 @@ func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupResOKAp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -278,6 +378,11 @@ func encodeEditMessageTextResponse(response EditMessageTextResOKApplicationJSON,
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -289,6 +394,11 @@ func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkResOKApplic
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -300,6 +410,11 @@ func encodeForwardMessageResponse(response ForwardMessageResOKApplicationJSON, w
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -311,6 +426,11 @@ func encodeGetChatResponse(response GetChatResOKApplicationJSON, w http.Response
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -322,6 +442,11 @@ func encodeGetChatAdministratorsResponse(response GetChatAdministratorsResOKAppl
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -333,6 +458,11 @@ func encodeGetChatMemberResponse(response GetChatMemberResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -344,6 +474,11 @@ func encodeGetChatMemberCountResponse(response GetChatMemberCountResOKApplicatio
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -355,6 +490,11 @@ func encodeGetFileResponse(response GetFileResOKApplicationJSON, w http.Response
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -366,6 +506,11 @@ func encodeGetGameHighScoresResponse(response GetGameHighScoresResOKApplicationJ
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -377,6 +522,11 @@ func encodeGetMeResponse(response GetMeResOKApplicationJSON, w http.ResponseWrit
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -388,6 +538,11 @@ func encodeGetMyCommandsResponse(response GetMyCommandsResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -399,6 +554,11 @@ func encodeGetStickerSetResponse(response GetStickerSetResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -410,6 +570,11 @@ func encodeGetUpdatesResponse(response GetUpdatesResOKApplicationJSON, w http.Re
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -421,6 +586,11 @@ func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosResOKApplic
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -432,6 +602,11 @@ func encodeLeaveChatResponse(response LeaveChatResOKApplicationJSON, w http.Resp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -443,6 +618,11 @@ func encodePinChatMessageResponse(response PinChatMessageResOKApplicationJSON, w
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -454,6 +634,11 @@ func encodePromoteChatMemberResponse(response PromoteChatMemberResOKApplicationJ
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -465,6 +650,11 @@ func encodeRestrictChatMemberResponse(response RestrictChatMemberResOKApplicatio
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -476,6 +666,11 @@ func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkResOKApplic
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -487,6 +682,11 @@ func encodeSendAnimationResponse(response SendAnimationResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -498,6 +698,11 @@ func encodeSendAudioResponse(response SendAudioResOKApplicationJSON, w http.Resp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -509,6 +714,11 @@ func encodeSendChatActionResponse(response SendChatActionResOKApplicationJSON, w
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -520,6 +730,11 @@ func encodeSendContactResponse(response SendContactResOKApplicationJSON, w http.
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -531,6 +746,11 @@ func encodeSendDiceResponse(response SendDiceResOKApplicationJSON, w http.Respon
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -542,6 +762,11 @@ func encodeSendDocumentResponse(response SendDocumentResOKApplicationJSON, w htt
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -553,6 +778,11 @@ func encodeSendGameResponse(response SendGameResOKApplicationJSON, w http.Respon
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -564,6 +794,11 @@ func encodeSendInvoiceResponse(response SendInvoiceResOKApplicationJSON, w http.
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -575,6 +810,11 @@ func encodeSendLocationResponse(response SendLocationResOKApplicationJSON, w htt
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -586,6 +826,11 @@ func encodeSendMediaGroupResponse(response SendMediaGroupResOKApplicationJSON, w
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -597,6 +842,11 @@ func encodeSendMessageResponse(response SendMessageResOKApplicationJSON, w http.
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -608,6 +858,11 @@ func encodeSendPhotoResponse(response SendPhotoResOKApplicationJSON, w http.Resp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -619,6 +874,11 @@ func encodeSendPollResponse(response SendPollResOKApplicationJSON, w http.Respon
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -630,6 +890,11 @@ func encodeSendStickerResponse(response SendStickerResOKApplicationJSON, w http.
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -641,6 +906,11 @@ func encodeSendVenueResponse(response SendVenueResOKApplicationJSON, w http.Resp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -652,6 +922,11 @@ func encodeSendVideoResponse(response SendVideoResOKApplicationJSON, w http.Resp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -663,6 +938,11 @@ func encodeSendVideoNoteResponse(response SendVideoNoteResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -674,6 +954,11 @@ func encodeSendVoiceResponse(response SendVoiceResOKApplicationJSON, w http.Resp
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -685,6 +970,11 @@ func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministrator
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -696,6 +986,11 @@ func encodeSetChatDescriptionResponse(response SetChatDescriptionResOKApplicatio
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -707,6 +1002,11 @@ func encodeSetChatPermissionsResponse(response SetChatPermissionsResOKApplicatio
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -718,6 +1018,11 @@ func encodeSetChatPhotoResponse(response SetChatPhotoResOKApplicationJSON, w htt
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -729,6 +1034,11 @@ func encodeSetChatStickerSetResponse(response SetChatStickerSetResOKApplicationJ
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -740,6 +1050,11 @@ func encodeSetChatTitleResponse(response SetChatTitleResOKApplicationJSON, w htt
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -751,6 +1066,11 @@ func encodeSetGameScoreResponse(response SetGameScoreResOKApplicationJSON, w htt
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -762,6 +1082,11 @@ func encodeSetMyCommandsResponse(response SetMyCommandsResOKApplicationJSON, w h
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -773,6 +1098,11 @@ func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsResOKAppl
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -784,6 +1114,11 @@ func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetResOK
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -795,6 +1130,11 @@ func encodeSetStickerSetThumbResponse(response SetStickerSetThumbResOKApplicatio
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -806,6 +1146,11 @@ func encodeSetWebhookResponse(response SetWebhookResOKApplicationJSON, w http.Re
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -817,6 +1162,11 @@ func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationResOK
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -828,6 +1178,11 @@ func encodeStopPollResponse(response StopPollResOKApplicationJSON, w http.Respon
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -839,6 +1194,11 @@ func encodeUnbanChatMemberResponse(response UnbanChatMemberResOKApplicationJSON,
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -850,6 +1210,11 @@ func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesResOKApplic
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -861,6 +1226,11 @@ func encodeUnpinChatMessageResponse(response UnpinChatMessageResOKApplicationJSO
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -872,5 +1242,10 @@ func encodeUploadStickerFileResponse(response UploadStickerFileResOKApplicationJ
 	more := json.NewMore(j)
 	defer more.Reset()
 
+	more.More()
+	response.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		return err
+	}
 	return nil
 }

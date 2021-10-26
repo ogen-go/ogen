@@ -64,7 +64,6 @@ func decodeAddStickerToSetRequest(r *http.Request) (req addStickerToSet, err err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -72,7 +71,6 @@ func decodeAddStickerToSetRequest(r *http.Request) (req addStickerToSet, err err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -93,7 +91,6 @@ func decodeAnswerCallbackQueryRequest(r *http.Request) (req answerCallbackQuery,
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -101,7 +98,6 @@ func decodeAnswerCallbackQueryRequest(r *http.Request) (req answerCallbackQuery,
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -122,7 +118,6 @@ func decodeAnswerInlineQueryRequest(r *http.Request) (req answerInlineQuery, err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -130,7 +125,6 @@ func decodeAnswerInlineQueryRequest(r *http.Request) (req answerInlineQuery, err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -151,7 +145,6 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request) (req answerPreCheckout
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -159,7 +152,6 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request) (req answerPreCheckout
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -180,7 +172,6 @@ func decodeAnswerShippingQueryRequest(r *http.Request) (req answerShippingQuery,
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -188,7 +179,6 @@ func decodeAnswerShippingQueryRequest(r *http.Request) (req answerShippingQuery,
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -209,7 +199,6 @@ func decodeBanChatMemberRequest(r *http.Request) (req banChatMember, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -217,7 +206,6 @@ func decodeBanChatMemberRequest(r *http.Request) (req banChatMember, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -238,7 +226,6 @@ func decodeCopyMessageRequest(r *http.Request) (req copyMessage, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -246,7 +233,6 @@ func decodeCopyMessageRequest(r *http.Request) (req copyMessage, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -267,7 +253,6 @@ func decodeCreateChatInviteLinkRequest(r *http.Request) (req createChatInviteLin
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -275,7 +260,6 @@ func decodeCreateChatInviteLinkRequest(r *http.Request) (req createChatInviteLin
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -296,7 +280,6 @@ func decodeCreateNewStickerSetRequest(r *http.Request) (req createNewStickerSet,
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -304,7 +287,6 @@ func decodeCreateNewStickerSetRequest(r *http.Request) (req createNewStickerSet,
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -325,7 +307,6 @@ func decodeDeleteChatPhotoRequest(r *http.Request) (req deleteChatPhoto, err err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -333,7 +314,6 @@ func decodeDeleteChatPhotoRequest(r *http.Request) (req deleteChatPhoto, err err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -354,7 +334,6 @@ func decodeDeleteChatStickerSetRequest(r *http.Request) (req deleteChatStickerSe
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -362,7 +341,6 @@ func decodeDeleteChatStickerSetRequest(r *http.Request) (req deleteChatStickerSe
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -383,7 +361,6 @@ func decodeDeleteMessageRequest(r *http.Request) (req deleteMessage, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -391,7 +368,6 @@ func decodeDeleteMessageRequest(r *http.Request) (req deleteMessage, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -412,7 +388,6 @@ func decodeDeleteMyCommandsRequest(r *http.Request) (req deleteMyCommands, err e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -420,7 +395,6 @@ func decodeDeleteMyCommandsRequest(r *http.Request) (req deleteMyCommands, err e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -441,7 +415,6 @@ func decodeDeleteStickerFromSetRequest(r *http.Request) (req deleteStickerFromSe
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -449,7 +422,6 @@ func decodeDeleteStickerFromSetRequest(r *http.Request) (req deleteStickerFromSe
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -470,7 +442,6 @@ func decodeDeleteWebhookRequest(r *http.Request) (req deleteWebhook, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -478,7 +449,6 @@ func decodeDeleteWebhookRequest(r *http.Request) (req deleteWebhook, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -499,7 +469,6 @@ func decodeEditChatInviteLinkRequest(r *http.Request) (req editChatInviteLink, e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -507,7 +476,6 @@ func decodeEditChatInviteLinkRequest(r *http.Request) (req editChatInviteLink, e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -528,7 +496,6 @@ func decodeEditMessageCaptionRequest(r *http.Request) (req editMessageCaption, e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -536,7 +503,6 @@ func decodeEditMessageCaptionRequest(r *http.Request) (req editMessageCaption, e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -557,7 +523,6 @@ func decodeEditMessageLiveLocationRequest(r *http.Request) (req editMessageLiveL
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -565,7 +530,6 @@ func decodeEditMessageLiveLocationRequest(r *http.Request) (req editMessageLiveL
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -586,7 +550,6 @@ func decodeEditMessageMediaRequest(r *http.Request) (req editMessageMedia, err e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -594,7 +557,6 @@ func decodeEditMessageMediaRequest(r *http.Request) (req editMessageMedia, err e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -615,7 +577,6 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request) (req editMessageReplyM
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -623,7 +584,6 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request) (req editMessageReplyM
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -644,7 +604,6 @@ func decodeEditMessageTextRequest(r *http.Request) (req editMessageText, err err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -652,7 +611,6 @@ func decodeEditMessageTextRequest(r *http.Request) (req editMessageText, err err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -673,7 +631,6 @@ func decodeExportChatInviteLinkRequest(r *http.Request) (req exportChatInviteLin
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -681,7 +638,6 @@ func decodeExportChatInviteLinkRequest(r *http.Request) (req exportChatInviteLin
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -702,7 +658,6 @@ func decodeForwardMessageRequest(r *http.Request) (req forwardMessage, err error
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -710,7 +665,6 @@ func decodeForwardMessageRequest(r *http.Request) (req forwardMessage, err error
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -731,7 +685,6 @@ func decodeGetChatRequest(r *http.Request) (req getChat, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -739,7 +692,6 @@ func decodeGetChatRequest(r *http.Request) (req getChat, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -760,7 +712,6 @@ func decodeGetChatAdministratorsRequest(r *http.Request) (req getChatAdministrat
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -768,7 +719,6 @@ func decodeGetChatAdministratorsRequest(r *http.Request) (req getChatAdministrat
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -789,7 +739,6 @@ func decodeGetChatMemberRequest(r *http.Request) (req getChatMember, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -797,7 +746,6 @@ func decodeGetChatMemberRequest(r *http.Request) (req getChatMember, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -818,7 +766,6 @@ func decodeGetChatMemberCountRequest(r *http.Request) (req getChatMemberCount, e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -826,7 +773,6 @@ func decodeGetChatMemberCountRequest(r *http.Request) (req getChatMemberCount, e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -847,7 +793,6 @@ func decodeGetFileRequest(r *http.Request) (req getFile, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -855,7 +800,6 @@ func decodeGetFileRequest(r *http.Request) (req getFile, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -876,7 +820,6 @@ func decodeGetGameHighScoresRequest(r *http.Request) (req getGameHighScores, err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -884,7 +827,6 @@ func decodeGetGameHighScoresRequest(r *http.Request) (req getGameHighScores, err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -905,7 +847,6 @@ func decodeGetMyCommandsRequest(r *http.Request) (req getMyCommands, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -913,7 +854,6 @@ func decodeGetMyCommandsRequest(r *http.Request) (req getMyCommands, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -934,7 +874,6 @@ func decodeGetStickerSetRequest(r *http.Request) (req getStickerSet, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -942,7 +881,6 @@ func decodeGetStickerSetRequest(r *http.Request) (req getStickerSet, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -963,7 +901,6 @@ func decodeGetUpdatesRequest(r *http.Request) (req getUpdates, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -971,7 +908,6 @@ func decodeGetUpdatesRequest(r *http.Request) (req getUpdates, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -992,7 +928,6 @@ func decodeGetUserProfilePhotosRequest(r *http.Request) (req getUserProfilePhoto
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1000,7 +935,6 @@ func decodeGetUserProfilePhotosRequest(r *http.Request) (req getUserProfilePhoto
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1021,7 +955,6 @@ func decodeLeaveChatRequest(r *http.Request) (req leaveChat, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1029,7 +962,6 @@ func decodeLeaveChatRequest(r *http.Request) (req leaveChat, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1050,7 +982,6 @@ func decodePinChatMessageRequest(r *http.Request) (req pinChatMessage, err error
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1058,7 +989,6 @@ func decodePinChatMessageRequest(r *http.Request) (req pinChatMessage, err error
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1079,7 +1009,6 @@ func decodePromoteChatMemberRequest(r *http.Request) (req promoteChatMember, err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1087,7 +1016,6 @@ func decodePromoteChatMemberRequest(r *http.Request) (req promoteChatMember, err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1108,7 +1036,6 @@ func decodeRestrictChatMemberRequest(r *http.Request) (req restrictChatMember, e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1116,7 +1043,6 @@ func decodeRestrictChatMemberRequest(r *http.Request) (req restrictChatMember, e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1137,7 +1063,6 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request) (req revokeChatInviteLin
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1145,7 +1070,6 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request) (req revokeChatInviteLin
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1166,7 +1090,6 @@ func decodeSendAnimationRequest(r *http.Request) (req sendAnimation, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1174,7 +1097,6 @@ func decodeSendAnimationRequest(r *http.Request) (req sendAnimation, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1195,7 +1117,6 @@ func decodeSendAudioRequest(r *http.Request) (req sendAudio, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1203,7 +1124,6 @@ func decodeSendAudioRequest(r *http.Request) (req sendAudio, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1224,7 +1144,6 @@ func decodeSendChatActionRequest(r *http.Request) (req sendChatAction, err error
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1232,7 +1151,6 @@ func decodeSendChatActionRequest(r *http.Request) (req sendChatAction, err error
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1253,7 +1171,6 @@ func decodeSendContactRequest(r *http.Request) (req sendContact, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1261,7 +1178,6 @@ func decodeSendContactRequest(r *http.Request) (req sendContact, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1282,7 +1198,6 @@ func decodeSendDiceRequest(r *http.Request) (req sendDice, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1290,7 +1205,6 @@ func decodeSendDiceRequest(r *http.Request) (req sendDice, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1311,7 +1225,6 @@ func decodeSendDocumentRequest(r *http.Request) (req sendDocument, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1319,7 +1232,6 @@ func decodeSendDocumentRequest(r *http.Request) (req sendDocument, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1340,7 +1252,6 @@ func decodeSendGameRequest(r *http.Request) (req sendGame, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1348,7 +1259,6 @@ func decodeSendGameRequest(r *http.Request) (req sendGame, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1369,7 +1279,6 @@ func decodeSendInvoiceRequest(r *http.Request) (req sendInvoice, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1377,7 +1286,6 @@ func decodeSendInvoiceRequest(r *http.Request) (req sendInvoice, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1398,7 +1306,6 @@ func decodeSendLocationRequest(r *http.Request) (req sendLocation, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1406,7 +1313,6 @@ func decodeSendLocationRequest(r *http.Request) (req sendLocation, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1427,7 +1333,6 @@ func decodeSendMediaGroupRequest(r *http.Request) (req sendMediaGroup, err error
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1435,7 +1340,6 @@ func decodeSendMediaGroupRequest(r *http.Request) (req sendMediaGroup, err error
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1456,7 +1360,6 @@ func decodeSendMessageRequest(r *http.Request) (req sendMessage, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1464,7 +1367,6 @@ func decodeSendMessageRequest(r *http.Request) (req sendMessage, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1485,7 +1387,6 @@ func decodeSendPhotoRequest(r *http.Request) (req sendPhoto, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1493,7 +1394,6 @@ func decodeSendPhotoRequest(r *http.Request) (req sendPhoto, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1514,7 +1414,6 @@ func decodeSendPollRequest(r *http.Request) (req sendPoll, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1522,7 +1421,6 @@ func decodeSendPollRequest(r *http.Request) (req sendPoll, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1543,7 +1441,6 @@ func decodeSendStickerRequest(r *http.Request) (req sendSticker, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1551,7 +1448,6 @@ func decodeSendStickerRequest(r *http.Request) (req sendSticker, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1572,7 +1468,6 @@ func decodeSendVenueRequest(r *http.Request) (req sendVenue, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1580,7 +1475,6 @@ func decodeSendVenueRequest(r *http.Request) (req sendVenue, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1601,7 +1495,6 @@ func decodeSendVideoRequest(r *http.Request) (req sendVideo, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1609,7 +1502,6 @@ func decodeSendVideoRequest(r *http.Request) (req sendVideo, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1630,7 +1522,6 @@ func decodeSendVideoNoteRequest(r *http.Request) (req sendVideoNote, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1638,7 +1529,6 @@ func decodeSendVideoNoteRequest(r *http.Request) (req sendVideoNote, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1659,7 +1549,6 @@ func decodeSendVoiceRequest(r *http.Request) (req sendVoice, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1667,7 +1556,6 @@ func decodeSendVoiceRequest(r *http.Request) (req sendVoice, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1688,7 +1576,6 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (req setChatA
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1696,7 +1583,6 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (req setChatA
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1717,7 +1603,6 @@ func decodeSetChatDescriptionRequest(r *http.Request) (req setChatDescription, e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1725,7 +1610,6 @@ func decodeSetChatDescriptionRequest(r *http.Request) (req setChatDescription, e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1746,7 +1630,6 @@ func decodeSetChatPermissionsRequest(r *http.Request) (req setChatPermissions, e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1754,7 +1637,6 @@ func decodeSetChatPermissionsRequest(r *http.Request) (req setChatPermissions, e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1775,7 +1657,6 @@ func decodeSetChatPhotoRequest(r *http.Request) (req setChatPhoto, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1783,7 +1664,6 @@ func decodeSetChatPhotoRequest(r *http.Request) (req setChatPhoto, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1804,7 +1684,6 @@ func decodeSetChatStickerSetRequest(r *http.Request) (req setChatStickerSet, err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1812,7 +1691,6 @@ func decodeSetChatStickerSetRequest(r *http.Request) (req setChatStickerSet, err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1833,7 +1711,6 @@ func decodeSetChatTitleRequest(r *http.Request) (req setChatTitle, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1841,7 +1718,6 @@ func decodeSetChatTitleRequest(r *http.Request) (req setChatTitle, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1862,7 +1738,6 @@ func decodeSetGameScoreRequest(r *http.Request) (req setGameScore, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1870,7 +1745,6 @@ func decodeSetGameScoreRequest(r *http.Request) (req setGameScore, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1891,7 +1765,6 @@ func decodeSetMyCommandsRequest(r *http.Request) (req setMyCommands, err error) 
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1899,7 +1772,6 @@ func decodeSetMyCommandsRequest(r *http.Request) (req setMyCommands, err error) 
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1920,7 +1792,6 @@ func decodeSetPassportDataErrorsRequest(r *http.Request) (req setPassportDataErr
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1928,7 +1799,6 @@ func decodeSetPassportDataErrorsRequest(r *http.Request) (req setPassportDataErr
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1949,7 +1819,6 @@ func decodeSetStickerPositionInSetRequest(r *http.Request) (req setStickerPositi
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1957,7 +1826,6 @@ func decodeSetStickerPositionInSetRequest(r *http.Request) (req setStickerPositi
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -1978,7 +1846,6 @@ func decodeSetStickerSetThumbRequest(r *http.Request) (req setStickerSetThumb, e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1986,7 +1853,6 @@ func decodeSetStickerSetThumbRequest(r *http.Request) (req setStickerSetThumb, e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2007,7 +1873,6 @@ func decodeSetWebhookRequest(r *http.Request) (req setWebhook, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2015,7 +1880,6 @@ func decodeSetWebhookRequest(r *http.Request) (req setWebhook, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2036,7 +1900,6 @@ func decodeStopMessageLiveLocationRequest(r *http.Request) (req stopMessageLiveL
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2044,7 +1907,6 @@ func decodeStopMessageLiveLocationRequest(r *http.Request) (req stopMessageLiveL
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2065,7 +1927,6 @@ func decodeStopPollRequest(r *http.Request) (req stopPoll, err error) {
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2073,7 +1934,6 @@ func decodeStopPollRequest(r *http.Request) (req stopPoll, err error) {
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2094,7 +1954,6 @@ func decodeUnbanChatMemberRequest(r *http.Request) (req unbanChatMember, err err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2102,7 +1961,6 @@ func decodeUnbanChatMemberRequest(r *http.Request) (req unbanChatMember, err err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2123,7 +1981,6 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request) (req unpinAllChatMessage
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2131,7 +1988,6 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request) (req unpinAllChatMessage
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2152,7 +2008,6 @@ func decodeUnpinChatMessageRequest(r *http.Request) (req unpinChatMessage, err e
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2160,7 +2015,6 @@ func decodeUnpinChatMessageRequest(r *http.Request) (req unpinChatMessage, err e
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -2181,7 +2035,6 @@ func decodeUploadStickerFileRequest(r *http.Request) (req uploadStickerFile, err
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2189,7 +2042,6 @@ func decodeUploadStickerFileRequest(r *http.Request) (req uploadStickerFile, err
 		}(); err != nil {
 			return req, err
 		}
-
 		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))

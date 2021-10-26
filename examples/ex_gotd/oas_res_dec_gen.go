@@ -67,7 +67,10 @@ func decodeAddStickerToSetResponse(resp *http.Response) (res AddStickerToSetResO
 
 			var response AddStickerToSetResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -98,7 +101,10 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response) (res AnswerCallbackQ
 
 			var response AnswerCallbackQueryResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -129,7 +135,10 @@ func decodeAnswerInlineQueryResponse(resp *http.Response) (res AnswerInlineQuery
 
 			var response AnswerInlineQueryResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -160,7 +169,10 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res AnswerPreChe
 
 			var response AnswerPreCheckoutQueryResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -191,7 +203,10 @@ func decodeAnswerShippingQueryResponse(resp *http.Response) (res AnswerShippingQ
 
 			var response AnswerShippingQueryResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -222,7 +237,10 @@ func decodeBanChatMemberResponse(resp *http.Response) (res BanChatMemberResOKApp
 
 			var response BanChatMemberResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -253,7 +271,10 @@ func decodeCopyMessageResponse(resp *http.Response) (res CopyMessageResOKApplica
 
 			var response CopyMessageResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -284,7 +305,10 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response) (res CreateChatInvi
 
 			var response CreateChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -315,7 +339,10 @@ func decodeCreateNewStickerSetResponse(resp *http.Response) (res CreateNewSticke
 
 			var response CreateNewStickerSetResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -346,7 +373,10 @@ func decodeDeleteChatPhotoResponse(resp *http.Response) (res DeleteChatPhotoResO
 
 			var response DeleteChatPhotoResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -377,7 +407,10 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response) (res DeleteChatStic
 
 			var response DeleteChatStickerSetResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -408,7 +441,10 @@ func decodeDeleteMessageResponse(resp *http.Response) (res DeleteMessageResOKApp
 
 			var response DeleteMessageResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -439,7 +475,10 @@ func decodeDeleteMyCommandsResponse(resp *http.Response) (res DeleteMyCommandsRe
 
 			var response DeleteMyCommandsResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -470,7 +509,10 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response) (res DeleteStickerF
 
 			var response DeleteStickerFromSetResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -501,7 +543,10 @@ func decodeDeleteWebhookResponse(resp *http.Response) (res DeleteWebhookResOKApp
 
 			var response DeleteWebhookResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -532,7 +577,10 @@ func decodeEditChatInviteLinkResponse(resp *http.Response) (res EditChatInviteLi
 
 			var response EditChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -563,7 +611,10 @@ func decodeEditMessageCaptionResponse(resp *http.Response) (res EditMessageCapti
 
 			var response EditMessageCaptionResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -594,7 +645,10 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response) (res EditMessage
 
 			var response EditMessageLiveLocationResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -625,7 +679,10 @@ func decodeEditMessageMediaResponse(resp *http.Response) (res EditMessageMediaRe
 
 			var response EditMessageMediaResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -656,7 +713,10 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res EditMessageR
 
 			var response EditMessageReplyMarkupResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -687,7 +747,10 @@ func decodeEditMessageTextResponse(resp *http.Response) (res EditMessageTextResO
 
 			var response EditMessageTextResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -718,7 +781,10 @@ func decodeExportChatInviteLinkResponse(resp *http.Response) (res ExportChatInvi
 
 			var response ExportChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -749,7 +815,10 @@ func decodeForwardMessageResponse(resp *http.Response) (res ForwardMessageResOKA
 
 			var response ForwardMessageResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -780,7 +849,10 @@ func decodeGetChatResponse(resp *http.Response) (res GetChatResOKApplicationJSON
 
 			var response GetChatResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -811,7 +883,10 @@ func decodeGetChatAdministratorsResponse(resp *http.Response) (res GetChatAdmini
 
 			var response GetChatAdministratorsResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -842,7 +917,10 @@ func decodeGetChatMemberResponse(resp *http.Response) (res GetChatMemberResOKApp
 
 			var response GetChatMemberResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -873,7 +951,10 @@ func decodeGetChatMemberCountResponse(resp *http.Response) (res GetChatMemberCou
 
 			var response GetChatMemberCountResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -904,7 +985,10 @@ func decodeGetFileResponse(resp *http.Response) (res GetFileResOKApplicationJSON
 
 			var response GetFileResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -935,7 +1019,10 @@ func decodeGetGameHighScoresResponse(resp *http.Response) (res GetGameHighScores
 
 			var response GetGameHighScoresResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -966,7 +1053,10 @@ func decodeGetMeResponse(resp *http.Response) (res GetMeResOKApplicationJSON, er
 
 			var response GetMeResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -997,7 +1087,10 @@ func decodeGetMyCommandsResponse(resp *http.Response) (res GetMyCommandsResOKApp
 
 			var response GetMyCommandsResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1028,7 +1121,10 @@ func decodeGetStickerSetResponse(resp *http.Response) (res GetStickerSetResOKApp
 
 			var response GetStickerSetResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1059,7 +1155,10 @@ func decodeGetUpdatesResponse(resp *http.Response) (res GetUpdatesResOKApplicati
 
 			var response GetUpdatesResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1090,7 +1189,10 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response) (res GetUserProfile
 
 			var response GetUserProfilePhotosResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1121,7 +1223,10 @@ func decodeLeaveChatResponse(resp *http.Response) (res LeaveChatResOKApplication
 
 			var response LeaveChatResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1152,7 +1257,10 @@ func decodePinChatMessageResponse(resp *http.Response) (res PinChatMessageResOKA
 
 			var response PinChatMessageResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1183,7 +1291,10 @@ func decodePromoteChatMemberResponse(resp *http.Response) (res PromoteChatMember
 
 			var response PromoteChatMemberResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1214,7 +1325,10 @@ func decodeRestrictChatMemberResponse(resp *http.Response) (res RestrictChatMemb
 
 			var response RestrictChatMemberResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1245,7 +1359,10 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res RevokeChatInvi
 
 			var response RevokeChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1276,7 +1393,10 @@ func decodeSendAnimationResponse(resp *http.Response) (res SendAnimationResOKApp
 
 			var response SendAnimationResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1307,7 +1427,10 @@ func decodeSendAudioResponse(resp *http.Response) (res SendAudioResOKApplication
 
 			var response SendAudioResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1338,7 +1461,10 @@ func decodeSendChatActionResponse(resp *http.Response) (res SendChatActionResOKA
 
 			var response SendChatActionResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1369,7 +1495,10 @@ func decodeSendContactResponse(resp *http.Response) (res SendContactResOKApplica
 
 			var response SendContactResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1400,7 +1529,10 @@ func decodeSendDiceResponse(resp *http.Response) (res SendDiceResOKApplicationJS
 
 			var response SendDiceResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1431,7 +1563,10 @@ func decodeSendDocumentResponse(resp *http.Response) (res SendDocumentResOKAppli
 
 			var response SendDocumentResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1462,7 +1597,10 @@ func decodeSendGameResponse(resp *http.Response) (res SendGameResOKApplicationJS
 
 			var response SendGameResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1493,7 +1631,10 @@ func decodeSendInvoiceResponse(resp *http.Response) (res SendInvoiceResOKApplica
 
 			var response SendInvoiceResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1524,7 +1665,10 @@ func decodeSendLocationResponse(resp *http.Response) (res SendLocationResOKAppli
 
 			var response SendLocationResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1555,7 +1699,10 @@ func decodeSendMediaGroupResponse(resp *http.Response) (res SendMediaGroupResOKA
 
 			var response SendMediaGroupResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1586,7 +1733,10 @@ func decodeSendMessageResponse(resp *http.Response) (res SendMessageResOKApplica
 
 			var response SendMessageResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1617,7 +1767,10 @@ func decodeSendPhotoResponse(resp *http.Response) (res SendPhotoResOKApplication
 
 			var response SendPhotoResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1648,7 +1801,10 @@ func decodeSendPollResponse(resp *http.Response) (res SendPollResOKApplicationJS
 
 			var response SendPollResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1679,7 +1835,10 @@ func decodeSendStickerResponse(resp *http.Response) (res SendStickerResOKApplica
 
 			var response SendStickerResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1710,7 +1869,10 @@ func decodeSendVenueResponse(resp *http.Response) (res SendVenueResOKApplication
 
 			var response SendVenueResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1741,7 +1903,10 @@ func decodeSendVideoResponse(resp *http.Response) (res SendVideoResOKApplication
 
 			var response SendVideoResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1772,7 +1937,10 @@ func decodeSendVideoNoteResponse(resp *http.Response) (res SendVideoNoteResOKApp
 
 			var response SendVideoNoteResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1803,7 +1971,10 @@ func decodeSendVoiceResponse(resp *http.Response) (res SendVoiceResOKApplication
 
 			var response SendVoiceResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1834,7 +2005,10 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res Set
 
 			var response SetChatAdministratorCustomTitleResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1865,7 +2039,10 @@ func decodeSetChatDescriptionResponse(resp *http.Response) (res SetChatDescripti
 
 			var response SetChatDescriptionResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1896,7 +2073,10 @@ func decodeSetChatPermissionsResponse(resp *http.Response) (res SetChatPermissio
 
 			var response SetChatPermissionsResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1927,7 +2107,10 @@ func decodeSetChatPhotoResponse(resp *http.Response) (res SetChatPhotoResOKAppli
 
 			var response SetChatPhotoResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1958,7 +2141,10 @@ func decodeSetChatStickerSetResponse(resp *http.Response) (res SetChatStickerSet
 
 			var response SetChatStickerSetResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -1989,7 +2175,10 @@ func decodeSetChatTitleResponse(resp *http.Response) (res SetChatTitleResOKAppli
 
 			var response SetChatTitleResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2020,7 +2209,10 @@ func decodeSetGameScoreResponse(resp *http.Response) (res SetGameScoreResOKAppli
 
 			var response SetGameScoreResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2051,7 +2243,10 @@ func decodeSetMyCommandsResponse(resp *http.Response) (res SetMyCommandsResOKApp
 
 			var response SetMyCommandsResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2082,7 +2277,10 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response) (res SetPassportDa
 
 			var response SetPassportDataErrorsResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2113,7 +2311,10 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response) (res SetStickerP
 
 			var response SetStickerPositionInSetResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2144,7 +2345,10 @@ func decodeSetStickerSetThumbResponse(resp *http.Response) (res SetStickerSetThu
 
 			var response SetStickerSetThumbResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2175,7 +2379,10 @@ func decodeSetWebhookResponse(resp *http.Response) (res SetWebhookResOKApplicati
 
 			var response SetWebhookResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2206,7 +2413,10 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response) (res StopMessage
 
 			var response StopMessageLiveLocationResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2237,7 +2447,10 @@ func decodeStopPollResponse(resp *http.Response) (res StopPollResOKApplicationJS
 
 			var response StopPollResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2268,7 +2481,10 @@ func decodeUnbanChatMemberResponse(resp *http.Response) (res UnbanChatMemberResO
 
 			var response UnbanChatMemberResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2299,7 +2515,10 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res UnpinAllChatMe
 
 			var response UnpinAllChatMessagesResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2330,7 +2549,10 @@ func decodeUnpinChatMessageResponse(resp *http.Response) (res UnpinChatMessageRe
 
 			var response UnpinChatMessageResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -2361,7 +2583,10 @@ func decodeUploadStickerFileResponse(resp *http.Response) (res UploadStickerFile
 
 			var response UploadStickerFileResOKApplicationJSON
 			if err := func() error {
-				return nil
+				if err := response.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
