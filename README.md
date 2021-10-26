@@ -6,7 +6,7 @@
 
 WIP Opinionated OpenAPI v3 Code Generator for Go
 
-On early stages of development.
+On early stages of development. This software is **experimental** and no backward compatibility is provided.
 
 Telegram group for development: [@ogen_dev](https://t.me/ogen_dev)
 
