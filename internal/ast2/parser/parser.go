@@ -70,7 +70,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation) (err erro
 		return xerrors.Errorf("parameters: %w", err)
 	}
 
-	op.PathParts, err = parsePath(path, op.PathParams())
+	op.PathParts, err = parsePath(path, op.Parameters)
 	if err != nil {
 		return xerrors.Errorf("parse path: %w", err)
 	}

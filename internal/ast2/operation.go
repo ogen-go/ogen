@@ -44,18 +44,3 @@ func (op *Operation) Path() (path string) {
 	}
 	return
 }
-
-func (op *Operation) PathParams() []*Parameter   { return op.getParams(LocationPath) }
-func (op *Operation) QueryParams() []*Parameter  { return op.getParams(LocationQuery) }
-func (op *Operation) CookieParams() []*Parameter { return op.getParams(LocationCookie) }
-func (op *Operation) HeaderParams() []*Parameter { return op.getParams(LocationHeader) }
-
-func (op *Operation) getParams(locatedIn ParameterLocation) []*Parameter {
-	var params []*Parameter
-	for _, p := range op.Parameters {
-		if p.In == locatedIn {
-			params = append(params, p)
-		}
-	}
-	return params
-}
