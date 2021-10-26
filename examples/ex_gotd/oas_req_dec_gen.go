@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeAddStickerToSetRequest(r *http.Request) (req AddStickerToSet, err error) {
+func decodeAddStickerToSetRequest(r *http.Request) (req addStickerToSet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -59,11 +59,12 @@ func decodeAddStickerToSetRequest(r *http.Request) (req AddStickerToSet, err err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request AddStickerToSet
+		var request addStickerToSet
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -78,7 +79,7 @@ func decodeAddStickerToSetRequest(r *http.Request) (req AddStickerToSet, err err
 	}
 }
 
-func decodeAnswerCallbackQueryRequest(r *http.Request) (req AnswerCallbackQuery, err error) {
+func decodeAnswerCallbackQueryRequest(r *http.Request) (req answerCallbackQuery, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -87,11 +88,12 @@ func decodeAnswerCallbackQueryRequest(r *http.Request) (req AnswerCallbackQuery,
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request AnswerCallbackQuery
+		var request answerCallbackQuery
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -106,7 +108,7 @@ func decodeAnswerCallbackQueryRequest(r *http.Request) (req AnswerCallbackQuery,
 	}
 }
 
-func decodeAnswerInlineQueryRequest(r *http.Request) (req AnswerInlineQuery, err error) {
+func decodeAnswerInlineQueryRequest(r *http.Request) (req answerInlineQuery, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -115,11 +117,12 @@ func decodeAnswerInlineQueryRequest(r *http.Request) (req AnswerInlineQuery, err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request AnswerInlineQuery
+		var request answerInlineQuery
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -134,7 +137,7 @@ func decodeAnswerInlineQueryRequest(r *http.Request) (req AnswerInlineQuery, err
 	}
 }
 
-func decodeAnswerPreCheckoutQueryRequest(r *http.Request) (req AnswerPreCheckoutQuery, err error) {
+func decodeAnswerPreCheckoutQueryRequest(r *http.Request) (req answerPreCheckoutQuery, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -143,11 +146,12 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request) (req AnswerPreCheckout
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request AnswerPreCheckoutQuery
+		var request answerPreCheckoutQuery
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -162,7 +166,7 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request) (req AnswerPreCheckout
 	}
 }
 
-func decodeAnswerShippingQueryRequest(r *http.Request) (req AnswerShippingQuery, err error) {
+func decodeAnswerShippingQueryRequest(r *http.Request) (req answerShippingQuery, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -171,11 +175,12 @@ func decodeAnswerShippingQueryRequest(r *http.Request) (req AnswerShippingQuery,
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request AnswerShippingQuery
+		var request answerShippingQuery
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -190,7 +195,7 @@ func decodeAnswerShippingQueryRequest(r *http.Request) (req AnswerShippingQuery,
 	}
 }
 
-func decodeBanChatMemberRequest(r *http.Request) (req BanChatMember, err error) {
+func decodeBanChatMemberRequest(r *http.Request) (req banChatMember, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -199,11 +204,12 @@ func decodeBanChatMemberRequest(r *http.Request) (req BanChatMember, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request BanChatMember
+		var request banChatMember
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -218,7 +224,7 @@ func decodeBanChatMemberRequest(r *http.Request) (req BanChatMember, err error) 
 	}
 }
 
-func decodeCopyMessageRequest(r *http.Request) (req CopyMessage, err error) {
+func decodeCopyMessageRequest(r *http.Request) (req copyMessage, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -227,11 +233,12 @@ func decodeCopyMessageRequest(r *http.Request) (req CopyMessage, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request CopyMessage
+		var request copyMessage
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -246,7 +253,7 @@ func decodeCopyMessageRequest(r *http.Request) (req CopyMessage, err error) {
 	}
 }
 
-func decodeCreateChatInviteLinkRequest(r *http.Request) (req CreateChatInviteLink, err error) {
+func decodeCreateChatInviteLinkRequest(r *http.Request) (req createChatInviteLink, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -255,11 +262,12 @@ func decodeCreateChatInviteLinkRequest(r *http.Request) (req CreateChatInviteLin
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request CreateChatInviteLink
+		var request createChatInviteLink
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -274,7 +282,7 @@ func decodeCreateChatInviteLinkRequest(r *http.Request) (req CreateChatInviteLin
 	}
 }
 
-func decodeCreateNewStickerSetRequest(r *http.Request) (req CreateNewStickerSet, err error) {
+func decodeCreateNewStickerSetRequest(r *http.Request) (req createNewStickerSet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -283,11 +291,12 @@ func decodeCreateNewStickerSetRequest(r *http.Request) (req CreateNewStickerSet,
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request CreateNewStickerSet
+		var request createNewStickerSet
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -302,7 +311,7 @@ func decodeCreateNewStickerSetRequest(r *http.Request) (req CreateNewStickerSet,
 	}
 }
 
-func decodeDeleteChatPhotoRequest(r *http.Request) (req DeleteChatPhoto, err error) {
+func decodeDeleteChatPhotoRequest(r *http.Request) (req deleteChatPhoto, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -311,11 +320,12 @@ func decodeDeleteChatPhotoRequest(r *http.Request) (req DeleteChatPhoto, err err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request DeleteChatPhoto
+		var request deleteChatPhoto
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -330,7 +340,7 @@ func decodeDeleteChatPhotoRequest(r *http.Request) (req DeleteChatPhoto, err err
 	}
 }
 
-func decodeDeleteChatStickerSetRequest(r *http.Request) (req DeleteChatStickerSet, err error) {
+func decodeDeleteChatStickerSetRequest(r *http.Request) (req deleteChatStickerSet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -339,11 +349,12 @@ func decodeDeleteChatStickerSetRequest(r *http.Request) (req DeleteChatStickerSe
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request DeleteChatStickerSet
+		var request deleteChatStickerSet
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -358,7 +369,7 @@ func decodeDeleteChatStickerSetRequest(r *http.Request) (req DeleteChatStickerSe
 	}
 }
 
-func decodeDeleteMessageRequest(r *http.Request) (req DeleteMessage, err error) {
+func decodeDeleteMessageRequest(r *http.Request) (req deleteMessage, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -367,11 +378,12 @@ func decodeDeleteMessageRequest(r *http.Request) (req DeleteMessage, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request DeleteMessage
+		var request deleteMessage
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -386,7 +398,7 @@ func decodeDeleteMessageRequest(r *http.Request) (req DeleteMessage, err error) 
 	}
 }
 
-func decodeDeleteMyCommandsRequest(r *http.Request) (req DeleteMyCommands, err error) {
+func decodeDeleteMyCommandsRequest(r *http.Request) (req deleteMyCommands, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -395,11 +407,12 @@ func decodeDeleteMyCommandsRequest(r *http.Request) (req DeleteMyCommands, err e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request DeleteMyCommands
+		var request deleteMyCommands
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -414,7 +427,7 @@ func decodeDeleteMyCommandsRequest(r *http.Request) (req DeleteMyCommands, err e
 	}
 }
 
-func decodeDeleteStickerFromSetRequest(r *http.Request) (req DeleteStickerFromSet, err error) {
+func decodeDeleteStickerFromSetRequest(r *http.Request) (req deleteStickerFromSet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -423,11 +436,12 @@ func decodeDeleteStickerFromSetRequest(r *http.Request) (req DeleteStickerFromSe
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request DeleteStickerFromSet
+		var request deleteStickerFromSet
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -442,7 +456,7 @@ func decodeDeleteStickerFromSetRequest(r *http.Request) (req DeleteStickerFromSe
 	}
 }
 
-func decodeDeleteWebhookRequest(r *http.Request) (req DeleteWebhook, err error) {
+func decodeDeleteWebhookRequest(r *http.Request) (req deleteWebhook, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -451,11 +465,12 @@ func decodeDeleteWebhookRequest(r *http.Request) (req DeleteWebhook, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request DeleteWebhook
+		var request deleteWebhook
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -470,7 +485,7 @@ func decodeDeleteWebhookRequest(r *http.Request) (req DeleteWebhook, err error) 
 	}
 }
 
-func decodeEditChatInviteLinkRequest(r *http.Request) (req EditChatInviteLink, err error) {
+func decodeEditChatInviteLinkRequest(r *http.Request) (req editChatInviteLink, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -479,11 +494,12 @@ func decodeEditChatInviteLinkRequest(r *http.Request) (req EditChatInviteLink, e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EditChatInviteLink
+		var request editChatInviteLink
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -498,7 +514,7 @@ func decodeEditChatInviteLinkRequest(r *http.Request) (req EditChatInviteLink, e
 	}
 }
 
-func decodeEditMessageCaptionRequest(r *http.Request) (req EditMessageCaption, err error) {
+func decodeEditMessageCaptionRequest(r *http.Request) (req editMessageCaption, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -507,11 +523,12 @@ func decodeEditMessageCaptionRequest(r *http.Request) (req EditMessageCaption, e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EditMessageCaption
+		var request editMessageCaption
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -526,7 +543,7 @@ func decodeEditMessageCaptionRequest(r *http.Request) (req EditMessageCaption, e
 	}
 }
 
-func decodeEditMessageLiveLocationRequest(r *http.Request) (req EditMessageLiveLocation, err error) {
+func decodeEditMessageLiveLocationRequest(r *http.Request) (req editMessageLiveLocation, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -535,11 +552,12 @@ func decodeEditMessageLiveLocationRequest(r *http.Request) (req EditMessageLiveL
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EditMessageLiveLocation
+		var request editMessageLiveLocation
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -554,7 +572,7 @@ func decodeEditMessageLiveLocationRequest(r *http.Request) (req EditMessageLiveL
 	}
 }
 
-func decodeEditMessageMediaRequest(r *http.Request) (req EditMessageMedia, err error) {
+func decodeEditMessageMediaRequest(r *http.Request) (req editMessageMedia, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -563,11 +581,12 @@ func decodeEditMessageMediaRequest(r *http.Request) (req EditMessageMedia, err e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EditMessageMedia
+		var request editMessageMedia
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -582,7 +601,7 @@ func decodeEditMessageMediaRequest(r *http.Request) (req EditMessageMedia, err e
 	}
 }
 
-func decodeEditMessageReplyMarkupRequest(r *http.Request) (req EditMessageReplyMarkup, err error) {
+func decodeEditMessageReplyMarkupRequest(r *http.Request) (req editMessageReplyMarkup, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -591,11 +610,12 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request) (req EditMessageReplyM
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EditMessageReplyMarkup
+		var request editMessageReplyMarkup
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -610,7 +630,7 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request) (req EditMessageReplyM
 	}
 }
 
-func decodeEditMessageTextRequest(r *http.Request) (req EditMessageText, err error) {
+func decodeEditMessageTextRequest(r *http.Request) (req editMessageText, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -619,11 +639,12 @@ func decodeEditMessageTextRequest(r *http.Request) (req EditMessageText, err err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request EditMessageText
+		var request editMessageText
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -638,7 +659,7 @@ func decodeEditMessageTextRequest(r *http.Request) (req EditMessageText, err err
 	}
 }
 
-func decodeExportChatInviteLinkRequest(r *http.Request) (req ExportChatInviteLink, err error) {
+func decodeExportChatInviteLinkRequest(r *http.Request) (req exportChatInviteLink, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -647,11 +668,12 @@ func decodeExportChatInviteLinkRequest(r *http.Request) (req ExportChatInviteLin
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ExportChatInviteLink
+		var request exportChatInviteLink
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -666,7 +688,7 @@ func decodeExportChatInviteLinkRequest(r *http.Request) (req ExportChatInviteLin
 	}
 }
 
-func decodeForwardMessageRequest(r *http.Request) (req ForwardMessage, err error) {
+func decodeForwardMessageRequest(r *http.Request) (req forwardMessage, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -675,11 +697,12 @@ func decodeForwardMessageRequest(r *http.Request) (req ForwardMessage, err error
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request ForwardMessage
+		var request forwardMessage
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -694,7 +717,7 @@ func decodeForwardMessageRequest(r *http.Request) (req ForwardMessage, err error
 	}
 }
 
-func decodeGetChatRequest(r *http.Request) (req GetChat, err error) {
+func decodeGetChatRequest(r *http.Request) (req getChat, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -703,11 +726,12 @@ func decodeGetChatRequest(r *http.Request) (req GetChat, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetChat
+		var request getChat
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -722,7 +746,7 @@ func decodeGetChatRequest(r *http.Request) (req GetChat, err error) {
 	}
 }
 
-func decodeGetChatAdministratorsRequest(r *http.Request) (req GetChatAdministrators, err error) {
+func decodeGetChatAdministratorsRequest(r *http.Request) (req getChatAdministrators, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -731,11 +755,12 @@ func decodeGetChatAdministratorsRequest(r *http.Request) (req GetChatAdministrat
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetChatAdministrators
+		var request getChatAdministrators
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -750,7 +775,7 @@ func decodeGetChatAdministratorsRequest(r *http.Request) (req GetChatAdministrat
 	}
 }
 
-func decodeGetChatMemberRequest(r *http.Request) (req GetChatMember, err error) {
+func decodeGetChatMemberRequest(r *http.Request) (req getChatMember, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -759,11 +784,12 @@ func decodeGetChatMemberRequest(r *http.Request) (req GetChatMember, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetChatMember
+		var request getChatMember
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -778,7 +804,7 @@ func decodeGetChatMemberRequest(r *http.Request) (req GetChatMember, err error) 
 	}
 }
 
-func decodeGetChatMemberCountRequest(r *http.Request) (req GetChatMemberCount, err error) {
+func decodeGetChatMemberCountRequest(r *http.Request) (req getChatMemberCount, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -787,11 +813,12 @@ func decodeGetChatMemberCountRequest(r *http.Request) (req GetChatMemberCount, e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetChatMemberCount
+		var request getChatMemberCount
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -806,7 +833,7 @@ func decodeGetChatMemberCountRequest(r *http.Request) (req GetChatMemberCount, e
 	}
 }
 
-func decodeGetFileRequest(r *http.Request) (req GetFile, err error) {
+func decodeGetFileRequest(r *http.Request) (req getFile, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -815,11 +842,12 @@ func decodeGetFileRequest(r *http.Request) (req GetFile, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetFile
+		var request getFile
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -834,7 +862,7 @@ func decodeGetFileRequest(r *http.Request) (req GetFile, err error) {
 	}
 }
 
-func decodeGetGameHighScoresRequest(r *http.Request) (req GetGameHighScores, err error) {
+func decodeGetGameHighScoresRequest(r *http.Request) (req getGameHighScores, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -843,11 +871,12 @@ func decodeGetGameHighScoresRequest(r *http.Request) (req GetGameHighScores, err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetGameHighScores
+		var request getGameHighScores
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -862,7 +891,7 @@ func decodeGetGameHighScoresRequest(r *http.Request) (req GetGameHighScores, err
 	}
 }
 
-func decodeGetMyCommandsRequest(r *http.Request) (req GetMyCommands, err error) {
+func decodeGetMyCommandsRequest(r *http.Request) (req getMyCommands, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -871,11 +900,12 @@ func decodeGetMyCommandsRequest(r *http.Request) (req GetMyCommands, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetMyCommands
+		var request getMyCommands
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -890,7 +920,7 @@ func decodeGetMyCommandsRequest(r *http.Request) (req GetMyCommands, err error) 
 	}
 }
 
-func decodeGetStickerSetRequest(r *http.Request) (req GetStickerSet, err error) {
+func decodeGetStickerSetRequest(r *http.Request) (req getStickerSet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -899,11 +929,12 @@ func decodeGetStickerSetRequest(r *http.Request) (req GetStickerSet, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetStickerSet
+		var request getStickerSet
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -918,7 +949,7 @@ func decodeGetStickerSetRequest(r *http.Request) (req GetStickerSet, err error) 
 	}
 }
 
-func decodeGetUpdatesRequest(r *http.Request) (req GetUpdates, err error) {
+func decodeGetUpdatesRequest(r *http.Request) (req getUpdates, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -927,11 +958,12 @@ func decodeGetUpdatesRequest(r *http.Request) (req GetUpdates, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetUpdates
+		var request getUpdates
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -946,7 +978,7 @@ func decodeGetUpdatesRequest(r *http.Request) (req GetUpdates, err error) {
 	}
 }
 
-func decodeGetUserProfilePhotosRequest(r *http.Request) (req GetUserProfilePhotos, err error) {
+func decodeGetUserProfilePhotosRequest(r *http.Request) (req getUserProfilePhotos, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -955,11 +987,12 @@ func decodeGetUserProfilePhotosRequest(r *http.Request) (req GetUserProfilePhoto
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request GetUserProfilePhotos
+		var request getUserProfilePhotos
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -974,7 +1007,7 @@ func decodeGetUserProfilePhotosRequest(r *http.Request) (req GetUserProfilePhoto
 	}
 }
 
-func decodeLeaveChatRequest(r *http.Request) (req LeaveChat, err error) {
+func decodeLeaveChatRequest(r *http.Request) (req leaveChat, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -983,11 +1016,12 @@ func decodeLeaveChatRequest(r *http.Request) (req LeaveChat, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request LeaveChat
+		var request leaveChat
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1002,7 +1036,7 @@ func decodeLeaveChatRequest(r *http.Request) (req LeaveChat, err error) {
 	}
 }
 
-func decodePinChatMessageRequest(r *http.Request) (req PinChatMessage, err error) {
+func decodePinChatMessageRequest(r *http.Request) (req pinChatMessage, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1011,11 +1045,12 @@ func decodePinChatMessageRequest(r *http.Request) (req PinChatMessage, err error
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request PinChatMessage
+		var request pinChatMessage
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1030,7 +1065,7 @@ func decodePinChatMessageRequest(r *http.Request) (req PinChatMessage, err error
 	}
 }
 
-func decodePromoteChatMemberRequest(r *http.Request) (req PromoteChatMember, err error) {
+func decodePromoteChatMemberRequest(r *http.Request) (req promoteChatMember, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1039,11 +1074,12 @@ func decodePromoteChatMemberRequest(r *http.Request) (req PromoteChatMember, err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request PromoteChatMember
+		var request promoteChatMember
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1058,7 +1094,7 @@ func decodePromoteChatMemberRequest(r *http.Request) (req PromoteChatMember, err
 	}
 }
 
-func decodeRestrictChatMemberRequest(r *http.Request) (req RestrictChatMember, err error) {
+func decodeRestrictChatMemberRequest(r *http.Request) (req restrictChatMember, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1067,11 +1103,12 @@ func decodeRestrictChatMemberRequest(r *http.Request) (req RestrictChatMember, e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request RestrictChatMember
+		var request restrictChatMember
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1086,7 +1123,7 @@ func decodeRestrictChatMemberRequest(r *http.Request) (req RestrictChatMember, e
 	}
 }
 
-func decodeRevokeChatInviteLinkRequest(r *http.Request) (req RevokeChatInviteLink, err error) {
+func decodeRevokeChatInviteLinkRequest(r *http.Request) (req revokeChatInviteLink, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1095,11 +1132,12 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request) (req RevokeChatInviteLin
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request RevokeChatInviteLink
+		var request revokeChatInviteLink
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1114,7 +1152,7 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request) (req RevokeChatInviteLin
 	}
 }
 
-func decodeSendAnimationRequest(r *http.Request) (req SendAnimation, err error) {
+func decodeSendAnimationRequest(r *http.Request) (req sendAnimation, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1123,11 +1161,12 @@ func decodeSendAnimationRequest(r *http.Request) (req SendAnimation, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendAnimation
+		var request sendAnimation
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1142,7 +1181,7 @@ func decodeSendAnimationRequest(r *http.Request) (req SendAnimation, err error) 
 	}
 }
 
-func decodeSendAudioRequest(r *http.Request) (req SendAudio, err error) {
+func decodeSendAudioRequest(r *http.Request) (req sendAudio, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1151,11 +1190,12 @@ func decodeSendAudioRequest(r *http.Request) (req SendAudio, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendAudio
+		var request sendAudio
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1170,7 +1210,7 @@ func decodeSendAudioRequest(r *http.Request) (req SendAudio, err error) {
 	}
 }
 
-func decodeSendChatActionRequest(r *http.Request) (req SendChatAction, err error) {
+func decodeSendChatActionRequest(r *http.Request) (req sendChatAction, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1179,11 +1219,12 @@ func decodeSendChatActionRequest(r *http.Request) (req SendChatAction, err error
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendChatAction
+		var request sendChatAction
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1198,7 +1239,7 @@ func decodeSendChatActionRequest(r *http.Request) (req SendChatAction, err error
 	}
 }
 
-func decodeSendContactRequest(r *http.Request) (req SendContact, err error) {
+func decodeSendContactRequest(r *http.Request) (req sendContact, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1207,11 +1248,12 @@ func decodeSendContactRequest(r *http.Request) (req SendContact, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendContact
+		var request sendContact
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1226,7 +1268,7 @@ func decodeSendContactRequest(r *http.Request) (req SendContact, err error) {
 	}
 }
 
-func decodeSendDiceRequest(r *http.Request) (req SendDice, err error) {
+func decodeSendDiceRequest(r *http.Request) (req sendDice, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1235,11 +1277,12 @@ func decodeSendDiceRequest(r *http.Request) (req SendDice, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendDice
+		var request sendDice
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1254,7 +1297,7 @@ func decodeSendDiceRequest(r *http.Request) (req SendDice, err error) {
 	}
 }
 
-func decodeSendDocumentRequest(r *http.Request) (req SendDocument, err error) {
+func decodeSendDocumentRequest(r *http.Request) (req sendDocument, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1263,11 +1306,12 @@ func decodeSendDocumentRequest(r *http.Request) (req SendDocument, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendDocument
+		var request sendDocument
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1282,7 +1326,7 @@ func decodeSendDocumentRequest(r *http.Request) (req SendDocument, err error) {
 	}
 }
 
-func decodeSendGameRequest(r *http.Request) (req SendGame, err error) {
+func decodeSendGameRequest(r *http.Request) (req sendGame, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1291,11 +1335,12 @@ func decodeSendGameRequest(r *http.Request) (req SendGame, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendGame
+		var request sendGame
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1310,7 +1355,7 @@ func decodeSendGameRequest(r *http.Request) (req SendGame, err error) {
 	}
 }
 
-func decodeSendInvoiceRequest(r *http.Request) (req SendInvoice, err error) {
+func decodeSendInvoiceRequest(r *http.Request) (req sendInvoice, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1319,11 +1364,12 @@ func decodeSendInvoiceRequest(r *http.Request) (req SendInvoice, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendInvoice
+		var request sendInvoice
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1338,7 +1384,7 @@ func decodeSendInvoiceRequest(r *http.Request) (req SendInvoice, err error) {
 	}
 }
 
-func decodeSendLocationRequest(r *http.Request) (req SendLocation, err error) {
+func decodeSendLocationRequest(r *http.Request) (req sendLocation, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1347,11 +1393,12 @@ func decodeSendLocationRequest(r *http.Request) (req SendLocation, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendLocation
+		var request sendLocation
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1366,7 +1413,7 @@ func decodeSendLocationRequest(r *http.Request) (req SendLocation, err error) {
 	}
 }
 
-func decodeSendMediaGroupRequest(r *http.Request) (req SendMediaGroup, err error) {
+func decodeSendMediaGroupRequest(r *http.Request) (req sendMediaGroup, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1375,11 +1422,12 @@ func decodeSendMediaGroupRequest(r *http.Request) (req SendMediaGroup, err error
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendMediaGroup
+		var request sendMediaGroup
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1394,7 +1442,7 @@ func decodeSendMediaGroupRequest(r *http.Request) (req SendMediaGroup, err error
 	}
 }
 
-func decodeSendMessageRequest(r *http.Request) (req SendMessage, err error) {
+func decodeSendMessageRequest(r *http.Request) (req sendMessage, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1403,11 +1451,12 @@ func decodeSendMessageRequest(r *http.Request) (req SendMessage, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendMessage
+		var request sendMessage
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1422,7 +1471,7 @@ func decodeSendMessageRequest(r *http.Request) (req SendMessage, err error) {
 	}
 }
 
-func decodeSendPhotoRequest(r *http.Request) (req SendPhoto, err error) {
+func decodeSendPhotoRequest(r *http.Request) (req sendPhoto, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1431,11 +1480,12 @@ func decodeSendPhotoRequest(r *http.Request) (req SendPhoto, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendPhoto
+		var request sendPhoto
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1450,7 +1500,7 @@ func decodeSendPhotoRequest(r *http.Request) (req SendPhoto, err error) {
 	}
 }
 
-func decodeSendPollRequest(r *http.Request) (req SendPoll, err error) {
+func decodeSendPollRequest(r *http.Request) (req sendPoll, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1459,11 +1509,12 @@ func decodeSendPollRequest(r *http.Request) (req SendPoll, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendPoll
+		var request sendPoll
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1478,7 +1529,7 @@ func decodeSendPollRequest(r *http.Request) (req SendPoll, err error) {
 	}
 }
 
-func decodeSendStickerRequest(r *http.Request) (req SendSticker, err error) {
+func decodeSendStickerRequest(r *http.Request) (req sendSticker, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1487,11 +1538,12 @@ func decodeSendStickerRequest(r *http.Request) (req SendSticker, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendSticker
+		var request sendSticker
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1506,7 +1558,7 @@ func decodeSendStickerRequest(r *http.Request) (req SendSticker, err error) {
 	}
 }
 
-func decodeSendVenueRequest(r *http.Request) (req SendVenue, err error) {
+func decodeSendVenueRequest(r *http.Request) (req sendVenue, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1515,11 +1567,12 @@ func decodeSendVenueRequest(r *http.Request) (req SendVenue, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendVenue
+		var request sendVenue
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1534,7 +1587,7 @@ func decodeSendVenueRequest(r *http.Request) (req SendVenue, err error) {
 	}
 }
 
-func decodeSendVideoRequest(r *http.Request) (req SendVideo, err error) {
+func decodeSendVideoRequest(r *http.Request) (req sendVideo, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1543,11 +1596,12 @@ func decodeSendVideoRequest(r *http.Request) (req SendVideo, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendVideo
+		var request sendVideo
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1562,7 +1616,7 @@ func decodeSendVideoRequest(r *http.Request) (req SendVideo, err error) {
 	}
 }
 
-func decodeSendVideoNoteRequest(r *http.Request) (req SendVideoNote, err error) {
+func decodeSendVideoNoteRequest(r *http.Request) (req sendVideoNote, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1571,11 +1625,12 @@ func decodeSendVideoNoteRequest(r *http.Request) (req SendVideoNote, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendVideoNote
+		var request sendVideoNote
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1590,7 +1645,7 @@ func decodeSendVideoNoteRequest(r *http.Request) (req SendVideoNote, err error) 
 	}
 }
 
-func decodeSendVoiceRequest(r *http.Request) (req SendVoice, err error) {
+func decodeSendVoiceRequest(r *http.Request) (req sendVoice, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1599,11 +1654,12 @@ func decodeSendVoiceRequest(r *http.Request) (req SendVoice, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SendVoice
+		var request sendVoice
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1618,7 +1674,7 @@ func decodeSendVoiceRequest(r *http.Request) (req SendVoice, err error) {
 	}
 }
 
-func decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (req SetChatAdministratorCustomTitle, err error) {
+func decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (req setChatAdministratorCustomTitle, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1627,11 +1683,12 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (req SetChatA
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetChatAdministratorCustomTitle
+		var request setChatAdministratorCustomTitle
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1646,7 +1703,7 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (req SetChatA
 	}
 }
 
-func decodeSetChatDescriptionRequest(r *http.Request) (req SetChatDescription, err error) {
+func decodeSetChatDescriptionRequest(r *http.Request) (req setChatDescription, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1655,11 +1712,12 @@ func decodeSetChatDescriptionRequest(r *http.Request) (req SetChatDescription, e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetChatDescription
+		var request setChatDescription
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1674,7 +1732,7 @@ func decodeSetChatDescriptionRequest(r *http.Request) (req SetChatDescription, e
 	}
 }
 
-func decodeSetChatPermissionsRequest(r *http.Request) (req SetChatPermissions, err error) {
+func decodeSetChatPermissionsRequest(r *http.Request) (req setChatPermissions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1683,11 +1741,12 @@ func decodeSetChatPermissionsRequest(r *http.Request) (req SetChatPermissions, e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetChatPermissions
+		var request setChatPermissions
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1702,7 +1761,7 @@ func decodeSetChatPermissionsRequest(r *http.Request) (req SetChatPermissions, e
 	}
 }
 
-func decodeSetChatPhotoRequest(r *http.Request) (req SetChatPhoto, err error) {
+func decodeSetChatPhotoRequest(r *http.Request) (req setChatPhoto, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1711,11 +1770,12 @@ func decodeSetChatPhotoRequest(r *http.Request) (req SetChatPhoto, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetChatPhoto
+		var request setChatPhoto
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1730,7 +1790,7 @@ func decodeSetChatPhotoRequest(r *http.Request) (req SetChatPhoto, err error) {
 	}
 }
 
-func decodeSetChatStickerSetRequest(r *http.Request) (req SetChatStickerSet, err error) {
+func decodeSetChatStickerSetRequest(r *http.Request) (req setChatStickerSet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1739,11 +1799,12 @@ func decodeSetChatStickerSetRequest(r *http.Request) (req SetChatStickerSet, err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetChatStickerSet
+		var request setChatStickerSet
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1758,7 +1819,7 @@ func decodeSetChatStickerSetRequest(r *http.Request) (req SetChatStickerSet, err
 	}
 }
 
-func decodeSetChatTitleRequest(r *http.Request) (req SetChatTitle, err error) {
+func decodeSetChatTitleRequest(r *http.Request) (req setChatTitle, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1767,11 +1828,12 @@ func decodeSetChatTitleRequest(r *http.Request) (req SetChatTitle, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetChatTitle
+		var request setChatTitle
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1786,7 +1848,7 @@ func decodeSetChatTitleRequest(r *http.Request) (req SetChatTitle, err error) {
 	}
 }
 
-func decodeSetGameScoreRequest(r *http.Request) (req SetGameScore, err error) {
+func decodeSetGameScoreRequest(r *http.Request) (req setGameScore, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1795,11 +1857,12 @@ func decodeSetGameScoreRequest(r *http.Request) (req SetGameScore, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetGameScore
+		var request setGameScore
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1814,7 +1877,7 @@ func decodeSetGameScoreRequest(r *http.Request) (req SetGameScore, err error) {
 	}
 }
 
-func decodeSetMyCommandsRequest(r *http.Request) (req SetMyCommands, err error) {
+func decodeSetMyCommandsRequest(r *http.Request) (req setMyCommands, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1823,11 +1886,12 @@ func decodeSetMyCommandsRequest(r *http.Request) (req SetMyCommands, err error) 
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetMyCommands
+		var request setMyCommands
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1842,7 +1906,7 @@ func decodeSetMyCommandsRequest(r *http.Request) (req SetMyCommands, err error) 
 	}
 }
 
-func decodeSetPassportDataErrorsRequest(r *http.Request) (req SetPassportDataErrors, err error) {
+func decodeSetPassportDataErrorsRequest(r *http.Request) (req setPassportDataErrors, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1851,11 +1915,12 @@ func decodeSetPassportDataErrorsRequest(r *http.Request) (req SetPassportDataErr
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetPassportDataErrors
+		var request setPassportDataErrors
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1870,7 +1935,7 @@ func decodeSetPassportDataErrorsRequest(r *http.Request) (req SetPassportDataErr
 	}
 }
 
-func decodeSetStickerPositionInSetRequest(r *http.Request) (req SetStickerPositionInSet, err error) {
+func decodeSetStickerPositionInSetRequest(r *http.Request) (req setStickerPositionInSet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1879,11 +1944,12 @@ func decodeSetStickerPositionInSetRequest(r *http.Request) (req SetStickerPositi
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetStickerPositionInSet
+		var request setStickerPositionInSet
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1898,7 +1964,7 @@ func decodeSetStickerPositionInSetRequest(r *http.Request) (req SetStickerPositi
 	}
 }
 
-func decodeSetStickerSetThumbRequest(r *http.Request) (req SetStickerSetThumb, err error) {
+func decodeSetStickerSetThumbRequest(r *http.Request) (req setStickerSetThumb, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1907,11 +1973,12 @@ func decodeSetStickerSetThumbRequest(r *http.Request) (req SetStickerSetThumb, e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetStickerSetThumb
+		var request setStickerSetThumb
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1926,7 +1993,7 @@ func decodeSetStickerSetThumbRequest(r *http.Request) (req SetStickerSetThumb, e
 	}
 }
 
-func decodeSetWebhookRequest(r *http.Request) (req SetWebhook, err error) {
+func decodeSetWebhookRequest(r *http.Request) (req setWebhook, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1935,11 +2002,12 @@ func decodeSetWebhookRequest(r *http.Request) (req SetWebhook, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request SetWebhook
+		var request setWebhook
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1954,7 +2022,7 @@ func decodeSetWebhookRequest(r *http.Request) (req SetWebhook, err error) {
 	}
 }
 
-func decodeStopMessageLiveLocationRequest(r *http.Request) (req StopMessageLiveLocation, err error) {
+func decodeStopMessageLiveLocationRequest(r *http.Request) (req stopMessageLiveLocation, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1963,11 +2031,12 @@ func decodeStopMessageLiveLocationRequest(r *http.Request) (req StopMessageLiveL
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request StopMessageLiveLocation
+		var request stopMessageLiveLocation
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -1982,7 +2051,7 @@ func decodeStopMessageLiveLocationRequest(r *http.Request) (req StopMessageLiveL
 	}
 }
 
-func decodeStopPollRequest(r *http.Request) (req StopPoll, err error) {
+func decodeStopPollRequest(r *http.Request) (req stopPoll, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -1991,11 +2060,12 @@ func decodeStopPollRequest(r *http.Request) (req StopPoll, err error) {
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request StopPoll
+		var request stopPoll
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2010,7 +2080,7 @@ func decodeStopPollRequest(r *http.Request) (req StopPoll, err error) {
 	}
 }
 
-func decodeUnbanChatMemberRequest(r *http.Request) (req UnbanChatMember, err error) {
+func decodeUnbanChatMemberRequest(r *http.Request) (req unbanChatMember, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -2019,11 +2089,12 @@ func decodeUnbanChatMemberRequest(r *http.Request) (req UnbanChatMember, err err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request UnbanChatMember
+		var request unbanChatMember
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2038,7 +2109,7 @@ func decodeUnbanChatMemberRequest(r *http.Request) (req UnbanChatMember, err err
 	}
 }
 
-func decodeUnpinAllChatMessagesRequest(r *http.Request) (req UnpinAllChatMessages, err error) {
+func decodeUnpinAllChatMessagesRequest(r *http.Request) (req unpinAllChatMessages, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -2047,11 +2118,12 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request) (req UnpinAllChatMessage
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request UnpinAllChatMessages
+		var request unpinAllChatMessages
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2066,7 +2138,7 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request) (req UnpinAllChatMessage
 	}
 }
 
-func decodeUnpinChatMessageRequest(r *http.Request) (req UnpinChatMessage, err error) {
+func decodeUnpinChatMessageRequest(r *http.Request) (req unpinChatMessage, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -2075,11 +2147,12 @@ func decodeUnpinChatMessageRequest(r *http.Request) (req UnpinChatMessage, err e
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request UnpinChatMessage
+		var request unpinChatMessage
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}
@@ -2094,7 +2167,7 @@ func decodeUnpinChatMessageRequest(r *http.Request) (req UnpinChatMessage, err e
 	}
 }
 
-func decodeUploadStickerFileRequest(r *http.Request) (req UploadStickerFile, err error) {
+func decodeUploadStickerFileRequest(r *http.Request) (req uploadStickerFile, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -2103,11 +2176,12 @@ func decodeUploadStickerFileRequest(r *http.Request) (req UploadStickerFile, err
 
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request UploadStickerFile
+		var request uploadStickerFile
 		i := json.GetIterator()
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
+			// Struct or enum.
 			if err := request.ReadJSON(i); err != nil {
 				return err
 			}

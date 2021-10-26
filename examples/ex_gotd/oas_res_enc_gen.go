@@ -50,1127 +50,827 @@ var (
 	_ = net.IP{}
 )
 
-func encodeAddStickerToSetResponse(response Result, w http.ResponseWriter) error {
+func encodeAddStickerToSetResponse(response AddStickerToSetResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeAnswerCallbackQueryResponse(response Result, w http.ResponseWriter) error {
+func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeAnswerInlineQueryResponse(response Result, w http.ResponseWriter) error {
+func encodeAnswerInlineQueryResponse(response AnswerInlineQueryResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeAnswerPreCheckoutQueryResponse(response Result, w http.ResponseWriter) error {
+func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeAnswerShippingQueryResponse(response Result, w http.ResponseWriter) error {
+func encodeAnswerShippingQueryResponse(response AnswerShippingQueryResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeBanChatMemberResponse(response Result, w http.ResponseWriter) error {
+func encodeBanChatMemberResponse(response BanChatMemberResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeCopyMessageResponse(response Result, w http.ResponseWriter) error {
+func encodeCopyMessageResponse(response CopyMessageResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeCreateChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
+func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeCreateNewStickerSetResponse(response Result, w http.ResponseWriter) error {
+func encodeCreateNewStickerSetResponse(response CreateNewStickerSetResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeDeleteChatPhotoResponse(response Result, w http.ResponseWriter) error {
+func encodeDeleteChatPhotoResponse(response DeleteChatPhotoResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeDeleteChatStickerSetResponse(response Result, w http.ResponseWriter) error {
+func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeDeleteMessageResponse(response Result, w http.ResponseWriter) error {
+func encodeDeleteMessageResponse(response DeleteMessageResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeDeleteMyCommandsResponse(response Result, w http.ResponseWriter) error {
+func encodeDeleteMyCommandsResponse(response DeleteMyCommandsResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeDeleteStickerFromSetResponse(response Result, w http.ResponseWriter) error {
+func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeDeleteWebhookResponse(response Result, w http.ResponseWriter) error {
+func encodeDeleteWebhookResponse(response DeleteWebhookResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeEditChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
+func encodeEditChatInviteLinkResponse(response EditChatInviteLinkResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeEditMessageCaptionResponse(response Result, w http.ResponseWriter) error {
+func encodeEditMessageCaptionResponse(response EditMessageCaptionResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeEditMessageLiveLocationResponse(response Result, w http.ResponseWriter) error {
+func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeEditMessageMediaResponse(response Result, w http.ResponseWriter) error {
+func encodeEditMessageMediaResponse(response EditMessageMediaResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeEditMessageReplyMarkupResponse(response Result, w http.ResponseWriter) error {
+func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeEditMessageTextResponse(response Result, w http.ResponseWriter) error {
+func encodeEditMessageTextResponse(response EditMessageTextResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
+func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeForwardMessageResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeForwardMessageResponse(response ForwardMessageResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetChatResponse(response Result, w http.ResponseWriter) error {
+func encodeGetChatResponse(response GetChatResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetChatAdministratorsResponse(response Result, w http.ResponseWriter) error {
+func encodeGetChatAdministratorsResponse(response GetChatAdministratorsResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetChatMemberResponse(response Result, w http.ResponseWriter) error {
+func encodeGetChatMemberResponse(response GetChatMemberResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetChatMemberCountResponse(response Result, w http.ResponseWriter) error {
+func encodeGetChatMemberCountResponse(response GetChatMemberCountResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetFileResponse(response Result, w http.ResponseWriter) error {
+func encodeGetFileResponse(response GetFileResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetGameHighScoresResponse(response Result, w http.ResponseWriter) error {
+func encodeGetGameHighScoresResponse(response GetGameHighScoresResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetMeResponse(response ResultUsr, w http.ResponseWriter) error {
+func encodeGetMeResponse(response GetMeResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetMyCommandsResponse(response Result, w http.ResponseWriter) error {
+func encodeGetMyCommandsResponse(response GetMyCommandsResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetStickerSetResponse(response Result, w http.ResponseWriter) error {
+func encodeGetStickerSetResponse(response GetStickerSetResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetUpdatesResponse(response Result, w http.ResponseWriter) error {
+func encodeGetUpdatesResponse(response GetUpdatesResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeGetUserProfilePhotosResponse(response Result, w http.ResponseWriter) error {
+func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeLeaveChatResponse(response Result, w http.ResponseWriter) error {
+func encodeLeaveChatResponse(response LeaveChatResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodePinChatMessageResponse(response Result, w http.ResponseWriter) error {
+func encodePinChatMessageResponse(response PinChatMessageResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodePromoteChatMemberResponse(response Result, w http.ResponseWriter) error {
+func encodePromoteChatMemberResponse(response PromoteChatMemberResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeRestrictChatMemberResponse(response Result, w http.ResponseWriter) error {
+func encodeRestrictChatMemberResponse(response RestrictChatMemberResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter) error {
+func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendAnimationResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendAnimationResponse(response SendAnimationResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendAudioResponse(response Result, w http.ResponseWriter) error {
+func encodeSendAudioResponse(response SendAudioResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendChatActionResponse(response Result, w http.ResponseWriter) error {
+func encodeSendChatActionResponse(response SendChatActionResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendContactResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendContactResponse(response SendContactResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendDiceResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendDiceResponse(response SendDiceResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendDocumentResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendDocumentResponse(response SendDocumentResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendGameResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendGameResponse(response SendGameResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendInvoiceResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendInvoiceResponse(response SendInvoiceResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendLocationResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendLocationResponse(response SendLocationResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter) error {
+func encodeSendMediaGroupResponse(response SendMediaGroupResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendMessageResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendMessageResponse(response SendMessageResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendPhotoResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendPhotoResponse(response SendPhotoResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendPollResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendPollResponse(response SendPollResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendStickerResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendStickerResponse(response SendStickerResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendVenueResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendVenueResponse(response SendVenueResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendVideoResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendVideoResponse(response SendVideoResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendVideoNoteResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendVideoNoteResponse(response SendVideoNoteResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSendVoiceResponse(response ResultMsg, w http.ResponseWriter) error {
+func encodeSendVoiceResponse(response SendVoiceResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetChatAdministratorCustomTitleResponse(response Result, w http.ResponseWriter) error {
+func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministratorCustomTitleResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetChatDescriptionResponse(response Result, w http.ResponseWriter) error {
+func encodeSetChatDescriptionResponse(response SetChatDescriptionResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetChatPermissionsResponse(response Result, w http.ResponseWriter) error {
+func encodeSetChatPermissionsResponse(response SetChatPermissionsResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetChatPhotoResponse(response Result, w http.ResponseWriter) error {
+func encodeSetChatPhotoResponse(response SetChatPhotoResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetChatStickerSetResponse(response Result, w http.ResponseWriter) error {
+func encodeSetChatStickerSetResponse(response SetChatStickerSetResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetChatTitleResponse(response Result, w http.ResponseWriter) error {
+func encodeSetChatTitleResponse(response SetChatTitleResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetGameScoreResponse(response Result, w http.ResponseWriter) error {
+func encodeSetGameScoreResponse(response SetGameScoreResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetMyCommandsResponse(response Result, w http.ResponseWriter) error {
+func encodeSetMyCommandsResponse(response SetMyCommandsResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetPassportDataErrorsResponse(response Result, w http.ResponseWriter) error {
+func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetStickerPositionInSetResponse(response Result, w http.ResponseWriter) error {
+func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetStickerSetThumbResponse(response Result, w http.ResponseWriter) error {
+func encodeSetStickerSetThumbResponse(response SetStickerSetThumbResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeSetWebhookResponse(response Result, w http.ResponseWriter) error {
+func encodeSetWebhookResponse(response SetWebhookResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeStopMessageLiveLocationResponse(response Result, w http.ResponseWriter) error {
+func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeStopPollResponse(response Result, w http.ResponseWriter) error {
+func encodeStopPollResponse(response StopPollResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeUnbanChatMemberResponse(response Result, w http.ResponseWriter) error {
+func encodeUnbanChatMemberResponse(response UnbanChatMemberResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeUnpinAllChatMessagesResponse(response Result, w http.ResponseWriter) error {
+func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeUnpinChatMessageResponse(response Result, w http.ResponseWriter) error {
+func encodeUnpinChatMessageResponse(response UnpinChatMessageResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }
 
-func encodeUploadStickerFileResponse(response Result, w http.ResponseWriter) error {
+func encodeUploadStickerFileResponse(response UploadStickerFileResOKApplicationJSON, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
+
 	return nil
 }

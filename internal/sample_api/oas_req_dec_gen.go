@@ -75,8 +75,7 @@ func decodeFoobarPostRequest(r *http.Request) (req Pet, err error) {
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
-
-		return &request, nil
+		return request, nil
 	default:
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
@@ -107,7 +106,6 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateReq, err error) {
 		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
-
 		return &request, nil
 	case "text/plain":
 		var request PetCreateReqTextPlain

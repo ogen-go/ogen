@@ -33,8 +33,7 @@ func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.Go }}
             return req, fmt.Errorf("validate: %w", err)
         }
         {{- end }}
-
-        return {{ if or (not $op.Request.Required) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
+        return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request

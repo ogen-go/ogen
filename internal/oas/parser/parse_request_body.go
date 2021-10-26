@@ -20,7 +20,6 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*ast.RequestBody, err
 	reqBody := createAstRBody()
 	reqBody.Required = body.Required
 
-	// Iterate through request body contents...
 	for contentType, media := range body.Content {
 		schema, err := p.parseSchema(media.Schema)
 		if err != nil {

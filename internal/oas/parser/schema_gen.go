@@ -41,13 +41,9 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 	if ref := schema.Ref; ref != "" {
 		s, err := g.ref(ref)
 		if err != nil {
-			return nil, xerrors.Errorf("'%s': %w", ref, err)
+			return nil, xerrors.Errorf("ref %q: %w", ref, err)
 		}
 		return s, nil
-	}
-
-	if err := g.validateTypeFormat(schema.Type, schema.Format); err != nil {
-		return nil, err
 	}
 
 	onret := func(s *oas.Schema) *oas.Schema {
@@ -61,7 +57,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 	case len(schema.Enum) > 0:
 		values, err := g.parseEnumValues(oas.SchemaType(schema.Type), schema.Enum)
 		if err != nil {
-			return nil, err
+			return nil, xerrors.Errorf("parse enum: %w", err)
 		}
 
 		return onret(&oas.Schema{
@@ -118,6 +114,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			Ref:         schema.Ref,
 			Description: schema.Description,
 		}), nil
+	}
+
+	if err := g.validateTypeFormat(schema.Type, schema.Format); err != nil {
+		return nil, xerrors.Errorf("validate format: %w", err)
 	}
 
 	switch schema.Type {
@@ -186,7 +186,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 
 		item, err := g.generate(*schema.Items, "")
 		if err != nil {
-			return nil, err
+			return nil, xerrors.Errorf("item: %w", err)
 		}
 
 		array.Item = item
@@ -234,7 +234,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 func (g *schemaGen) ref(ref string) (*oas.Schema, error) {
 	const prefix = "#/components/schemas/"
 	if !strings.HasPrefix(ref, prefix) {
-		return nil, fmt.Errorf("invalid schema reference '%s'", ref)
+		return nil, fmt.Errorf("invalid schema reference %q", ref)
 	}
 
 	if s, ok := g.globalRefs[ref]; ok {
@@ -248,7 +248,7 @@ func (g *schemaGen) ref(ref string) (*oas.Schema, error) {
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := g.spec.Components.Schemas[name]
 	if !found {
-		return nil, xerrors.Errorf("component by reference '%s' not found", ref)
+		return nil, xerrors.Errorf("component by reference %q not found", ref)
 	}
 
 	return g.generate(component, ref)

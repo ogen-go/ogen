@@ -72,7 +72,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res Result, err error) {
+func (c *Client) AddStickerToSet(ctx context.Context, req addStickerToSet) (res AddStickerToSetResOKApplicationJSON, err error) {
 	body, contentType, err := encodeAddStickerToSetRequest(req)
 	if err != nil {
 		return res, err
@@ -100,7 +100,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 	return result, nil
 }
 
-func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (res Result, err error) {
+func (c *Client) AnswerCallbackQuery(ctx context.Context, req answerCallbackQuery) (res AnswerCallbackQueryResOKApplicationJSON, err error) {
 	body, contentType, err := encodeAnswerCallbackQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -128,7 +128,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 	return result, nil
 }
 
-func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (res Result, err error) {
+func (c *Client) AnswerInlineQuery(ctx context.Context, req answerInlineQuery) (res AnswerInlineQueryResOKApplicationJSON, err error) {
 	body, contentType, err := encodeAnswerInlineQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -156,7 +156,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 	return result, nil
 }
 
-func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (res Result, err error) {
+func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req answerPreCheckoutQuery) (res AnswerPreCheckoutQueryResOKApplicationJSON, err error) {
 	body, contentType, err := encodeAnswerPreCheckoutQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -184,7 +184,7 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 	return result, nil
 }
 
-func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (res Result, err error) {
+func (c *Client) AnswerShippingQuery(ctx context.Context, req answerShippingQuery) (res AnswerShippingQueryResOKApplicationJSON, err error) {
 	body, contentType, err := encodeAnswerShippingQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -212,7 +212,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 	return result, nil
 }
 
-func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res Result, err error) {
+func (c *Client) BanChatMember(ctx context.Context, req banChatMember) (res BanChatMemberResOKApplicationJSON, err error) {
 	body, contentType, err := encodeBanChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -240,7 +240,7 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res Resu
 	return result, nil
 }
 
-func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res Result, err error) {
+func (c *Client) CopyMessage(ctx context.Context, req copyMessage) (res CopyMessageResOKApplicationJSON, err error) {
 	body, contentType, err := encodeCopyMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -268,7 +268,7 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res Result, 
 	return result, nil
 }
 
-func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (res Result, err error) {
+func (c *Client) CreateChatInviteLink(ctx context.Context, req createChatInviteLink) (res CreateChatInviteLinkResOKApplicationJSON, err error) {
 	body, contentType, err := encodeCreateChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -296,7 +296,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 	return result, nil
 }
 
-func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (res Result, err error) {
+func (c *Client) CreateNewStickerSet(ctx context.Context, req createNewStickerSet) (res CreateNewStickerSetResOKApplicationJSON, err error) {
 	body, contentType, err := encodeCreateNewStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -324,7 +324,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 	return result, nil
 }
 
-func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res Result, err error) {
+func (c *Client) DeleteChatPhoto(ctx context.Context, req deleteChatPhoto) (res DeleteChatPhotoResOKApplicationJSON, err error) {
 	body, contentType, err := encodeDeleteChatPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -352,7 +352,7 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 	return result, nil
 }
 
-func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (res Result, err error) {
+func (c *Client) DeleteChatStickerSet(ctx context.Context, req deleteChatStickerSet) (res DeleteChatStickerSetResOKApplicationJSON, err error) {
 	body, contentType, err := encodeDeleteChatStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -380,7 +380,7 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 	return result, nil
 }
 
-func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Result, err error) {
+func (c *Client) DeleteMessage(ctx context.Context, req deleteMessage) (res DeleteMessageResOKApplicationJSON, err error) {
 	body, contentType, err := encodeDeleteMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -408,7 +408,7 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Resu
 	return result, nil
 }
 
-func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (res Result, err error) {
+func (c *Client) DeleteMyCommands(ctx context.Context, req deleteMyCommands) (res DeleteMyCommandsResOKApplicationJSON, err error) {
 	body, contentType, err := encodeDeleteMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -436,7 +436,7 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 	return result, nil
 }
 
-func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (res Result, err error) {
+func (c *Client) DeleteStickerFromSet(ctx context.Context, req deleteStickerFromSet) (res DeleteStickerFromSetResOKApplicationJSON, err error) {
 	body, contentType, err := encodeDeleteStickerFromSetRequest(req)
 	if err != nil {
 		return res, err
@@ -464,7 +464,7 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 	return result, nil
 }
 
-func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Result, err error) {
+func (c *Client) DeleteWebhook(ctx context.Context, req deleteWebhook) (res DeleteWebhookResOKApplicationJSON, err error) {
 	body, contentType, err := encodeDeleteWebhookRequest(req)
 	if err != nil {
 		return res, err
@@ -492,7 +492,7 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Resu
 	return result, nil
 }
 
-func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (res Result, err error) {
+func (c *Client) EditChatInviteLink(ctx context.Context, req editChatInviteLink) (res EditChatInviteLinkResOKApplicationJSON, err error) {
 	body, contentType, err := encodeEditChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -520,7 +520,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 	return result, nil
 }
 
-func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption) (res Result, err error) {
+func (c *Client) EditMessageCaption(ctx context.Context, req editMessageCaption) (res EditMessageCaptionResOKApplicationJSON, err error) {
 	body, contentType, err := encodeEditMessageCaptionRequest(req)
 	if err != nil {
 		return res, err
@@ -548,7 +548,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 	return result, nil
 }
 
-func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (res Result, err error) {
+func (c *Client) EditMessageLiveLocation(ctx context.Context, req editMessageLiveLocation) (res EditMessageLiveLocationResOKApplicationJSON, err error) {
 	body, contentType, err := encodeEditMessageLiveLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -576,7 +576,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 	return result, nil
 }
 
-func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (res Result, err error) {
+func (c *Client) EditMessageMedia(ctx context.Context, req editMessageMedia) (res EditMessageMediaResOKApplicationJSON, err error) {
 	body, contentType, err := encodeEditMessageMediaRequest(req)
 	if err != nil {
 		return res, err
@@ -604,7 +604,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 	return result, nil
 }
 
-func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (res Result, err error) {
+func (c *Client) EditMessageReplyMarkup(ctx context.Context, req editMessageReplyMarkup) (res EditMessageReplyMarkupResOKApplicationJSON, err error) {
 	body, contentType, err := encodeEditMessageReplyMarkupRequest(req)
 	if err != nil {
 		return res, err
@@ -632,7 +632,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 	return result, nil
 }
 
-func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res Result, err error) {
+func (c *Client) EditMessageText(ctx context.Context, req editMessageText) (res EditMessageTextResOKApplicationJSON, err error) {
 	body, contentType, err := encodeEditMessageTextRequest(req)
 	if err != nil {
 		return res, err
@@ -660,7 +660,7 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 	return result, nil
 }
 
-func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (res Result, err error) {
+func (c *Client) ExportChatInviteLink(ctx context.Context, req exportChatInviteLink) (res ExportChatInviteLinkResOKApplicationJSON, err error) {
 	body, contentType, err := encodeExportChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -688,7 +688,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 	return result, nil
 }
 
-func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res ResultMsg, err error) {
+func (c *Client) ForwardMessage(ctx context.Context, req forwardMessage) (res ForwardMessageResOKApplicationJSON, err error) {
 	body, contentType, err := encodeForwardMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -716,7 +716,7 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Re
 	return result, nil
 }
 
-func (c *Client) GetChat(ctx context.Context, req GetChat) (res Result, err error) {
+func (c *Client) GetChat(ctx context.Context, req getChat) (res GetChatResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetChatRequest(req)
 	if err != nil {
 		return res, err
@@ -744,7 +744,7 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res Result, err erro
 	return result, nil
 }
 
-func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (res Result, err error) {
+func (c *Client) GetChatAdministrators(ctx context.Context, req getChatAdministrators) (res GetChatAdministratorsResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetChatAdministratorsRequest(req)
 	if err != nil {
 		return res, err
@@ -772,7 +772,7 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 	return result, nil
 }
 
-func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res Result, err error) {
+func (c *Client) GetChatMember(ctx context.Context, req getChatMember) (res GetChatMemberResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -800,7 +800,7 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res Resu
 	return result, nil
 }
 
-func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (res Result, err error) {
+func (c *Client) GetChatMemberCount(ctx context.Context, req getChatMemberCount) (res GetChatMemberCountResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetChatMemberCountRequest(req)
 	if err != nil {
 		return res, err
@@ -828,7 +828,7 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 	return result, nil
 }
 
-func (c *Client) GetFile(ctx context.Context, req GetFile) (res Result, err error) {
+func (c *Client) GetFile(ctx context.Context, req getFile) (res GetFileResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetFileRequest(req)
 	if err != nil {
 		return res, err
@@ -856,7 +856,7 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res Result, err erro
 	return result, nil
 }
 
-func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (res Result, err error) {
+func (c *Client) GetGameHighScores(ctx context.Context, req getGameHighScores) (res GetGameHighScoresResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetGameHighScoresRequest(req)
 	if err != nil {
 		return res, err
@@ -884,7 +884,7 @@ func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (
 	return result, nil
 }
 
-func (c *Client) GetMe(ctx context.Context) (res ResultUsr, err error) {
+func (c *Client) GetMe(ctx context.Context) (res GetMeResOKApplicationJSON, err error) {
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMe"
 
@@ -905,7 +905,7 @@ func (c *Client) GetMe(ctx context.Context) (res ResultUsr, err error) {
 	return result, nil
 }
 
-func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res Result, err error) {
+func (c *Client) GetMyCommands(ctx context.Context, req getMyCommands) (res GetMyCommandsResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -933,7 +933,7 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res Resu
 	return result, nil
 }
 
-func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res Result, err error) {
+func (c *Client) GetStickerSet(ctx context.Context, req getStickerSet) (res GetStickerSetResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -961,7 +961,7 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res Resu
 	return result, nil
 }
 
-func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res Result, err error) {
+func (c *Client) GetUpdates(ctx context.Context, req getUpdates) (res GetUpdatesResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetUpdatesRequest(req)
 	if err != nil {
 		return res, err
@@ -989,7 +989,7 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res Result, er
 	return result, nil
 }
 
-func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (res Result, err error) {
+func (c *Client) GetUserProfilePhotos(ctx context.Context, req getUserProfilePhotos) (res GetUserProfilePhotosResOKApplicationJSON, err error) {
 	body, contentType, err := encodeGetUserProfilePhotosRequest(req)
 	if err != nil {
 		return res, err
@@ -1017,7 +1017,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 	return result, nil
 }
 
-func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res Result, err error) {
+func (c *Client) LeaveChat(ctx context.Context, req leaveChat) (res LeaveChatResOKApplicationJSON, err error) {
 	body, contentType, err := encodeLeaveChatRequest(req)
 	if err != nil {
 		return res, err
@@ -1045,7 +1045,7 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res Result, err 
 	return result, nil
 }
 
-func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Result, err error) {
+func (c *Client) PinChatMessage(ctx context.Context, req pinChatMessage) (res PinChatMessageResOKApplicationJSON, err error) {
 	body, contentType, err := encodePinChatMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1073,7 +1073,7 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Re
 	return result, nil
 }
 
-func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (res Result, err error) {
+func (c *Client) PromoteChatMember(ctx context.Context, req promoteChatMember) (res PromoteChatMemberResOKApplicationJSON, err error) {
 	body, contentType, err := encodePromoteChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -1101,7 +1101,7 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 	return result, nil
 }
 
-func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember) (res Result, err error) {
+func (c *Client) RestrictChatMember(ctx context.Context, req restrictChatMember) (res RestrictChatMemberResOKApplicationJSON, err error) {
 	body, contentType, err := encodeRestrictChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -1129,7 +1129,7 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 	return result, nil
 }
 
-func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (res Result, err error) {
+func (c *Client) RevokeChatInviteLink(ctx context.Context, req revokeChatInviteLink) (res RevokeChatInviteLinkResOKApplicationJSON, err error) {
 	body, contentType, err := encodeRevokeChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -1157,7 +1157,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 	return result, nil
 }
 
-func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res ResultMsg, err error) {
+func (c *Client) SendAnimation(ctx context.Context, req sendAnimation) (res SendAnimationResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendAnimationRequest(req)
 	if err != nil {
 		return res, err
@@ -1185,7 +1185,7 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Resu
 	return result, nil
 }
 
-func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res Result, err error) {
+func (c *Client) SendAudio(ctx context.Context, req sendAudio) (res SendAudioResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendAudioRequest(req)
 	if err != nil {
 		return res, err
@@ -1213,7 +1213,7 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res Result, err 
 	return result, nil
 }
 
-func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Result, err error) {
+func (c *Client) SendChatAction(ctx context.Context, req sendChatAction) (res SendChatActionResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendChatActionRequest(req)
 	if err != nil {
 		return res, err
@@ -1241,7 +1241,7 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Re
 	return result, nil
 }
 
-func (c *Client) SendContact(ctx context.Context, req SendContact) (res ResultMsg, err error) {
+func (c *Client) SendContact(ctx context.Context, req sendContact) (res SendContactResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendContactRequest(req)
 	if err != nil {
 		return res, err
@@ -1269,7 +1269,7 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res ResultMs
 	return result, nil
 }
 
-func (c *Client) SendDice(ctx context.Context, req SendDice) (res ResultMsg, err error) {
+func (c *Client) SendDice(ctx context.Context, req sendDice) (res SendDiceResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendDiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1297,7 +1297,7 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res ResultMsg, err
 	return result, nil
 }
 
-func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res ResultMsg, err error) {
+func (c *Client) SendDocument(ctx context.Context, req sendDocument) (res SendDocumentResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendDocumentRequest(req)
 	if err != nil {
 		return res, err
@@ -1325,7 +1325,7 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res Result
 	return result, nil
 }
 
-func (c *Client) SendGame(ctx context.Context, req SendGame) (res ResultMsg, err error) {
+func (c *Client) SendGame(ctx context.Context, req sendGame) (res SendGameResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendGameRequest(req)
 	if err != nil {
 		return res, err
@@ -1353,7 +1353,7 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res ResultMsg, err
 	return result, nil
 }
 
-func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res ResultMsg, err error) {
+func (c *Client) SendInvoice(ctx context.Context, req sendInvoice) (res SendInvoiceResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendInvoiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1381,7 +1381,7 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res ResultMs
 	return result, nil
 }
 
-func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res ResultMsg, err error) {
+func (c *Client) SendLocation(ctx context.Context, req sendLocation) (res SendLocationResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -1409,7 +1409,7 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res Result
 	return result, nil
 }
 
-func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Result, err error) {
+func (c *Client) SendMediaGroup(ctx context.Context, req sendMediaGroup) (res SendMediaGroupResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendMediaGroupRequest(req)
 	if err != nil {
 		return res, err
@@ -1437,7 +1437,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Re
 	return result, nil
 }
 
-func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res ResultMsg, err error) {
+func (c *Client) SendMessage(ctx context.Context, req sendMessage) (res SendMessageResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1465,7 +1465,7 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res ResultMs
 	return result, nil
 }
 
-func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res ResultMsg, err error) {
+func (c *Client) SendPhoto(ctx context.Context, req sendPhoto) (res SendPhotoResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -1493,7 +1493,7 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res ResultMsg, e
 	return result, nil
 }
 
-func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res ResultMsg, err error) {
+func (c *Client) SendPoll(ctx context.Context, req sendPoll) (res SendPollResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendPollRequest(req)
 	if err != nil {
 		return res, err
@@ -1521,7 +1521,7 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res ResultMsg, err
 	return result, nil
 }
 
-func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res ResultMsg, err error) {
+func (c *Client) SendSticker(ctx context.Context, req sendSticker) (res SendStickerResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendStickerRequest(req)
 	if err != nil {
 		return res, err
@@ -1549,7 +1549,7 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res ResultMs
 	return result, nil
 }
 
-func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res ResultMsg, err error) {
+func (c *Client) SendVenue(ctx context.Context, req sendVenue) (res SendVenueResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendVenueRequest(req)
 	if err != nil {
 		return res, err
@@ -1577,7 +1577,7 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res ResultMsg, e
 	return result, nil
 }
 
-func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res ResultMsg, err error) {
+func (c *Client) SendVideo(ctx context.Context, req sendVideo) (res SendVideoResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendVideoRequest(req)
 	if err != nil {
 		return res, err
@@ -1605,7 +1605,7 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res ResultMsg, e
 	return result, nil
 }
 
-func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res ResultMsg, err error) {
+func (c *Client) SendVideoNote(ctx context.Context, req sendVideoNote) (res SendVideoNoteResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendVideoNoteRequest(req)
 	if err != nil {
 		return res, err
@@ -1633,7 +1633,7 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Resu
 	return result, nil
 }
 
-func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res ResultMsg, err error) {
+func (c *Client) SendVoice(ctx context.Context, req sendVoice) (res SendVoiceResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSendVoiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1661,7 +1661,7 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res ResultMsg, e
 	return result, nil
 }
 
-func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (res Result, err error) {
+func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req setChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetChatAdministratorCustomTitleRequest(req)
 	if err != nil {
 		return res, err
@@ -1689,7 +1689,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 	return result, nil
 }
 
-func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription) (res Result, err error) {
+func (c *Client) SetChatDescription(ctx context.Context, req setChatDescription) (res SetChatDescriptionResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetChatDescriptionRequest(req)
 	if err != nil {
 		return res, err
@@ -1717,7 +1717,7 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 	return result, nil
 }
 
-func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions) (res Result, err error) {
+func (c *Client) SetChatPermissions(ctx context.Context, req setChatPermissions) (res SetChatPermissionsResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetChatPermissionsRequest(req)
 	if err != nil {
 		return res, err
@@ -1745,7 +1745,7 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 	return result, nil
 }
 
-func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res Result, err error) {
+func (c *Client) SetChatPhoto(ctx context.Context, req setChatPhoto) (res SetChatPhotoResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetChatPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -1773,7 +1773,7 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res Result
 	return result, nil
 }
 
-func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (res Result, err error) {
+func (c *Client) SetChatStickerSet(ctx context.Context, req setChatStickerSet) (res SetChatStickerSetResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetChatStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -1801,7 +1801,7 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 	return result, nil
 }
 
-func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res Result, err error) {
+func (c *Client) SetChatTitle(ctx context.Context, req setChatTitle) (res SetChatTitleResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetChatTitleRequest(req)
 	if err != nil {
 		return res, err
@@ -1829,7 +1829,7 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res Result
 	return result, nil
 }
 
-func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res Result, err error) {
+func (c *Client) SetGameScore(ctx context.Context, req setGameScore) (res SetGameScoreResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetGameScoreRequest(req)
 	if err != nil {
 		return res, err
@@ -1857,7 +1857,7 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res Result
 	return result, nil
 }
 
-func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res Result, err error) {
+func (c *Client) SetMyCommands(ctx context.Context, req setMyCommands) (res SetMyCommandsResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -1885,7 +1885,7 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res Resu
 	return result, nil
 }
 
-func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (res Result, err error) {
+func (c *Client) SetPassportDataErrors(ctx context.Context, req setPassportDataErrors) (res SetPassportDataErrorsResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetPassportDataErrorsRequest(req)
 	if err != nil {
 		return res, err
@@ -1913,7 +1913,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 	return result, nil
 }
 
-func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (res Result, err error) {
+func (c *Client) SetStickerPositionInSet(ctx context.Context, req setStickerPositionInSet) (res SetStickerPositionInSetResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetStickerPositionInSetRequest(req)
 	if err != nil {
 		return res, err
@@ -1941,7 +1941,7 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 	return result, nil
 }
 
-func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (res Result, err error) {
+func (c *Client) SetStickerSetThumb(ctx context.Context, req setStickerSetThumb) (res SetStickerSetThumbResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetStickerSetThumbRequest(req)
 	if err != nil {
 		return res, err
@@ -1969,7 +1969,7 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 	return result, nil
 }
 
-func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res Result, err error) {
+func (c *Client) SetWebhook(ctx context.Context, req setWebhook) (res SetWebhookResOKApplicationJSON, err error) {
 	body, contentType, err := encodeSetWebhookRequest(req)
 	if err != nil {
 		return res, err
@@ -1997,7 +1997,7 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res Result, er
 	return result, nil
 }
 
-func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (res Result, err error) {
+func (c *Client) StopMessageLiveLocation(ctx context.Context, req stopMessageLiveLocation) (res StopMessageLiveLocationResOKApplicationJSON, err error) {
 	body, contentType, err := encodeStopMessageLiveLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -2025,7 +2025,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 	return result, nil
 }
 
-func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res Result, err error) {
+func (c *Client) StopPoll(ctx context.Context, req stopPoll) (res StopPollResOKApplicationJSON, err error) {
 	body, contentType, err := encodeStopPollRequest(req)
 	if err != nil {
 		return res, err
@@ -2053,7 +2053,7 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res Result, err er
 	return result, nil
 }
 
-func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res Result, err error) {
+func (c *Client) UnbanChatMember(ctx context.Context, req unbanChatMember) (res UnbanChatMemberResOKApplicationJSON, err error) {
 	body, contentType, err := encodeUnbanChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -2081,7 +2081,7 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 	return result, nil
 }
 
-func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (res Result, err error) {
+func (c *Client) UnpinAllChatMessages(ctx context.Context, req unpinAllChatMessages) (res UnpinAllChatMessagesResOKApplicationJSON, err error) {
 	body, contentType, err := encodeUnpinAllChatMessagesRequest(req)
 	if err != nil {
 		return res, err
@@ -2109,7 +2109,7 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 	return result, nil
 }
 
-func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (res Result, err error) {
+func (c *Client) UnpinChatMessage(ctx context.Context, req unpinChatMessage) (res UnpinChatMessageResOKApplicationJSON, err error) {
 	body, contentType, err := encodeUnpinChatMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -2137,7 +2137,7 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 	return result, nil
 }
 
-func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (res Result, err error) {
+func (c *Client) UploadStickerFile(ctx context.Context, req uploadStickerFile) (res UploadStickerFileResOKApplicationJSON, err error) {
 	body, contentType, err := encodeUploadStickerFileRequest(req)
 	if err != nil {
 		return res, err

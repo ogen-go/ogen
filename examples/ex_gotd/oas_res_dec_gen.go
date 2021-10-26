@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func decodeAddStickerToSetResponse(resp *http.Response) (res Result, err error) {
+func decodeAddStickerToSetResponse(resp *http.Response) (res AddStickerToSetResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -65,12 +65,9 @@ func decodeAddStickerToSetResponse(resp *http.Response) (res Result, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response AddStickerToSetResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -84,7 +81,7 @@ func decodeAddStickerToSetResponse(resp *http.Response) (res Result, err error) 
 	}
 }
 
-func decodeAnswerCallbackQueryResponse(resp *http.Response) (res Result, err error) {
+func decodeAnswerCallbackQueryResponse(resp *http.Response) (res AnswerCallbackQueryResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -99,12 +96,9 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response) (res Result, err err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response AnswerCallbackQueryResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -118,7 +112,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response) (res Result, err err
 	}
 }
 
-func decodeAnswerInlineQueryResponse(resp *http.Response) (res Result, err error) {
+func decodeAnswerInlineQueryResponse(resp *http.Response) (res AnswerInlineQueryResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -133,12 +127,9 @@ func decodeAnswerInlineQueryResponse(resp *http.Response) (res Result, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response AnswerInlineQueryResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -152,7 +143,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response) (res Result, err error
 	}
 }
 
-func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res Result, err error) {
+func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res AnswerPreCheckoutQueryResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -167,12 +158,9 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res Result, err 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response AnswerPreCheckoutQueryResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -186,7 +174,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res Result, err 
 	}
 }
 
-func decodeAnswerShippingQueryResponse(resp *http.Response) (res Result, err error) {
+func decodeAnswerShippingQueryResponse(resp *http.Response) (res AnswerShippingQueryResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -201,12 +189,9 @@ func decodeAnswerShippingQueryResponse(resp *http.Response) (res Result, err err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response AnswerShippingQueryResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -220,7 +205,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response) (res Result, err err
 	}
 }
 
-func decodeBanChatMemberResponse(resp *http.Response) (res Result, err error) {
+func decodeBanChatMemberResponse(resp *http.Response) (res BanChatMemberResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -235,12 +220,9 @@ func decodeBanChatMemberResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response BanChatMemberResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -254,7 +236,7 @@ func decodeBanChatMemberResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeCopyMessageResponse(resp *http.Response) (res Result, err error) {
+func decodeCopyMessageResponse(resp *http.Response) (res CopyMessageResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -269,12 +251,9 @@ func decodeCopyMessageResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response CopyMessageResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -288,7 +267,7 @@ func decodeCopyMessageResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeCreateChatInviteLinkResponse(resp *http.Response) (res Result, err error) {
+func decodeCreateChatInviteLinkResponse(resp *http.Response) (res CreateChatInviteLinkResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -303,12 +282,9 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response) (res Result, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response CreateChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -322,7 +298,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeCreateNewStickerSetResponse(resp *http.Response) (res Result, err error) {
+func decodeCreateNewStickerSetResponse(resp *http.Response) (res CreateNewStickerSetResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -337,12 +313,9 @@ func decodeCreateNewStickerSetResponse(resp *http.Response) (res Result, err err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response CreateNewStickerSetResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -356,7 +329,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response) (res Result, err err
 	}
 }
 
-func decodeDeleteChatPhotoResponse(resp *http.Response) (res Result, err error) {
+func decodeDeleteChatPhotoResponse(resp *http.Response) (res DeleteChatPhotoResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -371,12 +344,9 @@ func decodeDeleteChatPhotoResponse(resp *http.Response) (res Result, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response DeleteChatPhotoResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -390,7 +360,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response) (res Result, err error) 
 	}
 }
 
-func decodeDeleteChatStickerSetResponse(resp *http.Response) (res Result, err error) {
+func decodeDeleteChatStickerSetResponse(resp *http.Response) (res DeleteChatStickerSetResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -405,12 +375,9 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response) (res Result, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response DeleteChatStickerSetResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -424,7 +391,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeDeleteMessageResponse(resp *http.Response) (res Result, err error) {
+func decodeDeleteMessageResponse(resp *http.Response) (res DeleteMessageResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -439,12 +406,9 @@ func decodeDeleteMessageResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response DeleteMessageResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -458,7 +422,7 @@ func decodeDeleteMessageResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeDeleteMyCommandsResponse(resp *http.Response) (res Result, err error) {
+func decodeDeleteMyCommandsResponse(resp *http.Response) (res DeleteMyCommandsResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -473,12 +437,9 @@ func decodeDeleteMyCommandsResponse(resp *http.Response) (res Result, err error)
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response DeleteMyCommandsResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -492,7 +453,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response) (res Result, err error)
 	}
 }
 
-func decodeDeleteStickerFromSetResponse(resp *http.Response) (res Result, err error) {
+func decodeDeleteStickerFromSetResponse(resp *http.Response) (res DeleteStickerFromSetResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -507,12 +468,9 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response) (res Result, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response DeleteStickerFromSetResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -526,7 +484,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeDeleteWebhookResponse(resp *http.Response) (res Result, err error) {
+func decodeDeleteWebhookResponse(resp *http.Response) (res DeleteWebhookResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -541,12 +499,9 @@ func decodeDeleteWebhookResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response DeleteWebhookResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -560,7 +515,7 @@ func decodeDeleteWebhookResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeEditChatInviteLinkResponse(resp *http.Response) (res Result, err error) {
+func decodeEditChatInviteLinkResponse(resp *http.Response) (res EditChatInviteLinkResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -575,12 +530,9 @@ func decodeEditChatInviteLinkResponse(resp *http.Response) (res Result, err erro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response EditChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -594,7 +546,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response) (res Result, err erro
 	}
 }
 
-func decodeEditMessageCaptionResponse(resp *http.Response) (res Result, err error) {
+func decodeEditMessageCaptionResponse(resp *http.Response) (res EditMessageCaptionResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -609,12 +561,9 @@ func decodeEditMessageCaptionResponse(resp *http.Response) (res Result, err erro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response EditMessageCaptionResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -628,7 +577,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response) (res Result, err erro
 	}
 }
 
-func decodeEditMessageLiveLocationResponse(resp *http.Response) (res Result, err error) {
+func decodeEditMessageLiveLocationResponse(resp *http.Response) (res EditMessageLiveLocationResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -643,12 +592,9 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response) (res Result, err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response EditMessageLiveLocationResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -662,7 +608,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response) (res Result, err
 	}
 }
 
-func decodeEditMessageMediaResponse(resp *http.Response) (res Result, err error) {
+func decodeEditMessageMediaResponse(resp *http.Response) (res EditMessageMediaResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -677,12 +623,9 @@ func decodeEditMessageMediaResponse(resp *http.Response) (res Result, err error)
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response EditMessageMediaResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -696,7 +639,7 @@ func decodeEditMessageMediaResponse(resp *http.Response) (res Result, err error)
 	}
 }
 
-func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res Result, err error) {
+func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res EditMessageReplyMarkupResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -711,12 +654,9 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res Result, err 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response EditMessageReplyMarkupResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -730,7 +670,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res Result, err 
 	}
 }
 
-func decodeEditMessageTextResponse(resp *http.Response) (res Result, err error) {
+func decodeEditMessageTextResponse(resp *http.Response) (res EditMessageTextResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -745,12 +685,9 @@ func decodeEditMessageTextResponse(resp *http.Response) (res Result, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response EditMessageTextResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -764,7 +701,7 @@ func decodeEditMessageTextResponse(resp *http.Response) (res Result, err error) 
 	}
 }
 
-func decodeExportChatInviteLinkResponse(resp *http.Response) (res Result, err error) {
+func decodeExportChatInviteLinkResponse(resp *http.Response) (res ExportChatInviteLinkResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -779,12 +716,9 @@ func decodeExportChatInviteLinkResponse(resp *http.Response) (res Result, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response ExportChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -798,7 +732,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeForwardMessageResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeForwardMessageResponse(resp *http.Response) (res ForwardMessageResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -813,12 +747,9 @@ func decodeForwardMessageResponse(resp *http.Response) (res ResultMsg, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response ForwardMessageResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -832,7 +763,7 @@ func decodeForwardMessageResponse(resp *http.Response) (res ResultMsg, err error
 	}
 }
 
-func decodeGetChatResponse(resp *http.Response) (res Result, err error) {
+func decodeGetChatResponse(resp *http.Response) (res GetChatResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -847,12 +778,9 @@ func decodeGetChatResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetChatResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -866,7 +794,7 @@ func decodeGetChatResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeGetChatAdministratorsResponse(resp *http.Response) (res Result, err error) {
+func decodeGetChatAdministratorsResponse(resp *http.Response) (res GetChatAdministratorsResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -881,12 +809,9 @@ func decodeGetChatAdministratorsResponse(resp *http.Response) (res Result, err e
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetChatAdministratorsResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -900,7 +825,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response) (res Result, err e
 	}
 }
 
-func decodeGetChatMemberResponse(resp *http.Response) (res Result, err error) {
+func decodeGetChatMemberResponse(resp *http.Response) (res GetChatMemberResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -915,12 +840,9 @@ func decodeGetChatMemberResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetChatMemberResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -934,7 +856,7 @@ func decodeGetChatMemberResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeGetChatMemberCountResponse(resp *http.Response) (res Result, err error) {
+func decodeGetChatMemberCountResponse(resp *http.Response) (res GetChatMemberCountResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -949,12 +871,9 @@ func decodeGetChatMemberCountResponse(resp *http.Response) (res Result, err erro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetChatMemberCountResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -968,7 +887,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response) (res Result, err erro
 	}
 }
 
-func decodeGetFileResponse(resp *http.Response) (res Result, err error) {
+func decodeGetFileResponse(resp *http.Response) (res GetFileResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -983,12 +902,9 @@ func decodeGetFileResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetFileResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1002,7 +918,7 @@ func decodeGetFileResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeGetGameHighScoresResponse(resp *http.Response) (res Result, err error) {
+func decodeGetGameHighScoresResponse(resp *http.Response) (res GetGameHighScoresResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1017,12 +933,9 @@ func decodeGetGameHighScoresResponse(resp *http.Response) (res Result, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetGameHighScoresResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1036,7 +949,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response) (res Result, err error
 	}
 }
 
-func decodeGetMeResponse(resp *http.Response) (res ResultUsr, err error) {
+func decodeGetMeResponse(resp *http.Response) (res GetMeResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1051,12 +964,9 @@ func decodeGetMeResponse(resp *http.Response) (res ResultUsr, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultUsr
+			var response GetMeResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1070,7 +980,7 @@ func decodeGetMeResponse(resp *http.Response) (res ResultUsr, err error) {
 	}
 }
 
-func decodeGetMyCommandsResponse(resp *http.Response) (res Result, err error) {
+func decodeGetMyCommandsResponse(resp *http.Response) (res GetMyCommandsResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1085,12 +995,9 @@ func decodeGetMyCommandsResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetMyCommandsResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1104,7 +1011,7 @@ func decodeGetMyCommandsResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeGetStickerSetResponse(resp *http.Response) (res Result, err error) {
+func decodeGetStickerSetResponse(resp *http.Response) (res GetStickerSetResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1119,12 +1026,9 @@ func decodeGetStickerSetResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetStickerSetResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1138,7 +1042,7 @@ func decodeGetStickerSetResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeGetUpdatesResponse(resp *http.Response) (res Result, err error) {
+func decodeGetUpdatesResponse(resp *http.Response) (res GetUpdatesResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1153,12 +1057,9 @@ func decodeGetUpdatesResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetUpdatesResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1172,7 +1073,7 @@ func decodeGetUpdatesResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeGetUserProfilePhotosResponse(resp *http.Response) (res Result, err error) {
+func decodeGetUserProfilePhotosResponse(resp *http.Response) (res GetUserProfilePhotosResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1187,12 +1088,9 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response) (res Result, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response GetUserProfilePhotosResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1206,7 +1104,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeLeaveChatResponse(resp *http.Response) (res Result, err error) {
+func decodeLeaveChatResponse(resp *http.Response) (res LeaveChatResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1221,12 +1119,9 @@ func decodeLeaveChatResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response LeaveChatResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1240,7 +1135,7 @@ func decodeLeaveChatResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodePinChatMessageResponse(resp *http.Response) (res Result, err error) {
+func decodePinChatMessageResponse(resp *http.Response) (res PinChatMessageResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1255,12 +1150,9 @@ func decodePinChatMessageResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response PinChatMessageResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1274,7 +1166,7 @@ func decodePinChatMessageResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodePromoteChatMemberResponse(resp *http.Response) (res Result, err error) {
+func decodePromoteChatMemberResponse(resp *http.Response) (res PromoteChatMemberResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1289,12 +1181,9 @@ func decodePromoteChatMemberResponse(resp *http.Response) (res Result, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response PromoteChatMemberResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1308,7 +1197,7 @@ func decodePromoteChatMemberResponse(resp *http.Response) (res Result, err error
 	}
 }
 
-func decodeRestrictChatMemberResponse(resp *http.Response) (res Result, err error) {
+func decodeRestrictChatMemberResponse(resp *http.Response) (res RestrictChatMemberResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1323,12 +1212,9 @@ func decodeRestrictChatMemberResponse(resp *http.Response) (res Result, err erro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response RestrictChatMemberResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1342,7 +1228,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response) (res Result, err erro
 	}
 }
 
-func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res Result, err error) {
+func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res RevokeChatInviteLinkResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1357,12 +1243,9 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res Result, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response RevokeChatInviteLinkResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1376,7 +1259,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeSendAnimationResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendAnimationResponse(resp *http.Response) (res SendAnimationResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1391,12 +1274,9 @@ func decodeSendAnimationResponse(resp *http.Response) (res ResultMsg, err error)
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendAnimationResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1410,7 +1290,7 @@ func decodeSendAnimationResponse(resp *http.Response) (res ResultMsg, err error)
 	}
 }
 
-func decodeSendAudioResponse(resp *http.Response) (res Result, err error) {
+func decodeSendAudioResponse(resp *http.Response) (res SendAudioResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1425,12 +1305,9 @@ func decodeSendAudioResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SendAudioResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1444,7 +1321,7 @@ func decodeSendAudioResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendChatActionResponse(resp *http.Response) (res Result, err error) {
+func decodeSendChatActionResponse(resp *http.Response) (res SendChatActionResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1459,12 +1336,9 @@ func decodeSendChatActionResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SendChatActionResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1478,7 +1352,7 @@ func decodeSendChatActionResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendContactResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendContactResponse(resp *http.Response) (res SendContactResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1493,12 +1367,9 @@ func decodeSendContactResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendContactResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1512,7 +1383,7 @@ func decodeSendContactResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendDiceResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendDiceResponse(resp *http.Response) (res SendDiceResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1527,12 +1398,9 @@ func decodeSendDiceResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendDiceResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1546,7 +1414,7 @@ func decodeSendDiceResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendDocumentResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendDocumentResponse(resp *http.Response) (res SendDocumentResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1561,12 +1429,9 @@ func decodeSendDocumentResponse(resp *http.Response) (res ResultMsg, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendDocumentResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1580,7 +1445,7 @@ func decodeSendDocumentResponse(resp *http.Response) (res ResultMsg, err error) 
 	}
 }
 
-func decodeSendGameResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendGameResponse(resp *http.Response) (res SendGameResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1595,12 +1460,9 @@ func decodeSendGameResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendGameResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1614,7 +1476,7 @@ func decodeSendGameResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendInvoiceResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendInvoiceResponse(resp *http.Response) (res SendInvoiceResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1629,12 +1491,9 @@ func decodeSendInvoiceResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendInvoiceResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1648,7 +1507,7 @@ func decodeSendInvoiceResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendLocationResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendLocationResponse(resp *http.Response) (res SendLocationResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1663,12 +1522,9 @@ func decodeSendLocationResponse(resp *http.Response) (res ResultMsg, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendLocationResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1682,7 +1538,7 @@ func decodeSendLocationResponse(resp *http.Response) (res ResultMsg, err error) 
 	}
 }
 
-func decodeSendMediaGroupResponse(resp *http.Response) (res Result, err error) {
+func decodeSendMediaGroupResponse(resp *http.Response) (res SendMediaGroupResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1697,12 +1553,9 @@ func decodeSendMediaGroupResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SendMediaGroupResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1716,7 +1569,7 @@ func decodeSendMediaGroupResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendMessageResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendMessageResponse(resp *http.Response) (res SendMessageResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1731,12 +1584,9 @@ func decodeSendMessageResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendMessageResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1750,7 +1600,7 @@ func decodeSendMessageResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendPhotoResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendPhotoResponse(resp *http.Response) (res SendPhotoResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1765,12 +1615,9 @@ func decodeSendPhotoResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendPhotoResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1784,7 +1631,7 @@ func decodeSendPhotoResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendPollResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendPollResponse(resp *http.Response) (res SendPollResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1799,12 +1646,9 @@ func decodeSendPollResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendPollResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1818,7 +1662,7 @@ func decodeSendPollResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendStickerResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendStickerResponse(resp *http.Response) (res SendStickerResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1833,12 +1677,9 @@ func decodeSendStickerResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendStickerResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1852,7 +1693,7 @@ func decodeSendStickerResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendVenueResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendVenueResponse(resp *http.Response) (res SendVenueResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1867,12 +1708,9 @@ func decodeSendVenueResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendVenueResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1886,7 +1724,7 @@ func decodeSendVenueResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendVideoResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendVideoResponse(resp *http.Response) (res SendVideoResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1901,12 +1739,9 @@ func decodeSendVideoResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendVideoResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1920,7 +1755,7 @@ func decodeSendVideoResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSendVideoNoteResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendVideoNoteResponse(resp *http.Response) (res SendVideoNoteResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1935,12 +1770,9 @@ func decodeSendVideoNoteResponse(resp *http.Response) (res ResultMsg, err error)
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendVideoNoteResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1954,7 +1786,7 @@ func decodeSendVideoNoteResponse(resp *http.Response) (res ResultMsg, err error)
 	}
 }
 
-func decodeSendVoiceResponse(resp *http.Response) (res ResultMsg, err error) {
+func decodeSendVoiceResponse(resp *http.Response) (res SendVoiceResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1969,12 +1801,9 @@ func decodeSendVoiceResponse(resp *http.Response) (res ResultMsg, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ResultMsg
+			var response SendVoiceResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -1988,7 +1817,7 @@ func decodeSendVoiceResponse(resp *http.Response) (res ResultMsg, err error) {
 	}
 }
 
-func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res Result, err error) {
+func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res SetChatAdministratorCustomTitleResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2003,12 +1832,9 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res Res
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetChatAdministratorCustomTitleResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2022,7 +1848,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res Res
 	}
 }
 
-func decodeSetChatDescriptionResponse(resp *http.Response) (res Result, err error) {
+func decodeSetChatDescriptionResponse(resp *http.Response) (res SetChatDescriptionResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2037,12 +1863,9 @@ func decodeSetChatDescriptionResponse(resp *http.Response) (res Result, err erro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetChatDescriptionResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2056,7 +1879,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response) (res Result, err erro
 	}
 }
 
-func decodeSetChatPermissionsResponse(resp *http.Response) (res Result, err error) {
+func decodeSetChatPermissionsResponse(resp *http.Response) (res SetChatPermissionsResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2071,12 +1894,9 @@ func decodeSetChatPermissionsResponse(resp *http.Response) (res Result, err erro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetChatPermissionsResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2090,7 +1910,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response) (res Result, err erro
 	}
 }
 
-func decodeSetChatPhotoResponse(resp *http.Response) (res Result, err error) {
+func decodeSetChatPhotoResponse(resp *http.Response) (res SetChatPhotoResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2105,12 +1925,9 @@ func decodeSetChatPhotoResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetChatPhotoResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2124,7 +1941,7 @@ func decodeSetChatPhotoResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSetChatStickerSetResponse(resp *http.Response) (res Result, err error) {
+func decodeSetChatStickerSetResponse(resp *http.Response) (res SetChatStickerSetResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2139,12 +1956,9 @@ func decodeSetChatStickerSetResponse(resp *http.Response) (res Result, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetChatStickerSetResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2158,7 +1972,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response) (res Result, err error
 	}
 }
 
-func decodeSetChatTitleResponse(resp *http.Response) (res Result, err error) {
+func decodeSetChatTitleResponse(resp *http.Response) (res SetChatTitleResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2173,12 +1987,9 @@ func decodeSetChatTitleResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetChatTitleResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2192,7 +2003,7 @@ func decodeSetChatTitleResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSetGameScoreResponse(resp *http.Response) (res Result, err error) {
+func decodeSetGameScoreResponse(resp *http.Response) (res SetGameScoreResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2207,12 +2018,9 @@ func decodeSetGameScoreResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetGameScoreResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2226,7 +2034,7 @@ func decodeSetGameScoreResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSetMyCommandsResponse(resp *http.Response) (res Result, err error) {
+func decodeSetMyCommandsResponse(resp *http.Response) (res SetMyCommandsResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2241,12 +2049,9 @@ func decodeSetMyCommandsResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetMyCommandsResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2260,7 +2065,7 @@ func decodeSetMyCommandsResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSetPassportDataErrorsResponse(resp *http.Response) (res Result, err error) {
+func decodeSetPassportDataErrorsResponse(resp *http.Response) (res SetPassportDataErrorsResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2275,12 +2080,9 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response) (res Result, err e
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetPassportDataErrorsResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2294,7 +2096,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response) (res Result, err e
 	}
 }
 
-func decodeSetStickerPositionInSetResponse(resp *http.Response) (res Result, err error) {
+func decodeSetStickerPositionInSetResponse(resp *http.Response) (res SetStickerPositionInSetResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2309,12 +2111,9 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response) (res Result, err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetStickerPositionInSetResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2328,7 +2127,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response) (res Result, err
 	}
 }
 
-func decodeSetStickerSetThumbResponse(resp *http.Response) (res Result, err error) {
+func decodeSetStickerSetThumbResponse(resp *http.Response) (res SetStickerSetThumbResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2343,12 +2142,9 @@ func decodeSetStickerSetThumbResponse(resp *http.Response) (res Result, err erro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetStickerSetThumbResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2362,7 +2158,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response) (res Result, err erro
 	}
 }
 
-func decodeSetWebhookResponse(resp *http.Response) (res Result, err error) {
+func decodeSetWebhookResponse(resp *http.Response) (res SetWebhookResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2377,12 +2173,9 @@ func decodeSetWebhookResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response SetWebhookResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2396,7 +2189,7 @@ func decodeSetWebhookResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeStopMessageLiveLocationResponse(resp *http.Response) (res Result, err error) {
+func decodeStopMessageLiveLocationResponse(resp *http.Response) (res StopMessageLiveLocationResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2411,12 +2204,9 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response) (res Result, err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response StopMessageLiveLocationResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2430,7 +2220,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response) (res Result, err
 	}
 }
 
-func decodeStopPollResponse(resp *http.Response) (res Result, err error) {
+func decodeStopPollResponse(resp *http.Response) (res StopPollResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2445,12 +2235,9 @@ func decodeStopPollResponse(resp *http.Response) (res Result, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response StopPollResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2464,7 +2251,7 @@ func decodeStopPollResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeUnbanChatMemberResponse(resp *http.Response) (res Result, err error) {
+func decodeUnbanChatMemberResponse(resp *http.Response) (res UnbanChatMemberResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2479,12 +2266,9 @@ func decodeUnbanChatMemberResponse(resp *http.Response) (res Result, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response UnbanChatMemberResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2498,7 +2282,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response) (res Result, err error) 
 	}
 }
 
-func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res Result, err error) {
+func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res UnpinAllChatMessagesResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2513,12 +2297,9 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res Result, err er
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response UnpinAllChatMessagesResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2532,7 +2313,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeUnpinChatMessageResponse(resp *http.Response) (res Result, err error) {
+func decodeUnpinChatMessageResponse(resp *http.Response) (res UnpinChatMessageResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2547,12 +2328,9 @@ func decodeUnpinChatMessageResponse(resp *http.Response) (res Result, err error)
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response UnpinChatMessageResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}
@@ -2566,7 +2344,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response) (res Result, err error)
 	}
 }
 
-func decodeUploadStickerFileResponse(resp *http.Response) (res Result, err error) {
+func decodeUploadStickerFileResponse(resp *http.Response) (res UploadStickerFileResOKApplicationJSON, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2581,12 +2359,9 @@ func decodeUploadStickerFileResponse(resp *http.Response) (res Result, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response Result
+			var response UploadStickerFileResOKApplicationJSON
 			if err := func() error {
-				if err := response.ReadJSON(i); err != nil {
-					return err
-				}
-				return i.Error
+				return nil
 			}(); err != nil {
 				return res, err
 			}

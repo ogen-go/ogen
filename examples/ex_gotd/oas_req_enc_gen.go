@@ -50,298 +50,298 @@ var (
 	_ = net.IP{}
 )
 
-func encodeAddStickerToSetRequest(req AddStickerToSet) (data []byte, contentType string, err error) {
+func encodeAddStickerToSetRequest(req addStickerToSet) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeAnswerCallbackQueryRequest(req AnswerCallbackQuery) (data []byte, contentType string, err error) {
+func encodeAnswerCallbackQueryRequest(req answerCallbackQuery) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeAnswerInlineQueryRequest(req AnswerInlineQuery) (data []byte, contentType string, err error) {
+func encodeAnswerInlineQueryRequest(req answerInlineQuery) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeAnswerPreCheckoutQueryRequest(req AnswerPreCheckoutQuery) (data []byte, contentType string, err error) {
+func encodeAnswerPreCheckoutQueryRequest(req answerPreCheckoutQuery) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeAnswerShippingQueryRequest(req AnswerShippingQuery) (data []byte, contentType string, err error) {
+func encodeAnswerShippingQueryRequest(req answerShippingQuery) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeBanChatMemberRequest(req BanChatMember) (data []byte, contentType string, err error) {
+func encodeBanChatMemberRequest(req banChatMember) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeCopyMessageRequest(req CopyMessage) (data []byte, contentType string, err error) {
+func encodeCopyMessageRequest(req copyMessage) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeCreateChatInviteLinkRequest(req CreateChatInviteLink) (data []byte, contentType string, err error) {
+func encodeCreateChatInviteLinkRequest(req createChatInviteLink) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeCreateNewStickerSetRequest(req CreateNewStickerSet) (data []byte, contentType string, err error) {
+func encodeCreateNewStickerSetRequest(req createNewStickerSet) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeDeleteChatPhotoRequest(req DeleteChatPhoto) (data []byte, contentType string, err error) {
+func encodeDeleteChatPhotoRequest(req deleteChatPhoto) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeDeleteChatStickerSetRequest(req DeleteChatStickerSet) (data []byte, contentType string, err error) {
+func encodeDeleteChatStickerSetRequest(req deleteChatStickerSet) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeDeleteMessageRequest(req DeleteMessage) (data []byte, contentType string, err error) {
+func encodeDeleteMessageRequest(req deleteMessage) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeDeleteMyCommandsRequest(req DeleteMyCommands) (data []byte, contentType string, err error) {
+func encodeDeleteMyCommandsRequest(req deleteMyCommands) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeDeleteStickerFromSetRequest(req DeleteStickerFromSet) (data []byte, contentType string, err error) {
+func encodeDeleteStickerFromSetRequest(req deleteStickerFromSet) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeDeleteWebhookRequest(req DeleteWebhook) (data []byte, contentType string, err error) {
+func encodeDeleteWebhookRequest(req deleteWebhook) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEditChatInviteLinkRequest(req EditChatInviteLink) (data []byte, contentType string, err error) {
+func encodeEditChatInviteLinkRequest(req editChatInviteLink) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEditMessageCaptionRequest(req EditMessageCaption) (data []byte, contentType string, err error) {
+func encodeEditMessageCaptionRequest(req editMessageCaption) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEditMessageLiveLocationRequest(req EditMessageLiveLocation) (data []byte, contentType string, err error) {
+func encodeEditMessageLiveLocationRequest(req editMessageLiveLocation) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEditMessageMediaRequest(req EditMessageMedia) (data []byte, contentType string, err error) {
+func encodeEditMessageMediaRequest(req editMessageMedia) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEditMessageReplyMarkupRequest(req EditMessageReplyMarkup) (data []byte, contentType string, err error) {
+func encodeEditMessageReplyMarkupRequest(req editMessageReplyMarkup) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeEditMessageTextRequest(req EditMessageText) (data []byte, contentType string, err error) {
+func encodeEditMessageTextRequest(req editMessageText) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeExportChatInviteLinkRequest(req ExportChatInviteLink) (data []byte, contentType string, err error) {
+func encodeExportChatInviteLinkRequest(req exportChatInviteLink) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeForwardMessageRequest(req ForwardMessage) (data []byte, contentType string, err error) {
+func encodeForwardMessageRequest(req forwardMessage) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetChatRequest(req GetChat) (data []byte, contentType string, err error) {
+func encodeGetChatRequest(req getChat) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetChatAdministratorsRequest(req GetChatAdministrators) (data []byte, contentType string, err error) {
+func encodeGetChatAdministratorsRequest(req getChatAdministrators) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetChatMemberRequest(req GetChatMember) (data []byte, contentType string, err error) {
+func encodeGetChatMemberRequest(req getChatMember) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetChatMemberCountRequest(req GetChatMemberCount) (data []byte, contentType string, err error) {
+func encodeGetChatMemberCountRequest(req getChatMemberCount) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetFileRequest(req GetFile) (data []byte, contentType string, err error) {
+func encodeGetFileRequest(req getFile) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetGameHighScoresRequest(req GetGameHighScores) (data []byte, contentType string, err error) {
+func encodeGetGameHighScoresRequest(req getGameHighScores) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetMyCommandsRequest(req GetMyCommands) (data []byte, contentType string, err error) {
+func encodeGetMyCommandsRequest(req getMyCommands) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetStickerSetRequest(req GetStickerSet) (data []byte, contentType string, err error) {
+func encodeGetStickerSetRequest(req getStickerSet) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetUpdatesRequest(req GetUpdates) (data []byte, contentType string, err error) {
+func encodeGetUpdatesRequest(req getUpdates) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeGetUserProfilePhotosRequest(req GetUserProfilePhotos) (data []byte, contentType string, err error) {
+func encodeGetUserProfilePhotosRequest(req getUserProfilePhotos) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeLeaveChatRequest(req LeaveChat) (data []byte, contentType string, err error) {
+func encodeLeaveChatRequest(req leaveChat) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePinChatMessageRequest(req PinChatMessage) (data []byte, contentType string, err error) {
+func encodePinChatMessageRequest(req pinChatMessage) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodePromoteChatMemberRequest(req PromoteChatMember) (data []byte, contentType string, err error) {
+func encodePromoteChatMemberRequest(req promoteChatMember) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeRestrictChatMemberRequest(req RestrictChatMember) (data []byte, contentType string, err error) {
+func encodeRestrictChatMemberRequest(req restrictChatMember) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeRevokeChatInviteLinkRequest(req RevokeChatInviteLink) (data []byte, contentType string, err error) {
+func encodeRevokeChatInviteLinkRequest(req revokeChatInviteLink) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendAnimationRequest(req SendAnimation) (data []byte, contentType string, err error) {
+func encodeSendAnimationRequest(req sendAnimation) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendAudioRequest(req SendAudio) (data []byte, contentType string, err error) {
+func encodeSendAudioRequest(req sendAudio) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendChatActionRequest(req SendChatAction) (data []byte, contentType string, err error) {
+func encodeSendChatActionRequest(req sendChatAction) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendContactRequest(req SendContact) (data []byte, contentType string, err error) {
+func encodeSendContactRequest(req sendContact) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendDiceRequest(req SendDice) (data []byte, contentType string, err error) {
+func encodeSendDiceRequest(req sendDice) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendDocumentRequest(req SendDocument) (data []byte, contentType string, err error) {
+func encodeSendDocumentRequest(req sendDocument) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendGameRequest(req SendGame) (data []byte, contentType string, err error) {
+func encodeSendGameRequest(req sendGame) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendInvoiceRequest(req SendInvoice) (data []byte, contentType string, err error) {
+func encodeSendInvoiceRequest(req sendInvoice) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendLocationRequest(req SendLocation) (data []byte, contentType string, err error) {
+func encodeSendLocationRequest(req sendLocation) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendMediaGroupRequest(req SendMediaGroup) (data []byte, contentType string, err error) {
+func encodeSendMediaGroupRequest(req sendMediaGroup) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendMessageRequest(req SendMessage) (data []byte, contentType string, err error) {
+func encodeSendMessageRequest(req sendMessage) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendPhotoRequest(req SendPhoto) (data []byte, contentType string, err error) {
+func encodeSendPhotoRequest(req sendPhoto) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendPollRequest(req SendPoll) (data []byte, contentType string, err error) {
+func encodeSendPollRequest(req sendPoll) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendStickerRequest(req SendSticker) (data []byte, contentType string, err error) {
+func encodeSendStickerRequest(req sendSticker) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendVenueRequest(req SendVenue) (data []byte, contentType string, err error) {
+func encodeSendVenueRequest(req sendVenue) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendVideoRequest(req SendVideo) (data []byte, contentType string, err error) {
+func encodeSendVideoRequest(req sendVideo) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendVideoNoteRequest(req SendVideoNote) (data []byte, contentType string, err error) {
+func encodeSendVideoNoteRequest(req sendVideoNote) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSendVoiceRequest(req SendVoice) (data []byte, contentType string, err error) {
+func encodeSendVoiceRequest(req sendVoice) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetChatAdministratorCustomTitleRequest(req SetChatAdministratorCustomTitle) (data []byte, contentType string, err error) {
+func encodeSetChatAdministratorCustomTitleRequest(req setChatAdministratorCustomTitle) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetChatDescriptionRequest(req SetChatDescription) (data []byte, contentType string, err error) {
+func encodeSetChatDescriptionRequest(req setChatDescription) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetChatPermissionsRequest(req SetChatPermissions) (data []byte, contentType string, err error) {
+func encodeSetChatPermissionsRequest(req setChatPermissions) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetChatPhotoRequest(req SetChatPhoto) (data []byte, contentType string, err error) {
+func encodeSetChatPhotoRequest(req setChatPhoto) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetChatStickerSetRequest(req SetChatStickerSet) (data []byte, contentType string, err error) {
+func encodeSetChatStickerSetRequest(req setChatStickerSet) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetChatTitleRequest(req SetChatTitle) (data []byte, contentType string, err error) {
+func encodeSetChatTitleRequest(req setChatTitle) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetGameScoreRequest(req SetGameScore) (data []byte, contentType string, err error) {
+func encodeSetGameScoreRequest(req setGameScore) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetMyCommandsRequest(req SetMyCommands) (data []byte, contentType string, err error) {
+func encodeSetMyCommandsRequest(req setMyCommands) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetPassportDataErrorsRequest(req SetPassportDataErrors) (data []byte, contentType string, err error) {
+func encodeSetPassportDataErrorsRequest(req setPassportDataErrors) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetStickerPositionInSetRequest(req SetStickerPositionInSet) (data []byte, contentType string, err error) {
+func encodeSetStickerPositionInSetRequest(req setStickerPositionInSet) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetStickerSetThumbRequest(req SetStickerSetThumb) (data []byte, contentType string, err error) {
+func encodeSetStickerSetThumbRequest(req setStickerSetThumb) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeSetWebhookRequest(req SetWebhook) (data []byte, contentType string, err error) {
+func encodeSetWebhookRequest(req setWebhook) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeStopMessageLiveLocationRequest(req StopMessageLiveLocation) (data []byte, contentType string, err error) {
+func encodeStopMessageLiveLocationRequest(req stopMessageLiveLocation) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeStopPollRequest(req StopPoll) (data []byte, contentType string, err error) {
+func encodeStopPollRequest(req stopPoll) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeUnbanChatMemberRequest(req UnbanChatMember) (data []byte, contentType string, err error) {
+func encodeUnbanChatMemberRequest(req unbanChatMember) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeUnpinAllChatMessagesRequest(req UnpinAllChatMessages) (data []byte, contentType string, err error) {
+func encodeUnpinAllChatMessagesRequest(req unpinAllChatMessages) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeUnpinChatMessageRequest(req UnpinChatMessage) (data []byte, contentType string, err error) {
+func encodeUnpinChatMessageRequest(req unpinChatMessage) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeUploadStickerFileRequest(req UploadStickerFile) (data []byte, contentType string, err error) {
+func encodeUploadStickerFileRequest(req uploadStickerFile) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
