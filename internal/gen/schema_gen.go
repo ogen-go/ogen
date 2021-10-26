@@ -31,7 +31,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			return t, nil
 		}
 
-		name = strings.TrimPrefix(ref, "#/components/schemas/")
+		name = pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
 	}
 
 	switch {
