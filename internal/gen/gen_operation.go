@@ -35,7 +35,7 @@ func (g *Generator) generateOperation(spec *ast.Operation) (_ *ir.Operation, err
 
 		param, err := g.generateParameter(part.Param)
 		if err != nil {
-			return nil, xerrors.Errorf("")
+			return nil, xerrors.Errorf("%w", err)
 		}
 
 		op.PathParts = append(op.PathParts, &ir.PathPart{
