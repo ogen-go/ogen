@@ -1,0 +1,61 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+
+{{ define "schemas" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $_, $s := $.Types }}
+{{- template "define_schema" $s }}
+{{- end }}
+{{- end }}
+
+{{- define "define_schema" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+
+{{- if $.Spec }}
+    {{- if not (eq $.Spec.Ref "") }}
+    // '{{ $.Spec.Ref }}'
+    {{- end }}
+{{- end }}
+
+{{- /* Define struct */ -}}
+{{- if eq $.Kind "struct" }}
+{{- if eq (len $.Fields) 0 }}{{/* Blank struct */}}
+type {{ $.Name }} struct{}
+{{- else }}
+type {{ $.Name }} struct {
+{{- range $f := $.Fields }}
+    {{ $f.Name }} {{ $f.Type.GoType }} `json:"{{ $f.Tag }}"`
+{{- end }}
+}
+{{- end }}
+{{/* Define struct */}}
+
+{{/* Define alias */}}
+{{- else if eq $.Kind "alias" }}
+type {{ $.Name }} {{ $.AliasTo.GoType }}
+{{/* Define alias */}}
+
+{{/* Define enum */}}
+{{- else if eq $.Kind "enum" }}
+type {{ $.Name }} {{ $.Primitive }}
+
+const (
+{{- range $value := $.EnumValues }}
+{{- $valueStr := toString $value }}
+{{ $.Name }}{{ pascalMP $valueStr }} {{ $.Name }} = {{ enumString $value }}
+{{- end }}
+)
+{{/* Define enum */}}
+
+{{- else }}
+// Unexpected kind {{ $.Kind }} of {{ $.Name }}
+{{- end }}
+
+{{/* Define methods */}}
+{{- range $method := $.Methods }}
+func (*{{ $.Name }}) {{ $method }}() {}
+{{- end }}
+{{/* end define methods */}}
+
+{{- end }}

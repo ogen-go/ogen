@@ -1,6 +1,11 @@
 package ir
 
-import ast "github.com/ogen-go/ogen/internal/ast2"
+import (
+	"fmt"
+	"sort"
+
+	ast "github.com/ogen-go/ogen/internal/ast2"
+)
 
 type TypeKind string
 
@@ -23,7 +28,7 @@ type Type struct {
 	Item            *Type               // only for array
 	EnumValues      []interface{}       // only for enum
 	Fields          []*StructField      // only for struct
-	Implements      map[*Type]struct{}  // only for struct, alias
+	Implements      map[*Type]struct{}  // only for struct, alias, enum
 	Implementations map[*Type]struct{}  // only for interface
 	IfaceMethods    map[string]struct{} // only for interface
 	Spec            *ast.Schema         // for all kinds except pointer, interface. Can be nil.
@@ -76,7 +81,7 @@ func (t *Type) AddMethod(name string) {
 
 func (t *Type) GoType() string {
 	switch t.Kind {
-	case KindPrimitive:
+	case KindPrimitive, KindEnum:
 		return t.Primitive.String()
 	case KindArray:
 		return "[]" + t.Item.GoType()
@@ -85,6 +90,29 @@ func (t *Type) GoType() string {
 	case KindStruct, KindAlias, KindInterface:
 		return t.Name
 	default:
-		panic("unreachable")
+		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
+}
+
+func (t *Type) Methods() []string {
+	ms := make(map[string]struct{})
+	switch t.Kind {
+	case KindInterface:
+		ms = t.IfaceMethods
+	case KindStruct, KindAlias, KindEnum:
+		for iface := range t.Implements {
+			for m := range iface.IfaceMethods {
+				ms[m] = struct{}{}
+			}
+		}
+	default:
+		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
+	}
+
+	var result []string
+	for m := range ms {
+		result = append(result, m)
+	}
+	sort.Strings(result)
+	return result
 }

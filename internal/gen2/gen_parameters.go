@@ -15,7 +15,7 @@ func (g *Generator) generateParameters(name string, params []*ast.Parameter) ([]
 		}
 
 		if !isUnderlyingPrimitive(typ) {
-			return nil, xerrors.Errorf("'%s': complex parameter types not supported", p.Name)
+			return nil, &ErrNotImplemented{"complex parameter types"}
 		}
 
 		result = append(result, &ir.Parameter{

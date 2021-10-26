@@ -9,18 +9,18 @@ import (
 )
 
 func (g *Generator) fix() {
-	for _, m := range g.methods {
-		g.fixEqualResponses(m)
+	for _, op := range g.operations {
+		g.fixEqualResponses(op)
 	}
 }
 
-func (g *Generator) fixEqualResponses(m *ir.Method) {
-	if !m.Response.Type.Is(ir.KindInterface) {
+func (g *Generator) fixEqualResponses(op *ir.Operation) {
+	if !op.Response.Type.Is(ir.KindInterface) {
 		return
 	}
 
 	var statusCodes []int
-	for code := range m.Response.StatusCode {
+	for code := range op.Response.StatusCode {
 		statusCodes = append(statusCodes, code)
 	}
 	sort.Ints(statusCodes)
@@ -39,17 +39,17 @@ func (g *Generator) fixEqualResponses(m *ir.Method) {
 		lcode := statusCodes[i]
 		for j := i; j < len(statusCodes); j++ {
 			rcode := statusCodes[j]
-			lresp, rresp := m.Response.StatusCode[lcode], m.Response.StatusCode[rcode]
+			lresp, rresp := op.Response.StatusCode[lcode], op.Response.StatusCode[rcode]
 			if (lresp.NoContent != nil && rresp.NoContent != nil) && lcode != rcode {
 				if reflect.DeepEqual(lresp.NoContent, rresp.NoContent) {
 					candidates = append(candidates, candidate{
-						renameTo:   pascal(m.Name, http.StatusText(lcode)),
+						renameTo:   pascal(op.Name, http.StatusText(lcode)),
 						typ:        lresp.NoContent,
 						replaceNoc: true,
 						response:   lresp,
 					})
 					candidates = append(candidates, candidate{
-						renameTo:   pascal(m.Name, http.StatusText(rcode)),
+						renameTo:   pascal(op.Name, http.StatusText(rcode)),
 						typ:        rresp.NoContent,
 						replaceNoc: true,
 						response:   rresp,
@@ -78,13 +78,13 @@ func (g *Generator) fixEqualResponses(m *ir.Method) {
 					lschema, rschema := lresp.Contents[lct], rresp.Contents[rct]
 					if reflect.DeepEqual(lschema, rschema) {
 						candidates = append(candidates, candidate{
-							renameTo:     pascal(m.Name, lct, http.StatusText(lcode)),
+							renameTo:     pascal(op.Name, lct, http.StatusText(lcode)),
 							typ:          lschema,
 							replaceCtype: lct,
 							response:     lresp,
 						})
 						candidates = append(candidates, candidate{
-							renameTo:     pascal(m.Name, rct, http.StatusText(rcode)),
+							renameTo:     pascal(op.Name, rct, http.StatusText(rcode)),
 							typ:          rschema,
 							replaceCtype: rct,
 							response:     rresp,
@@ -96,10 +96,10 @@ func (g *Generator) fixEqualResponses(m *ir.Method) {
 	}
 
 	for _, candidate := range candidates {
-		candidate.typ.Unimplement(m.Response.Type)
+		candidate.typ.Unimplement(op.Response.Type)
 		alias := ir.Alias(candidate.renameTo, candidate.typ)
-		alias.Implement(m.Response.Type)
-		g.types[alias.Name] = alias
+		alias.Implement(op.Response.Type)
+		g.saveType(alias)
 		if candidate.replaceNoc {
 			candidate.response.NoContent = alias
 			continue

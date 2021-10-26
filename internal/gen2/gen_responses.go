@@ -8,7 +8,7 @@ import (
 	"golang.org/x/xerrors"
 )
 
-func (g *Generator) generateResponses(name string, responses *ast.MethodResponse) (*ir.Response, error) {
+func (g *Generator) generateResponses(name string, responses *ast.OperationResponse) (*ir.Response, error) {
 	result := &ir.Response{
 		Spec:       responses,
 		StatusCode: map[int]*ir.StatusResponse{},
@@ -33,8 +33,8 @@ func (g *Generator) generateResponses(name string, responses *ast.MethodResponse
 			resp.Contents[contentType] = g.wrapStatusCode(typ)
 		}
 
-		if noc := resp.NoContent; noc != nil {
-			resp.NoContent = g.wrapStatusCode(noc)
+		if typ := resp.NoContent; typ != nil {
+			resp.NoContent = g.wrapStatusCode(typ)
 		}
 
 		result.Default = resp
@@ -56,12 +56,13 @@ func (g *Generator) generateResponses(name string, responses *ast.MethodResponse
 		return result, nil
 	}
 
-	iface := ir.Iface(name + "Response")
-	iface.AddMethod(camel(name + "Response"))
-	g.types[iface.Name] = iface
+	iface := ir.Iface(name)
+	iface.AddMethod(camel(name))
+	g.saveIface(iface)
 	walkResponseTypes(result, func(rname string, typ *ir.Type) *ir.Type {
 		if typ.Is(ir.KindPrimitive, ir.KindArray) {
 			typ = ir.Alias(pascal(name, rname), typ)
+			g.saveType(typ)
 		}
 
 		typ.Implement(iface)
@@ -74,12 +75,15 @@ func (g *Generator) generateResponses(name string, responses *ast.MethodResponse
 
 func (g *Generator) response2IR(name string, resp *ast.Response) (*ir.StatusResponse, error) {
 	if len(resp.Contents) == 0 {
+		typ := &ir.Type{
+			Kind: ir.KindStruct,
+			Name: name,
+		}
+
+		g.saveType(typ)
 		return &ir.StatusResponse{
-			NoContent: &ir.Type{
-				Kind: ir.KindStruct,
-				Name: name,
-			},
-			Spec: resp,
+			NoContent: typ,
+			Spec:      resp,
 		}, nil
 	}
 
@@ -104,9 +108,9 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 		panic("unreachable")
 	}
 
-	return &ir.Type{
+	t := &ir.Type{
 		Kind: ir.KindStruct,
-		Name: typ.Name + "Default",
+		Name: typ.Name + "StatusCode",
 		Fields: []*ir.StructField{
 			{
 				Name: "StatusCode",
@@ -120,4 +124,7 @@ func (g *Generator) wrapStatusCode(typ *ir.Type) *ir.Type {
 			},
 		},
 	}
+
+	g.saveType(t)
+	return t
 }

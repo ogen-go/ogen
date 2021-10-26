@@ -1,6 +1,8 @@
 package gen
 
 import (
+	"strings"
+
 	"github.com/ogen-go/ogen"
 	ast "github.com/ogen-go/ogen/internal/ast2"
 	"github.com/ogen-go/ogen/internal/ast2/parser"
@@ -9,23 +11,32 @@ import (
 )
 
 type Generator struct {
-	methods []*ir.Method
-	types   map[string]*ir.Type
-	refs    map[string]*ir.Type
+	opt        Options
+	operations []*ir.Operation
+	types      map[string]*ir.Type
+	interfaces map[string]*ir.Type
+	refs       map[string]*ir.Type
 }
 
-func New(spec *ogen.Spec) (*Generator, error) {
-	methods, err := parser.Parse(spec)
+type Options struct {
+	SpecificMethodPath      string
+	IgnoreUnspecifiedParams bool
+	IgnoreNotImplemented    []string
+}
+
+func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
+	operations, err := parser.Parse(spec)
 	if err != nil {
 		return nil, err
 	}
 
 	g := &Generator{
-		types: map[string]*ir.Type{},
-		refs:  map[string]*ir.Type{},
+		types:      map[string]*ir.Type{},
+		interfaces: map[string]*ir.Type{},
+		refs:       map[string]*ir.Type{},
 	}
 
-	if err := g.makeIR(methods); err != nil {
+	if err := g.makeIR(operations); err != nil {
 		return nil, err
 	}
 
@@ -33,14 +44,22 @@ func New(spec *ogen.Spec) (*Generator, error) {
 	return g, nil
 }
 
-func (g *Generator) makeIR(methods []*ast.Method) error {
-	for _, spec := range methods {
-		m, err := g.generateMethod(spec)
+func (g *Generator) makeIR(ops []*ast.Operation) error {
+	for _, opspec := range ops {
+		op, err := g.generateOperation(opspec)
 		if err != nil {
-			return xerrors.Errorf("'%s': %s: %w", spec.Path(), spec.HTTPMethod, err)
+			if g.shouldFail(err) {
+				return xerrors.Errorf("'%s': %s: %w",
+					opspec.Path(),
+					strings.ToLower(opspec.HTTPMethod),
+					err,
+				)
+			}
+
+			continue
 		}
 
-		g.methods = append(g.methods, m)
+		g.operations = append(g.operations, op)
 	}
 
 	return nil

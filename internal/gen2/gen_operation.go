@@ -8,31 +8,31 @@ import (
 	"golang.org/x/xerrors"
 )
 
-func (g *Generator) generateMethod(spec *ast.Method) (_ *ir.Method, err error) {
-	m := &ir.Method{
+func (g *Generator) generateOperation(spec *ast.Operation) (_ *ir.Operation, err error) {
+	op := &ir.Operation{
 		Name: pascal(spec.Path(), strings.ToLower(spec.HTTPMethod)),
 		Spec: spec,
 	}
 	if spec.OperationID != "" {
-		m.Name = pascal(spec.OperationID)
+		op.Name = pascal(spec.OperationID)
 	}
 
-	m.Params, err = g.generateParameters(m.Name+"Param", spec.Parameters)
+	op.Params, err = g.generateParameters(op.Name+"Param", spec.Parameters)
 	if err != nil {
 		return nil, xerrors.Errorf("parameters: %w", err)
 	}
 
 	if spec.RequestBody != nil {
-		m.Request, err = g.generateRequest(m.Name+"Request", spec.RequestBody)
+		op.Request, err = g.generateRequest(op.Name+"Request", spec.RequestBody)
 		if err != nil {
 			return nil, xerrors.Errorf("requestBody: %w", err)
 		}
 	}
 
-	m.Response, err = g.generateResponses(m.Name+"Response", spec.Responses)
+	op.Response, err = g.generateResponses(op.Name+"Response", spec.Responses)
 	if err != nil {
 		return nil, xerrors.Errorf("responses: %w", err)
 	}
 
-	return m, nil
+	return op, nil
 }

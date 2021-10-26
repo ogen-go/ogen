@@ -2,12 +2,12 @@ package ir
 
 import ast "github.com/ogen-go/ogen/internal/ast2"
 
-type Method struct {
+type Operation struct {
 	Name     string
 	Params   []*Parameter
 	Request  *Request
 	Response *Response
-	Spec     *ast.Method
+	Spec     *ast.Operation
 }
 
 type Parameter struct {
@@ -27,7 +27,7 @@ type Response struct {
 	Type       *Type
 	StatusCode map[int]*StatusResponse
 	Default    *StatusResponse
-	Spec       *ast.MethodResponse
+	Spec       *ast.OperationResponse
 }
 
 type StatusResponse struct {
