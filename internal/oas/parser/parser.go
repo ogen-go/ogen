@@ -65,7 +65,7 @@ func (p *parser) parse() error {
 						return nil
 					}
 				}
-				return err
+				return xerrors.Errorf("%s: %w", strings.ToLower(method), err)
 			}
 
 			p.operations = append(p.operations, parsedOp)
