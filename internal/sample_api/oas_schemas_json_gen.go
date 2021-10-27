@@ -106,41 +106,6 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DataID) WriteJSON(j *json.Stream) {
-	switch s.Type {
-	case DataIDStringType:
-		j.WriteString(s.String)
-	case DataIDIntType:
-		j.WriteInt(s.Int)
-	}
-}
-
-// ReadJSON reads value from json stream.
-func (s *DataID) ReadJSON(i *json.Iterator) error {
-	switch t := i.WhatIsNext(); t {
-	case json.StringValue:
-		if err := func() error {
-			s.String = string(i.ReadString())
-			return i.Error
-		}(); err != nil {
-			return err
-		}
-		s.Type = DataIDStringType
-	case json.NumberValue:
-		if err := func() error {
-			s.Int = int(i.ReadInt())
-			return i.Error
-		}(); err != nil {
-			return err
-		}
-		s.Type = DataIDIntType
-	default:
-		return fmt.Errorf("unexpected json type %d", t)
-	}
-	return nil
-}
-
-// WriteJSON implements json.Marshaler.
 func (s FoobarGetResNotFound) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -306,6 +271,41 @@ func (s *FoobarPutDefStatusCode) ReadJSON(i *json.Iterator) error {
 		return retErr
 	}
 	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ID) WriteJSON(j *json.Stream) {
+	switch s.Type {
+	case IDStringType:
+		j.WriteString(s.String)
+	case IDIntType:
+		j.WriteInt(s.Int)
+	}
+}
+
+// ReadJSON reads value from json stream.
+func (s *ID) ReadJSON(i *json.Iterator) error {
+	switch t := i.WhatIsNext(); t {
+	case json.StringValue:
+		if err := func() error {
+			s.String = string(i.ReadString())
+			return i.Error
+		}(); err != nil {
+			return err
+		}
+		s.Type = IDStringType
+	case json.NumberValue:
+		if err := func() error {
+			s.Int = int(i.ReadInt())
+			return i.Error
+		}(); err != nil {
+			return err
+		}
+		s.Type = IDIntType
+	default:
+		return fmt.Errorf("unexpected json type %d", t)
+	}
+	return nil
 }
 
 // WriteJSON writes json value of string to json stream.

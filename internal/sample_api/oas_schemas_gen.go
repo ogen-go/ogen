@@ -53,71 +53,7 @@ var (
 // Ref: #/components/schemas/Data
 type Data struct {
 	Description OptString `json:"description"`
-	ID          DataID    `json:"id"`
-}
-
-// DataID represents sum type.
-type DataID struct {
-	Type   DataIDType // switch on this field
-	String string
-	Int    int
-}
-
-// DataIDType is oneOf type of DataID.
-type DataIDType string
-
-// Possible values for DataIDType.
-const (
-	DataIDStringType DataIDType = "string"
-	DataIDIntType    DataIDType = "int"
-)
-
-// IsString reports whether DataID is string.
-func (s DataID) IsString() bool { return s.Type == DataIDStringType }
-
-// IsInt reports whether DataID is int.
-func (s DataID) IsInt() bool { return s.Type == DataIDIntType }
-
-// SetString sets DataID to string.
-func (s *DataID) SetString(v string) {
-	s.Type = DataIDStringType
-	s.String = v
-}
-
-// GetString returns string and true boolean if DataID is string.
-func (s *DataID) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// DataIDString returns new DataID from string.
-func DataIDString(v string) DataID {
-	var s DataID
-	s.SetString(v)
-	return s
-}
-
-// SetInt sets DataID to int.
-func (s *DataID) SetInt(v int) {
-	s.Type = DataIDIntType
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if DataID is int.
-func (s *DataID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// DataIDInt returns new DataID from int.
-func DataIDInt(v int) DataID {
-	var s DataID
-	s.SetInt(v)
-	return s
+	ID          ID        `json:"id"`
 }
 
 // FoobarGetResNotFound is response for FoobarGet operation.
@@ -150,6 +86,71 @@ type FoobarPutDef struct{}
 type FoobarPutDefStatusCode struct {
 	StatusCode int
 	Response   FoobarPutDef
+}
+
+// Ref: #/components/schemas/ID
+// ID represents sum type.
+type ID struct {
+	Type   IDType // switch on this field
+	String string
+	Int    int
+}
+
+// IDType is oneOf type of ID.
+type IDType string
+
+// Possible values for IDType.
+const (
+	IDStringType IDType = "string"
+	IDIntType    IDType = "int"
+)
+
+// IsString reports whether ID is string.
+func (s ID) IsString() bool { return s.Type == IDStringType }
+
+// IsInt reports whether ID is int.
+func (s ID) IsInt() bool { return s.Type == IDIntType }
+
+// SetString sets ID to string.
+func (s *ID) SetString(v string) {
+	s.Type = IDStringType
+	s.String = v
+}
+
+// GetString returns string and true boolean if ID is string.
+func (s *ID) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// IDString returns new ID from string.
+func IDString(v string) ID {
+	var s ID
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets ID to int.
+func (s *ID) SetInt(v int) {
+	s.Type = IDIntType
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if ID is int.
+func (s *ID) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// IDInt returns new ID from int.
+func IDInt(v int) ID {
+	var s ID
+	s.SetInt(v)
+	return s
 }
 
 // NewNilString returns new NilString with value set to v.

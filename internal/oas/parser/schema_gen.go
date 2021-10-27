@@ -46,7 +46,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		return s, nil
 	}
 
-	onret := func(s *oas.Schema) *oas.Schema {
+	ret := func(s *oas.Schema) *oas.Schema {
 		if ref != "" {
 			g.localRefs[ref] = s
 		}
@@ -64,7 +64,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("parse enum: %w", err)
 		}
 
-		return onret(&oas.Schema{
+		return ret(&oas.Schema{
 			Type:        oas.SchemaType(schema.Type),
 			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
@@ -82,10 +82,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return onret(&oas.Schema{
+		return ret(&oas.Schema{
 			OneOf:       schemas,
 			Nullable:    schema.Nullable,
-			Ref:         schema.Ref,
+			Ref:         ref,
 			Description: schema.Description,
 		}), nil
 	case len(schema.AnyOf) > 0:
@@ -99,10 +99,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return onret(&oas.Schema{
+		return ret(&oas.Schema{
 			AnyOf:       schemas,
 			Nullable:    schema.Nullable,
-			Ref:         schema.Ref,
+			Ref:         ref,
 			Description: schema.Description,
 		}), nil
 	case len(schema.AllOf) > 0:
@@ -116,10 +116,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return onret(&oas.Schema{
+		return ret(&oas.Schema{
 			AllOf:       schemas,
 			Nullable:    schema.Nullable,
-			Ref:         schema.Ref,
+			Ref:         ref,
 			Description: schema.Description,
 		}), nil
 	}
@@ -202,7 +202,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("validate format: %w", err)
 		}
 
-		return onret(&oas.Schema{
+		return ret(&oas.Schema{
 			Type:             oas.SchemaType(schema.Type),
 			Format:           oas.Format(schema.Format),
 			Description:      schema.Description,
@@ -220,7 +220,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("validate format: %w", err)
 		}
 
-		return onret(&oas.Schema{
+		return ret(&oas.Schema{
 			Type:        oas.Boolean,
 			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
@@ -233,7 +233,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("validate format: %w", err)
 		}
 
-		return onret(&oas.Schema{
+		return ret(&oas.Schema{
 			Type:        oas.String,
 			Format:      oas.Format(schema.Format),
 			Description: schema.Description,
@@ -245,7 +245,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		}), nil
 
 	case "":
-		return onret(&oas.Schema{Type: oas.String}), nil
+		return ret(&oas.Schema{Type: oas.String}), nil
 
 	default:
 		return nil, xerrors.Errorf("unexpected schema type: '%s'", schema.Type)
