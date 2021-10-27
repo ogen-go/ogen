@@ -280,6 +280,43 @@
           }
         }
       }
+    },
+    "/pet/updateName": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "minLength": 6
+              }
+            }
+          }
+        },
+        "responses": {
+          "default":{
+            "description": "empty"
+          }
+        }
+      }
+    },
+    "/pet/updateNameAlias": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PetName"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default":{
+            "description": "empty"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -434,6 +471,10 @@
           "uri",
           "kind"
         ]
+      },
+      "PetName": {
+        "type": "string",
+        "minLength": 6
       }
     },
     "parameters": {
