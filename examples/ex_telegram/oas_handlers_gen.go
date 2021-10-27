@@ -25,6 +25,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -54,6 +55,7 @@ var (
 	_ = otelogen.Version
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
+	_ = fasthttp.Client{}
 )
 
 func NewAnswerCallbackQueryPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
@@ -157,6 +159,20 @@ func NewClosePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r
 
 		if err := encodeClosePostResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewClosePostFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.ClosePost(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeClosePostResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -295,6 +311,20 @@ func NewGetMePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r
 		}
 	}
 }
+func NewGetMePostFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.GetMePost(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeGetMePostResponse(response, w, nil); err != nil {
+			return
+		}
+	}
+}
 
 func NewGetMyCommandsPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -313,6 +343,20 @@ func NewGetMyCommandsPostHandler(s Server, opts ...Option) func(w http.ResponseW
 
 		if err := encodeGetMyCommandsPostResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewGetMyCommandsPostFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.GetMyCommandsPost(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeGetMyCommandsPostResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -423,6 +467,20 @@ func NewGetWebhookInfoPostHandler(s Server, opts ...Option) func(w http.Response
 		}
 	}
 }
+func NewGetWebhookInfoPostFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.GetWebhookInfoPost(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeGetWebhookInfoPostResponse(response, w, nil); err != nil {
+			return
+		}
+	}
+}
 
 func NewLogOutPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -441,6 +499,20 @@ func NewLogOutPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, 
 
 		if err := encodeLogOutPostResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewLogOutPostFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.LogOutPost(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeLogOutPostResponse(response, w, nil); err != nil {
 			return
 		}
 	}

@@ -25,6 +25,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -54,6 +55,7 @@ var (
 	_ = otelogen.Version
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
+	_ = fasthttp.Client{}
 )
 
 func NewCreateSnapshotHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
@@ -136,6 +138,20 @@ func NewDescribeBalloonConfigHandler(s Server, opts ...Option) func(w http.Respo
 		}
 	}
 }
+func NewDescribeBalloonConfigFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.DescribeBalloonConfig(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeDescribeBalloonConfigResponse(response, w, nil); err != nil {
+			return
+		}
+	}
+}
 
 func NewDescribeBalloonStatsHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -155,6 +171,20 @@ func NewDescribeBalloonStatsHandler(s Server, opts ...Option) func(w http.Respon
 
 		if err := encodeDescribeBalloonStatsResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewDescribeBalloonStatsFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.DescribeBalloonStats(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeDescribeBalloonStatsResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -182,6 +212,20 @@ func NewDescribeInstanceHandler(s Server, opts ...Option) func(w http.ResponseWr
 		}
 	}
 }
+func NewDescribeInstanceFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.DescribeInstance(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeDescribeInstanceResponse(response, w, nil); err != nil {
+			return
+		}
+	}
+}
 
 func NewGetExportVmConfigHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -205,6 +249,20 @@ func NewGetExportVmConfigHandler(s Server, opts ...Option) func(w http.ResponseW
 		}
 	}
 }
+func NewGetExportVmConfigFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.GetExportVmConfig(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeGetExportVmConfigResponse(response, w, nil); err != nil {
+			return
+		}
+	}
+}
 
 func NewGetMachineConfigurationHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -224,6 +282,20 @@ func NewGetMachineConfigurationHandler(s Server, opts ...Option) func(w http.Res
 
 		if err := encodeGetMachineConfigurationResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewGetMachineConfigurationFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.GetMachineConfiguration(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeGetMachineConfigurationResponse(response, w, nil); err != nil {
 			return
 		}
 	}
@@ -303,6 +375,20 @@ func NewMmdsGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *
 
 		if err := encodeMmdsGetResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewMmdsGetFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.MmdsGet(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeMmdsGetResponse(response, w, nil); err != nil {
 			return
 		}
 	}

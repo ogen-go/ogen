@@ -25,6 +25,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -54,6 +55,7 @@ var (
 	_ = otelogen.Version
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
+	_ = fasthttp.Client{}
 )
 
 func NewCachingHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
@@ -107,6 +109,20 @@ func NewDBHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.
 		}
 	}
 }
+func NewDBFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.DB(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeDBResponse(response, w, nil); err != nil {
+			return
+		}
+	}
+}
 
 func NewJSONHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
 	cfg := newConfig(opts...)
@@ -126,6 +142,20 @@ func NewJSONHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *htt
 
 		if err := encodeJSONResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewJSONFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.JSON(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeJSONResponse(response, w, nil); err != nil {
 			return
 		}
 	}

@@ -25,6 +25,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -54,6 +55,7 @@ var (
 	_ = otelogen.Version
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
+	_ = fasthttp.Client{}
 )
 
 func NewAddStickerToSetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
@@ -915,6 +917,20 @@ func NewGetMeHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *ht
 
 		if err := encodeGetMeResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewGetMeFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.GetMe(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeGetMeResponse(response, w, nil); err != nil {
 			return
 		}
 	}

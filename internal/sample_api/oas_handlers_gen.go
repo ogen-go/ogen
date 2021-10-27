@@ -25,6 +25,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -54,6 +55,7 @@ var (
 	_ = otelogen.Version
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
+	_ = fasthttp.Client{}
 )
 
 func NewFoobarGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
@@ -131,6 +133,20 @@ func NewFoobarPutHandler(s Server, opts ...Option) func(w http.ResponseWriter, r
 
 		if err := encodeFoobarPutResponse(response, w, span); err != nil {
 			span.RecordError(err)
+			return
+		}
+	}
+}
+func NewFoobarPutFastHandler(s Server) func(ctx *fasthttp.RequestCtx) {
+	return func(ctx *fasthttp.RequestCtx) {
+		response, err := s.FoobarPut(context.Background())
+		if err != nil {
+			return
+		}
+		w := ht.Writer{
+			Context: ctx,
+		}
+		if err := encodeFoobarPutResponse(response, w, nil); err != nil {
 			return
 		}
 	}

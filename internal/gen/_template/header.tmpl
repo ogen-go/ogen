@@ -30,6 +30,7 @@ import (
 ht "github.com/ogen-go/ogen/http"
 "github.com/ogen-go/ogen/json"
 "github.com/ogen-go/ogen/otelogen"
+"github.com/valyala/fasthttp"
 )
 
 // No-op definition for keeping imports.
@@ -57,6 +58,7 @@ var (
   _ = otelogen.Version
   _ = trace.TraceIDFromHex
   _ = otel.GetTracerProvider
+  _ = fasthttp.Client{}
 )
 
 {{ end }}
