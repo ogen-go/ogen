@@ -12,7 +12,7 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 	for _, p := range params {
 		typ, err := g.generateSchema(pascal(opName, p.Name), p.Schema)
 		if err != nil {
-			return nil, xerrors.Errorf("'%s': %w", p.Name, err)
+			return nil, xerrors.Errorf("%q: %w", p.Name, err)
 		}
 
 		typ, ok := unwrapPrimitive(typ)

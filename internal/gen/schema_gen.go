@@ -133,8 +133,9 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 					case v.OnlyNullable():
 						typ = typ.Pointer(ir.NilNull)
 					default:
-						// panic("unreachable")
-						return nil, &ErrNotImplemented{"fixme"}
+						return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{
+							Name: "optional nullable",
+						})
 					}
 				}
 			}
@@ -187,6 +188,11 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
 			if err != nil {
 				return nil, xerrors.Errorf("oneOf[%d]: %w", i, err)
+			}
+			if !t.Is(ir.KindPrimitive) {
+				return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{
+					Name: "sum types for non-primitives",
+				})
 			}
 			var result []rune
 			for i, c := range t.Go() {
