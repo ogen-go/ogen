@@ -24,6 +24,7 @@ go get github.com/ogen-go/ogen
 
 * No reflection or `interface{}`
   * The json encoding is code-generated, optimized and uses `jsoniter` for speed and overcoming `encoding/json` limitations
+  * Validation is code-generated
 * No more boilerplate
   * Structures are generated from OpenAPI v3 specification
   * Arguments, headers, url queries are parsed according to specification into structures
