@@ -12,7 +12,7 @@ func (s {{ $t.Name }}) WriteJSON(j *json.Stream) {
     more := json.NewMore(j)
     defer more.Reset()
     {{- range $f := $t.JSON.Fields }}
-        {{ template "enc_json_value" field_elem $f -}}
+        {{ template "enc_json" field_elem $f -}}
     {{- end }}
     j.WriteObjectEnd()
 }
@@ -129,7 +129,7 @@ func (s {{ $t.Name }}) WriteJSON(j *json.Stream) {
     switch s.Type {
     {{- range $s := $t.SumOf }}
     case {{ $t.Name }}{{ $s.Name }}Type:
-        {{- template "enc_json_value" sum_elem $s -}}
+        {{- template "enc_json" sum_elem $s -}}
     {{- end }}
     }
 }

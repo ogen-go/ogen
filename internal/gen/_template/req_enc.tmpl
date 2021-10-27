@@ -4,7 +4,7 @@ j := json.GetStream(buf)
 defer json.PutStream(j)
 more := json.NewMore(j)
 defer more.Reset()
-{{ template "enc_json_value" req_enc_elem $ }}
+{{ template "enc_json" req_enc_elem $ }}
 if err := j.Flush(); err != nil {
     json.PutBuffer(buf)
     return nil, "", err
