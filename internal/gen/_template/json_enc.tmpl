@@ -11,20 +11,18 @@ j.WriteObjectField("{{ $.Tag.JSON }}")
 {{- end }}
 {{- end -}}
 
-
-
 {{/* Encode generic with respect of nullable/optional and special format */}}
 {{- define "enc_json_generic" -}}
 {{- $g := $.Type.GenericOf -}}
 {{- $v := $.Type.GenericVariant -}}
 {{- if $v.Optional -}}
   if {{ $.Var }}.Set {
-  {{- template "enc_json_start" $ }}
-  {{ $.Var }}.WriteJSON(j{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
-  }
-{{- else -}}
     {{- template "enc_json_start" $ }}
     {{ $.Var }}.WriteJSON(j{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
+  }
+{{- else -}}
+  {{- template "enc_json_start" $ }}
+  {{ $.Var }}.WriteJSON(j{{ if $g.Format }}, json.Write{{ $g.JSON.Format }}{{ end }})
 {{- end -}}
 {{- end }}
 
@@ -34,7 +32,7 @@ j.WriteObjectField("{{ $.Tag.JSON }}")
   more.Down()
   j.WriteArrayStart()
   for _, elem := range {{ $.Var }} {
-  {{- template "enc_json" array_elem $.Type.Item }}
+    {{- template "enc_json" array_elem $.Type.Item }}
   }
   j.WriteArrayEnd()
   more.Up()
@@ -44,8 +42,8 @@ j.WriteObjectField("{{ $.Tag.JSON }}")
 {{- define "enc_json_array" -}}
 {{- $t := $.Type }}
 {{- if eq $t.NilSemantic "invalid" -}}
-    {{- template "enc_json_start" $ -}}
-    {{- template "enc_json_array_elems" $ -}}
+  {{- template "enc_json_start" $ -}}
+  {{- template "enc_json_array_elems" $ -}}
 {{- else if eq $t.NilSemantic "optional" -}}
   if {{ $.Var }} != nil {
     {{- template "enc_json_start" $ -}}
