@@ -114,6 +114,20 @@ func NewOptNilString(v string) OptNilString
 ## Recursive types
 If `ogen` encounters recursive types that can't be expressed in go, pointers are used as fallback.
 
+## Sum types
+For `oneOf` sum-types are generated. `ID` that is one of `[string, integer]` will be represented like that:
+```go
+type ID struct {
+	Type   IDType
+	String string
+	Int    int
+}
+
+// Also, some helpers:
+func NewStringID(v string) ID
+func NewIntID(v int) ID
+```
+
 # Draft Roadmap
 
 * Handle unexpected json keys
