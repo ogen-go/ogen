@@ -1088,6 +1088,9 @@ func (s *PetKind) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
+func (PetName) WriteJSON(j *json.Stream)        {}
+func (PetName) ReadJSON(i *json.Iterator) error { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s PetType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(s))
@@ -1096,5 +1099,101 @@ func (s PetType) WriteJSON(j *json.Stream) {
 // ReadJSON reads PetType from json stream.
 func (s *PetType) ReadJSON(i *json.Iterator) error {
 	*s = PetType(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetUpdateNameAliasPostDef) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PetUpdateNameAliasPostDef from json stream.
+func (s *PetUpdateNameAliasPostDef) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetUpdateNameAliasPostDefStatusCode) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PetUpdateNameAliasPostDefStatusCode from json stream.
+func (s *PetUpdateNameAliasPostDefStatusCode) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetUpdateNamePostDef) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PetUpdateNamePostDef from json stream.
+func (s *PetUpdateNamePostDef) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetUpdateNamePostDefStatusCode) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	j.WriteObjectEnd()
+}
+
+// ReadJSON reads PetUpdateNamePostDefStatusCode from json stream.
+func (s *PetUpdateNamePostDefStatusCode) ReadJSON(i *json.Iterator) error {
+	var retErr error
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	if retErr != nil {
+		return retErr
+	}
 	return i.Error
 }

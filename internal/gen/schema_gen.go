@@ -123,8 +123,10 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 					case v.OnlyNullable():
 						typ.NilSemantic = ir.NilNull
 					default:
-						// TODO(ernado): fallback to boxing
-						return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{Name: "optional nullable array"})
+						typ = ir.Generic(genericPostfix(typ.Go()),
+							typ, v,
+						)
+						g.side = append(g.side, typ)
 					}
 				} else {
 					switch {
@@ -133,9 +135,10 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 					case v.OnlyNullable():
 						typ = typ.Pointer(ir.NilNull)
 					default:
-						return nil, xerrors.Errorf("%s: %w", name, &ErrNotImplemented{
-							Name: "optional nullable",
-						})
+						typ = ir.Generic(genericPostfix(typ.Go()),
+							typ.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
+						)
+						g.side = append(g.side, typ)
 					}
 				}
 			}

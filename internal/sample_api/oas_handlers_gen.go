@@ -213,6 +213,48 @@ func NewPetNameByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request
 	}
 }
 
+func NewPetUpdateNameAliasPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		request, err := decodePetUpdateNameAliasPostRequest(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetUpdateNameAliasPost(r.Context(), request)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetUpdateNameAliasPostResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
+func NewPetUpdateNamePostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		request, err := decodePetUpdateNamePostRequest(r)
+		if err != nil {
+			respondError(w, http.StatusBadRequest, err)
+			return
+		}
+
+		response, err := s.PetUpdateNamePost(r.Context(), request)
+		if err != nil {
+			respondError(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		if err := encodePetUpdateNamePostResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func respondError(w http.ResponseWriter, code int, err error) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)

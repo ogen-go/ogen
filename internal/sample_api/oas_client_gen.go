@@ -338,3 +338,59 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 
 	return result, nil
 }
+
+func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+	body, contentType, err := encodePetUpdateNameAliasPostRequest(req)
+	if err != nil {
+		return res, err
+	}
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/updateNameAlias"
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetUpdateNameAliasPostResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpdateNamePostDefStatusCode, err error) {
+	body, contentType, err := encodePetUpdateNamePostRequest(req)
+	if err != nil {
+		return res, err
+	}
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/updateName"
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return res, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetUpdateNamePostResponse(resp)
+	if err != nil {
+		return res, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}

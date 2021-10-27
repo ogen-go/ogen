@@ -113,3 +113,58 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateReq, err error) {
 		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
+
+func decodePetUpdateNameAliasPostRequest(r *http.Request) (req PetName, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request PetName
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			return fmt.Errorf(`decoding of "PetName" (alias) is not implemented`)
+		}(); err != nil {
+			return req, err
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
+func decodePetUpdateNamePostRequest(r *http.Request) (req string, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, r.Body); err != nil {
+		return req, err
+	}
+
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request string
+		i := json.GetIterator()
+		defer json.PutIterator(i)
+		i.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = string(i.ReadString())
+			return i.Error
+		}(); err != nil {
+			return req, err
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
+		return request, nil
+	default:
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}

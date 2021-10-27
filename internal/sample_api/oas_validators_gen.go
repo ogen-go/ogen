@@ -52,31 +52,95 @@ var (
 
 func (s *Pet) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "id" property.
-		validator := validate.Int{
+	if err := func() error {
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "friends",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       true,
 			Max:          100000,
 			MinExclusive: false,
 			MaxExclusive: false,
+		}).Validate(int64(s.ID)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.ID)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "id", Error: err})
-		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "id",
+			Error: err,
+		})
 	}
-	{
-		// Validate "name" property.
-		validator := validate.String{
+	if err := func() error {
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "kind",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    4,
 			MinLengthSet: true,
 			MaxLength:    24,
 			MaxLengthSet: true,
+		}).Validate(string(s.Name)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Name)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "name", Error: err})
-		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "name",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "primary",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "testArray1",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "testFloat1",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "testInteger1",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}

@@ -213,3 +213,13 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 	}
 	return nil
 }
+
+func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStatusCode, w http.ResponseWriter) error {
+	w.WriteHeader(response.StatusCode)
+	return nil
+}
+
+func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, w http.ResponseWriter) error {
+	w.WriteHeader(response.StatusCode)
+	return nil
+}

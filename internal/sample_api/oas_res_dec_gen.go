@@ -356,3 +356,29 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
+
+func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	default:
+		return PetUpdateNameAliasPostDefStatusCode{StatusCode: resp.StatusCode}, nil
+	}
+}
+
+func decodePetUpdateNamePostResponse(resp *http.Response) (res PetUpdateNamePostDefStatusCode, err error) {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+	if _, err := io.Copy(buf, resp.Body); err != nil {
+		return res, err
+	}
+
+	switch resp.StatusCode {
+	default:
+		return PetUpdateNamePostDefStatusCode{StatusCode: resp.StatusCode}, nil
+	}
+}

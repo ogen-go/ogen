@@ -590,9 +590,29 @@ const (
 	PetKindSmol PetKind = "smol"
 )
 
+type PetName string
+
 type PetType string
 
 const (
 	PetTypeFifa PetType = "fifa"
 	PetTypeFofa PetType = "fofa"
 )
+
+// PetUpdateNameAliasPostDef is default response for PetUpdateNameAliasPost operation.
+type PetUpdateNameAliasPostDef struct{}
+
+// PetUpdateNameAliasPostDefStatusCode wraps PetUpdateNameAliasPostDef with StatusCode.
+type PetUpdateNameAliasPostDefStatusCode struct {
+	StatusCode int
+	Response   PetUpdateNameAliasPostDef
+}
+
+// PetUpdateNamePostDef is default response for PetUpdateNamePost operation.
+type PetUpdateNamePostDef struct{}
+
+// PetUpdateNamePostDefStatusCode wraps PetUpdateNamePostDef with StatusCode.
+type PetUpdateNamePostDefStatusCode struct {
+	StatusCode int
+	Response   PetUpdateNamePostDef
+}

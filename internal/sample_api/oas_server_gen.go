@@ -68,4 +68,8 @@ type Server interface {
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
 	// PetNameByID implements petNameByID operation.
 	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
+	// PetUpdateNameAliasPost implements  operation.
+	PetUpdateNameAliasPost(ctx context.Context, req PetName) (PetUpdateNameAliasPostDefStatusCode, error)
+	// PetUpdateNamePost implements  operation.
+	PetUpdateNamePost(ctx context.Context, req string) (PetUpdateNamePostDefStatusCode, error)
 }

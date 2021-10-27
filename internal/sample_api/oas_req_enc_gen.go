@@ -64,3 +64,11 @@ func encodePetCreateRequest(req PetCreateReq) (data []byte, contentType string, 
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)
 	}
 }
+
+func encodePetUpdateNameAliasPostRequest(req PetName) (data []byte, contentType string, err error) {
+	return json.Encode(req), "application/json", nil
+}
+
+func encodePetUpdateNamePostRequest(req string) (data []byte, contentType string, err error) {
+	return json.Encode(req), "application/json", nil
+}

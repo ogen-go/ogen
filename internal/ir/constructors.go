@@ -21,9 +21,10 @@ func Array(item *Type, sem NilSemantic, schema *oas.Schema) *Type {
 
 func Alias(name string, to *Type) *Type {
 	return &Type{
-		Kind:    KindAlias,
-		Name:    name,
-		AliasTo: to,
+		Kind:       KindAlias,
+		Name:       name,
+		AliasTo:    to,
+		Validators: to.Validators,
 	}
 }
 
