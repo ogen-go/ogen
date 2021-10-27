@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 
+	"go.opentelemetry.io/otel/trace"
+
 	"github.com/ogen-go/ogen/internal/techempower"
 )
 
@@ -35,7 +37,7 @@ func main() {
 	flag.StringVar(&arg.Addr, "addr", ":8080", "http address to listen")
 	flag.Parse()
 
-	log.Fatal(http.ListenAndServe(arg.Addr, http.HandlerFunc(
-		techempower.NewJSONHandler(&server{}),
-	)))
+	traceProvider := trace.NewNoopTracerProvider()
+	h := techempower.NewJSONHandler(&server{}, techempower.WithTracerProvider(traceProvider))
+	log.Fatal(http.ListenAndServe(arg.Addr, http.HandlerFunc(h)))
 }
