@@ -2,7 +2,7 @@
 <img width="256" height="256" src="_logo/logo.svg" alt="ogen logo">
 </p>
 
-# ogen [![Go Reference](https://pkg.go.dev/badge/github.com/ogen-go/ogen.svg)](https://pkg.go.dev/github.com/ogen-go/ogen) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![openapi v3](https://img.shields.io/badge/OAS3-brightgreen)](https://swagger.io/specification/)
+# ogen [![Go Reference](https://img.shields.io/badge/go-pkg-blue)](https://pkg.go.dev/github.com/ogen-go/ogen) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![openapi v3](https://img.shields.io/badge/OAS3-brightgreen)](https://swagger.io/specification/)
 
 WIP Opinionated OpenAPI v3 Code Generator for Go
 
