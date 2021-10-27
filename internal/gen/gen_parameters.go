@@ -15,7 +15,8 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 			return nil, xerrors.Errorf("'%s': %w", p.Name, err)
 		}
 
-		if !isUnderlyingPrimitive(typ) {
+		typ, ok := unwrapPrimitive(typ)
+		if !ok {
 			return nil, &ErrNotImplemented{"complex parameter types"}
 		}
 
@@ -29,17 +30,28 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 	return result, nil
 }
 
-func isUnderlyingPrimitive(typ *ir.Type) bool {
+func unwrapPrimitive(typ *ir.Type) (*ir.Type, bool) {
 	switch typ.Kind {
-	case ir.KindPrimitive, ir.KindEnum:
-		return true
+	case ir.KindPrimitive:
+		return typ, true
+	case ir.KindEnum:
+		return &ir.Type{
+			Kind:      ir.KindPrimitive,
+			Primitive: typ.Primitive,
+		}, true
 	case ir.KindArray:
-		return isUnderlyingPrimitive(typ.Item)
+		item, ok := unwrapPrimitive(typ.Item)
+		if !ok {
+			return nil, false
+		}
+
+		typ.Item = item
+		return typ, true
 	case ir.KindAlias:
-		return isUnderlyingPrimitive(typ.AliasTo)
+		return unwrapPrimitive(typ.AliasTo)
 	case ir.KindPointer:
-		return isUnderlyingPrimitive(typ.PointerTo)
+		return unwrapPrimitive(typ.PointerTo)
 	default:
-		return false
+		return nil, false
 	}
 }

@@ -133,7 +133,8 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 					case v.OnlyNullable():
 						typ = typ.Pointer(ir.NilNull)
 					default:
-						panic("unreachable")
+						// panic("unreachable")
+						return nil, &ErrNotImplemented{"fixme"}
 					}
 				}
 			}
