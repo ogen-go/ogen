@@ -173,10 +173,7 @@ func TestIntegration(t *testing.T) {
 			},
 			Next: api.NewOptData(api.Data{
 				Description: api.NewOptString("Foo"),
-				ID: api.DataID{
-					Type: api.DataIDIntType,
-					Int:  10,
-				},
+				ID:          api.DataIDInt(10),
 			}),
 		}
 
