@@ -50,14 +50,38 @@ var (
 	_ = net.IP{}
 )
 
-func encodeFoobarPostRequest(req Pet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeFoobarPostRequest(req Pet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePetCreateRequest(req PetCreateReq) (data []byte, contentType string, err error) {
+func encodePetCreateRequest(req PetCreateReq) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *Pet:
-		return json.Encode(req), "application/json", nil
+		buf := json.GetBuffer()
+		j := json.GetStream(buf)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		req.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			json.PutBuffer(buf)
+			return nil, "", err
+		}
+
+		return buf, "application/json", nil
 	case *PetCreateReqTextPlain:
 		return nil, "", fmt.Errorf("text/plain encoder not implemented")
 	default:
@@ -65,10 +89,33 @@ func encodePetCreateRequest(req PetCreateReq) (data []byte, contentType string, 
 	}
 }
 
-func encodePetUpdateNameAliasPostRequest(req PetName) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePetUpdateNameAliasPostRequest(req PetName) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	// Unsupported kind "alias".
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePetUpdateNamePostRequest(req string) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePetUpdateNamePostRequest(req string) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteString(req)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }

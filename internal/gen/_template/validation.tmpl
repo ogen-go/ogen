@@ -2,13 +2,20 @@
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     {{- $t := $.Type }}
     {{- $va := $t.Validators }}
+    {{- $validated := false }}
     {{- if eq $t.NilSemantic "invalid" }}
         if {{ $.Var }} == nil {
             {{- /*TODO: continue validation instead return*/ -}}
             return fmt.Errorf("required, can't be nil")
         }
     {{- end }}
-    {{- if $t.IsArray }}
+    {{- if $t.IsStruct }}
+    {{- $validated = true }}
+    if err := {{ $.Var }}.Validate(); err != nil {
+        return err
+    }
+    {{- else if $t.IsArray }}
+    {{- $validated = true }}
     var failures []validate.FieldError
     for i, elem := range {{ $.Var }} {
         if err := func() error {
@@ -25,6 +32,7 @@
     }
     {{- end }}
     {{- if $va.String.Set }}
+    {{- $validated = true }}
         {{- $v := $va.String }}
         if err := (validate.String{
             MinLength:    {{ $v.MinLength }},
@@ -36,6 +44,7 @@
         }
     {{- end }}
     {{- if $va.Int.Set }}
+    {{- $validated = true }}
         {{- $v := $va.Int }}
         if err := (validate.Int{
             MinSet:         {{ $v.MinSet }},
@@ -48,7 +57,9 @@
             return err
         }
     {{- end }}
-    _ = {{ $.Var }}
+    {{- if not $validated }}
+    _ = {{ $.Var }} // validation expected, but not supported
+    {{ end }}
     return nil
 {{- end }}
 
@@ -61,7 +72,7 @@
 {{- range $t := $.Types }}{{/*Range schemas*/}}
 {{- if $t.NeedValidation }}{{/*Need validation*/}}
 {{- if $t.IsStruct }}{{/*If struct*/}}
-func (s *{{ $t.Name }}) Validate() error {
+func (s {{ $t.Name }}) Validate() error {
     var failures []validate.FieldError
     {{- range $f := $t.Fields }}{{/*Range fields*/}}
     {{- if $f.Type.NeedValidation }}
@@ -78,6 +89,10 @@ func (s *{{ $t.Name }}) Validate() error {
     if len(failures) > 0 {
         return &validate.Error{Fields: failures}
     }
+    return nil
+}
+{{- else if $t.IsAlias }}
+func (s {{ $t.Name }}) Validate() error {
     return nil
 }
 {{- end }}

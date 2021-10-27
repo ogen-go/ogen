@@ -53,6 +53,14 @@ type sampleAPIServer struct {
 	pet api.Pet
 }
 
+func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.PetName) (api.PetUpdateNameAliasPostDefStatusCode, error) {
+	panic("implement me")
+}
+
+func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req string) (api.PetUpdateNamePostDefStatusCode, error) {
+	panic("implement me")
+}
+
 func (s sampleAPIServer) PetFriendsNamesByID(ctx context.Context, params api.PetFriendsNamesByIDParams) ([]string, error) {
 	if int64(params.ID) != s.pet.ID {
 		return []string{}, nil

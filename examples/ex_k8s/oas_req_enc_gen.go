@@ -50,214 +50,214 @@ var (
 	_ = net.IP{}
 )
 
-func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) (data []byte, contentType string, err error) {
+func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) (data []byte, contentType string, err error) {
+func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) (data []byte, contentType string, err error) {
+func encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateApiregistrationV1APIServiceRequest(req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) (data []byte, contentType string, err error) {
+func encodeCreateApiregistrationV1APIServiceRequest(req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateAuthenticationV1TokenReviewRequest(req IoK8sAPIAuthenticationV1TokenReview) (data []byte, contentType string, err error) {
+func encodeCreateAuthenticationV1TokenReviewRequest(req IoK8sAPIAuthenticationV1TokenReview) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (data []byte, contentType string, err error) {
+func encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (data []byte, contentType string, err error) {
+func encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateAuthorizationV1SubjectAccessReviewRequest(req IoK8sAPIAuthorizationV1SubjectAccessReview) (data []byte, contentType string, err error) {
+func encodeCreateAuthorizationV1SubjectAccessReviewRequest(req IoK8sAPIAuthorizationV1SubjectAccessReview) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateCertificatesV1CertificateSigningRequestRequest(req IoK8sAPICertificatesV1CertificateSigningRequest) (data []byte, contentType string, err error) {
+func encodeCreateCertificatesV1CertificateSigningRequestRequest(req IoK8sAPICertificatesV1CertificateSigningRequest) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateCoreV1NamespaceRequest(req IoK8sAPICoreV1Namespace) (data []byte, contentType string, err error) {
+func encodeCreateCoreV1NamespaceRequest(req IoK8sAPICoreV1Namespace) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateCoreV1NodeRequest(req IoK8sAPICoreV1Node) (data []byte, contentType string, err error) {
+func encodeCreateCoreV1NodeRequest(req IoK8sAPICoreV1Node) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateCoreV1PersistentVolumeRequest(req IoK8sAPICoreV1PersistentVolume) (data []byte, contentType string, err error) {
+func encodeCreateCoreV1PersistentVolumeRequest(req IoK8sAPICoreV1PersistentVolume) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req IoK8sAPIFlowcontrolV1beta1FlowSchema) (data []byte, contentType string, err error) {
+func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req IoK8sAPIFlowcontrolV1beta1FlowSchema) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) (data []byte, contentType string, err error) {
+func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req IoK8sAPIFlowcontrolV1beta2FlowSchema) (data []byte, contentType string, err error) {
+func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req IoK8sAPIFlowcontrolV1beta2FlowSchema) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) (data []byte, contentType string, err error) {
+func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req IoK8sAPIApiserverinternalV1alpha1StorageVersion) (data []byte, contentType string, err error) {
+func encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req IoK8sAPIApiserverinternalV1alpha1StorageVersion) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateNetworkingV1IngressClassRequest(req IoK8sAPINetworkingV1IngressClass) (data []byte, contentType string, err error) {
+func encodeCreateNetworkingV1IngressClassRequest(req IoK8sAPINetworkingV1IngressClass) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateNodeV1RuntimeClassRequest(req IoK8sAPINodeV1RuntimeClass) (data []byte, contentType string, err error) {
+func encodeCreateNodeV1RuntimeClassRequest(req IoK8sAPINodeV1RuntimeClass) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateNodeV1alpha1RuntimeClassRequest(req IoK8sAPINodeV1alpha1RuntimeClass) (data []byte, contentType string, err error) {
+func encodeCreateNodeV1alpha1RuntimeClassRequest(req IoK8sAPINodeV1alpha1RuntimeClass) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateNodeV1beta1RuntimeClassRequest(req IoK8sAPINodeV1beta1RuntimeClass) (data []byte, contentType string, err error) {
+func encodeCreateNodeV1beta1RuntimeClassRequest(req IoK8sAPINodeV1beta1RuntimeClass) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req IoK8sAPIPolicyV1beta1PodSecurityPolicy) (data []byte, contentType string, err error) {
+func encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req IoK8sAPIPolicyV1beta1PodSecurityPolicy) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateRbacAuthorizationV1ClusterRoleRequest(req IoK8sAPIRbacV1ClusterRole) (data []byte, contentType string, err error) {
+func encodeCreateRbacAuthorizationV1ClusterRoleRequest(req IoK8sAPIRbacV1ClusterRole) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req IoK8sAPIRbacV1ClusterRoleBinding) (data []byte, contentType string, err error) {
+func encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req IoK8sAPIRbacV1ClusterRoleBinding) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateSchedulingV1PriorityClassRequest(req IoK8sAPISchedulingV1PriorityClass) (data []byte, contentType string, err error) {
+func encodeCreateSchedulingV1PriorityClassRequest(req IoK8sAPISchedulingV1PriorityClass) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateStorageV1CSIDriverRequest(req IoK8sAPIStorageV1CSIDriver) (data []byte, contentType string, err error) {
+func encodeCreateStorageV1CSIDriverRequest(req IoK8sAPIStorageV1CSIDriver) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateStorageV1CSINodeRequest(req IoK8sAPIStorageV1CSINode) (data []byte, contentType string, err error) {
+func encodeCreateStorageV1CSINodeRequest(req IoK8sAPIStorageV1CSINode) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateStorageV1StorageClassRequest(req IoK8sAPIStorageV1StorageClass) (data []byte, contentType string, err error) {
+func encodeCreateStorageV1StorageClassRequest(req IoK8sAPIStorageV1StorageClass) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeCreateStorageV1VolumeAttachmentRequest(req IoK8sAPIStorageV1VolumeAttachment) (data []byte, contentType string, err error) {
+func encodeCreateStorageV1VolumeAttachmentRequest(req IoK8sAPIStorageV1VolumeAttachment) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteCoreV1CollectionNodeRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteCoreV1CollectionNodeRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteCoreV1CollectionPersistentVolumeRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteCoreV1CollectionPersistentVolumeRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteNetworkingV1CollectionIngressClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteNetworkingV1CollectionIngressClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteNodeV1CollectionRuntimeClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteNodeV1CollectionRuntimeClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteSchedulingV1CollectionPriorityClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteSchedulingV1CollectionPriorityClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteStorageV1CollectionCSIDriverRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteStorageV1CollectionCSIDriverRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteStorageV1CollectionCSINodeRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteStorageV1CollectionCSINodeRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteStorageV1CollectionStorageClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteStorageV1CollectionStorageClassRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }
 
-func encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data []byte, contentType string, err error) {
+func encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req IoK8sApimachineryPkgApisMetaV1DeleteOptions) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
 }

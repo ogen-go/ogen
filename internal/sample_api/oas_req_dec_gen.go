@@ -71,7 +71,12 @@ func decodeFoobarPostRequest(r *http.Request) (req Pet, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -101,7 +106,12 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateReq, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return &request, nil
@@ -132,7 +142,17 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request) (req PetName, err erro
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    6,
+				MinLengthSet: true,
+				MaxLength:    0,
+				MaxLengthSet: false,
+			}).Validate(string(request)); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -160,7 +180,17 @@ func decodePetUpdateNamePostRequest(r *http.Request) (req string, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    6,
+				MinLengthSet: true,
+				MaxLength:    0,
+				MaxLengthSet: false,
+			}).Validate(string(request)); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil

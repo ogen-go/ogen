@@ -50,13 +50,15 @@ var (
 	_ = net.IP{}
 )
 
-func (s *AnswerShippingQueryPostReqApplicationJSON) Validate() error {
+func (s AnswerShippingQueryPostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ShippingOptions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -68,7 +70,6 @@ func (s *AnswerShippingQueryPostReqApplicationJSON) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ShippingOptions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -81,13 +82,15 @@ func (s *AnswerShippingQueryPostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) Validate() error {
+func (s AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ShippingOptions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -99,7 +102,6 @@ func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) Validate() err
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ShippingOptions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -112,13 +114,15 @@ func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) Validate() err
 	}
 	return nil
 }
-func (s *AnswerShippingQueryPostReqMultipartFormData) Validate() error {
+func (s AnswerShippingQueryPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ShippingOptions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -130,7 +134,6 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ShippingOptions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -143,10 +146,11 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *CallbackQuery) Validate() error {
+func (s CallbackQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Message
+		_ = s.Message // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -159,10 +163,11 @@ func (s *CallbackQuery) Validate() error {
 	}
 	return nil
 }
-func (s *Chat) Validate() error {
+func (s Chat) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.PinnedMessage
+		_ = s.PinnedMessage // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -171,7 +176,8 @@ func (s *Chat) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Type
+		_ = s.Type // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -184,10 +190,11 @@ func (s *Chat) Validate() error {
 	}
 	return nil
 }
-func (s *EncryptedPassportElement) Validate() error {
+func (s EncryptedPassportElement) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Type
+		_ = s.Type // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -200,7 +207,7 @@ func (s *EncryptedPassportElement) Validate() error {
 	}
 	return nil
 }
-func (s *Game) Validate() error {
+func (s Game) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Photo == nil {
@@ -209,7 +216,9 @@ func (s *Game) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Photo {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -221,7 +230,6 @@ func (s *Game) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Photo
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -233,7 +241,9 @@ func (s *Game) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.TextEntities {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -245,7 +255,6 @@ func (s *Game) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.TextEntities
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -258,7 +267,7 @@ func (s *Game) Validate() error {
 	}
 	return nil
 }
-func (s *GetGameHighScoresPostResOK) Validate() error {
+func (s GetGameHighScoresPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
@@ -267,7 +276,9 @@ func (s *GetGameHighScoresPostResOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Result {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -279,7 +290,6 @@ func (s *GetGameHighScoresPostResOK) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Result
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -292,7 +302,7 @@ func (s *GetGameHighScoresPostResOK) Validate() error {
 	}
 	return nil
 }
-func (s *GetMyCommandsPostResOK) Validate() error {
+func (s GetMyCommandsPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
@@ -301,7 +311,9 @@ func (s *GetMyCommandsPostResOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Result {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -313,7 +325,6 @@ func (s *GetMyCommandsPostResOK) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Result
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -326,10 +337,12 @@ func (s *GetMyCommandsPostResOK) Validate() error {
 	}
 	return nil
 }
-func (s *GetStickerSetPostResOK) Validate() error {
+func (s GetStickerSetPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Result
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -342,10 +355,11 @@ func (s *GetStickerSetPostResOK) Validate() error {
 	}
 	return nil
 }
-func (s *GetUpdatesPostReqApplicationJSON) Validate() error {
+func (s GetUpdatesPostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Limit
+		_ = s.Limit // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -358,10 +372,11 @@ func (s *GetUpdatesPostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) Validate() error {
+func (s GetUpdatesPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Limit
+		_ = s.Limit // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -374,10 +389,11 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	}
 	return nil
 }
-func (s *GetUpdatesPostReqMultipartFormData) Validate() error {
+func (s GetUpdatesPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Limit
+		_ = s.Limit // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -390,7 +406,7 @@ func (s *GetUpdatesPostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *GetUpdatesPostResOK) Validate() error {
+func (s GetUpdatesPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Result == nil {
@@ -399,7 +415,9 @@ func (s *GetUpdatesPostResOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Result {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -411,7 +429,6 @@ func (s *GetUpdatesPostResOK) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Result
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -424,10 +441,11 @@ func (s *GetUpdatesPostResOK) Validate() error {
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostReqApplicationJSON) Validate() error {
+func (s GetUserProfilePhotosPostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Limit
+		_ = s.Limit // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -440,10 +458,11 @@ func (s *GetUserProfilePhotosPostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) Validate() error {
+func (s GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Limit
+		_ = s.Limit // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -456,10 +475,11 @@ func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) Validate() er
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostReqMultipartFormData) Validate() error {
+func (s GetUserProfilePhotosPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Limit
+		_ = s.Limit // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -472,10 +492,12 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostResOK) Validate() error {
+func (s GetUserProfilePhotosPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Result
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -488,7 +510,7 @@ func (s *GetUserProfilePhotosPostResOK) Validate() error {
 	}
 	return nil
 }
-func (s *InlineKeyboardMarkup) Validate() error {
+func (s InlineKeyboardMarkup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InlineKeyboard == nil {
@@ -503,7 +525,9 @@ func (s *InlineKeyboardMarkup) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						_ = elem
+						if err := elem.Validate(); err != nil {
+							return err
+						}
 						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
@@ -515,7 +539,6 @@ func (s *InlineKeyboardMarkup) Validate() error {
 						return &validate.Error{Fields: failures}
 					}
 				}
-				_ = elem
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -527,7 +550,6 @@ func (s *InlineKeyboardMarkup) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.InlineKeyboard
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -540,10 +562,11 @@ func (s *InlineKeyboardMarkup) Validate() error {
 	}
 	return nil
 }
-func (s *MaskPosition) Validate() error {
+func (s MaskPosition) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Point
+		_ = s.Point // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -556,13 +579,15 @@ func (s *MaskPosition) Validate() error {
 	}
 	return nil
 }
-func (s *Message) Validate() error {
+func (s Message) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.CaptionEntities {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -574,7 +599,6 @@ func (s *Message) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.CaptionEntities
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -586,7 +610,8 @@ func (s *Message) Validate() error {
 		if s.Chat == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		_ = s.Chat
+		_ = s.Chat // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -598,7 +623,9 @@ func (s *Message) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Entities {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -610,7 +637,6 @@ func (s *Message) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Entities
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -619,7 +645,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ForwardFromChat
+		_ = s.ForwardFromChat // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -628,7 +655,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Game
+		_ = s.Game // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -637,7 +665,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.PassportData
+		_ = s.PassportData // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -646,7 +675,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.PinnedMessage
+		_ = s.PinnedMessage // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -655,7 +685,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Poll
+		_ = s.Poll // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -664,7 +695,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ReplyMarkup
+		_ = s.ReplyMarkup // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -673,7 +705,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ReplyToMessage
+		_ = s.ReplyToMessage // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -682,7 +715,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.SenderChat
+		_ = s.SenderChat // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -691,7 +725,8 @@ func (s *Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Sticker
+		_ = s.Sticker // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -704,10 +739,11 @@ func (s *Message) Validate() error {
 	}
 	return nil
 }
-func (s *MessageEntity) Validate() error {
+func (s MessageEntity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Type
+		_ = s.Type // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -720,7 +756,7 @@ func (s *MessageEntity) Validate() error {
 	}
 	return nil
 }
-func (s *PassportData) Validate() error {
+func (s PassportData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Data == nil {
@@ -729,7 +765,9 @@ func (s *PassportData) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Data {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -741,7 +779,6 @@ func (s *PassportData) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Data
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -754,13 +791,15 @@ func (s *PassportData) Validate() error {
 	}
 	return nil
 }
-func (s *Poll) Validate() error {
+func (s Poll) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ExplanationEntities {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -772,7 +811,6 @@ func (s *Poll) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ExplanationEntities
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -787,7 +825,9 @@ func (s *Poll) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Options {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -799,7 +839,6 @@ func (s *Poll) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Options
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -812,7 +851,7 @@ func (s *Poll) Validate() error {
 	}
 	return nil
 }
-func (s *PollAnswer) Validate() error {
+func (s PollAnswer) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.OptionIds == nil {
@@ -821,7 +860,8 @@ func (s *PollAnswer) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionIds {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -833,7 +873,6 @@ func (s *PollAnswer) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.OptionIds
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -846,10 +885,11 @@ func (s *PollAnswer) Validate() error {
 	}
 	return nil
 }
-func (s *SendGamePostReqApplicationJSON) Validate() error {
+func (s SendGamePostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ReplyMarkup
+		_ = s.ReplyMarkup // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -862,10 +902,11 @@ func (s *SendGamePostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *SendGamePostReqApplicationXWwwFormUrlencoded) Validate() error {
+func (s SendGamePostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ReplyMarkup
+		_ = s.ReplyMarkup // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -878,10 +919,11 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) Validate() error {
 	}
 	return nil
 }
-func (s *SendGamePostReqMultipartFormData) Validate() error {
+func (s SendGamePostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ReplyMarkup
+		_ = s.ReplyMarkup // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -894,10 +936,12 @@ func (s *SendGamePostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *SendGamePostResOK) Validate() error {
+func (s SendGamePostResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Result
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -910,7 +954,7 @@ func (s *SendGamePostResOK) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostReqApplicationJSON) Validate() error {
+func (s SendInvoicePostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
@@ -919,7 +963,9 @@ func (s *SendInvoicePostReqApplicationJSON) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Prices {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -931,7 +977,6 @@ func (s *SendInvoicePostReqApplicationJSON) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Prices
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -940,7 +985,8 @@ func (s *SendInvoicePostReqApplicationJSON) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ReplyMarkup
+		_ = s.ReplyMarkup // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -953,7 +999,7 @@ func (s *SendInvoicePostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
+func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
@@ -962,7 +1008,9 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Prices {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -974,7 +1022,6 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Prices
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -983,7 +1030,8 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ReplyMarkup
+		_ = s.ReplyMarkup // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -996,7 +1044,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostReqMultipartFormData) Validate() error {
+func (s SendInvoicePostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
@@ -1005,7 +1053,9 @@ func (s *SendInvoicePostReqMultipartFormData) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Prices {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1017,7 +1067,6 @@ func (s *SendInvoicePostReqMultipartFormData) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Prices
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1026,7 +1075,8 @@ func (s *SendInvoicePostReqMultipartFormData) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ReplyMarkup
+		_ = s.ReplyMarkup // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1039,10 +1089,12 @@ func (s *SendInvoicePostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostResOK) Validate() error {
+func (s SendInvoicePostResOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Result
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1055,7 +1107,7 @@ func (s *SendInvoicePostResOK) Validate() error {
 	}
 	return nil
 }
-func (s *SetMyCommandsPostReqApplicationJSON) Validate() error {
+func (s SetMyCommandsPostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {
@@ -1064,7 +1116,9 @@ func (s *SetMyCommandsPostReqApplicationJSON) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Commands {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1076,7 +1130,6 @@ func (s *SetMyCommandsPostReqApplicationJSON) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Commands
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1089,7 +1142,7 @@ func (s *SetMyCommandsPostReqApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
+func (s SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {
@@ -1098,7 +1151,9 @@ func (s *SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Commands {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1110,7 +1165,6 @@ func (s *SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Commands
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1123,7 +1177,7 @@ func (s *SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	}
 	return nil
 }
-func (s *SetMyCommandsPostReqMultipartFormData) Validate() error {
+func (s SetMyCommandsPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Commands == nil {
@@ -1132,7 +1186,9 @@ func (s *SetMyCommandsPostReqMultipartFormData) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Commands {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1144,7 +1200,6 @@ func (s *SetMyCommandsPostReqMultipartFormData) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Commands
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1157,7 +1212,7 @@ func (s *SetMyCommandsPostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *ShippingOption) Validate() error {
+func (s ShippingOption) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Prices == nil {
@@ -1166,7 +1221,9 @@ func (s *ShippingOption) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Prices {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1178,7 +1235,6 @@ func (s *ShippingOption) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Prices
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1191,10 +1247,11 @@ func (s *ShippingOption) Validate() error {
 	}
 	return nil
 }
-func (s *Sticker) Validate() error {
+func (s Sticker) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.MaskPosition
+		_ = s.MaskPosition // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1207,7 +1264,7 @@ func (s *Sticker) Validate() error {
 	}
 	return nil
 }
-func (s *StickerSet) Validate() error {
+func (s StickerSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Stickers == nil {
@@ -1216,7 +1273,9 @@ func (s *StickerSet) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Stickers {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1228,7 +1287,6 @@ func (s *StickerSet) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Stickers
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1241,10 +1299,11 @@ func (s *StickerSet) Validate() error {
 	}
 	return nil
 }
-func (s *Update) Validate() error {
+func (s Update) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.CallbackQuery
+		_ = s.CallbackQuery // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1253,7 +1312,8 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.ChannelPost
+		_ = s.ChannelPost // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1262,7 +1322,8 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.EditedChannelPost
+		_ = s.EditedChannelPost // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1271,7 +1332,8 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.EditedMessage
+		_ = s.EditedMessage // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1280,7 +1342,8 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Message
+		_ = s.Message // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1289,7 +1352,8 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Poll
+		_ = s.Poll // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1298,7 +1362,8 @@ func (s *Update) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.PollAnswer
+		_ = s.PollAnswer // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1311,7 +1376,7 @@ func (s *Update) Validate() error {
 	}
 	return nil
 }
-func (s *UserProfilePhotos) Validate() error {
+func (s UserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Photos == nil {
@@ -1326,7 +1391,9 @@ func (s *UserProfilePhotos) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						_ = elem
+						if err := elem.Validate(); err != nil {
+							return err
+						}
 						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
@@ -1338,7 +1405,6 @@ func (s *UserProfilePhotos) Validate() error {
 						return &validate.Error{Fields: failures}
 					}
 				}
-				_ = elem
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1350,7 +1416,6 @@ func (s *UserProfilePhotos) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Photos
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

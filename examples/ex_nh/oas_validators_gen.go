@@ -50,10 +50,11 @@ var (
 	_ = net.IP{}
 )
 
-func (s *Book) Validate() error {
+func (s Book) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ID
+		_ = s.ID // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -62,7 +63,8 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Images
+		_ = s.Images // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -71,7 +73,8 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.MediaID
+		_ = s.MediaID // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -80,7 +83,8 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.NumFavorites
+		_ = s.NumFavorites // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -89,7 +93,8 @@ func (s *Book) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.NumPages
+		_ = s.NumPages // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -101,7 +106,9 @@ func (s *Book) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Tags {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -113,7 +120,6 @@ func (s *Book) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Tags
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -126,10 +132,11 @@ func (s *Book) Validate() error {
 	}
 	return nil
 }
-func (s *Image) Validate() error {
+func (s Image) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.H
+		_ = s.H // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -138,7 +145,8 @@ func (s *Image) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.W
+		_ = s.W // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -151,10 +159,11 @@ func (s *Image) Validate() error {
 	}
 	return nil
 }
-func (s *Images) Validate() error {
+func (s Images) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Cover
+		_ = s.Cover // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -166,7 +175,9 @@ func (s *Images) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Pages {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -178,7 +189,6 @@ func (s *Images) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Pages
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -187,7 +197,8 @@ func (s *Images) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Thumbnail
+		_ = s.Thumbnail // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -200,13 +211,21 @@ func (s *Images) Validate() error {
 	}
 	return nil
 }
-func (s *SearchResponse) Validate() error {
+func (s SearchByTagIDOKApplicationJSON) Validate() error {
+	return nil
+}
+func (s SearchOKApplicationJSON) Validate() error {
+	return nil
+}
+func (s SearchResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Result {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -218,7 +237,6 @@ func (s *SearchResponse) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Result
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -231,10 +249,11 @@ func (s *SearchResponse) Validate() error {
 	}
 	return nil
 }
-func (s *Tag) Validate() error {
+func (s Tag) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.ID
+		_ = s.ID // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -243,7 +262,8 @@ func (s *Tag) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Type
+		_ = s.Type // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

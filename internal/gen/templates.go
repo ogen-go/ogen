@@ -94,8 +94,9 @@ func templateFunctions() template.FuncMap {
 				More: true,
 			}
 		},
-		"req_elem":        func(t *ir.Type) Elem { return Elem{Type: t, Var: "response", More: true} },
-		"req_decode_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request", More: true} },
+		"req_elem":     func(t *ir.Type) Elem { return Elem{Type: t, Var: "response", More: true} },
+		"req_dec_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request", More: true} },
+		"req_enc_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "req", More: true} },
 		"res_elem": func(i *ir.ResponseInfo) Elem {
 			v := "response"
 			if i.Default {

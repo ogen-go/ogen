@@ -50,7 +50,844 @@ var (
 	_ = net.IP{}
 )
 
-func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateCoreV1PersistentVolumeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1CSINodeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1StorageClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationJSONAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationJSONCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationYamlAccepted) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationYamlCreated) Validate() error {
+	return nil
+}
+func (s CreateStorageV1VolumeAttachmentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAPIVersionsApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAPIVersionsApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAPIVersionsApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAdmissionregistrationAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAdmissionregistrationAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAdmissionregistrationAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAdmissionregistrationV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAdmissionregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAdmissionregistrationV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetApiextensionsAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetApiextensionsAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetApiextensionsAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetApiextensionsV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetApiextensionsV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetApiextensionsV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetApiregistrationAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetApiregistrationAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetApiregistrationAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetApiregistrationV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetApiregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetApiregistrationV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAppsAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAppsAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAppsAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAppsV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAppsV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAppsV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAuthenticationAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAuthenticationAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAuthenticationAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAuthenticationV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAuthenticationV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAuthenticationV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAuthorizationAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAuthorizationAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAuthorizationV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAuthorizationV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV2beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV2beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV2beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV2beta2APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV2beta2APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetAutoscalingV2beta2APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetBatchAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetBatchAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetBatchAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetBatchV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetBatchV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetBatchV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetBatchV1beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetBatchV1beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetBatchV1beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetCertificatesAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetCertificatesAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetCertificatesAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetCertificatesV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetCertificatesV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetCertificatesV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetCoordinationAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetCoordinationAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetCoordinationAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetCoordinationV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetCoordinationV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetCoordinationV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetCoreAPIVersionsApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetCoreAPIVersionsApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetCoreAPIVersionsApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetCoreV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetCoreV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetCoreV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryV1beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryV1beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetDiscoveryV1beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetEventsAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetEventsAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetEventsAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetEventsV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetEventsV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetEventsV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetEventsV1beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetEventsV1beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetEventsV1beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverV1beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverV1beta2APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetInternalApiserverAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetInternalApiserverAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetInternalApiserverAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetInternalApiserverV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetNetworkingAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetNetworkingAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetNetworkingAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetNetworkingV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetNetworkingV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetNetworkingV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetNodeAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetNodeAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetNodeAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1alpha1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1alpha1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetNodeV1beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetPolicyAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetPolicyAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetPolicyAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetPolicyV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetPolicyV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetPolicyV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetPolicyV1beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetPolicyV1beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetPolicyV1beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetRbacAuthorizationAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetRbacAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetRbacAuthorizationAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetRbacAuthorizationV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetRbacAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetRbacAuthorizationV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetSchedulingAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetSchedulingAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetSchedulingAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetSchedulingV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetSchedulingV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetSchedulingV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetStorageAPIGroupApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetStorageAPIGroupApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetStorageAPIGroupApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1alpha1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1alpha1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1beta1APIResourcesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1beta1APIResourcesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s GetStorageV1beta1APIResourcesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AdmissionReviewVersions == nil {
@@ -59,7 +896,8 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.AdmissionReviewVersions {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -71,7 +909,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.AdmissionReviewVersions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -84,13 +921,15 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Validate() error {
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Webhooks {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -102,7 +941,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Validate()
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Webhooks
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -115,7 +953,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Validate()
 	}
 	return nil
 }
-func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Validate() error {
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -124,7 +962,9 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Valida
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -136,7 +976,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Valida
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -149,7 +988,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Valida
 	}
 	return nil
 }
-func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AdmissionReviewVersions == nil {
@@ -158,7 +997,8 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.AdmissionReviewVersions {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -170,7 +1010,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.AdmissionReviewVersions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -183,13 +1022,15 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Validate() error {
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Webhooks {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -201,7 +1042,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Validate
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Webhooks
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -214,7 +1054,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Validate
 	}
 	return nil
 }
-func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Validate() error {
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -223,7 +1063,9 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Vali
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -235,7 +1077,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Vali
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -248,7 +1089,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Vali
 	}
 	return nil
 }
-func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -257,7 +1098,9 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -269,7 +1112,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -282,7 +1124,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
+func (s IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -291,7 +1133,9 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -303,7 +1147,6 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -316,10 +1159,11 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1DaemonSet) Validate() error {
+func (s IoK8sAPIAppsV1DaemonSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -332,7 +1176,7 @@ func (s *IoK8sAPIAppsV1DaemonSet) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1DaemonSetList) Validate() error {
+func (s IoK8sAPIAppsV1DaemonSetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -341,7 +1185,9 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -353,7 +1199,6 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -366,10 +1211,12 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1DaemonSetSpec) Validate() error {
+func (s IoK8sAPIAppsV1DaemonSetSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Template
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -382,10 +1229,11 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1Deployment) Validate() error {
+func (s IoK8sAPIAppsV1Deployment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -398,7 +1246,7 @@ func (s *IoK8sAPIAppsV1Deployment) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1DeploymentList) Validate() error {
+func (s IoK8sAPIAppsV1DeploymentList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -407,7 +1255,9 @@ func (s *IoK8sAPIAppsV1DeploymentList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -419,7 +1269,6 @@ func (s *IoK8sAPIAppsV1DeploymentList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -432,10 +1281,12 @@ func (s *IoK8sAPIAppsV1DeploymentList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1DeploymentSpec) Validate() error {
+func (s IoK8sAPIAppsV1DeploymentSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Template
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -448,10 +1299,11 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1ReplicaSet) Validate() error {
+func (s IoK8sAPIAppsV1ReplicaSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -464,7 +1316,7 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1ReplicaSetList) Validate() error {
+func (s IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -473,7 +1325,9 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -485,7 +1339,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -498,10 +1351,11 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
+func (s IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Template
+		_ = s.Template // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -514,10 +1368,11 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1StatefulSet) Validate() error {
+func (s IoK8sAPIAppsV1StatefulSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -530,7 +1385,7 @@ func (s *IoK8sAPIAppsV1StatefulSet) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1StatefulSetList) Validate() error {
+func (s IoK8sAPIAppsV1StatefulSetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -539,7 +1394,9 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -551,7 +1408,6 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -564,10 +1420,12 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAppsV1StatefulSetSpec) Validate() error {
+func (s IoK8sAPIAppsV1StatefulSetSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Template
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -580,7 +1438,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
+func (s IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
@@ -589,7 +1447,8 @@ func (s *IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -601,7 +1460,6 @@ func (s *IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -614,7 +1472,7 @@ func (s *IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
+func (s IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
@@ -623,7 +1481,8 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -635,7 +1494,6 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -648,10 +1506,11 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) Validate() error {
+func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReview) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Status
+		_ = s.Status // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -664,7 +1523,7 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
+func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NonResourceRules == nil {
@@ -673,7 +1532,9 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.NonResourceRules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -685,7 +1546,6 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.NonResourceRules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -700,7 +1560,9 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ResourceRules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -712,7 +1574,6 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ResourceRules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -725,7 +1586,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -734,7 +1595,9 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -746,7 +1609,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -759,10 +1621,11 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Validate() error {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Status
+		_ = s.Status // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -775,7 +1638,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -784,7 +1647,9 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -796,7 +1661,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -809,7 +1673,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error
 	}
 	return nil
 }
-func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() error {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Conditions == nil {
@@ -818,7 +1682,9 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() err
 		var failures []validate.FieldError
 		for i, elem := range s.Conditions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -830,7 +1696,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() err
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Conditions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -843,10 +1708,11 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() err
 	}
 	return nil
 }
-func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Validate() error {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Status
+		_ = s.Status // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -859,7 +1725,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -868,7 +1734,9 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -880,7 +1748,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -893,7 +1760,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error
 	}
 	return nil
 }
-func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() error {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Conditions == nil {
@@ -902,7 +1769,9 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() err
 		var failures []validate.FieldError
 		for i, elem := range s.Conditions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -914,7 +1783,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() err
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Conditions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -927,10 +1795,11 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() err
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1CronJob) Validate() error {
+func (s IoK8sAPIBatchV1CronJob) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -943,7 +1812,7 @@ func (s *IoK8sAPIBatchV1CronJob) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1CronJobList) Validate() error {
+func (s IoK8sAPIBatchV1CronJobList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -952,7 +1821,9 @@ func (s *IoK8sAPIBatchV1CronJobList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -964,7 +1835,6 @@ func (s *IoK8sAPIBatchV1CronJobList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -977,10 +1847,12 @@ func (s *IoK8sAPIBatchV1CronJobList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1CronJobSpec) Validate() error {
+func (s IoK8sAPIBatchV1CronJobSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.JobTemplate
+		if err := s.JobTemplate.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -993,10 +1865,11 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1Job) Validate() error {
+func (s IoK8sAPIBatchV1Job) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1009,7 +1882,7 @@ func (s *IoK8sAPIBatchV1Job) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1JobList) Validate() error {
+func (s IoK8sAPIBatchV1JobList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1018,7 +1891,9 @@ func (s *IoK8sAPIBatchV1JobList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1030,7 +1905,6 @@ func (s *IoK8sAPIBatchV1JobList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1043,10 +1917,12 @@ func (s *IoK8sAPIBatchV1JobList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1JobSpec) Validate() error {
+func (s IoK8sAPIBatchV1JobSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Template
+		if err := s.Template.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1059,10 +1935,11 @@ func (s *IoK8sAPIBatchV1JobSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
+func (s IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1075,10 +1952,11 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1beta1CronJob) Validate() error {
+func (s IoK8sAPIBatchV1beta1CronJob) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1091,7 +1969,7 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1beta1CronJobList) Validate() error {
+func (s IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1100,7 +1978,9 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1112,7 +1992,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1125,10 +2004,12 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1beta1CronJobSpec) Validate() error {
+func (s IoK8sAPIBatchV1beta1CronJobSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.JobTemplate
+		if err := s.JobTemplate.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1141,10 +2022,11 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
+func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1157,10 +2039,12 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1173,7 +2057,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1182,7 +2066,9 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1194,7 +2080,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1207,7 +2092,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Request == nil {
@@ -1216,7 +2101,8 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Request {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1228,7 +2114,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Request
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1241,7 +2126,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoordinationV1LeaseList) Validate() error {
+func (s IoK8sAPICoordinationV1LeaseList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1250,7 +2135,9 @@ func (s *IoK8sAPICoordinationV1LeaseList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1262,7 +2149,6 @@ func (s *IoK8sAPICoordinationV1LeaseList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1275,10 +2161,11 @@ func (s *IoK8sAPICoordinationV1LeaseList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1Affinity) Validate() error {
+func (s IoK8sAPICoreV1Affinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.NodeAffinity
+		_ = s.NodeAffinity // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1291,7 +2178,7 @@ func (s *IoK8sAPICoreV1Affinity) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
@@ -1300,7 +2187,8 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Monitors {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1312,7 +2200,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Monitors
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1325,7 +2212,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
+func (s IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
@@ -1334,7 +2221,8 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Monitors {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1346,7 +2234,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Monitors
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1359,7 +2246,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ComponentStatusList) Validate() error {
+func (s IoK8sAPICoreV1ComponentStatusList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1368,7 +2255,9 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1380,7 +2269,6 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1393,7 +2281,7 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ConfigMapList) Validate() error {
+func (s IoK8sAPICoreV1ConfigMapList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1402,7 +2290,9 @@ func (s *IoK8sAPICoreV1ConfigMapList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1414,7 +2304,6 @@ func (s *IoK8sAPICoreV1ConfigMapList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1427,7 +2316,7 @@ func (s *IoK8sAPICoreV1ConfigMapList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1EndpointsList) Validate() error {
+func (s IoK8sAPICoreV1EndpointsList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1436,7 +2325,9 @@ func (s *IoK8sAPICoreV1EndpointsList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1448,7 +2339,6 @@ func (s *IoK8sAPICoreV1EndpointsList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1461,7 +2351,7 @@ func (s *IoK8sAPICoreV1EndpointsList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1EventList) Validate() error {
+func (s IoK8sAPICoreV1EventList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1470,7 +2360,9 @@ func (s *IoK8sAPICoreV1EventList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1482,7 +2374,6 @@ func (s *IoK8sAPICoreV1EventList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1495,10 +2386,11 @@ func (s *IoK8sAPICoreV1EventList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1LimitRange) Validate() error {
+func (s IoK8sAPICoreV1LimitRange) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1511,7 +2403,7 @@ func (s *IoK8sAPICoreV1LimitRange) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1LimitRangeList) Validate() error {
+func (s IoK8sAPICoreV1LimitRangeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1520,7 +2412,9 @@ func (s *IoK8sAPICoreV1LimitRangeList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1532,7 +2426,6 @@ func (s *IoK8sAPICoreV1LimitRangeList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1545,7 +2438,7 @@ func (s *IoK8sAPICoreV1LimitRangeList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1LimitRangeSpec) Validate() error {
+func (s IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Limits == nil {
@@ -1554,7 +2447,9 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Limits {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1566,7 +2461,6 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Limits
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1579,7 +2473,7 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1NamespaceList) Validate() error {
+func (s IoK8sAPICoreV1NamespaceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1588,7 +2482,9 @@ func (s *IoK8sAPICoreV1NamespaceList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1600,7 +2496,6 @@ func (s *IoK8sAPICoreV1NamespaceList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1613,10 +2508,11 @@ func (s *IoK8sAPICoreV1NamespaceList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1NodeAffinity) Validate() error {
+func (s IoK8sAPICoreV1NodeAffinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RequiredDuringSchedulingIgnoredDuringExecution
+		_ = s.RequiredDuringSchedulingIgnoredDuringExecution // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1629,7 +2525,7 @@ func (s *IoK8sAPICoreV1NodeAffinity) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1NodeList) Validate() error {
+func (s IoK8sAPICoreV1NodeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1638,7 +2534,9 @@ func (s *IoK8sAPICoreV1NodeList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1650,7 +2548,6 @@ func (s *IoK8sAPICoreV1NodeList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1663,7 +2560,7 @@ func (s *IoK8sAPICoreV1NodeList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1NodeSelector) Validate() error {
+func (s IoK8sAPICoreV1NodeSelector) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NodeSelectorTerms == nil {
@@ -1672,7 +2569,9 @@ func (s *IoK8sAPICoreV1NodeSelector) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.NodeSelectorTerms {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1684,7 +2583,6 @@ func (s *IoK8sAPICoreV1NodeSelector) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.NodeSelectorTerms
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1697,10 +2595,11 @@ func (s *IoK8sAPICoreV1NodeSelector) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PersistentVolume) Validate() error {
+func (s IoK8sAPICoreV1PersistentVolume) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1713,7 +2612,7 @@ func (s *IoK8sAPICoreV1PersistentVolume) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1722,7 +2621,9 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1734,7 +2635,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1747,7 +2647,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PersistentVolumeList) Validate() error {
+func (s IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1756,7 +2656,9 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1768,7 +2670,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1781,10 +2682,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
+func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Cephfs
+		_ = s.Cephfs // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1793,7 +2695,8 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.NodeAffinity
+		_ = s.NodeAffinity // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1802,7 +2705,8 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Rbd
+		_ = s.Rbd // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1815,10 +2719,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1Pod) Validate() error {
+func (s IoK8sAPICoreV1Pod) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1831,7 +2736,7 @@ func (s *IoK8sAPICoreV1Pod) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PodList) Validate() error {
+func (s IoK8sAPICoreV1PodList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1840,7 +2745,9 @@ func (s *IoK8sAPICoreV1PodList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1852,7 +2759,6 @@ func (s *IoK8sAPICoreV1PodList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1865,10 +2771,11 @@ func (s *IoK8sAPICoreV1PodList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PodSpec) Validate() error {
+func (s IoK8sAPICoreV1PodSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Affinity
+		_ = s.Affinity // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1883,7 +2790,9 @@ func (s *IoK8sAPICoreV1PodSpec) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Containers {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1895,7 +2804,6 @@ func (s *IoK8sAPICoreV1PodSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Containers
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1907,7 +2815,9 @@ func (s *IoK8sAPICoreV1PodSpec) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Volumes {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1919,7 +2829,6 @@ func (s *IoK8sAPICoreV1PodSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Volumes
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1932,10 +2841,11 @@ func (s *IoK8sAPICoreV1PodSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PodTemplate) Validate() error {
+func (s IoK8sAPICoreV1PodTemplate) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Template
+		_ = s.Template // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1948,7 +2858,7 @@ func (s *IoK8sAPICoreV1PodTemplate) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PodTemplateList) Validate() error {
+func (s IoK8sAPICoreV1PodTemplateList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -1957,7 +2867,9 @@ func (s *IoK8sAPICoreV1PodTemplateList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1969,7 +2881,6 @@ func (s *IoK8sAPICoreV1PodTemplateList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1982,10 +2893,11 @@ func (s *IoK8sAPICoreV1PodTemplateList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1PodTemplateSpec) Validate() error {
+func (s IoK8sAPICoreV1PodTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1998,7 +2910,7 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
@@ -2007,7 +2919,8 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Monitors {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2019,7 +2932,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Monitors
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2032,7 +2944,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1RBDVolumeSource) Validate() error {
+func (s IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Monitors == nil {
@@ -2041,7 +2953,8 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Monitors {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2053,7 +2966,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Monitors
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2066,10 +2978,11 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ReplicationController) Validate() error {
+func (s IoK8sAPICoreV1ReplicationController) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2082,7 +2995,7 @@ func (s *IoK8sAPICoreV1ReplicationController) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ReplicationControllerList) Validate() error {
+func (s IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2091,7 +3004,9 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2103,7 +3018,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2116,10 +3030,11 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ReplicationControllerSpec) Validate() error {
+func (s IoK8sAPICoreV1ReplicationControllerSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Template
+		_ = s.Template // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2132,7 +3047,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ResourceQuotaList) Validate() error {
+func (s IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2141,7 +3056,9 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2153,7 +3070,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2166,7 +3082,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1SecretList) Validate() error {
+func (s IoK8sAPICoreV1SecretList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2175,7 +3091,9 @@ func (s *IoK8sAPICoreV1SecretList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2187,7 +3105,6 @@ func (s *IoK8sAPICoreV1SecretList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2200,7 +3117,7 @@ func (s *IoK8sAPICoreV1SecretList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ServiceAccountList) Validate() error {
+func (s IoK8sAPICoreV1ServiceAccountList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2209,7 +3126,9 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2221,7 +3140,6 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2234,7 +3152,7 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1ServiceList) Validate() error {
+func (s IoK8sAPICoreV1ServiceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2243,7 +3161,9 @@ func (s *IoK8sAPICoreV1ServiceList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2255,7 +3175,6 @@ func (s *IoK8sAPICoreV1ServiceList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2268,7 +3187,7 @@ func (s *IoK8sAPICoreV1ServiceList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
+func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Values == nil {
@@ -2277,7 +3196,8 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Values {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2289,7 +3209,6 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Values
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2302,13 +3221,15 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
+func (s IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.MatchLabelExpressions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2320,7 +3241,6 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.MatchLabelExpressions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2333,10 +3253,11 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1Volume) Validate() error {
+func (s IoK8sAPICoreV1Volume) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Cephfs
+		_ = s.Cephfs // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2345,7 +3266,8 @@ func (s *IoK8sAPICoreV1Volume) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Rbd
+		_ = s.Rbd // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2358,10 +3280,11 @@ func (s *IoK8sAPICoreV1Volume) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPICoreV1VolumeNodeAffinity) Validate() error {
+func (s IoK8sAPICoreV1VolumeNodeAffinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Required
+		_ = s.Required // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2374,7 +3297,7 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIDiscoveryV1Endpoint) Validate() error {
+func (s IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Addresses == nil {
@@ -2383,7 +3306,8 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Addresses {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2395,7 +3319,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Addresses
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2408,7 +3331,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
+func (s IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Endpoints == nil {
@@ -2417,7 +3340,9 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Endpoints {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2429,7 +3354,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Endpoints
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2442,7 +3366,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2451,7 +3375,9 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2463,7 +3389,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2476,7 +3401,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Addresses == nil {
@@ -2485,7 +3410,8 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Addresses {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2497,7 +3423,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Addresses
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2510,7 +3435,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Endpoints == nil {
@@ -2519,7 +3444,9 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Endpoints {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2531,7 +3458,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Endpoints
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2544,7 +3470,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2553,7 +3479,9 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2565,7 +3493,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2578,7 +3505,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIEventsV1EventList) Validate() error {
+func (s IoK8sAPIEventsV1EventList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2587,7 +3514,9 @@ func (s *IoK8sAPIEventsV1EventList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2599,7 +3528,6 @@ func (s *IoK8sAPIEventsV1EventList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2612,7 +3540,7 @@ func (s *IoK8sAPIEventsV1EventList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIEventsV1beta1EventList) Validate() error {
+func (s IoK8sAPIEventsV1beta1EventList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2621,7 +3549,9 @@ func (s *IoK8sAPIEventsV1beta1EventList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2633,7 +3563,6 @@ func (s *IoK8sAPIEventsV1beta1EventList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2646,10 +3575,11 @@ func (s *IoK8sAPIEventsV1beta1EventList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2662,7 +3592,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2671,7 +3601,9 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2683,7 +3615,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2696,13 +3627,15 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Rules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2714,7 +3647,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Rules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2727,7 +3659,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NonResourceURLs == nil {
@@ -2736,7 +3668,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.NonResourceURLs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2748,7 +3681,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.NonResourceURLs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2763,7 +3695,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2775,7 +3708,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2788,13 +3720,15 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.NonResourceRules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2806,7 +3740,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.NonResourceRules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2818,7 +3751,9 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ResourceRules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2830,7 +3765,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ResourceRules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2845,7 +3779,9 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Subjects {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2857,7 +3793,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Subjects
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2870,7 +3805,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -2879,7 +3814,9 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() er
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2891,7 +3828,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() er
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2904,7 +3840,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() er
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ApiGroups == nil {
@@ -2913,7 +3849,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ApiGroups {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2925,7 +3862,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ApiGroups
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2940,7 +3876,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Resources {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2952,7 +3889,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Resources
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2967,7 +3903,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2979,7 +3916,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2992,10 +3928,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3008,7 +3945,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3017,7 +3954,9 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3029,7 +3968,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3042,13 +3980,15 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Rules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3060,7 +4000,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Rules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3073,7 +4012,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.NonResourceURLs == nil {
@@ -3082,7 +4021,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.NonResourceURLs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3094,7 +4034,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.NonResourceURLs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3109,7 +4048,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3121,7 +4061,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3134,13 +4073,15 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.NonResourceRules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3152,7 +4093,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.NonResourceRules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3164,7 +4104,9 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ResourceRules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3176,7 +4118,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ResourceRules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3191,7 +4132,9 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Subjects {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3203,7 +4146,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Subjects
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3216,7 +4158,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3225,7 +4167,9 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() er
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3237,7 +4181,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() er
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3250,7 +4193,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() er
 	}
 	return nil
 }
-func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ApiGroups == nil {
@@ -3259,7 +4202,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ApiGroups {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3271,7 +4215,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ApiGroups
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3286,7 +4229,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Resources {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3298,7 +4242,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Resources
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3313,7 +4256,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3325,7 +4269,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3338,7 +4281,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
+func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Paths == nil {
@@ -3347,7 +4290,9 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Paths {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3359,7 +4304,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Paths
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3372,10 +4316,11 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINetworkingV1Ingress) Validate() error {
+func (s IoK8sAPINetworkingV1Ingress) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3388,7 +4333,7 @@ func (s *IoK8sAPINetworkingV1Ingress) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINetworkingV1IngressClassList) Validate() error {
+func (s IoK8sAPINetworkingV1IngressClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3397,7 +4342,9 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3409,7 +4356,6 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3422,7 +4368,7 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINetworkingV1IngressList) Validate() error {
+func (s IoK8sAPINetworkingV1IngressList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3431,7 +4377,9 @@ func (s *IoK8sAPINetworkingV1IngressList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3443,7 +4391,6 @@ func (s *IoK8sAPINetworkingV1IngressList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3456,10 +4403,11 @@ func (s *IoK8sAPINetworkingV1IngressList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINetworkingV1IngressRule) Validate() error {
+func (s IoK8sAPINetworkingV1IngressRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.HTTP
+		_ = s.HTTP // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3472,13 +4420,15 @@ func (s *IoK8sAPINetworkingV1IngressRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINetworkingV1IngressSpec) Validate() error {
+func (s IoK8sAPINetworkingV1IngressSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Rules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3490,7 +4440,6 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Rules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3503,7 +4452,7 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
+func (s IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3512,7 +4461,9 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3524,7 +4475,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3537,7 +4487,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINodeV1RuntimeClassList) Validate() error {
+func (s IoK8sAPINodeV1RuntimeClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3546,7 +4496,9 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3558,7 +4510,6 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3571,7 +4522,7 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3580,7 +4531,9 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3592,7 +4545,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3605,7 +4557,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
+func (s IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3614,7 +4566,9 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3626,7 +4580,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3639,7 +4592,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3648,7 +4601,9 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3660,7 +4615,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3673,7 +4627,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3682,7 +4636,9 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3694,7 +4650,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3707,10 +4662,11 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Validate() error {
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		_ = s.Spec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3723,7 +4679,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3732,7 +4688,9 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3744,7 +4702,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3757,10 +4714,11 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Validate() error {
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.RuntimeClass
+		_ = s.RuntimeClass // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3773,7 +4731,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
+func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AllowedRuntimeClassNames == nil {
@@ -3782,7 +4740,8 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.AllowedRuntimeClassNames {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3794,7 +4753,6 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.AllowedRuntimeClassNames
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3807,13 +4765,15 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIRbacV1ClusterRole) Validate() error {
+func (s IoK8sAPIRbacV1ClusterRole) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Rules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3825,7 +4785,6 @@ func (s *IoK8sAPIRbacV1ClusterRole) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Rules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3838,7 +4797,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3847,7 +4806,9 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3859,7 +4820,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3872,7 +4832,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIRbacV1ClusterRoleList) Validate() error {
+func (s IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3881,7 +4841,9 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3893,7 +4855,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3906,7 +4867,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIRbacV1PolicyRule) Validate() error {
+func (s IoK8sAPIRbacV1PolicyRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
@@ -3915,7 +4876,8 @@ func (s *IoK8sAPIRbacV1PolicyRule) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3927,7 +4889,6 @@ func (s *IoK8sAPIRbacV1PolicyRule) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3940,13 +4901,15 @@ func (s *IoK8sAPIRbacV1PolicyRule) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIRbacV1Role) Validate() error {
+func (s IoK8sAPIRbacV1Role) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Rules {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3958,7 +4921,6 @@ func (s *IoK8sAPIRbacV1Role) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Rules
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3971,7 +4933,7 @@ func (s *IoK8sAPIRbacV1Role) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIRbacV1RoleBindingList) Validate() error {
+func (s IoK8sAPIRbacV1RoleBindingList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -3980,7 +4942,9 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3992,7 +4956,6 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4005,7 +4968,7 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIRbacV1RoleList) Validate() error {
+func (s IoK8sAPIRbacV1RoleList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4014,7 +4977,9 @@ func (s *IoK8sAPIRbacV1RoleList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4026,7 +4991,6 @@ func (s *IoK8sAPIRbacV1RoleList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4039,7 +5003,7 @@ func (s *IoK8sAPIRbacV1RoleList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPISchedulingV1PriorityClassList) Validate() error {
+func (s IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4048,7 +5012,9 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4060,7 +5026,6 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4073,7 +5038,7 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1CSIDriverList) Validate() error {
+func (s IoK8sAPIStorageV1CSIDriverList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4082,7 +5047,9 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4094,7 +5061,6 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4107,10 +5073,12 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1CSINode) Validate() error {
+func (s IoK8sAPIStorageV1CSINode) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4123,7 +5091,7 @@ func (s *IoK8sAPIStorageV1CSINode) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1CSINodeList) Validate() error {
+func (s IoK8sAPIStorageV1CSINodeList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4132,7 +5100,9 @@ func (s *IoK8sAPIStorageV1CSINodeList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4144,7 +5114,6 @@ func (s *IoK8sAPIStorageV1CSINodeList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4157,7 +5126,7 @@ func (s *IoK8sAPIStorageV1CSINodeList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1CSINodeSpec) Validate() error {
+func (s IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Drivers == nil {
@@ -4166,7 +5135,9 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Drivers {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4178,7 +5149,6 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Drivers
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4191,13 +5161,15 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1StorageClass) Validate() error {
+func (s IoK8sAPIStorageV1StorageClass) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.AllowedTopologies {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4209,7 +5181,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.AllowedTopologies
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4222,7 +5193,7 @@ func (s *IoK8sAPIStorageV1StorageClass) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1StorageClassList) Validate() error {
+func (s IoK8sAPIStorageV1StorageClassList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4231,7 +5202,9 @@ func (s *IoK8sAPIStorageV1StorageClassList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4243,7 +5216,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4256,10 +5228,12 @@ func (s *IoK8sAPIStorageV1StorageClassList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1VolumeAttachment) Validate() error {
+func (s IoK8sAPIStorageV1VolumeAttachment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4272,7 +5246,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
+func (s IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4281,7 +5255,9 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4293,7 +5269,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4306,10 +5281,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Validate() error {
+func (s IoK8sAPIStorageV1VolumeAttachmentSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.InlineVolumeSpec
+		_ = s.InlineVolumeSpec // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4322,10 +5298,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Validate() error {
+func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Source
+		if err := s.Source.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4338,7 +5316,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4347,7 +5325,9 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4359,7 +5339,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4372,7 +5351,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4381,7 +5360,9 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4393,7 +5374,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4406,10 +5386,11 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Validate() error {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Webhook
+		_ = s.Webhook // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4422,10 +5403,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 	}
 	return nil
 }
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) Validate() error {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Spec
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4438,7 +5421,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}
 	return nil
 }
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) Validate() error {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4447,7 +5430,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4459,7 +5444,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4472,10 +5456,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}
 	return nil
 }
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Validate() error {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		_ = s.Conversion
+		_ = s.Conversion // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4490,7 +5475,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		var failures []validate.FieldError
 		for i, elem := range s.Versions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4502,7 +5489,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Versions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4515,7 +5501,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}
 	return nil
 }
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Validate() error {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ConversionReviewVersions == nil {
@@ -4524,7 +5510,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Val
 		var failures []validate.FieldError
 		for i, elem := range s.ConversionReviewVersions {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4536,7 +5523,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Val
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ConversionReviewVersions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4549,7 +5535,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Val
 	}
 	return nil
 }
-func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Versions == nil {
@@ -4558,7 +5544,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Versions {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4570,7 +5558,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Versions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4583,7 +5570,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
+func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Groups == nil {
@@ -4592,7 +5579,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Groups {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4604,7 +5593,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Groups
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4617,7 +5605,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Verbs == nil {
@@ -4626,7 +5614,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Verbs {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4638,7 +5627,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Verbs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4651,7 +5639,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Resources == nil {
@@ -4660,7 +5648,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Resources {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4672,7 +5662,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Resources
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4685,7 +5674,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ServerAddressByClientCIDRs == nil {
@@ -4694,7 +5683,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.ServerAddressByClientCIDRs {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4706,7 +5697,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.ServerAddressByClientCIDRs
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4721,7 +5711,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Versions {
 			if err := func() error {
-				_ = elem
+				_ = elem // validation expected, but not supported
+
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4733,7 +5724,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Versions
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4746,7 +5736,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 	}
 	return nil
 }
-func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() error {
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -4755,7 +5745,9 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() e
 		var failures []validate.FieldError
 		for i, elem := range s.Items {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4767,7 +5759,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() e
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Items
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4778,5 +5769,935 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() e
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+	return nil
+}
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListApiextensionsV1CustomResourceDefinitionApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListApiregistrationV1APIServiceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListApiregistrationV1APIServiceApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListApiregistrationV1APIServiceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DaemonSetForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DeploymentForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DeploymentForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ReplicaSetForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1StatefulSetForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1CronJobForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1CronJobForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1CronJobForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1JobForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1JobForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1JobForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1CronJobForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCertificatesV1CertificateSigningRequestApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCertificatesV1CertificateSigningRequestApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCertificatesV1CertificateSigningRequestApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1LeaseForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ComponentStatusApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ComponentStatusApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ComponentStatusApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ComponentStatusApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ComponentStatusApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ConfigMapForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EndpointsForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EndpointsForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EventForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EventForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1EventForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1LimitRangeForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespaceApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespaceApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespaceApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NamespaceApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NodeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NodeApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NodeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NodeApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1NodeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodTemplateForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1SecretForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1SecretForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1SecretForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceAccountForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListCoreV1ServiceForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1EventForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1EventForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1EventForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1EventForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListInternalApiserverV1alpha1StorageVersionApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressClassApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressClassApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1RuntimeClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1RuntimeClassApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1RuntimeClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1alpha1RuntimeClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1alpha1RuntimeClassApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1alpha1RuntimeClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1beta1RuntimeClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1beta1RuntimeClassApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListNodeV1beta1RuntimeClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodSecurityPolicyApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListSchedulingV1PriorityClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListSchedulingV1PriorityClassApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListSchedulingV1PriorityClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSIDriverApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSIDriverApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSIDriverApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSIDriverApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSIDriverApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSINodeApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSINodeApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSINodeApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSINodeApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1CSINodeApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1StorageClassApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1StorageClassApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1StorageClassApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1StorageClassApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1StorageClassApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1VolumeAttachmentApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1VolumeAttachmentApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1VolumeAttachmentApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) Validate() error {
+	return nil
+}
+func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) Validate() error {
 	return nil
 }

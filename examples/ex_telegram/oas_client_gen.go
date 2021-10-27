@@ -73,15 +73,16 @@ func NewClient(serverURL string) *Client {
 }
 
 func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReq) (res AnswerCallbackQueryPostRes, err error) {
-	body, contentType, err := encodeAnswerCallbackQueryPostRequest(req)
+	buf, contentType, err := encodeAnswerCallbackQueryPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerCallbackQuery"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -101,15 +102,16 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 }
 
 func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReq) (res AnswerPreCheckoutQueryPostRes, err error) {
-	body, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req)
+	buf, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerPreCheckoutQuery"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -129,15 +131,16 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 }
 
 func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
-	body, contentType, err := encodeAnswerShippingQueryPostRequest(req)
+	buf, contentType, err := encodeAnswerShippingQueryPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerShippingQuery"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -178,15 +181,16 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 }
 
 func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReq) (res DeleteStickerFromSetPostRes, err error) {
-	body, contentType, err := encodeDeleteStickerFromSetPostRequest(req)
+	buf, contentType, err := encodeDeleteStickerFromSetPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteStickerFromSet"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -206,15 +210,16 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 }
 
 func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq) (res DeleteWebhookPostRes, err error) {
-	body, contentType, err := encodeDeleteWebhookPostRequest(req)
+	buf, contentType, err := encodeDeleteWebhookPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteWebhook"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -234,15 +239,16 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 }
 
 func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFilePostRes, err error) {
-	body, contentType, err := encodeGetFilePostRequest(req)
+	buf, contentType, err := encodeGetFilePostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getFile"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -262,15 +268,16 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 }
 
 func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReq) (res GetGameHighScoresPostRes, err error) {
-	body, contentType, err := encodeGetGameHighScoresPostRequest(req)
+	buf, contentType, err := encodeGetGameHighScoresPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getGameHighScores"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -332,15 +339,16 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 }
 
 func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq) (res GetStickerSetPostRes, err error) {
-	body, contentType, err := encodeGetStickerSetPostRequest(req)
+	buf, contentType, err := encodeGetStickerSetPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getStickerSet"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -360,15 +368,16 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 }
 
 func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res GetUpdatesPostRes, err error) {
-	body, contentType, err := encodeGetUpdatesPostRequest(req)
+	buf, contentType, err := encodeGetUpdatesPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getUpdates"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -388,15 +397,16 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 }
 
 func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReq) (res GetUserProfilePhotosPostRes, err error) {
-	body, contentType, err := encodeGetUserProfilePhotosPostRequest(req)
+	buf, contentType, err := encodeGetUserProfilePhotosPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getUserProfilePhotos"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -458,15 +468,16 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 }
 
 func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res SendGamePostRes, err error) {
-	body, contentType, err := encodeSendGamePostRequest(req)
+	buf, contentType, err := encodeSendGamePostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendGame"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -486,15 +497,16 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 }
 
 func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (res SendInvoicePostRes, err error) {
-	body, contentType, err := encodeSendInvoicePostRequest(req)
+	buf, contentType, err := encodeSendInvoicePostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendInvoice"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -514,15 +526,16 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 }
 
 func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq) (res SetMyCommandsPostRes, err error) {
-	body, contentType, err := encodeSetMyCommandsPostRequest(req)
+	buf, contentType, err := encodeSetMyCommandsPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setMyCommands"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -542,15 +555,16 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 }
 
 func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReq) (res SetStickerPositionInSetPostRes, err error) {
-	body, contentType, err := encodeSetStickerPositionInSetPostRequest(req)
+	buf, contentType, err := encodeSetStickerPositionInSetPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setStickerPositionInSet"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -570,15 +584,16 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 }
 
 func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res SetWebhookPostRes, err error) {
-	body, contentType, err := encodeSetWebhookPostRequest(req)
+	buf, contentType, err := encodeSetWebhookPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setWebhook"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -598,15 +613,16 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 }
 
 func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFilePostReq) (res UploadStickerFilePostRes, err error) {
-	body, contentType, err := encodeUploadStickerFilePostRequest(req)
+	buf, contentType, err := encodeUploadStickerFilePostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/uploadStickerFile"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)

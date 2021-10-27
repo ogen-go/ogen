@@ -50,13 +50,15 @@ var (
 	_ = net.IP{}
 )
 
-func (s *Pet) Validate() error {
+func (s Pet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Friends {
 			if err := func() error {
-				_ = elem
+				if err := elem.Validate(); err != nil {
+					return err
+				}
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -68,7 +70,6 @@ func (s *Pet) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.Friends
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -87,7 +88,6 @@ func (s *Pet) Validate() error {
 		}).Validate(int64(s.ID)); err != nil {
 			return err
 		}
-		_ = s.ID
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -96,7 +96,8 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Kind
+		_ = s.Kind // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -113,7 +114,6 @@ func (s *Pet) Validate() error {
 		}).Validate(string(s.Name)); err != nil {
 			return err
 		}
-		_ = s.Name
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -122,7 +122,8 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Primary
+		_ = s.Primary // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -148,7 +149,6 @@ func (s *Pet) Validate() error {
 						}).Validate(string(elem)); err != nil {
 							return err
 						}
-						_ = elem
 						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
@@ -160,7 +160,6 @@ func (s *Pet) Validate() error {
 						return &validate.Error{Fields: failures}
 					}
 				}
-				_ = elem
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -172,7 +171,6 @@ func (s *Pet) Validate() error {
 				return &validate.Error{Fields: failures}
 			}
 		}
-		_ = s.TestArray1
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -181,7 +179,8 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.TestFloat1
+		_ = s.TestFloat1 // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -190,7 +189,8 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.TestInteger1
+		_ = s.TestInteger1 // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -199,7 +199,8 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
-		_ = s.Type
+		_ = s.Type // validation expected, but not supported
+
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -210,5 +211,8 @@ func (s *Pet) Validate() error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+	return nil
+}
+func (s PetName) Validate() error {
 	return nil
 }

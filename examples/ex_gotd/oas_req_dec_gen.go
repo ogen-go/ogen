@@ -98,7 +98,12 @@ func decodeAnswerCallbackQueryRequest(r *http.Request) (req AnswerCallbackQuery,
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -128,7 +133,12 @@ func decodeAnswerInlineQueryRequest(r *http.Request) (req AnswerInlineQuery, err
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -185,7 +195,12 @@ func decodeAnswerShippingQueryRequest(r *http.Request) (req AnswerShippingQuery,
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -242,7 +257,12 @@ func decodeCopyMessageRequest(r *http.Request) (req CopyMessage, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -299,7 +319,12 @@ func decodeCreateNewStickerSetRequest(r *http.Request) (req CreateNewStickerSet,
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -518,7 +543,12 @@ func decodeEditMessageCaptionRequest(r *http.Request) (req EditMessageCaption, e
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -629,7 +659,12 @@ func decodeEditMessageTextRequest(r *http.Request) (req EditMessageText, err err
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -929,7 +964,12 @@ func decodeGetUpdatesRequest(r *http.Request) (req GetUpdates, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -959,7 +999,12 @@ func decodeGetUserProfilePhotosRequest(r *http.Request) (req GetUserProfilePhoto
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1124,7 +1169,12 @@ func decodeSendAnimationRequest(r *http.Request) (req SendAnimation, err error) 
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1154,7 +1204,12 @@ func decodeSendAudioRequest(r *http.Request) (req SendAudio, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1265,7 +1320,12 @@ func decodeSendDocumentRequest(r *http.Request) (req SendDocument, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1322,7 +1382,12 @@ func decodeSendInvoiceRequest(r *http.Request) (req SendInvoice, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1379,7 +1444,12 @@ func decodeSendMediaGroupRequest(r *http.Request) (req SendMediaGroup, err error
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1409,7 +1479,12 @@ func decodeSendMessageRequest(r *http.Request) (req SendMessage, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1439,7 +1514,12 @@ func decodeSendPhotoRequest(r *http.Request) (req SendPhoto, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1469,7 +1549,12 @@ func decodeSendPollRequest(r *http.Request) (req SendPoll, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1553,7 +1638,12 @@ func decodeSendVideoRequest(r *http.Request) (req SendVideo, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1583,7 +1673,12 @@ func decodeSendVideoNoteRequest(r *http.Request) (req SendVideoNote, err error) 
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1613,7 +1708,12 @@ func decodeSendVoiceRequest(r *http.Request) (req SendVoice, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1643,7 +1743,12 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (req SetChatA
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1673,7 +1778,12 @@ func decodeSetChatDescriptionRequest(r *http.Request) (req SetChatDescription, e
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1784,7 +1894,12 @@ func decodeSetChatTitleRequest(r *http.Request) (req SetChatTitle, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1841,7 +1956,12 @@ func decodeSetMyCommandsRequest(r *http.Request) (req SetMyCommands, err error) 
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -1871,7 +1991,12 @@ func decodeSetPassportDataErrorsRequest(r *http.Request) (req SetPassportDataErr
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil

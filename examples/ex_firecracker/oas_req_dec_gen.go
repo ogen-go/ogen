@@ -71,7 +71,12 @@ func decodeCreateSnapshotRequest(r *http.Request) (req SnapshotCreateParams, err
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -101,7 +106,12 @@ func decodeCreateSyncActionRequest(r *http.Request) (req InstanceActionInfo, err
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -293,7 +303,12 @@ func decodePatchGuestDriveByIDRequest(r *http.Request) (req PartialDrive, err er
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -323,7 +338,12 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (req PartialNe
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -353,7 +373,12 @@ func decodePatchMachineConfigurationRequest(r *http.Request) (req MachineConfigu
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -383,7 +408,12 @@ func decodePatchVmRequest(r *http.Request) (req VM, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -467,7 +497,12 @@ func decodePutGuestDriveByIDRequest(r *http.Request) (req Drive, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -497,7 +532,12 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (req NetworkInte
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -527,7 +567,12 @@ func decodePutGuestVsockRequest(r *http.Request) (req Vsock, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -557,7 +602,12 @@ func decodePutLoggerRequest(r *http.Request) (req Logger, err error) {
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil
@@ -587,7 +637,12 @@ func decodePutMachineConfigurationRequest(r *http.Request) (req MachineConfigura
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return request, nil

@@ -24,12 +24,14 @@ func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.Go }}
         defer json.PutIterator(i)
         i.ResetBytes(buf.Bytes())
         if err := func() error {
-            {{- template "dec_json_value" req_decode_elem $t }}
+            {{- template "dec_json_value" req_dec_elem $t }}
         }(); err != nil {
             return req, err
         }
         {{- if $t.NeedValidation }}
-        if err := request.Validate(); err != nil {
+        if err := func() error {
+            {{- template "validate" req_dec_elem $t }}
+        }(); err != nil {
             return req, fmt.Errorf("validate: %w", err)
         }
         {{- end }}

@@ -73,15 +73,16 @@ func NewClient(serverURL string) *Client {
 }
 
 func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (res CreateSnapshotRes, err error) {
-	body, contentType, err := encodeCreateSnapshotRequest(req)
+	buf, contentType, err := encodeCreateSnapshotRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/snapshot/create"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -101,15 +102,16 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 }
 
 func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (res CreateSyncActionRes, err error) {
-	body, contentType, err := encodeCreateSyncActionRequest(req)
+	buf, contentType, err := encodeCreateSyncActionRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/actions"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -234,15 +236,16 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 }
 
 func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res LoadSnapshotRes, err error) {
-	body, contentType, err := encodeLoadSnapshotRequest(req)
+	buf, contentType, err := encodeLoadSnapshotRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/snapshot/load"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -262,15 +265,16 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 }
 
 func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsConfigPutRes, err error) {
-	body, contentType, err := encodeMmdsConfigPutRequest(req)
+	buf, contentType, err := encodeMmdsConfigPutRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds/config"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -311,15 +315,16 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 }
 
 func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatchRes, err error) {
-	body, contentType, err := encodeMmdsPatchRequest(req)
+	buf, contentType, err := encodeMmdsPatchRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
-	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PATCH", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -339,15 +344,16 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 }
 
 func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, err error) {
-	body, contentType, err := encodeMmdsPutRequest(req)
+	buf, contentType, err := encodeMmdsPutRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -367,15 +373,16 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 }
 
 func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res PatchBalloonRes, err error) {
-	body, contentType, err := encodePatchBalloonRequest(req)
+	buf, contentType, err := encodePatchBalloonRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
-	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PATCH", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -395,15 +402,16 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 }
 
 func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
-	body, contentType, err := encodePatchBalloonStatsIntervalRequest(req)
+	buf, contentType, err := encodePatchBalloonStatsIntervalRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
 
-	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PATCH", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -423,10 +431,11 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 }
 
 func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
-	body, contentType, err := encodePatchGuestDriveByIDRequest(req)
+	buf, contentType, err := encodePatchGuestDriveByIDRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
@@ -440,7 +449,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 		u.Path += e.EncodeString(params.DriveID)
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PATCH", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -460,10 +469,11 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 }
 
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
-	body, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req)
+	buf, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
@@ -477,7 +487,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 		u.Path += e.EncodeString(params.IfaceID)
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PATCH", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -497,15 +507,16 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 }
 
 func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
-	body, contentType, err := encodePatchMachineConfigurationRequest(req)
+	buf, contentType, err := encodePatchMachineConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
-	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PATCH", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -525,15 +536,16 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 }
 
 func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error) {
-	body, contentType, err := encodePatchVmRequest(req)
+	buf, contentType, err := encodePatchVmRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm"
 
-	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PATCH", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -553,15 +565,16 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 }
 
 func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes, err error) {
-	body, contentType, err := encodePutBalloonRequest(req)
+	buf, contentType, err := encodePutBalloonRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -581,15 +594,16 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 }
 
 func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res PutGuestBootSourceRes, err error) {
-	body, contentType, err := encodePutGuestBootSourceRequest(req)
+	buf, contentType, err := encodePutGuestBootSourceRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/boot-source"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -609,10 +623,11 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 }
 
 func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
-	body, contentType, err := encodePutGuestDriveByIDRequest(req)
+	buf, contentType, err := encodePutGuestDriveByIDRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
@@ -626,7 +641,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 		u.Path += e.EncodeString(params.DriveID)
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -646,10 +661,11 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 }
 
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
-	body, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req)
+	buf, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
@@ -663,7 +679,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 		u.Path += e.EncodeString(params.IfaceID)
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -683,15 +699,16 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 }
 
 func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsockRes, err error) {
-	body, contentType, err := encodePutGuestVsockRequest(req)
+	buf, contentType, err := encodePutGuestVsockRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vsock"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -711,15 +728,16 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 }
 
 func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, err error) {
-	body, contentType, err := encodePutLoggerRequest(req)
+	buf, contentType, err := encodePutLoggerRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logger"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -739,15 +757,16 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 }
 
 func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PutMachineConfigurationRes, err error) {
-	body, contentType, err := encodePutMachineConfigurationRequest(req)
+	buf, contentType, err := encodePutMachineConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -767,15 +786,16 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 }
 
 func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes, err error) {
-	body, contentType, err := encodePutMetricsRequest(req)
+	buf, contentType, err := encodePutMetricsRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/metrics"
 
-	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "PUT", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)

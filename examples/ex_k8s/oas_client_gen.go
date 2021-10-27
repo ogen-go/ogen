@@ -73,10 +73,11 @@ func NewClient(serverURL string) *Client {
 }
 
 func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, params CreateAdmissionregistrationV1MutatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
-	body, contentType, err := encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req)
+	buf, contentType, err := encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
@@ -104,7 +105,7 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -124,10 +125,11 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 }
 
 func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, params CreateAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
-	body, contentType, err := encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req)
+	buf, contentType, err := encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
@@ -155,7 +157,7 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -175,10 +177,11 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 }
 
 func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Context, req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, params CreateApiextensionsV1CustomResourceDefinitionParams) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
-	body, contentType, err := encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req)
+	buf, contentType, err := encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
@@ -206,7 +209,7 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -226,10 +229,11 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 }
 
 func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, params CreateApiregistrationV1APIServiceParams) (res CreateApiregistrationV1APIServiceRes, err error) {
-	body, contentType, err := encodeCreateApiregistrationV1APIServiceRequest(req)
+	buf, contentType, err := encodeCreateApiregistrationV1APIServiceRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
@@ -257,7 +261,7 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -277,15 +281,16 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 }
 
 func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8sAPIAuthenticationV1TokenReview) (res CreateAuthenticationV1TokenReviewRes, err error) {
-	body, contentType, err := encodeCreateAuthenticationV1TokenReviewRequest(req)
+	buf, contentType, err := encodeCreateAuthenticationV1TokenReviewRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authentication.k8s.io/v1/tokenreviews"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -305,15 +310,16 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 }
 
 func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectAccessReview) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
-	body, contentType, err := encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req)
+	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -333,15 +339,16 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 }
 
 func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context, req IoK8sAPIAuthorizationV1SelfSubjectRulesReview) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
-	body, contentType, err := encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req)
+	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -361,15 +368,16 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 }
 
 func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, req IoK8sAPIAuthorizationV1SubjectAccessReview) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
-	body, contentType, err := encodeCreateAuthorizationV1SubjectAccessReviewRequest(req)
+	buf, contentType, err := encodeCreateAuthorizationV1SubjectAccessReviewRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/v1/subjectaccessreviews"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -389,10 +397,11 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 }
 
 func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Context, req IoK8sAPICertificatesV1CertificateSigningRequest, params CreateCertificatesV1CertificateSigningRequestParams) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
-	body, contentType, err := encodeCreateCertificatesV1CertificateSigningRequestRequest(req)
+	buf, contentType, err := encodeCreateCertificatesV1CertificateSigningRequestRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
@@ -420,7 +429,7 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -440,10 +449,11 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 }
 
 func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Namespace, params CreateCoreV1NamespaceParams) (res CreateCoreV1NamespaceRes, err error) {
-	body, contentType, err := encodeCreateCoreV1NamespaceRequest(req)
+	buf, contentType, err := encodeCreateCoreV1NamespaceRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces"
@@ -471,7 +481,7 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -491,10 +501,11 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 }
 
 func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, params CreateCoreV1NodeParams) (res CreateCoreV1NodeRes, err error) {
-	body, contentType, err := encodeCreateCoreV1NodeRequest(req)
+	buf, contentType, err := encodeCreateCoreV1NodeRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
@@ -522,7 +533,7 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -542,10 +553,11 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 }
 
 func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPICoreV1PersistentVolume, params CreateCoreV1PersistentVolumeParams) (res CreateCoreV1PersistentVolumeRes, err error) {
-	body, contentType, err := encodeCreateCoreV1PersistentVolumeRequest(req)
+	buf, contentType, err := encodeCreateCoreV1PersistentVolumeRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
@@ -573,7 +585,7 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -593,10 +605,11 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1FlowSchema, params CreateFlowcontrolApiserverV1beta1FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
-	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
@@ -624,7 +637,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -644,10 +657,11 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
-	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
@@ -675,7 +689,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -695,10 +709,11 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2FlowSchema, params CreateFlowcontrolApiserverV1beta2FlowSchemaParams) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
-	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
@@ -726,7 +741,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -746,10 +761,11 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 }
 
 func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, params CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
-	body, contentType, err := encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req)
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
@@ -777,7 +793,7 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -797,10 +813,11 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 }
 
 func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Context, req IoK8sAPIApiserverinternalV1alpha1StorageVersion, params CreateInternalApiserverV1alpha1StorageVersionParams) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
-	body, contentType, err := encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req)
+	buf, contentType, err := encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
@@ -828,7 +845,7 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -848,10 +865,11 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 }
 
 func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAPINetworkingV1IngressClass, params CreateNetworkingV1IngressClassParams) (res CreateNetworkingV1IngressClassRes, err error) {
-	body, contentType, err := encodeCreateNetworkingV1IngressClassRequest(req)
+	buf, contentType, err := encodeCreateNetworkingV1IngressClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
@@ -879,7 +897,7 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -899,10 +917,11 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 }
 
 func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1RuntimeClass, params CreateNodeV1RuntimeClassParams) (res CreateNodeV1RuntimeClassRes, err error) {
-	body, contentType, err := encodeCreateNodeV1RuntimeClassRequest(req)
+	buf, contentType, err := encodeCreateNodeV1RuntimeClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
@@ -930,7 +949,7 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -950,10 +969,11 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 }
 
 func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1alpha1RuntimeClass, params CreateNodeV1alpha1RuntimeClassParams) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
-	body, contentType, err := encodeCreateNodeV1alpha1RuntimeClassRequest(req)
+	buf, contentType, err := encodeCreateNodeV1alpha1RuntimeClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
@@ -981,7 +1001,7 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1001,10 +1021,11 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 }
 
 func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPINodeV1beta1RuntimeClass, params CreateNodeV1beta1RuntimeClassParams) (res CreateNodeV1beta1RuntimeClassRes, err error) {
-	body, contentType, err := encodeCreateNodeV1beta1RuntimeClassRequest(req)
+	buf, contentType, err := encodeCreateNodeV1beta1RuntimeClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
@@ -1032,7 +1053,7 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1052,10 +1073,11 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 }
 
 func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req IoK8sAPIPolicyV1beta1PodSecurityPolicy, params CreatePolicyV1beta1PodSecurityPolicyParams) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
-	body, contentType, err := encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req)
+	buf, contentType, err := encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
@@ -1083,7 +1105,7 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1103,10 +1125,11 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 }
 
 func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req IoK8sAPIRbacV1ClusterRole, params CreateRbacAuthorizationV1ClusterRoleParams) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
-	body, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleRequest(req)
+	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
@@ -1134,7 +1157,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1154,10 +1177,11 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 }
 
 func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, req IoK8sAPIRbacV1ClusterRoleBinding, params CreateRbacAuthorizationV1ClusterRoleBindingParams) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
-	body, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req)
+	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
@@ -1185,7 +1209,7 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1205,10 +1229,11 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 }
 
 func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sAPISchedulingV1PriorityClass, params CreateSchedulingV1PriorityClassParams) (res CreateSchedulingV1PriorityClassRes, err error) {
-	body, contentType, err := encodeCreateSchedulingV1PriorityClassRequest(req)
+	buf, contentType, err := encodeCreateSchedulingV1PriorityClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
@@ -1236,7 +1261,7 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1256,10 +1281,11 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 }
 
 func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStorageV1CSIDriver, params CreateStorageV1CSIDriverParams) (res CreateStorageV1CSIDriverRes, err error) {
-	body, contentType, err := encodeCreateStorageV1CSIDriverRequest(req)
+	buf, contentType, err := encodeCreateStorageV1CSIDriverRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
@@ -1287,7 +1313,7 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1307,10 +1333,11 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 }
 
 func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorageV1CSINode, params CreateStorageV1CSINodeParams) (res CreateStorageV1CSINodeRes, err error) {
-	body, contentType, err := encodeCreateStorageV1CSINodeRequest(req)
+	buf, contentType, err := encodeCreateStorageV1CSINodeRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
@@ -1338,7 +1365,7 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1358,10 +1385,11 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 }
 
 func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPIStorageV1StorageClass, params CreateStorageV1StorageClassParams) (res CreateStorageV1StorageClassRes, err error) {
-	body, contentType, err := encodeCreateStorageV1StorageClassRequest(req)
+	buf, contentType, err := encodeCreateStorageV1StorageClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
@@ -1389,7 +1417,7 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1409,10 +1437,11 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 }
 
 func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sAPIStorageV1VolumeAttachment, params CreateStorageV1VolumeAttachmentParams) (res CreateStorageV1VolumeAttachmentRes, err error) {
-	body, contentType, err := encodeCreateStorageV1VolumeAttachmentRequest(req)
+	buf, contentType, err := encodeCreateStorageV1VolumeAttachmentRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
@@ -1440,7 +1469,7 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1460,10 +1489,11 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 }
 
 func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
-	body, contentType, err := encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req)
+	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
@@ -1581,7 +1611,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1601,10 +1631,11 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 }
 
 func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationParams) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
-	body, contentType, err := encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req)
+	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
@@ -1722,7 +1753,7 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1742,10 +1773,11 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 }
 
 func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiextensionsV1CollectionCustomResourceDefinitionParams) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
-	body, contentType, err := encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req)
+	buf, contentType, err := encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
@@ -1863,7 +1895,7 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -1883,10 +1915,11 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 }
 
 func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteApiregistrationV1CollectionAPIServiceParams) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
-	body, contentType, err := encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req)
+	buf, contentType, err := encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
@@ -2004,7 +2037,7 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2024,10 +2057,11 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 }
 
 func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCertificatesV1CollectionCertificateSigningRequestParams) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
-	body, contentType, err := encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req)
+	buf, contentType, err := encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
@@ -2145,7 +2179,7 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2165,10 +2199,11 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 }
 
 func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionNodeParams) (res DeleteCoreV1CollectionNodeRes, err error) {
-	body, contentType, err := encodeDeleteCoreV1CollectionNodeRequest(req)
+	buf, contentType, err := encodeDeleteCoreV1CollectionNodeRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
@@ -2286,7 +2321,7 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2306,10 +2341,11 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 }
 
 func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteCoreV1CollectionPersistentVolumeParams) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
-	body, contentType, err := encodeDeleteCoreV1CollectionPersistentVolumeRequest(req)
+	buf, contentType, err := encodeDeleteCoreV1CollectionPersistentVolumeRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
@@ -2427,7 +2463,7 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2447,10 +2483,11 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
-	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
@@ -2568,7 +2605,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2588,10 +2625,11 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
-	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
@@ -2709,7 +2747,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2729,10 +2767,11 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaParams) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
-	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
@@ -2850,7 +2889,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -2870,10 +2909,11 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 }
 
 func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationParams) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
-	body, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req)
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
@@ -2991,7 +3031,7 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3011,10 +3051,11 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 }
 
 func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteInternalApiserverV1alpha1CollectionStorageVersionParams) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
-	body, contentType, err := encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req)
+	buf, contentType, err := encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
@@ -3132,7 +3173,7 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3152,10 +3193,11 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 }
 
 func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNetworkingV1CollectionIngressClassParams) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
-	body, contentType, err := encodeDeleteNetworkingV1CollectionIngressClassRequest(req)
+	buf, contentType, err := encodeDeleteNetworkingV1CollectionIngressClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
@@ -3273,7 +3315,7 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3293,10 +3335,11 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 }
 
 func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1CollectionRuntimeClassParams) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
-	body, contentType, err := encodeDeleteNodeV1CollectionRuntimeClassRequest(req)
+	buf, contentType, err := encodeDeleteNodeV1CollectionRuntimeClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
@@ -3414,7 +3457,7 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3434,10 +3477,11 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 }
 
 func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1alpha1CollectionRuntimeClassParams) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
-	body, contentType, err := encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req)
+	buf, contentType, err := encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
@@ -3555,7 +3599,7 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3575,10 +3619,11 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 }
 
 func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteNodeV1beta1CollectionRuntimeClassParams) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
-	body, contentType, err := encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req)
+	buf, contentType, err := encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
@@ -3696,7 +3741,7 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3716,10 +3761,11 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 }
 
 func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeletePolicyV1beta1CollectionPodSecurityPolicyParams) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
-	body, contentType, err := encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req)
+	buf, contentType, err := encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
@@ -3837,7 +3883,7 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3857,10 +3903,11 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 }
 
 func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
-	body, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req)
+	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
@@ -3978,7 +4025,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -3998,10 +4045,11 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 }
 
 func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteRbacAuthorizationV1CollectionClusterRoleBindingParams) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
-	body, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req)
+	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
@@ -4119,7 +4167,7 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -4139,10 +4187,11 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 }
 
 func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteSchedulingV1CollectionPriorityClassParams) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
-	body, contentType, err := encodeDeleteSchedulingV1CollectionPriorityClassRequest(req)
+	buf, contentType, err := encodeDeleteSchedulingV1CollectionPriorityClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
@@ -4260,7 +4309,7 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -4280,10 +4329,11 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 }
 
 func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSIDriverParams) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
-	body, contentType, err := encodeDeleteStorageV1CollectionCSIDriverRequest(req)
+	buf, contentType, err := encodeDeleteStorageV1CollectionCSIDriverRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
@@ -4401,7 +4451,7 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -4421,10 +4471,11 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 }
 
 func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionCSINodeParams) (res DeleteStorageV1CollectionCSINodeRes, err error) {
-	body, contentType, err := encodeDeleteStorageV1CollectionCSINodeRequest(req)
+	buf, contentType, err := encodeDeleteStorageV1CollectionCSINodeRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
@@ -4542,7 +4593,7 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -4562,10 +4613,11 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 }
 
 func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionStorageClassParams) (res DeleteStorageV1CollectionStorageClassRes, err error) {
-	body, contentType, err := encodeDeleteStorageV1CollectionStorageClassRequest(req)
+	buf, contentType, err := encodeDeleteStorageV1CollectionStorageClassRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
@@ -4683,7 +4735,7 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -4703,10 +4755,11 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 }
 
 func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, req IoK8sApimachineryPkgApisMetaV1DeleteOptions, params DeleteStorageV1CollectionVolumeAttachmentParams) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
-	body, contentType, err := encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req)
+	buf, contentType, err := encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
@@ -4824,7 +4877,7 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 	}
 	u.RawQuery = q.Encode()
 
-	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "DELETE", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)

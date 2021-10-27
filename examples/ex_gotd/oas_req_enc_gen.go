@@ -50,298 +50,1186 @@ var (
 	_ = net.IP{}
 )
 
-func encodeAddStickerToSetRequest(req AddStickerToSet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeAnswerCallbackQueryRequest(req AnswerCallbackQuery) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeAnswerInlineQueryRequest(req AnswerInlineQuery) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeAnswerPreCheckoutQueryRequest(req AnswerPreCheckoutQuery) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeAnswerShippingQueryRequest(req AnswerShippingQuery) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeBanChatMemberRequest(req BanChatMember) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeCopyMessageRequest(req CopyMessage) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeCreateChatInviteLinkRequest(req CreateChatInviteLink) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeCreateNewStickerSetRequest(req CreateNewStickerSet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeDeleteChatPhotoRequest(req DeleteChatPhoto) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeDeleteChatStickerSetRequest(req DeleteChatStickerSet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeDeleteMessageRequest(req DeleteMessage) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeDeleteMyCommandsRequest(req DeleteMyCommands) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeDeleteStickerFromSetRequest(req DeleteStickerFromSet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeDeleteWebhookRequest(req DeleteWebhook) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeEditChatInviteLinkRequest(req EditChatInviteLink) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeEditMessageCaptionRequest(req EditMessageCaption) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeEditMessageLiveLocationRequest(req EditMessageLiveLocation) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeEditMessageMediaRequest(req EditMessageMedia) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeEditMessageReplyMarkupRequest(req EditMessageReplyMarkup) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeEditMessageTextRequest(req EditMessageText) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeExportChatInviteLinkRequest(req ExportChatInviteLink) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeForwardMessageRequest(req ForwardMessage) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetChatRequest(req GetChat) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetChatAdministratorsRequest(req GetChatAdministrators) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetChatMemberRequest(req GetChatMember) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetChatMemberCountRequest(req GetChatMemberCount) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetFileRequest(req GetFile) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetGameHighScoresRequest(req GetGameHighScores) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetMyCommandsRequest(req GetMyCommands) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetStickerSetRequest(req GetStickerSet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetUpdatesRequest(req GetUpdates) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeGetUserProfilePhotosRequest(req GetUserProfilePhotos) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeLeaveChatRequest(req LeaveChat) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodePinChatMessageRequest(req PinChatMessage) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodePromoteChatMemberRequest(req PromoteChatMember) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeRestrictChatMemberRequest(req RestrictChatMember) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeRevokeChatInviteLinkRequest(req RevokeChatInviteLink) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendAnimationRequest(req SendAnimation) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendAudioRequest(req SendAudio) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendChatActionRequest(req SendChatAction) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendContactRequest(req SendContact) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendDiceRequest(req SendDice) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendDocumentRequest(req SendDocument) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendGameRequest(req SendGame) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendInvoiceRequest(req SendInvoice) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendLocationRequest(req SendLocation) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendMediaGroupRequest(req SendMediaGroup) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendMessageRequest(req SendMessage) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendPhotoRequest(req SendPhoto) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendPollRequest(req SendPoll) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendStickerRequest(req SendSticker) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendVenueRequest(req SendVenue) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendVideoRequest(req SendVideo) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendVideoNoteRequest(req SendVideoNote) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSendVoiceRequest(req SendVoice) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetChatAdministratorCustomTitleRequest(req SetChatAdministratorCustomTitle) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetChatDescriptionRequest(req SetChatDescription) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetChatPermissionsRequest(req SetChatPermissions) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetChatPhotoRequest(req SetChatPhoto) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetChatStickerSetRequest(req SetChatStickerSet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetChatTitleRequest(req SetChatTitle) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetGameScoreRequest(req SetGameScore) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetMyCommandsRequest(req SetMyCommands) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetPassportDataErrorsRequest(req SetPassportDataErrors) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetStickerPositionInSetRequest(req SetStickerPositionInSet) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetStickerSetThumbRequest(req SetStickerSetThumb) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeSetWebhookRequest(req SetWebhook) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeStopMessageLiveLocationRequest(req StopMessageLiveLocation) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeStopPollRequest(req StopPoll) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeUnbanChatMemberRequest(req UnbanChatMember) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeUnpinAllChatMessagesRequest(req UnpinAllChatMessages) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeUnpinChatMessageRequest(req UnpinChatMessage) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeUploadStickerFileRequest(req UploadStickerFile) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeAddStickerToSetRequest(req AddStickerToSet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeAnswerCallbackQueryRequest(req AnswerCallbackQuery) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeAnswerInlineQueryRequest(req AnswerInlineQuery) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeAnswerPreCheckoutQueryRequest(req AnswerPreCheckoutQuery) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeAnswerShippingQueryRequest(req AnswerShippingQuery) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeBanChatMemberRequest(req BanChatMember) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeCopyMessageRequest(req CopyMessage) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeCreateChatInviteLinkRequest(req CreateChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeCreateNewStickerSetRequest(req CreateNewStickerSet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeDeleteChatPhotoRequest(req DeleteChatPhoto) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeDeleteChatStickerSetRequest(req DeleteChatStickerSet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeDeleteMessageRequest(req DeleteMessage) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeDeleteMyCommandsRequest(req DeleteMyCommands) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeDeleteStickerFromSetRequest(req DeleteStickerFromSet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeDeleteWebhookRequest(req DeleteWebhook) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeEditChatInviteLinkRequest(req EditChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeEditMessageCaptionRequest(req EditMessageCaption) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeEditMessageLiveLocationRequest(req EditMessageLiveLocation) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeEditMessageMediaRequest(req EditMessageMedia) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeEditMessageReplyMarkupRequest(req EditMessageReplyMarkup) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeEditMessageTextRequest(req EditMessageText) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeExportChatInviteLinkRequest(req ExportChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeForwardMessageRequest(req ForwardMessage) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetChatRequest(req GetChat) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetChatAdministratorsRequest(req GetChatAdministrators) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetChatMemberRequest(req GetChatMember) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetChatMemberCountRequest(req GetChatMemberCount) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetFileRequest(req GetFile) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetGameHighScoresRequest(req GetGameHighScores) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetMyCommandsRequest(req GetMyCommands) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetStickerSetRequest(req GetStickerSet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetUpdatesRequest(req GetUpdates) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeGetUserProfilePhotosRequest(req GetUserProfilePhotos) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeLeaveChatRequest(req LeaveChat) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodePinChatMessageRequest(req PinChatMessage) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodePromoteChatMemberRequest(req PromoteChatMember) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeRestrictChatMemberRequest(req RestrictChatMember) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeRevokeChatInviteLinkRequest(req RevokeChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendAnimationRequest(req SendAnimation) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendAudioRequest(req SendAudio) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendChatActionRequest(req SendChatAction) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendContactRequest(req SendContact) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendDiceRequest(req SendDice) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendDocumentRequest(req SendDocument) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendGameRequest(req SendGame) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendInvoiceRequest(req SendInvoice) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendLocationRequest(req SendLocation) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendMediaGroupRequest(req SendMediaGroup) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendMessageRequest(req SendMessage) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendPhotoRequest(req SendPhoto) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendPollRequest(req SendPoll) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendStickerRequest(req SendSticker) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendVenueRequest(req SendVenue) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendVideoRequest(req SendVideo) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendVideoNoteRequest(req SendVideoNote) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSendVoiceRequest(req SendVoice) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetChatAdministratorCustomTitleRequest(req SetChatAdministratorCustomTitle) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetChatDescriptionRequest(req SetChatDescription) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetChatPermissionsRequest(req SetChatPermissions) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetChatPhotoRequest(req SetChatPhoto) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetChatStickerSetRequest(req SetChatStickerSet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetChatTitleRequest(req SetChatTitle) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetGameScoreRequest(req SetGameScore) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetMyCommandsRequest(req SetMyCommands) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetPassportDataErrorsRequest(req SetPassportDataErrors) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetStickerPositionInSetRequest(req SetStickerPositionInSet) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetStickerSetThumbRequest(req SetStickerSetThumb) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeSetWebhookRequest(req SetWebhook) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeStopMessageLiveLocationRequest(req StopMessageLiveLocation) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeStopPollRequest(req StopPoll) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeUnbanChatMemberRequest(req UnbanChatMember) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeUnpinAllChatMessagesRequest(req UnpinAllChatMessages) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeUnpinChatMessageRequest(req UnpinChatMessage) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
+}
+
+func encodeUploadStickerFileRequest(req UploadStickerFile) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }

@@ -50,82 +50,322 @@ var (
 	_ = net.IP{}
 )
 
-func encodeCreateSnapshotRequest(req SnapshotCreateParams) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeCreateSnapshotRequest(req SnapshotCreateParams) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodeCreateSyncActionRequest(req InstanceActionInfo) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeCreateSyncActionRequest(req InstanceActionInfo) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodeLoadSnapshotRequest(req SnapshotLoadParams) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeLoadSnapshotRequest(req SnapshotLoadParams) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodeMmdsConfigPutRequest(req MmdsConfig) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeMmdsConfigPutRequest(req MmdsConfig) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodeMmdsPatchRequest(req MmdsPatchReq) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeMmdsPatchRequest(req MmdsPatchReq) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodeMmdsPutRequest(req MmdsPutReq) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodeMmdsPutRequest(req MmdsPutReq) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePatchBalloonRequest(req BalloonUpdate) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePatchBalloonRequest(req BalloonUpdate) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePatchBalloonStatsIntervalRequest(req BalloonStatsUpdate) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePatchBalloonStatsIntervalRequest(req BalloonStatsUpdate) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePatchGuestDriveByIDRequest(req PartialDrive) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePatchGuestDriveByIDRequest(req PartialDrive) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePatchGuestNetworkInterfaceByIDRequest(req PartialNetworkInterface) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePatchGuestNetworkInterfaceByIDRequest(req PartialNetworkInterface) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePatchMachineConfigurationRequest(req MachineConfiguration) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePatchMachineConfigurationRequest(req MachineConfiguration) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePatchVmRequest(req VM) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePatchVmRequest(req VM) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutBalloonRequest(req Balloon) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutBalloonRequest(req Balloon) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutGuestBootSourceRequest(req BootSource) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutGuestBootSourceRequest(req BootSource) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutGuestDriveByIDRequest(req Drive) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutGuestDriveByIDRequest(req Drive) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutGuestNetworkInterfaceByIDRequest(req NetworkInterface) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutGuestNetworkInterfaceByIDRequest(req NetworkInterface) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutGuestVsockRequest(req Vsock) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutGuestVsockRequest(req Vsock) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutLoggerRequest(req Logger) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutLoggerRequest(req Logger) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutMachineConfigurationRequest(req MachineConfiguration) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutMachineConfigurationRequest(req MachineConfiguration) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }
 
-func encodePutMetricsRequest(req Metrics) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
+func encodePutMetricsRequest(req Metrics) (data *bytes.Buffer, contentType string, err error) {
+	buf := json.GetBuffer()
+	j := json.GetStream(buf)
+	defer json.PutStream(j)
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	req.WriteJSON(j)
+	if err := j.Flush(); err != nil {
+		json.PutBuffer(buf)
+		return nil, "", err
+	}
+
+	return buf, "application/json", nil
 }

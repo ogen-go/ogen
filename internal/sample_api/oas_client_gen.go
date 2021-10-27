@@ -117,15 +117,16 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 }
 
 func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, err error) {
-	body, contentType, err := encodeFoobarPostRequest(req)
+	buf, contentType, err := encodeFoobarPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -166,15 +167,16 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 }
 
 func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err error) {
-	body, contentType, err := encodePetCreateRequest(req)
+	buf, contentType, err := encodePetCreateRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -340,15 +342,16 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 }
 
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
-	body, contentType, err := encodePetUpdateNameAliasPostRequest(req)
+	buf, contentType, err := encodePetUpdateNameAliasPostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateNameAlias"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
@@ -368,15 +371,16 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 }
 
 func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpdateNamePostDefStatusCode, err error) {
-	body, contentType, err := encodePetUpdateNamePostRequest(req)
+	buf, contentType, err := encodePetUpdateNamePostRequest(req)
 	if err != nil {
 		return res, err
 	}
+	defer json.PutBuffer(buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateName"
 
-	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	r := ht.NewRequest(ctx, "POST", u, buf)
 	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)

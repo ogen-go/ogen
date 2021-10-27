@@ -141,7 +141,12 @@ func decodeAnswerShippingQueryPostRequest(r *http.Request) (req AnswerShippingQu
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return &request, nil
@@ -354,7 +359,12 @@ func decodeGetUpdatesPostRequest(r *http.Request) (req GetUpdatesPostReq, err er
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return &request, nil
@@ -392,7 +402,12 @@ func decodeGetUserProfilePhotosPostRequest(r *http.Request) (req GetUserProfileP
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return &request, nil
@@ -430,7 +445,12 @@ func decodeSendGamePostRequest(r *http.Request) (req SendGamePostReq, err error)
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return &request, nil
@@ -468,7 +488,12 @@ func decodeSendInvoicePostRequest(r *http.Request) (req SendInvoicePostReq, err 
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return &request, nil
@@ -506,7 +531,12 @@ func decodeSetMyCommandsPostRequest(r *http.Request) (req SetMyCommandsPostReq, 
 		}(); err != nil {
 			return req, err
 		}
-		if err := request.Validate(); err != nil {
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 		return &request, nil

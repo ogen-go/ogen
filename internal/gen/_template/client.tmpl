@@ -29,16 +29,17 @@ func NewClient(serverURL string) *Client {
 {{ range $op := $.Operations }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
     {{- if $op.Request }}
-    body, contentType, err := encode{{ $op.Name }}Request(req)
+    buf, contentType, err := encode{{ $op.Name }}Request(req)
     if err != nil {
         return res, err
     }
+    defer json.PutBuffer(buf)
     {{ end }}
 
     {{- template "params_encode_path" $op }}
     {{- template "params_encode_query" $op }}
 
-    r := ht.NewRequest(ctx, "{{ $op.Spec.HTTPMethod }}", u, {{ if $op.Request }}bytes.NewReader(body){{ else }}nil{{ end }})
+    r := ht.NewRequest(ctx, "{{ $op.Spec.HTTPMethod }}", u, {{ if $op.Request }}buf{{ else }}nil{{ end }})
     defer ht.PutRequest(r)
 
     {{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}

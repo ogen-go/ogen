@@ -49,3 +49,7 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 )
+
+func (s WorldObjects) Validate() error {
+	return nil
+}
