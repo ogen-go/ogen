@@ -63,6 +63,9 @@ func (s HelloWorld) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads HelloWorld from json stream.
 func (s *HelloWorld) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode HelloWorld to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -102,6 +105,9 @@ func (s WorldObject) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads WorldObject from json stream.
 func (s *WorldObject) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode WorldObject to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
