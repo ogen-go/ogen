@@ -16,7 +16,7 @@ func New(opts ...Option) *Tracer {
 
 const (
 	// OperationIDKey by OpenAPI specification.
-	OperationIDKey = attribute.Key("oas.operation_id")
+	OperationIDKey = attribute.Key("oas.operation")
 )
 
 // OperationID attribute.
