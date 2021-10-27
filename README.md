@@ -89,6 +89,31 @@ type PetGetByNameParams struct {
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error)
 ```
 
+## Generics
+Instead of using pointers, `ogen` generates generic wrappers.
+
+For example, `OptNilString` is `string` that is optional (no value) and can be `null`.
+```go
+// OptNilString is optional nullable string.
+type OptNilString struct {
+	Value string
+	Set   bool
+	Null  bool
+}
+```
+
+Multiple convenience helper methods and functions are generated, some of them:
+```go
+func (OptNilString) Get() (v string, ok bool)
+func (OptNilString) IsNull() bool
+func (OptNilString) IsSet() bool
+
+func NewOptNilString(v string) OptNilString
+```
+
+## Recursive types
+If `ogen` encounters recursive types that can't be expressed in go, pointers are used as fallback.
+
 # Draft Roadmap
 
 * Handle unexpected json keys
