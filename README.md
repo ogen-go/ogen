@@ -24,7 +24,7 @@ go get github.com/ogen-go/ogen
 
 * No reflection or `interface{}`
   * The json encoding is code-generated, optimized and uses `jsoniter` for speed and overcoming `encoding/json` limitations
-  * Validation is code-generated
+  * Validation is code-generated according to spec
 * No more boilerplate
   * Structures are generated from OpenAPI v3 specification
   * Arguments, headers, url queries are parsed according to specification into structures
@@ -39,7 +39,6 @@ go get github.com/ogen-go/ogen
     * When required, `nil` currently the same as `[]`, but is actually invalid
     * If both nullable and required, wrapper will be generated (TODO)
 * Generated sum types for oneOf
-* Validators for values generated according to specification
 
 Example generated structure from schema:
 ```go
