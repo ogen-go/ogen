@@ -55,6 +55,7 @@ type AddStickerToSet struct {
 	Emojis       string          `json:"emojis"`
 	MaskPosition OptMaskPosition `json:"mask_position"`
 	Name         string          `json:"name"`
+	PNGSticker   OptString       `json:"png_sticker"`
 	TgsSticker   OptString       `json:"tgs_sticker"`
 	UserID       int             `json:"user_id"`
 }
@@ -83,12 +84,13 @@ type AnswerCallbackQuery struct {
 
 // Ref: #/components/schemas/answerInlineQuery
 type AnswerInlineQuery struct {
-	CacheTime         OptInt    `json:"cache_time"`
-	InlineQueryID     string    `json:"inline_query_id"`
-	IsPersonal        OptBool   `json:"is_personal"`
-	NextOffset        OptString `json:"next_offset"`
-	SwitchPmParameter OptString `json:"switch_pm_parameter"`
-	SwitchPmText      OptString `json:"switch_pm_text"`
+	CacheTime         OptInt              `json:"cache_time"`
+	InlineQueryID     string              `json:"inline_query_id"`
+	IsPersonal        OptBool             `json:"is_personal"`
+	NextOffset        OptString           `json:"next_offset"`
+	Results           []InlineQueryResult `json:"results"`
+	SwitchPmParameter OptString           `json:"switch_pm_parameter"`
+	SwitchPmText      OptString           `json:"switch_pm_text"`
 }
 
 // Ref: #/components/schemas/answerPreCheckoutQuery
@@ -100,9 +102,10 @@ type AnswerPreCheckoutQuery struct {
 
 // Ref: #/components/schemas/answerShippingQuery
 type AnswerShippingQuery struct {
-	ErrorMessage    OptString `json:"error_message"`
-	Ok              bool      `json:"ok"`
-	ShippingQueryID string    `json:"shipping_query_id"`
+	ErrorMessage    OptString        `json:"error_message"`
+	Ok              bool             `json:"ok"`
+	ShippingOptions []ShippingOption `json:"shipping_options"`
+	ShippingQueryID string           `json:"shipping_query_id"`
 }
 
 // Ref: #/components/schemas/Audio
@@ -120,9 +123,16 @@ type Audio struct {
 
 // Ref: #/components/schemas/banChatMember
 type BanChatMember struct {
+	ChatID         ID      `json:"chat_id"`
 	RevokeMessages OptBool `json:"revoke_messages"`
 	UntilDate      OptInt  `json:"until_date"`
 	UserID         int     `json:"user_id"`
+}
+
+// Ref: #/components/schemas/BotCommand
+type BotCommand struct {
+	Command     string `json:"command"`
+	Description string `json:"description"`
 }
 
 // Ref: #/components/schemas/BotCommandScope
@@ -187,16 +197,20 @@ type Contact struct {
 
 // Ref: #/components/schemas/copyMessage
 type CopyMessage struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	MessageID                int       `json:"message_id"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	Caption                  OptString       `json:"caption"`
+	CaptionEntities          []MessageEntity `json:"caption_entities"`
+	ChatID                   ID              `json:"chat_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	FromChatID               ID              `json:"from_chat_id"`
+	MessageID                int             `json:"message_id"`
+	ParseMode                OptString       `json:"parse_mode"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
 }
 
 // Ref: #/components/schemas/createChatInviteLink
 type CreateChatInviteLink struct {
+	ChatID      ID     `json:"chat_id"`
 	ExpireDate  OptInt `json:"expire_date"`
 	MemberLimit OptInt `json:"member_limit"`
 }
@@ -207,19 +221,25 @@ type CreateNewStickerSet struct {
 	Emojis        string          `json:"emojis"`
 	MaskPosition  OptMaskPosition `json:"mask_position"`
 	Name          string          `json:"name"`
+	PNGSticker    OptString       `json:"png_sticker"`
 	TgsSticker    OptString       `json:"tgs_sticker"`
 	Title         string          `json:"title"`
 	UserID        int             `json:"user_id"`
 }
 
 // Ref: #/components/schemas/deleteChatPhoto
-type DeleteChatPhoto struct{}
+type DeleteChatPhoto struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/deleteChatStickerSet
-type DeleteChatStickerSet struct{}
+type DeleteChatStickerSet struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/deleteMessage
 type DeleteMessage struct {
+	ChatID    ID  `json:"chat_id"`
 	MessageID int `json:"message_id"`
 }
 
@@ -257,6 +277,7 @@ type Document struct {
 
 // Ref: #/components/schemas/editChatInviteLink
 type EditChatInviteLink struct {
+	ChatID      ID     `json:"chat_id"`
 	ExpireDate  OptInt `json:"expire_date"`
 	InviteLink  string `json:"invite_link"`
 	MemberLimit OptInt `json:"member_limit"`
@@ -265,6 +286,8 @@ type EditChatInviteLink struct {
 // Ref: #/components/schemas/editMessageCaption
 type EditMessageCaption struct {
 	Caption         OptString             `json:"caption"`
+	CaptionEntities []MessageEntity       `json:"caption_entities"`
+	ChatID          OptID                 `json:"chat_id"`
 	InlineMessageID OptString             `json:"inline_message_id"`
 	MessageID       OptInt                `json:"message_id"`
 	ParseMode       OptString             `json:"parse_mode"`
@@ -273,6 +296,7 @@ type EditMessageCaption struct {
 
 // Ref: #/components/schemas/editMessageLiveLocation
 type EditMessageLiveLocation struct {
+	ChatID               OptID                 `json:"chat_id"`
 	Heading              OptInt                `json:"heading"`
 	HorizontalAccuracy   OptFloat64            `json:"horizontal_accuracy"`
 	InlineMessageID      OptString             `json:"inline_message_id"`
@@ -285,6 +309,7 @@ type EditMessageLiveLocation struct {
 
 // Ref: #/components/schemas/editMessageMedia
 type EditMessageMedia struct {
+	ChatID          OptID                 `json:"chat_id"`
 	InlineMessageID OptString             `json:"inline_message_id"`
 	Media           InputMedia            `json:"media"`
 	MessageID       OptInt                `json:"message_id"`
@@ -293,6 +318,7 @@ type EditMessageMedia struct {
 
 // Ref: #/components/schemas/editMessageReplyMarkup
 type EditMessageReplyMarkup struct {
+	ChatID          OptID                 `json:"chat_id"`
 	InlineMessageID OptString             `json:"inline_message_id"`
 	MessageID       OptInt                `json:"message_id"`
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
@@ -300,7 +326,9 @@ type EditMessageReplyMarkup struct {
 
 // Ref: #/components/schemas/editMessageText
 type EditMessageText struct {
+	ChatID                OptID                 `json:"chat_id"`
 	DisableWebPagePreview OptBool               `json:"disable_web_page_preview"`
+	Entities              []MessageEntity       `json:"entities"`
 	InlineMessageID       OptString             `json:"inline_message_id"`
 	MessageID             OptInt                `json:"message_id"`
 	ParseMode             OptString             `json:"parse_mode"`
@@ -313,6 +341,20 @@ type EncryptedCredentials struct {
 	Data   string `json:"data"`
 	Hash   string `json:"hash"`
 	Secret string `json:"secret"`
+}
+
+// Ref: #/components/schemas/EncryptedPassportElement
+type EncryptedPassportElement struct {
+	Data        OptString       `json:"data"`
+	Email       OptString       `json:"email"`
+	Files       []PassportFile  `json:"files"`
+	FrontSide   OptPassportFile `json:"front_side"`
+	Hash        string          `json:"hash"`
+	PhoneNumber OptString       `json:"phone_number"`
+	ReverseSide OptPassportFile `json:"reverse_side"`
+	Selfie      OptPassportFile `json:"selfie"`
+	Translation []PassportFile  `json:"translation"`
+	Type        string          `json:"type"`
 }
 
 // Ref: #/components/schemas/Error
@@ -406,35 +448,48 @@ func (*ErrorStatusCode) unpinChatMessageRes()                {}
 func (*ErrorStatusCode) uploadStickerFileRes()               {}
 
 // Ref: #/components/schemas/exportChatInviteLink
-type ExportChatInviteLink struct{}
+type ExportChatInviteLink struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/forwardMessage
 type ForwardMessage struct {
+	ChatID              ID      `json:"chat_id"`
 	DisableNotification OptBool `json:"disable_notification"`
+	FromChatID          ID      `json:"from_chat_id"`
 	MessageID           int     `json:"message_id"`
 }
 
 // Ref: #/components/schemas/Game
 type Game struct {
-	Animation   OptAnimation `json:"animation"`
-	Description string       `json:"description"`
-	Text        OptString    `json:"text"`
-	Title       string       `json:"title"`
+	Animation    OptAnimation    `json:"animation"`
+	Description  string          `json:"description"`
+	Photo        []PhotoSize     `json:"photo"`
+	Text         OptString       `json:"text"`
+	TextEntities []MessageEntity `json:"text_entities"`
+	Title        string          `json:"title"`
 }
 
 // Ref: #/components/schemas/getChat
-type GetChat struct{}
+type GetChat struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/getChatAdministrators
-type GetChatAdministrators struct{}
+type GetChatAdministrators struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/getChatMember
 type GetChatMember struct {
+	ChatID ID  `json:"chat_id"`
 	UserID int `json:"user_id"`
 }
 
 // Ref: #/components/schemas/getChatMemberCount
-type GetChatMemberCount struct{}
+type GetChatMemberCount struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/getFile
 type GetFile struct {
@@ -462,9 +517,10 @@ type GetStickerSet struct {
 
 // Ref: #/components/schemas/getUpdates
 type GetUpdates struct {
-	Limit   OptInt `json:"limit"`
-	Offset  OptInt `json:"offset"`
-	Timeout OptInt `json:"timeout"`
+	AllowedUpdates []string `json:"allowed_updates"`
+	Limit          OptInt   `json:"limit"`
+	Offset         OptInt   `json:"offset"`
+	Timeout        OptInt   `json:"timeout"`
 }
 
 // Ref: #/components/schemas/getUserProfilePhotos
@@ -474,8 +530,79 @@ type GetUserProfilePhotos struct {
 	UserID int    `json:"user_id"`
 }
 
-// Ref: #/components/schemas/InlineKeyboardMarkup
-type InlineKeyboardMarkup struct{}
+// Ref: #/components/schemas/ID
+type ID struct {
+	Ok     bool      `json:"ok"`
+	Result *IDResult `json:"result"`
+}
+
+// IDResult represents sum type.
+type IDResult struct {
+	Type   IDResultType // switch on this field
+	String string
+	Int    int
+}
+
+// IDResultType is oneOf type of IDResult.
+type IDResultType string
+
+// Possible values for IDResultType.
+const (
+	IDResultStringType IDResultType = "string"
+	IDResultIntType    IDResultType = "int"
+)
+
+// IsString reports whether IDResult is string.
+func (s IDResult) IsString() bool { return s.Type == IDResultStringType }
+
+// IsInt reports whether IDResult is int.
+func (s IDResult) IsInt() bool { return s.Type == IDResultIntType }
+
+// SetString sets IDResult to string.
+func (s *IDResult) SetString(v string) {
+	s.Type = IDResultStringType
+	s.String = v
+}
+
+// GetString returns string and true boolean if IDResult is string.
+func (s *IDResult) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// IDResultString returns new IDResult from string.
+func IDResultString(v string) IDResult {
+	var s IDResult
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets IDResult to int.
+func (s *IDResult) SetInt(v int) {
+	s.Type = IDResultIntType
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if IDResult is int.
+func (s *IDResult) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// IDResultInt returns new IDResult from int.
+func IDResultInt(v int) IDResult {
+	var s IDResult
+	s.SetInt(v)
+	return s
+}
+
+type InlineKeyboardMarkup string
+
+type InlineQueryResult string
 
 // Ref: #/components/schemas/InputMedia
 type InputMedia struct{}
@@ -489,8 +616,16 @@ type Invoice struct {
 	TotalAmount    int    `json:"total_amount"`
 }
 
+// Ref: #/components/schemas/LabeledPrice
+type LabeledPrice struct {
+	Amount int    `json:"amount"`
+	Label  string `json:"label"`
+}
+
 // Ref: #/components/schemas/leaveChat
-type LeaveChat struct{}
+type LeaveChat struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/Location
 type Location struct {
@@ -516,6 +651,7 @@ type Message struct {
 	Audio                         OptAudio                         `json:"audio"`
 	AuthorSignature               OptString                        `json:"author_signature"`
 	Caption                       OptString                        `json:"caption"`
+	CaptionEntities               []MessageEntity                  `json:"caption_entities"`
 	ChannelChatCreated            OptBool                          `json:"channel_chat_created"`
 	Chat                          *Chat                            `json:"chat"`
 	ConnectedWebsite              OptString                        `json:"connected_website"`
@@ -525,6 +661,7 @@ type Message struct {
 	Dice                          OptDice                          `json:"dice"`
 	Document                      OptDocument                      `json:"document"`
 	EditDate                      OptInt                           `json:"edit_date"`
+	Entities                      []MessageEntity                  `json:"entities"`
 	ForwardDate                   OptInt                           `json:"forward_date"`
 	ForwardFrom                   OptUser                          `json:"forward_from"`
 	ForwardFromChat               *Chat                            `json:"forward_from_chat"`
@@ -542,8 +679,11 @@ type Message struct {
 	MessageID                     int                              `json:"message_id"`
 	MigrateFromChatID             OptInt                           `json:"migrate_from_chat_id"`
 	MigrateToChatID               OptInt                           `json:"migrate_to_chat_id"`
+	NewChatMembers                []User                           `json:"new_chat_members"`
+	NewChatPhoto                  []PhotoSize                      `json:"new_chat_photo"`
 	NewChatTitle                  OptString                        `json:"new_chat_title"`
 	PassportData                  OptPassportData                  `json:"passport_data"`
+	Photo                         []PhotoSize                      `json:"photo"`
 	PinnedMessage                 *Message                         `json:"pinned_message"`
 	Poll                          OptPoll                          `json:"poll"`
 	ProximityAlertTriggered       OptProximityAlertTriggered       `json:"proximity_alert_triggered"`
@@ -560,7 +700,7 @@ type Message struct {
 	VideoNote                     OptVideoNote                     `json:"video_note"`
 	Voice                         OptVoice                         `json:"voice"`
 	VoiceChatEnded                OptVoiceChatEnded                `json:"voice_chat_ended"`
-	VoiceChatParticipantsInvited  *VoiceChatParticipantsInvited    `json:"voice_chat_participants_invited"`
+	VoiceChatParticipantsInvited  OptVoiceChatParticipantsInvited  `json:"voice_chat_participants_invited"`
 	VoiceChatScheduled            OptVoiceChatScheduled            `json:"voice_chat_scheduled"`
 	VoiceChatStarted              *VoiceChatStarted                `json:"voice_chat_started"`
 }
@@ -568,6 +708,16 @@ type Message struct {
 // Ref: #/components/schemas/MessageAutoDeleteTimerChanged
 type MessageAutoDeleteTimerChanged struct {
 	MessageAutoDeleteTime int `json:"message_auto_delete_time"`
+}
+
+// Ref: #/components/schemas/MessageEntity
+type MessageEntity struct {
+	Language OptString `json:"language"`
+	Length   int       `json:"length"`
+	Offset   int       `json:"offset"`
+	Type     string    `json:"type"`
+	URL      OptURL    `json:"url"`
+	User     OptUser   `json:"user"`
 }
 
 // NewOptAnimation returns new OptAnimation with value set to v.
@@ -988,6 +1138,44 @@ func (o OptGame) Get() (v Game, ok bool) {
 	return o.Value, true
 }
 
+// NewOptID returns new OptID with value set to v.
+func NewOptID(v ID) OptID {
+	return OptID{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptID is optional ID.
+type OptID struct {
+	Value ID
+	Set   bool
+}
+
+// IsSet returns true if OptID was set.
+func (o OptID) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptID) Reset() {
+	var v ID
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptID) SetTo(v ID) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptID) Get() (v ID, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -1324,6 +1512,44 @@ func (o *OptPassportData) SetTo(v PassportData) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptPassportData) Get() (v PassportData, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptPassportFile returns new OptPassportFile with value set to v.
+func NewOptPassportFile(v PassportFile) OptPassportFile {
+	return OptPassportFile{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPassportFile is optional PassportFile.
+type OptPassportFile struct {
+	Value PassportFile
+	Set   bool
+}
+
+// IsSet returns true if OptPassportFile was set.
+func (o OptPassportFile) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPassportFile) Reset() {
+	var v PassportFile
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPassportFile) SetTo(v PassportFile) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPassportFile) Get() (v PassportFile, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1900,6 +2126,44 @@ func (o OptVoiceChatEnded) Get() (v VoiceChatEnded, ok bool) {
 	return o.Value, true
 }
 
+// NewOptVoiceChatParticipantsInvited returns new OptVoiceChatParticipantsInvited with value set to v.
+func NewOptVoiceChatParticipantsInvited(v VoiceChatParticipantsInvited) OptVoiceChatParticipantsInvited {
+	return OptVoiceChatParticipantsInvited{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptVoiceChatParticipantsInvited is optional VoiceChatParticipantsInvited.
+type OptVoiceChatParticipantsInvited struct {
+	Value VoiceChatParticipantsInvited
+	Set   bool
+}
+
+// IsSet returns true if OptVoiceChatParticipantsInvited was set.
+func (o OptVoiceChatParticipantsInvited) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptVoiceChatParticipantsInvited) Reset() {
+	var v VoiceChatParticipantsInvited
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptVoiceChatParticipantsInvited) SetTo(v VoiceChatParticipantsInvited) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptVoiceChatParticipantsInvited) Get() (v VoiceChatParticipantsInvited, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptVoiceChatScheduled returns new OptVoiceChatScheduled with value set to v.
 func NewOptVoiceChatScheduled(v VoiceChatScheduled) OptVoiceChatScheduled {
 	return OptVoiceChatScheduled{
@@ -1948,7 +2212,19 @@ type OrderInfo struct {
 
 // Ref: #/components/schemas/PassportData
 type PassportData struct {
-	Credentials EncryptedCredentials `json:"credentials"`
+	Credentials EncryptedCredentials       `json:"credentials"`
+	Data        []EncryptedPassportElement `json:"data"`
+}
+
+// Ref: #/components/schemas/PassportElementError
+type PassportElementError struct{}
+
+// Ref: #/components/schemas/PassportFile
+type PassportFile struct {
+	FileDate     int    `json:"file_date"`
+	FileID       string `json:"file_id"`
+	FileSize     int    `json:"file_size"`
+	FileUniqueID string `json:"file_unique_id"`
 }
 
 // Ref: #/components/schemas/PhotoSize
@@ -1962,23 +2238,32 @@ type PhotoSize struct {
 
 // Ref: #/components/schemas/pinChatMessage
 type PinChatMessage struct {
+	ChatID              ID      `json:"chat_id"`
 	DisableNotification OptBool `json:"disable_notification"`
 	MessageID           int     `json:"message_id"`
 }
 
 // Ref: #/components/schemas/Poll
 type Poll struct {
-	AllowsMultipleAnswers bool      `json:"allows_multiple_answers"`
-	CloseDate             OptInt    `json:"close_date"`
-	CorrectOptionID       OptInt    `json:"correct_option_id"`
-	Explanation           OptString `json:"explanation"`
-	ID                    string    `json:"id"`
-	IsAnonymous           bool      `json:"is_anonymous"`
-	IsClosed              bool      `json:"is_closed"`
-	OpenPeriod            OptInt    `json:"open_period"`
-	Question              string    `json:"question"`
-	TotalVoterCount       int       `json:"total_voter_count"`
-	Type                  string    `json:"type"`
+	AllowsMultipleAnswers bool            `json:"allows_multiple_answers"`
+	CloseDate             OptInt          `json:"close_date"`
+	CorrectOptionID       OptInt          `json:"correct_option_id"`
+	Explanation           OptString       `json:"explanation"`
+	ExplanationEntities   []MessageEntity `json:"explanation_entities"`
+	ID                    string          `json:"id"`
+	IsAnonymous           bool            `json:"is_anonymous"`
+	IsClosed              bool            `json:"is_closed"`
+	OpenPeriod            OptInt          `json:"open_period"`
+	Options               []PollOption    `json:"options"`
+	Question              string          `json:"question"`
+	TotalVoterCount       int             `json:"total_voter_count"`
+	Type                  string          `json:"type"`
+}
+
+// Ref: #/components/schemas/PollOption
+type PollOption struct {
+	Text       string `json:"text"`
+	VoterCount int    `json:"voter_count"`
 }
 
 // Ref: #/components/schemas/promoteChatMember
@@ -1993,6 +2278,7 @@ type PromoteChatMember struct {
 	CanPostMessages     OptBool `json:"can_post_messages"`
 	CanPromoteMembers   OptBool `json:"can_promote_members"`
 	CanRestrictMembers  OptBool `json:"can_restrict_members"`
+	ChatID              ID      `json:"chat_id"`
 	IsAnonymous         OptBool `json:"is_anonymous"`
 	UserID              int     `json:"user_id"`
 }
@@ -2012,6 +2298,7 @@ type Response struct {
 
 // Ref: #/components/schemas/restrictChatMember
 type RestrictChatMember struct {
+	ChatID      ID              `json:"chat_id"`
 	Permissions ChatPermissions `json:"permissions"`
 	UntilDate   OptInt          `json:"until_date"`
 	UserID      int             `json:"user_id"`
@@ -2115,41 +2402,52 @@ func (*ResultUsr) getMeRes() {}
 
 // Ref: #/components/schemas/revokeChatInviteLink
 type RevokeChatInviteLink struct {
+	ChatID     ID     `json:"chat_id"`
 	InviteLink string `json:"invite_link"`
 }
 
 // Ref: #/components/schemas/sendAnimation
 type SendAnimation struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	Height                   OptInt    `json:"height"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Width                    OptInt    `json:"width"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	Animation                string          `json:"animation"`
+	Caption                  OptString       `json:"caption"`
+	CaptionEntities          []MessageEntity `json:"caption_entities"`
+	ChatID                   ID              `json:"chat_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	Duration                 OptInt          `json:"duration"`
+	Height                   OptInt          `json:"height"`
+	ParseMode                OptString       `json:"parse_mode"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
+	Thumb                    OptString       `json:"thumb"`
+	Width                    OptInt          `json:"width"`
 }
 
 // Ref: #/components/schemas/sendAudio
 type SendAudio struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	ParseMode                OptString `json:"parse_mode"`
-	Performer                OptString `json:"performer"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Title                    OptString `json:"title"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	Audio                    string          `json:"audio"`
+	Caption                  OptString       `json:"caption"`
+	CaptionEntities          []MessageEntity `json:"caption_entities"`
+	ChatID                   ID              `json:"chat_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	Duration                 OptInt          `json:"duration"`
+	ParseMode                OptString       `json:"parse_mode"`
+	Performer                OptString       `json:"performer"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
+	Thumb                    OptString       `json:"thumb"`
+	Title                    OptString       `json:"title"`
 }
 
 // Ref: #/components/schemas/sendChatAction
 type SendChatAction struct {
 	Action string `json:"action"`
+	ChatID ID     `json:"chat_id"`
 }
 
 // Ref: #/components/schemas/sendContact
 type SendContact struct {
 	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	ChatID                   ID        `json:"chat_id"`
 	DisableNotification      OptBool   `json:"disable_notification"`
 	FirstName                string    `json:"first_name"`
 	LastName                 OptString `json:"last_name"`
@@ -2161,6 +2459,7 @@ type SendContact struct {
 // Ref: #/components/schemas/sendDice
 type SendDice struct {
 	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	ChatID                   ID        `json:"chat_id"`
 	DisableNotification      OptBool   `json:"disable_notification"`
 	Emoji                    OptString `json:"emoji"`
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
@@ -2168,12 +2467,16 @@ type SendDice struct {
 
 // Ref: #/components/schemas/sendDocument
 type SendDocument struct {
-	AllowSendingWithoutReply    OptBool   `json:"allow_sending_without_reply"`
-	Caption                     OptString `json:"caption"`
-	DisableContentTypeDetection OptBool   `json:"disable_content_type_detection"`
-	DisableNotification         OptBool   `json:"disable_notification"`
-	ParseMode                   OptString `json:"parse_mode"`
-	ReplyToMessageID            OptInt    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply    OptBool         `json:"allow_sending_without_reply"`
+	Caption                     OptString       `json:"caption"`
+	CaptionEntities             []MessageEntity `json:"caption_entities"`
+	ChatID                      ID              `json:"chat_id"`
+	DisableContentTypeDetection OptBool         `json:"disable_content_type_detection"`
+	DisableNotification         OptBool         `json:"disable_notification"`
+	Document                    string          `json:"document"`
+	ParseMode                   OptString       `json:"parse_mode"`
+	ReplyToMessageID            OptInt          `json:"reply_to_message_id"`
+	Thumb                       OptString       `json:"thumb"`
 }
 
 // Ref: #/components/schemas/sendGame
@@ -2189,6 +2492,7 @@ type SendGame struct {
 // Ref: #/components/schemas/sendInvoice
 type SendInvoice struct {
 	AllowSendingWithoutReply  OptBool               `json:"allow_sending_without_reply"`
+	ChatID                    ID                    `json:"chat_id"`
 	Currency                  string                `json:"currency"`
 	Description               string                `json:"description"`
 	DisableNotification       OptBool               `json:"disable_notification"`
@@ -2203,6 +2507,7 @@ type SendInvoice struct {
 	PhotoSize                 OptInt                `json:"photo_size"`
 	PhotoURL                  OptURL                `json:"photo_url"`
 	PhotoWidth                OptInt                `json:"photo_width"`
+	Prices                    []LabeledPrice        `json:"prices"`
 	ProviderData              OptString             `json:"provider_data"`
 	ProviderToken             string                `json:"provider_token"`
 	ReplyMarkup               *InlineKeyboardMarkup `json:"reply_markup"`
@@ -2210,12 +2515,14 @@ type SendInvoice struct {
 	SendEmailToProvider       OptBool               `json:"send_email_to_provider"`
 	SendPhoneNumberToProvider OptBool               `json:"send_phone_number_to_provider"`
 	StartParameter            OptString             `json:"start_parameter"`
+	SuggestedTipAmounts       []int                 `json:"suggested_tip_amounts"`
 	Title                     string                `json:"title"`
 }
 
 // Ref: #/components/schemas/sendLocation
 type SendLocation struct {
 	AllowSendingWithoutReply OptBool    `json:"allow_sending_without_reply"`
+	ChatID                   ID         `json:"chat_id"`
 	DisableNotification      OptBool    `json:"disable_notification"`
 	Heading                  OptInt     `json:"heading"`
 	HorizontalAccuracy       OptFloat64 `json:"horizontal_accuracy"`
@@ -2228,58 +2535,71 @@ type SendLocation struct {
 
 // Ref: #/components/schemas/sendMediaGroup
 type SendMediaGroup struct {
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool `json:"disable_notification"`
-	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool  `json:"allow_sending_without_reply"`
+	ChatID                   ID       `json:"chat_id"`
+	DisableNotification      OptBool  `json:"disable_notification"`
+	Media                    []string `json:"media"`
+	ReplyToMessageID         OptInt   `json:"reply_to_message_id"`
 }
 
 // Ref: #/components/schemas/sendMessage
 type SendMessage struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	DisableWebPagePreview    OptBool   `json:"disable_web_page_preview"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Text                     string    `json:"text"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	ChatID                   ID              `json:"chat_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	DisableWebPagePreview    OptBool         `json:"disable_web_page_preview"`
+	Entities                 []MessageEntity `json:"entities"`
+	ParseMode                OptString       `json:"parse_mode"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
+	Text                     string          `json:"text"`
 }
 
 // Ref: #/components/schemas/sendPhoto
 type SendPhoto struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	Caption                  OptString       `json:"caption"`
+	CaptionEntities          []MessageEntity `json:"caption_entities"`
+	ChatID                   ID              `json:"chat_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	ParseMode                OptString       `json:"parse_mode"`
+	Photo                    string          `json:"photo"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
 }
 
 // Ref: #/components/schemas/sendPoll
 type SendPoll struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	AllowsMultipleAnswers    OptBool   `json:"allows_multiple_answers"`
-	CloseDate                OptInt    `json:"close_date"`
-	CorrectOptionID          OptInt    `json:"correct_option_id"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Explanation              OptString `json:"explanation"`
-	ExplanationParseMode     OptString `json:"explanation_parse_mode"`
-	IsAnonymous              OptBool   `json:"is_anonymous"`
-	IsClosed                 OptBool   `json:"is_closed"`
-	OpenPeriod               OptInt    `json:"open_period"`
-	Question                 string    `json:"question"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	Type                     OptString `json:"type"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	AllowsMultipleAnswers    OptBool         `json:"allows_multiple_answers"`
+	ChatID                   ID              `json:"chat_id"`
+	CloseDate                OptInt          `json:"close_date"`
+	CorrectOptionID          OptInt          `json:"correct_option_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	Explanation              OptString       `json:"explanation"`
+	ExplanationEntities      []MessageEntity `json:"explanation_entities"`
+	ExplanationParseMode     OptString       `json:"explanation_parse_mode"`
+	IsAnonymous              OptBool         `json:"is_anonymous"`
+	IsClosed                 OptBool         `json:"is_closed"`
+	OpenPeriod               OptInt          `json:"open_period"`
+	Options                  []string        `json:"options"`
+	Question                 string          `json:"question"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
+	Type                     OptString       `json:"type"`
 }
 
 // Ref: #/components/schemas/sendSticker
 type SendSticker struct {
 	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
+	ChatID                   ID      `json:"chat_id"`
 	DisableNotification      OptBool `json:"disable_notification"`
 	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
+	Sticker                  string  `json:"sticker"`
 }
 
 // Ref: #/components/schemas/sendVenue
 type SendVenue struct {
 	Address                  string    `json:"address"`
 	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	ChatID                   ID        `json:"chat_id"`
 	DisableNotification      OptBool   `json:"disable_notification"`
 	FoursquareID             OptString `json:"foursquare_id"`
 	FoursquareType           OptString `json:"foursquare_type"`
@@ -2293,65 +2613,81 @@ type SendVenue struct {
 
 // Ref: #/components/schemas/sendVideo
 type SendVideo struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	Height                   OptInt    `json:"height"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-	SupportsStreaming        OptBool   `json:"supports_streaming"`
-	Width                    OptInt    `json:"width"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	Caption                  OptString       `json:"caption"`
+	CaptionEntities          []MessageEntity `json:"caption_entities"`
+	ChatID                   ID              `json:"chat_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	Duration                 OptInt          `json:"duration"`
+	Height                   OptInt          `json:"height"`
+	ParseMode                OptString       `json:"parse_mode"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
+	SupportsStreaming        OptBool         `json:"supports_streaming"`
+	Thumb                    OptString       `json:"thumb"`
+	Video                    string          `json:"video"`
+	Width                    OptInt          `json:"width"`
 }
 
 // Ref: #/components/schemas/sendVideoNote
 type SendVideoNote struct {
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	DisableNotification      OptBool `json:"disable_notification"`
-	Duration                 OptInt  `json:"duration"`
-	Length                   OptInt  `json:"length"`
-	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
+	ChatID                   ID        `json:"chat_id"`
+	DisableNotification      OptBool   `json:"disable_notification"`
+	Duration                 OptInt    `json:"duration"`
+	Length                   OptInt    `json:"length"`
+	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	Thumb                    OptString `json:"thumb"`
+	VideoNote                string    `json:"video_note"`
 }
 
 // Ref: #/components/schemas/sendVoice
 type SendVoice struct {
-	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
-	Caption                  OptString `json:"caption"`
-	DisableNotification      OptBool   `json:"disable_notification"`
-	Duration                 OptInt    `json:"duration"`
-	ParseMode                OptString `json:"parse_mode"`
-	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool         `json:"allow_sending_without_reply"`
+	Caption                  OptString       `json:"caption"`
+	CaptionEntities          []MessageEntity `json:"caption_entities"`
+	ChatID                   ID              `json:"chat_id"`
+	DisableNotification      OptBool         `json:"disable_notification"`
+	Duration                 OptInt          `json:"duration"`
+	ParseMode                OptString       `json:"parse_mode"`
+	ReplyToMessageID         OptInt          `json:"reply_to_message_id"`
+	Voice                    string          `json:"voice"`
 }
 
 // Ref: #/components/schemas/setChatAdministratorCustomTitle
 type SetChatAdministratorCustomTitle struct {
+	ChatID      ID     `json:"chat_id"`
 	CustomTitle string `json:"custom_title"`
 	UserID      int    `json:"user_id"`
 }
 
 // Ref: #/components/schemas/setChatDescription
 type SetChatDescription struct {
+	ChatID      ID        `json:"chat_id"`
 	Description OptString `json:"description"`
 }
 
 // Ref: #/components/schemas/setChatPermissions
 type SetChatPermissions struct {
+	ChatID      ID              `json:"chat_id"`
 	Permissions ChatPermissions `json:"permissions"`
 }
 
 // Ref: #/components/schemas/setChatPhoto
 type SetChatPhoto struct {
-	Photo string `json:"photo"`
+	ChatID ID     `json:"chat_id"`
+	Photo  string `json:"photo"`
 }
 
 // Ref: #/components/schemas/setChatStickerSet
 type SetChatStickerSet struct {
+	ChatID         ID     `json:"chat_id"`
 	StickerSetName string `json:"sticker_set_name"`
 }
 
 // Ref: #/components/schemas/setChatTitle
 type SetChatTitle struct {
-	Title string `json:"title"`
+	ChatID ID     `json:"chat_id"`
+	Title  string `json:"title"`
 }
 
 // Ref: #/components/schemas/setGameScore
@@ -2367,13 +2703,15 @@ type SetGameScore struct {
 
 // Ref: #/components/schemas/setMyCommands
 type SetMyCommands struct {
+	Commands     []BotCommand     `json:"commands"`
 	LanguageCode OptString        `json:"language_code"`
 	Scope        *BotCommandScope `json:"scope"`
 }
 
 // Ref: #/components/schemas/setPassportDataErrors
 type SetPassportDataErrors struct {
-	UserID int `json:"user_id"`
+	Errors []PassportElementError `json:"errors"`
+	UserID int                    `json:"user_id"`
 }
 
 // Ref: #/components/schemas/setStickerPositionInSet
@@ -2384,12 +2722,14 @@ type SetStickerPositionInSet struct {
 
 // Ref: #/components/schemas/setStickerSetThumb
 type SetStickerSetThumb struct {
-	Name   string `json:"name"`
-	UserID int    `json:"user_id"`
+	Name   string    `json:"name"`
+	Thumb  OptString `json:"thumb"`
+	UserID int       `json:"user_id"`
 }
 
 // Ref: #/components/schemas/setWebhook
 type SetWebhook struct {
+	AllowedUpdates     []string  `json:"allowed_updates"`
 	Certificate        OptString `json:"certificate"`
 	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
 	IPAddress          OptString `json:"ip_address"`
@@ -2405,6 +2745,13 @@ type ShippingAddress struct {
 	State       string `json:"state"`
 	StreetLine1 string `json:"street_line1"`
 	StreetLine2 string `json:"street_line2"`
+}
+
+// Ref: #/components/schemas/ShippingOption
+type ShippingOption struct {
+	ID     string         `json:"id"`
+	Prices []LabeledPrice `json:"prices"`
+	Title  string         `json:"title"`
 }
 
 // Ref: #/components/schemas/Sticker
@@ -2423,6 +2770,7 @@ type Sticker struct {
 
 // Ref: #/components/schemas/stopMessageLiveLocation
 type StopMessageLiveLocation struct {
+	ChatID          OptID                 `json:"chat_id"`
 	InlineMessageID OptString             `json:"inline_message_id"`
 	MessageID       OptInt                `json:"message_id"`
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
@@ -2430,6 +2778,7 @@ type StopMessageLiveLocation struct {
 
 // Ref: #/components/schemas/stopPoll
 type StopPoll struct {
+	ChatID      ID                    `json:"chat_id"`
 	MessageID   int                   `json:"message_id"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup"`
 }
@@ -2447,15 +2796,19 @@ type SuccessfulPayment struct {
 
 // Ref: #/components/schemas/unbanChatMember
 type UnbanChatMember struct {
+	ChatID       ID      `json:"chat_id"`
 	OnlyIfBanned OptBool `json:"only_if_banned"`
 	UserID       int     `json:"user_id"`
 }
 
 // Ref: #/components/schemas/unpinAllChatMessages
-type UnpinAllChatMessages struct{}
+type UnpinAllChatMessages struct {
+	ChatID ID `json:"chat_id"`
+}
 
 // Ref: #/components/schemas/unpinChatMessage
 type UnpinChatMessage struct {
+	ChatID    ID     `json:"chat_id"`
 	MessageID OptInt `json:"message_id"`
 }
 
@@ -2527,7 +2880,9 @@ type VoiceChatEnded struct {
 }
 
 // Ref: #/components/schemas/VoiceChatParticipantsInvited
-type VoiceChatParticipantsInvited struct{}
+type VoiceChatParticipantsInvited struct {
+	Users []User `json:"users"`
+}
 
 // Ref: #/components/schemas/VoiceChatScheduled
 type VoiceChatScheduled struct {

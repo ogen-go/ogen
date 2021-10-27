@@ -1843,8 +1843,7 @@
             "type": "string"
           },
           "thumb": {
-            "$ref": "#/components/schemas/PhotoSize",
-            "description": "Animation thumbnail as defined by sender"
+            "$ref": "#/components/schemas/PhotoSize"
           },
           "width": {
             "description": "Video width as defined by sender",
@@ -1896,8 +1895,7 @@
             "type": "string"
           },
           "thumb": {
-            "$ref": "#/components/schemas/PhotoSize",
-            "description": "Thumbnail of the album cover to which the music file belongs"
+            "$ref": "#/components/schemas/PhotoSize"
           },
           "title": {
             "description": "Title of the audio as defined by sender or by audio tags",
@@ -1982,6 +1980,9 @@
         "description": "Represents the scope of bot commands, covering a specific chat.",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "type": {
             "description": "Scope type, must be chat",
             "type": "string",
@@ -1989,13 +1990,17 @@
           }
         },
         "required": [
-          "type"
+          "type",
+          "chat_id"
         ]
       },
       "BotCommandScopeChatAdministrators": {
         "description": "Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "type": {
             "description": "Scope type, must be chat_administrators",
             "type": "string",
@@ -2003,13 +2008,17 @@
           }
         },
         "required": [
-          "type"
+          "type",
+          "chat_id"
         ]
       },
       "BotCommandScopeChatMember": {
         "description": "Represents the scope of bot commands, covering a specific member of a group or supergroup chat.",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "type": {
             "description": "Scope type, must be chat_member",
             "type": "string",
@@ -2022,6 +2031,7 @@
         },
         "required": [
           "type",
+          "chat_id",
           "user_id"
         ]
       },
@@ -2056,8 +2066,7 @@
             "type": "string"
           },
           "from": {
-            "$ref": "#/components/schemas/User",
-            "description": "Sender"
+            "$ref": "#/components/schemas/User"
           },
           "game_short_name": {
             "description": "Short name of a Game to be returned, serves as the unique identifier for the game",
@@ -2072,8 +2081,7 @@
             "type": "string"
           },
           "message": {
-            "$ref": "#/components/schemas/Message",
-            "description": "Message with the callback button that originated the query. Note that message content and message date will not be available if the message is too old"
+            "$ref": "#/components/schemas/Message"
           }
         },
         "required": [
@@ -2119,24 +2127,20 @@
             "type": "integer"
           },
           "location": {
-            "$ref": "#/components/schemas/ChatLocation",
-            "description": "For supergroups, the location to which the supergroup is connected. Returned only in getChat"
+            "$ref": "#/components/schemas/ChatLocation"
           },
           "message_auto_delete_time": {
             "description": "The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat",
             "type": "integer"
           },
           "permissions": {
-            "$ref": "#/components/schemas/ChatPermissions",
-            "description": "Default chat member permissions, for groups and supergroups. Returned only in getChat"
+            "$ref": "#/components/schemas/ChatPermissions"
           },
           "photo": {
-            "$ref": "#/components/schemas/ChatPhoto",
-            "description": "Chat photo. Returned only in getChat"
+            "$ref": "#/components/schemas/ChatPhoto"
           },
           "pinned_message": {
-            "$ref": "#/components/schemas/Message",
-            "description": "The most recent pinned message (by sending date). Returned only in getChat"
+            "$ref": "#/components/schemas/Message"
           },
           "slow_mode_delay": {
             "description": "For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged user. Returned only in getChat",
@@ -2169,8 +2173,7 @@
         "type": "object",
         "properties": {
           "creator": {
-            "$ref": "#/components/schemas/User",
-            "description": "Creator of the link"
+            "$ref": "#/components/schemas/User"
           },
           "expire_date": {
             "description": "Point in time (Unix timestamp) when the link will expire or has been expired",
@@ -2211,8 +2214,7 @@
             "minLength": 1
           },
           "location": {
-            "$ref": "#/components/schemas/Location",
-            "description": "The location to which the supergroup is connected. Can't be a live location"
+            "$ref": "#/components/schemas/Location"
           }
         },
         "required": [
@@ -2285,8 +2287,7 @@
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "Information about the user"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -2316,8 +2317,7 @@
             "type": "integer"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "Information about the user"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -2335,8 +2335,7 @@
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "Information about the user"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -2353,8 +2352,7 @@
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "Information about the user"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -2379,8 +2377,7 @@
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "Information about the user"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -2438,8 +2435,7 @@
             "type": "integer"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "Information about the user"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -2462,28 +2458,23 @@
         "type": "object",
         "properties": {
           "chat": {
-            "$ref": "#/components/schemas/Chat",
-            "description": "Chat the user belongs to"
+            "$ref": "#/components/schemas/Chat"
           },
           "date": {
             "description": "Date the change was done in Unix time",
             "type": "integer"
           },
           "from": {
-            "$ref": "#/components/schemas/User",
-            "description": "Performer of the action, which resulted in the change"
+            "$ref": "#/components/schemas/User"
           },
           "invite_link": {
-            "$ref": "#/components/schemas/ChatInviteLink",
-            "description": "Chat invite link, which was used by the user to join the chat; for joining by invite link events only"
+            "$ref": "#/components/schemas/ChatInviteLink"
           },
           "new_chat_member": {
-            "$ref": "#/components/schemas/ChatMember",
-            "description": "New information about the chat member"
+            "$ref": "#/components/schemas/ChatMember"
           },
           "old_chat_member": {
-            "$ref": "#/components/schemas/ChatMember",
-            "description": "Previous information about the chat member"
+            "$ref": "#/components/schemas/ChatMember"
           }
         },
         "required": [
@@ -2565,16 +2556,14 @@
         "type": "object",
         "properties": {
           "from": {
-            "$ref": "#/components/schemas/User",
-            "description": "The user that chose the result"
+            "$ref": "#/components/schemas/User"
           },
           "inline_message_id": {
             "description": "Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message",
             "type": "string"
           },
           "location": {
-            "$ref": "#/components/schemas/Location",
-            "description": "Sender location, only for bots that require user location"
+            "$ref": "#/components/schemas/Location"
           },
           "query": {
             "description": "The query that was used to obtain the result",
@@ -2664,8 +2653,7 @@
             "type": "string"
           },
           "thumb": {
-            "$ref": "#/components/schemas/PhotoSize",
-            "description": "Document thumbnail as defined by sender"
+            "$ref": "#/components/schemas/PhotoSize"
           }
         },
         "required": [
@@ -2708,9 +2696,15 @@
             "description": "User's verified email address, available only for “email” type",
             "type": "string"
           },
+          "files": {
+            "description": "Array of encrypted files with documents provided by the user, available for “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PassportFile"
+            }
+          },
           "front_side": {
-            "$ref": "#/components/schemas/PassportFile",
-            "description": "Encrypted file with the front side of the document, provided by the user. Available for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials"
+            "$ref": "#/components/schemas/PassportFile"
           },
           "hash": {
             "description": "Base64-encoded element hash for using in PassportElementErrorUnspecified",
@@ -2721,12 +2715,17 @@
             "type": "string"
           },
           "reverse_side": {
-            "$ref": "#/components/schemas/PassportFile",
-            "description": "Encrypted file with the reverse side of the document, provided by the user. Available for “driver_license” and “identity_card”. The file can be decrypted and verified using the accompanying EncryptedCredentials"
+            "$ref": "#/components/schemas/PassportFile"
           },
           "selfie": {
-            "$ref": "#/components/schemas/PassportFile",
-            "description": "Encrypted file with the selfie of the user holding a document, provided by the user; available for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials"
+            "$ref": "#/components/schemas/PassportFile"
+          },
+          "translation": {
+            "description": "Array of encrypted files with translated versions of documents provided by the user. Available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PassportFile"
+            }
           },
           "type": {
             "description": "Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”",
@@ -2815,17 +2814,30 @@
         "type": "object",
         "properties": {
           "animation": {
-            "$ref": "#/components/schemas/Animation",
-            "description": "Animation that will be displayed in the game message in chats. Upload via BotFather"
+            "$ref": "#/components/schemas/Animation"
           },
           "description": {
             "description": "Description of the game",
             "type": "string"
           },
+          "photo": {
+            "description": "Photo that will be displayed in the game message in chats",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhotoSize"
+            }
+          },
           "text": {
             "description": "Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters",
             "type": "string",
             "maxLength": 4096
+          },
+          "text_entities": {
+            "description": "Special entities that appear in text, such as usernames, URLs, bot commands, etc",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
           },
           "title": {
             "description": "Title of the game",
@@ -2834,7 +2846,8 @@
         },
         "required": [
           "title",
-          "description"
+          "description",
+          "photo"
         ]
       },
       "GameHighScore": {
@@ -2850,14 +2863,35 @@
             "type": "integer"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "User"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
           "position",
           "user",
           "score"
+        ]
+      },
+      "ID": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "default": true
+          },
+          "result": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "required": [
+          "ok"
         ]
       },
       "InlineKeyboardButton": {
@@ -2869,12 +2903,10 @@
             "type": "string"
           },
           "callback_game": {
-            "$ref": "#/components/schemas/CallbackGame",
-            "description": "Description of the game that will be launched when the user presses the button.NOTE: This type of button must always be the first button in the first row"
+            "$ref": "#/components/schemas/CallbackGame"
           },
           "login_url": {
-            "$ref": "#/components/schemas/LoginUrl",
-            "description": "An HTTP URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget"
+            "$ref": "#/components/schemas/LoginUrl"
           },
           "pay": {
             "description": "Specify True, to send a Pay button.NOTE: This type of button must always be the first button in the first row",
@@ -2903,8 +2935,8 @@
         ]
       },
       "InlineKeyboardMarkup": {
-        "description": "This object represents an inline keyboard that appears right next to the message it belongs to.",
-        "type": "object"
+        "description": "Hack",
+        "type": "string"
       },
       "InlineQuery": {
         "description": "This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.",
@@ -2915,16 +2947,14 @@
             "type": "string"
           },
           "from": {
-            "$ref": "#/components/schemas/User",
-            "description": "Sender"
+            "$ref": "#/components/schemas/User"
           },
           "id": {
             "description": "Unique identifier for this query",
             "type": "string"
           },
           "location": {
-            "$ref": "#/components/schemas/Location",
-            "description": "Sender location, only for bots that request user location"
+            "$ref": "#/components/schemas/Location"
           },
           "offset": {
             "description": "Offset of the results to be returned, can be controlled by the bot",
@@ -2941,6 +2971,10 @@
           "query",
           "offset"
         ]
+      },
+      "InlineQueryResult": {
+        "description": "Hack",
+        "type": "string"
       },
       "InlineQueryResultArticle": {
         "description": "Represents a link to an article or web page.",
@@ -2959,12 +2993,10 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_height": {
             "description": "Thumbnail height",
@@ -3025,13 +3057,19 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the audio"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the audio caption. See formatting options for more details",
@@ -3042,8 +3080,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Title",
@@ -3075,21 +3112,26 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the audio"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the audio caption. See formatting options for more details",
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "type": {
             "description": "Type of the result, must be audio",
@@ -3112,6 +3154,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "description": {
             "description": "Short description of the result",
             "type": "string"
@@ -3125,16 +3174,14 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the file"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the document caption. See formatting options for more details",
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Title for the result",
@@ -3162,6 +3209,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "gif_file_id": {
             "description": "A valid file identifier for the GIF file",
             "type": "string"
@@ -3171,16 +3225,14 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the GIF animation"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the caption. See formatting options for more details",
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Title for the result",
@@ -3207,13 +3259,19 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the video animation"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "mpeg4_file_id": {
             "description": "A valid file identifier for the MP4 file",
@@ -3224,8 +3282,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Title for the result",
@@ -3252,6 +3309,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "description": {
             "description": "Short description of the result",
             "type": "string"
@@ -3261,8 +3325,7 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the photo"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the photo caption. See formatting options for more details",
@@ -3273,8 +3336,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Title for the result",
@@ -3301,12 +3363,10 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the sticker"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "sticker_file_id": {
             "description": "A valid file identifier of the sticker",
@@ -3333,6 +3393,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "description": {
             "description": "Short description of the result",
             "type": "string"
@@ -3342,16 +3409,14 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the video"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the video caption. See formatting options for more details",
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Title for the result",
@@ -3383,21 +3448,26 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the voice message"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the voice message caption. See formatting options for more details",
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Voice message title",
@@ -3433,8 +3503,7 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the contact"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "last_name": {
             "description": "Contact's last name",
@@ -3445,8 +3514,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_height": {
             "description": "Thumbnail height",
@@ -3491,6 +3559,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "description": {
             "description": "Short description of the result",
             "type": "string"
@@ -3505,8 +3580,7 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the file"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "mime_type": {
             "description": "Mime type of the content of the file, either “application/pdf” or “application/zip”",
@@ -3517,8 +3591,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_height": {
             "description": "Thumbnail height",
@@ -3568,8 +3641,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "type": {
             "description": "Type of the result, must be game",
@@ -3591,6 +3663,13 @@
             "description": "Caption of the GIF file to be sent, 0-1024 characters after entities parsing",
             "type": "string",
             "maxLength": 1024
+          },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
           },
           "gif_duration": {
             "description": "Duration of the GIF in seconds",
@@ -3620,16 +3699,14 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the GIF animation"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the caption. See formatting options for more details",
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_mime_type": {
             "description": "MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”",
@@ -3674,8 +3751,7 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the location"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "latitude": {
             "description": "Location latitude in degrees",
@@ -3694,8 +3770,7 @@
             "type": "integer"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_height": {
             "description": "Thumbnail height",
@@ -3741,13 +3816,19 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the video animation"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "mpeg4_duration": {
             "description": "Video duration in seconds",
@@ -3777,8 +3858,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_mime_type": {
             "description": "MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”",
@@ -3815,6 +3895,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "description": {
             "description": "Short description of the result",
             "type": "string"
@@ -3824,8 +3911,7 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the photo"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the photo caption. See formatting options for more details",
@@ -3849,8 +3935,7 @@
             "exclusiveMinimum": true
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the photo",
@@ -3903,8 +3988,7 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the venue"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "latitude": {
             "description": "Latitude of the venue location in degrees",
@@ -3915,8 +3999,7 @@
             "type": "number"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_height": {
             "description": "Thumbnail height",
@@ -3963,6 +4046,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "description": {
             "description": "Short description of the result",
             "type": "string"
@@ -3972,8 +4062,7 @@
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video)"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "mime_type": {
             "description": "Mime type of the content of video url, “text/html” or “video/mp4”",
@@ -3984,8 +4073,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "thumb_url": {
             "description": "URL of the thumbnail (JPEG only) for the video",
@@ -4043,21 +4131,26 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
             "type": "string"
           },
           "input_message_content": {
-            "$ref": "#/components/schemas/InputMessageContent",
-            "description": "Content of the message to be sent instead of the voice recording"
+            "$ref": "#/components/schemas/InputMessageContent"
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the voice message caption. See formatting options for more details",
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "title": {
             "description": "Recording title",
@@ -4176,6 +4269,13 @@
             "minimum": 0,
             "exclusiveMinimum": true
           },
+          "prices": {
+            "description": "Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabeledPrice"
+            }
+          },
           "provider_data": {
             "description": "A JSON-serialized object for data about the invoice, which will be shared with the payment provider. A detailed description of the required fields should be provided by the payment provider",
             "type": "string"
@@ -4192,6 +4292,13 @@
             "description": "Pass True, if user's phone number should be sent to provider",
             "type": "boolean"
           },
+          "suggested_tip_amounts": {
+            "description": "A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
           "title": {
             "description": "Product name, 1-32 characters",
             "type": "string",
@@ -4204,7 +4311,8 @@
           "description",
           "payload",
           "provider_token",
-          "currency"
+          "currency",
+          "prices"
         ]
       },
       "InputLocationMessageContent": {
@@ -4254,6 +4362,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "duration": {
             "description": "Animation duration in seconds",
             "type": "integer",
@@ -4272,6 +4387,10 @@
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the animation caption. See formatting options for more details",
+            "type": "string"
+          },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
             "type": "string"
           },
           "type": {
@@ -4300,6 +4419,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "duration": {
             "description": "Duration of the audio in seconds",
             "type": "integer",
@@ -4316,6 +4442,10 @@
           },
           "performer": {
             "description": "Performer of the audio",
+            "type": "string"
+          },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
             "type": "string"
           },
           "title": {
@@ -4342,6 +4472,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "disable_content_type_detection": {
             "description": "Disables automatic server-side content type detection for files uploaded using multipart/form-data. Always true, if the document is sent as part of an album",
             "type": "boolean"
@@ -4352,6 +4489,10 @@
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the document caption. See formatting options for more details",
+            "type": "string"
+          },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
             "type": "string"
           },
           "type": {
@@ -4373,6 +4514,13 @@
             "description": "Caption of the photo to be sent, 0-1024 characters after entities parsing",
             "type": "string",
             "maxLength": 1024
+          },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
           },
           "media": {
             "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
@@ -4402,6 +4550,13 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "List of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "duration": {
             "description": "Video duration in seconds",
             "type": "integer",
@@ -4425,6 +4580,10 @@
           "supports_streaming": {
             "description": "Pass True, if the uploaded video is suitable for streaming",
             "type": "boolean"
+          },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "type": "string"
           },
           "type": {
             "description": "Type of the result, must be video",
@@ -4454,6 +4613,13 @@
           "disable_web_page_preview": {
             "description": "Disables link previews for links in the sent message",
             "type": "boolean"
+          },
+          "entities": {
+            "description": "List of special entities that appear in message text, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
           },
           "message_text": {
             "description": "Text of the message to be sent, 1-4096 characters",
@@ -4560,8 +4726,7 @@
             "type": "boolean"
           },
           "request_poll": {
-            "$ref": "#/components/schemas/KeyboardButtonPollType",
-            "description": "If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only"
+            "$ref": "#/components/schemas/KeyboardButtonPollType"
           },
           "text": {
             "description": "Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed",
@@ -4693,12 +4858,10 @@
         "type": "object",
         "properties": {
           "animation": {
-            "$ref": "#/components/schemas/Animation",
-            "description": "Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set"
+            "$ref": "#/components/schemas/Animation"
           },
           "audio": {
-            "$ref": "#/components/schemas/Audio",
-            "description": "Message is an audio file, information about the file"
+            "$ref": "#/components/schemas/Audio"
           },
           "author_signature": {
             "description": "Signature of the post author for messages in channels, or the custom title of an anonymous group administrator",
@@ -4709,21 +4872,26 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "channel_chat_created": {
             "description": "Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel",
             "type": "boolean"
           },
           "chat": {
-            "$ref": "#/components/schemas/Chat",
-            "description": "Conversation the message belongs to"
+            "$ref": "#/components/schemas/Chat"
           },
           "connected_website": {
             "description": "The domain name of the website on which the user has logged in. More about Telegram Login »",
             "type": "string"
           },
           "contact": {
-            "$ref": "#/components/schemas/Contact",
-            "description": "Message is a shared contact, information about the contact"
+            "$ref": "#/components/schemas/Contact"
           },
           "date": {
             "description": "Date the message was sent in Unix time",
@@ -4734,28 +4902,31 @@
             "type": "boolean"
           },
           "dice": {
-            "$ref": "#/components/schemas/Dice",
-            "description": "Message is a dice with random value"
+            "$ref": "#/components/schemas/Dice"
           },
           "document": {
-            "$ref": "#/components/schemas/Document",
-            "description": "Message is a general file, information about the file"
+            "$ref": "#/components/schemas/Document"
           },
           "edit_date": {
             "description": "Date the message was last edited in Unix time",
             "type": "integer"
+          },
+          "entities": {
+            "description": "For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
           },
           "forward_date": {
             "description": "For forwarded messages, date the original message was sent in Unix time",
             "type": "integer"
           },
           "forward_from": {
-            "$ref": "#/components/schemas/User",
-            "description": "For forwarded messages, sender of the original message"
+            "$ref": "#/components/schemas/User"
           },
           "forward_from_chat": {
-            "$ref": "#/components/schemas/Chat",
-            "description": "For messages forwarded from channels or from anonymous administrators, information about the original sender chat"
+            "$ref": "#/components/schemas/Chat"
           },
           "forward_from_message_id": {
             "description": "For messages forwarded from channels, identifier of the original message in the channel",
@@ -4770,36 +4941,30 @@
             "type": "string"
           },
           "from": {
-            "$ref": "#/components/schemas/User",
-            "description": "Sender, empty for messages sent to channels"
+            "$ref": "#/components/schemas/User"
           },
           "game": {
-            "$ref": "#/components/schemas/Game",
-            "description": "Message is a game, information about the game. More about games »"
+            "$ref": "#/components/schemas/Game"
           },
           "group_chat_created": {
             "description": "Service message: the group has been created",
             "type": "boolean"
           },
           "invoice": {
-            "$ref": "#/components/schemas/Invoice",
-            "description": "Message is an invoice for a payment, information about the invoice. More about payments »"
+            "$ref": "#/components/schemas/Invoice"
           },
           "left_chat_member": {
-            "$ref": "#/components/schemas/User",
-            "description": "A member was removed from the group, information about them (this member may be the bot itself)"
+            "$ref": "#/components/schemas/User"
           },
           "location": {
-            "$ref": "#/components/schemas/Location",
-            "description": "Message is a shared location, information about the location"
+            "$ref": "#/components/schemas/Location"
           },
           "media_group_id": {
             "description": "The unique identifier of a media message group this message belongs to",
             "type": "string"
           },
           "message_auto_delete_timer_changed": {
-            "$ref": "#/components/schemas/MessageAutoDeleteTimerChanged",
-            "description": "Service message: auto-delete timer settings changed in the chat"
+            "$ref": "#/components/schemas/MessageAutoDeleteTimerChanged"
           },
           "message_id": {
             "description": "Unique message identifier inside this chat",
@@ -4813,45 +4978,57 @@
             "description": "The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier",
             "type": "integer"
           },
+          "new_chat_members": {
+            "description": "New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "new_chat_photo": {
+            "description": "A chat photo was change to this value",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhotoSize"
+            }
+          },
           "new_chat_title": {
             "description": "A chat title was changed to this value",
             "type": "string"
           },
           "passport_data": {
-            "$ref": "#/components/schemas/PassportData",
-            "description": "Telegram Passport data"
+            "$ref": "#/components/schemas/PassportData"
+          },
+          "photo": {
+            "description": "Message is a photo, available sizes of the photo",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhotoSize"
+            }
           },
           "pinned_message": {
-            "$ref": "#/components/schemas/Message",
-            "description": "Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply"
+            "$ref": "#/components/schemas/Message"
           },
           "poll": {
-            "$ref": "#/components/schemas/Poll",
-            "description": "Message is a native poll, information about the poll"
+            "$ref": "#/components/schemas/Poll"
           },
           "proximity_alert_triggered": {
-            "$ref": "#/components/schemas/ProximityAlertTriggered",
-            "description": "Service message. A user in the chat triggered another user's proximity alert while sharing Live Location"
+            "$ref": "#/components/schemas/ProximityAlertTriggered"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "reply_to_message": {
-            "$ref": "#/components/schemas/Message",
-            "description": "For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply"
+            "$ref": "#/components/schemas/Message"
           },
           "sender_chat": {
-            "$ref": "#/components/schemas/Chat",
-            "description": "Sender of the message, sent on behalf of a chat. The channel itself for channel messages. The supergroup itself for messages from anonymous group administrators. The linked channel for messages automatically forwarded to the discussion group"
+            "$ref": "#/components/schemas/Chat"
           },
           "sticker": {
-            "$ref": "#/components/schemas/Sticker",
-            "description": "Message is a sticker, information about the sticker"
+            "$ref": "#/components/schemas/Sticker"
           },
           "successful_payment": {
-            "$ref": "#/components/schemas/SuccessfulPayment",
-            "description": "Message is a service message about a successful payment, information about the payment. More about payments »"
+            "$ref": "#/components/schemas/SuccessfulPayment"
           },
           "supergroup_chat_created": {
             "description": "Service message: the supergroup has been created. This field can't be received in a message coming through updates, because bot can't be a member of a supergroup when it is created. It can only be found in reply_to_message if someone replies to a very first message in a directly created supergroup",
@@ -4863,40 +5040,31 @@
             "maxLength": 4096
           },
           "venue": {
-            "$ref": "#/components/schemas/Venue",
-            "description": "Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set"
+            "$ref": "#/components/schemas/Venue"
           },
           "via_bot": {
-            "$ref": "#/components/schemas/User",
-            "description": "Bot through which the message was sent"
+            "$ref": "#/components/schemas/User"
           },
           "video": {
-            "$ref": "#/components/schemas/Video",
-            "description": "Message is a video, information about the video"
+            "$ref": "#/components/schemas/Video"
           },
           "video_note": {
-            "$ref": "#/components/schemas/VideoNote",
-            "description": "Message is a video note, information about the video message"
+            "$ref": "#/components/schemas/VideoNote"
           },
           "voice": {
-            "$ref": "#/components/schemas/Voice",
-            "description": "Message is a voice message, information about the file"
+            "$ref": "#/components/schemas/Voice"
           },
           "voice_chat_ended": {
-            "$ref": "#/components/schemas/VoiceChatEnded",
-            "description": "Service message: voice chat ended"
+            "$ref": "#/components/schemas/VoiceChatEnded"
           },
           "voice_chat_participants_invited": {
-            "$ref": "#/components/schemas/VoiceChatParticipantsInvited",
-            "description": "Service message: new participants invited to a voice chat"
+            "$ref": "#/components/schemas/VoiceChatParticipantsInvited"
           },
           "voice_chat_scheduled": {
-            "$ref": "#/components/schemas/VoiceChatScheduled",
-            "description": "Service message: voice chat scheduled"
+            "$ref": "#/components/schemas/VoiceChatScheduled"
           },
           "voice_chat_started": {
-            "$ref": "#/components/schemas/VoiceChatStarted",
-            "description": "Service message: voice chat started"
+            "$ref": "#/components/schemas/VoiceChatStarted"
           }
         },
         "required": [
@@ -4945,8 +5113,7 @@
             "format": "uri"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "For “text_mention” only, the mentioned user"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -4985,8 +5152,7 @@
             "type": "string"
           },
           "shipping_address": {
-            "$ref": "#/components/schemas/ShippingAddress",
-            "description": "User shipping address"
+            "$ref": "#/components/schemas/ShippingAddress"
           }
         }
       },
@@ -4995,11 +5161,18 @@
         "type": "object",
         "properties": {
           "credentials": {
-            "$ref": "#/components/schemas/EncryptedCredentials",
-            "description": "Encrypted credentials required to decrypt the data"
+            "$ref": "#/components/schemas/EncryptedCredentials"
+          },
+          "data": {
+            "description": "Array with information about documents and other Telegram Passport elements that was shared with the bot",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EncryptedPassportElement"
+            }
           }
         },
         "required": [
+          "data",
           "credentials"
         ]
       },
@@ -5074,6 +5247,13 @@
         "description": "Represents an issue with a list of scans. The error is considered resolved when the list of files containing the scans changes.",
         "type": "object",
         "properties": {
+          "file_hashes": {
+            "description": "List of base64-encoded file hashes",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "message": {
             "description": "Error message",
             "type": "string"
@@ -5091,6 +5271,7 @@
         "required": [
           "source",
           "type",
+          "file_hashes",
           "message"
         ]
       },
@@ -5214,6 +5395,13 @@
         "description": "Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.",
         "type": "object",
         "properties": {
+          "file_hashes": {
+            "description": "List of base64-encoded file hashes",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "message": {
             "description": "Error message",
             "type": "string"
@@ -5231,6 +5419,7 @@
         "required": [
           "source",
           "type",
+          "file_hashes",
           "message"
         ]
       },
@@ -5348,6 +5537,13 @@
             "type": "string",
             "maxLength": 200
           },
+          "explanation_entities": {
+            "description": "Special entities like usernames, URLs, bot commands, etc. that appear in the explanation",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "id": {
             "description": "Unique poll identifier",
             "type": "string"
@@ -5363,6 +5559,13 @@
           "open_period": {
             "description": "Amount of time in seconds the poll will be active after creation",
             "type": "integer"
+          },
+          "options": {
+            "description": "List of poll options",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PollOption"
+            }
           },
           "question": {
             "description": "Poll question, 1-300 characters",
@@ -5382,6 +5585,7 @@
         "required": [
           "id",
           "question",
+          "options",
           "total_voter_count",
           "is_closed",
           "is_anonymous",
@@ -5393,18 +5597,25 @@
         "description": "This object represents an answer of a user in a non-anonymous poll.",
         "type": "object",
         "properties": {
+          "option_ids": {
+            "description": "0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
           "poll_id": {
             "description": "Unique poll identifier",
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/User",
-            "description": "The user, who changed the answer to the poll"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
           "poll_id",
-          "user"
+          "user",
+          "option_ids"
         ]
       },
       "PollOption": {
@@ -5436,8 +5647,7 @@
             "type": "string"
           },
           "from": {
-            "$ref": "#/components/schemas/User",
-            "description": "User who sent the query"
+            "$ref": "#/components/schemas/User"
           },
           "id": {
             "description": "Unique query identifier",
@@ -5448,8 +5658,7 @@
             "type": "string"
           },
           "order_info": {
-            "$ref": "#/components/schemas/OrderInfo",
-            "description": "Order info provided by the user"
+            "$ref": "#/components/schemas/OrderInfo"
           },
           "shipping_option_id": {
             "description": "Identifier of the shipping option chosen by the user",
@@ -5477,12 +5686,10 @@
             "type": "integer"
           },
           "traveler": {
-            "$ref": "#/components/schemas/User",
-            "description": "User that triggered the alert"
+            "$ref": "#/components/schemas/User"
           },
           "watcher": {
-            "$ref": "#/components/schemas/User",
-            "description": "User that set the alert"
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -5501,6 +5708,16 @@
             "maxLength": 64,
             "minLength": 1
           },
+          "keyboard": {
+            "description": "Array of button rows, each represented by an Array of KeyboardButton objects",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/KeyboardButton"
+              }
+            }
+          },
           "one_time_keyboard": {
             "description": "Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be available, but clients will automatically display the usual letter-keyboard in the chat – the user can press a special button in the input field to see the custom keyboard again. Defaults to false",
             "type": "boolean"
@@ -5513,7 +5730,10 @@
             "description": "Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.Example: A user requests to change the bot's language, bot replies to the request with a keyboard to select the new language. Other users in the group don't see the keyboard",
             "type": "boolean"
           }
-        }
+        },
+        "required": [
+          "keyboard"
+        ]
       },
       "ReplyKeyboardRemove": {
         "description": "Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).",
@@ -5667,6 +5887,13 @@
             "description": "Shipping option identifier",
             "type": "string"
           },
+          "prices": {
+            "description": "List of price portions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabeledPrice"
+            }
+          },
           "title": {
             "description": "Option title",
             "type": "string"
@@ -5674,7 +5901,8 @@
         },
         "required": [
           "id",
-          "title"
+          "title",
+          "prices"
         ]
       },
       "ShippingQuery": {
@@ -5682,8 +5910,7 @@
         "type": "object",
         "properties": {
           "from": {
-            "$ref": "#/components/schemas/User",
-            "description": "User who sent the query"
+            "$ref": "#/components/schemas/User"
           },
           "id": {
             "description": "Unique query identifier",
@@ -5694,8 +5921,7 @@
             "type": "string"
           },
           "shipping_address": {
-            "$ref": "#/components/schemas/ShippingAddress",
-            "description": "User specified shipping address"
+            "$ref": "#/components/schemas/ShippingAddress"
           }
         },
         "required": [
@@ -5736,16 +5962,14 @@
             "type": "boolean"
           },
           "mask_position": {
-            "$ref": "#/components/schemas/MaskPosition",
-            "description": "For mask stickers, the position where the mask should be placed"
+            "$ref": "#/components/schemas/MaskPosition"
           },
           "set_name": {
             "description": "Name of the sticker set to which the sticker belongs",
             "type": "string"
           },
           "thumb": {
-            "$ref": "#/components/schemas/PhotoSize",
-            "description": "Sticker thumbnail in the .WEBP or .JPG format"
+            "$ref": "#/components/schemas/PhotoSize"
           },
           "width": {
             "description": "Sticker width",
@@ -5778,9 +6002,15 @@
             "description": "Sticker set name",
             "type": "string"
           },
+          "stickers": {
+            "description": "List of all set stickers",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sticker"
+            }
+          },
           "thumb": {
-            "$ref": "#/components/schemas/PhotoSize",
-            "description": "Sticker set thumbnail in the .WEBP or .TGS format"
+            "$ref": "#/components/schemas/PhotoSize"
           },
           "title": {
             "description": "Sticker set title",
@@ -5791,7 +6021,8 @@
           "name",
           "title",
           "is_animated",
-          "contains_masks"
+          "contains_masks",
+          "stickers"
         ]
       },
       "SuccessfulPayment": {
@@ -5807,8 +6038,7 @@
             "type": "string"
           },
           "order_info": {
-            "$ref": "#/components/schemas/OrderInfo",
-            "description": "Order info provided by the user"
+            "$ref": "#/components/schemas/OrderInfo"
           },
           "provider_payment_charge_id": {
             "description": "Provider payment identifier",
@@ -5840,56 +6070,43 @@
         "type": "object",
         "properties": {
           "callback_query": {
-            "$ref": "#/components/schemas/CallbackQuery",
-            "description": "New incoming callback query"
+            "$ref": "#/components/schemas/CallbackQuery"
           },
           "channel_post": {
-            "$ref": "#/components/schemas/Message",
-            "description": "New incoming channel post of any kind — text, photo, sticker, etc"
+            "$ref": "#/components/schemas/Message"
           },
           "chat_member": {
-            "$ref": "#/components/schemas/ChatMemberUpdated",
-            "description": "A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify “chat_member” in the list of allowed_updates to receive these updates"
+            "$ref": "#/components/schemas/ChatMemberUpdated"
           },
           "chosen_inline_result": {
-            "$ref": "#/components/schemas/ChosenInlineResult",
-            "description": "The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot"
+            "$ref": "#/components/schemas/ChosenInlineResult"
           },
           "edited_channel_post": {
-            "$ref": "#/components/schemas/Message",
-            "description": "New version of a channel post that is known to the bot and was edited"
+            "$ref": "#/components/schemas/Message"
           },
           "edited_message": {
-            "$ref": "#/components/schemas/Message",
-            "description": "New version of a message that is known to the bot and was edited"
+            "$ref": "#/components/schemas/Message"
           },
           "inline_query": {
-            "$ref": "#/components/schemas/InlineQuery",
-            "description": "New incoming inline query"
+            "$ref": "#/components/schemas/InlineQuery"
           },
           "message": {
-            "$ref": "#/components/schemas/Message",
-            "description": "New incoming message of any kind — text, photo, sticker, etc"
+            "$ref": "#/components/schemas/Message"
           },
           "my_chat_member": {
-            "$ref": "#/components/schemas/ChatMemberUpdated",
-            "description": "The bot's chat member status was updated in a chat. For private chats, this update is received only when the bot is blocked or unblocked by the user"
+            "$ref": "#/components/schemas/ChatMemberUpdated"
           },
           "poll": {
-            "$ref": "#/components/schemas/Poll",
-            "description": "New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot"
+            "$ref": "#/components/schemas/Poll"
           },
           "poll_answer": {
-            "$ref": "#/components/schemas/PollAnswer",
-            "description": "A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself"
+            "$ref": "#/components/schemas/PollAnswer"
           },
           "pre_checkout_query": {
-            "$ref": "#/components/schemas/PreCheckoutQuery",
-            "description": "New incoming pre-checkout query. Contains full information about checkout"
+            "$ref": "#/components/schemas/PreCheckoutQuery"
           },
           "shipping_query": {
-            "$ref": "#/components/schemas/ShippingQuery",
-            "description": "New incoming shipping query. Only for invoices with flexible price"
+            "$ref": "#/components/schemas/ShippingQuery"
           },
           "update_id": {
             "description": "The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially",
@@ -5951,13 +6168,24 @@
         "description": "This object represent a user's profile pictures.",
         "type": "object",
         "properties": {
+          "photos": {
+            "description": "Requested profile pictures (in up to 4 sizes each)",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/PhotoSize"
+              }
+            }
+          },
           "total_count": {
             "description": "Total number of profile pictures the target user has",
             "type": "integer"
           }
         },
         "required": [
-          "total_count"
+          "total_count",
+          "photos"
         ]
       },
       "Venue": {
@@ -5985,8 +6213,7 @@
             "type": "string"
           },
           "location": {
-            "$ref": "#/components/schemas/Location",
-            "description": "Venue location. Can't be a live location"
+            "$ref": "#/components/schemas/Location"
           },
           "title": {
             "description": "Name of the venue",
@@ -6036,8 +6263,7 @@
             "type": "string"
           },
           "thumb": {
-            "$ref": "#/components/schemas/PhotoSize",
-            "description": "Video thumbnail"
+            "$ref": "#/components/schemas/PhotoSize"
           },
           "width": {
             "description": "Video width as defined by sender",
@@ -6081,8 +6307,7 @@
             "type": "integer"
           },
           "thumb": {
-            "$ref": "#/components/schemas/PhotoSize",
-            "description": "Video thumbnail"
+            "$ref": "#/components/schemas/PhotoSize"
           }
         },
         "required": [
@@ -6142,7 +6367,16 @@
       },
       "VoiceChatParticipantsInvited": {
         "description": "This object represents a service message about new members invited to a voice chat.",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "users": {
+            "description": "New members that were invited to the voice chat",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
       },
       "VoiceChatScheduled": {
         "description": "This object represents a service message about a voice chat scheduled in the chat.",
@@ -6165,6 +6399,13 @@
         "description": "Contains information about the current status of a webhook.",
         "type": "object",
         "properties": {
+          "allowed_updates": {
+            "description": "A list of update types the bot is subscribed to. Defaults to all update types except chat_member",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "has_custom_certificate": {
             "description": "True, if a custom certificate was provided for webhook certificate checks",
             "type": "boolean"
@@ -6210,11 +6451,14 @@
             "type": "string"
           },
           "mask_position": {
-            "$ref": "#/components/schemas/MaskPosition",
-            "description": "A JSON-serialized object for position where the mask should be placed on faces"
+            "$ref": "#/components/schemas/MaskPosition"
           },
           "name": {
             "description": "Sticker set name",
+            "type": "string"
+          },
+          "png_sticker": {
+            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
             "type": "string"
           },
           "tgs_sticker": {
@@ -6283,6 +6527,13 @@
             "description": "Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes",
             "type": "string"
           },
+          "results": {
+            "description": "A JSON-serialized array of results for the inline query",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InlineQueryResult"
+            }
+          },
           "switch_pm_parameter": {
             "description": "Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities",
             "type": "string",
@@ -6295,7 +6546,8 @@
           }
         },
         "required": [
-          "inline_query_id"
+          "inline_query_id",
+          "results"
         ]
       },
       "answerPreCheckoutQuery": {
@@ -6332,6 +6584,13 @@
             "description": "Specify True if delivery to the specified address is possible and False if there are any problems (for example, if delivery to the specified address is not possible)",
             "type": "boolean"
           },
+          "shipping_options": {
+            "description": "Required if ok is True. A JSON-serialized array of available shipping options",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingOption"
+            }
+          },
           "shipping_query_id": {
             "description": "Unique identifier for the query to be answered",
             "type": "string"
@@ -6346,6 +6605,9 @@
         "description": "Input for banChatMember",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "revoke_messages": {
             "description": "Pass True to delete all messages from the chat for the user that is being removed. If False, the user will be able to see messages in the group that were sent before the user was removed. Always True for supergroups and channels",
             "type": "boolean"
@@ -6360,6 +6622,7 @@
           }
         },
         "required": [
+          "chat_id",
           "user_id"
         ]
       },
@@ -6376,9 +6639,22 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the new caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
+          },
+          "from_chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "message_id": {
             "description": "Message identifier in the chat specified in from_chat_id",
@@ -6394,6 +6670,8 @@
           }
         },
         "required": [
+          "chat_id",
+          "from_chat_id",
           "message_id"
         ]
       },
@@ -6401,6 +6679,9 @@
         "description": "Input for createChatInviteLink",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "expire_date": {
             "description": "Point in time (Unix timestamp) when the link will expire",
             "type": "integer"
@@ -6409,7 +6690,10 @@
             "description": "Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999",
             "type": "integer"
           }
-        }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "createNewStickerSet": {
         "description": "Input for createNewStickerSet",
@@ -6424,14 +6708,17 @@
             "type": "string"
           },
           "mask_position": {
-            "$ref": "#/components/schemas/MaskPosition",
-            "description": "A JSON-serialized object for position where the mask should be placed on faces"
+            "$ref": "#/components/schemas/MaskPosition"
           },
           "name": {
             "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_\u003cbot username\u003e”. \u003cbot_username\u003e is case insensitive. 1-64 characters",
             "type": "string",
             "maxLength": 64,
             "minLength": 1
+          },
+          "png_sticker": {
+            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "type": "string"
           },
           "tgs_sticker": {
             "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements",
@@ -6457,22 +6744,42 @@
       },
       "deleteChatPhoto": {
         "description": "Input for deleteChatPhoto",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "deleteChatStickerSet": {
         "description": "Input for deleteChatStickerSet",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "deleteMessage": {
         "description": "Input for deleteMessage",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "message_id": {
             "description": "Identifier of the message to delete",
             "type": "integer"
           }
         },
         "required": [
+          "chat_id",
           "message_id"
         ]
       },
@@ -6485,8 +6792,7 @@
             "type": "string"
           },
           "scope": {
-            "$ref": "#/components/schemas/BotCommandScope",
-            "description": "A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault"
+            "$ref": "#/components/schemas/BotCommandScope"
           }
         }
       },
@@ -6517,6 +6823,9 @@
         "description": "Input for editChatInviteLink",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "expire_date": {
             "description": "Point in time (Unix timestamp) when the link will expire",
             "type": "integer"
@@ -6531,6 +6840,7 @@
           }
         },
         "required": [
+          "chat_id",
           "invite_link"
         ]
       },
@@ -6542,6 +6852,16 @@
             "description": "New caption of the message, 0-1024 characters after entities parsing",
             "type": "string",
             "maxLength": 1024
+          },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "inline_message_id": {
             "description": "Required if chat_id and message_id are not specified. Identifier of the inline message",
@@ -6556,8 +6876,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for an inline keyboard"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
         }
       },
@@ -6565,6 +6884,9 @@
         "description": "Input for editMessageLiveLocation",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "heading": {
             "description": "Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified",
             "type": "integer"
@@ -6594,8 +6916,7 @@
             "type": "integer"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for a new inline keyboard"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
         },
         "required": [
@@ -6607,21 +6928,22 @@
         "description": "Input for editMessageMedia",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "inline_message_id": {
             "description": "Required if chat_id and message_id are not specified. Identifier of the inline message",
             "type": "string"
           },
           "media": {
-            "$ref": "#/components/schemas/InputMedia",
-            "description": "A JSON-serialized object for a new media content of the message"
+            "$ref": "#/components/schemas/InputMedia"
           },
           "message_id": {
             "description": "Required if inline_message_id is not specified. Identifier of the message to edit",
             "type": "integer"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for a new inline keyboard"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
         },
         "required": [
@@ -6632,6 +6954,9 @@
         "description": "Input for editMessageReplyMarkup",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "inline_message_id": {
             "description": "Required if chat_id and message_id are not specified. Identifier of the inline message",
             "type": "string"
@@ -6641,8 +6966,7 @@
             "type": "integer"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for an inline keyboard"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
         }
       },
@@ -6650,9 +6974,19 @@
         "description": "Input for editMessageText",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_web_page_preview": {
             "description": "Disables link previews for links in this message",
             "type": "boolean"
+          },
+          "entities": {
+            "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
           },
           "inline_message_id": {
             "description": "Required if chat_id and message_id are not specified. Identifier of the inline message",
@@ -6667,8 +7001,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for an inline keyboard"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "text": {
             "description": "New text of the message, 1-4096 characters after entities parsing",
@@ -6683,15 +7016,29 @@
       },
       "exportChatInviteLink": {
         "description": "Input for exportChatInviteLink",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "forwardMessage": {
         "description": "Input for forwardMessage",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
+          },
+          "from_chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "message_id": {
             "description": "Message identifier in the chat specified in from_chat_id",
@@ -6699,33 +7046,63 @@
           }
         },
         "required": [
+          "chat_id",
+          "from_chat_id",
           "message_id"
         ]
       },
       "getChat": {
         "description": "Input for getChat",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "getChatAdministrators": {
         "description": "Input for getChatAdministrators",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "getChatMember": {
         "description": "Input for getChatMember",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "user_id": {
             "description": "Unique identifier of the target user",
             "type": "integer"
           }
         },
         "required": [
+          "chat_id",
           "user_id"
         ]
       },
       "getChatMemberCount": {
         "description": "Input for getChatMemberCount",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "getFile": {
         "description": "Input for getFile",
@@ -6774,8 +7151,7 @@
             "type": "string"
           },
           "scope": {
-            "$ref": "#/components/schemas/BotCommandScope",
-            "description": "A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault"
+            "$ref": "#/components/schemas/BotCommandScope"
           }
         }
       },
@@ -6796,6 +7172,13 @@
         "description": "Input for getUpdates",
         "type": "object",
         "properties": {
+          "allowed_updates": {
+            "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "limit": {
             "description": "Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100",
             "type": "integer",
@@ -6839,12 +7222,23 @@
       },
       "leaveChat": {
         "description": "Input for leaveChat",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "pinChatMessage": {
         "description": "Input for pinChatMessage",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_notification": {
             "description": "Pass True, if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats",
             "type": "boolean"
@@ -6855,6 +7249,7 @@
           }
         },
         "required": [
+          "chat_id",
           "message_id"
         ]
       },
@@ -6902,6 +7297,9 @@
             "description": "Pass True, if the administrator can restrict, ban or unban chat members",
             "type": "boolean"
           },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "is_anonymous": {
             "description": "Pass True, if the administrator's presence in the chat is hidden",
             "type": "boolean"
@@ -6912,6 +7310,7 @@
           }
         },
         "required": [
+          "chat_id",
           "user_id"
         ]
       },
@@ -6919,9 +7318,11 @@
         "description": "Input for restrictChatMember",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "permissions": {
-            "$ref": "#/components/schemas/ChatPermissions",
-            "description": "A JSON-serialized object for new user permissions"
+            "$ref": "#/components/schemas/ChatPermissions"
           },
           "until_date": {
             "description": "Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever",
@@ -6933,6 +7334,7 @@
           }
         },
         "required": [
+          "chat_id",
           "user_id",
           "permissions"
         ]
@@ -6941,12 +7343,16 @@
         "description": "Input for revokeChatInviteLink",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "invite_link": {
             "description": "The invite link to revoke",
             "type": "string"
           }
         },
         "required": [
+          "chat_id",
           "invite_link"
         ]
       },
@@ -6958,10 +7364,24 @@
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
           },
+          "animation": {
+            "description": "Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More info on Sending Files »",
+            "type": "string"
+          },
           "caption": {
             "description": "Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing",
             "type": "string",
             "maxLength": 1024
+          },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -6987,13 +7407,21 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "type": "string"
+          },
           "width": {
             "description": "Animation width",
             "type": "integer",
             "minimum": 0,
             "exclusiveMinimum": true
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "animation"
+        ]
       },
       "sendAudio": {
         "description": "Input for sendAudio",
@@ -7003,10 +7431,24 @@
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
           },
+          "audio": {
+            "description": "Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "type": "string"
+          },
           "caption": {
             "description": "Audio caption, 0-1024 characters after entities parsing",
             "type": "string",
             "maxLength": 1024
+          },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7030,11 +7472,19 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "type": "string"
+          },
           "title": {
             "description": "Track name",
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "audio"
+        ]
       },
       "sendChatAction": {
         "description": "Input for sendChatAction",
@@ -7043,9 +7493,13 @@
           "action": {
             "description": "Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, find_location for location data, record_video_note or upload_video_note for video notes",
             "type": "string"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           }
         },
         "required": [
+          "chat_id",
           "action"
         ]
       },
@@ -7056,6 +7510,9 @@
           "allow_sending_without_reply": {
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7083,6 +7540,7 @@
           }
         },
         "required": [
+          "chat_id",
           "phone_number",
           "first_name"
         ]
@@ -7094,6 +7552,9 @@
           "allow_sending_without_reply": {
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7107,7 +7568,10 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "sendDocument": {
         "description": "Input for sendDocument",
@@ -7122,6 +7586,16 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_content_type_detection": {
             "description": "Disables automatic server-side content type detection for files uploaded using multipart/form-data",
             "type": "boolean"
@@ -7130,6 +7604,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "document": {
+            "description": "File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "type": "string"
+          },
           "parse_mode": {
             "description": "Mode for parsing entities in the document caption. See formatting options for more details",
             "type": "string"
@@ -7137,8 +7615,16 @@
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
+          },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "document"
+        ]
       },
       "sendGame": {
         "description": "Input for sendGame",
@@ -7161,8 +7647,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not empty, the first button must launch the game"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
@@ -7181,6 +7666,9 @@
           "allow_sending_without_reply": {
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "currency": {
             "description": "Three-letter ISO 4217 currency code, see more on currencies",
@@ -7245,6 +7733,13 @@
             "minimum": 0,
             "exclusiveMinimum": true
           },
+          "prices": {
+            "description": "Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabeledPrice"
+            }
+          },
           "provider_data": {
             "description": "A JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider",
             "type": "string"
@@ -7254,8 +7749,7 @@
             "type": "string"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
@@ -7273,6 +7767,13 @@
             "description": "Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter",
             "type": "string"
           },
+          "suggested_tip_amounts": {
+            "description": "A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
           "title": {
             "description": "Product name, 1-32 characters",
             "type": "string",
@@ -7281,11 +7782,13 @@
           }
         },
         "required": [
+          "chat_id",
           "title",
           "description",
           "payload",
           "provider_token",
-          "currency"
+          "currency",
+          "prices"
         ]
       },
       "sendLocation": {
@@ -7295,6 +7798,9 @@
           "allow_sending_without_reply": {
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7330,6 +7836,7 @@
           }
         },
         "required": [
+          "chat_id",
           "latitude",
           "longitude"
         ]
@@ -7342,15 +7849,26 @@
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
           },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_notification": {
             "description": "Sends messages silently. Users will receive a notification with no sound",
             "type": "boolean"
+          },
+          "media": {
+            "description": "A JSON-serialized array describing messages to be sent, must include 2-10 items",
+            "type": "array"
           },
           "reply_to_message_id": {
             "description": "If the messages are a reply, ID of the original message",
             "type": "integer"
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "media"
+        ]
       },
       "sendMessage": {
         "description": "Input for sendMessage",
@@ -7360,6 +7878,9 @@
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
           },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
@@ -7367,6 +7888,13 @@
           "disable_web_page_preview": {
             "description": "Disables link previews for links in this message",
             "type": "boolean"
+          },
+          "entities": {
+            "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the message text. See formatting options for more details",
@@ -7384,6 +7912,7 @@
           }
         },
         "required": [
+          "chat_id",
           "text"
         ]
       },
@@ -7400,6 +7929,16 @@
             "type": "string",
             "maxLength": 1024
           },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
@@ -7408,11 +7947,19 @@
             "description": "Mode for parsing entities in the photo caption. See formatting options for more details",
             "type": "string"
           },
+          "photo": {
+            "description": "Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on Sending Files »",
+            "type": "string"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "photo"
+        ]
       },
       "sendPoll": {
         "description": "Input for sendPoll",
@@ -7425,6 +7972,9 @@
           "allows_multiple_answers": {
             "description": "True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False",
             "type": "boolean"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "close_date": {
             "description": "Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period",
@@ -7443,6 +7993,13 @@
             "type": "string",
             "maxLength": 200
           },
+          "explanation_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the poll explanation, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
           "explanation_parse_mode": {
             "description": "Mode for parsing entities in the explanation. See formatting options for more details",
             "type": "string"
@@ -7458,6 +8015,13 @@
           "open_period": {
             "description": "Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date",
             "type": "integer"
+          },
+          "options": {
+            "description": "A JSON-serialized list of answer options, 2-10 strings 1-100 characters each",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "question": {
             "description": "Poll question, 1-300 characters",
@@ -7475,7 +8039,9 @@
           }
         },
         "required": [
-          "question"
+          "chat_id",
+          "question",
+          "options"
         ]
       },
       "sendSticker": {
@@ -7486,6 +8052,9 @@
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
           },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
@@ -7493,8 +8062,16 @@
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
+          },
+          "sticker": {
+            "description": "Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "sticker"
+        ]
       },
       "sendVenue": {
         "description": "Input for sendVenue",
@@ -7507,6 +8084,9 @@
           "allow_sending_without_reply": {
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7546,6 +8126,7 @@
           }
         },
         "required": [
+          "chat_id",
           "latitude",
           "longitude",
           "title",
@@ -7564,6 +8145,16 @@
             "description": "Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing",
             "type": "string",
             "maxLength": 1024
+          },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7593,13 +8184,25 @@
             "description": "Pass True, if the uploaded video is suitable for streaming",
             "type": "boolean"
           },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "type": "string"
+          },
+          "video": {
+            "description": "Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More info on Sending Files »",
+            "type": "string"
+          },
           "width": {
             "description": "Video width",
             "type": "integer",
             "minimum": 0,
             "exclusiveMinimum": true
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "video"
+        ]
       },
       "sendVideoNote": {
         "description": "Input for sendVideoNote",
@@ -7608,6 +8211,9 @@
           "allow_sending_without_reply": {
             "description": "Pass True, if the message should be sent even if the specified replied-to message is not found",
             "type": "boolean"
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7626,8 +8232,20 @@
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
+          },
+          "thumb": {
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "type": "string"
+          },
+          "video_note": {
+            "description": "Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files ». Sending video notes by a URL is currently unsupported",
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "video_note"
+        ]
       },
       "sendVoice": {
         "description": "Input for sendVoice",
@@ -7641,6 +8259,16 @@
             "description": "Voice message caption, 0-1024 characters after entities parsing",
             "type": "string",
             "maxLength": 1024
+          },
+          "caption_entities": {
+            "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            }
+          },
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7659,13 +8287,24 @@
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
+          },
+          "voice": {
+            "description": "Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "chat_id",
+          "voice"
+        ]
       },
       "setChatAdministratorCustomTitle": {
         "description": "Input for setChatAdministratorCustomTitle",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "custom_title": {
             "description": "New custom title for the administrator; 0-16 characters, emoji are not allowed",
             "type": "string",
@@ -7677,6 +8316,7 @@
           }
         },
         "required": [
+          "chat_id",
           "user_id",
           "custom_title"
         ]
@@ -7685,23 +8325,32 @@
         "description": "Input for setChatDescription",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "description": {
             "description": "New chat description, 0-255 characters",
             "type": "string",
             "maxLength": 255
           }
-        }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "setChatPermissions": {
         "description": "Input for setChatPermissions",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "permissions": {
-            "$ref": "#/components/schemas/ChatPermissions",
-            "description": "A JSON-serialized object for new default chat permissions"
+            "$ref": "#/components/schemas/ChatPermissions"
           }
         },
         "required": [
+          "chat_id",
           "permissions"
         ]
       },
@@ -7709,12 +8358,16 @@
         "description": "Input for setChatPhoto",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "photo": {
             "description": "New chat photo, uploaded using multipart/form-data",
             "type": "string"
           }
         },
         "required": [
+          "chat_id",
           "photo"
         ]
       },
@@ -7722,12 +8375,16 @@
         "description": "Input for setChatStickerSet",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "sticker_set_name": {
             "description": "Name of the sticker set to be set as the group sticker set",
             "type": "string"
           }
         },
         "required": [
+          "chat_id",
           "sticker_set_name"
         ]
       },
@@ -7735,6 +8392,9 @@
         "description": "Input for setChatTitle",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "title": {
             "description": "New chat title, 1-255 characters",
             "type": "string",
@@ -7743,6 +8403,7 @@
           }
         },
         "required": [
+          "chat_id",
           "title"
         ]
       },
@@ -7788,27 +8449,44 @@
         "description": "Input for setMyCommands",
         "type": "object",
         "properties": {
+          "commands": {
+            "description": "A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BotCommand"
+            }
+          },
           "language_code": {
             "description": "A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands",
             "type": "string"
           },
           "scope": {
-            "$ref": "#/components/schemas/BotCommandScope",
-            "description": "A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault"
+            "$ref": "#/components/schemas/BotCommandScope"
           }
-        }
+        },
+        "required": [
+          "commands"
+        ]
       },
       "setPassportDataErrors": {
         "description": "Input for setPassportDataErrors",
         "type": "object",
         "properties": {
+          "errors": {
+            "description": "A JSON-serialized array describing the errors",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PassportElementError"
+            }
+          },
           "user_id": {
             "description": "User identifier",
             "type": "integer"
           }
         },
         "required": [
-          "user_id"
+          "user_id",
+          "errors"
         ]
       },
       "setStickerPositionInSet": {
@@ -7837,6 +8515,10 @@
             "description": "Sticker set name",
             "type": "string"
           },
+          "thumb": {
+            "description": "A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be uploaded via HTTP URL",
+            "type": "string"
+          },
           "user_id": {
             "description": "User identifier of the sticker set owner",
             "type": "integer"
@@ -7851,6 +8533,13 @@
         "description": "Input for setWebhook",
         "type": "object",
         "properties": {
+          "allowed_updates": {
+            "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "certificate": {
             "description": "Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details",
             "type": "string"
@@ -7881,6 +8570,9 @@
         "description": "Input for stopMessageLiveLocation",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "inline_message_id": {
             "description": "Required if chat_id and message_id are not specified. Identifier of the inline message",
             "type": "string"
@@ -7890,8 +8582,7 @@
             "type": "integer"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for a new inline keyboard"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
         }
       },
@@ -7899,16 +8590,19 @@
         "description": "Input for stopPoll",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "message_id": {
             "description": "Identifier of the original message with the poll",
             "type": "integer"
           },
           "reply_markup": {
-            "$ref": "#/components/schemas/InlineKeyboardMarkup",
-            "description": "A JSON-serialized object for a new message inline keyboard"
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
           }
         },
         "required": [
+          "chat_id",
           "message_id"
         ]
       },
@@ -7916,6 +8610,9 @@
         "description": "Input for unbanChatMember",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "only_if_banned": {
             "description": "Do nothing if the user is not banned",
             "type": "boolean"
@@ -7926,22 +8623,37 @@
           }
         },
         "required": [
+          "chat_id",
           "user_id"
         ]
       },
       "unpinAllChatMessages": {
         "description": "Input for unpinAllChatMessages",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "unpinChatMessage": {
         "description": "Input for unpinChatMessage",
         "type": "object",
         "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
           "message_id": {
             "description": "Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned",
             "type": "integer"
           }
-        }
+        },
+        "required": [
+          "chat_id"
+        ]
       },
       "uploadStickerFile": {
         "description": "Input for uploadStickerFile",
