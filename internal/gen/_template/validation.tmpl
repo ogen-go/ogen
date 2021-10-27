@@ -9,12 +9,12 @@
             return fmt.Errorf("required, can't be nil")
         }
     {{- end }}
-    {{- if $t.IsStruct }}
+    {{- if or ($t.IsStruct) ($t.IsAlias) }}
     {{- $validated = true }}
     if err := {{ $.Var }}.Validate(); err != nil {
         return err
     }
-    {{- else if $t.IsArray }}
+    {{- else if and ($t.IsArray) ($t.Item.NeedValidation) }}
     {{- $validated = true }}
     var failures []validate.FieldError
     for i, elem := range {{ $.Var }} {

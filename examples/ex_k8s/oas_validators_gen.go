@@ -893,21 +893,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 		if s.AdmissionReviewVersions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.AdmissionReviewVersions {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.AdmissionReviewVersions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -993,21 +979,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 		if s.AdmissionReviewVersions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.AdmissionReviewVersions {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.AdmissionReviewVersions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1093,23 +1065,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1128,23 +1084,7 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1437,21 +1377,7 @@ func (s IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1470,21 +1396,7 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1582,23 +1494,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1668,23 +1564,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() erro
 		if s.Conditions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Conditions {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Conditions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1754,23 +1634,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() erro
 		if s.Conditions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Conditions {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Conditions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2081,21 +1945,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 		if s.Request == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Request {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Request // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2114,23 +1964,7 @@ func (s IoK8sAPICoordinationV1LeaseList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2165,21 +1999,7 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Monitors {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2198,21 +2018,7 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Monitors {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2231,23 +2037,7 @@ func (s IoK8sAPICoreV1ComponentStatusList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2266,23 +2056,7 @@ func (s IoK8sAPICoreV1ConfigMapList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2301,23 +2075,7 @@ func (s IoK8sAPICoreV1EndpointsList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2336,23 +2094,7 @@ func (s IoK8sAPICoreV1EventList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2422,23 +2164,7 @@ func (s IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 		if s.Limits == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Limits {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Limits // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2457,23 +2183,7 @@ func (s IoK8sAPICoreV1NamespaceList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2508,23 +2218,7 @@ func (s IoK8sAPICoreV1NodeList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2543,23 +2237,7 @@ func (s IoK8sAPICoreV1NodeSelector) Validate() error {
 		if s.NodeSelectorTerms == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.NodeSelectorTerms {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.NodeSelectorTerms // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2594,23 +2272,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2758,23 +2420,7 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 		if s.Containers == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Containers {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Containers // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2885,21 +2531,7 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Monitors {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2918,21 +2550,7 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Monitors {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3018,23 +2636,7 @@ func (s IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3053,23 +2655,7 @@ func (s IoK8sAPICoreV1SecretList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3088,23 +2674,7 @@ func (s IoK8sAPICoreV1ServiceAccountList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3123,23 +2693,7 @@ func (s IoK8sAPICoreV1ServiceList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3158,21 +2712,7 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 		if s.Values == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Values {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Values // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3264,21 +2804,7 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 		if s.Addresses == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Addresses {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Addresses // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3367,21 +2893,7 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 		if s.Addresses == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Addresses {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Addresses // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3470,23 +2982,7 @@ func (s IoK8sAPIEventsV1EventList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3505,23 +3001,7 @@ func (s IoK8sAPIEventsV1beta1EventList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3623,21 +3103,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		if s.NonResourceURLs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.NonResourceURLs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.NonResourceURLs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3649,21 +3115,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3732,23 +3184,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 		if s.Subjects == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Subjects {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Subjects // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3767,23 +3203,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() err
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3802,21 +3222,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.ApiGroups == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.ApiGroups {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.ApiGroups // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3828,21 +3234,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.Resources == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Resources {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Resources // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3854,21 +3246,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3970,21 +3348,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		if s.NonResourceURLs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.NonResourceURLs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.NonResourceURLs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3996,21 +3360,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4079,23 +3429,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 		if s.Subjects == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Subjects {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Subjects // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4114,23 +3448,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() err
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4149,21 +3467,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.ApiGroups == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.ApiGroups {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.ApiGroups // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4175,21 +3479,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.Resources == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Resources {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Resources // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4201,21 +3491,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4234,23 +3510,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 		if s.Paths == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Paths {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Paths // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4285,23 +3545,7 @@ func (s IoK8sAPINetworkingV1IngressClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4403,23 +3647,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4438,23 +3666,7 @@ func (s IoK8sAPINodeV1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4473,23 +3685,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4508,23 +3704,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4543,23 +3723,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4578,23 +3742,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4680,21 +3828,7 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 		if s.AllowedRuntimeClassNames == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.AllowedRuntimeClassNames {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.AllowedRuntimeClassNames // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4745,23 +3879,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4815,21 +3933,7 @@ func (s IoK8sAPIRbacV1PolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4880,23 +3984,7 @@ func (s IoK8sAPIRbacV1RoleBindingList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4950,23 +4038,7 @@ func (s IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4985,23 +4057,7 @@ func (s IoK8sAPIStorageV1CSIDriverList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5073,23 +4129,7 @@ func (s IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 		if s.Drivers == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Drivers {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Drivers // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5262,23 +4302,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5297,23 +4321,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5410,23 +4418,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		if s.Versions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Versions {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Versions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5445,21 +4437,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Vali
 		if s.ConversionReviewVersions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.ConversionReviewVersions {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.ConversionReviewVersions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5478,23 +4456,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 		if s.Versions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Versions {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Versions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5548,21 +4510,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Verbs {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5616,23 +4564,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		if s.ServerAddressByClientCIDRs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.ServerAddressByClientCIDRs {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.ServerAddressByClientCIDRs // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5644,21 +4576,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		if s.Versions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Versions {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Versions // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5677,23 +4595,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() er
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Items {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

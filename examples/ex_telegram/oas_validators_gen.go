@@ -209,23 +209,7 @@ func (s Game) Validate() error {
 		if s.Photo == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Photo {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Photo // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -269,23 +253,7 @@ func (s GetGameHighScoresPostResOK) Validate() error {
 		if s.Result == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Result {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Result // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -304,23 +272,7 @@ func (s GetMyCommandsPostResOK) Validate() error {
 		if s.Result == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Result {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Result // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -512,23 +464,7 @@ func (s InlineKeyboardMarkup) Validate() error {
 				if elem == nil {
 					return fmt.Errorf("required, can't be nil")
 				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := elem.Validate(); err != nil {
-							return err
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
-				}
+				_ = elem // validation expected, but not supported
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -800,23 +736,7 @@ func (s Poll) Validate() error {
 		if s.Options == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Options {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Options // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -835,21 +755,7 @@ func (s PollAnswer) Validate() error {
 		if s.OptionIds == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.OptionIds {
-			if err := func() error {
-				_ = elem // validation expected, but not supported
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.OptionIds // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -934,23 +840,7 @@ func (s SendInvoicePostReqApplicationJSON) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Prices {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -978,23 +868,7 @@ func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Prices {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1022,23 +896,7 @@ func (s SendInvoicePostReqMultipartFormData) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Prices {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1084,23 +942,7 @@ func (s SetMyCommandsPostReqApplicationJSON) Validate() error {
 		if s.Commands == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Commands {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Commands // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1119,23 +961,7 @@ func (s SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
 		if s.Commands == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Commands {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Commands // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1154,23 +980,7 @@ func (s SetMyCommandsPostReqMultipartFormData) Validate() error {
 		if s.Commands == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Commands {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Commands // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1189,23 +999,7 @@ func (s ShippingOption) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
-		for i, elem := range s.Prices {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
-		}
+		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1351,23 +1145,7 @@ func (s UserProfilePhotos) Validate() error {
 				if elem == nil {
 					return fmt.Errorf("required, can't be nil")
 				}
-				var failures []validate.FieldError
-				for i, elem := range elem {
-					if err := func() error {
-						if err := elem.Validate(); err != nil {
-							return err
-						}
-						return nil
-					}(); err != nil {
-						failures = append(failures, validate.FieldError{
-							Name:  fmt.Sprintf("[%d]", i),
-							Error: err,
-						})
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
-				}
+				_ = elem // validation expected, but not supported
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{

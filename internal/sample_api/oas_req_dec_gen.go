@@ -143,6 +143,9 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request) (req PetName, err erro
 			return req, err
 		}
 		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
 			if err := (validate.String{
 				MinLength:    6,
 				MinLengthSet: true,
