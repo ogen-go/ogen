@@ -1375,6 +1375,9 @@ func (s *BotCommand) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
+func (CallbackGame) WriteJSON(j *json.Stream)        {}
+func (CallbackGame) ReadJSON(i *json.Iterator) error { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s CallbackQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -5039,7 +5042,7 @@ func (s InlineKeyboardButton) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("callback_data")
 		s.CallbackData.WriteJSON(j)
 	}
-	if s.CallbackGame.Set {
+	if s.CallbackGame != nil {
 		more.More()
 		j.WriteObjectField("callback_game")
 		s.CallbackGame.WriteJSON(j)
@@ -5094,11 +5097,15 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 			return true
 		case "callback_game":
 			if err := func() error {
-				s.CallbackGame.Reset()
-				if err := s.CallbackGame.ReadJSON(i); err != nil {
+				s.CallbackGame = nil
+				var elem CallbackGame
+				if err := func() error {
+					return fmt.Errorf(`decoding of "CallbackGame" (alias) is not implemented`)
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.CallbackGame = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5358,6 +5365,9 @@ func (s *InlineQuery) ReadJSON(i *json.Iterator) error {
 	}
 	return i.Error
 }
+
+func (InputFile) WriteJSON(j *json.Stream)        {}
+func (InputFile) ReadJSON(i *json.Iterator) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s Invoice) WriteJSON(j *json.Stream) {
@@ -11218,7 +11228,7 @@ func (s SetWebhookPostReq) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-	if s.Certificate.Set {
+	if s.Certificate != nil {
 		more.More()
 		j.WriteObjectField("certificate")
 		s.Certificate.WriteJSON(j)
@@ -11276,11 +11286,15 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "certificate":
 			if err := func() error {
-				s.Certificate.Reset()
-				if err := s.Certificate.ReadJSON(i); err != nil {
+				s.Certificate = nil
+				var elem InputFile
+				if err := func() error {
+					return fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`)
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.Certificate = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12288,9 +12302,7 @@ func (s UploadStickerFilePostReq) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("png_sticker")
-	j.WriteString(s.PNGSticker)
+	// Unsupported kind "alias".
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -12304,8 +12316,7 @@ func (s *UploadStickerFilePostReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "png_sticker":
 			if err := func() error {
-				s.PNGSticker = string(i.ReadString())
-				return i.Error
+				return fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`)
 			}(); err != nil {
 				retErr = err
 				return false

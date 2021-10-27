@@ -184,6 +184,8 @@ type BotCommand struct {
 	Description string `json:"description"`
 }
 
+type CallbackGame string
+
 // Ref: #/components/schemas/CallbackQuery
 type CallbackQuery struct {
 	ChatInstance    string     `json:"chat_instance"`
@@ -614,14 +616,14 @@ func (*GetWebhookInfoPostResOK) getWebhookInfoPostRes() {}
 
 // Ref: #/components/schemas/InlineKeyboardButton
 type InlineKeyboardButton struct {
-	CallbackData                 OptString   `json:"callback_data"`
-	CallbackGame                 OptString   `json:"callback_game"`
-	LoginURL                     OptLoginUrl `json:"login_url"`
-	Pay                          OptBool     `json:"pay"`
-	SwitchInlineQuery            OptString   `json:"switch_inline_query"`
-	SwitchInlineQueryCurrentChat OptString   `json:"switch_inline_query_current_chat"`
-	Text                         string      `json:"text"`
-	URL                          OptString   `json:"url"`
+	CallbackData                 OptString     `json:"callback_data"`
+	CallbackGame                 *CallbackGame `json:"callback_game"`
+	LoginURL                     OptLoginUrl   `json:"login_url"`
+	Pay                          OptBool       `json:"pay"`
+	SwitchInlineQuery            OptString     `json:"switch_inline_query"`
+	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
+	Text                         string        `json:"text"`
+	URL                          OptString     `json:"url"`
 }
 
 // Ref: #/components/schemas/InlineKeyboardMarkup
@@ -637,6 +639,8 @@ type InlineQuery struct {
 	Offset   string      `json:"offset"`
 	Query    string      `json:"query"`
 }
+
+type InputFile string
 
 // Ref: #/components/schemas/Invoice
 type Invoice struct {
@@ -2610,12 +2614,12 @@ type SetStickerPositionInSetPostResOK struct {
 func (*SetStickerPositionInSetPostResOK) setStickerPositionInSetPostRes() {}
 
 type SetWebhookPostReq struct {
-	AllowedUpdates     []string  `json:"allowed_updates"`
-	Certificate        OptString `json:"certificate"`
-	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
-	IPAddress          OptString `json:"ip_address"`
-	MaxConnections     OptInt    `json:"max_connections"`
-	URL                string    `json:"url"`
+	AllowedUpdates     []string   `json:"allowed_updates"`
+	Certificate        *InputFile `json:"certificate"`
+	DropPendingUpdates OptBool    `json:"drop_pending_updates"`
+	IPAddress          OptString  `json:"ip_address"`
+	MaxConnections     OptInt     `json:"max_connections"`
+	URL                string     `json:"url"`
 }
 
 type SetWebhookPostResOK struct {
@@ -2702,8 +2706,8 @@ type Update struct {
 }
 
 type UploadStickerFilePostReq struct {
-	PNGSticker string `json:"png_sticker"`
-	UserID     int    `json:"user_id"`
+	PNGSticker InputFile `json:"png_sticker"`
+	UserID     int       `json:"user_id"`
 }
 
 type UploadStickerFilePostResOK struct {

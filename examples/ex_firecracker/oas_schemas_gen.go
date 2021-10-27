@@ -96,6 +96,14 @@ type BootSource struct {
 	KernelImagePath string    `json:"kernel_image_path"`
 }
 
+// Ref: #/components/schemas/CpuTemplate
+type CpuTemplate string
+
+const (
+	CpuTemplateC3 CpuTemplate = "C3"
+	CpuTemplateT2 CpuTemplate = "T2"
+)
+
 // CreateSnapshotResNoContent is response for CreateSnapshot operation.
 type CreateSnapshotResNoContent struct{}
 
@@ -249,21 +257,14 @@ const (
 
 // Ref: #/components/schemas/MachineConfiguration
 type MachineConfiguration struct {
-	CPUTemplate     OptMachineConfigurationCPUTemplate `json:"cpu_template"`
-	HtEnabled       bool                               `json:"ht_enabled"`
-	MemSizeMib      int                                `json:"mem_size_mib"`
-	TrackDirtyPages OptBool                            `json:"track_dirty_pages"`
-	VcpuCount       int                                `json:"vcpu_count"`
+	CPUTemplate     OptCpuTemplate `json:"cpu_template"`
+	HtEnabled       bool           `json:"ht_enabled"`
+	MemSizeMib      int            `json:"mem_size_mib"`
+	TrackDirtyPages OptBool        `json:"track_dirty_pages"`
+	VcpuCount       int            `json:"vcpu_count"`
 }
 
 func (*MachineConfiguration) getMachineConfigurationRes() {}
-
-type MachineConfigurationCPUTemplate string
-
-const (
-	MachineConfigurationCPUTemplateC3 MachineConfigurationCPUTemplate = "C3"
-	MachineConfigurationCPUTemplateT2 MachineConfigurationCPUTemplate = "T2"
-)
 
 // Ref: #/components/schemas/Metrics
 type Metrics struct {
@@ -416,6 +417,44 @@ func (o *OptBootSource) SetTo(v BootSource) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptBootSource) Get() (v BootSource, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptCpuTemplate returns new OptCpuTemplate with value set to v.
+func NewOptCpuTemplate(v CpuTemplate) OptCpuTemplate {
+	return OptCpuTemplate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptCpuTemplate is optional CpuTemplate.
+type OptCpuTemplate struct {
+	Value CpuTemplate
+	Set   bool
+}
+
+// IsSet returns true if OptCpuTemplate was set.
+func (o OptCpuTemplate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptCpuTemplate) Reset() {
+	var v CpuTemplate
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptCpuTemplate) SetTo(v CpuTemplate) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptCpuTemplate) Get() (v CpuTemplate, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -606,44 +645,6 @@ func (o *OptMachineConfiguration) SetTo(v MachineConfiguration) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptMachineConfiguration) Get() (v MachineConfiguration, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptMachineConfigurationCPUTemplate returns new OptMachineConfigurationCPUTemplate with value set to v.
-func NewOptMachineConfigurationCPUTemplate(v MachineConfigurationCPUTemplate) OptMachineConfigurationCPUTemplate {
-	return OptMachineConfigurationCPUTemplate{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptMachineConfigurationCPUTemplate is optional MachineConfigurationCPUTemplate.
-type OptMachineConfigurationCPUTemplate struct {
-	Value MachineConfigurationCPUTemplate
-	Set   bool
-}
-
-// IsSet returns true if OptMachineConfigurationCPUTemplate was set.
-func (o OptMachineConfigurationCPUTemplate) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptMachineConfigurationCPUTemplate) Reset() {
-	var v MachineConfigurationCPUTemplate
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptMachineConfigurationCPUTemplate) SetTo(v MachineConfigurationCPUTemplate) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptMachineConfigurationCPUTemplate) Get() (v MachineConfigurationCPUTemplate, ok bool) {
 	if !o.Set {
 		return v, false
 	}

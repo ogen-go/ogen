@@ -500,6 +500,17 @@ func (s *BootSource) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s CpuTemplate) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CpuTemplate from json stream.
+func (s *CpuTemplate) ReadJSON(i *json.Iterator) error {
+	*s = CpuTemplate(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s CreateSnapshotResNoContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -1303,17 +1314,6 @@ func (s *MachineConfiguration) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MachineConfigurationCPUTemplate) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads MachineConfigurationCPUTemplate from json stream.
-func (s *MachineConfigurationCPUTemplate) ReadJSON(i *json.Iterator) error {
-	*s = MachineConfigurationCPUTemplate(i.ReadString())
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
 func (s Metrics) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -1705,6 +1705,23 @@ func (o *OptBootSource) ReadJSON(i *json.Iterator) error {
 	}
 }
 
+// WriteJSON writes json value of CpuTemplate to json stream.
+func (o OptCpuTemplate) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CpuTemplate from json iterator.
+func (o *OptCpuTemplate) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = CpuTemplate(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptCpuTemplate", i.WhatIsNext())
+	}
+}
+
 // WriteJSON writes json value of int to json stream.
 func (o OptInt) WriteJSON(j *json.Stream) {
 	j.WriteInt(int(o.Value))
@@ -1791,23 +1808,6 @@ func (o *OptMachineConfiguration) ReadJSON(i *json.Iterator) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMachineConfiguration", i.WhatIsNext())
-	}
-}
-
-// WriteJSON writes json value of MachineConfigurationCPUTemplate to json stream.
-func (o OptMachineConfigurationCPUTemplate) WriteJSON(j *json.Stream) {
-	j.WriteString(string(o.Value))
-}
-
-// ReadJSON reads json value of MachineConfigurationCPUTemplate from json iterator.
-func (o *OptMachineConfigurationCPUTemplate) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.StringValue:
-		o.Set = true
-		o.Value = MachineConfigurationCPUTemplate(i.ReadString())
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptMachineConfigurationCPUTemplate", i.WhatIsNext())
 	}
 }
 
