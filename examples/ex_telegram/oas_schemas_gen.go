@@ -245,10 +245,10 @@ type ChatPhoto struct {
 type ChatType string
 
 const (
-	ChatTypePrivate    = "private"
-	ChatTypeGroup      = "group"
-	ChatTypeSupergroup = "supergroup"
-	ChatTypeChannel    = "channel"
+	ChatTypePrivate    ChatType = "private"
+	ChatTypeGroup      ChatType = "group"
+	ChatTypeSupergroup ChatType = "supergroup"
+	ChatTypeChannel    ChatType = "channel"
 )
 
 // Ref: #/components/schemas/ChosenInlineResult
@@ -366,19 +366,19 @@ type EncryptedPassportElement struct {
 type EncryptedPassportElementType string
 
 const (
-	EncryptedPassportElementTypePersonalDetails       = "personal_details"
-	EncryptedPassportElementTypePassport              = "passport"
-	EncryptedPassportElementTypeDriverLicense         = "driver_license"
-	EncryptedPassportElementTypeIdentityCard          = "identity_card"
-	EncryptedPassportElementTypeInternalPassport      = "internal_passport"
-	EncryptedPassportElementTypeAddress               = "address"
-	EncryptedPassportElementTypeUtilityBill           = "utility_bill"
-	EncryptedPassportElementTypeBankStatement         = "bank_statement"
-	EncryptedPassportElementTypeRentalAgreement       = "rental_agreement"
-	EncryptedPassportElementTypePassportRegistration  = "passport_registration"
-	EncryptedPassportElementTypeTemporaryRegistration = "temporary_registration"
-	EncryptedPassportElementTypePhoneNumber           = "phone_number"
-	EncryptedPassportElementTypeEmail                 = "email"
+	EncryptedPassportElementTypePersonalDetails       EncryptedPassportElementType = "personal_details"
+	EncryptedPassportElementTypePassport              EncryptedPassportElementType = "passport"
+	EncryptedPassportElementTypeDriverLicense         EncryptedPassportElementType = "driver_license"
+	EncryptedPassportElementTypeIdentityCard          EncryptedPassportElementType = "identity_card"
+	EncryptedPassportElementTypeInternalPassport      EncryptedPassportElementType = "internal_passport"
+	EncryptedPassportElementTypeAddress               EncryptedPassportElementType = "address"
+	EncryptedPassportElementTypeUtilityBill           EncryptedPassportElementType = "utility_bill"
+	EncryptedPassportElementTypeBankStatement         EncryptedPassportElementType = "bank_statement"
+	EncryptedPassportElementTypeRentalAgreement       EncryptedPassportElementType = "rental_agreement"
+	EncryptedPassportElementTypePassportRegistration  EncryptedPassportElementType = "passport_registration"
+	EncryptedPassportElementTypeTemporaryRegistration EncryptedPassportElementType = "temporary_registration"
+	EncryptedPassportElementTypePhoneNumber           EncryptedPassportElementType = "phone_number"
+	EncryptedPassportElementTypeEmail                 EncryptedPassportElementType = "email"
 )
 
 // Ref: #/components/schemas/Error
@@ -689,10 +689,10 @@ type MaskPosition struct {
 type MaskPositionPoint string
 
 const (
-	MaskPositionPointForehead = "forehead"
-	MaskPositionPointEyes     = "eyes"
-	MaskPositionPointMouth    = "mouth"
-	MaskPositionPointChin     = "chin"
+	MaskPositionPointForehead MaskPositionPoint = "forehead"
+	MaskPositionPointEyes     MaskPositionPoint = "eyes"
+	MaskPositionPointMouth    MaskPositionPoint = "mouth"
+	MaskPositionPointChin     MaskPositionPoint = "chin"
 )
 
 // Ref: #/components/schemas/Message
@@ -763,21 +763,21 @@ type MessageEntity struct {
 type MessageEntityType string
 
 const (
-	MessageEntityTypeMention       = "mention"
-	MessageEntityTypeHashtag       = "hashtag"
-	MessageEntityTypeCashtag       = "cashtag"
-	MessageEntityTypeBotCommand    = "bot_command"
-	MessageEntityTypeURL           = "url"
-	MessageEntityTypeEmail         = "email"
-	MessageEntityTypePhoneNumber   = "phone_number"
-	MessageEntityTypeBold          = "bold"
-	MessageEntityTypeItalic        = "italic"
-	MessageEntityTypeUnderline     = "underline"
-	MessageEntityTypeStrikethrough = "strikethrough"
-	MessageEntityTypeCode          = "code"
-	MessageEntityTypePre           = "pre"
-	MessageEntityTypeTextLink      = "text_link"
-	MessageEntityTypeTextMention   = "text_mention"
+	MessageEntityTypeMention       MessageEntityType = "mention"
+	MessageEntityTypeHashtag       MessageEntityType = "hashtag"
+	MessageEntityTypeCashtag       MessageEntityType = "cashtag"
+	MessageEntityTypeBotCommand    MessageEntityType = "bot_command"
+	MessageEntityTypeURL           MessageEntityType = "url"
+	MessageEntityTypeEmail         MessageEntityType = "email"
+	MessageEntityTypePhoneNumber   MessageEntityType = "phone_number"
+	MessageEntityTypeBold          MessageEntityType = "bold"
+	MessageEntityTypeItalic        MessageEntityType = "italic"
+	MessageEntityTypeUnderline     MessageEntityType = "underline"
+	MessageEntityTypeStrikethrough MessageEntityType = "strikethrough"
+	MessageEntityTypeCode          MessageEntityType = "code"
+	MessageEntityTypePre           MessageEntityType = "pre"
+	MessageEntityTypeTextLink      MessageEntityType = "text_link"
+	MessageEntityTypeTextMention   MessageEntityType = "text_mention"
 )
 
 // NewOptAnimation returns new OptAnimation with value set to v.

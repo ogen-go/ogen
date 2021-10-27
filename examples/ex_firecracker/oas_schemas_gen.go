@@ -202,9 +202,9 @@ type InstanceActionInfo struct {
 type InstanceActionInfoActionType string
 
 const (
-	InstanceActionInfoActionTypeFlushMetrics   = "FlushMetrics"
-	InstanceActionInfoActionTypeInstanceStart  = "InstanceStart"
-	InstanceActionInfoActionTypeSendCtrlAltDel = "SendCtrlAltDel"
+	InstanceActionInfoActionTypeFlushMetrics   InstanceActionInfoActionType = "FlushMetrics"
+	InstanceActionInfoActionTypeInstanceStart  InstanceActionInfoActionType = "InstanceStart"
+	InstanceActionInfoActionTypeSendCtrlAltDel InstanceActionInfoActionType = "SendCtrlAltDel"
 )
 
 // Ref: #/components/schemas/InstanceInfo
@@ -220,9 +220,9 @@ func (*InstanceInfo) describeInstanceRes() {}
 type InstanceInfoState string
 
 const (
-	InstanceInfoStateNotStarted = "Not started"
-	InstanceInfoStateRunning    = "Running"
-	InstanceInfoStatePaused     = "Paused"
+	InstanceInfoStateNotStarted InstanceInfoState = "Not started"
+	InstanceInfoStateRunning    InstanceInfoState = "Running"
+	InstanceInfoStatePaused     InstanceInfoState = "Paused"
 )
 
 // LoadSnapshotResNoContent is response for LoadSnapshot operation.
@@ -241,10 +241,10 @@ type Logger struct {
 type LoggerLevel string
 
 const (
-	LoggerLevelError   = "Error"
-	LoggerLevelWarning = "Warning"
-	LoggerLevelInfo    = "Info"
-	LoggerLevelDebug   = "Debug"
+	LoggerLevelError   LoggerLevel = "Error"
+	LoggerLevelWarning LoggerLevel = "Warning"
+	LoggerLevelInfo    LoggerLevel = "Info"
+	LoggerLevelDebug   LoggerLevel = "Debug"
 )
 
 // Ref: #/components/schemas/MachineConfiguration
@@ -261,8 +261,8 @@ func (*MachineConfiguration) getMachineConfigurationRes() {}
 type MachineConfigurationCPUTemplate string
 
 const (
-	MachineConfigurationCPUTemplateC3 = "C3"
-	MachineConfigurationCPUTemplateT2 = "T2"
+	MachineConfigurationCPUTemplateC3 MachineConfigurationCPUTemplate = "C3"
+	MachineConfigurationCPUTemplateT2 MachineConfigurationCPUTemplate = "T2"
 )
 
 // Ref: #/components/schemas/Metrics
@@ -1017,8 +1017,8 @@ type SnapshotCreateParams struct {
 type SnapshotCreateParamsSnapshotType string
 
 const (
-	SnapshotCreateParamsSnapshotTypeFull = "Full"
-	SnapshotCreateParamsSnapshotTypeDiff = "Diff"
+	SnapshotCreateParamsSnapshotTypeFull SnapshotCreateParamsSnapshotType = "Full"
+	SnapshotCreateParamsSnapshotTypeDiff SnapshotCreateParamsSnapshotType = "Diff"
 )
 
 // Ref: #/components/schemas/SnapshotLoadParams
@@ -1044,8 +1044,8 @@ type VM struct {
 type VMState string
 
 const (
-	VMStatePaused  = "Paused"
-	VMStateResumed = "Resumed"
+	VMStatePaused  VMState = "Paused"
+	VMStateResumed VMState = "Resumed"
 )
 
 // Ref: #/components/schemas/Vsock

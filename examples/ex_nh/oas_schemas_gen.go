@@ -376,13 +376,13 @@ type Tag struct {
 type TagType string
 
 const (
-	TagTypeParody    = "parody"
-	TagTypeCharacter = "character"
-	TagTypeTag       = "tag"
-	TagTypeArtist    = "artist"
-	TagTypeGroup     = "group"
-	TagTypeCategory  = "category"
-	TagTypeLanguage  = "language"
+	TagTypeParody    TagType = "parody"
+	TagTypeCharacter TagType = "character"
+	TagTypeTag       TagType = "tag"
+	TagTypeArtist    TagType = "artist"
+	TagTypeGroup     TagType = "group"
+	TagTypeCategory  TagType = "category"
+	TagTypeLanguage  TagType = "language"
 )
 
 // Ref: #/components/schemas/Title
