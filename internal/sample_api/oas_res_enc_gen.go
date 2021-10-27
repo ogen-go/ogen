@@ -61,7 +61,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -84,7 +84,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -100,7 +100,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	case *FoobarPostDefStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -123,7 +123,7 @@ func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWri
 func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -138,7 +138,7 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Spa
 func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -162,7 +162,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -175,7 +175,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	case *PetGetDefStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -193,7 +193,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -208,7 +208,7 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.
 func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()

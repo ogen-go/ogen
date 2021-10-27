@@ -61,7 +61,7 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -81,7 +81,7 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -101,7 +101,7 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -131,7 +131,7 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -151,7 +151,7 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -171,7 +171,7 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -201,7 +201,7 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -221,7 +221,7 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -241,7 +241,7 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -271,7 +271,7 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 	case *CreateApiregistrationV1APIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -291,7 +291,7 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 	case *CreateApiregistrationV1APIServiceApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -311,7 +311,7 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 	case *CreateApiregistrationV1APIServiceApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -341,7 +341,7 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 	case *CreateAuthenticationV1TokenReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -361,7 +361,7 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 	case *CreateAuthenticationV1TokenReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -381,7 +381,7 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 	case *CreateAuthenticationV1TokenReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -411,7 +411,7 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -431,7 +431,7 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -451,7 +451,7 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -481,7 +481,7 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -501,7 +501,7 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -521,7 +521,7 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -551,7 +551,7 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -571,7 +571,7 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -591,7 +591,7 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -621,7 +621,7 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -641,7 +641,7 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -661,7 +661,7 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -691,7 +691,7 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w ht
 	case *CreateCoreV1NamespaceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -711,7 +711,7 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w ht
 	case *CreateCoreV1NamespaceApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -731,7 +731,7 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w ht
 	case *CreateCoreV1NamespaceApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -761,7 +761,7 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.Respons
 	case *CreateCoreV1NodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -781,7 +781,7 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.Respons
 	case *CreateCoreV1NodeApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -801,7 +801,7 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.Respons
 	case *CreateCoreV1NodeApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -831,7 +831,7 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 	case *CreateCoreV1PersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -851,7 +851,7 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 	case *CreateCoreV1PersistentVolumeApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -871,7 +871,7 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 	case *CreateCoreV1PersistentVolumeApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -901,7 +901,7 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -921,7 +921,7 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -941,7 +941,7 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -971,7 +971,7 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -991,7 +991,7 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1011,7 +1011,7 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1041,7 +1041,7 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1061,7 +1061,7 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1081,7 +1081,7 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1111,7 +1111,7 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1131,7 +1131,7 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1151,7 +1151,7 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1181,7 +1181,7 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1201,7 +1201,7 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1221,7 +1221,7 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1251,7 +1251,7 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 	case *CreateNetworkingV1IngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1271,7 +1271,7 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 	case *CreateNetworkingV1IngressClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1291,7 +1291,7 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 	case *CreateNetworkingV1IngressClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1321,7 +1321,7 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 	case *CreateNodeV1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1341,7 +1341,7 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 	case *CreateNodeV1RuntimeClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1361,7 +1361,7 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 	case *CreateNodeV1RuntimeClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1391,7 +1391,7 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 	case *CreateNodeV1alpha1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1411,7 +1411,7 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 	case *CreateNodeV1alpha1RuntimeClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1431,7 +1431,7 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 	case *CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1461,7 +1461,7 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 	case *CreateNodeV1beta1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1481,7 +1481,7 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 	case *CreateNodeV1beta1RuntimeClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1501,7 +1501,7 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 	case *CreateNodeV1beta1RuntimeClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1531,7 +1531,7 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1551,7 +1551,7 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1571,7 +1571,7 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1601,7 +1601,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1621,7 +1621,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1641,7 +1641,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1671,7 +1671,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1691,7 +1691,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1711,7 +1711,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1741,7 +1741,7 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 	case *CreateSchedulingV1PriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1761,7 +1761,7 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 	case *CreateSchedulingV1PriorityClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1781,7 +1781,7 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 	case *CreateSchedulingV1PriorityClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1811,7 +1811,7 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 	case *CreateStorageV1CSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1831,7 +1831,7 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 	case *CreateStorageV1CSIDriverApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1851,7 +1851,7 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 	case *CreateStorageV1CSIDriverApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1881,7 +1881,7 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w 
 	case *CreateStorageV1CSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1901,7 +1901,7 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w 
 	case *CreateStorageV1CSINodeApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1921,7 +1921,7 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w 
 	case *CreateStorageV1CSINodeApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1951,7 +1951,7 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 	case *CreateStorageV1StorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1971,7 +1971,7 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 	case *CreateStorageV1StorageClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -1991,7 +1991,7 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 	case *CreateStorageV1StorageClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2021,7 +2021,7 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 	case *CreateStorageV1VolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2041,7 +2041,7 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 	case *CreateStorageV1VolumeAttachmentApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2061,7 +2061,7 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 	case *CreateStorageV1VolumeAttachmentApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2091,7 +2091,7 @@ func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2121,7 +2121,7 @@ func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2151,7 +2151,7 @@ func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(respo
 	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2181,7 +2181,7 @@ func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteAp
 	case *DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2211,7 +2211,7 @@ func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(respo
 	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2241,7 +2241,7 @@ func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNod
 	case *DeleteCoreV1CollectionNodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2271,7 +2271,7 @@ func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1C
 	case *DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2301,7 +2301,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(respons
 	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2331,7 +2331,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2361,7 +2361,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(respons
 	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2391,7 +2391,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2421,7 +2421,7 @@ func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(respo
 	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2451,7 +2451,7 @@ func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetwo
 	case *DeleteNetworkingV1CollectionIngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2481,7 +2481,7 @@ func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1Colle
 	case *DeleteNodeV1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2511,7 +2511,7 @@ func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV
 	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2541,7 +2541,7 @@ func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1
 	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2571,7 +2571,7 @@ func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response Delet
 	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2601,7 +2601,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response Delet
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2631,7 +2631,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(respons
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2661,7 +2661,7 @@ func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSche
 	case *DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2691,7 +2691,7 @@ func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1Co
 	case *DeleteStorageV1CollectionCSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2721,7 +2721,7 @@ func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1Coll
 	case *DeleteStorageV1CollectionCSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2751,7 +2751,7 @@ func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV
 	case *DeleteStorageV1CollectionStorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2781,7 +2781,7 @@ func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStor
 	case *DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2811,7 +2811,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 	case *GetAPIVersionsApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2841,7 +2841,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 	case *GetAdmissionregistrationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2871,7 +2871,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 	case *GetAdmissionregistrationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2901,7 +2901,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 	case *GetApiextensionsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2931,7 +2931,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 	case *GetApiextensionsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2961,7 +2961,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 	case *GetApiregistrationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -2991,7 +2991,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 	case *GetApiregistrationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3021,7 +3021,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 	case *GetAppsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3051,7 +3051,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 	case *GetAppsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3081,7 +3081,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 	case *GetAuthenticationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3111,7 +3111,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 	case *GetAuthenticationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3141,7 +3141,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 	case *GetAuthorizationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3171,7 +3171,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 	case *GetAuthorizationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3201,7 +3201,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 	case *GetAutoscalingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3231,7 +3231,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 	case *GetAutoscalingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3261,7 +3261,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 	case *GetAutoscalingV2beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3291,7 +3291,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 	case *GetAutoscalingV2beta2APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3321,7 +3321,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 	case *GetBatchAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3351,7 +3351,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 	case *GetBatchV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3381,7 +3381,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 	case *GetBatchV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3411,7 +3411,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 	case *GetCertificatesAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3441,7 +3441,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 	case *GetCertificatesV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3471,7 +3471,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 	case *IoK8sApimachineryPkgVersionInfo:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3494,7 +3494,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 	case *GetCoordinationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3524,7 +3524,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 	case *GetCoordinationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3554,7 +3554,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 	case *GetCoreAPIVersionsApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3584,7 +3584,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 	case *GetCoreV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3614,7 +3614,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 	case *GetDiscoveryAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3644,7 +3644,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 	case *GetDiscoveryV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3674,7 +3674,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 	case *GetDiscoveryV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3704,7 +3704,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 	case *GetEventsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3734,7 +3734,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 	case *GetEventsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3764,7 +3764,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 	case *GetEventsV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3794,7 +3794,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 	case *GetFlowcontrolApiserverAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3824,7 +3824,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3854,7 +3854,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3884,7 +3884,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 	case *GetInternalApiserverAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3914,7 +3914,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 	case *GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3944,7 +3944,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 	case *GetNetworkingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -3974,7 +3974,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 	case *GetNetworkingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4004,7 +4004,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 	case *GetNodeAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4034,7 +4034,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 	case *GetNodeV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4064,7 +4064,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 	case *GetNodeV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4094,7 +4094,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 	case *GetNodeV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4124,7 +4124,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 	case *GetPolicyAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4154,7 +4154,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 	case *GetPolicyV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4184,7 +4184,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 	case *GetPolicyV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4214,7 +4214,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 	case *GetRbacAuthorizationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4244,7 +4244,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 	case *GetRbacAuthorizationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4274,7 +4274,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 	case *GetSchedulingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4304,7 +4304,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 	case *GetSchedulingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4334,7 +4334,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 	case *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4370,7 +4370,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 	case *GetStorageAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4400,7 +4400,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 	case *GetStorageV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4430,7 +4430,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 	case *GetStorageV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4460,7 +4460,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 	case *GetStorageV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4490,7 +4490,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4528,7 +4528,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4566,7 +4566,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 	case *ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4604,7 +4604,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 	case *ListApiregistrationV1APIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4642,7 +4642,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4680,7 +4680,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 	case *ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4718,7 +4718,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 	case *ListAppsV1DeploymentForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4756,7 +4756,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 	case *ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4794,7 +4794,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 	case *ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4832,7 +4832,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4870,7 +4870,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4908,7 +4908,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4946,7 +4946,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 	case *ListBatchV1CronJobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -4984,7 +4984,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 	case *ListBatchV1JobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5022,7 +5022,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 	case *ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5060,7 +5060,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 	case *ListCertificatesV1CertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5098,7 +5098,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 	case *ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5136,7 +5136,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 	case *ListCoreV1ComponentStatusApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5174,7 +5174,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 	case *ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5212,7 +5212,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 	case *ListCoreV1EndpointsForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5250,7 +5250,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 	case *ListCoreV1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5288,7 +5288,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 	case *ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5326,7 +5326,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 	case *ListCoreV1NamespaceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5364,7 +5364,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 	case *ListCoreV1NodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5402,7 +5402,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 	case *ListCoreV1PersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5440,7 +5440,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5478,7 +5478,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 	case *ListCoreV1PodForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5516,7 +5516,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 	case *ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5554,7 +5554,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5592,7 +5592,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5630,7 +5630,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 	case *ListCoreV1SecretForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5668,7 +5668,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 	case *ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5706,7 +5706,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 	case *ListCoreV1ServiceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5744,7 +5744,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5782,7 +5782,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5820,7 +5820,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 	case *ListEventsV1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5858,7 +5858,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 	case *ListEventsV1beta1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5896,7 +5896,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5934,7 +5934,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -5972,7 +5972,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6010,7 +6010,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6048,7 +6048,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 	case *ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6086,7 +6086,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 	case *ListNetworkingV1IngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6124,7 +6124,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 	case *ListNetworkingV1IngressForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6162,7 +6162,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6200,7 +6200,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 	case *ListNodeV1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6238,7 +6238,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 	case *ListNodeV1alpha1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6276,7 +6276,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 	case *ListNodeV1beta1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6314,7 +6314,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6352,7 +6352,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6390,7 +6390,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 	case *ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6428,7 +6428,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 	case *ListRbacAuthorizationV1ClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6466,7 +6466,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6504,7 +6504,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6542,7 +6542,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6580,7 +6580,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 	case *ListSchedulingV1PriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6618,7 +6618,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 	case *ListStorageV1CSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6656,7 +6656,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 	case *ListStorageV1CSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6694,7 +6694,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 	case *ListStorageV1StorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6732,7 +6732,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 	case *ListStorageV1VolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6770,7 +6770,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6808,7 +6808,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6851,7 +6851,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6889,7 +6889,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6927,7 +6927,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -6965,7 +6965,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 	case *WatchApiregistrationV1APIServiceListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7003,7 +7003,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7041,7 +7041,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7079,7 +7079,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 	case *WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7117,7 +7117,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7155,7 +7155,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7193,7 +7193,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7231,7 +7231,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7269,7 +7269,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7307,7 +7307,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 	case *WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7345,7 +7345,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 	case *WatchBatchV1JobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7383,7 +7383,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7421,7 +7421,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 	case *WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7459,7 +7459,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7497,7 +7497,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7535,7 +7535,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 	case *WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7573,7 +7573,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 	case *WatchCoreV1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7611,7 +7611,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7649,7 +7649,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 	case *WatchCoreV1NamespaceListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7687,7 +7687,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 	case *WatchCoreV1NodeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7725,7 +7725,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7763,7 +7763,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 	case *WatchCoreV1PersistentVolumeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7801,7 +7801,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 	case *WatchCoreV1PodListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7839,7 +7839,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7877,7 +7877,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7915,7 +7915,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7953,7 +7953,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 	case *WatchCoreV1SecretListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -7991,7 +7991,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8029,7 +8029,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 	case *WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8067,7 +8067,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8105,7 +8105,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8143,7 +8143,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 	case *WatchEventsV1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8181,7 +8181,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 	case *WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8219,7 +8219,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8257,7 +8257,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8295,7 +8295,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8333,7 +8333,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8371,7 +8371,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8409,7 +8409,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 	case *WatchNetworkingV1IngressClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8447,7 +8447,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 	case *WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8485,7 +8485,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8523,7 +8523,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 	case *WatchNodeV1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8561,7 +8561,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 	case *WatchNodeV1alpha1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8599,7 +8599,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 	case *WatchNodeV1beta1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8637,7 +8637,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8675,7 +8675,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8713,7 +8713,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8751,7 +8751,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8789,7 +8789,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 	case *WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8827,7 +8827,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8865,7 +8865,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8903,7 +8903,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 	case *WatchSchedulingV1PriorityClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8941,7 +8941,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 	case *WatchStorageV1CSIDriverListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -8979,7 +8979,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 	case *WatchStorageV1CSINodeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -9017,7 +9017,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 	case *WatchStorageV1StorageClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -9055,7 +9055,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 	case *WatchStorageV1VolumeAttachmentListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -9093,7 +9093,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -9131,7 +9131,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()

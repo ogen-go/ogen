@@ -45,7 +45,7 @@ w.WriteHeader({{ $.StatusCode }})
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if $.ContentType.JSON }}
-j := json.NewStream(w)
+j := json.GetStream(w)
 defer json.PutStream(j)
 more := json.NewMore(j)
 defer more.Reset()

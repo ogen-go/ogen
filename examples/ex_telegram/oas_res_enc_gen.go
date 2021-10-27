@@ -61,7 +61,7 @@ func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, 
 	case *AnswerCallbackQueryPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -74,7 +74,7 @@ func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -94,7 +94,7 @@ func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPos
 	case *AnswerPreCheckoutQueryPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -107,7 +107,7 @@ func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPos
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -127,7 +127,7 @@ func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, 
 	case *AnswerShippingQueryPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -140,7 +140,7 @@ func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -160,7 +160,7 @@ func encodeClosePostResponse(response ClosePostRes, w http.ResponseWriter, span 
 	case *ClosePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -173,7 +173,7 @@ func encodeClosePostResponse(response ClosePostRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -193,7 +193,7 @@ func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes
 	case *DeleteStickerFromSetPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -206,7 +206,7 @@ func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -226,7 +226,7 @@ func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, w http.Respo
 	case *DeleteWebhookPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -239,7 +239,7 @@ func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -259,7 +259,7 @@ func encodeGetFilePostResponse(response GetFilePostRes, w http.ResponseWriter, s
 	case *GetFilePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -272,7 +272,7 @@ func encodeGetFilePostResponse(response GetFilePostRes, w http.ResponseWriter, s
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -292,7 +292,7 @@ func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, w ht
 	case *GetGameHighScoresPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -305,7 +305,7 @@ func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, w ht
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -325,7 +325,7 @@ func encodeGetMePostResponse(response GetMePostRes, w http.ResponseWriter, span 
 	case *GetMePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -338,7 +338,7 @@ func encodeGetMePostResponse(response GetMePostRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -358,7 +358,7 @@ func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, w http.Respo
 	case *GetMyCommandsPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -371,7 +371,7 @@ func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -391,7 +391,7 @@ func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, w http.Respo
 	case *GetStickerSetPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -404,7 +404,7 @@ func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -424,7 +424,7 @@ func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, w http.ResponseWri
 	case *GetUpdatesPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -437,7 +437,7 @@ func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, w http.ResponseWri
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -457,7 +457,7 @@ func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes
 	case *GetUserProfilePhotosPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -470,7 +470,7 @@ func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -490,7 +490,7 @@ func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, w http.Res
 	case *GetWebhookInfoPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -503,7 +503,7 @@ func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, w http.Res
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -523,7 +523,7 @@ func encodeLogOutPostResponse(response LogOutPostRes, w http.ResponseWriter, spa
 	case *LogOutPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -536,7 +536,7 @@ func encodeLogOutPostResponse(response LogOutPostRes, w http.ResponseWriter, spa
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -556,7 +556,7 @@ func encodeSendGamePostResponse(response SendGamePostRes, w http.ResponseWriter,
 	case *SendGamePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -569,7 +569,7 @@ func encodeSendGamePostResponse(response SendGamePostRes, w http.ResponseWriter,
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -589,7 +589,7 @@ func encodeSendInvoicePostResponse(response SendInvoicePostRes, w http.ResponseW
 	case *SendInvoicePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -602,7 +602,7 @@ func encodeSendInvoicePostResponse(response SendInvoicePostRes, w http.ResponseW
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -622,7 +622,7 @@ func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, w http.Respo
 	case *SetMyCommandsPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -635,7 +635,7 @@ func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -655,7 +655,7 @@ func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetP
 	case *SetStickerPositionInSetPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -668,7 +668,7 @@ func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetP
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -688,7 +688,7 @@ func encodeSetWebhookPostResponse(response SetWebhookPostRes, w http.ResponseWri
 	case *SetWebhookPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -701,7 +701,7 @@ func encodeSetWebhookPostResponse(response SetWebhookPostRes, w http.ResponseWri
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -721,7 +721,7 @@ func encodeUploadStickerFilePostResponse(response UploadStickerFilePostRes, w ht
 	case *UploadStickerFilePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -734,7 +734,7 @@ func encodeUploadStickerFilePostResponse(response UploadStickerFilePostRes, w ht
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()

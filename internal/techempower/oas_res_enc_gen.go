@@ -59,7 +59,7 @@ var (
 func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -73,7 +73,7 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span tr
 func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -88,7 +88,7 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Sp
 func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -103,7 +103,7 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.S
 func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -117,7 +117,7 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span tr
 func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	j := json.NewStream(w)
+	j := json.GetStream(w)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()

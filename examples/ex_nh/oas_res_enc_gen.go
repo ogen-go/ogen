@@ -61,7 +61,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 	case *Book:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -126,7 +126,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 	case *SearchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -148,7 +148,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 	case *SearchByTagIDOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()

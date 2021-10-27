@@ -16,6 +16,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
+	"go.opentelemetry.io/otel/trace"
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/conv"
@@ -188,7 +189,25 @@ func BenchmarkIntegration(b *testing.B) {
 		s := httptest.NewServer(mux)
 		defer s.Close()
 
-		client := techempower.NewClient(s.URL)
+		httpClient := &http.Client{
+			Timeout: time.Second,
+			Transport: &http.Transport{
+				DialContext: (&net.Dialer{
+					Timeout:   30 * time.Second,
+					KeepAlive: 30 * time.Second,
+				}).DialContext,
+				ForceAttemptHTTP2:     true,
+				MaxIdleConns:          100,
+				MaxConnsPerHost:       20,
+				IdleConnTimeout:       90 * time.Second,
+				TLSHandshakeTimeout:   10 * time.Second,
+				ExpectContinueTimeout: 1 * time.Second,
+			},
+		}
+		client := techempower.NewClient(s.URL,
+			techempower.WithHTTPClient(httpClient),
+			techempower.WithTracerProvider(trace.NewNoopTracerProvider()),
+		)
 		ctx := context.Background()
 
 		b.Run("JSON", func(b *testing.B) {

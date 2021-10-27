@@ -64,7 +64,7 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -77,7 +77,7 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -100,7 +100,7 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -113,7 +113,7 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -133,7 +133,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 	case *Balloon:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -146,7 +146,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -159,7 +159,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -179,7 +179,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 	case *BalloonStats:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -192,7 +192,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -205,7 +205,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -225,7 +225,7 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 	case *InstanceInfo:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -238,7 +238,7 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -258,7 +258,7 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 	case *FullVmConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -271,7 +271,7 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -291,7 +291,7 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 	case *MachineConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -304,7 +304,7 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -327,7 +327,7 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -340,7 +340,7 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -363,7 +363,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -376,7 +376,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -396,7 +396,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 	case *MmdsGetResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -409,7 +409,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -422,7 +422,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -445,7 +445,7 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -458,7 +458,7 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -481,7 +481,7 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -494,7 +494,7 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -517,7 +517,7 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -530,7 +530,7 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -553,7 +553,7 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -566,7 +566,7 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -589,7 +589,7 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -602,7 +602,7 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -625,7 +625,7 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -638,7 +638,7 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -661,7 +661,7 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -674,7 +674,7 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -697,7 +697,7 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -710,7 +710,7 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -733,7 +733,7 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -746,7 +746,7 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -769,7 +769,7 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -782,7 +782,7 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -805,7 +805,7 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -818,7 +818,7 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -841,7 +841,7 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -854,7 +854,7 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -877,7 +877,7 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -890,7 +890,7 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -913,7 +913,7 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -926,7 +926,7 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -949,7 +949,7 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -962,7 +962,7 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -985,7 +985,7 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
@@ -998,7 +998,7 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		j := json.NewStream(w)
+		j := json.GetStream(w)
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
