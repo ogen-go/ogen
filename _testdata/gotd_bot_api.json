@@ -2873,25 +2873,13 @@
         ]
       },
       "ID": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean",
-            "default": true
+        "oneOf": [
+          {
+            "type": "string"
           },
-          "result": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer"
-              }
-            ]
+          {
+            "type": "integer"
           }
-        },
-        "required": [
-          "ok"
         ]
       },
       "InlineKeyboardButton": {

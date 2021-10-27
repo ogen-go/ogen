@@ -52,47 +52,71 @@ var (
 
 func (s *Animation) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "duration" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Duration)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Duration)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "duration", Error: err})
-		}
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
 	}
-	{
-		// Validate "height" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Height)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Height)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "height", Error: err})
-		}
+		_ = s.Height
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "height",
+			Error: err,
+		})
 	}
-	{
-		// Validate "width" property.
-		validator := validate.Int{
+	if err := func() error {
+		_ = s.Thumb
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "thumb",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Width)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Width)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "width", Error: err})
-		}
+		_ = s.Width
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "width",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -101,6 +125,15 @@ func (s *Animation) Validate() error {
 }
 func (s *AnswerCallbackQuery) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Text
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -108,13 +141,41 @@ func (s *AnswerCallbackQuery) Validate() error {
 }
 func (s *AnswerInlineQuery) Validate() error {
 	var failures []validate.FieldError
-	if s.Results == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "results",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		if s.Results == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
+		for i, elem := range s.Results {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Results
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "results",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.SwitchPmParameter
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "switch_pm_parameter",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -123,6 +184,30 @@ func (s *AnswerInlineQuery) Validate() error {
 }
 func (s *AnswerShippingQuery) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.ShippingOptions {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.ShippingOptions
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "shipping_options",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -130,19 +215,33 @@ func (s *AnswerShippingQuery) Validate() error {
 }
 func (s *Audio) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "duration" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Duration)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Duration)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "duration", Error: err})
-		}
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Thumb
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "thumb",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -151,29 +250,39 @@ func (s *Audio) Validate() error {
 }
 func (s *BotCommand) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "command" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    32,
 			MaxLengthSet: true,
+		}).Validate(string(s.Command)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Command)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "command", Error: err})
-		}
+		_ = s.Command
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "command",
+			Error: err,
+		})
 	}
-	{
-		// Validate "description" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    3,
 			MinLengthSet: true,
 			MaxLength:    256,
 			MaxLengthSet: true,
+		}).Validate(string(s.Description)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Description)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "description", Error: err})
-		}
+		_ = s.Description
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "description",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -182,6 +291,24 @@ func (s *BotCommand) Validate() error {
 }
 func (s *Chat) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Location
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "location",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.PinnedMessage
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "pinned_message",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -189,17 +316,22 @@ func (s *Chat) Validate() error {
 }
 func (s *ChatLocation) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "address" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    64,
 			MaxLengthSet: true,
+		}).Validate(string(s.Address)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Address)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "address", Error: err})
-		}
+		_ = s.Address
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "address",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -208,6 +340,15 @@ func (s *ChatLocation) Validate() error {
 }
 func (s *CopyMessage) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -215,29 +356,39 @@ func (s *CopyMessage) Validate() error {
 }
 func (s *CreateNewStickerSet) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "name" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    64,
 			MaxLengthSet: true,
+		}).Validate(string(s.Name)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Name)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "name", Error: err})
-		}
+		_ = s.Name
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "name",
+			Error: err,
+		})
 	}
-	{
-		// Validate "title" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    64,
 			MaxLengthSet: true,
+		}).Validate(string(s.Title)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Title)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "title", Error: err})
-		}
+		_ = s.Title
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "title",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -246,6 +397,15 @@ func (s *CreateNewStickerSet) Validate() error {
 }
 func (s *Document) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Thumb
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "thumb",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -253,6 +413,15 @@ func (s *Document) Validate() error {
 }
 func (s *EditMessageCaption) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -260,17 +429,22 @@ func (s *EditMessageCaption) Validate() error {
 }
 func (s *EditMessageText) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "text" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    4096,
 			MaxLengthSet: true,
+		}).Validate(string(s.Text)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Text)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "text", Error: err})
-		}
+		_ = s.Text
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -279,13 +453,50 @@ func (s *EditMessageText) Validate() error {
 }
 func (s *Game) Validate() error {
 	var failures []validate.FieldError
-	if s.Photo == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "photo",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		_ = s.Animation
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "animation",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Photo == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
+		for i, elem := range s.Photo {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Photo
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "photo",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Text
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -294,6 +505,15 @@ func (s *Game) Validate() error {
 }
 func (s *GetUpdates) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Limit
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "limit",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -301,6 +521,15 @@ func (s *GetUpdates) Validate() error {
 }
 func (s *GetUserProfilePhotos) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Limit
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "limit",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -308,13 +537,218 @@ func (s *GetUserProfilePhotos) Validate() error {
 }
 func (s *Message) Validate() error {
 	var failures []validate.FieldError
-	if s.Chat == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "chat",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		_ = s.Animation
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "animation",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Audio
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "audio",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Chat == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		_ = s.Chat
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "chat",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Document
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "document",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.ForwardFromChat
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "forward_from_chat",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Game
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "game",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.NewChatPhoto {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.NewChatPhoto
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "new_chat_photo",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.PassportData
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "passport_data",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.Photo {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Photo
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "photo",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.PinnedMessage
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "pinned_message",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Poll
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "poll",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.ReplyToMessage
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "reply_to_message",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.SenderChat
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "sender_chat",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Sticker
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "sticker",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Text
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Video
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "video",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.VideoNote
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "video_note",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Voice
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "voice",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.VoiceChatEnded
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "voice_chat_ended",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -323,13 +757,32 @@ func (s *Message) Validate() error {
 }
 func (s *PassportData) Validate() error {
 	var failures []validate.FieldError
-	if s.Data == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "data",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		if s.Data == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
+		for i, elem := range s.Data {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Data
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "data",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -338,33 +791,43 @@ func (s *PassportData) Validate() error {
 }
 func (s *PhotoSize) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "height" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Height)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Height)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "height", Error: err})
-		}
+		_ = s.Height
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "height",
+			Error: err,
+		})
 	}
-	{
-		// Validate "width" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Width)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Width)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "width", Error: err})
-		}
+		_ = s.Width
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "width",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -373,25 +836,58 @@ func (s *PhotoSize) Validate() error {
 }
 func (s *Poll) Validate() error {
 	var failures []validate.FieldError
-	if s.Options == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "options",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
+	if err := func() error {
+		_ = s.Explanation
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "explanation",
+			Error: err,
+		})
 	}
-	{
-		// Validate "question" property.
-		validator := validate.String{
+	if err := func() error {
+		if s.Options == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Options {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Options
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "options",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    300,
 			MaxLengthSet: true,
+		}).Validate(string(s.Question)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Question)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "question", Error: err})
-		}
+		_ = s.Question
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "question",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -400,17 +896,22 @@ func (s *Poll) Validate() error {
 }
 func (s *PollOption) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "text" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    100,
 			MaxLengthSet: true,
+		}).Validate(string(s.Text)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Text)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "text", Error: err})
-		}
+		_ = s.Text
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -419,6 +920,15 @@ func (s *PollOption) Validate() error {
 }
 func (s *ResultMsg) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Result
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "result",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -426,6 +936,42 @@ func (s *ResultMsg) Validate() error {
 }
 func (s *SendAnimation) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Height
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "height",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Width
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "width",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -433,6 +979,24 @@ func (s *SendAnimation) Validate() error {
 }
 func (s *SendAudio) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -440,6 +1004,15 @@ func (s *SendAudio) Validate() error {
 }
 func (s *SendDocument) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -447,37 +1020,84 @@ func (s *SendDocument) Validate() error {
 }
 func (s *SendInvoice) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "description" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    255,
 			MaxLengthSet: true,
+		}).Validate(string(s.Description)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Description)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "description", Error: err})
-		}
+		_ = s.Description
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "description",
+			Error: err,
+		})
 	}
-	if s.Prices == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "prices",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
+	if err := func() error {
+		_ = s.PhotoHeight
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "photo_height",
+			Error: err,
+		})
 	}
-	{
-		// Validate "title" property.
-		validator := validate.String{
+	if err := func() error {
+		_ = s.PhotoWidth
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "photo_width",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Prices == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Prices {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Prices
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "prices",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    32,
 			MaxLengthSet: true,
+		}).Validate(string(s.Title)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Title)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "title", Error: err})
-		}
+		_ = s.Title
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "title",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -486,13 +1106,32 @@ func (s *SendInvoice) Validate() error {
 }
 func (s *SendMediaGroup) Validate() error {
 	var failures []validate.FieldError
-	if s.Media == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "media",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		if s.Media == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
+		for i, elem := range s.Media {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Media
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "media",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -501,17 +1140,22 @@ func (s *SendMediaGroup) Validate() error {
 }
 func (s *SendMessage) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "text" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    4096,
 			MaxLengthSet: true,
+		}).Validate(string(s.Text)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Text)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "text", Error: err})
-		}
+		_ = s.Text
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "text",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -520,6 +1164,15 @@ func (s *SendMessage) Validate() error {
 }
 func (s *SendPhoto) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -527,25 +1180,58 @@ func (s *SendPhoto) Validate() error {
 }
 func (s *SendPoll) Validate() error {
 	var failures []validate.FieldError
-	if s.Options == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "options",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
+	if err := func() error {
+		_ = s.Explanation
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "explanation",
+			Error: err,
+		})
 	}
-	{
-		// Validate "question" property.
-		validator := validate.String{
+	if err := func() error {
+		if s.Options == nil {
+			return fmt.Errorf("required, can't be nil")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Options {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Options
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "options",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    300,
 			MaxLengthSet: true,
+		}).Validate(string(s.Question)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Question)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "question", Error: err})
-		}
+		_ = s.Question
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "question",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -554,6 +1240,42 @@ func (s *SendPoll) Validate() error {
 }
 func (s *SendVideo) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Height
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "height",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Width
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "width",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -561,6 +1283,15 @@ func (s *SendVideo) Validate() error {
 }
 func (s *SendVideoNote) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -568,6 +1299,24 @@ func (s *SendVideoNote) Validate() error {
 }
 func (s *SendVoice) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Caption
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "caption",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -575,17 +1324,22 @@ func (s *SendVoice) Validate() error {
 }
 func (s *SetChatAdministratorCustomTitle) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "custom_title" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    0,
 			MinLengthSet: false,
 			MaxLength:    16,
 			MaxLengthSet: true,
+		}).Validate(string(s.CustomTitle)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.CustomTitle)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "custom_title", Error: err})
-		}
+		_ = s.CustomTitle
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "custom_title",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -594,6 +1348,15 @@ func (s *SetChatAdministratorCustomTitle) Validate() error {
 }
 func (s *SetChatDescription) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Description
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "description",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -601,17 +1364,22 @@ func (s *SetChatDescription) Validate() error {
 }
 func (s *SetChatTitle) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "title" property.
-		validator := validate.String{
+	if err := func() error {
+		if err := (validate.String{
 			MinLength:    1,
 			MinLengthSet: true,
 			MaxLength:    255,
 			MaxLengthSet: true,
+		}).Validate(string(s.Title)); err != nil {
+			return err
 		}
-		if err := validator.Validate(string(s.Title)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "title", Error: err})
-		}
+		_ = s.Title
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "title",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -620,13 +1388,32 @@ func (s *SetChatTitle) Validate() error {
 }
 func (s *SetMyCommands) Validate() error {
 	var failures []validate.FieldError
-	if s.Commands == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "commands",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		if s.Commands == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
+		for i, elem := range s.Commands {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Commands
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "commands",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -635,13 +1422,32 @@ func (s *SetMyCommands) Validate() error {
 }
 func (s *SetPassportDataErrors) Validate() error {
 	var failures []validate.FieldError
-	if s.Errors == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "errors",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		if s.Errors == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
+		for i, elem := range s.Errors {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Errors
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "errors",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -650,13 +1456,32 @@ func (s *SetPassportDataErrors) Validate() error {
 }
 func (s *ShippingOption) Validate() error {
 	var failures []validate.FieldError
-	if s.Prices == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "prices",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
+	if err := func() error {
+		if s.Prices == nil {
+			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
+		for i, elem := range s.Prices {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Prices
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "prices",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -665,33 +1490,52 @@ func (s *ShippingOption) Validate() error {
 }
 func (s *Sticker) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "height" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Height)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Height)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "height", Error: err})
-		}
+		_ = s.Height
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "height",
+			Error: err,
+		})
 	}
-	{
-		// Validate "width" property.
-		validator := validate.Int{
+	if err := func() error {
+		_ = s.Thumb
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "thumb",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Width)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Width)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "width", Error: err})
-		}
+		_ = s.Width
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "width",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -700,47 +1544,71 @@ func (s *Sticker) Validate() error {
 }
 func (s *Video) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "duration" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Duration)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Duration)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "duration", Error: err})
-		}
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
 	}
-	{
-		// Validate "height" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Height)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Height)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "height", Error: err})
-		}
+		_ = s.Height
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "height",
+			Error: err,
+		})
 	}
-	{
-		// Validate "width" property.
-		validator := validate.Int{
+	if err := func() error {
+		_ = s.Thumb
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "thumb",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Width)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Width)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "width", Error: err})
-		}
+		_ = s.Width
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "width",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -749,19 +1617,33 @@ func (s *Video) Validate() error {
 }
 func (s *VideoNote) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "duration" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Duration)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Duration)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "duration", Error: err})
-		}
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Thumb
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "thumb",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -770,19 +1652,24 @@ func (s *VideoNote) Validate() error {
 }
 func (s *Voice) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "duration" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Duration)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Duration)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "duration", Error: err})
-		}
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -791,19 +1678,24 @@ func (s *Voice) Validate() error {
 }
 func (s *VoiceChatEnded) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "duration" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: true,
 			MaxExclusive: false,
+		}).Validate(int64(s.Duration)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Duration)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "duration", Error: err})
-		}
+		_ = s.Duration
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}

@@ -287,7 +287,7 @@ type EditChatInviteLink struct {
 type EditMessageCaption struct {
 	Caption         OptString               `json:"caption"`
 	CaptionEntities []MessageEntity         `json:"caption_entities"`
-	ChatID          OptID                   `json:"chat_id"`
+	ChatID          *ID                     `json:"chat_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	MessageID       OptInt                  `json:"message_id"`
 	ParseMode       OptString               `json:"parse_mode"`
@@ -296,7 +296,7 @@ type EditMessageCaption struct {
 
 // Ref: #/components/schemas/editMessageLiveLocation
 type EditMessageLiveLocation struct {
-	ChatID               OptID                   `json:"chat_id"`
+	ChatID               *ID                     `json:"chat_id"`
 	Heading              OptInt                  `json:"heading"`
 	HorizontalAccuracy   OptFloat64              `json:"horizontal_accuracy"`
 	InlineMessageID      OptString               `json:"inline_message_id"`
@@ -309,7 +309,7 @@ type EditMessageLiveLocation struct {
 
 // Ref: #/components/schemas/editMessageMedia
 type EditMessageMedia struct {
-	ChatID          OptID                   `json:"chat_id"`
+	ChatID          *ID                     `json:"chat_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	Media           InputMedia              `json:"media"`
 	MessageID       OptInt                  `json:"message_id"`
@@ -318,7 +318,7 @@ type EditMessageMedia struct {
 
 // Ref: #/components/schemas/editMessageReplyMarkup
 type EditMessageReplyMarkup struct {
-	ChatID          OptID                   `json:"chat_id"`
+	ChatID          *ID                     `json:"chat_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	MessageID       OptInt                  `json:"message_id"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
@@ -326,7 +326,7 @@ type EditMessageReplyMarkup struct {
 
 // Ref: #/components/schemas/editMessageText
 type EditMessageText struct {
-	ChatID                OptID                   `json:"chat_id"`
+	ChatID                *ID                     `json:"chat_id"`
 	DisableWebPagePreview OptBool                 `json:"disable_web_page_preview"`
 	Entities              []MessageEntity         `json:"entities"`
 	InlineMessageID       OptString               `json:"inline_message_id"`
@@ -531,71 +531,66 @@ type GetUserProfilePhotos struct {
 }
 
 // Ref: #/components/schemas/ID
+// ID represents sum type.
 type ID struct {
-	Ok     bool      `json:"ok"`
-	Result *IDResult `json:"result"`
-}
-
-// IDResult represents sum type.
-type IDResult struct {
-	Type   IDResultType // switch on this field
+	Type   IDType // switch on this field
 	String string
 	Int    int
 }
 
-// IDResultType is oneOf type of IDResult.
-type IDResultType string
+// IDType is oneOf type of ID.
+type IDType string
 
-// Possible values for IDResultType.
+// Possible values for IDType.
 const (
-	IDResultStringType IDResultType = "string"
-	IDResultIntType    IDResultType = "int"
+	IDStringType IDType = "string"
+	IDIntType    IDType = "int"
 )
 
-// IsString reports whether IDResult is string.
-func (s IDResult) IsString() bool { return s.Type == IDResultStringType }
+// IsString reports whether ID is string.
+func (s ID) IsString() bool { return s.Type == IDStringType }
 
-// IsInt reports whether IDResult is int.
-func (s IDResult) IsInt() bool { return s.Type == IDResultIntType }
+// IsInt reports whether ID is int.
+func (s ID) IsInt() bool { return s.Type == IDIntType }
 
-// SetString sets IDResult to string.
-func (s *IDResult) SetString(v string) {
-	s.Type = IDResultStringType
+// SetString sets ID to string.
+func (s *ID) SetString(v string) {
+	s.Type = IDStringType
 	s.String = v
 }
 
-// GetString returns string and true boolean if IDResult is string.
-func (s *IDResult) GetString() (v string, ok bool) {
+// GetString returns string and true boolean if ID is string.
+func (s *ID) GetString() (v string, ok bool) {
 	if !s.IsString() {
 		return v, false
 	}
 	return s.String, true
 }
 
-// IDResultString returns new IDResult from string.
-func IDResultString(v string) IDResult {
-	var s IDResult
+// IDString returns new ID from string.
+func IDString(v string) ID {
+	var s ID
 	s.SetString(v)
 	return s
 }
 
-// SetInt sets IDResult to int.
-func (s *IDResult) SetInt(v int) {
-	s.Type = IDResultIntType
+// SetInt sets ID to int.
+func (s *ID) SetInt(v int) {
+	s.Type = IDIntType
 	s.Int = v
 }
 
-// GetInt returns int and true boolean if IDResult is int.
-func (s *IDResult) GetInt() (v int, ok bool) {
+// GetInt returns int and true boolean if ID is int.
+func (s *ID) GetInt() (v int, ok bool) {
 	if !s.IsInt() {
 		return v, false
 	}
 	return s.Int, true
 }
 
-// IDResultInt returns new IDResult from int.
-func IDResultInt(v int) IDResult {
-	var s IDResult
+// IDInt returns new ID from int.
+func IDInt(v int) ID {
+	var s ID
 	s.SetInt(v)
 	return s
 }
@@ -1132,44 +1127,6 @@ func (o *OptGame) SetTo(v Game) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptGame) Get() (v Game, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// NewOptID returns new OptID with value set to v.
-func NewOptID(v ID) OptID {
-	return OptID{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptID is optional ID.
-type OptID struct {
-	Value ID
-	Set   bool
-}
-
-// IsSet returns true if OptID was set.
-func (o OptID) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptID) Reset() {
-	var v ID
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptID) SetTo(v ID) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptID) Get() (v ID, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2808,7 +2765,7 @@ type Sticker struct {
 
 // Ref: #/components/schemas/stopMessageLiveLocation
 type StopMessageLiveLocation struct {
-	ChatID          OptID                   `json:"chat_id"`
+	ChatID          *ID                     `json:"chat_id"`
 	InlineMessageID OptString               `json:"inline_message_id"`
 	MessageID       OptInt                  `json:"message_id"`
 	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`

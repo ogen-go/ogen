@@ -2697,7 +2697,7 @@ func (s EditMessageCaption) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-	if s.ChatID.Set {
+	if s.ChatID != nil {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
@@ -2771,11 +2771,18 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "chat_id":
 			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
+				s.ChatID = nil
+				var elem ID
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.ChatID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2845,7 +2852,7 @@ func (s EditMessageLiveLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.ChatID.Set {
+	if s.ChatID != nil {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
@@ -2896,11 +2903,18 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chat_id":
 			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
+				s.ChatID = nil
+				var elem ID
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.ChatID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3012,7 +3026,7 @@ func (s EditMessageMedia) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.ChatID.Set {
+	if s.ChatID != nil {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
@@ -3045,11 +3059,18 @@ func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chat_id":
 			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
+				s.ChatID = nil
+				var elem ID
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.ChatID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3118,7 +3139,7 @@ func (s EditMessageReplyMarkup) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.ChatID.Set {
+	if s.ChatID != nil {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
@@ -3148,11 +3169,18 @@ func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chat_id":
 			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
+				s.ChatID = nil
+				var elem ID
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.ChatID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3210,7 +3238,7 @@ func (s EditMessageText) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.ChatID.Set {
+	if s.ChatID != nil {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
@@ -3265,11 +3293,18 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chat_id":
 			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
+				s.ChatID = nil
+				var elem ID
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.ChatID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4620,76 +4655,16 @@ func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
 
 // WriteJSON implements json.Marshaler.
 func (s ID) WriteJSON(j *json.Stream) {
-	j.WriteObjectStart()
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	j.WriteObjectField("ok")
-	j.WriteBool(s.Ok)
-	if s.Result != nil {
-		more.More()
-		j.WriteObjectField("result")
-		s.Result.WriteJSON(j)
-	}
-	j.WriteObjectEnd()
-}
-
-// ReadJSON reads ID from json stream.
-func (s *ID) ReadJSON(i *json.Iterator) error {
-	var retErr error
-	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
-		switch k {
-		case "ok":
-			if err := func() error {
-				s.Ok = bool(i.ReadBool())
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		case "result":
-			if err := func() error {
-				s.Result = nil
-				var elem IDResult
-				if err := func() error {
-					if err := elem.ReadJSON(i); err != nil {
-						return err
-					}
-					return i.Error
-				}(); err != nil {
-					return err
-				}
-				s.Result = &elem
-				return i.Error
-			}(); err != nil {
-				retErr = err
-				return false
-			}
-			return true
-		default:
-			i.Skip()
-			return true
-		}
-	})
-	if retErr != nil {
-		return retErr
-	}
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s IDResult) WriteJSON(j *json.Stream) {
 	switch s.Type {
-	case IDResultStringType:
+	case IDStringType:
 		j.WriteString(s.String)
-	case IDResultIntType:
+	case IDIntType:
 		j.WriteInt(s.Int)
 	}
 }
 
 // ReadJSON reads value from json stream.
-func (s *IDResult) ReadJSON(i *json.Iterator) error {
+func (s *ID) ReadJSON(i *json.Iterator) error {
 	switch t := i.WhatIsNext(); t {
 	case json.StringValue:
 		if err := func() error {
@@ -4698,7 +4673,7 @@ func (s *IDResult) ReadJSON(i *json.Iterator) error {
 		}(); err != nil {
 			return err
 		}
-		s.Type = IDResultStringType
+		s.Type = IDStringType
 	case json.NumberValue:
 		if err := func() error {
 			s.Int = int(i.ReadInt())
@@ -4706,7 +4681,7 @@ func (s *IDResult) ReadJSON(i *json.Iterator) error {
 		}(); err != nil {
 			return err
 		}
-		s.Type = IDResultIntType
+		s.Type = IDIntType
 	default:
 		return fmt.Errorf("unexpected json type %d", t)
 	}
@@ -6568,25 +6543,6 @@ func (o *OptGame) ReadJSON(i *json.Iterator) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptGame", i.WhatIsNext())
-	}
-}
-
-// WriteJSON writes json value of ID to json stream.
-func (o OptID) WriteJSON(j *json.Stream) {
-	o.Value.WriteJSON(j)
-}
-
-// ReadJSON reads json value of ID from json iterator.
-func (o *OptID) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.ObjectValue:
-		o.Set = true
-		if err := o.Value.ReadJSON(i); err != nil {
-			return err
-		}
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptID", i.WhatIsNext())
 	}
 }
 
@@ -13200,7 +13156,7 @@ func (s StopMessageLiveLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.ChatID.Set {
+	if s.ChatID != nil {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
@@ -13230,11 +13186,18 @@ func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "chat_id":
 			if err := func() error {
-				s.ChatID.Reset()
-				if err := s.ChatID.ReadJSON(i); err != nil {
+				s.ChatID = nil
+				var elem ID
+				if err := func() error {
+					if err := elem.ReadJSON(i); err != nil {
+						return err
+					}
+					return i.Error
+				}(); err != nil {
 					return err
 				}
-				return nil
+				s.ChatID = &elem
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false

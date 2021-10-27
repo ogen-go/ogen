@@ -52,6 +52,75 @@ var (
 
 func (s *Book) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.ID
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "id",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Images
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "images",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.MediaID
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "media_id",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.NumFavorites
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "num_favorites",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.NumPages
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "num_pages",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.Tags {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Tags
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "tags",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -59,6 +128,24 @@ func (s *Book) Validate() error {
 }
 func (s *Image) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.H
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "h",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.W
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "w",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -66,6 +153,48 @@ func (s *Image) Validate() error {
 }
 func (s *Images) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Cover
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "cover",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.Pages {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Pages
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "pages",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Thumbnail
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "thumbnail",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -73,6 +202,30 @@ func (s *Images) Validate() error {
 }
 func (s *SearchResponse) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.Result {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Result
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "result",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -80,6 +233,24 @@ func (s *SearchResponse) Validate() error {
 }
 func (s *Tag) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.ID
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "id",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Type
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}

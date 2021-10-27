@@ -52,6 +52,15 @@ var (
 
 func (s *Drive) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.RateLimiter
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "rate_limiter",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -59,6 +68,81 @@ func (s *Drive) Validate() error {
 }
 func (s *FullVmConfiguration) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.BlockDevices {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.BlockDevices
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "block_devices",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Logger
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "logger",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.MachineConfig
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "machine_config",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.NetDevices {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.NetDevices
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "net_devices",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.VsockDevice
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "vsock_device",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -66,6 +150,15 @@ func (s *FullVmConfiguration) Validate() error {
 }
 func (s *InstanceActionInfo) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.ActionType
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "action_type",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -73,6 +166,15 @@ func (s *InstanceActionInfo) Validate() error {
 }
 func (s *InstanceInfo) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.State
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "state",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -80,6 +182,15 @@ func (s *InstanceInfo) Validate() error {
 }
 func (s *Logger) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Level
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "level",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -87,19 +198,33 @@ func (s *Logger) Validate() error {
 }
 func (s *MachineConfiguration) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "vcpu_count" property.
-		validator := validate.Int{
+	if err := func() error {
+		_ = s.CPUTemplate
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "cpu_template",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          1,
 			MaxSet:       true,
 			Max:          32,
 			MinExclusive: false,
 			MaxExclusive: false,
+		}).Validate(int64(s.VcpuCount)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.VcpuCount)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "vcpu_count", Error: err})
-		}
+		_ = s.VcpuCount
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "vcpu_count",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -108,6 +233,24 @@ func (s *MachineConfiguration) Validate() error {
 }
 func (s *NetworkInterface) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.RxRateLimiter
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "rx_rate_limiter",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.TxRateLimiter
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "tx_rate_limiter",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -115,6 +258,15 @@ func (s *NetworkInterface) Validate() error {
 }
 func (s *PartialDrive) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.RateLimiter
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "rate_limiter",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -122,6 +274,24 @@ func (s *PartialDrive) Validate() error {
 }
 func (s *PartialNetworkInterface) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.RxRateLimiter
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "rx_rate_limiter",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.TxRateLimiter
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "tx_rate_limiter",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -129,6 +299,24 @@ func (s *PartialNetworkInterface) Validate() error {
 }
 func (s *RateLimiter) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.Bandwidth
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "bandwidth",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		_ = s.Ops
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "ops",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -136,6 +324,15 @@ func (s *RateLimiter) Validate() error {
 }
 func (s *SnapshotCreateParams) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.SnapshotType
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "snapshot_type",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -143,33 +340,52 @@ func (s *SnapshotCreateParams) Validate() error {
 }
 func (s *TokenBucket) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "refill_time" property.
-		validator := validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
-		}
-		if err := validator.Validate(int64(s.RefillTime)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "refill_time", Error: err})
-		}
+	if err := func() error {
+		_ = s.OneTimeBurst
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "one_time_burst",
+			Error: err,
+		})
 	}
-	{
-		// Validate "size" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          0,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: false,
 			MaxExclusive: false,
+		}).Validate(int64(s.RefillTime)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.Size)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "size", Error: err})
+		_ = s.RefillTime
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "refill_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Int{
+			MinSet:       true,
+			Min:          0,
+			MaxSet:       false,
+			Max:          0,
+			MinExclusive: false,
+			MaxExclusive: false,
+		}).Validate(int64(s.Size)); err != nil {
+			return err
 		}
+		_ = s.Size
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "size",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -178,6 +394,15 @@ func (s *TokenBucket) Validate() error {
 }
 func (s *VM) Validate() error {
 	var failures []validate.FieldError
+	if err := func() error {
+		_ = s.State
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "state",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -185,19 +410,24 @@ func (s *VM) Validate() error {
 }
 func (s *Vsock) Validate() error {
 	var failures []validate.FieldError
-	{
-		// Validate "guest_cid" property.
-		validator := validate.Int{
+	if err := func() error {
+		if err := (validate.Int{
 			MinSet:       true,
 			Min:          3,
 			MaxSet:       false,
 			Max:          0,
 			MinExclusive: false,
 			MaxExclusive: false,
+		}).Validate(int64(s.GuestCid)); err != nil {
+			return err
 		}
-		if err := validator.Validate(int64(s.GuestCid)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "guest_cid", Error: err})
-		}
+		_ = s.GuestCid
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "guest_cid",
+			Error: err,
+		})
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
