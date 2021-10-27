@@ -209,7 +209,6 @@ func (s Game) Validate() error {
 		if s.Photo == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Photo // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -254,7 +253,6 @@ func (s GetGameHighScoresPostResOK) Validate() error {
 		if s.Result == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Result // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -274,7 +272,6 @@ func (s GetMyCommandsPostResOK) Validate() error {
 		if s.Result == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Result // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -467,7 +464,6 @@ func (s InlineKeyboardMarkup) Validate() error {
 				if elem == nil {
 					return fmt.Errorf("required, can't be nil")
 				}
-				var failures []validate.FieldError
 				_ = elem // validation expected, but not supported
 				return nil
 			}(); err != nil {
@@ -740,7 +736,6 @@ func (s Poll) Validate() error {
 		if s.Options == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Options // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -760,7 +755,6 @@ func (s PollAnswer) Validate() error {
 		if s.OptionIds == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.OptionIds // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -846,7 +840,6 @@ func (s SendInvoicePostReqApplicationJSON) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -875,7 +868,6 @@ func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -904,7 +896,6 @@ func (s SendInvoicePostReqMultipartFormData) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -951,7 +942,6 @@ func (s SetMyCommandsPostReqApplicationJSON) Validate() error {
 		if s.Commands == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Commands // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -971,7 +961,6 @@ func (s SetMyCommandsPostReqApplicationXWwwFormUrlencoded) Validate() error {
 		if s.Commands == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Commands // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -991,7 +980,6 @@ func (s SetMyCommandsPostReqMultipartFormData) Validate() error {
 		if s.Commands == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Commands // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1011,7 +999,6 @@ func (s ShippingOption) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1158,7 +1145,6 @@ func (s UserProfilePhotos) Validate() error {
 				if elem == nil {
 					return fmt.Errorf("required, can't be nil")
 				}
-				var failures []validate.FieldError
 				_ = elem // validation expected, but not supported
 				return nil
 			}(); err != nil {

@@ -142,7 +142,6 @@ func (s AnswerInlineQuery) Validate() error {
 		if s.Results == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Results // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -741,7 +740,6 @@ func (s PassportData) Validate() error {
 		if s.Data == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Data // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1021,7 +1019,6 @@ func (s SendInvoice) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1057,7 +1054,6 @@ func (s SendMediaGroup) Validate() error {
 		if s.Media == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Media // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1125,7 +1121,6 @@ func (s SendPoll) Validate() error {
 		if s.Options == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Options // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1342,7 +1337,6 @@ func (s SetPassportDataErrors) Validate() error {
 		if s.Errors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Errors // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1362,7 +1356,6 @@ func (s ShippingOption) Validate() error {
 		if s.Prices == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
-		var failures []validate.FieldError
 		_ = s.Prices // validation expected, but not supported
 		return nil
 	}(); err != nil {

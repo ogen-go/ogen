@@ -27,8 +27,8 @@
             return err
         }
     {{- end }}
-    var failures []validate.FieldError
     {{- if $t.Item.NeedValidation }}
+    var failures []validate.FieldError
     {{- $validated = true }}
     for i, elem := range {{ $.Var }} {
         if err := func() error {
