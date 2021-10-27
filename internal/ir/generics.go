@@ -54,6 +54,8 @@ func (t Type) CanGeneric() bool {
 		if t.Item.Primitive == Byte {
 			return false
 		}
+	case KindAlias:
+		return t.AliasTo.CanGeneric()
 	}
 	return t.Is(KindPrimitive, KindEnum, KindStruct)
 }
