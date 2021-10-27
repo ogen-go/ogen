@@ -46,7 +46,12 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		return s, nil
 	}
 
-	ret := func(s *oas.Schema) *oas.Schema {
+	// extendInfo extends provided schema with common OpenAPI fields.
+	// Must be called on each success return.
+	extendInfo := func(s *oas.Schema) *oas.Schema {
+		s.Ref = ref
+		s.Description = schema.Description
+		s.Nullable = schema.Nullable
 		if ref != "" {
 			g.localRefs[ref] = s
 		}
@@ -64,12 +69,10 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("parse enum: %w", err)
 		}
 
-		return ret(&oas.Schema{
-			Type:        oas.SchemaType(schema.Type),
-			Format:      oas.Format(schema.Format),
-			Description: schema.Description,
-			Nullable:    schema.Nullable,
-			Enum:        values,
+		return extendInfo(&oas.Schema{
+			Type:   oas.SchemaType(schema.Type),
+			Format: oas.Format(schema.Format),
+			Enum:   values,
 		}), nil
 	case len(schema.OneOf) > 0:
 		var schemas []*oas.Schema
@@ -82,12 +85,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return ret(&oas.Schema{
-			OneOf:       schemas,
-			Nullable:    schema.Nullable,
-			Ref:         ref,
-			Description: schema.Description,
-		}), nil
+		return extendInfo(&oas.Schema{OneOf: schemas}), nil
 	case len(schema.AnyOf) > 0:
 		var schemas []*oas.Schema
 		for i, s := range schema.AnyOf {
@@ -99,12 +97,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return ret(&oas.Schema{
-			AnyOf:       schemas,
-			Nullable:    schema.Nullable,
-			Ref:         ref,
-			Description: schema.Description,
-		}), nil
+		return extendInfo(&oas.Schema{AnyOf: schemas}), nil
 	case len(schema.AllOf) > 0:
 		var schemas []*oas.Schema
 		for i, s := range schema.AllOf {
@@ -116,12 +109,7 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			schemas = append(schemas, schema)
 		}
 
-		return ret(&oas.Schema{
-			AllOf:       schemas,
-			Nullable:    schema.Nullable,
-			Ref:         ref,
-			Description: schema.Description,
-		}), nil
+		return extendInfo(&oas.Schema{AllOf: schemas}), nil
 	}
 
 	switch schema.Type {
@@ -137,17 +125,11 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			}
 			return false
 		}
-		s := &oas.Schema{
+		s := extendInfo(&oas.Schema{
 			Type:          oas.Object,
-			Nullable:      schema.Nullable,
-			Description:   schema.Description,
-			Ref:           ref,
 			MinProperties: schema.MinProperties,
 			MaxProperties: schema.MaxProperties,
-		}
-		if ref != "" {
-			g.localRefs[ref] = s
-		}
+		})
 
 		for propName, propSchema := range schema.Properties {
 			prop, err := g.generate(propSchema, "")
@@ -167,15 +149,12 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		return s, nil
 
 	case "array":
-		array := &oas.Schema{
+		array := extendInfo(&oas.Schema{
 			Type:        oas.Array,
-			Nullable:    schema.Nullable,
-			Description: schema.Description,
-			Ref:         ref,
 			MinItems:    schema.MinItems,
 			MaxItems:    schema.MaxItems,
 			UniqueItems: schema.UniqueItems,
-		}
+		})
 		if schema.Items == nil {
 			// Fallback to string.
 			array.Item = &oas.Schema{Type: oas.String}
@@ -183,10 +162,6 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 		}
 		if len(schema.Properties) > 0 {
 			return nil, xerrors.New("array cannot contain properties")
-		}
-
-		if ref != "" {
-			g.localRefs[ref] = array
 		}
 
 		item, err := g.generate(*schema.Items, "")
@@ -202,12 +177,9 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("validate format: %w", err)
 		}
 
-		return ret(&oas.Schema{
+		return extendInfo(&oas.Schema{
 			Type:             oas.SchemaType(schema.Type),
 			Format:           oas.Format(schema.Format),
-			Description:      schema.Description,
-			Ref:              ref,
-			Nullable:         schema.Nullable,
 			Minimum:          schema.Minimum,
 			Maximum:          schema.Maximum,
 			ExclusiveMinimum: schema.ExclusiveMinimum,
@@ -220,12 +192,9 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("validate format: %w", err)
 		}
 
-		return ret(&oas.Schema{
-			Type:        oas.Boolean,
-			Format:      oas.Format(schema.Format),
-			Description: schema.Description,
-			Ref:         ref,
-			Nullable:    schema.Nullable,
+		return extendInfo(&oas.Schema{
+			Type:   oas.Boolean,
+			Format: oas.Format(schema.Format),
 		}), nil
 
 	case "string":
@@ -233,19 +202,16 @@ func (g *schemaGen) generate(schema ogen.Schema, ref string) (*oas.Schema, error
 			return nil, xerrors.Errorf("validate format: %w", err)
 		}
 
-		return ret(&oas.Schema{
-			Type:        oas.String,
-			Format:      oas.Format(schema.Format),
-			Description: schema.Description,
-			Ref:         ref,
-			MaxLength:   schema.MaxLength,
-			MinLength:   schema.MinLength,
-			Pattern:     schema.Pattern,
-			Nullable:    schema.Nullable,
+		return extendInfo(&oas.Schema{
+			Type:      oas.String,
+			Format:    oas.Format(schema.Format),
+			MaxLength: schema.MaxLength,
+			MinLength: schema.MinLength,
+			Pattern:   schema.Pattern,
 		}), nil
 
 	case "":
-		return ret(&oas.Schema{Type: oas.String}), nil
+		return extendInfo(&oas.Schema{Type: oas.String}), nil
 
 	default:
 		return nil, xerrors.Errorf("unexpected schema type: '%s'", schema.Type)
