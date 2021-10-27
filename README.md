@@ -37,6 +37,7 @@ go get github.com/ogen-go/ogen
     * When nullable, `nil` denotes that value is `nil`
     * When required, `nil` currently the same as `[]`, but is actually invalid
     * If both nullable and required, wrapper will be generated (TODO)
+* Generated sum types for oneOf
 * Validators for values generated according to specification
 
 Example generated structure from schema:
@@ -90,7 +91,6 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 
 # Draft Roadmap
 
-* Primitive requests/responses (string, int, enum, bool, etc)
 * Handle unexpected json keys
 * Convenient global errors schema (e.g. 500, 404)
 * Security (e.g. Bearer token)
