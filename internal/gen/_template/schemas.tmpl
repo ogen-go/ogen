@@ -45,7 +45,7 @@ type {{ $.Name }} {{ $.Primitive }}
 
 const (
 {{- range $variant := $.EnumVariants }}
-{{ $variant.Name }} = {{ $variant.ValueGo }}
+{{ $variant.Name }} {{ $.Name }} = {{ $variant.ValueGo }}
 {{- end }}
 )
 {{/* Define enum */}}
