@@ -90,14 +90,14 @@ Unexpected nil semantic
         {{- template "enc_json_value" $ }}
     {{- else if $t.IsGeneric -}}
         {{- template "enc_json_generic" $ }}
+    {{- else if $t.IsArray -}}
+        {{- template "enc_json_array" $ }}
     {{- else if $j.Format -}}
         {{- template "enc_json_start" $ }}
         json.Write{{ $j.Format }}(j, {{ $.Var }})
     {{- else if $j.Write -}}
         {{- template "enc_json_start" $ }}
         j.{{ $j.Write }}({{ $.Var }})
-    {{- else if $t.IsArray -}}
-        {{- template "enc_json_array" $ }}
     {{- else -}}
         {{- if $.Sub -}}_ = {{ $.Var }}{{- end -}}
         // Unsupported kind "{{ $t.Kind  }}".
