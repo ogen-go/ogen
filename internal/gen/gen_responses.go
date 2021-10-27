@@ -101,7 +101,12 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (*ir.Stat
 
 	types := make(map[ir.ContentType]*ir.Type)
 	for contentType, schema := range resp.Contents {
-		typ, err := g.generateSchema(pascal(name, contentType), schema)
+		typeName := name
+		if len(resp.Contents) > 1 {
+			typeName = pascal(name, contentType)
+		}
+
+		typ, err := g.generateSchema(typeName, schema)
 		if err != nil {
 			return nil, xerrors.Errorf("contents: %s: %w", contentType, err)
 		}
