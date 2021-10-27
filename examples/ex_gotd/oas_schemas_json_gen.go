@@ -6834,7 +6834,6 @@ func (o *OptAnimation) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptAnimation", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Audio to json stream.
@@ -6854,7 +6853,6 @@ func (o *OptAudio) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptAudio", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of bool to json stream.
@@ -6872,7 +6870,6 @@ func (o *OptBool) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptBool", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of ChatLocation to json stream.
@@ -6892,7 +6889,6 @@ func (o *OptChatLocation) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptChatLocation", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of ChatPermissions to json stream.
@@ -6912,7 +6908,6 @@ func (o *OptChatPermissions) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptChatPermissions", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of ChatPhoto to json stream.
@@ -6932,7 +6927,6 @@ func (o *OptChatPhoto) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptChatPhoto", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Contact to json stream.
@@ -6952,7 +6946,6 @@ func (o *OptContact) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptContact", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Dice to json stream.
@@ -6972,7 +6965,6 @@ func (o *OptDice) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptDice", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Document to json stream.
@@ -6992,7 +6984,6 @@ func (o *OptDocument) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptDocument", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of float64 to json stream.
@@ -7010,7 +7001,6 @@ func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Game to json stream.
@@ -7030,7 +7020,6 @@ func (o *OptGame) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptGame", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of int to json stream.
@@ -7048,7 +7037,6 @@ func (o *OptInt) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Invoice to json stream.
@@ -7068,7 +7056,6 @@ func (o *OptInvoice) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptInvoice", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Location to json stream.
@@ -7088,7 +7075,6 @@ func (o *OptLocation) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptLocation", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of MaskPosition to json stream.
@@ -7108,7 +7094,6 @@ func (o *OptMaskPosition) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMaskPosition", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Message to json stream.
@@ -7128,7 +7113,6 @@ func (o *OptMessage) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMessage", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of MessageAutoDeleteTimerChanged to json stream.
@@ -7148,7 +7132,6 @@ func (o *OptMessageAutoDeleteTimerChanged) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMessageAutoDeleteTimerChanged", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of OrderInfo to json stream.
@@ -7168,7 +7151,6 @@ func (o *OptOrderInfo) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptOrderInfo", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of PassportData to json stream.
@@ -7188,7 +7170,6 @@ func (o *OptPassportData) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptPassportData", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of PhotoSize to json stream.
@@ -7208,7 +7189,6 @@ func (o *OptPhotoSize) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptPhotoSize", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Poll to json stream.
@@ -7228,7 +7208,6 @@ func (o *OptPoll) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptPoll", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of ProximityAlertTriggered to json stream.
@@ -7248,7 +7227,6 @@ func (o *OptProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptProximityAlertTriggered", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of ShippingAddress to json stream.
@@ -7268,7 +7246,6 @@ func (o *OptShippingAddress) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptShippingAddress", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Sticker to json stream.
@@ -7288,7 +7265,6 @@ func (o *OptSticker) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptSticker", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
@@ -7306,7 +7282,6 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of SuccessfulPayment to json stream.
@@ -7326,7 +7301,6 @@ func (o *OptSuccessfulPayment) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptSuccessfulPayment", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of User to json stream.
@@ -7346,7 +7320,6 @@ func (o *OptUser) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptUser", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Venue to json stream.
@@ -7366,7 +7339,6 @@ func (o *OptVenue) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptVenue", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Video to json stream.
@@ -7386,7 +7358,6 @@ func (o *OptVideo) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptVideo", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of VideoNote to json stream.
@@ -7406,7 +7377,6 @@ func (o *OptVideoNote) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptVideoNote", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Voice to json stream.
@@ -7426,7 +7396,6 @@ func (o *OptVoice) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptVoice", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of VoiceChatEnded to json stream.
@@ -7446,7 +7415,6 @@ func (o *OptVoiceChatEnded) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptVoiceChatEnded", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of VoiceChatScheduled to json stream.
@@ -7466,7 +7434,6 @@ func (o *OptVoiceChatScheduled) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptVoiceChatScheduled", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.

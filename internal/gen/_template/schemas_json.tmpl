@@ -108,7 +108,6 @@ func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func
     default:
         return fmt.Errorf("unexpected type %d while reading {{ $t.Name }}", i.WhatIsNext())
     }
-    return nil
 }
 {{- else if $t.IsEnum }}
 // WriteJSON implements json.Marshaler.

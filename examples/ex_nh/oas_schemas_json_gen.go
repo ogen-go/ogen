@@ -543,7 +543,6 @@ func (o *OptImage) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptImage", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Images to json stream.
@@ -563,7 +562,6 @@ func (o *OptImages) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptImages", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of int to json stream.
@@ -581,7 +579,6 @@ func (o *OptInt) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
@@ -599,7 +596,6 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of TagType to json stream.
@@ -617,7 +613,6 @@ func (o *OptTagType) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptTagType", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Title to json stream.
@@ -637,7 +632,6 @@ func (o *OptTitle) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptTitle", i.WhatIsNext())
 	}
-	return nil
 }
 
 func (SearchByTagIDOKApplicationJSON) WriteJSON(j *json.Stream)        {}

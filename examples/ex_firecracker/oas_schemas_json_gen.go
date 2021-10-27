@@ -1667,7 +1667,6 @@ func (o *OptBalloon) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptBalloon", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of bool to json stream.
@@ -1685,7 +1684,6 @@ func (o *OptBool) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptBool", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of BootSource to json stream.
@@ -1705,7 +1703,6 @@ func (o *OptBootSource) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptBootSource", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of int to json stream.
@@ -1723,7 +1720,6 @@ func (o *OptInt) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of int64 to json stream.
@@ -1741,7 +1737,6 @@ func (o *OptInt64) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptInt64", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Logger to json stream.
@@ -1761,7 +1756,6 @@ func (o *OptLogger) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptLogger", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of LoggerLevel to json stream.
@@ -1779,7 +1773,6 @@ func (o *OptLoggerLevel) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptLoggerLevel", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of MachineConfiguration to json stream.
@@ -1799,7 +1792,6 @@ func (o *OptMachineConfiguration) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMachineConfiguration", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of MachineConfigurationCPUTemplate to json stream.
@@ -1817,7 +1809,6 @@ func (o *OptMachineConfigurationCPUTemplate) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMachineConfigurationCPUTemplate", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Metrics to json stream.
@@ -1837,7 +1828,6 @@ func (o *OptMetrics) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMetrics", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of MmdsConfig to json stream.
@@ -1857,7 +1847,6 @@ func (o *OptMmdsConfig) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptMmdsConfig", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of RateLimiter to json stream.
@@ -1877,7 +1866,6 @@ func (o *OptRateLimiter) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptRateLimiter", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of SnapshotCreateParamsSnapshotType to json stream.
@@ -1895,7 +1883,6 @@ func (o *OptSnapshotCreateParamsSnapshotType) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptSnapshotCreateParamsSnapshotType", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
@@ -1913,7 +1900,6 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of TokenBucket to json stream.
@@ -1933,7 +1919,6 @@ func (o *OptTokenBucket) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptTokenBucket", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Vsock to json stream.
@@ -1953,7 +1938,6 @@ func (o *OptVsock) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptVsock", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
