@@ -44,9 +44,8 @@ type {{ $.Name }} {{ $.AliasTo.Go }}
 type {{ $.Name }} {{ $.Primitive }}
 
 const (
-{{- range $value := $.EnumValues }}
-{{- $valueStr := toString $value }}
-{{ $.Name }}{{ pascalMP $valueStr }} {{ $.Name }} = {{ enumString $value }}
+{{- range $variant := $.EnumVariants }}
+{{ $variant.Name }} = {{ $variant.ValueGo }}
 {{- end }}
 )
 {{/* Define enum */}}

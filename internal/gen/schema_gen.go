@@ -214,12 +214,25 @@ func (g *schemaGen) primitive(name string, schema *oas.Schema) (*ir.Type, error)
 			return nil, xerrors.Errorf("unsupported enum type: '%s'", schema.Type)
 		}
 
+		var variants []*ir.EnumVariant
+		for _, v := range schema.Enum {
+			vstr := fmt.Sprintf("%v", v)
+			if vstr == "" {
+				vstr = "Empty"
+			}
+
+			variants = append(variants, &ir.EnumVariant{
+				Name:  pascalMP(name, vstr),
+				Value: v,
+			})
+		}
+
 		return &ir.Type{
-			Kind:       ir.KindEnum,
-			Name:       name,
-			Primitive:  typ.Primitive,
-			EnumValues: schema.Enum,
-			Schema:     schema,
+			Kind:         ir.KindEnum,
+			Name:         name,
+			Primitive:    typ.Primitive,
+			EnumVariants: variants,
+			Schema:       schema,
 		}, nil
 	}
 

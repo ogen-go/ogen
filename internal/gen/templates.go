@@ -51,19 +51,6 @@ func templateFunctions() template.FuncMap {
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
-		"toString":   func(v interface{}) string { return fmt.Sprintf("%v", v) },
-		"enumString": func(v interface{}) string {
-			switch v := v.(type) {
-			case string:
-				return `"` + v + `"`
-			case int, int8, int16, int32, int64, float32, float64, bool:
-				return fmt.Sprintf("%v", v)
-			case nil:
-				return "nil"
-			default:
-				panic(fmt.Sprintf("unexpected type: %T", v))
-			}
-		},
 		"dict": func(values ...interface{}) (map[string]interface{}, error) {
 			if len(values)%2 != 0 {
 				return nil, xerrors.New("invalid dict call")

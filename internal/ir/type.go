@@ -30,7 +30,7 @@ type Type struct {
 	PointerTo        *Type               // only for pointer
 	SumOf            []*Type             // only for sum
 	Item             *Type               // only for array
-	EnumValues       []interface{}       // only for enum
+	EnumVariants     []*EnumVariant      // only for enum
 	Fields           []*Field            // only for struct
 	Implements       map[*Type]struct{}  // only for struct, alias, enum
 	Implementations  map[*Type]struct{}  // only for interface
@@ -40,6 +40,20 @@ type Type struct {
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic
 	Validators       Validators
+}
+
+type EnumVariant struct {
+	Name  string
+	Value interface{}
+}
+
+func (v *EnumVariant) ValueGo() string {
+	switch v := v.Value.(type) {
+	case string:
+		return `"` + v + `"`
+	default:
+		return fmt.Sprintf("%v", v)
+	}
 }
 
 func (t *Type) Pointer(sem NilSemantic) *Type {
