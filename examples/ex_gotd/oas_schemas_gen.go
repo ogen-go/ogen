@@ -59,11 +59,6 @@ type AddStickerToSet struct {
 	UserID       int             `json:"user_id"`
 }
 
-type AddStickerToSetResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/Animation
 type Animation struct {
 	Duration     int          `json:"duration"`
@@ -83,12 +78,7 @@ type AnswerCallbackQuery struct {
 	CallbackQueryID string    `json:"callback_query_id"`
 	ShowAlert       OptBool   `json:"show_alert"`
 	Text            OptString `json:"text"`
-	URL             OptString `json:"url"`
-}
-
-type AnswerCallbackQueryResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
+	URL             OptURL    `json:"url"`
 }
 
 // Ref: #/components/schemas/answerInlineQuery
@@ -101,11 +91,6 @@ type AnswerInlineQuery struct {
 	SwitchPmText      OptString `json:"switch_pm_text"`
 }
 
-type AnswerInlineQueryResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/answerPreCheckoutQuery
 type AnswerPreCheckoutQuery struct {
 	ErrorMessage       OptString `json:"error_message"`
@@ -113,21 +98,11 @@ type AnswerPreCheckoutQuery struct {
 	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
 }
 
-type AnswerPreCheckoutQueryResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/answerShippingQuery
 type AnswerShippingQuery struct {
 	ErrorMessage    OptString `json:"error_message"`
 	Ok              bool      `json:"ok"`
 	ShippingQueryID string    `json:"shipping_query_id"`
-}
-
-type AnswerShippingQueryResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/Audio
@@ -148,11 +123,6 @@ type BanChatMember struct {
 	RevokeMessages OptBool `json:"revoke_messages"`
 	UntilDate      OptInt  `json:"until_date"`
 	UserID         int     `json:"user_id"`
-}
-
-type BanChatMemberResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/BotCommandScope
@@ -225,20 +195,10 @@ type CopyMessage struct {
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 }
 
-type CopyMessageResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/createChatInviteLink
 type CreateChatInviteLink struct {
 	ExpireDate  OptInt `json:"expire_date"`
 	MemberLimit OptInt `json:"member_limit"`
-}
-
-type CreateChatInviteLinkResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/createNewStickerSet
@@ -252,35 +212,15 @@ type CreateNewStickerSet struct {
 	UserID        int             `json:"user_id"`
 }
 
-type CreateNewStickerSetResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/deleteChatPhoto
 type DeleteChatPhoto struct{}
-
-type DeleteChatPhotoResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
 
 // Ref: #/components/schemas/deleteChatStickerSet
 type DeleteChatStickerSet struct{}
 
-type DeleteChatStickerSetResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/deleteMessage
 type DeleteMessage struct {
 	MessageID int `json:"message_id"`
-}
-
-type DeleteMessageResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/deleteMyCommands
@@ -289,29 +229,14 @@ type DeleteMyCommands struct {
 	Scope        *BotCommandScope `json:"scope"`
 }
 
-type DeleteMyCommandsResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/deleteStickerFromSet
 type DeleteStickerFromSet struct {
 	Sticker string `json:"sticker"`
 }
 
-type DeleteStickerFromSetResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/deleteWebhook
 type DeleteWebhook struct {
 	DropPendingUpdates OptBool `json:"drop_pending_updates"`
-}
-
-type DeleteWebhookResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/Dice
@@ -337,11 +262,6 @@ type EditChatInviteLink struct {
 	MemberLimit OptInt `json:"member_limit"`
 }
 
-type EditChatInviteLinkResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/editMessageCaption
 type EditMessageCaption struct {
 	Caption         OptString             `json:"caption"`
@@ -349,11 +269,6 @@ type EditMessageCaption struct {
 	MessageID       OptInt                `json:"message_id"`
 	ParseMode       OptString             `json:"parse_mode"`
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-type EditMessageCaptionResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/editMessageLiveLocation
@@ -368,11 +283,6 @@ type EditMessageLiveLocation struct {
 	ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type EditMessageLiveLocationResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/editMessageMedia
 type EditMessageMedia struct {
 	InlineMessageID OptString             `json:"inline_message_id"`
@@ -381,21 +291,11 @@ type EditMessageMedia struct {
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type EditMessageMediaResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/editMessageReplyMarkup
 type EditMessageReplyMarkup struct {
 	InlineMessageID OptString             `json:"inline_message_id"`
 	MessageID       OptInt                `json:"message_id"`
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-type EditMessageReplyMarkupResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/editMessageText
@@ -408,11 +308,6 @@ type EditMessageText struct {
 	Text                  string                `json:"text"`
 }
 
-type EditMessageTextResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/EncryptedCredentials
 type EncryptedCredentials struct {
 	Data   string `json:"data"`
@@ -420,23 +315,103 @@ type EncryptedCredentials struct {
 	Secret string `json:"secret"`
 }
 
+// Ref: #/components/schemas/Error
+type Error struct {
+	Description string      `json:"description"`
+	ErrorCode   int         `json:"error_code"`
+	Ok          bool        `json:"ok"`
+	Parameters  OptResponse `json:"parameters"`
+}
+
+// ErrorStatusCode wraps Error with StatusCode.
+type ErrorStatusCode struct {
+	StatusCode int
+	Response   Error
+}
+
+func (*ErrorStatusCode) addStickerToSetRes()                 {}
+func (*ErrorStatusCode) answerCallbackQueryRes()             {}
+func (*ErrorStatusCode) answerInlineQueryRes()               {}
+func (*ErrorStatusCode) answerPreCheckoutQueryRes()          {}
+func (*ErrorStatusCode) answerShippingQueryRes()             {}
+func (*ErrorStatusCode) banChatMemberRes()                   {}
+func (*ErrorStatusCode) copyMessageRes()                     {}
+func (*ErrorStatusCode) createChatInviteLinkRes()            {}
+func (*ErrorStatusCode) createNewStickerSetRes()             {}
+func (*ErrorStatusCode) deleteChatPhotoRes()                 {}
+func (*ErrorStatusCode) deleteChatStickerSetRes()            {}
+func (*ErrorStatusCode) deleteMessageRes()                   {}
+func (*ErrorStatusCode) deleteMyCommandsRes()                {}
+func (*ErrorStatusCode) deleteStickerFromSetRes()            {}
+func (*ErrorStatusCode) deleteWebhookRes()                   {}
+func (*ErrorStatusCode) editChatInviteLinkRes()              {}
+func (*ErrorStatusCode) editMessageCaptionRes()              {}
+func (*ErrorStatusCode) editMessageLiveLocationRes()         {}
+func (*ErrorStatusCode) editMessageMediaRes()                {}
+func (*ErrorStatusCode) editMessageReplyMarkupRes()          {}
+func (*ErrorStatusCode) editMessageTextRes()                 {}
+func (*ErrorStatusCode) exportChatInviteLinkRes()            {}
+func (*ErrorStatusCode) forwardMessageRes()                  {}
+func (*ErrorStatusCode) getChatAdministratorsRes()           {}
+func (*ErrorStatusCode) getChatMemberCountRes()              {}
+func (*ErrorStatusCode) getChatMemberRes()                   {}
+func (*ErrorStatusCode) getChatRes()                         {}
+func (*ErrorStatusCode) getFileRes()                         {}
+func (*ErrorStatusCode) getGameHighScoresRes()               {}
+func (*ErrorStatusCode) getMeRes()                           {}
+func (*ErrorStatusCode) getMyCommandsRes()                   {}
+func (*ErrorStatusCode) getStickerSetRes()                   {}
+func (*ErrorStatusCode) getUpdatesRes()                      {}
+func (*ErrorStatusCode) getUserProfilePhotosRes()            {}
+func (*ErrorStatusCode) leaveChatRes()                       {}
+func (*ErrorStatusCode) pinChatMessageRes()                  {}
+func (*ErrorStatusCode) promoteChatMemberRes()               {}
+func (*ErrorStatusCode) restrictChatMemberRes()              {}
+func (*ErrorStatusCode) revokeChatInviteLinkRes()            {}
+func (*ErrorStatusCode) sendAnimationRes()                   {}
+func (*ErrorStatusCode) sendAudioRes()                       {}
+func (*ErrorStatusCode) sendChatActionRes()                  {}
+func (*ErrorStatusCode) sendContactRes()                     {}
+func (*ErrorStatusCode) sendDiceRes()                        {}
+func (*ErrorStatusCode) sendDocumentRes()                    {}
+func (*ErrorStatusCode) sendGameRes()                        {}
+func (*ErrorStatusCode) sendInvoiceRes()                     {}
+func (*ErrorStatusCode) sendLocationRes()                    {}
+func (*ErrorStatusCode) sendMediaGroupRes()                  {}
+func (*ErrorStatusCode) sendMessageRes()                     {}
+func (*ErrorStatusCode) sendPhotoRes()                       {}
+func (*ErrorStatusCode) sendPollRes()                        {}
+func (*ErrorStatusCode) sendStickerRes()                     {}
+func (*ErrorStatusCode) sendVenueRes()                       {}
+func (*ErrorStatusCode) sendVideoNoteRes()                   {}
+func (*ErrorStatusCode) sendVideoRes()                       {}
+func (*ErrorStatusCode) sendVoiceRes()                       {}
+func (*ErrorStatusCode) setChatAdministratorCustomTitleRes() {}
+func (*ErrorStatusCode) setChatDescriptionRes()              {}
+func (*ErrorStatusCode) setChatPermissionsRes()              {}
+func (*ErrorStatusCode) setChatPhotoRes()                    {}
+func (*ErrorStatusCode) setChatStickerSetRes()               {}
+func (*ErrorStatusCode) setChatTitleRes()                    {}
+func (*ErrorStatusCode) setGameScoreRes()                    {}
+func (*ErrorStatusCode) setMyCommandsRes()                   {}
+func (*ErrorStatusCode) setPassportDataErrorsRes()           {}
+func (*ErrorStatusCode) setStickerPositionInSetRes()         {}
+func (*ErrorStatusCode) setStickerSetThumbRes()              {}
+func (*ErrorStatusCode) setWebhookRes()                      {}
+func (*ErrorStatusCode) stopMessageLiveLocationRes()         {}
+func (*ErrorStatusCode) stopPollRes()                        {}
+func (*ErrorStatusCode) unbanChatMemberRes()                 {}
+func (*ErrorStatusCode) unpinAllChatMessagesRes()            {}
+func (*ErrorStatusCode) unpinChatMessageRes()                {}
+func (*ErrorStatusCode) uploadStickerFileRes()               {}
+
 // Ref: #/components/schemas/exportChatInviteLink
 type ExportChatInviteLink struct{}
-
-type ExportChatInviteLinkResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
 
 // Ref: #/components/schemas/forwardMessage
 type ForwardMessage struct {
 	DisableNotification OptBool `json:"disable_notification"`
 	MessageID           int     `json:"message_id"`
-}
-
-type ForwardMessageResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
 }
 
 // Ref: #/components/schemas/Game
@@ -453,11 +428,6 @@ type GetChat struct{}
 // Ref: #/components/schemas/getChatAdministrators
 type GetChatAdministrators struct{}
 
-type GetChatAdministratorsResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/getChatMember
 type GetChatMember struct {
 	UserID int `json:"user_id"`
@@ -466,29 +436,9 @@ type GetChatMember struct {
 // Ref: #/components/schemas/getChatMemberCount
 type GetChatMemberCount struct{}
 
-type GetChatMemberCountResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
-type GetChatMemberResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
-type GetChatResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/getFile
 type GetFile struct {
 	FileID string `json:"file_id"`
-}
-
-type GetFileResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/getGameHighScores
@@ -499,35 +449,15 @@ type GetGameHighScores struct {
 	UserID          int       `json:"user_id"`
 }
 
-type GetGameHighScoresResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
-type GetMeResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptUser `json:"result"`
-}
-
 // Ref: #/components/schemas/getMyCommands
 type GetMyCommands struct {
 	LanguageCode OptString        `json:"language_code"`
 	Scope        *BotCommandScope `json:"scope"`
 }
 
-type GetMyCommandsResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/getStickerSet
 type GetStickerSet struct {
 	Name string `json:"name"`
-}
-
-type GetStickerSetResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/getUpdates
@@ -537,21 +467,11 @@ type GetUpdates struct {
 	Timeout OptInt `json:"timeout"`
 }
 
-type GetUpdatesResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/getUserProfilePhotos
 type GetUserProfilePhotos struct {
 	Limit  OptInt `json:"limit"`
 	Offset OptInt `json:"offset"`
 	UserID int    `json:"user_id"`
-}
-
-type GetUserProfilePhotosResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/InlineKeyboardMarkup
@@ -571,11 +491,6 @@ type Invoice struct {
 
 // Ref: #/components/schemas/leaveChat
 type LeaveChat struct{}
-
-type LeaveChatResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
 
 // Ref: #/components/schemas/Location
 type Location struct {
@@ -1111,6 +1026,44 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
+// NewOptInt64 returns new OptInt64 with value set to v.
+func NewOptInt64(v int64) OptInt64 {
+	return OptInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt64 is optional int64.
+type OptInt64 struct {
+	Value int64
+	Set   bool
+}
+
+// IsSet returns true if OptInt64 was set.
+func (o OptInt64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt64) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt64) SetTo(v int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt64) Get() (v int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptInvoice returns new OptInvoice with value set to v.
 func NewOptInvoice(v Invoice) OptInvoice {
 	return OptInvoice{
@@ -1491,6 +1444,44 @@ func (o OptProximityAlertTriggered) Get() (v ProximityAlertTriggered, ok bool) {
 	return o.Value, true
 }
 
+// NewOptResponse returns new OptResponse with value set to v.
+func NewOptResponse(v Response) OptResponse {
+	return OptResponse{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptResponse is optional Response.
+type OptResponse struct {
+	Value Response
+	Set   bool
+}
+
+// IsSet returns true if OptResponse was set.
+func (o OptResponse) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptResponse) Reset() {
+	var v Response
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptResponse) SetTo(v Response) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptResponse) Get() (v Response, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptShippingAddress returns new OptShippingAddress with value set to v.
 func NewOptShippingAddress(v ShippingAddress) OptShippingAddress {
 	return OptShippingAddress{
@@ -1637,6 +1628,44 @@ func (o *OptSuccessfulPayment) SetTo(v SuccessfulPayment) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptSuccessfulPayment) Get() (v SuccessfulPayment, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptURL returns new OptURL with value set to v.
+func NewOptURL(v url.URL) OptURL {
+	return OptURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptURL is optional url.URL.
+type OptURL struct {
+	Value url.URL
+	Set   bool
+}
+
+// IsSet returns true if OptURL was set.
+func (o OptURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptURL) Get() (v url.URL, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1937,11 +1966,6 @@ type PinChatMessage struct {
 	MessageID           int     `json:"message_id"`
 }
 
-type PinChatMessageResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/Poll
 type Poll struct {
 	AllowsMultipleAnswers bool      `json:"allows_multiple_answers"`
@@ -1973,16 +1997,17 @@ type PromoteChatMember struct {
 	UserID              int     `json:"user_id"`
 }
 
-type PromoteChatMemberResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/ProximityAlertTriggered
 type ProximityAlertTriggered struct {
 	Distance int  `json:"distance"`
 	Traveler User `json:"traveler"`
 	Watcher  User `json:"watcher"`
+}
+
+// Ref: #/components/schemas/Response
+type Response struct {
+	MigrateToChatID OptInt64 `json:"migrate_to_chat_id"`
+	RetryAfter      OptInt   `json:"retry_after"`
 }
 
 // Ref: #/components/schemas/restrictChatMember
@@ -1992,19 +2017,105 @@ type RestrictChatMember struct {
 	UserID      int             `json:"user_id"`
 }
 
-type RestrictChatMemberResOK struct {
+// Ref: #/components/schemas/Result
+type Result struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
+
+func (*Result) addStickerToSetRes()                 {}
+func (*Result) answerCallbackQueryRes()             {}
+func (*Result) answerInlineQueryRes()               {}
+func (*Result) answerPreCheckoutQueryRes()          {}
+func (*Result) answerShippingQueryRes()             {}
+func (*Result) banChatMemberRes()                   {}
+func (*Result) copyMessageRes()                     {}
+func (*Result) createChatInviteLinkRes()            {}
+func (*Result) createNewStickerSetRes()             {}
+func (*Result) deleteChatPhotoRes()                 {}
+func (*Result) deleteChatStickerSetRes()            {}
+func (*Result) deleteMessageRes()                   {}
+func (*Result) deleteMyCommandsRes()                {}
+func (*Result) deleteStickerFromSetRes()            {}
+func (*Result) deleteWebhookRes()                   {}
+func (*Result) editChatInviteLinkRes()              {}
+func (*Result) editMessageCaptionRes()              {}
+func (*Result) editMessageLiveLocationRes()         {}
+func (*Result) editMessageMediaRes()                {}
+func (*Result) editMessageReplyMarkupRes()          {}
+func (*Result) editMessageTextRes()                 {}
+func (*Result) exportChatInviteLinkRes()            {}
+func (*Result) getChatAdministratorsRes()           {}
+func (*Result) getChatMemberCountRes()              {}
+func (*Result) getChatMemberRes()                   {}
+func (*Result) getChatRes()                         {}
+func (*Result) getFileRes()                         {}
+func (*Result) getGameHighScoresRes()               {}
+func (*Result) getMyCommandsRes()                   {}
+func (*Result) getStickerSetRes()                   {}
+func (*Result) getUpdatesRes()                      {}
+func (*Result) getUserProfilePhotosRes()            {}
+func (*Result) leaveChatRes()                       {}
+func (*Result) pinChatMessageRes()                  {}
+func (*Result) promoteChatMemberRes()               {}
+func (*Result) restrictChatMemberRes()              {}
+func (*Result) revokeChatInviteLinkRes()            {}
+func (*Result) sendAudioRes()                       {}
+func (*Result) sendChatActionRes()                  {}
+func (*Result) sendMediaGroupRes()                  {}
+func (*Result) setChatAdministratorCustomTitleRes() {}
+func (*Result) setChatDescriptionRes()              {}
+func (*Result) setChatPermissionsRes()              {}
+func (*Result) setChatPhotoRes()                    {}
+func (*Result) setChatStickerSetRes()               {}
+func (*Result) setChatTitleRes()                    {}
+func (*Result) setGameScoreRes()                    {}
+func (*Result) setMyCommandsRes()                   {}
+func (*Result) setPassportDataErrorsRes()           {}
+func (*Result) setStickerPositionInSetRes()         {}
+func (*Result) setStickerSetThumbRes()              {}
+func (*Result) setWebhookRes()                      {}
+func (*Result) stopMessageLiveLocationRes()         {}
+func (*Result) stopPollRes()                        {}
+func (*Result) unbanChatMemberRes()                 {}
+func (*Result) unpinAllChatMessagesRes()            {}
+func (*Result) unpinChatMessageRes()                {}
+func (*Result) uploadStickerFileRes()               {}
+
+// Ref: #/components/schemas/ResultMsg
+type ResultMsg struct {
+	Ok     bool       `json:"ok"`
+	Result OptMessage `json:"result"`
+}
+
+func (*ResultMsg) forwardMessageRes() {}
+func (*ResultMsg) sendAnimationRes()  {}
+func (*ResultMsg) sendContactRes()    {}
+func (*ResultMsg) sendDiceRes()       {}
+func (*ResultMsg) sendDocumentRes()   {}
+func (*ResultMsg) sendGameRes()       {}
+func (*ResultMsg) sendInvoiceRes()    {}
+func (*ResultMsg) sendLocationRes()   {}
+func (*ResultMsg) sendMessageRes()    {}
+func (*ResultMsg) sendPhotoRes()      {}
+func (*ResultMsg) sendPollRes()       {}
+func (*ResultMsg) sendStickerRes()    {}
+func (*ResultMsg) sendVenueRes()      {}
+func (*ResultMsg) sendVideoNoteRes()  {}
+func (*ResultMsg) sendVideoRes()      {}
+func (*ResultMsg) sendVoiceRes()      {}
+
+// Ref: #/components/schemas/ResultUsr
+type ResultUsr struct {
+	Ok     bool    `json:"ok"`
+	Result OptUser `json:"result"`
+}
+
+func (*ResultUsr) getMeRes() {}
 
 // Ref: #/components/schemas/revokeChatInviteLink
 type RevokeChatInviteLink struct {
 	InviteLink string `json:"invite_link"`
-}
-
-type RevokeChatInviteLinkResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/sendAnimation
@@ -2019,11 +2130,6 @@ type SendAnimation struct {
 	Width                    OptInt    `json:"width"`
 }
 
-type SendAnimationResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/sendAudio
 type SendAudio struct {
 	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
@@ -2036,19 +2142,9 @@ type SendAudio struct {
 	Title                    OptString `json:"title"`
 }
 
-type SendAudioResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/sendChatAction
 type SendChatAction struct {
 	Action string `json:"action"`
-}
-
-type SendChatActionResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/sendContact
@@ -2062,22 +2158,12 @@ type SendContact struct {
 	Vcard                    OptString `json:"vcard"`
 }
 
-type SendContactResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/sendDice
 type SendDice struct {
 	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
 	DisableNotification      OptBool   `json:"disable_notification"`
 	Emoji                    OptString `json:"emoji"`
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-}
-
-type SendDiceResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
 }
 
 // Ref: #/components/schemas/sendDocument
@@ -2090,11 +2176,6 @@ type SendDocument struct {
 	ReplyToMessageID            OptInt    `json:"reply_to_message_id"`
 }
 
-type SendDocumentResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/sendGame
 type SendGame struct {
 	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
@@ -2103,11 +2184,6 @@ type SendGame struct {
 	GameShortName            string                `json:"game_short_name"`
 	ReplyMarkup              *InlineKeyboardMarkup `json:"reply_markup"`
 	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
-}
-
-type SendGameResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
 }
 
 // Ref: #/components/schemas/sendInvoice
@@ -2125,7 +2201,7 @@ type SendInvoice struct {
 	Payload                   string                `json:"payload"`
 	PhotoHeight               OptInt                `json:"photo_height"`
 	PhotoSize                 OptInt                `json:"photo_size"`
-	PhotoURL                  OptString             `json:"photo_url"`
+	PhotoURL                  OptURL                `json:"photo_url"`
 	PhotoWidth                OptInt                `json:"photo_width"`
 	ProviderData              OptString             `json:"provider_data"`
 	ProviderToken             string                `json:"provider_token"`
@@ -2135,11 +2211,6 @@ type SendInvoice struct {
 	SendPhoneNumberToProvider OptBool               `json:"send_phone_number_to_provider"`
 	StartParameter            OptString             `json:"start_parameter"`
 	Title                     string                `json:"title"`
-}
-
-type SendInvoiceResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
 }
 
 // Ref: #/components/schemas/sendLocation
@@ -2155,21 +2226,11 @@ type SendLocation struct {
 	ReplyToMessageID         OptInt     `json:"reply_to_message_id"`
 }
 
-type SendLocationResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/sendMediaGroup
 type SendMediaGroup struct {
 	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
 	DisableNotification      OptBool `json:"disable_notification"`
 	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
-}
-
-type SendMediaGroupResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/sendMessage
@@ -2182,11 +2243,6 @@ type SendMessage struct {
 	Text                     string    `json:"text"`
 }
 
-type SendMessageResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/sendPhoto
 type SendPhoto struct {
 	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
@@ -2194,11 +2250,6 @@ type SendPhoto struct {
 	DisableNotification      OptBool   `json:"disable_notification"`
 	ParseMode                OptString `json:"parse_mode"`
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
-}
-
-type SendPhotoResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
 }
 
 // Ref: #/components/schemas/sendPoll
@@ -2218,21 +2269,11 @@ type SendPoll struct {
 	Type                     OptString `json:"type"`
 }
 
-type SendPollResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/sendSticker
 type SendSticker struct {
 	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
 	DisableNotification      OptBool `json:"disable_notification"`
 	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
-}
-
-type SendStickerResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
 }
 
 // Ref: #/components/schemas/sendVenue
@@ -2248,11 +2289,6 @@ type SendVenue struct {
 	Longitude                float64   `json:"longitude"`
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 	Title                    string    `json:"title"`
-}
-
-type SendVenueResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
 }
 
 // Ref: #/components/schemas/sendVideo
@@ -2277,16 +2313,6 @@ type SendVideoNote struct {
 	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
 }
 
-type SendVideoNoteResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
-type SendVideoResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/sendVoice
 type SendVoice struct {
 	AllowSendingWithoutReply OptBool   `json:"allow_sending_without_reply"`
@@ -2297,20 +2323,10 @@ type SendVoice struct {
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 }
 
-type SendVoiceResOK struct {
-	Ok     bool       `json:"ok"`
-	Result OptMessage `json:"result"`
-}
-
 // Ref: #/components/schemas/setChatAdministratorCustomTitle
 type SetChatAdministratorCustomTitle struct {
 	CustomTitle string `json:"custom_title"`
 	UserID      int    `json:"user_id"`
-}
-
-type SetChatAdministratorCustomTitleResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/setChatDescription
@@ -2318,19 +2334,9 @@ type SetChatDescription struct {
 	Description OptString `json:"description"`
 }
 
-type SetChatDescriptionResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/setChatPermissions
 type SetChatPermissions struct {
 	Permissions ChatPermissions `json:"permissions"`
-}
-
-type SetChatPermissionsResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/setChatPhoto
@@ -2338,29 +2344,14 @@ type SetChatPhoto struct {
 	Photo string `json:"photo"`
 }
 
-type SetChatPhotoResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/setChatStickerSet
 type SetChatStickerSet struct {
 	StickerSetName string `json:"sticker_set_name"`
 }
 
-type SetChatStickerSetResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/setChatTitle
 type SetChatTitle struct {
 	Title string `json:"title"`
-}
-
-type SetChatTitleResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/setGameScore
@@ -2374,30 +2365,15 @@ type SetGameScore struct {
 	UserID             int       `json:"user_id"`
 }
 
-type SetGameScoreResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/setMyCommands
 type SetMyCommands struct {
 	LanguageCode OptString        `json:"language_code"`
 	Scope        *BotCommandScope `json:"scope"`
 }
 
-type SetMyCommandsResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/setPassportDataErrors
 type SetPassportDataErrors struct {
 	UserID int `json:"user_id"`
-}
-
-type SetPassportDataErrorsResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/setStickerPositionInSet
@@ -2406,20 +2382,10 @@ type SetStickerPositionInSet struct {
 	Sticker  string `json:"sticker"`
 }
 
-type SetStickerPositionInSetResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/setStickerSetThumb
 type SetStickerSetThumb struct {
 	Name   string `json:"name"`
 	UserID int    `json:"user_id"`
-}
-
-type SetStickerSetThumbResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/setWebhook
@@ -2428,12 +2394,7 @@ type SetWebhook struct {
 	DropPendingUpdates OptBool   `json:"drop_pending_updates"`
 	IPAddress          OptString `json:"ip_address"`
 	MaxConnections     OptInt    `json:"max_connections"`
-	URL                string    `json:"url"`
-}
-
-type SetWebhookResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
+	URL                url.URL   `json:"url"`
 }
 
 // Ref: #/components/schemas/ShippingAddress
@@ -2467,20 +2428,10 @@ type StopMessageLiveLocation struct {
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type StopMessageLiveLocationResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/stopPoll
 type StopPoll struct {
 	MessageID   int                   `json:"message_id"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup"`
-}
-
-type StopPollResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/SuccessfulPayment
@@ -2500,38 +2451,18 @@ type UnbanChatMember struct {
 	UserID       int     `json:"user_id"`
 }
 
-type UnbanChatMemberResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/unpinAllChatMessages
 type UnpinAllChatMessages struct{}
-
-type UnpinAllChatMessagesResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
 
 // Ref: #/components/schemas/unpinChatMessage
 type UnpinChatMessage struct {
 	MessageID OptInt `json:"message_id"`
 }
 
-type UnpinChatMessageResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
-}
-
 // Ref: #/components/schemas/uploadStickerFile
 type UploadStickerFile struct {
 	PNGSticker string `json:"png_sticker"`
 	UserID     int    `json:"user_id"`
-}
-
-type UploadStickerFileResOK struct {
-	Ok     bool    `json:"ok"`
-	Result OptBool `json:"result"`
 }
 
 // Ref: #/components/schemas/User

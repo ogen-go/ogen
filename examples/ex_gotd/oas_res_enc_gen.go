@@ -50,1127 +50,2477 @@ var (
 	_ = net.IP{}
 )
 
-func encodeAddStickerToSetResponse(response AddStickerToSetResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeAnswerInlineQueryResponse(response AnswerInlineQueryResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeAnswerShippingQueryResponse(response AnswerShippingQueryResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeBanChatMemberResponse(response BanChatMemberResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeCopyMessageResponse(response CopyMessageResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeCreateNewStickerSetResponse(response CreateNewStickerSetResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeDeleteChatPhotoResponse(response DeleteChatPhotoResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeDeleteMessageResponse(response DeleteMessageResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeDeleteMyCommandsResponse(response DeleteMyCommandsResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeDeleteWebhookResponse(response DeleteWebhookResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEditChatInviteLinkResponse(response EditChatInviteLinkResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEditMessageCaptionResponse(response EditMessageCaptionResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEditMessageMediaResponse(response EditMessageMediaResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeEditMessageTextResponse(response EditMessageTextResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeForwardMessageResponse(response ForwardMessageResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetChatResponse(response GetChatResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetChatAdministratorsResponse(response GetChatAdministratorsResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetChatMemberResponse(response GetChatMemberResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetChatMemberCountResponse(response GetChatMemberCountResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetFileResponse(response GetFileResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetGameHighScoresResponse(response GetGameHighScoresResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetMeResponse(response GetMeResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetMyCommandsResponse(response GetMyCommandsResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetStickerSetResponse(response GetStickerSetResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetUpdatesResponse(response GetUpdatesResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeLeaveChatResponse(response LeaveChatResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePinChatMessageResponse(response PinChatMessageResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePromoteChatMemberResponse(response PromoteChatMemberResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeRestrictChatMemberResponse(response RestrictChatMemberResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendAnimationResponse(response SendAnimationResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendAudioResponse(response SendAudioResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendChatActionResponse(response SendChatActionResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendContactResponse(response SendContactResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendDiceResponse(response SendDiceResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendDocumentResponse(response SendDocumentResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendGameResponse(response SendGameResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendInvoiceResponse(response SendInvoiceResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendLocationResponse(response SendLocationResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendMediaGroupResponse(response SendMediaGroupResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendMessageResponse(response SendMessageResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendPhotoResponse(response SendPhotoResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendPollResponse(response SendPollResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendStickerResponse(response SendStickerResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendVenueResponse(response SendVenueResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendVideoResponse(response SendVideoResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendVideoNoteResponse(response SendVideoNoteResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSendVoiceResponse(response SendVoiceResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministratorCustomTitleResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetChatDescriptionResponse(response SetChatDescriptionResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetChatPermissionsResponse(response SetChatPermissionsResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetChatPhotoResponse(response SetChatPhotoResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetChatStickerSetResponse(response SetChatStickerSetResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetChatTitleResponse(response SetChatTitleResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetGameScoreResponse(response SetGameScoreResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetMyCommandsResponse(response SetMyCommandsResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetStickerSetThumbResponse(response SetStickerSetThumbResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeSetWebhookResponse(response SetWebhookResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeStopPollResponse(response StopPollResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeUnbanChatMemberResponse(response UnbanChatMemberResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeUnpinChatMessageResponse(response UnpinChatMessageResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeUploadStickerFileResponse(response UploadStickerFileResOK, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	j := json.NewStream(w)
-	defer json.PutStream(j)
-	more := json.NewMore(j)
-	defer more.Reset()
-	more.More()
-	response.WriteJSON(j)
-	if err := j.Flush(); err != nil {
-		return err
-	}
-	return nil
+func encodeAddStickerToSetResponse(response AddStickerToSetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/addStickerToSet: unexpected response type: %T", response)
+	}
+}
+
+func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/answerCallbackQuery: unexpected response type: %T", response)
+	}
+}
+
+func encodeAnswerInlineQueryResponse(response AnswerInlineQueryRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/answerInlineQuery: unexpected response type: %T", response)
+	}
+}
+
+func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/answerPreCheckoutQuery: unexpected response type: %T", response)
+	}
+}
+
+func encodeAnswerShippingQueryResponse(response AnswerShippingQueryRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/answerShippingQuery: unexpected response type: %T", response)
+	}
+}
+
+func encodeBanChatMemberResponse(response BanChatMemberRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/banChatMember: unexpected response type: %T", response)
+	}
+}
+
+func encodeCopyMessageResponse(response CopyMessageRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/copyMessage: unexpected response type: %T", response)
+	}
+}
+
+func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/createChatInviteLink: unexpected response type: %T", response)
+	}
+}
+
+func encodeCreateNewStickerSetResponse(response CreateNewStickerSetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/createNewStickerSet: unexpected response type: %T", response)
+	}
+}
+
+func encodeDeleteChatPhotoResponse(response DeleteChatPhotoRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/deleteChatPhoto: unexpected response type: %T", response)
+	}
+}
+
+func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/deleteChatStickerSet: unexpected response type: %T", response)
+	}
+}
+
+func encodeDeleteMessageResponse(response DeleteMessageRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/deleteMessage: unexpected response type: %T", response)
+	}
+}
+
+func encodeDeleteMyCommandsResponse(response DeleteMyCommandsRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/deleteMyCommands: unexpected response type: %T", response)
+	}
+}
+
+func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/deleteStickerFromSet: unexpected response type: %T", response)
+	}
+}
+
+func encodeDeleteWebhookResponse(response DeleteWebhookRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/deleteWebhook: unexpected response type: %T", response)
+	}
+}
+
+func encodeEditChatInviteLinkResponse(response EditChatInviteLinkRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/editChatInviteLink: unexpected response type: %T", response)
+	}
+}
+
+func encodeEditMessageCaptionResponse(response EditMessageCaptionRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/editMessageCaption: unexpected response type: %T", response)
+	}
+}
+
+func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/editMessageLiveLocation: unexpected response type: %T", response)
+	}
+}
+
+func encodeEditMessageMediaResponse(response EditMessageMediaRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/editMessageMedia: unexpected response type: %T", response)
+	}
+}
+
+func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/editMessageReplyMarkup: unexpected response type: %T", response)
+	}
+}
+
+func encodeEditMessageTextResponse(response EditMessageTextRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/editMessageText: unexpected response type: %T", response)
+	}
+}
+
+func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/exportChatInviteLink: unexpected response type: %T", response)
+	}
+}
+
+func encodeForwardMessageResponse(response ForwardMessageRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/forwardMessage: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetChatResponse(response GetChatRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getChat: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetChatAdministratorsResponse(response GetChatAdministratorsRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getChatAdministrators: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetChatMemberResponse(response GetChatMemberRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getChatMember: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetChatMemberCountResponse(response GetChatMemberCountRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getChatMemberCount: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetFileResponse(response GetFileRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getFile: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetGameHighScoresResponse(response GetGameHighScoresRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getGameHighScores: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetMeResponse(response GetMeRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultUsr:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getMe: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetMyCommandsResponse(response GetMyCommandsRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getMyCommands: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetStickerSetResponse(response GetStickerSetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getStickerSet: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetUpdatesResponse(response GetUpdatesRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getUpdates: unexpected response type: %T", response)
+	}
+}
+
+func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/getUserProfilePhotos: unexpected response type: %T", response)
+	}
+}
+
+func encodeLeaveChatResponse(response LeaveChatRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/leaveChat: unexpected response type: %T", response)
+	}
+}
+
+func encodePinChatMessageResponse(response PinChatMessageRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/pinChatMessage: unexpected response type: %T", response)
+	}
+}
+
+func encodePromoteChatMemberResponse(response PromoteChatMemberRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/promoteChatMember: unexpected response type: %T", response)
+	}
+}
+
+func encodeRestrictChatMemberResponse(response RestrictChatMemberRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/restrictChatMember: unexpected response type: %T", response)
+	}
+}
+
+func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/revokeChatInviteLink: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendAnimationResponse(response SendAnimationRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendAnimation: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendAudioResponse(response SendAudioRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendAudio: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendChatActionResponse(response SendChatActionRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendChatAction: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendContactResponse(response SendContactRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendContact: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendDiceResponse(response SendDiceRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendDice: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendDocumentResponse(response SendDocumentRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendDocument: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendGameResponse(response SendGameRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendGame: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendInvoiceResponse(response SendInvoiceRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendInvoice: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendLocationResponse(response SendLocationRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendLocation: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendMediaGroupResponse(response SendMediaGroupRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendMediaGroup: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendMessageResponse(response SendMessageRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendMessage: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendPhotoResponse(response SendPhotoRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendPhoto: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendPollResponse(response SendPollRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendPoll: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendStickerResponse(response SendStickerRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendSticker: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendVenueResponse(response SendVenueRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendVenue: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendVideoResponse(response SendVideoRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendVideo: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendVideoNoteResponse(response SendVideoNoteRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendVideoNote: unexpected response type: %T", response)
+	}
+}
+
+func encodeSendVoiceResponse(response SendVoiceRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *ResultMsg:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/sendVoice: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministratorCustomTitleRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setChatAdministratorCustomTitle: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetChatDescriptionResponse(response SetChatDescriptionRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setChatDescription: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetChatPermissionsResponse(response SetChatPermissionsRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setChatPermissions: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetChatPhotoResponse(response SetChatPhotoRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setChatPhoto: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetChatStickerSetResponse(response SetChatStickerSetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setChatStickerSet: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetChatTitleResponse(response SetChatTitleRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setChatTitle: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetGameScoreResponse(response SetGameScoreRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setGameScore: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetMyCommandsResponse(response SetMyCommandsRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setMyCommands: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setPassportDataErrors: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setStickerPositionInSet: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetStickerSetThumbResponse(response SetStickerSetThumbRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setStickerSetThumb: unexpected response type: %T", response)
+	}
+}
+
+func encodeSetWebhookResponse(response SetWebhookRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/setWebhook: unexpected response type: %T", response)
+	}
+}
+
+func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/stopMessageLiveLocation: unexpected response type: %T", response)
+	}
+}
+
+func encodeStopPollResponse(response StopPollRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/stopPoll: unexpected response type: %T", response)
+	}
+}
+
+func encodeUnbanChatMemberResponse(response UnbanChatMemberRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/unbanChatMember: unexpected response type: %T", response)
+	}
+}
+
+func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/unpinAllChatMessages: unexpected response type: %T", response)
+	}
+}
+
+func encodeUnpinChatMessageResponse(response UnpinChatMessageRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/unpinChatMessage: unexpected response type: %T", response)
+	}
+}
+
+func encodeUploadStickerFileResponse(response UploadStickerFileRes, w http.ResponseWriter) error {
+	switch response := response.(type) {
+	case *Result:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		j := json.NewStream(w)
+		defer json.PutStream(j)
+		more := json.NewMore(j)
+		defer more.Reset()
+		more.More()
+		response.Response.WriteJSON(j)
+		if err := j.Flush(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return fmt.Errorf("/uploadStickerFile: unexpected response type: %T", response)
+	}
 }

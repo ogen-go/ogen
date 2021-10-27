@@ -30,6 +30,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -51,6 +54,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -72,6 +78,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -93,6 +102,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -114,6 +126,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -135,6 +150,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -156,6 +174,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -177,6 +198,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -198,6 +222,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -219,6 +246,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -240,6 +270,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -261,6 +294,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -282,6 +318,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -303,6 +342,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -324,6 +366,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -345,6 +390,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -366,6 +414,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -387,6 +438,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -408,6 +462,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -429,6 +486,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -450,6 +510,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -471,6 +534,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -492,6 +558,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -513,6 +582,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -534,6 +606,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -555,6 +630,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -576,6 +654,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -597,6 +678,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -618,6 +702,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -629,6 +716,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultUsr"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -650,6 +740,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -671,6 +764,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -692,6 +788,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -713,6 +812,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -734,6 +836,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -755,6 +860,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -776,6 +884,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -797,6 +908,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -818,6 +932,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -839,6 +956,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -860,6 +980,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -881,6 +1004,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -902,6 +1028,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -923,6 +1052,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -944,6 +1076,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -965,6 +1100,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -986,6 +1124,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1007,6 +1148,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1028,6 +1172,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1049,6 +1196,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1070,6 +1220,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1091,6 +1244,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1112,6 +1268,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1133,6 +1292,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1154,6 +1316,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1175,6 +1340,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1196,6 +1364,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultMsg"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1217,6 +1388,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1238,6 +1412,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1259,6 +1436,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1280,6 +1460,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1301,6 +1484,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1322,6 +1508,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1343,6 +1532,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1364,6 +1556,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1385,6 +1580,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1406,6 +1604,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1427,6 +1628,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1448,6 +1652,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1469,6 +1676,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1490,6 +1700,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1511,6 +1724,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1532,6 +1748,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1553,6 +1772,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1574,6 +1796,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -1587,7 +1812,9 @@
         "properties": {
           "duration": {
             "description": "Duration of the video in seconds as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "file_id": {
             "description": "Identifier for this file, which can be used to download or reuse the file",
@@ -1607,7 +1834,9 @@
           },
           "height": {
             "description": "Video height as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "mime_type": {
             "description": "MIME type of the file as defined by sender",
@@ -1619,7 +1848,9 @@
           },
           "width": {
             "description": "Video width as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -1636,7 +1867,9 @@
         "properties": {
           "duration": {
             "description": "Duration of the audio in seconds as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "file_id": {
             "description": "Identifier for this file, which can be used to download or reuse the file",
@@ -2505,6 +2738,29 @@
           "hash"
         ]
       },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error_code": {
+            "type": "integer"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": false
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/Response"
+          }
+        },
+        "required": [
+          "ok",
+          "error_code",
+          "description"
+        ]
+      },
       "File": {
         "description": "This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot\u003ctoken\u003e/\u003cfile_path\u003e. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.",
         "type": "object",
@@ -2712,7 +2968,9 @@
           },
           "thumb_height": {
             "description": "Thumbnail height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
@@ -2721,7 +2979,9 @@
           },
           "thumb_width": {
             "description": "Thumbnail width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "title": {
             "description": "Title of the result",
@@ -2751,7 +3011,9 @@
         "properties": {
           "audio_duration": {
             "description": "Audio duration in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "audio_url": {
             "description": "A valid URL for the audio file",
@@ -3188,7 +3450,9 @@
           },
           "thumb_height": {
             "description": "Thumbnail height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
@@ -3197,7 +3461,9 @@
           },
           "thumb_width": {
             "description": "Thumbnail width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "type": {
             "description": "Type of the result, must be contact",
@@ -3256,7 +3522,9 @@
           },
           "thumb_height": {
             "description": "Thumbnail height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "thumb_url": {
             "description": "URL of the thumbnail (JPEG only) for the file",
@@ -3265,7 +3533,9 @@
           },
           "thumb_width": {
             "description": "Thumbnail width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "title": {
             "description": "Title for the result",
@@ -3324,11 +3594,15 @@
           },
           "gif_duration": {
             "description": "Duration of the GIF in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "gif_height": {
             "description": "Height of the GIF",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "gif_url": {
             "description": "A valid URL for the GIF file. File size must not exceed 1MB",
@@ -3337,7 +3611,9 @@
           },
           "gif_width": {
             "description": "Width of the GIF",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
@@ -3423,7 +3699,9 @@
           },
           "thumb_height": {
             "description": "Thumbnail height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
@@ -3432,7 +3710,9 @@
           },
           "thumb_width": {
             "description": "Thumbnail width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "title": {
             "description": "Location title",
@@ -3471,11 +3751,15 @@
           },
           "mpeg4_duration": {
             "description": "Video duration in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "mpeg4_height": {
             "description": "Video height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "mpeg4_url": {
             "description": "A valid URL for the MP4 file. File size must not exceed 1MB",
@@ -3484,7 +3768,9 @@
           },
           "mpeg4_width": {
             "description": "Video width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the caption. See formatting options for more details",
@@ -3547,7 +3833,9 @@
           },
           "photo_height": {
             "description": "Height of the photo",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "photo_url": {
             "description": "A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB",
@@ -3556,7 +3844,9 @@
           },
           "photo_width": {
             "description": "Width of the photo",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup",
@@ -3630,7 +3920,9 @@
           },
           "thumb_height": {
             "description": "Thumbnail height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
@@ -3639,7 +3931,9 @@
           },
           "thumb_width": {
             "description": "Thumbnail width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "title": {
             "description": "Title of the venue",
@@ -3709,11 +4003,15 @@
           },
           "video_duration": {
             "description": "Video duration in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "video_height": {
             "description": "Video height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "video_url": {
             "description": "A valid URL for the embedded video player or video file",
@@ -3722,7 +4020,9 @@
           },
           "video_width": {
             "description": "Video width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -3770,7 +4070,9 @@
           },
           "voice_duration": {
             "description": "Recording duration in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "voice_url": {
             "description": "A valid URL for the voice recording",
@@ -3855,7 +4157,9 @@
           },
           "photo_height": {
             "description": "Photo height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "photo_size": {
             "description": "Photo size",
@@ -3868,7 +4172,9 @@
           },
           "photo_width": {
             "description": "Photo width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "provider_data": {
             "description": "A JSON-serialized object for data about the invoice, which will be shared with the payment provider. A detailed description of the required fields should be provided by the payment provider",
@@ -3950,11 +4256,15 @@
           },
           "duration": {
             "description": "Animation duration in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "height": {
             "description": "Animation height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "media": {
             "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
@@ -3971,7 +4281,9 @@
           },
           "width": {
             "description": "Animation width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -3990,7 +4302,9 @@
           },
           "duration": {
             "description": "Duration of the audio in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "media": {
             "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
@@ -4090,11 +4404,15 @@
           },
           "duration": {
             "description": "Video duration in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "height": {
             "description": "Video height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "media": {
             "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
@@ -4115,7 +4433,9 @@
           },
           "width": {
             "description": "Video width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -4612,7 +4932,8 @@
           },
           "offset": {
             "description": "Offset in UTF-16 code units to the start of the entity",
-            "type": "integer"
+            "type": "integer",
+            "default": 0
           },
           "type": {
             "description": "Type of the entity. Can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)",
@@ -4988,11 +5309,15 @@
           },
           "height": {
             "description": "Photo height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "width": {
             "description": "Photo width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -5207,6 +5532,21 @@
           "remove_keyboard"
         ]
       },
+      "Response": {
+        "description": "Contains information about why a request was unsuccessful.",
+        "type": "object",
+        "properties": {
+          "migrate_to_chat_id": {
+            "description": "The group has been migrated to a supergroup with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "retry_after": {
+            "description": "In case of exceeding flood control, the number of seconds left to wait before the request can be repeated",
+            "type": "integer"
+          }
+        }
+      },
       "ResponseParameters": {
         "description": "Contains information about why a request was unsuccessful.",
         "type": "object",
@@ -5387,7 +5727,9 @@
           },
           "height": {
             "description": "Sticker height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "is_animated": {
             "description": "True, if the sticker is animated",
@@ -5407,7 +5749,9 @@
           },
           "width": {
             "description": "Sticker width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -5661,7 +6005,9 @@
         "properties": {
           "duration": {
             "description": "Duration of the video in seconds as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "file_id": {
             "description": "Identifier for this file, which can be used to download or reuse the file",
@@ -5681,7 +6027,9 @@
           },
           "height": {
             "description": "Video height as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "mime_type": {
             "description": "Mime type of a file as defined by sender",
@@ -5693,7 +6041,9 @@
           },
           "width": {
             "description": "Video width as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -5710,7 +6060,9 @@
         "properties": {
           "duration": {
             "description": "Duration of the video in seconds as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "file_id": {
             "description": "Identifier for this file, which can be used to download or reuse the file",
@@ -5746,7 +6098,9 @@
         "properties": {
           "duration": {
             "description": "Duration of the audio in seconds as defined by sender",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "file_id": {
             "description": "Identifier for this file, which can be used to download or reuse the file",
@@ -5777,7 +6131,9 @@
         "properties": {
           "duration": {
             "description": "Voice chat duration in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         },
         "required": [
@@ -5894,11 +6250,13 @@
           },
           "text": {
             "description": "Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 200
           },
           "url": {
             "description": "URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game — note that this will only work if the query comes from a callback_game button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": [
@@ -5927,7 +6285,9 @@
           },
           "switch_pm_parameter": {
             "description": "Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "switch_pm_text": {
             "description": "If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter",
@@ -6013,7 +6373,8 @@
           },
           "caption": {
             "description": "New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -6068,7 +6429,9 @@
           },
           "name": {
             "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_\u003cbot username\u003e”. \u003cbot_username\u003e is case insensitive. 1-64 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "tgs_sticker": {
             "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements",
@@ -6076,7 +6439,9 @@
           },
           "title": {
             "description": "Sticker set title, 1-64 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "user_id": {
             "description": "User identifier of created sticker set owner",
@@ -6175,7 +6540,8 @@
         "properties": {
           "caption": {
             "description": "New caption of the message, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "inline_message_id": {
             "description": "Required if chat_id and message_id are not specified. Identifier of the inline message",
@@ -6306,7 +6672,9 @@
           },
           "text": {
             "description": "New text of the message, 1-4096 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 4096,
+            "minLength": 1
           }
         },
         "required": [
@@ -6430,11 +6798,14 @@
         "properties": {
           "limit": {
             "description": "Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1
           },
           "offset": {
             "description": "Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called with an offset higher than its update_id. The negative offset can be specified to retrieve updates starting from -offset update from the end of the updates queue. All previous updates will forgotten",
-            "type": "integer"
+            "type": "integer",
+            "default": 0
           },
           "timeout": {
             "description": "Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only",
@@ -6448,11 +6819,14 @@
         "properties": {
           "limit": {
             "description": "Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1
           },
           "offset": {
             "description": "Sequential number of the first photo to be returned. By default, all photos are returned",
-            "type": "integer"
+            "type": "integer",
+            "default": 0
           },
           "user_id": {
             "description": "Unique identifier of the target user",
@@ -6586,7 +6960,8 @@
           },
           "caption": {
             "description": "Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -6594,11 +6969,15 @@
           },
           "duration": {
             "description": "Duration of sent animation in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "height": {
             "description": "Animation height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the animation caption. See formatting options for more details",
@@ -6610,7 +6989,9 @@
           },
           "width": {
             "description": "Animation width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         }
       },
@@ -6624,7 +7005,8 @@
           },
           "caption": {
             "description": "Audio caption, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -6632,7 +7014,9 @@
           },
           "duration": {
             "description": "Duration of the audio in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the audio caption. See formatting options for more details",
@@ -6735,7 +7119,8 @@
           },
           "caption": {
             "description": "Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_content_type_detection": {
             "description": "Disables automatic server-side content type detection for files uploaded using multipart/form-data",
@@ -6803,7 +7188,9 @@
           },
           "description": {
             "description": "Product description, 1-255 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -6839,7 +7226,9 @@
           },
           "photo_height": {
             "description": "Photo height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "photo_size": {
             "description": "Photo size",
@@ -6847,11 +7236,14 @@
           },
           "photo_url": {
             "description": "URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service. People like it better when they see what they are paying for",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           },
           "photo_width": {
             "description": "Photo width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "provider_data": {
             "description": "A JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider",
@@ -6883,7 +7275,9 @@
           },
           "title": {
             "description": "Product name, 1-32 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1
           }
         },
         "required": [
@@ -6984,7 +7378,9 @@
           },
           "text": {
             "description": "Text of the message to be sent, 1-4096 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 4096,
+            "minLength": 1
           }
         },
         "required": [
@@ -7001,7 +7397,8 @@
           },
           "caption": {
             "description": "Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7043,7 +7440,8 @@
           },
           "explanation": {
             "description": "Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 200
           },
           "explanation_parse_mode": {
             "description": "Mode for parsing entities in the explanation. See formatting options for more details",
@@ -7063,7 +7461,9 @@
           },
           "question": {
             "description": "Poll question, 1-300 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 1
           },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
@@ -7162,7 +7562,8 @@
           },
           "caption": {
             "description": "Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7170,11 +7571,15 @@
           },
           "duration": {
             "description": "Duration of sent video in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "height": {
             "description": "Video height",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the video caption. See formatting options for more details",
@@ -7190,7 +7595,9 @@
           },
           "width": {
             "description": "Video width",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           }
         }
       },
@@ -7208,7 +7615,9 @@
           },
           "duration": {
             "description": "Duration of sent video in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "length": {
             "description": "Video width and height, i.e. diameter of the video message",
@@ -7230,7 +7639,8 @@
           },
           "caption": {
             "description": "Voice message caption, 0-1024 characters after entities parsing",
-            "type": "string"
+            "type": "string",
+            "maxLength": 1024
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
@@ -7238,7 +7648,9 @@
           },
           "duration": {
             "description": "Duration of the voice message in seconds",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
           },
           "parse_mode": {
             "description": "Mode for parsing entities in the voice message caption. See formatting options for more details",
@@ -7256,7 +7668,8 @@
         "properties": {
           "custom_title": {
             "description": "New custom title for the administrator; 0-16 characters, emoji are not allowed",
-            "type": "string"
+            "type": "string",
+            "maxLength": 16
           },
           "user_id": {
             "description": "Unique identifier of the target user",
@@ -7274,7 +7687,8 @@
         "properties": {
           "description": {
             "description": "New chat description, 0-255 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           }
         }
       },
@@ -7323,7 +7737,9 @@
         "properties": {
           "title": {
             "description": "New chat title, 1-255 characters",
-            "type": "string"
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
           }
         },
         "required": [
@@ -7453,7 +7869,8 @@
           },
           "url": {
             "description": "HTTPS url to send updates to. Use an empty string to remove webhook integration",
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": [
@@ -7547,24 +7964,22 @@
       }
     },
     "responses": {
+      "Error": {
+        "description": "Method invocation error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
       "Result": {
         "description": "Result of method invocation",
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "ok": {
-                  "type": "boolean",
-                  "default": true
-                },
-                "result": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "ok"
-              ]
+              "$ref": "#/components/schemas/Result"
             }
           }
         }
@@ -7574,19 +7989,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "ok": {
-                  "type": "boolean",
-                  "default": true
-                },
-                "result": {
-                  "$ref": "#/components/schemas/Message"
-                }
-              },
-              "required": [
-                "ok"
-              ]
+              "$ref": "#/components/schemas/ResultMsg"
             }
           }
         }
@@ -7596,19 +7999,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "ok": {
-                  "type": "boolean",
-                  "default": true
-                },
-                "result": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "ok"
-              ]
+              "$ref": "#/components/schemas/ResultStr"
             }
           }
         }
@@ -7618,19 +8009,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "ok": {
-                  "type": "boolean",
-                  "default": true
-                },
-                "result": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "required": [
-                "ok"
-              ]
+              "$ref": "#/components/schemas/ResultUsr"
             }
           }
         }
