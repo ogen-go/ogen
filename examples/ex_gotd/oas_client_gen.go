@@ -22,8 +22,11 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
 )
 
 // No-op definition for keeping imports.
@@ -48,31 +51,89 @@ var (
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
+	_ = otelogen.Version
+	_ = trace.TraceIDFromHex
+	_ = otel.GetTracerProvider
 )
 
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
-type Client struct {
-	serverURL *url.URL
-	http      HTTPClient
+type config struct {
+	TracerProvider trace.TracerProvider
+	Tracer         trace.Tracer
+	Client         HTTPClient
 }
 
-func NewClient(serverURL string) *Client {
+const defaultTracerName = "github.com/ogen-go/ogen/otelogen"
+
+func newConfig(opts ...Option) config {
+	cfg := config{
+		TracerProvider: otel.GetTracerProvider(),
+		Client: &http.Client{
+			Timeout: time.Second * 15,
+		},
+	}
+	for _, opt := range opts {
+		opt.apply(&cfg)
+	}
+	cfg.Tracer = cfg.TracerProvider.Tracer(
+		defaultTracerName,
+		trace.WithInstrumentationVersion(otelogen.SemVersion()),
+	)
+	return cfg
+}
+
+type Option interface {
+	apply(*config)
+}
+
+type optionFunc func(*config)
+
+func (o optionFunc) apply(c *config) {
+	o(c)
+}
+
+// WithTracerProvider specifies a tracer provider to use for creating a tracer.
+// If none is specified, the global provider is used.
+func WithTracerProvider(provider trace.TracerProvider) Option {
+	return optionFunc(func(cfg *config) {
+		if provider != nil {
+			cfg.TracerProvider = provider
+		}
+	})
+}
+
+func WithHTTPClient(client HTTPClient) Option {
+	return optionFunc(func(cfg *config) {
+		if client != nil {
+			cfg.Client = client
+		}
+	})
+}
+
+type Client struct {
+	serverURL *url.URL
+	cfg       config
+}
+
+func NewClient(serverURL string, opts ...Option) *Client {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		panic(err) // TODO: fix
 	}
 	return &Client{
+		cfg:       newConfig(opts...),
 		serverURL: u,
-		http: &http.Client{
-			Timeout: time.Second * 15,
-		},
 	}
 }
 
 func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res AddStickerToSetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AddStickerToSet`,
+		trace.WithAttributes(otelogen.OperationID(`addStickerToSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAddStickerToSetRequest(req)
 	if err != nil {
 		return res, err
@@ -87,21 +148,28 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAddStickerToSetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (res AnswerCallbackQueryRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerCallbackQuery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAnswerCallbackQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -116,21 +184,28 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerCallbackQueryResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (res AnswerInlineQueryRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerInlineQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerInlineQuery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAnswerInlineQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -145,21 +220,28 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerInlineQueryResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (res AnswerPreCheckoutQueryRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerPreCheckoutQuery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAnswerPreCheckoutQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -174,21 +256,28 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerPreCheckoutQueryResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (res AnswerShippingQueryRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQuery`,
+		trace.WithAttributes(otelogen.OperationID(`answerShippingQuery`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAnswerShippingQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -203,21 +292,28 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerShippingQueryResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanChatMemberRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `BanChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`banChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeBanChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -232,21 +328,28 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res BanC
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeBanChatMemberResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMessageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `CopyMessage`,
+		trace.WithAttributes(otelogen.OperationID(`copyMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeCopyMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -261,21 +364,28 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res CopyMess
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCopyMessageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (res CreateChatInviteLinkRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `CreateChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`createChatInviteLink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeCreateChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -290,21 +400,28 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateChatInviteLinkResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (res CreateNewStickerSetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `CreateNewStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`createNewStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeCreateNewStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -319,21 +436,28 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateNewStickerSetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res DeleteChatPhotoRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatPhoto`,
+		trace.WithAttributes(otelogen.OperationID(`deleteChatPhoto`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteChatPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -348,21 +472,28 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteChatPhotoResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (res DeleteChatStickerSetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteChatStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`deleteChatStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteChatStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -377,21 +508,28 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteChatStickerSetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res DeleteMessageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMessage`,
+		trace.WithAttributes(otelogen.OperationID(`deleteMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -406,21 +544,28 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Dele
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteMessageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (res DeleteMyCommandsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteMyCommands`,
+		trace.WithAttributes(otelogen.OperationID(`deleteMyCommands`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -435,21 +580,28 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteMyCommandsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (res DeleteStickerFromSetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSet`,
+		trace.WithAttributes(otelogen.OperationID(`deleteStickerFromSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteStickerFromSetRequest(req)
 	if err != nil {
 		return res, err
@@ -464,21 +616,28 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStickerFromSetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res DeleteWebhookRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`deleteWebhook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteWebhookRequest(req)
 	if err != nil {
 		return res, err
@@ -493,21 +652,28 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Dele
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteWebhookResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (res EditChatInviteLinkRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`editChatInviteLink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeEditChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -522,21 +688,28 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditChatInviteLinkResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption) (res EditMessageCaptionRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageCaption`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageCaption`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeEditMessageCaptionRequest(req)
 	if err != nil {
 		return res, err
@@ -551,21 +724,28 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageCaptionResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (res EditMessageLiveLocationRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageLiveLocation`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageLiveLocation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeEditMessageLiveLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -580,21 +760,28 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageLiveLocationResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (res EditMessageMediaRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageMedia`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageMedia`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeEditMessageMediaRequest(req)
 	if err != nil {
 		return res, err
@@ -609,21 +796,28 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageMediaResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (res EditMessageReplyMarkupRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageReplyMarkup`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageReplyMarkup`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeEditMessageReplyMarkupRequest(req)
 	if err != nil {
 		return res, err
@@ -638,21 +832,28 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageReplyMarkupResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res EditMessageTextRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `EditMessageText`,
+		trace.WithAttributes(otelogen.OperationID(`editMessageText`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeEditMessageTextRequest(req)
 	if err != nil {
 		return res, err
@@ -667,21 +868,28 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeEditMessageTextResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (res ExportChatInviteLinkRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `ExportChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`exportChatInviteLink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeExportChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -696,21 +904,28 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeExportChatInviteLinkResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res ForwardMessageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `ForwardMessage`,
+		trace.WithAttributes(otelogen.OperationID(`forwardMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeForwardMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -725,21 +940,28 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Fo
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeForwardMessageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChat`,
+		trace.WithAttributes(otelogen.OperationID(`getChat`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetChatRequest(req)
 	if err != nil {
 		return res, err
@@ -754,21 +976,28 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res GetChatRes, err 
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (res GetChatAdministratorsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatAdministrators`,
+		trace.WithAttributes(otelogen.OperationID(`getChatAdministrators`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetChatAdministratorsRequest(req)
 	if err != nil {
 		return res, err
@@ -783,21 +1012,28 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatAdministratorsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetChatMemberRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`getChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -812,21 +1048,28 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res GetC
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatMemberResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (res GetChatMemberCountRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetChatMemberCount`,
+		trace.WithAttributes(otelogen.OperationID(`getChatMemberCount`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetChatMemberCountRequest(req)
 	if err != nil {
 		return res, err
@@ -841,21 +1084,28 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetChatMemberCountResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetFile`,
+		trace.WithAttributes(otelogen.OperationID(`getFile`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetFileRequest(req)
 	if err != nil {
 		return res, err
@@ -870,21 +1120,28 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res GetFileRes, err 
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetFileResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (res GetGameHighScoresRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScores`,
+		trace.WithAttributes(otelogen.OperationID(`getGameHighScores`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetGameHighScoresRequest(req)
 	if err != nil {
 		return res, err
@@ -899,42 +1156,56 @@ func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetGameHighScoresResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetMe(ctx context.Context) (res GetMeRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetMe`,
+		trace.WithAttributes(otelogen.OperationID(`getMe`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMe"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMeResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetMyCommandsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommands`,
+		trace.WithAttributes(otelogen.OperationID(`getMyCommands`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -949,21 +1220,28 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res GetM
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMyCommandsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetStickerSetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`getStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -978,21 +1256,28 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res GetS
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStickerSetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdatesRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdates`,
+		trace.WithAttributes(otelogen.OperationID(`getUpdates`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetUpdatesRequest(req)
 	if err != nil {
 		return res, err
@@ -1007,21 +1292,28 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res GetUpdates
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUpdatesResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (res GetUserProfilePhotosRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotos`,
+		trace.WithAttributes(otelogen.OperationID(`getUserProfilePhotos`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetUserProfilePhotosRequest(req)
 	if err != nil {
 		return res, err
@@ -1036,21 +1328,28 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUserProfilePhotosResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `LeaveChat`,
+		trace.WithAttributes(otelogen.OperationID(`leaveChat`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeLeaveChatRequest(req)
 	if err != nil {
 		return res, err
@@ -1065,21 +1364,28 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res LeaveChatRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeLeaveChatResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res PinChatMessageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PinChatMessage`,
+		trace.WithAttributes(otelogen.OperationID(`pinChatMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePinChatMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1094,21 +1400,28 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Pi
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePinChatMessageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (res PromoteChatMemberRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PromoteChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`promoteChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePromoteChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -1123,21 +1436,28 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePromoteChatMemberResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember) (res RestrictChatMemberRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `RestrictChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`restrictChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeRestrictChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -1152,21 +1472,28 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeRestrictChatMemberResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (res RevokeChatInviteLinkRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `RevokeChatInviteLink`,
+		trace.WithAttributes(otelogen.OperationID(`revokeChatInviteLink`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeRevokeChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -1181,21 +1508,28 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeRevokeChatInviteLinkResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res SendAnimationRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendAnimation`,
+		trace.WithAttributes(otelogen.OperationID(`sendAnimation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendAnimationRequest(req)
 	if err != nil {
 		return res, err
@@ -1210,21 +1544,28 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Send
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendAnimationResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendAudio`,
+		trace.WithAttributes(otelogen.OperationID(`sendAudio`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendAudioRequest(req)
 	if err != nil {
 		return res, err
@@ -1239,21 +1580,28 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res SendAudioRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendAudioResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res SendChatActionRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendChatAction`,
+		trace.WithAttributes(otelogen.OperationID(`sendChatAction`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendChatActionRequest(req)
 	if err != nil {
 		return res, err
@@ -1268,21 +1616,28 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Se
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendChatActionResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendContactRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendContact`,
+		trace.WithAttributes(otelogen.OperationID(`sendContact`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendContactRequest(req)
 	if err != nil {
 		return res, err
@@ -1297,21 +1652,28 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res SendCont
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendContactResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendDice`,
+		trace.WithAttributes(otelogen.OperationID(`sendDice`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendDiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1326,21 +1688,28 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res SendDiceRes, e
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendDiceResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDocumentRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendDocument`,
+		trace.WithAttributes(otelogen.OperationID(`sendDocument`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendDocumentRequest(req)
 	if err != nil {
 		return res, err
@@ -1355,21 +1724,28 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res SendDo
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendDocumentResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendGame`,
+		trace.WithAttributes(otelogen.OperationID(`sendGame`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendGameRequest(req)
 	if err != nil {
 		return res, err
@@ -1384,21 +1760,28 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res SendGameRes, e
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendGameResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvoiceRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoice`,
+		trace.WithAttributes(otelogen.OperationID(`sendInvoice`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendInvoiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1413,21 +1796,28 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res SendInvo
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendInvoiceResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLocationRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendLocation`,
+		trace.WithAttributes(otelogen.OperationID(`sendLocation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -1442,21 +1832,28 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res SendLo
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendLocationResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res SendMediaGroupRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendMediaGroup`,
+		trace.WithAttributes(otelogen.OperationID(`sendMediaGroup`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendMediaGroupRequest(req)
 	if err != nil {
 		return res, err
@@ -1471,21 +1868,28 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Se
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendMediaGroupResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMessageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendMessage`,
+		trace.WithAttributes(otelogen.OperationID(`sendMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1500,21 +1904,28 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res SendMess
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendMessageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendPhoto`,
+		trace.WithAttributes(otelogen.OperationID(`sendPhoto`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -1529,21 +1940,28 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res SendPhotoRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendPhotoResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendPoll`,
+		trace.WithAttributes(otelogen.OperationID(`sendPoll`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendPollRequest(req)
 	if err != nil {
 		return res, err
@@ -1558,21 +1976,28 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res SendPollRes, e
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendPollResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStickerRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendSticker`,
+		trace.WithAttributes(otelogen.OperationID(`sendSticker`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendStickerRequest(req)
 	if err != nil {
 		return res, err
@@ -1587,21 +2012,28 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res SendStic
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendStickerResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVenue`,
+		trace.WithAttributes(otelogen.OperationID(`sendVenue`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendVenueRequest(req)
 	if err != nil {
 		return res, err
@@ -1616,21 +2048,28 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res SendVenueRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVenueResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideo`,
+		trace.WithAttributes(otelogen.OperationID(`sendVideo`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendVideoRequest(req)
 	if err != nil {
 		return res, err
@@ -1645,21 +2084,28 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res SendVideoRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVideoResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res SendVideoNoteRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVideoNote`,
+		trace.WithAttributes(otelogen.OperationID(`sendVideoNote`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendVideoNoteRequest(req)
 	if err != nil {
 		return res, err
@@ -1674,21 +2120,28 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Send
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVideoNoteResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendVoice`,
+		trace.WithAttributes(otelogen.OperationID(`sendVoice`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendVoiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1703,21 +2156,28 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res SendVoiceRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendVoiceResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (res SetChatAdministratorCustomTitleRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatAdministratorCustomTitle`,
+		trace.WithAttributes(otelogen.OperationID(`setChatAdministratorCustomTitle`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetChatAdministratorCustomTitleRequest(req)
 	if err != nil {
 		return res, err
@@ -1732,21 +2192,28 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatAdministratorCustomTitleResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription) (res SetChatDescriptionRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatDescription`,
+		trace.WithAttributes(otelogen.OperationID(`setChatDescription`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetChatDescriptionRequest(req)
 	if err != nil {
 		return res, err
@@ -1761,21 +2228,28 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatDescriptionResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions) (res SetChatPermissionsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPermissions`,
+		trace.WithAttributes(otelogen.OperationID(`setChatPermissions`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetChatPermissionsRequest(req)
 	if err != nil {
 		return res, err
@@ -1790,21 +2264,28 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatPermissionsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetChatPhotoRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatPhoto`,
+		trace.WithAttributes(otelogen.OperationID(`setChatPhoto`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetChatPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -1819,21 +2300,28 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res SetCha
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatPhotoResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (res SetChatStickerSetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatStickerSet`,
+		trace.WithAttributes(otelogen.OperationID(`setChatStickerSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetChatStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -1848,21 +2336,28 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatStickerSetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetChatTitleRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetChatTitle`,
+		trace.WithAttributes(otelogen.OperationID(`setChatTitle`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetChatTitleRequest(req)
 	if err != nil {
 		return res, err
@@ -1877,21 +2372,28 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res SetCha
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetChatTitleResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGameScoreRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetGameScore`,
+		trace.WithAttributes(otelogen.OperationID(`setGameScore`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetGameScoreRequest(req)
 	if err != nil {
 		return res, err
@@ -1906,21 +2408,28 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res SetGam
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetGameScoreResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetMyCommandsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommands`,
+		trace.WithAttributes(otelogen.OperationID(`setMyCommands`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -1935,21 +2444,28 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res SetM
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetMyCommandsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (res SetPassportDataErrorsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetPassportDataErrors`,
+		trace.WithAttributes(otelogen.OperationID(`setPassportDataErrors`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetPassportDataErrorsRequest(req)
 	if err != nil {
 		return res, err
@@ -1964,21 +2480,28 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetPassportDataErrorsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (res SetStickerPositionInSetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSet`,
+		trace.WithAttributes(otelogen.OperationID(`setStickerPositionInSet`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetStickerPositionInSetRequest(req)
 	if err != nil {
 		return res, err
@@ -1993,21 +2516,28 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetStickerPositionInSetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (res SetStickerSetThumbRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerSetThumb`,
+		trace.WithAttributes(otelogen.OperationID(`setStickerSetThumb`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetStickerSetThumbRequest(req)
 	if err != nil {
 		return res, err
@@ -2022,21 +2552,28 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetStickerSetThumbResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhookRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhook`,
+		trace.WithAttributes(otelogen.OperationID(`setWebhook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetWebhookRequest(req)
 	if err != nil {
 		return res, err
@@ -2051,21 +2588,28 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res SetWebhook
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetWebhookResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (res StopMessageLiveLocationRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `StopMessageLiveLocation`,
+		trace.WithAttributes(otelogen.OperationID(`stopMessageLiveLocation`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeStopMessageLiveLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -2080,21 +2624,28 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeStopMessageLiveLocationResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `StopPoll`,
+		trace.WithAttributes(otelogen.OperationID(`stopPoll`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeStopPollRequest(req)
 	if err != nil {
 		return res, err
@@ -2109,21 +2660,28 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res StopPollRes, e
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeStopPollResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res UnbanChatMemberRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `UnbanChatMember`,
+		trace.WithAttributes(otelogen.OperationID(`unbanChatMember`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeUnbanChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -2138,21 +2696,28 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUnbanChatMemberResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (res UnpinAllChatMessagesRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinAllChatMessages`,
+		trace.WithAttributes(otelogen.OperationID(`unpinAllChatMessages`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeUnpinAllChatMessagesRequest(req)
 	if err != nil {
 		return res, err
@@ -2167,21 +2732,28 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUnpinAllChatMessagesResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (res UnpinChatMessageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `UnpinChatMessage`,
+		trace.WithAttributes(otelogen.OperationID(`unpinChatMessage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeUnpinChatMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -2196,21 +2768,28 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUnpinChatMessageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (res UploadStickerFileRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFile`,
+		trace.WithAttributes(otelogen.OperationID(`uploadStickerFile`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeUploadStickerFileRequest(req)
 	if err != nil {
 		return res, err
@@ -2225,16 +2804,19 @@ func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUploadStickerFileResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }

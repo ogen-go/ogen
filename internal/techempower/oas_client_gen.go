@@ -22,8 +22,11 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
 )
 
 // No-op definition for keeping imports.
@@ -48,31 +51,89 @@ var (
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
+	_ = otelogen.Version
+	_ = trace.TraceIDFromHex
+	_ = otel.GetTracerProvider
 )
 
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
-type Client struct {
-	serverURL *url.URL
-	http      HTTPClient
+type config struct {
+	TracerProvider trace.TracerProvider
+	Tracer         trace.Tracer
+	Client         HTTPClient
 }
 
-func NewClient(serverURL string) *Client {
+const defaultTracerName = "github.com/ogen-go/ogen/otelogen"
+
+func newConfig(opts ...Option) config {
+	cfg := config{
+		TracerProvider: otel.GetTracerProvider(),
+		Client: &http.Client{
+			Timeout: time.Second * 15,
+		},
+	}
+	for _, opt := range opts {
+		opt.apply(&cfg)
+	}
+	cfg.Tracer = cfg.TracerProvider.Tracer(
+		defaultTracerName,
+		trace.WithInstrumentationVersion(otelogen.SemVersion()),
+	)
+	return cfg
+}
+
+type Option interface {
+	apply(*config)
+}
+
+type optionFunc func(*config)
+
+func (o optionFunc) apply(c *config) {
+	o(c)
+}
+
+// WithTracerProvider specifies a tracer provider to use for creating a tracer.
+// If none is specified, the global provider is used.
+func WithTracerProvider(provider trace.TracerProvider) Option {
+	return optionFunc(func(cfg *config) {
+		if provider != nil {
+			cfg.TracerProvider = provider
+		}
+	})
+}
+
+func WithHTTPClient(client HTTPClient) Option {
+	return optionFunc(func(cfg *config) {
+		if client != nil {
+			cfg.Client = client
+		}
+	})
+}
+
+type Client struct {
+	serverURL *url.URL
+	cfg       config
+}
+
+func NewClient(serverURL string, opts ...Option) *Client {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		panic(err) // TODO: fix
 	}
 	return &Client{
+		cfg:       newConfig(opts...),
 		serverURL: u,
-		http: &http.Client{
-			Timeout: time.Second * 15,
-		},
 	}
 }
 
 func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `Caching`,
+		trace.WithAttributes(otelogen.OperationID(`Caching`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/cached-worlds"
 
@@ -92,63 +153,84 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCachingResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DB`,
+		trace.WithAttributes(otelogen.OperationID(`DB`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/db"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDBResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `JSON`,
+		trace.WithAttributes(otelogen.OperationID(`json`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/json"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeJSONResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `Queries`,
+		trace.WithAttributes(otelogen.OperationID(`Queries`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
 
@@ -168,21 +250,28 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeQueriesResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `Updates`,
+		trace.WithAttributes(otelogen.OperationID(`Updates`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/updates"
 
@@ -202,16 +291,19 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUpdatesResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }

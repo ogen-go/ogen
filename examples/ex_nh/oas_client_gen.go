@@ -22,8 +22,11 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
 )
 
 // No-op definition for keeping imports.
@@ -48,31 +51,89 @@ var (
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
+	_ = otelogen.Version
+	_ = trace.TraceIDFromHex
+	_ = otel.GetTracerProvider
 )
 
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
-type Client struct {
-	serverURL *url.URL
-	http      HTTPClient
+type config struct {
+	TracerProvider trace.TracerProvider
+	Tracer         trace.Tracer
+	Client         HTTPClient
 }
 
-func NewClient(serverURL string) *Client {
+const defaultTracerName = "github.com/ogen-go/ogen/otelogen"
+
+func newConfig(opts ...Option) config {
+	cfg := config{
+		TracerProvider: otel.GetTracerProvider(),
+		Client: &http.Client{
+			Timeout: time.Second * 15,
+		},
+	}
+	for _, opt := range opts {
+		opt.apply(&cfg)
+	}
+	cfg.Tracer = cfg.TracerProvider.Tracer(
+		defaultTracerName,
+		trace.WithInstrumentationVersion(otelogen.SemVersion()),
+	)
+	return cfg
+}
+
+type Option interface {
+	apply(*config)
+}
+
+type optionFunc func(*config)
+
+func (o optionFunc) apply(c *config) {
+	o(c)
+}
+
+// WithTracerProvider specifies a tracer provider to use for creating a tracer.
+// If none is specified, the global provider is used.
+func WithTracerProvider(provider trace.TracerProvider) Option {
+	return optionFunc(func(cfg *config) {
+		if provider != nil {
+			cfg.TracerProvider = provider
+		}
+	})
+}
+
+func WithHTTPClient(client HTTPClient) Option {
+	return optionFunc(func(cfg *config) {
+		if client != nil {
+			cfg.Client = client
+		}
+	})
+}
+
+type Client struct {
+	serverURL *url.URL
+	cfg       config
+}
+
+func NewClient(serverURL string, opts ...Option) *Client {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		panic(err) // TODO: fix
 	}
 	return &Client{
+		cfg:       newConfig(opts...),
 		serverURL: u,
-		http: &http.Client{
-			Timeout: time.Second * 15,
-		},
 	}
 }
 
 func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetBook`,
+		trace.WithAttributes(otelogen.OperationID(`getBook`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/gallery/"
 	{
@@ -88,21 +149,28 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetBookResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageCoverImage`,
+		trace.WithAttributes(otelogen.OperationID(`getPageCoverImage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -128,21 +196,28 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPageCoverImageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageImage`,
+		trace.WithAttributes(otelogen.OperationID(`getPageImage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -178,21 +253,28 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPageImageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetPageThumbnailImage`,
+		trace.WithAttributes(otelogen.OperationID(`getPageThumbnailImage`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -228,21 +310,28 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetPageThumbnailImageResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `Search`,
+		trace.WithAttributes(otelogen.OperationID(`search`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/search"
 
@@ -272,21 +361,28 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSearchResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SearchByTagID`,
+		trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/tagged"
 
@@ -316,16 +412,19 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSearchByTagIDResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }

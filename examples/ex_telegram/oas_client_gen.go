@@ -22,8 +22,11 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
 )
 
 // No-op definition for keeping imports.
@@ -48,31 +51,88 @@ var (
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
+	_ = otelogen.Version
+	_ = trace.TraceIDFromHex
+	_ = otel.GetTracerProvider
 )
 
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
-type Client struct {
-	serverURL *url.URL
-	http      HTTPClient
+type config struct {
+	TracerProvider trace.TracerProvider
+	Tracer         trace.Tracer
+	Client         HTTPClient
 }
 
-func NewClient(serverURL string) *Client {
+const defaultTracerName = "github.com/ogen-go/ogen/otelogen"
+
+func newConfig(opts ...Option) config {
+	cfg := config{
+		TracerProvider: otel.GetTracerProvider(),
+		Client: &http.Client{
+			Timeout: time.Second * 15,
+		},
+	}
+	for _, opt := range opts {
+		opt.apply(&cfg)
+	}
+	cfg.Tracer = cfg.TracerProvider.Tracer(
+		defaultTracerName,
+		trace.WithInstrumentationVersion(otelogen.SemVersion()),
+	)
+	return cfg
+}
+
+type Option interface {
+	apply(*config)
+}
+
+type optionFunc func(*config)
+
+func (o optionFunc) apply(c *config) {
+	o(c)
+}
+
+// WithTracerProvider specifies a tracer provider to use for creating a tracer.
+// If none is specified, the global provider is used.
+func WithTracerProvider(provider trace.TracerProvider) Option {
+	return optionFunc(func(cfg *config) {
+		if provider != nil {
+			cfg.TracerProvider = provider
+		}
+	})
+}
+
+func WithHTTPClient(client HTTPClient) Option {
+	return optionFunc(func(cfg *config) {
+		if client != nil {
+			cfg.Client = client
+		}
+	})
+}
+
+type Client struct {
+	serverURL *url.URL
+	cfg       config
+}
+
+func NewClient(serverURL string, opts ...Option) *Client {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		panic(err) // TODO: fix
 	}
 	return &Client{
+		cfg:       newConfig(opts...),
 		serverURL: u,
-		http: &http.Client{
-			Timeout: time.Second * 15,
-		},
 	}
 }
 
 func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallbackQueryPostReq) (res AnswerCallbackQueryPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQueryPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAnswerCallbackQueryPostRequest(req)
 	if err != nil {
 		return res, err
@@ -87,21 +147,27 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerCallbackQueryPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCheckoutQueryPostReq) (res AnswerPreCheckoutQueryPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQueryPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req)
 	if err != nil {
 		return res, err
@@ -116,21 +182,27 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerPreCheckoutQueryPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShippingQueryPostReq) (res AnswerShippingQueryPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQueryPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeAnswerShippingQueryPostRequest(req)
 	if err != nil {
 		return res, err
@@ -145,42 +217,54 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeAnswerShippingQueryPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `ClosePost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/close"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeClosePostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteStickerFromSetPostReq) (res DeleteStickerFromSetPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSetPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteStickerFromSetPostRequest(req)
 	if err != nil {
 		return res, err
@@ -195,21 +279,27 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteStickerFromSetPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq) (res DeleteWebhookPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhookPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeDeleteWebhookPostRequest(req)
 	if err != nil {
 		return res, err
@@ -224,21 +314,27 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDeleteWebhookPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFilePostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetFilePost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetFilePostRequest(req)
 	if err != nil {
 		return res, err
@@ -253,21 +349,27 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetFilePostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScoresPostReq) (res GetGameHighScoresPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScoresPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetGameHighScoresPostRequest(req)
 	if err != nil {
 		return res, err
@@ -282,63 +384,81 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetGameHighScoresPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetMePost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMe"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMePostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommandsPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMyCommands"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMyCommandsPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq) (res GetStickerSetPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSetPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetStickerSetPostRequest(req)
 	if err != nil {
 		return res, err
@@ -353,21 +473,27 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetStickerSetPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res GetUpdatesPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdatesPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetUpdatesPostRequest(req)
 	if err != nil {
 		return res, err
@@ -382,21 +508,27 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUpdatesPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfilePhotosPostReq) (res GetUserProfilePhotosPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotosPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeGetUserProfilePhotosPostRequest(req)
 	if err != nil {
 		return res, err
@@ -411,63 +543,81 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetUserProfilePhotosPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetWebhookInfoPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getWebhookInfo"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetWebhookInfoPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `LogOutPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logOut"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeLogOutPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res SendGamePostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendGamePost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendGamePostRequest(req)
 	if err != nil {
 		return res, err
@@ -482,21 +632,27 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendGamePostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (res SendInvoicePostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoicePost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSendInvoicePostRequest(req)
 	if err != nil {
 		return res, err
@@ -511,21 +667,27 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSendInvoicePostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq) (res SetMyCommandsPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommandsPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetMyCommandsPostRequest(req)
 	if err != nil {
 		return res, err
@@ -540,21 +702,27 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetMyCommandsPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetStickerPositionInSetPostReq) (res SetStickerPositionInSetPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSetPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetStickerPositionInSetPostRequest(req)
 	if err != nil {
 		return res, err
@@ -569,21 +737,27 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetStickerPositionInSetPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res SetWebhookPostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhookPost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeSetWebhookPostRequest(req)
 	if err != nil {
 		return res, err
@@ -598,21 +772,27 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeSetWebhookPostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFilePostReq) (res UploadStickerFilePostRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFilePost`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeUploadStickerFilePostRequest(req)
 	if err != nil {
 		return res, err
@@ -627,16 +807,19 @@ func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFil
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUploadStickerFilePostResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }

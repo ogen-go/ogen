@@ -22,8 +22,11 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
 )
 
 // No-op definition for keeping imports.
@@ -48,31 +51,89 @@ var (
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
+	_ = otelogen.Version
+	_ = trace.TraceIDFromHex
+	_ = otel.GetTracerProvider
 )
 
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
-type Client struct {
-	serverURL *url.URL
-	http      HTTPClient
+type config struct {
+	TracerProvider trace.TracerProvider
+	Tracer         trace.Tracer
+	Client         HTTPClient
 }
 
-func NewClient(serverURL string) *Client {
+const defaultTracerName = "github.com/ogen-go/ogen/otelogen"
+
+func newConfig(opts ...Option) config {
+	cfg := config{
+		TracerProvider: otel.GetTracerProvider(),
+		Client: &http.Client{
+			Timeout: time.Second * 15,
+		},
+	}
+	for _, opt := range opts {
+		opt.apply(&cfg)
+	}
+	cfg.Tracer = cfg.TracerProvider.Tracer(
+		defaultTracerName,
+		trace.WithInstrumentationVersion(otelogen.SemVersion()),
+	)
+	return cfg
+}
+
+type Option interface {
+	apply(*config)
+}
+
+type optionFunc func(*config)
+
+func (o optionFunc) apply(c *config) {
+	o(c)
+}
+
+// WithTracerProvider specifies a tracer provider to use for creating a tracer.
+// If none is specified, the global provider is used.
+func WithTracerProvider(provider trace.TracerProvider) Option {
+	return optionFunc(func(cfg *config) {
+		if provider != nil {
+			cfg.TracerProvider = provider
+		}
+	})
+}
+
+func WithHTTPClient(client HTTPClient) Option {
+	return optionFunc(func(cfg *config) {
+		if client != nil {
+			cfg.Client = client
+		}
+	})
+}
+
+type Client struct {
+	serverURL *url.URL
+	cfg       config
+}
+
+func NewClient(serverURL string, opts ...Option) *Client {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		panic(err) // TODO: fix
 	}
 	return &Client{
+		cfg:       newConfig(opts...),
 		serverURL: u,
-		http: &http.Client{
-			Timeout: time.Second * 15,
-		},
 	}
 }
 
 func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (res CreateSnapshotRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSnapshot`,
+		trace.WithAttributes(otelogen.OperationID(`createSnapshot`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeCreateSnapshotRequest(req)
 	if err != nil {
 		return res, err
@@ -87,21 +148,28 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateSnapshotResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (res CreateSyncActionRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `CreateSyncAction`,
+		trace.WithAttributes(otelogen.OperationID(`createSyncAction`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeCreateSyncActionRequest(req)
 	if err != nil {
 		return res, err
@@ -116,126 +184,168 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCreateSyncActionResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeBalloonConfig`,
+		trace.WithAttributes(otelogen.OperationID(`describeBalloonConfig`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDescribeBalloonConfigResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeBalloonStats`,
+		trace.WithAttributes(otelogen.OperationID(`describeBalloonStats`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDescribeBalloonStatsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `DescribeInstance`,
+		trace.WithAttributes(otelogen.OperationID(`describeInstance`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDescribeInstanceResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetExportVmConfig`,
+		trace.WithAttributes(otelogen.OperationID(`getExportVmConfig`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm/config"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetExportVmConfigResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `GetMachineConfiguration`,
+		trace.WithAttributes(otelogen.OperationID(`getMachineConfiguration`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeGetMachineConfigurationResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res LoadSnapshotRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `LoadSnapshot`,
+		trace.WithAttributes(otelogen.OperationID(`loadSnapshot`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeLoadSnapshotRequest(req)
 	if err != nil {
 		return res, err
@@ -250,21 +360,27 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeLoadSnapshotResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsConfigPutRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsConfigPut`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeMmdsConfigPutRequest(req)
 	if err != nil {
 		return res, err
@@ -279,42 +395,54 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsConfigPutResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsGet`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsGetResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatchRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPatch`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeMmdsPatchRequest(req)
 	if err != nil {
 		return res, err
@@ -329,21 +457,27 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsPatchResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPut`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodeMmdsPutRequest(req)
 	if err != nil {
 		return res, err
@@ -358,21 +492,28 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeMmdsPutResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res PatchBalloonRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloon`,
+		trace.WithAttributes(otelogen.OperationID(`patchBalloon`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePatchBalloonRequest(req)
 	if err != nil {
 		return res, err
@@ -387,21 +528,28 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchBalloonResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PatchBalloonStatsInterval`,
+		trace.WithAttributes(otelogen.OperationID(`patchBalloonStatsInterval`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePatchBalloonStatsIntervalRequest(req)
 	if err != nil {
 		return res, err
@@ -416,21 +564,28 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchBalloonStatsIntervalResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestDriveByID`,
+		trace.WithAttributes(otelogen.OperationID(`patchGuestDriveByID`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePatchGuestDriveByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -454,21 +609,28 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchGuestDriveByIDResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PatchGuestNetworkInterfaceByID`,
+		trace.WithAttributes(otelogen.OperationID(`patchGuestNetworkInterfaceByID`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -492,21 +654,28 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchGuestNetworkInterfaceByIDResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PatchMachineConfigurationRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PatchMachineConfiguration`,
+		trace.WithAttributes(otelogen.OperationID(`patchMachineConfiguration`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePatchMachineConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -521,21 +690,28 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchMachineConfigurationResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PatchVm`,
+		trace.WithAttributes(otelogen.OperationID(`patchVm`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePatchVmRequest(req)
 	if err != nil {
 		return res, err
@@ -550,21 +726,28 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePatchVmResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutBalloon`,
+		trace.WithAttributes(otelogen.OperationID(`putBalloon`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutBalloonRequest(req)
 	if err != nil {
 		return res, err
@@ -579,21 +762,28 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutBalloonResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res PutGuestBootSourceRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestBootSource`,
+		trace.WithAttributes(otelogen.OperationID(`putGuestBootSource`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutGuestBootSourceRequest(req)
 	if err != nil {
 		return res, err
@@ -608,21 +798,28 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestBootSourceResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestDriveByID`,
+		trace.WithAttributes(otelogen.OperationID(`putGuestDriveByID`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutGuestDriveByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -646,21 +843,28 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestDriveByIDResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestNetworkInterfaceByID`,
+		trace.WithAttributes(otelogen.OperationID(`putGuestNetworkInterfaceByID`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req)
 	if err != nil {
 		return res, err
@@ -684,21 +888,28 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestNetworkInterfaceByIDResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsockRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutGuestVsock`,
+		trace.WithAttributes(otelogen.OperationID(`putGuestVsock`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutGuestVsockRequest(req)
 	if err != nil {
 		return res, err
@@ -713,21 +924,28 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutGuestVsockResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutLogger`,
+		trace.WithAttributes(otelogen.OperationID(`putLogger`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutLoggerRequest(req)
 	if err != nil {
 		return res, err
@@ -742,21 +960,28 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutLoggerResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfiguration) (res PutMachineConfigurationRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutMachineConfiguration`,
+		trace.WithAttributes(otelogen.OperationID(`putMachineConfiguration`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutMachineConfigurationRequest(req)
 	if err != nil {
 		return res, err
@@ -771,21 +996,28 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutMachineConfigurationResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
 
 func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes, err error) {
+	ctx, span := c.cfg.Tracer.Start(ctx, `PutMetrics`,
+		trace.WithAttributes(otelogen.OperationID(`putMetrics`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
 	buf, contentType, err := encodePutMetricsRequest(req)
 	if err != nil {
 		return res, err
@@ -800,16 +1032,19 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 
 	r.Header.Set("Content-Type", contentType)
 
-	resp, err := c.http.Do(r)
+	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodePutMetricsResponse(resp)
 	if err != nil {
+		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
+	span.End()
 	return result, nil
 }
