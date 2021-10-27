@@ -65420,7 +65420,7 @@ func (o *OptBool) ReadJSON(i *json.Iterator) error {
 		o.Value = bool(i.ReadBool())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptBool", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptBool", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65437,7 +65437,7 @@ func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
 		o.Value = float64(i.ReadFloat64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptFloat64", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65454,7 +65454,7 @@ func (o *OptInt32) ReadJSON(i *json.Iterator) error {
 		o.Value = int32(i.ReadInt32())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt32", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt32", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65471,7 +65471,7 @@ func (o *OptInt64) ReadJSON(i *json.Iterator) error {
 		o.Value = int64(i.ReadInt64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt64", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65490,7 +65490,7 @@ func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAdmissionregistrationV1ServiceReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAdmissionregistrationV1ServiceReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65509,7 +65509,7 @@ func (o *OptIoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DaemonSetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DaemonSetSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65528,7 +65528,7 @@ func (o *OptIoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DaemonSetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DaemonSetStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65547,7 +65547,7 @@ func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DaemonSetUpdateStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DaemonSetUpdateStrategy", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65566,7 +65566,7 @@ func (o *OptIoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DeploymentSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DeploymentSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65585,7 +65585,7 @@ func (o *OptIoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DeploymentStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DeploymentStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65604,7 +65604,7 @@ func (o *OptIoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DeploymentStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DeploymentStrategy", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65623,7 +65623,7 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1ReplicaSetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1ReplicaSetSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65642,7 +65642,7 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1ReplicaSetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1ReplicaSetStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65661,7 +65661,7 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1RollingUpdateDaemonSet", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1RollingUpdateDaemonSet", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65680,7 +65680,7 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1RollingUpdateDeployment", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1RollingUpdateDeployment", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65699,7 +65699,7 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65718,7 +65718,7 @@ func (o *OptIoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1StatefulSetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1StatefulSetSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65737,7 +65737,7 @@ func (o *OptIoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1StatefulSetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1StatefulSetStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65756,7 +65756,7 @@ func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1StatefulSetUpdateStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1StatefulSetUpdateStrategy", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65775,7 +65775,7 @@ func (o *OptIoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthenticationV1TokenReviewStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAuthenticationV1TokenReviewStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65794,7 +65794,7 @@ func (o *OptIoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthenticationV1UserInfo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAuthenticationV1UserInfo", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65813,7 +65813,7 @@ func (o *OptIoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1NonResourceAttributes", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAuthorizationV1NonResourceAttributes", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65832,7 +65832,7 @@ func (o *OptIoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1ResourceAttributes", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAuthorizationV1ResourceAttributes", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65851,7 +65851,7 @@ func (o *OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65870,7 +65870,7 @@ func (o *OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65889,7 +65889,7 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65908,7 +65908,7 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65927,7 +65927,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65946,7 +65946,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65965,7 +65965,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -65984,7 +65984,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66003,7 +66003,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *j
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66022,7 +66022,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66041,7 +66041,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66060,7 +66060,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66079,7 +66079,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66098,7 +66098,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66117,7 +66117,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66136,7 +66136,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66155,7 +66155,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(i 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66174,7 +66174,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(i 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66193,7 +66193,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66212,7 +66212,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66231,7 +66231,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HPAScalingRules", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HPAScalingRules", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66250,7 +66250,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66269,7 +66269,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *j
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66288,7 +66288,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66307,7 +66307,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66326,7 +66326,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66345,7 +66345,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66364,7 +66364,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66383,7 +66383,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66402,7 +66402,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66421,7 +66421,7 @@ func (o *OptIoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1CronJobSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1CronJobSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66440,7 +66440,7 @@ func (o *OptIoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1CronJobStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1CronJobStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66459,7 +66459,7 @@ func (o *OptIoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1JobSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1JobSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66478,7 +66478,7 @@ func (o *OptIoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1JobStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1JobStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66497,7 +66497,7 @@ func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1UncountedTerminatedPods", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1UncountedTerminatedPods", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66516,7 +66516,7 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1beta1CronJobSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1beta1CronJobSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66535,7 +66535,7 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1beta1CronJobStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1beta1CronJobStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66554,7 +66554,7 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *j
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICertificatesV1CertificateSigningRequestStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICertificatesV1CertificateSigningRequestStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66573,7 +66573,7 @@ func (o *OptIoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoordinationV1LeaseSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoordinationV1LeaseSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66592,7 +66592,7 @@ func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66611,7 +66611,7 @@ func (o *OptIoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Affinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Affinity", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66630,7 +66630,7 @@ func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AzureDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AzureDiskVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66649,7 +66649,7 @@ func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AzureFilePersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AzureFilePersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66668,7 +66668,7 @@ func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AzureFileVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AzureFileVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66687,7 +66687,7 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CSIPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CSIPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66706,7 +66706,7 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CSIVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CSIVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66725,7 +66725,7 @@ func (o *OptIoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Capabilities", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Capabilities", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66744,7 +66744,7 @@ func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CephFSPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CephFSPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66763,7 +66763,7 @@ func (o *OptIoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CephFSVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CephFSVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66782,7 +66782,7 @@ func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CinderPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CinderPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66801,7 +66801,7 @@ func (o *OptIoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CinderVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CinderVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66820,7 +66820,7 @@ func (o *OptIoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ClientIPConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ClientIPConfig", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66839,7 +66839,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapEnvSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapEnvSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66858,7 +66858,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapKeySelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapKeySelector", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66877,7 +66877,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapNodeConfigSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapNodeConfigSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66896,7 +66896,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapProjection", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66915,7 +66915,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66934,7 +66934,7 @@ func (o *OptIoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerState", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66953,7 +66953,7 @@ func (o *OptIoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerStateRunning", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerStateRunning", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66972,7 +66972,7 @@ func (o *OptIoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerStateTerminated", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerStateTerminated", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -66991,7 +66991,7 @@ func (o *OptIoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerStateWaiting", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerStateWaiting", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67010,7 +67010,7 @@ func (o *OptIoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1DaemonEndpoint", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1DaemonEndpoint", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67029,7 +67029,7 @@ func (o *OptIoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1DownwardAPIProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1DownwardAPIProjection", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67048,7 +67048,7 @@ func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1DownwardAPIVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1DownwardAPIVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67067,7 +67067,7 @@ func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EmptyDirVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EmptyDirVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67086,7 +67086,7 @@ func (o *OptIoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EnvVarSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EnvVarSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67105,7 +67105,7 @@ func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EphemeralVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EphemeralVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67124,7 +67124,7 @@ func (o *OptIoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EventSeries", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EventSeries", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67143,7 +67143,7 @@ func (o *OptIoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EventSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EventSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67162,7 +67162,7 @@ func (o *OptIoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ExecAction", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ExecAction", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67181,7 +67181,7 @@ func (o *OptIoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FCVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FCVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67200,7 +67200,7 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FlexPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlexPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67219,7 +67219,7 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FlexVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlexVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67238,7 +67238,7 @@ func (o *OptIoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FlockerVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlockerVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67257,7 +67257,7 @@ func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67276,7 +67276,7 @@ func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GitRepoVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GitRepoVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67295,7 +67295,7 @@ func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67314,7 +67314,7 @@ func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GlusterfsVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GlusterfsVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67333,7 +67333,7 @@ func (o *OptIoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1HTTPGetAction", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1HTTPGetAction", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67352,7 +67352,7 @@ func (o *OptIoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Handler", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Handler", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67371,7 +67371,7 @@ func (o *OptIoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1HostPathVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1HostPathVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67390,7 +67390,7 @@ func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ISCSIPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ISCSIPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67409,7 +67409,7 @@ func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ISCSIVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ISCSIVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67428,7 +67428,7 @@ func (o *OptIoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Lifecycle", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Lifecycle", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67447,7 +67447,7 @@ func (o *OptIoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LimitRangeSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67466,7 +67466,7 @@ func (o *OptIoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LoadBalancerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LoadBalancerStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67485,7 +67485,7 @@ func (o *OptIoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LocalObjectReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LocalObjectReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67504,7 +67504,7 @@ func (o *OptIoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LocalVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LocalVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67523,7 +67523,7 @@ func (o *OptIoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NFSVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NFSVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67542,7 +67542,7 @@ func (o *OptIoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NamespaceSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NamespaceSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67561,7 +67561,7 @@ func (o *OptIoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NamespaceStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NamespaceStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67580,7 +67580,7 @@ func (o *OptIoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeAffinity", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67599,7 +67599,7 @@ func (o *OptIoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeConfigSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeConfigSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67618,7 +67618,7 @@ func (o *OptIoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeConfigStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeConfigStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67637,7 +67637,7 @@ func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeDaemonEndpoints", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeDaemonEndpoints", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67656,7 +67656,7 @@ func (o *OptIoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeSelector", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67675,7 +67675,7 @@ func (o *OptIoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67694,7 +67694,7 @@ func (o *OptIoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67713,7 +67713,7 @@ func (o *OptIoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeSystemInfo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeSystemInfo", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67732,7 +67732,7 @@ func (o *OptIoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ObjectFieldSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ObjectFieldSelector", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67751,7 +67751,7 @@ func (o *OptIoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ObjectReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ObjectReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67770,7 +67770,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67789,7 +67789,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67808,7 +67808,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimTemplate", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimTemplate", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67827,7 +67827,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67846,7 +67846,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67865,7 +67865,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67884,7 +67884,7 @@ func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67903,7 +67903,7 @@ func (o *OptIoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodAffinity", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67922,7 +67922,7 @@ func (o *OptIoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodAntiAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodAntiAffinity", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67941,7 +67941,7 @@ func (o *OptIoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodDNSConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodDNSConfig", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67960,7 +67960,7 @@ func (o *OptIoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodSecurityContext", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodSecurityContext", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67979,7 +67979,7 @@ func (o *OptIoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -67998,7 +67998,7 @@ func (o *OptIoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68017,7 +68017,7 @@ func (o *OptIoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodTemplateSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodTemplateSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68036,7 +68036,7 @@ func (o *OptIoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PortworxVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PortworxVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68055,7 +68055,7 @@ func (o *OptIoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Probe", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Probe", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68074,7 +68074,7 @@ func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ProjectedVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ProjectedVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68093,7 +68093,7 @@ func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1QuobyteVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1QuobyteVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68112,7 +68112,7 @@ func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1RBDPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1RBDPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68131,7 +68131,7 @@ func (o *OptIoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1RBDVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1RBDVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68150,7 +68150,7 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ReplicationControllerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ReplicationControllerSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68169,7 +68169,7 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ReplicationControllerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ReplicationControllerStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68188,7 +68188,7 @@ func (o *OptIoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceFieldSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceFieldSelector", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68207,7 +68207,7 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceQuotaSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68226,7 +68226,7 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceQuotaStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68245,7 +68245,7 @@ func (o *OptIoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceRequirements", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceRequirements", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68264,7 +68264,7 @@ func (o *OptIoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SELinuxOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SELinuxOptions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68283,7 +68283,7 @@ func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68302,7 +68302,7 @@ func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ScaleIOVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ScaleIOVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68321,7 +68321,7 @@ func (o *OptIoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ScopeSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ScopeSelector", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68340,7 +68340,7 @@ func (o *OptIoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SeccompProfile", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SeccompProfile", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68359,7 +68359,7 @@ func (o *OptIoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretEnvSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretEnvSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68378,7 +68378,7 @@ func (o *OptIoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretKeySelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretKeySelector", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68397,7 +68397,7 @@ func (o *OptIoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretProjection", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68416,7 +68416,7 @@ func (o *OptIoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68435,7 +68435,7 @@ func (o *OptIoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68454,7 +68454,7 @@ func (o *OptIoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecurityContext", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecurityContext", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68473,7 +68473,7 @@ func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ServiceAccountTokenProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ServiceAccountTokenProjection", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68492,7 +68492,7 @@ func (o *OptIoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ServiceSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ServiceSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68511,7 +68511,7 @@ func (o *OptIoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ServiceStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ServiceStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68530,7 +68530,7 @@ func (o *OptIoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SessionAffinityConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SessionAffinityConfig", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68549,7 +68549,7 @@ func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1StorageOSPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1StorageOSPersistentVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68568,7 +68568,7 @@ func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1StorageOSVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1StorageOSVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68587,7 +68587,7 @@ func (o *OptIoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1TCPSocketAction", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1TCPSocketAction", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68606,7 +68606,7 @@ func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1TypedLocalObjectReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1TypedLocalObjectReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68625,7 +68625,7 @@ func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1VolumeNodeAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1VolumeNodeAffinity", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68644,7 +68644,7 @@ func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68663,7 +68663,7 @@ func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1WindowsSecurityContextOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1WindowsSecurityContextOptions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68682,7 +68682,7 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1EndpointConditions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1EndpointConditions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68701,7 +68701,7 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1EndpointHints", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1EndpointHints", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68720,7 +68720,7 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1beta1EndpointConditions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1beta1EndpointConditions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68739,7 +68739,7 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1beta1EndpointHints", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1beta1EndpointHints", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68758,7 +68758,7 @@ func (o *OptIoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIEventsV1EventSeries", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIEventsV1EventSeries", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68777,7 +68777,7 @@ func (o *OptIoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIEventsV1beta1EventSeries", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIEventsV1beta1EventSeries", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68796,7 +68796,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68815,7 +68815,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68834,7 +68834,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68853,7 +68853,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1GroupSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1GroupSubject", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68872,7 +68872,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1LimitResponse", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1LimitResponse", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68891,7 +68891,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSO
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68910,7 +68910,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68929,7 +68929,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68948,7 +68948,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68967,7 +68967,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -68986,7 +68986,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1UserSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1UserSubject", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69005,7 +69005,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69024,7 +69024,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69043,7 +69043,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69062,7 +69062,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2GroupSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2GroupSubject", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69081,7 +69081,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2LimitResponse", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2LimitResponse", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69100,7 +69100,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSO
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69119,7 +69119,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69138,7 +69138,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69157,7 +69157,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69176,7 +69176,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69195,7 +69195,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2UserSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2UserSubject", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69214,7 +69214,7 @@ func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1HTTPIngressRuleValue", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1HTTPIngressRuleValue", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69233,7 +69233,7 @@ func (o *OptIoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IPBlock", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IPBlock", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69252,7 +69252,7 @@ func (o *OptIoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressBackend", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressBackend", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69271,7 +69271,7 @@ func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressClassParametersReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressClassParametersReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69290,7 +69290,7 @@ func (o *OptIoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressClassSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressClassSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69309,7 +69309,7 @@ func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressServiceBackend", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressServiceBackend", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69328,7 +69328,7 @@ func (o *OptIoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69347,7 +69347,7 @@ func (o *OptIoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69366,7 +69366,7 @@ func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1NetworkPolicySpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1NetworkPolicySpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69385,7 +69385,7 @@ func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1ServiceBackendPort", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1ServiceBackendPort", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69404,7 +69404,7 @@ func (o *OptIoK8sAPINodeV1Overhead) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1Overhead", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1Overhead", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69423,7 +69423,7 @@ func (o *OptIoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1Scheduling", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1Scheduling", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69442,7 +69442,7 @@ func (o *OptIoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1alpha1Overhead", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1alpha1Overhead", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69461,7 +69461,7 @@ func (o *OptIoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1alpha1Scheduling", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1alpha1Scheduling", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69480,7 +69480,7 @@ func (o *OptIoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1beta1Overhead", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1beta1Overhead", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69499,7 +69499,7 @@ func (o *OptIoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1beta1Scheduling", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1beta1Scheduling", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69518,7 +69518,7 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69537,7 +69537,7 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69556,7 +69556,7 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69575,7 +69575,7 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69594,7 +69594,7 @@ func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69613,7 +69613,7 @@ func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69632,7 +69632,7 @@ func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69651,7 +69651,7 @@ func (o *OptIoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIRbacV1AggregationRule", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIRbacV1AggregationRule", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69670,7 +69670,7 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIStorageV1VolumeAttachmentStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1VolumeAttachmentStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69689,7 +69689,7 @@ func (o *OptIoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIStorageV1VolumeError", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1VolumeError", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69708,7 +69708,7 @@ func (o *OptIoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIStorageV1VolumeNodeResources", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1VolumeNodeResources", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69727,7 +69727,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConve
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69746,7 +69746,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69765,7 +69765,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69784,7 +69784,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69803,7 +69803,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69822,7 +69822,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValid
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69841,7 +69841,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentati
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69860,7 +69860,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Re
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69879,7 +69879,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) R
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69898,7 +69898,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69917,7 +69917,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69932,7 +69932,7 @@ func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) ReadJSON(i *json.Iterator) 
 		o.Set = true
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgAPIResourceQuantity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgAPIResourceQuantity", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69951,7 +69951,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(i *
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69970,7 +69970,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1LabelSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1LabelSelector", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -69989,7 +69989,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1ListMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ListMeta", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70004,7 +70004,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) ReadJSON(i *json.Iterator) 
 		o.Set = true
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1MicroTime", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1MicroTime", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70023,7 +70023,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMeta", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70042,7 +70042,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1Preconditions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1Preconditions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70061,7 +70061,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1StatusDetails", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1StatusDetails", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70076,7 +70076,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1Time) ReadJSON(i *json.Iterator) error
 		o.Set = true
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1Time", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1Time", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70091,7 +70091,7 @@ func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) ReadJSON(i *json.Iterator
 		o.Set = true
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgUtilIntstrIntOrString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgUtilIntstrIntOrString", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70110,7 +70110,7 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70129,7 +70129,7 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSO
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70148,7 +70148,7 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSO
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -70165,7 +70165,7 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 		o.Value = string(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptString", json.TypeStr(i.WhatIsNext()))
 	}
 }
 

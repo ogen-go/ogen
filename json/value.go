@@ -20,3 +20,25 @@ const (
 	// ObjectValue JSON element {}
 	ObjectValue = json.ObjectValue
 )
+
+// TypeStr returns string representation of s.
+func TypeStr(v json.ValueType) string {
+	switch v {
+	case InvalidValue:
+		return "invalid"
+	case NumberValue:
+		return "number"
+	case NilValue:
+		return "nil"
+	case ArrayValue:
+		return "array"
+	case ObjectValue:
+		return "object"
+	case BoolValue:
+		return "bool"
+	case StringValue:
+		return "string"
+	default:
+		return "unknown"
+	}
+}

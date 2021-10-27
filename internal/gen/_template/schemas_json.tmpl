@@ -106,7 +106,7 @@ func (o *{{ $t.Name }}) ReadJSON(i *json.Iterator{{ if $g.Format }}, format func
         return i.Error
     {{- end }}
     default:
-        return fmt.Errorf("unexpected type %d while reading {{ $t.Name }}", i.WhatIsNext())
+        return fmt.Errorf("unexpected type %q while reading {{ $t.Name }}", json.TypeStr(i.WhatIsNext()))
     }
 }
 {{- else if $t.IsEnum }}
@@ -147,7 +147,7 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
         s.Type = {{ $s.Name }}{{ $t.Name }}
     {{- end }}
     default:
-        return fmt.Errorf("unexpected json type %d", t)
+        return fmt.Errorf("unexpected json type %q", json.TypeStr(t))
     }
     return nil
 }

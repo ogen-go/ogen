@@ -1669,7 +1669,7 @@ func (o *OptBalloon) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptBalloon", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptBalloon", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1686,7 +1686,7 @@ func (o *OptBool) ReadJSON(i *json.Iterator) error {
 		o.Value = bool(i.ReadBool())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptBool", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptBool", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1705,7 +1705,7 @@ func (o *OptBootSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptBootSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptBootSource", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1722,7 +1722,7 @@ func (o *OptCpuTemplate) ReadJSON(i *json.Iterator) error {
 		o.Value = CpuTemplate(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptCpuTemplate", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptCpuTemplate", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1739,7 +1739,7 @@ func (o *OptInt) ReadJSON(i *json.Iterator) error {
 		o.Value = int(i.ReadInt())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1756,7 +1756,7 @@ func (o *OptInt64) ReadJSON(i *json.Iterator) error {
 		o.Value = int64(i.ReadInt64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt64", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1775,7 +1775,7 @@ func (o *OptLogger) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptLogger", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptLogger", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1792,7 +1792,7 @@ func (o *OptLoggerLevel) ReadJSON(i *json.Iterator) error {
 		o.Value = LoggerLevel(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptLoggerLevel", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptLoggerLevel", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1811,7 +1811,7 @@ func (o *OptMachineConfiguration) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMachineConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMachineConfiguration", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1830,7 +1830,7 @@ func (o *OptMetrics) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMetrics", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMetrics", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1849,7 +1849,7 @@ func (o *OptMmdsConfig) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMmdsConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMmdsConfig", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1868,7 +1868,7 @@ func (o *OptRateLimiter) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptRateLimiter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptRateLimiter", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1885,7 +1885,7 @@ func (o *OptSnapshotCreateParamsSnapshotType) ReadJSON(i *json.Iterator) error {
 		o.Value = SnapshotCreateParamsSnapshotType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptSnapshotCreateParamsSnapshotType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptSnapshotCreateParamsSnapshotType", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1902,7 +1902,7 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 		o.Value = string(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptString", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1921,7 +1921,7 @@ func (o *OptTokenBucket) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTokenBucket", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptTokenBucket", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -1940,7 +1940,7 @@ func (o *OptVsock) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVsock", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVsock", json.TypeStr(i.WhatIsNext()))
 	}
 }
 

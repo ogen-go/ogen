@@ -4686,7 +4686,7 @@ func (s *ID) ReadJSON(i *json.Iterator) error {
 		}
 		s.Type = IntID
 	default:
-		return fmt.Errorf("unexpected json type %d", t)
+		return fmt.Errorf("unexpected json type %q", json.TypeStr(t))
 	}
 	return nil
 }
@@ -6359,7 +6359,7 @@ func (o *OptAnimation) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptAnimation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptAnimation", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6378,7 +6378,7 @@ func (o *OptAudio) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptAudio", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptAudio", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6395,7 +6395,7 @@ func (o *OptBool) ReadJSON(i *json.Iterator) error {
 		o.Value = bool(i.ReadBool())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptBool", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptBool", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6414,7 +6414,7 @@ func (o *OptChatLocation) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptChatLocation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptChatLocation", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6433,7 +6433,7 @@ func (o *OptChatPermissions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptChatPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptChatPermissions", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6452,7 +6452,7 @@ func (o *OptChatPhoto) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptChatPhoto", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptChatPhoto", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6471,7 +6471,7 @@ func (o *OptContact) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptContact", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptContact", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6490,7 +6490,7 @@ func (o *OptDice) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptDice", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptDice", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6509,7 +6509,7 @@ func (o *OptDocument) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptDocument", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptDocument", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6526,7 +6526,7 @@ func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
 		o.Value = float64(i.ReadFloat64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptFloat64", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6545,7 +6545,7 @@ func (o *OptGame) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptGame", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptGame", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6560,7 +6560,7 @@ func (o *OptInlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
 		o.Set = true
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInlineKeyboardMarkup", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInlineKeyboardMarkup", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6577,7 +6577,7 @@ func (o *OptInt) ReadJSON(i *json.Iterator) error {
 		o.Value = int(i.ReadInt())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6594,7 +6594,7 @@ func (o *OptInt64) ReadJSON(i *json.Iterator) error {
 		o.Value = int64(i.ReadInt64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt64", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6613,7 +6613,7 @@ func (o *OptInvoice) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInvoice", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInvoice", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6632,7 +6632,7 @@ func (o *OptLocation) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptLocation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptLocation", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6651,7 +6651,7 @@ func (o *OptMaskPosition) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMaskPosition", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMaskPosition", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6670,7 +6670,7 @@ func (o *OptMessage) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMessage", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMessage", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6689,7 +6689,7 @@ func (o *OptMessageAutoDeleteTimerChanged) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptMessageAutoDeleteTimerChanged", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptMessageAutoDeleteTimerChanged", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6708,7 +6708,7 @@ func (o *OptOrderInfo) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptOrderInfo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptOrderInfo", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6727,7 +6727,7 @@ func (o *OptPassportData) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPassportData", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPassportData", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6746,7 +6746,7 @@ func (o *OptPassportFile) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPassportFile", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPassportFile", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6765,7 +6765,7 @@ func (o *OptPhotoSize) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPhotoSize", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPhotoSize", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6784,7 +6784,7 @@ func (o *OptPoll) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptPoll", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptPoll", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6803,7 +6803,7 @@ func (o *OptProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptProximityAlertTriggered", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptProximityAlertTriggered", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6822,7 +6822,7 @@ func (o *OptResponse) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptResponse", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptResponse", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6841,7 +6841,7 @@ func (o *OptShippingAddress) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptShippingAddress", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptShippingAddress", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6860,7 +6860,7 @@ func (o *OptSticker) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptSticker", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptSticker", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6877,7 +6877,7 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 		o.Value = string(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptString", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6896,7 +6896,7 @@ func (o *OptSuccessfulPayment) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptSuccessfulPayment", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptSuccessfulPayment", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6917,7 +6917,7 @@ func (o *OptURL) ReadJSON(i *json.Iterator) error {
 		o.Value = v
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptURL", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptURL", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6936,7 +6936,7 @@ func (o *OptUser) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptUser", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptUser", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6955,7 +6955,7 @@ func (o *OptVenue) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVenue", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVenue", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6974,7 +6974,7 @@ func (o *OptVideo) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVideo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVideo", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -6993,7 +6993,7 @@ func (o *OptVideoNote) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVideoNote", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVideoNote", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -7012,7 +7012,7 @@ func (o *OptVoice) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVoice", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVoice", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -7031,7 +7031,7 @@ func (o *OptVoiceChatEnded) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVoiceChatEnded", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVoiceChatEnded", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -7050,7 +7050,7 @@ func (o *OptVoiceChatParticipantsInvited) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVoiceChatParticipantsInvited", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVoiceChatParticipantsInvited", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -7069,7 +7069,7 @@ func (o *OptVoiceChatScheduled) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptVoiceChatScheduled", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptVoiceChatScheduled", json.TypeStr(i.WhatIsNext()))
 	}
 }
 

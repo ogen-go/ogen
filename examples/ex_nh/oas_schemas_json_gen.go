@@ -541,7 +541,7 @@ func (o *OptImage) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptImage", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptImage", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -560,7 +560,7 @@ func (o *OptImages) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptImages", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptImages", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -577,7 +577,7 @@ func (o *OptInt) ReadJSON(i *json.Iterator) error {
 		o.Value = int(i.ReadInt())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptInt", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -594,7 +594,7 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 		o.Value = string(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptString", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -611,7 +611,7 @@ func (o *OptTagType) ReadJSON(i *json.Iterator) error {
 		o.Value = TagType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTagType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptTagType", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
@@ -630,7 +630,7 @@ func (o *OptTitle) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptTitle", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %q while reading OptTitle", json.TypeStr(i.WhatIsNext()))
 	}
 }
 
