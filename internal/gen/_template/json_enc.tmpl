@@ -79,7 +79,7 @@ Unexpected nil semantic
     {{- $j := $t.JSON }}
     {{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) -}}
         {{- template "enc_json_value" $ }}
-    {{- else if $t.GenericOf -}}
+    {{- else if $t.IsGeneric -}}
         {{- template "enc_json_generic" $ }}
     {{- else if $j.Format -}}
         {{- template "enc_json_start" $ }}
