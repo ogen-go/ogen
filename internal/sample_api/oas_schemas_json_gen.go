@@ -77,7 +77,7 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -661,7 +661,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "friends":
 			if err := func() error {
-				s.Friends = s.Friends[:0]
+				s.Friends = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Pet
@@ -736,7 +736,9 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "kind":
 			if err := func() error {
-				s.Kind = PetKind(i.ReadString())
+				if err := s.Kind.ReadJSON(i); err != nil {
+					return err
+				}
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -758,7 +760,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.Next.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -769,7 +771,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.Nickname.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -781,7 +783,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.NullStr.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -825,7 +827,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.Tag.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -833,12 +835,12 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "testArray1":
 			if err := func() error {
-				s.TestArray1 = s.TestArray1[:0]
+				s.TestArray1 = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem []string
 					if err := func() error {
-						elem = elem[:0]
+						elem = nil
 						var retErr error
 						i.ReadArrayCB(func(i *json.Iterator) bool {
 							var elemElem string
@@ -878,7 +880,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -890,7 +892,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -902,7 +904,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.TestDuration.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -914,7 +916,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.TestFloat1.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -926,7 +928,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.TestInteger1.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -938,7 +940,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -950,7 +952,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false

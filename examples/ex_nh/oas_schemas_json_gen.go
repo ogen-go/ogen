@@ -121,7 +121,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -133,7 +133,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.Images.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -145,7 +145,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.MediaID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -157,7 +157,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.NumFavorites.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -169,7 +169,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.NumPages.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -181,7 +181,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.Scanlator.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -189,7 +189,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 			return true
 		case "tags":
 			if err := func() error {
-				s.Tags = s.Tags[:0]
+				s.Tags = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Tag
@@ -220,7 +220,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -232,7 +232,7 @@ func (s *Book) ReadJSON(i *json.Iterator) error {
 				if err := s.UploadDate.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -388,7 +388,7 @@ func (s *Image) ReadJSON(i *json.Iterator) error {
 				if err := s.H.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -400,7 +400,7 @@ func (s *Image) ReadJSON(i *json.Iterator) error {
 				if err := s.T.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -412,7 +412,7 @@ func (s *Image) ReadJSON(i *json.Iterator) error {
 				if err := s.W.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -470,7 +470,7 @@ func (s *Images) ReadJSON(i *json.Iterator) error {
 				if err := s.Cover.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -478,7 +478,7 @@ func (s *Images) ReadJSON(i *json.Iterator) error {
 			return true
 		case "pages":
 			if err := func() error {
-				s.Pages = s.Pages[:0]
+				s.Pages = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Image
@@ -509,7 +509,7 @@ func (s *Images) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumbnail.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -729,7 +729,7 @@ func (s *SearchResponse) ReadJSON(i *json.Iterator) error {
 				if err := s.NumPages.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -741,7 +741,7 @@ func (s *SearchResponse) ReadJSON(i *json.Iterator) error {
 				if err := s.PerPage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -749,7 +749,7 @@ func (s *SearchResponse) ReadJSON(i *json.Iterator) error {
 			return true
 		case "result":
 			if err := func() error {
-				s.Result = s.Result[:0]
+				s.Result = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Book
@@ -829,7 +829,7 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 				if err := s.Count.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -841,7 +841,7 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 				if err := s.ID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -853,7 +853,7 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -865,7 +865,7 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 				if err := s.Type.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -877,7 +877,7 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -939,7 +939,7 @@ func (s *Title) ReadJSON(i *json.Iterator) error {
 				if err := s.English.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -951,7 +951,7 @@ func (s *Title) ReadJSON(i *json.Iterator) error {
 				if err := s.Japanese.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -963,7 +963,7 @@ func (s *Title) ReadJSON(i *json.Iterator) error {
 				if err := s.Pretty.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false

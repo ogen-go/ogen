@@ -64,7 +64,12 @@ func (t *Type) Pointer(sem NilSemantic) *Type {
 // or decoding.
 //
 // TODO(ernado): can we use t.JSON here?
-func (t Type) Format() bool { return t.Primitive == Time }
+func (t *Type) Format() bool {
+	if t == nil {
+		return false
+	}
+	return t.Primitive == Time
+}
 
 // Tag of Field.
 type Tag struct {

@@ -6,7 +6,7 @@ i.ResetBytes(buf.Bytes())
 
 var response {{ $.Go }}
 if err := func() error {
-    {{- template "dec_json_value" req_elem $ }}
+    {{- template "dec_json" req_elem $ }}
 }(); err != nil {
     return res, err
 }

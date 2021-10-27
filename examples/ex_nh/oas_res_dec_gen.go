@@ -169,7 +169,10 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
 
 			var response SearchOKApplicationJSON
 			if err := func() error {
-				return fmt.Errorf(`decoding of "SearchOKApplicationJSON" (alias) is not implemented`)
+				if err := fmt.Errorf(`decoding of "SearchOKApplicationJSON" (alias) is not implemented`); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -202,7 +205,10 @@ func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, err
 
 			var response SearchByTagIDOKApplicationJSON
 			if err := func() error {
-				return fmt.Errorf(`decoding of "SearchByTagIDOKApplicationJSON" (alias) is not implemented`)
+				if err := fmt.Errorf(`decoding of "SearchByTagIDOKApplicationJSON" (alias) is not implemented`); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}

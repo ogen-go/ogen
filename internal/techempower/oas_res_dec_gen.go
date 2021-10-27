@@ -67,7 +67,10 @@ func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
 
 			var response WorldObjects
 			if err := func() error {
-				return fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`)
+				if err := fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -166,7 +169,10 @@ func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
 
 			var response WorldObjects
 			if err := func() error {
-				return fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`)
+				if err := fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}
@@ -197,7 +203,10 @@ func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, err error) {
 
 			var response WorldObjects
 			if err := func() error {
-				return fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`)
+				if err := fmt.Errorf(`decoding of "WorldObjects" (alias) is not implemented`); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				return res, err
 			}

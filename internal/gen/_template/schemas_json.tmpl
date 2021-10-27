@@ -25,7 +25,7 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
 {{- range $f := $t.JSON.Fields }}
     case "{{ $f.Tag.JSON }}":
     if err := func() error {
-        {{- template "dec_json_value" field_elem $f }}
+        {{- template "dec_json" field_elem $f }}
     }(); err != nil {
         retErr = err
         return false
@@ -140,7 +140,7 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
     {{- range $s := $t.SumOf }}
     case json.{{ $s.JSON.Type }}:
         if err := func() error {
-        {{- template "dec_json_value" sum_elem $s }}
+        {{- template "dec_json" sum_elem $s }}
         }(); err != nil {
             return err
         }

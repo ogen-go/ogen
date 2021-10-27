@@ -138,7 +138,10 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request) (req PetName, err erro
 		defer json.PutIterator(i)
 		i.ResetBytes(buf.Bytes())
 		if err := func() error {
-			return fmt.Errorf(`decoding of "PetName" (alias) is not implemented`)
+			if err := fmt.Errorf(`decoding of "PetName" (alias) is not implemented`); err != nil {
+				return err
+			}
+			return i.Error
 		}(); err != nil {
 			return req, err
 		}

@@ -24,7 +24,7 @@ func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.Go }}
         defer json.PutIterator(i)
         i.ResetBytes(buf.Bytes())
         if err := func() error {
-            {{- template "dec_json_value" req_dec_elem $t }}
+            {{- template "dec_json" req_dec_elem $t }}
         }(); err != nil {
             return req, err
         }

@@ -122,7 +122,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -134,7 +134,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -164,7 +164,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -176,7 +176,7 @@ func (s *Animation) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -244,7 +244,7 @@ func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) e
 				if err := s.CacheTime.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -265,7 +265,7 @@ func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) e
 				if err := s.ShowAlert.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -277,7 +277,7 @@ func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) e
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -289,7 +289,7 @@ func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) e
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -348,7 +348,7 @@ func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 				if err := s.CacheTime.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -369,7 +369,7 @@ func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 				if err := s.ShowAlert.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -381,7 +381,7 @@ func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -393,7 +393,7 @@ func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -452,7 +452,7 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 				if err := s.CacheTime.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -473,7 +473,7 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 				if err := s.ShowAlert.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -485,7 +485,7 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -497,7 +497,7 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -592,7 +592,7 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -657,7 +657,7 @@ func (s *AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i 
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -722,7 +722,7 @@ func (s *AnswerPreCheckoutQueryPostReqMultipartFormData) ReadJSON(i *json.Iterat
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -847,7 +847,7 @@ func (s *AnswerShippingQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) e
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -864,7 +864,7 @@ func (s *AnswerShippingQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) e
 			return true
 		case "shipping_options":
 			if err := func() error {
-				s.ShippingOptions = s.ShippingOptions[:0]
+				s.ShippingOptions = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ShippingOption
@@ -951,7 +951,7 @@ func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -968,7 +968,7 @@ func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *js
 			return true
 		case "shipping_options":
 			if err := func() error {
-				s.ShippingOptions = s.ShippingOptions[:0]
+				s.ShippingOptions = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ShippingOption
@@ -1055,7 +1055,7 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 				if err := s.ErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1072,7 +1072,7 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 			return true
 		case "shipping_options":
 			if err := func() error {
-				s.ShippingOptions = s.ShippingOptions[:0]
+				s.ShippingOptions = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem ShippingOption
@@ -1241,7 +1241,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1253,7 +1253,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1274,7 +1274,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1286,7 +1286,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 				if err := s.Performer.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1298,7 +1298,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1310,7 +1310,7 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1435,7 +1435,7 @@ func (s *CallbackQuery) ReadJSON(i *json.Iterator) error {
 				if err := s.Data.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1458,7 +1458,7 @@ func (s *CallbackQuery) ReadJSON(i *json.Iterator) error {
 				if err := s.GameShortName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1479,7 +1479,7 @@ func (s *CallbackQuery) ReadJSON(i *json.Iterator) error {
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1491,7 +1491,7 @@ func (s *CallbackQuery) ReadJSON(i *json.Iterator) error {
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1608,7 +1608,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.Bio.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1620,7 +1620,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.CanSetStickerSet.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1632,7 +1632,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.Description.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1644,7 +1644,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.FirstName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1665,7 +1665,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.InviteLink.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1677,7 +1677,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.LastName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1689,7 +1689,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.LinkedChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1701,7 +1701,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1713,7 +1713,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.Permissions.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1725,7 +1725,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.Photo.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1737,7 +1737,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.PinnedMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1749,7 +1749,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.SlowModeDelay.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1761,7 +1761,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.StickerSetName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1773,7 +1773,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.Title.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1781,7 +1781,9 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = ChatType(i.ReadString())
+				if err := s.Type.ReadJSON(i); err != nil {
+					return err
+				}
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -1794,7 +1796,7 @@ func (s *Chat) ReadJSON(i *json.Iterator) error {
 				if err := s.Username.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1920,7 +1922,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanAddWebPagePreviews.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1932,7 +1934,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanChangeInfo.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1944,7 +1946,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanInviteUsers.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1956,7 +1958,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanPinMessages.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1968,7 +1970,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanSendMediaMessages.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1980,7 +1982,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanSendMessages.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -1992,7 +1994,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanSendOtherMessages.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2004,7 +2006,7 @@ func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
 				if err := s.CanSendPolls.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2153,7 +2155,7 @@ func (s *ChosenInlineResult) ReadJSON(i *json.Iterator) error {
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2165,7 +2167,7 @@ func (s *ChosenInlineResult) ReadJSON(i *json.Iterator) error {
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2297,7 +2299,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 				if err := s.LastName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2318,7 +2320,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 				if err := s.UserID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2330,7 +2332,7 @@ func (s *Contact) ReadJSON(i *json.Iterator) error {
 				if err := s.Vcard.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2527,7 +2529,7 @@ func (s *DeleteWebhookPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2568,7 +2570,7 @@ func (s *DeleteWebhookPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Ite
 				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2609,7 +2611,7 @@ func (s *DeleteWebhookPostReqMultipartFormData) ReadJSON(i *json.Iterator) error
 				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2776,7 +2778,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2788,7 +2790,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2809,7 +2811,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2821,7 +2823,7 @@ func (s *Document) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2977,7 +2979,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 				if err := s.Data.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2989,7 +2991,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2997,7 +2999,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 			return true
 		case "files":
 			if err := func() error {
-				s.Files = s.Files[:0]
+				s.Files = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PassportFile
@@ -3028,7 +3030,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 				if err := s.FrontSide.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3049,7 +3051,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 				if err := s.PhoneNumber.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3061,7 +3063,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 				if err := s.ReverseSide.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3073,7 +3075,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 				if err := s.Selfie.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3081,7 +3083,7 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 			return true
 		case "translation":
 			if err := func() error {
-				s.Translation = s.Translation[:0]
+				s.Translation = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PassportFile
@@ -3108,7 +3110,9 @@ func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = EncryptedPassportElementType(i.ReadString())
+				if err := s.Type.ReadJSON(i); err != nil {
+					return err
+				}
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -3197,7 +3201,7 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 				if err := s.Parameters.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3282,7 +3286,7 @@ func (s *File) ReadJSON(i *json.Iterator) error {
 				if err := s.FilePath.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3294,7 +3298,7 @@ func (s *File) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3377,7 +3381,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 				if err := s.Animation.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3394,7 +3398,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo":
 			if err := func() error {
-				s.Photo = s.Photo[:0]
+				s.Photo = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PhotoSize
@@ -3425,7 +3429,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3433,7 +3437,7 @@ func (s *Game) ReadJSON(i *json.Iterator) error {
 			return true
 		case "text_entities":
 			if err := func() error {
-				s.TextEntities = s.TextEntities[:0]
+				s.TextEntities = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MessageEntity
@@ -3735,7 +3739,7 @@ func (s *GetGameHighScoresPostReqApplicationJSON) ReadJSON(i *json.Iterator) err
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3747,7 +3751,7 @@ func (s *GetGameHighScoresPostReqApplicationJSON) ReadJSON(i *json.Iterator) err
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3759,7 +3763,7 @@ func (s *GetGameHighScoresPostReqApplicationJSON) ReadJSON(i *json.Iterator) err
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3822,7 +3826,7 @@ func (s *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3834,7 +3838,7 @@ func (s *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3846,7 +3850,7 @@ func (s *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3909,7 +3913,7 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(i *json.Iterator) e
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3921,7 +3925,7 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(i *json.Iterator) e
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3933,7 +3937,7 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(i *json.Iterator) e
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3996,7 +4000,7 @@ func (s *GetGameHighScoresPostResOK) ReadJSON(i *json.Iterator) error {
 			return true
 		case "result":
 			if err := func() error {
-				s.Result = s.Result[:0]
+				s.Result = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem GameHighScore
@@ -4119,7 +4123,7 @@ func (s *GetMyCommandsPostResOK) ReadJSON(i *json.Iterator) error {
 			return true
 		case "result":
 			if err := func() error {
-				s.Result = s.Result[:0]
+				s.Result = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem BotCommand
@@ -4355,7 +4359,7 @@ func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = s.AllowedUpdates[:0]
+				s.AllowedUpdates = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -4384,7 +4388,7 @@ func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4396,7 +4400,7 @@ func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4408,7 +4412,7 @@ func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.Timeout.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4467,7 +4471,7 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterat
 		switch k {
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = s.AllowedUpdates[:0]
+				s.AllowedUpdates = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -4496,7 +4500,7 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterat
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4508,7 +4512,7 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterat
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4520,7 +4524,7 @@ func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterat
 				if err := s.Timeout.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4579,7 +4583,7 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = s.AllowedUpdates[:0]
+				s.AllowedUpdates = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -4608,7 +4612,7 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4620,7 +4624,7 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4632,7 +4636,7 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.Timeout.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4686,7 +4690,7 @@ func (s *GetUpdatesPostResOK) ReadJSON(i *json.Iterator) error {
 			return true
 		case "result":
 			if err := func() error {
-				s.Result = s.Result[:0]
+				s.Result = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Update
@@ -4754,7 +4758,7 @@ func (s *GetUserProfilePhotosPostReqApplicationJSON) ReadJSON(i *json.Iterator) 
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4766,7 +4770,7 @@ func (s *GetUserProfilePhotosPostReqApplicationJSON) ReadJSON(i *json.Iterator) 
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4824,7 +4828,7 @@ func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *j
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4836,7 +4840,7 @@ func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *j
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4894,7 +4898,7 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(i *json.Iterator
 				if err := s.Limit.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -4906,7 +4910,7 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(i *json.Iterator
 				if err := s.Offset.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5089,7 +5093,7 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 				if err := s.CallbackData.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5101,7 +5105,7 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 				if err := s.CallbackGame.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5113,7 +5117,7 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 				if err := s.LoginURL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5125,7 +5129,7 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 				if err := s.Pay.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5137,7 +5141,7 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 				if err := s.SwitchInlineQuery.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5149,7 +5153,7 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 				if err := s.SwitchInlineQueryCurrentChat.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5170,7 +5174,7 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5219,12 +5223,12 @@ func (s *InlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "inline_keyboard":
 			if err := func() error {
-				s.InlineKeyboard = s.InlineKeyboard[:0]
+				s.InlineKeyboard = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem []InlineKeyboardButton
 					if err := func() error {
-						elem = elem[:0]
+						elem = nil
 						var retErr error
 						i.ReadArrayCB(func(i *json.Iterator) bool {
 							var elemElem InlineKeyboardButton
@@ -5327,7 +5331,7 @@ func (s *InlineQuery) ReadJSON(i *json.Iterator) error {
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5542,7 +5546,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 				if err := s.Heading.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5554,7 +5558,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 				if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5575,7 +5579,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 				if err := s.LivePeriod.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5596,7 +5600,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 				if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5698,7 +5702,7 @@ func (s *LoginUrl) ReadJSON(i *json.Iterator) error {
 				if err := s.BotUsername.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5710,7 +5714,7 @@ func (s *LoginUrl) ReadJSON(i *json.Iterator) error {
 				if err := s.ForwardText.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5722,7 +5726,7 @@ func (s *LoginUrl) ReadJSON(i *json.Iterator) error {
 				if err := s.RequestWriteAccess.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5775,7 +5779,9 @@ func (s *MaskPosition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "point":
 			if err := func() error {
-				s.Point = MaskPositionPoint(i.ReadString())
+				if err := s.Point.ReadJSON(i); err != nil {
+					return err
+				}
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6136,7 +6142,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Animation.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6148,7 +6154,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Audio.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6160,7 +6166,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.AuthorSignature.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6172,7 +6178,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Caption.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6180,7 +6186,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = s.CaptionEntities[:0]
+				s.CaptionEntities = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MessageEntity
@@ -6211,7 +6217,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ChannelChatCreated.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6242,7 +6248,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ConnectedWebsite.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6254,7 +6260,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Contact.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6275,7 +6281,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.DeleteChatPhoto.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6287,7 +6293,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Dice.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6299,7 +6305,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Document.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6311,7 +6317,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.EditDate.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6319,7 +6325,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "entities":
 			if err := func() error {
-				s.Entities = s.Entities[:0]
+				s.Entities = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MessageEntity
@@ -6350,7 +6356,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ForwardDate.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6362,7 +6368,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ForwardFrom.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6393,7 +6399,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ForwardFromMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6405,7 +6411,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ForwardSenderName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6417,7 +6423,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ForwardSignature.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6429,7 +6435,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.From.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6441,7 +6447,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Game.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6453,7 +6459,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.GroupChatCreated.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6465,7 +6471,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Invoice.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6477,7 +6483,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.LeftChatMember.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6489,7 +6495,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Location.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6501,7 +6507,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.MediaGroupID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6522,7 +6528,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.MigrateFromChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6534,7 +6540,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.MigrateToChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6542,7 +6548,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "new_chat_members":
 			if err := func() error {
-				s.NewChatMembers = s.NewChatMembers[:0]
+				s.NewChatMembers = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem User
@@ -6569,7 +6575,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "new_chat_photo":
 			if err := func() error {
-				s.NewChatPhoto = s.NewChatPhoto[:0]
+				s.NewChatPhoto = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PhotoSize
@@ -6600,7 +6606,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.NewChatTitle.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6612,7 +6618,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.PassportData.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6620,7 +6626,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "photo":
 			if err := func() error {
-				s.Photo = s.Photo[:0]
+				s.Photo = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PhotoSize
@@ -6670,7 +6676,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Poll.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6682,7 +6688,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ProximityAlertTriggered.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6694,7 +6700,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6744,7 +6750,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Sticker.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6756,7 +6762,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.SuccessfulPayment.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6768,7 +6774,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.SupergroupChatCreated.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6780,7 +6786,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Text.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6792,7 +6798,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Venue.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6804,7 +6810,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.ViaBot.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6816,7 +6822,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Video.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6828,7 +6834,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.VideoNote.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6840,7 +6846,7 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 				if err := s.Voice.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6900,7 +6906,7 @@ func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
 				if err := s.Language.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6926,7 +6932,9 @@ func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
 			return true
 		case "type":
 			if err := func() error {
-				s.Type = MessageEntityType(i.ReadString())
+				if err := s.Type.ReadJSON(i); err != nil {
+					return err
+				}
 				return i.Error
 			}(); err != nil {
 				retErr = err
@@ -6939,7 +6947,7 @@ func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
 				if err := s.URL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6951,7 +6959,7 @@ func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
 				if err := s.User.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7800,7 +7808,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.Email.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7812,7 +7820,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.Name.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7824,7 +7832,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.PhoneNumber.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7836,7 +7844,7 @@ func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.ShippingAddress.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7892,7 +7900,7 @@ func (s *PassportData) ReadJSON(i *json.Iterator) error {
 			return true
 		case "data":
 			if err := func() error {
-				s.Data = s.Data[:0]
+				s.Data = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem EncryptedPassportElement
@@ -8045,7 +8053,7 @@ func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8180,7 +8188,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 				if err := s.CloseDate.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8192,7 +8200,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 				if err := s.CorrectOptionID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8204,7 +8212,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 				if err := s.Explanation.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8212,7 +8220,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "explanation_entities":
 			if err := func() error {
-				s.ExplanationEntities = s.ExplanationEntities[:0]
+				s.ExplanationEntities = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem MessageEntity
@@ -8270,7 +8278,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 				if err := s.OpenPeriod.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8278,7 +8286,7 @@ func (s *Poll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "options":
 			if err := func() error {
-				s.Options = s.Options[:0]
+				s.Options = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem PollOption
@@ -8372,7 +8380,7 @@ func (s *PollAnswer) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "option_ids":
 			if err := func() error {
-				s.OptionIds = s.OptionIds[:0]
+				s.OptionIds = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem int
@@ -8556,7 +8564,7 @@ func (s *PreCheckoutQuery) ReadJSON(i *json.Iterator) error {
 				if err := s.OrderInfo.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8568,7 +8576,7 @@ func (s *PreCheckoutQuery) ReadJSON(i *json.Iterator) error {
 				if err := s.ShippingOptionID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8687,7 +8695,7 @@ func (s *ResponseParameters) ReadJSON(i *json.Iterator) error {
 				if err := s.MigrateToChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8699,7 +8707,7 @@ func (s *ResponseParameters) ReadJSON(i *json.Iterator) error {
 				if err := s.RetryAfter.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8761,7 +8769,7 @@ func (s *SendGamePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8782,7 +8790,7 @@ func (s *SendGamePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8803,7 +8811,7 @@ func (s *SendGamePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8815,7 +8823,7 @@ func (s *SendGamePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8877,7 +8885,7 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8898,7 +8906,7 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8919,7 +8927,7 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator
 				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8931,7 +8939,7 @@ func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8993,7 +9001,7 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9014,7 +9022,7 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9035,7 +9043,7 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9047,7 +9055,7 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9244,7 +9252,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9283,7 +9291,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9295,7 +9303,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.IsFlexible.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9307,7 +9315,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedEmail.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9319,7 +9327,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9331,7 +9339,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9343,7 +9351,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9364,7 +9372,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoHeight.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9376,7 +9384,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9388,7 +9396,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoURL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9400,7 +9408,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoWidth.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9408,7 +9416,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 			return true
 		case "prices":
 			if err := func() error {
-				s.Prices = s.Prices[:0]
+				s.Prices = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem LabeledPrice
@@ -9439,7 +9447,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.ProviderData.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9460,7 +9468,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9472,7 +9480,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9484,7 +9492,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9496,7 +9504,7 @@ func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9661,7 +9669,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9700,7 +9708,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9712,7 +9720,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.IsFlexible.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9724,7 +9732,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.NeedEmail.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9736,7 +9744,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.NeedName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9748,7 +9756,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9760,7 +9768,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9781,7 +9789,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.PhotoHeight.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9793,7 +9801,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.PhotoSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9805,7 +9813,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.PhotoURL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9817,7 +9825,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.PhotoWidth.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9825,7 +9833,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 			return true
 		case "prices":
 			if err := func() error {
-				s.Prices = s.Prices[:0]
+				s.Prices = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem LabeledPrice
@@ -9856,7 +9864,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.ProviderData.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9877,7 +9885,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9889,7 +9897,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9901,7 +9909,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9913,7 +9921,7 @@ func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Itera
 				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10078,7 +10086,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10117,7 +10125,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.DisableNotification.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10129,7 +10137,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.IsFlexible.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10141,7 +10149,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedEmail.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10153,7 +10161,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10165,7 +10173,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10177,7 +10185,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10198,7 +10206,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoHeight.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10210,7 +10218,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10222,7 +10230,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoURL.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10234,7 +10242,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.PhotoWidth.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10242,7 +10250,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 			return true
 		case "prices":
 			if err := func() error {
-				s.Prices = s.Prices[:0]
+				s.Prices = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem LabeledPrice
@@ -10273,7 +10281,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.ProviderData.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10294,7 +10302,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10306,7 +10314,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10318,7 +10326,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10330,7 +10338,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 				if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10465,7 +10473,7 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10477,7 +10485,7 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10489,7 +10497,7 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.Force.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10501,7 +10509,7 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10513,7 +10521,7 @@ func (s *SetGameScorePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10598,7 +10606,7 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10610,7 +10618,7 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter
 				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10622,7 +10630,7 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter
 				if err := s.Force.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10634,7 +10642,7 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10646,7 +10654,7 @@ func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iter
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10731,7 +10739,7 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iterator) error 
 				if err := s.ChatID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10743,7 +10751,7 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iterator) error 
 				if err := s.DisableEditMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10755,7 +10763,7 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iterator) error 
 				if err := s.Force.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10767,7 +10775,7 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iterator) error 
 				if err := s.InlineMessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10779,7 +10787,7 @@ func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iterator) error 
 				if err := s.MessageID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -10839,7 +10847,7 @@ func (s *SetMyCommandsPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "commands":
 			if err := func() error {
-				s.Commands = s.Commands[:0]
+				s.Commands = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem BotCommand
@@ -10900,7 +10908,7 @@ func (s *SetMyCommandsPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Ite
 		switch k {
 		case "commands":
 			if err := func() error {
-				s.Commands = s.Commands[:0]
+				s.Commands = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem BotCommand
@@ -10961,7 +10969,7 @@ func (s *SetMyCommandsPostReqMultipartFormData) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "commands":
 			if err := func() error {
-				s.Commands = s.Commands[:0]
+				s.Commands = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem BotCommand
@@ -11287,7 +11295,7 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = s.AllowedUpdates[:0]
+				s.AllowedUpdates = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -11316,7 +11324,7 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 				if err := s.Certificate.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11328,7 +11336,7 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 				if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11340,7 +11348,7 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 				if err := s.IPAddress.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11352,7 +11360,7 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 				if err := s.MaxConnections.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11562,7 +11570,7 @@ func (s *ShippingOption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "prices":
 			if err := func() error {
-				s.Prices = s.Prices[:0]
+				s.Prices = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem LabeledPrice
@@ -11742,7 +11750,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 				if err := s.Emoji.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11763,7 +11771,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11802,7 +11810,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 				if err := s.MaskPosition.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11814,7 +11822,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 				if err := s.SetName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11826,7 +11834,7 @@ func (s *Sticker) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -11921,7 +11929,7 @@ func (s *StickerSet) ReadJSON(i *json.Iterator) error {
 			return true
 		case "stickers":
 			if err := func() error {
-				s.Stickers = s.Stickers[:0]
+				s.Stickers = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem Sticker
@@ -11952,7 +11960,7 @@ func (s *StickerSet) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12040,7 +12048,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 				if err := s.OrderInfo.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12061,7 +12069,7 @@ func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
 				if err := s.ShippingOptionID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12173,7 +12181,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.CallbackQuery.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12185,7 +12193,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.ChannelPost.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12197,7 +12205,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.ChosenInlineResult.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12209,7 +12217,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.EditedChannelPost.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12221,7 +12229,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.EditedMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12233,7 +12241,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.InlineQuery.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12245,7 +12253,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.Message.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12257,7 +12265,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.Poll.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12269,7 +12277,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.PollAnswer.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12281,7 +12289,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.PreCheckoutQuery.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12293,7 +12301,7 @@ func (s *Update) ReadJSON(i *json.Iterator) error {
 				if err := s.ShippingQuery.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12338,7 +12346,10 @@ func (s *UploadStickerFilePostReq) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "png_sticker":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`)
+				if err := fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12472,7 +12483,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 				if err := s.CanJoinGroups.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12484,7 +12495,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 				if err := s.CanReadAllGroupMessages.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12523,7 +12534,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 				if err := s.LanguageCode.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12535,7 +12546,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 				if err := s.LastName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12547,7 +12558,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 				if err := s.SupportsInlineQueries.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12559,7 +12570,7 @@ func (s *User) ReadJSON(i *json.Iterator) error {
 				if err := s.Username.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12611,12 +12622,12 @@ func (s *UserProfilePhotos) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "photos":
 			if err := func() error {
-				s.Photos = s.Photos[:0]
+				s.Photos = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem []PhotoSize
 					if err := func() error {
-						elem = elem[:0]
+						elem = nil
 						var retErr error
 						i.ReadArrayCB(func(i *json.Iterator) bool {
 							var elemElem PhotoSize
@@ -12729,7 +12740,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 				if err := s.FoursquareID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12741,7 +12752,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 				if err := s.FoursquareType.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12753,7 +12764,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 				if err := s.GooglePlaceID.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12765,7 +12776,7 @@ func (s *Venue) ReadJSON(i *json.Iterator) error {
 				if err := s.GooglePlaceType.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12874,7 +12885,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 				if err := s.FileName.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12886,7 +12897,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12916,7 +12927,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12928,7 +12939,7 @@ func (s *Video) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13013,7 +13024,7 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13043,7 +13054,7 @@ func (s *VideoNote) ReadJSON(i *json.Iterator) error {
 				if err := s.Thumb.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13116,7 +13127,7 @@ func (s *Voice) ReadJSON(i *json.Iterator) error {
 				if err := s.FileSize.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13137,7 +13148,7 @@ func (s *Voice) ReadJSON(i *json.Iterator) error {
 				if err := s.MimeType.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13210,7 +13221,7 @@ func (s *WebhookInfo) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = s.AllowedUpdates[:0]
+				s.AllowedUpdates = nil
 				var retErr error
 				i.ReadArrayCB(func(i *json.Iterator) bool {
 					var elem string
@@ -13248,7 +13259,7 @@ func (s *WebhookInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.IPAddress.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13260,7 +13271,7 @@ func (s *WebhookInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.LastErrorDate.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13272,7 +13283,7 @@ func (s *WebhookInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.LastErrorMessage.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13284,7 +13295,7 @@ func (s *WebhookInfo) ReadJSON(i *json.Iterator) error {
 				if err := s.MaxConnections.ReadJSON(i); err != nil {
 					return err
 				}
-				return nil
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
