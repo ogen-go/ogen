@@ -65,32 +65,32 @@ type {{ $.Name }}Type string
 // Possible values for {{ $.Name }}Type.
 const (
 {{- range $s := $.SumOf }}
-    {{ $.Name }}{{ $s.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
+    {{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
 {{- end }}
 )
 
 {{- range $s := $.SumOf }}
 // Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
-func (s {{ $.Go }}) Is{{ $s.Name }}() bool { return s.Type == {{ $.Name }}{{ $s.Name }} }
+func (s {{ $.Go }}) Is{{ $s.Name }}() bool { return s.Type == {{ $s.Name }}{{ $.Name }} }
 {{- end }}
 
 {{- range $s := $.SumOf }}
 // Set{{ $s.Name }} sets {{ $.Name }} to {{ $s.Go }}.
 func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
-    s.Type = {{ $.Name }}{{ $s.Name }}
+    s.Type = {{ $s.Name }}{{ $.Name }}
     s.{{ $s.Name }} = v
 }
 
 // Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
-func (s *{{ $.Go }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
+func (s {{ $.Go }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
     if !s.Is{{ $s.Name }}() {
         return v, false
     }
     return s.{{ $s.Name }}, true
 }
 
-// New{{ $.Name }}{{ $s.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
-func New{{ $.Name }}{{ $s.Name }}(v {{ $s.Go }}) {{ $.Go }} {
+// New{{ $s.Name }}{{ $.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
+func New{{ $s.Name }}{{ $.Name }}(v {{ $s.Go }}) {{ $.Go }} {
     var s {{ $.Name }}
     s.Set{{ $s.Name }}(v)
     return s

@@ -101,32 +101,32 @@ type IDType string
 
 // Possible values for IDType.
 const (
-	IDString IDType = "string"
-	IDInt    IDType = "int"
+	StringID IDType = "string"
+	IntID    IDType = "int"
 )
 
 // IsString reports whether ID is string.
-func (s ID) IsString() bool { return s.Type == IDString }
+func (s ID) IsString() bool { return s.Type == StringID }
 
 // IsInt reports whether ID is int.
-func (s ID) IsInt() bool { return s.Type == IDInt }
+func (s ID) IsInt() bool { return s.Type == IntID }
 
 // SetString sets ID to string.
 func (s *ID) SetString(v string) {
-	s.Type = IDString
+	s.Type = StringID
 	s.String = v
 }
 
 // GetString returns string and true boolean if ID is string.
-func (s *ID) GetString() (v string, ok bool) {
+func (s ID) GetString() (v string, ok bool) {
 	if !s.IsString() {
 		return v, false
 	}
 	return s.String, true
 }
 
-// NewIDString returns new ID from string.
-func NewIDString(v string) ID {
+// NewStringID returns new ID from string.
+func NewStringID(v string) ID {
 	var s ID
 	s.SetString(v)
 	return s
@@ -134,20 +134,20 @@ func NewIDString(v string) ID {
 
 // SetInt sets ID to int.
 func (s *ID) SetInt(v int) {
-	s.Type = IDInt
+	s.Type = IntID
 	s.Int = v
 }
 
 // GetInt returns int and true boolean if ID is int.
-func (s *ID) GetInt() (v int, ok bool) {
+func (s ID) GetInt() (v int, ok bool) {
 	if !s.IsInt() {
 		return v, false
 	}
 	return s.Int, true
 }
 
-// NewIDInt returns new ID from int.
-func NewIDInt(v int) ID {
+// NewIntID returns new ID from int.
+func NewIntID(v int) ID {
 	var s ID
 	s.SetInt(v)
 	return s
