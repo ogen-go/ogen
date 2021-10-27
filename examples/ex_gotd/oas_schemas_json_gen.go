@@ -4656,9 +4656,9 @@ func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s ID) WriteJSON(j *json.Stream) {
 	switch s.Type {
-	case IDStringType:
+	case IDString:
 		j.WriteString(s.String)
-	case IDIntType:
+	case IDInt:
 		j.WriteInt(s.Int)
 	}
 }
@@ -4673,7 +4673,7 @@ func (s *ID) ReadJSON(i *json.Iterator) error {
 		}(); err != nil {
 			return err
 		}
-		s.Type = IDStringType
+		s.Type = IDString
 	case json.NumberValue:
 		if err := func() error {
 			s.Int = int(i.ReadInt())
@@ -4681,7 +4681,7 @@ func (s *ID) ReadJSON(i *json.Iterator) error {
 		}(); err != nil {
 			return err
 		}
-		s.Type = IDIntType
+		s.Type = IDInt
 	default:
 		return fmt.Errorf("unexpected json type %d", t)
 	}

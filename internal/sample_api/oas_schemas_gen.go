@@ -101,19 +101,19 @@ type IDType string
 
 // Possible values for IDType.
 const (
-	IDStringType IDType = "string"
-	IDIntType    IDType = "int"
+	IDString IDType = "string"
+	IDInt    IDType = "int"
 )
 
 // IsString reports whether ID is string.
-func (s ID) IsString() bool { return s.Type == IDStringType }
+func (s ID) IsString() bool { return s.Type == IDString }
 
 // IsInt reports whether ID is int.
-func (s ID) IsInt() bool { return s.Type == IDIntType }
+func (s ID) IsInt() bool { return s.Type == IDInt }
 
 // SetString sets ID to string.
 func (s *ID) SetString(v string) {
-	s.Type = IDStringType
+	s.Type = IDString
 	s.String = v
 }
 
@@ -125,8 +125,8 @@ func (s *ID) GetString() (v string, ok bool) {
 	return s.String, true
 }
 
-// IDString returns new ID from string.
-func IDString(v string) ID {
+// NewIDString returns new ID from string.
+func NewIDString(v string) ID {
 	var s ID
 	s.SetString(v)
 	return s
@@ -134,7 +134,7 @@ func IDString(v string) ID {
 
 // SetInt sets ID to int.
 func (s *ID) SetInt(v int) {
-	s.Type = IDIntType
+	s.Type = IDInt
 	s.Int = v
 }
 
@@ -146,8 +146,8 @@ func (s *ID) GetInt() (v int, ok bool) {
 	return s.Int, true
 }
 
-// IDInt returns new ID from int.
-func IDInt(v int) ID {
+// NewIDInt returns new ID from int.
+func NewIDInt(v int) ID {
 	var s ID
 	s.SetInt(v)
 	return s

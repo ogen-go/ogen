@@ -128,7 +128,7 @@ func ({{ $t.Name }}) ReadJSON(i *json.Iterator) error { return nil }
 func (s {{ $t.Name }}) WriteJSON(j *json.Stream) {
     switch s.Type {
     {{- range $s := $t.SumOf }}
-    case {{ $t.Name }}{{ $s.Name }}Type:
+    case {{ $t.Name }}{{ $s.Name }}:
         {{- template "enc_json" sum_elem $s -}}
     {{- end }}
     }
@@ -144,7 +144,7 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
         }(); err != nil {
             return err
         }
-        s.Type = {{ $t.Name }}{{ $s.Name }}Type
+        s.Type = {{ $t.Name }}{{ $s.Name }}
     {{- end }}
     default:
         return fmt.Errorf("unexpected json type %d", t)
