@@ -54,7 +54,6 @@ func (s Drive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.RateLimiter // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -96,7 +95,6 @@ func (s FullVmConfiguration) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Logger // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -106,7 +104,6 @@ func (s FullVmConfiguration) Validate() error {
 	}
 	if err := func() error {
 		_ = s.MachineConfig // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -141,7 +138,6 @@ func (s FullVmConfiguration) Validate() error {
 	}
 	if err := func() error {
 		_ = s.VsockDevice // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -158,7 +154,6 @@ func (s InstanceActionInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.ActionType // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -175,7 +170,6 @@ func (s InstanceInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.State // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -192,7 +186,6 @@ func (s Logger) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Level // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -209,7 +202,6 @@ func (s MachineConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.CPUTemplate // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -244,7 +236,6 @@ func (s NetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.RxRateLimiter // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -254,7 +245,6 @@ func (s NetworkInterface) Validate() error {
 	}
 	if err := func() error {
 		_ = s.TxRateLimiter // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -271,7 +261,6 @@ func (s PartialDrive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.RateLimiter // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -288,7 +277,6 @@ func (s PartialNetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.RxRateLimiter // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -298,7 +286,6 @@ func (s PartialNetworkInterface) Validate() error {
 	}
 	if err := func() error {
 		_ = s.TxRateLimiter // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -315,7 +302,6 @@ func (s RateLimiter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Bandwidth // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -325,7 +311,6 @@ func (s RateLimiter) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Ops // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -342,7 +327,6 @@ func (s SnapshotCreateParams) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.SnapshotType // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -359,7 +343,6 @@ func (s TokenBucket) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.OneTimeBurst // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -412,7 +395,6 @@ func (s VM) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.State // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

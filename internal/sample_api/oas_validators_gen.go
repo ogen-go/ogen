@@ -97,7 +97,6 @@ func (s Pet) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Kind // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -123,7 +122,6 @@ func (s Pet) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Primary // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -180,7 +178,6 @@ func (s Pet) Validate() error {
 	}
 	if err := func() error {
 		_ = s.TestFloat1 // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -190,7 +187,6 @@ func (s Pet) Validate() error {
 	}
 	if err := func() error {
 		_ = s.TestInteger1 // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -200,7 +196,6 @@ func (s Pet) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Type // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

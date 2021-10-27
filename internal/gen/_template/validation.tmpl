@@ -59,7 +59,7 @@
     {{- end }}
     {{- if not $validated }}
     _ = {{ $.Var }} // validation expected, but not supported
-    {{ end }}
+    {{- end }}
     return nil
 {{- end }}
 

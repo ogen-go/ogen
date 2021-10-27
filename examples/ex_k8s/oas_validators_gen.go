@@ -897,7 +897,6 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 		for i, elem := range s.AdmissionReviewVersions {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -998,7 +997,6 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 		for i, elem := range s.AdmissionReviewVersions {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1163,7 +1161,6 @@ func (s IoK8sAPIAppsV1DaemonSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1233,7 +1230,6 @@ func (s IoK8sAPIAppsV1Deployment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1303,7 +1299,6 @@ func (s IoK8sAPIAppsV1ReplicaSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1355,7 +1350,6 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Template // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1372,7 +1366,6 @@ func (s IoK8sAPIAppsV1StatefulSet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1448,7 +1441,6 @@ func (s IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1482,7 +1474,6 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -1510,7 +1501,6 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReview) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Status // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1625,7 +1615,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Status // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1712,7 +1701,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Status // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1799,7 +1787,6 @@ func (s IoK8sAPIBatchV1CronJob) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1869,7 +1856,6 @@ func (s IoK8sAPIBatchV1Job) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1939,7 +1925,6 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1956,7 +1941,6 @@ func (s IoK8sAPIBatchV1beta1CronJob) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2026,7 +2010,6 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2102,7 +2085,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 		for i, elem := range s.Request {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2165,7 +2147,6 @@ func (s IoK8sAPICoreV1Affinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.NodeAffinity // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2188,7 +2169,6 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 		for i, elem := range s.Monitors {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2222,7 +2202,6 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 		for i, elem := range s.Monitors {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2390,7 +2369,6 @@ func (s IoK8sAPICoreV1LimitRange) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2512,7 +2490,6 @@ func (s IoK8sAPICoreV1NodeAffinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.RequiredDuringSchedulingIgnoredDuringExecution // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2599,7 +2576,6 @@ func (s IoK8sAPICoreV1PersistentVolume) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2686,7 +2662,6 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Cephfs // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2696,7 +2671,6 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 	}
 	if err := func() error {
 		_ = s.NodeAffinity // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2706,7 +2680,6 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Rbd // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2723,7 +2696,6 @@ func (s IoK8sAPICoreV1Pod) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2775,7 +2747,6 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Affinity // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2845,7 +2816,6 @@ func (s IoK8sAPICoreV1PodTemplate) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Template // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2897,7 +2867,6 @@ func (s IoK8sAPICoreV1PodTemplateSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2920,7 +2889,6 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 		for i, elem := range s.Monitors {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2954,7 +2922,6 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 		for i, elem := range s.Monitors {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -2982,7 +2949,6 @@ func (s IoK8sAPICoreV1ReplicationController) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3034,7 +3000,6 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Template // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3197,7 +3162,6 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 		for i, elem := range s.Values {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3257,7 +3221,6 @@ func (s IoK8sAPICoreV1Volume) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Cephfs // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3267,7 +3230,6 @@ func (s IoK8sAPICoreV1Volume) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Rbd // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3284,7 +3246,6 @@ func (s IoK8sAPICoreV1VolumeNodeAffinity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Required // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3307,7 +3268,6 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 		for i, elem := range s.Addresses {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3411,7 +3371,6 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 		for i, elem := range s.Addresses {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3579,7 +3538,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3669,7 +3627,6 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		for i, elem := range s.NonResourceURLs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3696,7 +3653,6 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3850,7 +3806,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		for i, elem := range s.ApiGroups {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3877,7 +3832,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		for i, elem := range s.Resources {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3904,7 +3858,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -3932,7 +3885,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4022,7 +3974,6 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		for i, elem := range s.NonResourceURLs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4049,7 +4000,6 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4203,7 +4153,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		for i, elem := range s.ApiGroups {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4230,7 +4179,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		for i, elem := range s.Resources {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4257,7 +4205,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4320,7 +4267,6 @@ func (s IoK8sAPINetworkingV1Ingress) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4407,7 +4353,6 @@ func (s IoK8sAPINetworkingV1IngressRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.HTTP // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4666,7 +4611,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Spec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4718,7 +4662,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.RuntimeClass // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4741,7 +4684,6 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 		for i, elem := range s.AllowedRuntimeClassNames {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -4877,7 +4819,6 @@ func (s IoK8sAPIRbacV1PolicyRule) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -5285,7 +5226,6 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.InlineVolumeSpec // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5390,7 +5330,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Webhook // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5460,7 +5399,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Conversion // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5511,7 +5449,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Vali
 		for i, elem := range s.ConversionReviewVersions {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -5615,7 +5552,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 		for i, elem := range s.Verbs {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -5712,7 +5648,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		for i, elem := range s.Versions {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{

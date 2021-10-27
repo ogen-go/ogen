@@ -150,7 +150,6 @@ func (s CallbackQuery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Message // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -167,7 +166,6 @@ func (s Chat) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.PinnedMessage // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -177,7 +175,6 @@ func (s Chat) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Type // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -194,7 +191,6 @@ func (s EncryptedPassportElement) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Type // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -359,7 +355,6 @@ func (s GetUpdatesPostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -376,7 +371,6 @@ func (s GetUpdatesPostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -393,7 +387,6 @@ func (s GetUpdatesPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -445,7 +438,6 @@ func (s GetUserProfilePhotosPostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -462,7 +454,6 @@ func (s GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) Validate() err
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -479,7 +470,6 @@ func (s GetUserProfilePhotosPostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Limit // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -566,7 +556,6 @@ func (s MaskPosition) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Point // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -611,7 +600,6 @@ func (s Message) Validate() error {
 			return fmt.Errorf("required, can't be nil")
 		}
 		_ = s.Chat // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -646,7 +634,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.ForwardFromChat // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -656,7 +643,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Game // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -666,7 +652,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.PassportData // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -676,7 +661,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.PinnedMessage // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -686,7 +670,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Poll // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -696,7 +679,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -706,7 +688,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.ReplyToMessage // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -716,7 +697,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.SenderChat // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -726,7 +706,6 @@ func (s Message) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Sticker // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -743,7 +722,6 @@ func (s MessageEntity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.Type // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -861,7 +839,6 @@ func (s PollAnswer) Validate() error {
 		for i, elem := range s.OptionIds {
 			if err := func() error {
 				_ = elem // validation expected, but not supported
-
 				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
@@ -889,7 +866,6 @@ func (s SendGamePostReqApplicationJSON) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -906,7 +882,6 @@ func (s SendGamePostReqApplicationXWwwFormUrlencoded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -923,7 +898,6 @@ func (s SendGamePostReqMultipartFormData) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -986,7 +960,6 @@ func (s SendInvoicePostReqApplicationJSON) Validate() error {
 	}
 	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1031,7 +1004,6 @@ func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) Validate() error {
 	}
 	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1076,7 +1048,6 @@ func (s SendInvoicePostReqMultipartFormData) Validate() error {
 	}
 	if err := func() error {
 		_ = s.ReplyMarkup // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1251,7 +1222,6 @@ func (s Sticker) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.MaskPosition // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1303,7 +1273,6 @@ func (s Update) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		_ = s.CallbackQuery // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1313,7 +1282,6 @@ func (s Update) Validate() error {
 	}
 	if err := func() error {
 		_ = s.ChannelPost // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1323,7 +1291,6 @@ func (s Update) Validate() error {
 	}
 	if err := func() error {
 		_ = s.EditedChannelPost // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1333,7 +1300,6 @@ func (s Update) Validate() error {
 	}
 	if err := func() error {
 		_ = s.EditedMessage // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1343,7 +1309,6 @@ func (s Update) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Message // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1353,7 +1318,6 @@ func (s Update) Validate() error {
 	}
 	if err := func() error {
 		_ = s.Poll // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1363,7 +1327,6 @@ func (s Update) Validate() error {
 	}
 	if err := func() error {
 		_ = s.PollAnswer // validation expected, but not supported
-
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
