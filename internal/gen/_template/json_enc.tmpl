@@ -1,4 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
+
+{{/* Encode field key and comma if needed,
+   or just comma if in array */}}
 {{- define "enc_json_start" -}}
 {{- if $.More  -}}
 more.More()
@@ -8,16 +11,9 @@ j.WriteObjectField("{{ $.Tag.JSON }}")
 {{- end }}
 {{- end -}}
 
-{{- define "enc_json_array_elems" }}
-more.Down()
-j.WriteArrayStart()
-for _, elem := range {{ $.Var }} {
-  {{- template "enc_json" array_elem $.Type.Item }}
-}
-j.WriteArrayEnd()
-more.Up()
-{{- end }}
 
+
+{{/* Encode generic with respect of nullable/optional and special format */}}
 {{- define "enc_json_generic" -}}
 {{- $g := $.Type.GenericOf -}}
 {{- $v := $.Type.GenericVariant -}}
@@ -32,6 +28,19 @@ more.Up()
 {{- end -}}
 {{- end }}
 
+
+{{/* Encode array with all elements */}}
+{{- define "enc_json_array_elems" }}
+  more.Down()
+  j.WriteArrayStart()
+  for _, elem := range {{ $.Var }} {
+  {{- template "enc_json" array_elem $.Type.Item }}
+  }
+  j.WriteArrayEnd()
+  more.Up()
+{{- end }}
+
+{{/* Encode array with respect for nil semantic */}}
 {{- define "enc_json_array" -}}
 {{- $t := $.Type }}
 {{- if eq $t.NilSemantic "invalid" -}}
@@ -54,6 +63,7 @@ Unexpected nil semantic
 {{- end -}}
 {{- end }}
 
+{{/* Encode value that implements json.Writer with respect to nil semantic */}}
 {{- define "enc_json_value" -}}
 {{- $t := $.Type -}}
 {{- if or (eq $t.NilSemantic "invalid") (eq $t.NilSemantic "optional") -}}
@@ -74,6 +84,7 @@ Unexpected nil semantic
 {{- end -}}
 {{- end }}
 
+{{/* Encode any Elem as json */}}
 {{- define "enc_json" -}}
     {{- $t := $.Type }}
     {{- $j := $t.JSON }}
@@ -90,9 +101,7 @@ Unexpected nil semantic
     {{- else if $t.IsArray -}}
         {{- template "enc_json_array" $ }}
     {{- else -}}
-        {{- if $.Sub -}}
-          _ = {{ $.Var }}
-        {{- end -}}
+        {{- if $.Sub -}}_ = {{ $.Var }}{{- end -}}
         // Unsupported kind "{{ $t.Kind  }}".
     {{- end }}
 {{- end -}}
