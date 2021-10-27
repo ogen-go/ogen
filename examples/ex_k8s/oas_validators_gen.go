@@ -893,6 +893,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 		if s.AdmissionReviewVersions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.AdmissionReviewVersions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -922,9 +923,9 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Validate() 
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -957,9 +958,9 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Validat
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -979,6 +980,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 		if s.AdmissionReviewVersions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.AdmissionReviewVersions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1008,9 +1010,9 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Validate(
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1043,9 +1045,9 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Valid
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1065,6 +1067,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1084,6 +1087,7 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1132,9 +1136,9 @@ func (s IoK8sAPIAppsV1DaemonSetList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1201,9 +1205,9 @@ func (s IoK8sAPIAppsV1DeploymentList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1270,9 +1274,9 @@ func (s IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1337,9 +1341,9 @@ func (s IoK8sAPIAppsV1StatefulSetList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1377,6 +1381,7 @@ func (s IoK8sAPIAuthorizationV1NonResourceRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1396,6 +1401,7 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1444,9 +1450,9 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1472,9 +1478,9 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1494,6 +1500,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1542,9 +1549,9 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error 
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1564,6 +1571,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() erro
 		if s.Conditions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Conditions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1612,9 +1620,9 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error 
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1634,6 +1642,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() erro
 		if s.Conditions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Conditions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1682,9 +1691,9 @@ func (s IoK8sAPIBatchV1CronJobList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1751,9 +1760,9 @@ func (s IoK8sAPIBatchV1JobList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1836,9 +1845,9 @@ func (s IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1923,9 +1932,9 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -1945,6 +1954,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 		if s.Request == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Request // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1964,6 +1974,7 @@ func (s IoK8sAPICoordinationV1LeaseList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -1999,6 +2010,7 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2018,6 +2030,7 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2037,6 +2050,7 @@ func (s IoK8sAPICoreV1ComponentStatusList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2056,6 +2070,7 @@ func (s IoK8sAPICoreV1ConfigMapList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2075,6 +2090,7 @@ func (s IoK8sAPICoreV1EndpointsList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2094,6 +2110,7 @@ func (s IoK8sAPICoreV1EventList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2142,9 +2159,9 @@ func (s IoK8sAPICoreV1LimitRangeList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2164,6 +2181,7 @@ func (s IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 		if s.Limits == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Limits // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2183,6 +2201,7 @@ func (s IoK8sAPICoreV1NamespaceList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2218,6 +2237,7 @@ func (s IoK8sAPICoreV1NodeList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2237,6 +2257,7 @@ func (s IoK8sAPICoreV1NodeSelector) Validate() error {
 		if s.NodeSelectorTerms == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.NodeSelectorTerms // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2272,6 +2293,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2304,9 +2326,9 @@ func (s IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2389,9 +2411,9 @@ func (s IoK8sAPICoreV1PodList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2420,6 +2442,7 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 		if s.Containers == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Containers // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2442,9 +2465,9 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2493,9 +2516,9 @@ func (s IoK8sAPICoreV1PodTemplateList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2531,6 +2554,7 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2550,6 +2574,7 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Monitors // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2598,9 +2623,9 @@ func (s IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2636,6 +2661,7 @@ func (s IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2655,6 +2681,7 @@ func (s IoK8sAPICoreV1SecretList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2674,6 +2701,7 @@ func (s IoK8sAPICoreV1ServiceAccountList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2693,6 +2721,7 @@ func (s IoK8sAPICoreV1ServiceList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2712,6 +2741,7 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 		if s.Values == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Values // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2741,9 +2771,9 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2804,6 +2834,7 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 		if s.Addresses == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Addresses // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2836,9 +2867,9 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2871,9 +2902,9 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2893,6 +2924,7 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 		if s.Addresses == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Addresses // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -2925,9 +2957,9 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2960,9 +2992,9 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -2982,6 +3014,7 @@ func (s IoK8sAPIEventsV1EventList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3001,6 +3034,7 @@ func (s IoK8sAPIEventsV1beta1EventList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3049,9 +3083,9 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3081,9 +3115,9 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3103,6 +3137,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		if s.NonResourceURLs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.NonResourceURLs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3115,6 +3150,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3144,9 +3180,9 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3169,9 +3205,9 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3184,6 +3220,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 		if s.Subjects == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Subjects // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3203,6 +3240,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() err
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3222,6 +3260,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.ApiGroups == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.ApiGroups // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3234,6 +3273,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.Resources == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Resources // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3246,6 +3286,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3294,9 +3335,9 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3326,9 +3367,9 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3348,6 +3389,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		if s.NonResourceURLs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.NonResourceURLs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3360,6 +3402,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3389,9 +3432,9 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3414,9 +3457,9 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3429,6 +3472,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 		if s.Subjects == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Subjects // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3448,6 +3492,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() err
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3467,6 +3512,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.ApiGroups == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.ApiGroups // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3479,6 +3525,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.Resources == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Resources // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3491,6 +3538,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3510,6 +3558,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 		if s.Paths == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Paths // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3545,6 +3594,7 @@ func (s IoK8sAPINetworkingV1IngressClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3577,9 +3627,9 @@ func (s IoK8sAPINetworkingV1IngressList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3625,9 +3675,9 @@ func (s IoK8sAPINetworkingV1IngressSpec) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3647,6 +3697,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3666,6 +3717,7 @@ func (s IoK8sAPINodeV1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3685,6 +3737,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3704,6 +3757,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3723,6 +3777,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3742,6 +3797,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3790,9 +3846,9 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3828,6 +3884,7 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 		if s.AllowedRuntimeClassNames == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.AllowedRuntimeClassNames // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3857,9 +3914,9 @@ func (s IoK8sAPIRbacV1ClusterRole) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3879,6 +3936,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3911,9 +3969,9 @@ func (s IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3933,6 +3991,7 @@ func (s IoK8sAPIRbacV1PolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -3962,9 +4021,9 @@ func (s IoK8sAPIRbacV1Role) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -3984,6 +4043,7 @@ func (s IoK8sAPIRbacV1RoleBindingList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4016,9 +4076,9 @@ func (s IoK8sAPIRbacV1RoleList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4038,6 +4098,7 @@ func (s IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4057,6 +4118,7 @@ func (s IoK8sAPIStorageV1CSIDriverList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4107,9 +4169,9 @@ func (s IoK8sAPIStorageV1CSINodeList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4129,6 +4191,7 @@ func (s IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 		if s.Drivers == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Drivers // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4158,9 +4221,9 @@ func (s IoK8sAPIStorageV1StorageClass) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4193,9 +4256,9 @@ func (s IoK8sAPIStorageV1StorageClassList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4246,9 +4309,9 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4302,6 +4365,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4321,6 +4385,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4387,9 +4452,9 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4418,6 +4483,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		if s.Versions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Versions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4437,6 +4503,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Vali
 		if s.ConversionReviewVersions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.ConversionReviewVersions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4456,6 +4523,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 		if s.Versions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Versions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4488,9 +4556,9 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4510,6 +4578,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 		if s.Verbs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Verbs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4542,9 +4611,9 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -4564,6 +4633,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		if s.ServerAddressByClientCIDRs == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.ServerAddressByClientCIDRs // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4576,6 +4646,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		if s.Versions == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Versions // validation expected, but not supported
 		return nil
 	}(); err != nil {
@@ -4595,6 +4666,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() er
 		if s.Items == nil {
 			return fmt.Errorf("required, can't be nil")
 		}
+		var failures []validate.FieldError
 		_ = s.Items // validation expected, but not supported
 		return nil
 	}(); err != nil {

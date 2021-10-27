@@ -111,9 +111,9 @@ func (s Book) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -177,9 +177,9 @@ func (s Images) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -224,9 +224,9 @@ func (s SearchResponse) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {

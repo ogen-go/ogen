@@ -82,9 +82,9 @@ func (s FullVmConfiguration) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -125,9 +125,9 @@ func (s FullVmConfiguration) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {

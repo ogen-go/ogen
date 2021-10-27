@@ -14,9 +14,22 @@
     if err := {{ $.Var }}.Validate(); err != nil {
         return err
     }
-    {{- else if and ($t.IsArray) ($t.Item.NeedValidation) }}
+    {{- else if $t.IsArray }}
+    {{- if $va.Array.Set }}
     {{- $validated = true }}
+        {{- $v := $va.Array }}
+        if err := (validate.Array{
+            MinLength:    {{ $v.MinLength }},
+            MinLengthSet: {{ $v.MinLengthSet }},
+            MaxLength:    {{ $v.MaxLength }},
+            MaxLengthSet: {{ $v.MaxLengthSet }},
+        }).ValidateLength(len({{ $.Var }})); err != nil {
+            return err
+        }
+    {{- end }}
     var failures []validate.FieldError
+    {{- if $t.Item.NeedValidation }}
+    {{- $validated = true }}
     for i, elem := range {{ $.Var }} {
         if err := func() error {
             {{- template "validate" array_elem $.Type.Item }}
@@ -26,10 +39,11 @@
                 Error: err,
             })
         }
-        if len(failures) > 0 {
-            return &validate.Error{Fields: failures}
-        }
     }
+    if len(failures) > 0 {
+        return &validate.Error{Fields: failures}
+    }
+    {{- end }}
     {{- end }}
     {{- if $va.String.Set }}
     {{- $validated = true }}

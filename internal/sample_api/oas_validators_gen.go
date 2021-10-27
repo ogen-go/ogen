@@ -53,6 +53,14 @@ var (
 func (s Pet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		if err := (validate.Array{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    255,
+			MaxLengthSet: true,
+		}).ValidateLength(len(s.Friends)); err != nil {
+			return err
+		}
 		var failures []validate.FieldError
 		for i, elem := range s.Friends {
 			if err := func() error {
@@ -66,9 +74,9 @@ func (s Pet) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
@@ -136,6 +144,14 @@ func (s Pet) Validate() error {
 				if elem == nil {
 					return fmt.Errorf("required, can't be nil")
 				}
+				if err := (validate.Array{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    16,
+					MaxLengthSet: true,
+				}).ValidateLength(len(elem)); err != nil {
+					return err
+				}
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
@@ -154,9 +170,9 @@ func (s Pet) Validate() error {
 							Error: err,
 						})
 					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
 				}
 				return nil
 			}(); err != nil {
@@ -165,9 +181,9 @@ func (s Pet) Validate() error {
 					Error: err,
 				})
 			}
-			if len(failures) > 0 {
-				return &validate.Error{Fields: failures}
-			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
 		}
 		return nil
 	}(); err != nil {
