@@ -27,4 +27,7 @@ logo:
 tidy:
 	go mod tidy
 
-clean: tidy generate examples
+tidy_examples:
+	cd examples && go mod tidy
+
+clean: tidy generate examples tidy_examples
