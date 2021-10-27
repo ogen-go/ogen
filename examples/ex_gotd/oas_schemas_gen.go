@@ -285,55 +285,55 @@ type EditChatInviteLink struct {
 
 // Ref: #/components/schemas/editMessageCaption
 type EditMessageCaption struct {
-	Caption         OptString             `json:"caption"`
-	CaptionEntities []MessageEntity       `json:"caption_entities"`
-	ChatID          OptID                 `json:"chat_id"`
-	InlineMessageID OptString             `json:"inline_message_id"`
-	MessageID       OptInt                `json:"message_id"`
-	ParseMode       OptString             `json:"parse_mode"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
+	Caption         OptString               `json:"caption"`
+	CaptionEntities []MessageEntity         `json:"caption_entities"`
+	ChatID          OptID                   `json:"chat_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	ParseMode       OptString               `json:"parse_mode"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/editMessageLiveLocation
 type EditMessageLiveLocation struct {
-	ChatID               OptID                 `json:"chat_id"`
-	Heading              OptInt                `json:"heading"`
-	HorizontalAccuracy   OptFloat64            `json:"horizontal_accuracy"`
-	InlineMessageID      OptString             `json:"inline_message_id"`
-	Latitude             float64               `json:"latitude"`
-	Longitude            float64               `json:"longitude"`
-	MessageID            OptInt                `json:"message_id"`
-	ProximityAlertRadius OptInt                `json:"proximity_alert_radius"`
-	ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup"`
+	ChatID               OptID                   `json:"chat_id"`
+	Heading              OptInt                  `json:"heading"`
+	HorizontalAccuracy   OptFloat64              `json:"horizontal_accuracy"`
+	InlineMessageID      OptString               `json:"inline_message_id"`
+	Latitude             float64                 `json:"latitude"`
+	Longitude            float64                 `json:"longitude"`
+	MessageID            OptInt                  `json:"message_id"`
+	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
+	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/editMessageMedia
 type EditMessageMedia struct {
-	ChatID          OptID                 `json:"chat_id"`
-	InlineMessageID OptString             `json:"inline_message_id"`
-	Media           InputMedia            `json:"media"`
-	MessageID       OptInt                `json:"message_id"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
+	ChatID          OptID                   `json:"chat_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	Media           InputMedia              `json:"media"`
+	MessageID       OptInt                  `json:"message_id"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/editMessageReplyMarkup
 type EditMessageReplyMarkup struct {
-	ChatID          OptID                 `json:"chat_id"`
-	InlineMessageID OptString             `json:"inline_message_id"`
-	MessageID       OptInt                `json:"message_id"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
+	ChatID          OptID                   `json:"chat_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/editMessageText
 type EditMessageText struct {
-	ChatID                OptID                 `json:"chat_id"`
-	DisableWebPagePreview OptBool               `json:"disable_web_page_preview"`
-	Entities              []MessageEntity       `json:"entities"`
-	InlineMessageID       OptString             `json:"inline_message_id"`
-	MessageID             OptInt                `json:"message_id"`
-	ParseMode             OptString             `json:"parse_mode"`
-	ReplyMarkup           *InlineKeyboardMarkup `json:"reply_markup"`
-	Text                  string                `json:"text"`
+	ChatID                OptID                   `json:"chat_id"`
+	DisableWebPagePreview OptBool                 `json:"disable_web_page_preview"`
+	Entities              []MessageEntity         `json:"entities"`
+	InlineMessageID       OptString               `json:"inline_message_id"`
+	MessageID             OptInt                  `json:"message_id"`
+	ParseMode             OptString               `json:"parse_mode"`
+	ReplyMarkup           OptInlineKeyboardMarkup `json:"reply_markup"`
+	Text                  string                  `json:"text"`
 }
 
 // Ref: #/components/schemas/EncryptedCredentials
@@ -687,7 +687,7 @@ type Message struct {
 	PinnedMessage                 *Message                         `json:"pinned_message"`
 	Poll                          OptPoll                          `json:"poll"`
 	ProximityAlertTriggered       OptProximityAlertTriggered       `json:"proximity_alert_triggered"`
-	ReplyMarkup                   *InlineKeyboardMarkup            `json:"reply_markup"`
+	ReplyMarkup                   OptInlineKeyboardMarkup          `json:"reply_markup"`
 	ReplyToMessage                *Message                         `json:"reply_to_message"`
 	SenderChat                    *Chat                            `json:"sender_chat"`
 	Sticker                       OptSticker                       `json:"sticker"`
@@ -1170,6 +1170,44 @@ func (o *OptID) SetTo(v ID) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptID) Get() (v ID, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptInlineKeyboardMarkup returns new OptInlineKeyboardMarkup with value set to v.
+func NewOptInlineKeyboardMarkup(v InlineKeyboardMarkup) OptInlineKeyboardMarkup {
+	return OptInlineKeyboardMarkup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInlineKeyboardMarkup is optional InlineKeyboardMarkup.
+type OptInlineKeyboardMarkup struct {
+	Value InlineKeyboardMarkup
+	Set   bool
+}
+
+// IsSet returns true if OptInlineKeyboardMarkup was set.
+func (o OptInlineKeyboardMarkup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInlineKeyboardMarkup) Reset() {
+	var v InlineKeyboardMarkup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInlineKeyboardMarkup) SetTo(v InlineKeyboardMarkup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInlineKeyboardMarkup) Get() (v InlineKeyboardMarkup, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2481,42 +2519,42 @@ type SendDocument struct {
 
 // Ref: #/components/schemas/sendGame
 type SendGame struct {
-	AllowSendingWithoutReply OptBool               `json:"allow_sending_without_reply"`
-	ChatID                   int                   `json:"chat_id"`
-	DisableNotification      OptBool               `json:"disable_notification"`
-	GameShortName            string                `json:"game_short_name"`
-	ReplyMarkup              *InlineKeyboardMarkup `json:"reply_markup"`
-	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
+	ChatID                   int                     `json:"chat_id"`
+	DisableNotification      OptBool                 `json:"disable_notification"`
+	GameShortName            string                  `json:"game_short_name"`
+	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyToMessageID         OptInt                  `json:"reply_to_message_id"`
 }
 
 // Ref: #/components/schemas/sendInvoice
 type SendInvoice struct {
-	AllowSendingWithoutReply  OptBool               `json:"allow_sending_without_reply"`
-	ChatID                    ID                    `json:"chat_id"`
-	Currency                  string                `json:"currency"`
-	Description               string                `json:"description"`
-	DisableNotification       OptBool               `json:"disable_notification"`
-	IsFlexible                OptBool               `json:"is_flexible"`
-	MaxTipAmount              OptInt                `json:"max_tip_amount"`
-	NeedEmail                 OptBool               `json:"need_email"`
-	NeedName                  OptBool               `json:"need_name"`
-	NeedPhoneNumber           OptBool               `json:"need_phone_number"`
-	NeedShippingAddress       OptBool               `json:"need_shipping_address"`
-	Payload                   string                `json:"payload"`
-	PhotoHeight               OptInt                `json:"photo_height"`
-	PhotoSize                 OptInt                `json:"photo_size"`
-	PhotoURL                  OptURL                `json:"photo_url"`
-	PhotoWidth                OptInt                `json:"photo_width"`
-	Prices                    []LabeledPrice        `json:"prices"`
-	ProviderData              OptString             `json:"provider_data"`
-	ProviderToken             string                `json:"provider_token"`
-	ReplyMarkup               *InlineKeyboardMarkup `json:"reply_markup"`
-	ReplyToMessageID          OptInt                `json:"reply_to_message_id"`
-	SendEmailToProvider       OptBool               `json:"send_email_to_provider"`
-	SendPhoneNumberToProvider OptBool               `json:"send_phone_number_to_provider"`
-	StartParameter            OptString             `json:"start_parameter"`
-	SuggestedTipAmounts       []int                 `json:"suggested_tip_amounts"`
-	Title                     string                `json:"title"`
+	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
+	ChatID                    ID                      `json:"chat_id"`
+	Currency                  string                  `json:"currency"`
+	Description               string                  `json:"description"`
+	DisableNotification       OptBool                 `json:"disable_notification"`
+	IsFlexible                OptBool                 `json:"is_flexible"`
+	MaxTipAmount              OptInt                  `json:"max_tip_amount"`
+	NeedEmail                 OptBool                 `json:"need_email"`
+	NeedName                  OptBool                 `json:"need_name"`
+	NeedPhoneNumber           OptBool                 `json:"need_phone_number"`
+	NeedShippingAddress       OptBool                 `json:"need_shipping_address"`
+	Payload                   string                  `json:"payload"`
+	PhotoHeight               OptInt                  `json:"photo_height"`
+	PhotoSize                 OptInt                  `json:"photo_size"`
+	PhotoURL                  OptURL                  `json:"photo_url"`
+	PhotoWidth                OptInt                  `json:"photo_width"`
+	Prices                    []LabeledPrice          `json:"prices"`
+	ProviderData              OptString               `json:"provider_data"`
+	ProviderToken             string                  `json:"provider_token"`
+	ReplyMarkup               OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyToMessageID          OptInt                  `json:"reply_to_message_id"`
+	SendEmailToProvider       OptBool                 `json:"send_email_to_provider"`
+	SendPhoneNumberToProvider OptBool                 `json:"send_phone_number_to_provider"`
+	StartParameter            OptString               `json:"start_parameter"`
+	SuggestedTipAmounts       []int                   `json:"suggested_tip_amounts"`
+	Title                     string                  `json:"title"`
 }
 
 // Ref: #/components/schemas/sendLocation
@@ -2770,17 +2808,17 @@ type Sticker struct {
 
 // Ref: #/components/schemas/stopMessageLiveLocation
 type StopMessageLiveLocation struct {
-	ChatID          OptID                 `json:"chat_id"`
-	InlineMessageID OptString             `json:"inline_message_id"`
-	MessageID       OptInt                `json:"message_id"`
-	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
+	ChatID          OptID                   `json:"chat_id"`
+	InlineMessageID OptString               `json:"inline_message_id"`
+	MessageID       OptInt                  `json:"message_id"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/stopPoll
 type StopPoll struct {
-	ChatID      ID                    `json:"chat_id"`
-	MessageID   int                   `json:"message_id"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup"`
+	ChatID      ID                      `json:"chat_id"`
+	MessageID   int                     `json:"message_id"`
+	ReplyMarkup OptInlineKeyboardMarkup `json:"reply_markup"`
 }
 
 // Ref: #/components/schemas/SuccessfulPayment

@@ -3009,12 +3009,12 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersion struct {
 
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionCondition
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	ObservedGeneration OptInt64                            `json:"observedGeneration"`
-	Reason             string                              `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	ObservedGeneration OptInt64                              `json:"observedGeneration"`
+	Reason             string                                `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionList
@@ -3063,11 +3063,11 @@ type IoK8sAPIAppsV1DaemonSet struct {
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSetCondition
 type IoK8sAPIAppsV1DaemonSetCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSetList
@@ -3118,12 +3118,12 @@ type IoK8sAPIAppsV1Deployment struct {
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentCondition
 type IoK8sAPIAppsV1DeploymentCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	LastUpdateTime     *IoK8sApimachineryPkgApisMetaV1Time `json:"lastUpdateTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	LastUpdateTime     OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastUpdateTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentList
@@ -3175,11 +3175,11 @@ type IoK8sAPIAppsV1ReplicaSet struct {
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ReplicaSetCondition
 type IoK8sAPIAppsV1ReplicaSetCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ReplicaSetList
@@ -3210,14 +3210,14 @@ type IoK8sAPIAppsV1ReplicaSetStatus struct {
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.RollingUpdateDaemonSet
 type IoK8sAPIAppsV1RollingUpdateDaemonSet struct {
-	MaxSurge       *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxSurge"`
-	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxUnavailable"`
+	MaxSurge       OptIoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxSurge"`
+	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxUnavailable"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.RollingUpdateDeployment
 type IoK8sAPIAppsV1RollingUpdateDeployment struct {
-	MaxSurge       *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxSurge"`
-	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxUnavailable"`
+	MaxSurge       OptIoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxSurge"`
+	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString `json:"maxUnavailable"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy
@@ -3236,11 +3236,11 @@ type IoK8sAPIAppsV1StatefulSet struct {
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSetCondition
 type IoK8sAPIAppsV1StatefulSetCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSetList
@@ -3448,19 +3448,19 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
-	CurrentCPUUtilizationPercentage OptInt32                            `json:"currentCPUUtilizationPercentage"`
-	CurrentReplicas                 int32                               `json:"currentReplicas"`
-	DesiredReplicas                 int32                               `json:"desiredReplicas"`
-	LastScaleTime                   *IoK8sApimachineryPkgApisMetaV1Time `json:"lastScaleTime"`
-	ObservedGeneration              OptInt64                            `json:"observedGeneration"`
+	CurrentCPUUtilizationPercentage OptInt32                              `json:"currentCPUUtilizationPercentage"`
+	CurrentReplicas                 int32                                 `json:"currentReplicas"`
+	DesiredReplicas                 int32                                 `json:"desiredReplicas"`
+	LastScaleTime                   OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastScaleTime"`
+	ObservedGeneration              OptInt64                              `json:"observedGeneration"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricSource
 type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
-	Container                string                                   `json:"container"`
-	Name                     string                                   `json:"name"`
-	TargetAverageUtilization OptInt32                                 `json:"targetAverageUtilization"`
-	TargetAverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"targetAverageValue"`
+	Container                string                                     `json:"container"`
+	Name                     string                                     `json:"name"`
+	TargetAverageUtilization OptInt32                                   `json:"targetAverageUtilization"`
+	TargetAverageValue       OptIoK8sApimachineryPkgAPIResourceQuantity `json:"targetAverageValue"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricStatus
@@ -3482,13 +3482,13 @@ type IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference struct {
 type IoK8sAPIAutoscalingV2beta1ExternalMetricSource struct {
 	MetricName         string                                         `json:"metricName"`
 	MetricSelector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"metricSelector"`
-	TargetAverageValue *IoK8sApimachineryPkgAPIResourceQuantity       `json:"targetAverageValue"`
-	TargetValue        *IoK8sApimachineryPkgAPIResourceQuantity       `json:"targetValue"`
+	TargetAverageValue OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"targetAverageValue"`
+	TargetValue        OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"targetValue"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ExternalMetricStatus
 type IoK8sAPIAutoscalingV2beta1ExternalMetricStatus struct {
-	CurrentAverageValue *IoK8sApimachineryPkgAPIResourceQuantity       `json:"currentAverageValue"`
+	CurrentAverageValue OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"currentAverageValue"`
 	CurrentValue        IoK8sApimachineryPkgAPIResourceQuantity        `json:"currentValue"`
 	MetricName          string                                         `json:"metricName"`
 	MetricSelector      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"metricSelector"`
@@ -3505,11 +3505,11 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler struct {
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerCondition
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerList
@@ -3534,7 +3534,7 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
 	CurrentMetrics     []IoK8sAPIAutoscalingV2beta1MetricStatus                     `json:"currentMetrics"`
 	CurrentReplicas    int32                                                        `json:"currentReplicas"`
 	DesiredReplicas    int32                                                        `json:"desiredReplicas"`
-	LastScaleTime      *IoK8sApimachineryPkgApisMetaV1Time                          `json:"lastScaleTime"`
+	LastScaleTime      OptIoK8sApimachineryPkgApisMetaV1Time                        `json:"lastScaleTime"`
 	ObservedGeneration OptInt64                                                     `json:"observedGeneration"`
 }
 
@@ -3560,7 +3560,7 @@ type IoK8sAPIAutoscalingV2beta1MetricStatus struct {
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ObjectMetricSource
 type IoK8sAPIAutoscalingV2beta1ObjectMetricSource struct {
-	AverageValue *IoK8sApimachineryPkgAPIResourceQuantity              `json:"averageValue"`
+	AverageValue OptIoK8sApimachineryPkgAPIResourceQuantity            `json:"averageValue"`
 	MetricName   string                                                `json:"metricName"`
 	Selector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector        `json:"selector"`
 	Target       IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference `json:"target"`
@@ -3569,7 +3569,7 @@ type IoK8sAPIAutoscalingV2beta1ObjectMetricSource struct {
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ObjectMetricStatus
 type IoK8sAPIAutoscalingV2beta1ObjectMetricStatus struct {
-	AverageValue *IoK8sApimachineryPkgAPIResourceQuantity              `json:"averageValue"`
+	AverageValue OptIoK8sApimachineryPkgAPIResourceQuantity            `json:"averageValue"`
 	CurrentValue IoK8sApimachineryPkgAPIResourceQuantity               `json:"currentValue"`
 	MetricName   string                                                `json:"metricName"`
 	Selector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector        `json:"selector"`
@@ -3592,9 +3592,9 @@ type IoK8sAPIAutoscalingV2beta1PodsMetricStatus struct {
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ResourceMetricSource
 type IoK8sAPIAutoscalingV2beta1ResourceMetricSource struct {
-	Name                     string                                   `json:"name"`
-	TargetAverageUtilization OptInt32                                 `json:"targetAverageUtilization"`
-	TargetAverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"targetAverageValue"`
+	Name                     string                                     `json:"name"`
+	TargetAverageUtilization OptInt32                                   `json:"targetAverageUtilization"`
+	TargetAverageValue       OptIoK8sApimachineryPkgAPIResourceQuantity `json:"targetAverageValue"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ResourceMetricStatus
@@ -3668,11 +3668,11 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior struct {
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerCondition
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerList
@@ -3698,7 +3698,7 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
 	CurrentMetrics     []IoK8sAPIAutoscalingV2beta2MetricStatus                     `json:"currentMetrics"`
 	CurrentReplicas    int32                                                        `json:"currentReplicas"`
 	DesiredReplicas    int32                                                        `json:"desiredReplicas"`
-	LastScaleTime      *IoK8sApimachineryPkgApisMetaV1Time                          `json:"lastScaleTime"`
+	LastScaleTime      OptIoK8sApimachineryPkgApisMetaV1Time                        `json:"lastScaleTime"`
 	ObservedGeneration OptInt64                                                     `json:"observedGeneration"`
 }
 
@@ -3730,17 +3730,17 @@ type IoK8sAPIAutoscalingV2beta2MetricStatus struct {
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricTarget
 type IoK8sAPIAutoscalingV2beta2MetricTarget struct {
-	AverageUtilization OptInt32                                 `json:"averageUtilization"`
-	AverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"averageValue"`
-	Type               string                                   `json:"type"`
-	Value              *IoK8sApimachineryPkgAPIResourceQuantity `json:"value"`
+	AverageUtilization OptInt32                                   `json:"averageUtilization"`
+	AverageValue       OptIoK8sApimachineryPkgAPIResourceQuantity `json:"averageValue"`
+	Type               string                                     `json:"type"`
+	Value              OptIoK8sApimachineryPkgAPIResourceQuantity `json:"value"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricValueStatus
 type IoK8sAPIAutoscalingV2beta2MetricValueStatus struct {
-	AverageUtilization OptInt32                                 `json:"averageUtilization"`
-	AverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"averageValue"`
-	Value              *IoK8sApimachineryPkgAPIResourceQuantity `json:"value"`
+	AverageUtilization OptInt32                                   `json:"averageUtilization"`
+	AverageValue       OptIoK8sApimachineryPkgAPIResourceQuantity `json:"averageValue"`
+	Value              OptIoK8sApimachineryPkgAPIResourceQuantity `json:"value"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ObjectMetricSource
@@ -3811,9 +3811,9 @@ type IoK8sAPIBatchV1CronJobSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.batch.v1.CronJobStatus
 type IoK8sAPIBatchV1CronJobStatus struct {
-	Active             []IoK8sAPICoreV1ObjectReference     `json:"active"`
-	LastScheduleTime   *IoK8sApimachineryPkgApisMetaV1Time `json:"lastScheduleTime"`
-	LastSuccessfulTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastSuccessfulTime"`
+	Active             []IoK8sAPICoreV1ObjectReference       `json:"active"`
+	LastScheduleTime   OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastScheduleTime"`
+	LastSuccessfulTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastSuccessfulTime"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.batch.v1.Job
@@ -3827,12 +3827,12 @@ type IoK8sAPIBatchV1Job struct {
 
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobCondition
 type IoK8sAPIBatchV1JobCondition struct {
-	LastProbeTime      *IoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastProbeTime      OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobList
@@ -3861,10 +3861,10 @@ type IoK8sAPIBatchV1JobSpec struct {
 type IoK8sAPIBatchV1JobStatus struct {
 	Active                  OptInt32                                  `json:"active"`
 	CompletedIndexes        OptString                                 `json:"completedIndexes"`
-	CompletionTime          *IoK8sApimachineryPkgApisMetaV1Time       `json:"completionTime"`
+	CompletionTime          OptIoK8sApimachineryPkgApisMetaV1Time     `json:"completionTime"`
 	Conditions              []IoK8sAPIBatchV1JobCondition             `json:"conditions"`
 	Failed                  OptInt32                                  `json:"failed"`
-	StartTime               *IoK8sApimachineryPkgApisMetaV1Time       `json:"startTime"`
+	StartTime               OptIoK8sApimachineryPkgApisMetaV1Time     `json:"startTime"`
 	Succeeded               OptInt32                                  `json:"succeeded"`
 	UncountedTerminatedPods OptIoK8sAPIBatchV1UncountedTerminatedPods `json:"uncountedTerminatedPods"`
 }
@@ -3911,9 +3911,9 @@ type IoK8sAPIBatchV1beta1CronJobSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.CronJobStatus
 type IoK8sAPIBatchV1beta1CronJobStatus struct {
-	Active             []IoK8sAPICoreV1ObjectReference     `json:"active"`
-	LastScheduleTime   *IoK8sApimachineryPkgApisMetaV1Time `json:"lastScheduleTime"`
-	LastSuccessfulTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastSuccessfulTime"`
+	Active             []IoK8sAPICoreV1ObjectReference       `json:"active"`
+	LastScheduleTime   OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastScheduleTime"`
+	LastSuccessfulTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastSuccessfulTime"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.JobTemplateSpec
@@ -3933,12 +3933,12 @@ type IoK8sAPICertificatesV1CertificateSigningRequest struct {
 
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestCondition
 type IoK8sAPICertificatesV1CertificateSigningRequestCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	LastUpdateTime     *IoK8sApimachineryPkgApisMetaV1Time `json:"lastUpdateTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	LastUpdateTime     OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastUpdateTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestList
@@ -3987,11 +3987,11 @@ type IoK8sAPICoordinationV1LeaseList struct {
 
 // Ref: #/components/schemas/io.k8s.api.coordination.v1.LeaseSpec
 type IoK8sAPICoordinationV1LeaseSpec struct {
-	AcquireTime          *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"acquireTime"`
-	HolderIdentity       OptString                                `json:"holderIdentity"`
-	LeaseDurationSeconds OptInt32                                 `json:"leaseDurationSeconds"`
-	LeaseTransitions     OptInt32                                 `json:"leaseTransitions"`
-	RenewTime            *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"renewTime"`
+	AcquireTime          OptIoK8sApimachineryPkgApisMetaV1MicroTime `json:"acquireTime"`
+	HolderIdentity       OptString                                  `json:"holderIdentity"`
+	LeaseDurationSeconds OptInt32                                   `json:"leaseDurationSeconds"`
+	LeaseTransitions     OptInt32                                   `json:"leaseTransitions"`
+	RenewTime            OptIoK8sApimachineryPkgApisMetaV1MicroTime `json:"renewTime"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource
@@ -4246,18 +4246,18 @@ type IoK8sAPICoreV1ContainerState struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerStateRunning
 type IoK8sAPICoreV1ContainerStateRunning struct {
-	StartedAt *IoK8sApimachineryPkgApisMetaV1Time `json:"startedAt"`
+	StartedAt OptIoK8sApimachineryPkgApisMetaV1Time `json:"startedAt"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerStateTerminated
 type IoK8sAPICoreV1ContainerStateTerminated struct {
-	ContainerID OptString                           `json:"containerID"`
-	ExitCode    int32                               `json:"exitCode"`
-	FinishedAt  *IoK8sApimachineryPkgApisMetaV1Time `json:"finishedAt"`
-	Message     OptString                           `json:"message"`
-	Reason      OptString                           `json:"reason"`
-	Signal      OptInt32                            `json:"signal"`
-	StartedAt   *IoK8sApimachineryPkgApisMetaV1Time `json:"startedAt"`
+	ContainerID OptString                             `json:"containerID"`
+	ExitCode    int32                                 `json:"exitCode"`
+	FinishedAt  OptIoK8sApimachineryPkgApisMetaV1Time `json:"finishedAt"`
+	Message     OptString                             `json:"message"`
+	Reason      OptString                             `json:"reason"`
+	Signal      OptInt32                              `json:"signal"`
+	StartedAt   OptIoK8sApimachineryPkgApisMetaV1Time `json:"startedAt"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerStateWaiting
@@ -4305,8 +4305,8 @@ type IoK8sAPICoreV1DownwardAPIVolumeSource struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.EmptyDirVolumeSource
 type IoK8sAPICoreV1EmptyDirVolumeSource struct {
-	Medium    OptString                                `json:"medium"`
-	SizeLimit *IoK8sApimachineryPkgAPIResourceQuantity `json:"sizeLimit"`
+	Medium    OptString                                  `json:"medium"`
+	SizeLimit OptIoK8sApimachineryPkgAPIResourceQuantity `json:"sizeLimit"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.EndpointAddress
@@ -4404,23 +4404,23 @@ type IoK8sAPICoreV1EphemeralVolumeSource struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.Event
 type IoK8sAPICoreV1Event struct {
-	Action             OptString                                `json:"action"`
-	ApiVersion         OptString                                `json:"apiVersion"`
-	Count              OptInt32                                 `json:"count"`
-	EventTime          *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"eventTime"`
-	FirstTimestamp     *IoK8sApimachineryPkgApisMetaV1Time      `json:"firstTimestamp"`
-	InvolvedObject     IoK8sAPICoreV1ObjectReference            `json:"involvedObject"`
-	Kind               OptString                                `json:"kind"`
-	LastTimestamp      *IoK8sApimachineryPkgApisMetaV1Time      `json:"lastTimestamp"`
-	Message            OptString                                `json:"message"`
-	Metadata           IoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Reason             OptString                                `json:"reason"`
-	Related            OptIoK8sAPICoreV1ObjectReference         `json:"related"`
-	ReportingComponent OptString                                `json:"reportingComponent"`
-	ReportingInstance  OptString                                `json:"reportingInstance"`
-	Series             OptIoK8sAPICoreV1EventSeries             `json:"series"`
-	Source             OptIoK8sAPICoreV1EventSource             `json:"source"`
-	Type               OptString                                `json:"type"`
+	Action             OptString                                  `json:"action"`
+	ApiVersion         OptString                                  `json:"apiVersion"`
+	Count              OptInt32                                   `json:"count"`
+	EventTime          OptIoK8sApimachineryPkgApisMetaV1MicroTime `json:"eventTime"`
+	FirstTimestamp     OptIoK8sApimachineryPkgApisMetaV1Time      `json:"firstTimestamp"`
+	InvolvedObject     IoK8sAPICoreV1ObjectReference              `json:"involvedObject"`
+	Kind               OptString                                  `json:"kind"`
+	LastTimestamp      OptIoK8sApimachineryPkgApisMetaV1Time      `json:"lastTimestamp"`
+	Message            OptString                                  `json:"message"`
+	Metadata           IoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
+	Reason             OptString                                  `json:"reason"`
+	Related            OptIoK8sAPICoreV1ObjectReference           `json:"related"`
+	ReportingComponent OptString                                  `json:"reportingComponent"`
+	ReportingInstance  OptString                                  `json:"reportingInstance"`
+	Series             OptIoK8sAPICoreV1EventSeries               `json:"series"`
+	Source             OptIoK8sAPICoreV1EventSource               `json:"source"`
+	Type               OptString                                  `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.EventList
@@ -4433,8 +4433,8 @@ type IoK8sAPICoreV1EventList struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.EventSeries
 type IoK8sAPICoreV1EventSeries struct {
-	Count            OptInt32                                 `json:"count"`
-	LastObservedTime *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"lastObservedTime"`
+	Count            OptInt32                                   `json:"count"`
+	LastObservedTime OptIoK8sApimachineryPkgApisMetaV1MicroTime `json:"lastObservedTime"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.EventSource
@@ -4674,11 +4674,11 @@ type IoK8sAPICoreV1Namespace struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.NamespaceCondition
 type IoK8sAPICoreV1NamespaceCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.NamespaceList
@@ -4723,12 +4723,12 @@ type IoK8sAPICoreV1NodeAffinity struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeCondition
 type IoK8sAPICoreV1NodeCondition struct {
-	LastHeartbeatTime  *IoK8sApimachineryPkgApisMetaV1Time `json:"lastHeartbeatTime"`
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastHeartbeatTime  OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastHeartbeatTime"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeConfigSource
@@ -4856,12 +4856,12 @@ type IoK8sAPICoreV1PersistentVolumeClaim struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimCondition
 type IoK8sAPICoreV1PersistentVolumeClaimCondition struct {
-	LastProbeTime      *IoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastProbeTime      OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimList
@@ -4994,12 +4994,12 @@ type IoK8sAPICoreV1PodAntiAffinity struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodCondition
 type IoK8sAPICoreV1PodCondition struct {
-	LastProbeTime      *IoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastProbeTime      OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodDNSConfig
@@ -5092,19 +5092,19 @@ type IoK8sAPICoreV1PodSpecOverhead struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodStatus
 type IoK8sAPICoreV1PodStatus struct {
-	Conditions                 []IoK8sAPICoreV1PodCondition        `json:"conditions"`
-	ContainerStatuses          []IoK8sAPICoreV1ContainerStatus     `json:"containerStatuses"`
-	EphemeralContainerStatuses []IoK8sAPICoreV1ContainerStatus     `json:"ephemeralContainerStatuses"`
-	HostIP                     OptString                           `json:"hostIP"`
-	InitContainerStatuses      []IoK8sAPICoreV1ContainerStatus     `json:"initContainerStatuses"`
-	Message                    OptString                           `json:"message"`
-	NominatedNodeName          OptString                           `json:"nominatedNodeName"`
-	Phase                      OptString                           `json:"phase"`
-	PodIP                      OptString                           `json:"podIP"`
-	PodIPs                     []IoK8sAPICoreV1PodIP               `json:"podIPs"`
-	QosClass                   OptString                           `json:"qosClass"`
-	Reason                     OptString                           `json:"reason"`
-	StartTime                  *IoK8sApimachineryPkgApisMetaV1Time `json:"startTime"`
+	Conditions                 []IoK8sAPICoreV1PodCondition          `json:"conditions"`
+	ContainerStatuses          []IoK8sAPICoreV1ContainerStatus       `json:"containerStatuses"`
+	EphemeralContainerStatuses []IoK8sAPICoreV1ContainerStatus       `json:"ephemeralContainerStatuses"`
+	HostIP                     OptString                             `json:"hostIP"`
+	InitContainerStatuses      []IoK8sAPICoreV1ContainerStatus       `json:"initContainerStatuses"`
+	Message                    OptString                             `json:"message"`
+	NominatedNodeName          OptString                             `json:"nominatedNodeName"`
+	Phase                      OptString                             `json:"phase"`
+	PodIP                      OptString                             `json:"podIP"`
+	PodIPs                     []IoK8sAPICoreV1PodIP                 `json:"podIPs"`
+	QosClass                   OptString                             `json:"qosClass"`
+	Reason                     OptString                             `json:"reason"`
+	StartTime                  OptIoK8sApimachineryPkgApisMetaV1Time `json:"startTime"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodTemplate
@@ -5213,11 +5213,11 @@ type IoK8sAPICoreV1ReplicationController struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerCondition
 type IoK8sAPICoreV1ReplicationControllerCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerList
@@ -5250,9 +5250,9 @@ type IoK8sAPICoreV1ReplicationControllerStatus struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceFieldSelector
 type IoK8sAPICoreV1ResourceFieldSelector struct {
-	ContainerName OptString                                `json:"containerName"`
-	Divisor       *IoK8sApimachineryPkgAPIResourceQuantity `json:"divisor"`
-	Resource      string                                   `json:"resource"`
+	ContainerName OptString                                  `json:"containerName"`
+	Divisor       OptIoK8sApimachineryPkgAPIResourceQuantity `json:"divisor"`
+	Resource      string                                     `json:"resource"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuota
@@ -5471,12 +5471,12 @@ type IoK8sAPICoreV1ServiceList struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServicePort
 type IoK8sAPICoreV1ServicePort struct {
-	AppProtocol OptString                                  `json:"appProtocol"`
-	Name        OptString                                  `json:"name"`
-	NodePort    OptInt32                                   `json:"nodePort"`
-	Port        int32                                      `json:"port"`
-	Protocol    OptString                                  `json:"protocol"`
-	TargetPort  *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"targetPort"`
+	AppProtocol OptString                                    `json:"appProtocol"`
+	Name        OptString                                    `json:"name"`
+	NodePort    OptInt32                                     `json:"nodePort"`
+	Port        int32                                        `json:"port"`
+	Protocol    OptString                                    `json:"protocol"`
+	TargetPort  OptIoK8sApimachineryPkgUtilIntstrIntOrString `json:"targetPort"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceSpec
@@ -5547,10 +5547,10 @@ type IoK8sAPICoreV1TCPSocketAction struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.Taint
 type IoK8sAPICoreV1Taint struct {
-	Effect    string                              `json:"effect"`
-	Key       string                              `json:"key"`
-	TimeAdded *IoK8sApimachineryPkgApisMetaV1Time `json:"timeAdded"`
-	Value     OptString                           `json:"value"`
+	Effect    string                                `json:"effect"`
+	Key       string                                `json:"key"`
+	TimeAdded OptIoK8sApimachineryPkgApisMetaV1Time `json:"timeAdded"`
+	Value     OptString                             `json:"value"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.Toleration
@@ -5791,8 +5791,8 @@ type IoK8sAPIEventsV1Event struct {
 	Action                   OptString                                   `json:"action"`
 	ApiVersion               OptString                                   `json:"apiVersion"`
 	DeprecatedCount          OptInt32                                    `json:"deprecatedCount"`
-	DeprecatedFirstTimestamp *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedFirstTimestamp"`
-	DeprecatedLastTimestamp  *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedLastTimestamp"`
+	DeprecatedFirstTimestamp OptIoK8sApimachineryPkgApisMetaV1Time       `json:"deprecatedFirstTimestamp"`
+	DeprecatedLastTimestamp  OptIoK8sApimachineryPkgApisMetaV1Time       `json:"deprecatedLastTimestamp"`
 	DeprecatedSource         OptIoK8sAPICoreV1EventSource                `json:"deprecatedSource"`
 	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime     `json:"eventTime"`
 	Kind                     OptString                                   `json:"kind"`
@@ -5826,8 +5826,8 @@ type IoK8sAPIEventsV1beta1Event struct {
 	Action                   OptString                                   `json:"action"`
 	ApiVersion               OptString                                   `json:"apiVersion"`
 	DeprecatedCount          OptInt32                                    `json:"deprecatedCount"`
-	DeprecatedFirstTimestamp *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedFirstTimestamp"`
-	DeprecatedLastTimestamp  *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedLastTimestamp"`
+	DeprecatedFirstTimestamp OptIoK8sApimachineryPkgApisMetaV1Time       `json:"deprecatedFirstTimestamp"`
+	DeprecatedLastTimestamp  OptIoK8sApimachineryPkgApisMetaV1Time       `json:"deprecatedLastTimestamp"`
 	DeprecatedSource         OptIoK8sAPICoreV1EventSource                `json:"deprecatedSource"`
 	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime     `json:"eventTime"`
 	Kind                     OptString                                   `json:"kind"`
@@ -5872,11 +5872,11 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchema struct {
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaCondition
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             OptString                           `json:"status"`
-	Type               OptString                           `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             OptString                             `json:"status"`
+	Type               OptString                             `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaList
@@ -5941,11 +5941,11 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration struct {
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationCondition
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             OptString                           `json:"status"`
-	Type               OptString                           `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             OptString                             `json:"status"`
+	Type               OptString                             `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationList
@@ -6023,11 +6023,11 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchema struct {
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaCondition
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             OptString                           `json:"status"`
-	Type               OptString                           `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             OptString                             `json:"status"`
+	Type               OptString                             `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaList
@@ -6092,11 +6092,11 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration struct {
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationCondition
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             OptString                           `json:"status"`
-	Type               OptString                           `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             OptString                             `json:"status"`
+	Type               OptString                             `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationList
@@ -6298,9 +6298,9 @@ type IoK8sAPINetworkingV1NetworkPolicyPeer struct {
 
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyPort
 type IoK8sAPINetworkingV1NetworkPolicyPort struct {
-	EndPort  OptInt32                                   `json:"endPort"`
-	Port     *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"port"`
-	Protocol OptString                                  `json:"protocol"`
+	EndPort  OptInt32                                     `json:"endPort"`
+	Port     OptIoK8sApimachineryPkgUtilIntstrIntOrString `json:"port"`
+	Protocol OptString                                    `json:"protocol"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicySpec
@@ -6440,8 +6440,8 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetList struct {
 
 // Ref: #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetSpec
 type IoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
-	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"maxUnavailable"`
-	MinAvailable   *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"minAvailable"`
+	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString   `json:"maxUnavailable"`
+	MinAvailable   OptIoK8sApimachineryPkgUtilIntstrIntOrString   `json:"minAvailable"`
 	Selector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 }
 
@@ -6511,8 +6511,8 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetList struct {
 
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetSpec
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
-	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"maxUnavailable"`
-	MinAvailable   *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"minAvailable"`
+	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString   `json:"maxUnavailable"`
+	MinAvailable   OptIoK8sApimachineryPkgUtilIntstrIntOrString   `json:"minAvailable"`
 	Selector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 }
 
@@ -6846,8 +6846,8 @@ type IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata struct{}
 
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeError
 type IoK8sAPIStorageV1VolumeError struct {
-	Message OptString                           `json:"message"`
-	Time    *IoK8sApimachineryPkgApisMetaV1Time `json:"time"`
+	Message OptString                             `json:"message"`
+	Time    OptIoK8sApimachineryPkgApisMetaV1Time `json:"time"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeNodeResources
@@ -6858,9 +6858,9 @@ type IoK8sAPIStorageV1VolumeNodeResources struct {
 // Ref: #/components/schemas/io.k8s.api.storage.v1alpha1.CSIStorageCapacity
 type IoK8sAPIStorageV1alpha1CSIStorageCapacity struct {
 	ApiVersion        OptString                                      `json:"apiVersion"`
-	Capacity          *IoK8sApimachineryPkgAPIResourceQuantity       `json:"capacity"`
+	Capacity          OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"capacity"`
 	Kind              OptString                                      `json:"kind"`
-	MaximumVolumeSize *IoK8sApimachineryPkgAPIResourceQuantity       `json:"maximumVolumeSize"`
+	MaximumVolumeSize OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"maximumVolumeSize"`
 	Metadata          OptIoK8sApimachineryPkgApisMetaV1ObjectMeta    `json:"metadata"`
 	NodeTopology      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
 	StorageClassName  string                                         `json:"storageClassName"`
@@ -6877,9 +6877,9 @@ type IoK8sAPIStorageV1alpha1CSIStorageCapacityList struct {
 // Ref: #/components/schemas/io.k8s.api.storage.v1beta1.CSIStorageCapacity
 type IoK8sAPIStorageV1beta1CSIStorageCapacity struct {
 	ApiVersion        OptString                                      `json:"apiVersion"`
-	Capacity          *IoK8sApimachineryPkgAPIResourceQuantity       `json:"capacity"`
+	Capacity          OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"capacity"`
 	Kind              OptString                                      `json:"kind"`
-	MaximumVolumeSize *IoK8sApimachineryPkgAPIResourceQuantity       `json:"maximumVolumeSize"`
+	MaximumVolumeSize OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"maximumVolumeSize"`
 	Metadata          OptIoK8sApimachineryPkgApisMetaV1ObjectMeta    `json:"metadata"`
 	NodeTopology      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
 	StorageClassName  string                                         `json:"storageClassName"`
@@ -6920,11 +6920,11 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition s
 
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionCondition
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionList
@@ -7196,7 +7196,7 @@ type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
 	Manager     OptString                               `json:"manager"`
 	Operation   OptString                               `json:"operation"`
 	Subresource OptString                               `json:"subresource"`
-	Time        *IoK8sApimachineryPkgApisMetaV1Time     `json:"time"`
+	Time        OptIoK8sApimachineryPkgApisMetaV1Time   `json:"time"`
 }
 
 type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
@@ -7205,9 +7205,9 @@ type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
 type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 	Annotations                *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations `json:"annotations"`
 	ClusterName                OptString                                            `json:"clusterName"`
-	CreationTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                  `json:"creationTimestamp"`
+	CreationTimestamp          OptIoK8sApimachineryPkgApisMetaV1Time                `json:"creationTimestamp"`
 	DeletionGracePeriodSeconds OptInt64                                             `json:"deletionGracePeriodSeconds"`
-	DeletionTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                  `json:"deletionTimestamp"`
+	DeletionTimestamp          OptIoK8sApimachineryPkgApisMetaV1Time                `json:"deletionTimestamp"`
 	Finalizers                 []string                                             `json:"finalizers"`
 	GenerateName               OptString                                            `json:"generateName"`
 	Generation                 OptInt64                                             `json:"generation"`
@@ -7315,11 +7315,11 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIService struct {
 
 // Ref: #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceCondition
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition struct {
-	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptString                           `json:"message"`
-	Reason             OptString                           `json:"reason"`
-	Status             string                              `json:"status"`
-	Type               string                              `json:"type"`
+	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
+	Message            OptString                             `json:"message"`
+	Reason             OptString                             `json:"reason"`
+	Status             string                                `json:"status"`
+	Type               string                                `json:"type"`
 }
 
 // Ref: #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceList
@@ -18251,6 +18251,44 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) G
 	return o.Value, true
 }
 
+// NewOptIoK8sApimachineryPkgAPIResourceQuantity returns new OptIoK8sApimachineryPkgAPIResourceQuantity with value set to v.
+func NewOptIoK8sApimachineryPkgAPIResourceQuantity(v IoK8sApimachineryPkgAPIResourceQuantity) OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return OptIoK8sApimachineryPkgAPIResourceQuantity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgAPIResourceQuantity is optional IoK8sApimachineryPkgAPIResourceQuantity.
+type OptIoK8sApimachineryPkgAPIResourceQuantity struct {
+	Value IoK8sApimachineryPkgAPIResourceQuantity
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgAPIResourceQuantity was set.
+func (o OptIoK8sApimachineryPkgAPIResourceQuantity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) Reset() {
+	var v IoK8sApimachineryPkgAPIResourceQuantity
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) SetTo(v IoK8sApimachineryPkgAPIResourceQuantity) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Get() (v IoK8sApimachineryPkgAPIResourceQuantity, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery returns new OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery with value set to v.
 func NewOptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery(v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
 	return OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery{
@@ -18365,6 +18403,44 @@ func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Get() (v IoK8sApimachineryPkg
 	return o.Value, true
 }
 
+// NewOptIoK8sApimachineryPkgApisMetaV1MicroTime returns new OptIoK8sApimachineryPkgApisMetaV1MicroTime with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1MicroTime(v IoK8sApimachineryPkgApisMetaV1MicroTime) OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+	return OptIoK8sApimachineryPkgApisMetaV1MicroTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgApisMetaV1MicroTime is optional IoK8sApimachineryPkgApisMetaV1MicroTime.
+type OptIoK8sApimachineryPkgApisMetaV1MicroTime struct {
+	Value IoK8sApimachineryPkgApisMetaV1MicroTime
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1MicroTime was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) Reset() {
+	var v IoK8sApimachineryPkgApisMetaV1MicroTime
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) SetTo(v IoK8sApimachineryPkgApisMetaV1MicroTime) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) Get() (v IoK8sApimachineryPkgApisMetaV1MicroTime, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // NewOptIoK8sApimachineryPkgApisMetaV1ObjectMeta returns new OptIoK8sApimachineryPkgApisMetaV1ObjectMeta with value set to v.
 func NewOptIoK8sApimachineryPkgApisMetaV1ObjectMeta(v IoK8sApimachineryPkgApisMetaV1ObjectMeta) OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return OptIoK8sApimachineryPkgApisMetaV1ObjectMeta{
@@ -18473,6 +18549,82 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1StatusDetails) SetTo(v IoK8sApimachine
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptIoK8sApimachineryPkgApisMetaV1StatusDetails) Get() (v IoK8sApimachineryPkgApisMetaV1StatusDetails, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIoK8sApimachineryPkgApisMetaV1Time returns new OptIoK8sApimachineryPkgApisMetaV1Time with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1Time(v IoK8sApimachineryPkgApisMetaV1Time) OptIoK8sApimachineryPkgApisMetaV1Time {
+	return OptIoK8sApimachineryPkgApisMetaV1Time{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgApisMetaV1Time is optional IoK8sApimachineryPkgApisMetaV1Time.
+type OptIoK8sApimachineryPkgApisMetaV1Time struct {
+	Value IoK8sApimachineryPkgApisMetaV1Time
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1Time was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1Time) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgApisMetaV1Time) Reset() {
+	var v IoK8sApimachineryPkgApisMetaV1Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgApisMetaV1Time) SetTo(v IoK8sApimachineryPkgApisMetaV1Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1Time) Get() (v IoK8sApimachineryPkgApisMetaV1Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptIoK8sApimachineryPkgUtilIntstrIntOrString returns new OptIoK8sApimachineryPkgUtilIntstrIntOrString with value set to v.
+func NewOptIoK8sApimachineryPkgUtilIntstrIntOrString(v IoK8sApimachineryPkgUtilIntstrIntOrString) OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return OptIoK8sApimachineryPkgUtilIntstrIntOrString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgUtilIntstrIntOrString is optional IoK8sApimachineryPkgUtilIntstrIntOrString.
+type OptIoK8sApimachineryPkgUtilIntstrIntOrString struct {
+	Value IoK8sApimachineryPkgUtilIntstrIntOrString
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgUtilIntstrIntOrString was set.
+func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) Reset() {
+	var v IoK8sApimachineryPkgUtilIntstrIntOrString
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) SetTo(v IoK8sApimachineryPkgUtilIntstrIntOrString) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) Get() (v IoK8sApimachineryPkgUtilIntstrIntOrString, ok bool) {
 	if !o.Set {
 		return v, false
 	}

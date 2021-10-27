@@ -5042,7 +5042,7 @@ func (s InlineKeyboardButton) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("callback_data")
 		s.CallbackData.WriteJSON(j)
 	}
-	if s.CallbackGame != nil {
+	if s.CallbackGame.Set {
 		more.More()
 		j.WriteObjectField("callback_game")
 		s.CallbackGame.WriteJSON(j)
@@ -5097,15 +5097,11 @@ func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
 			return true
 		case "callback_game":
 			if err := func() error {
-				s.CallbackGame = nil
-				var elem CallbackGame
-				if err := func() error {
-					return fmt.Errorf(`decoding of "CallbackGame" (alias) is not implemented`)
-				}(); err != nil {
+				s.CallbackGame.Reset()
+				if err := s.CallbackGame.ReadJSON(i); err != nil {
 					return err
 				}
-				s.CallbackGame = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7038,6 +7034,21 @@ func (o *OptBool) ReadJSON(i *json.Iterator) error {
 	}
 }
 
+// WriteJSON writes json value of CallbackGame to json stream.
+func (o OptCallbackGame) WriteJSON(j *json.Stream) {
+}
+
+// ReadJSON reads json value of CallbackGame from json iterator.
+func (o *OptCallbackGame) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptCallbackGame", i.WhatIsNext())
+	}
+}
+
 // WriteJSON writes json value of CallbackQuery to json stream.
 func (o OptCallbackQuery) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
@@ -7261,6 +7272,21 @@ func (o *OptInlineQuery) ReadJSON(i *json.Iterator) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptInlineQuery", i.WhatIsNext())
+	}
+}
+
+// WriteJSON writes json value of InputFile to json stream.
+func (o OptInputFile) WriteJSON(j *json.Stream) {
+}
+
+// ReadJSON reads json value of InputFile from json iterator.
+func (o *OptInputFile) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptInputFile", i.WhatIsNext())
 	}
 }
 
@@ -11228,7 +11254,7 @@ func (s SetWebhookPostReq) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-	if s.Certificate != nil {
+	if s.Certificate.Set {
 		more.More()
 		j.WriteObjectField("certificate")
 		s.Certificate.WriteJSON(j)
@@ -11286,15 +11312,11 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 			return true
 		case "certificate":
 			if err := func() error {
-				s.Certificate = nil
-				var elem InputFile
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InputFile" (alias) is not implemented`)
-				}(); err != nil {
+				s.Certificate.Reset()
+				if err := s.Certificate.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Certificate = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false

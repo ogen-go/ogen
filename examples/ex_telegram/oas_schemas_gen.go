@@ -616,14 +616,14 @@ func (*GetWebhookInfoPostResOK) getWebhookInfoPostRes() {}
 
 // Ref: #/components/schemas/InlineKeyboardButton
 type InlineKeyboardButton struct {
-	CallbackData                 OptString     `json:"callback_data"`
-	CallbackGame                 *CallbackGame `json:"callback_game"`
-	LoginURL                     OptLoginUrl   `json:"login_url"`
-	Pay                          OptBool       `json:"pay"`
-	SwitchInlineQuery            OptString     `json:"switch_inline_query"`
-	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
-	Text                         string        `json:"text"`
-	URL                          OptString     `json:"url"`
+	CallbackData                 OptString       `json:"callback_data"`
+	CallbackGame                 OptCallbackGame `json:"callback_game"`
+	LoginURL                     OptLoginUrl     `json:"login_url"`
+	Pay                          OptBool         `json:"pay"`
+	SwitchInlineQuery            OptString       `json:"switch_inline_query"`
+	SwitchInlineQueryCurrentChat OptString       `json:"switch_inline_query_current_chat"`
+	Text                         string          `json:"text"`
+	URL                          OptString       `json:"url"`
 }
 
 // Ref: #/components/schemas/InlineKeyboardMarkup
@@ -892,6 +892,44 @@ func (o *OptBool) SetTo(v bool) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptBool) Get() (v bool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptCallbackGame returns new OptCallbackGame with value set to v.
+func NewOptCallbackGame(v CallbackGame) OptCallbackGame {
+	return OptCallbackGame{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptCallbackGame is optional CallbackGame.
+type OptCallbackGame struct {
+	Value CallbackGame
+	Set   bool
+}
+
+// IsSet returns true if OptCallbackGame was set.
+func (o OptCallbackGame) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptCallbackGame) Reset() {
+	var v CallbackGame
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptCallbackGame) SetTo(v CallbackGame) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptCallbackGame) Get() (v CallbackGame, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1348,6 +1386,44 @@ func (o *OptInlineQuery) SetTo(v InlineQuery) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptInlineQuery) Get() (v InlineQuery, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// NewOptInputFile returns new OptInputFile with value set to v.
+func NewOptInputFile(v InputFile) OptInputFile {
+	return OptInputFile{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInputFile is optional InputFile.
+type OptInputFile struct {
+	Value InputFile
+	Set   bool
+}
+
+// IsSet returns true if OptInputFile was set.
+func (o OptInputFile) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInputFile) Reset() {
+	var v InputFile
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInputFile) SetTo(v InputFile) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInputFile) Get() (v InputFile, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2614,12 +2690,12 @@ type SetStickerPositionInSetPostResOK struct {
 func (*SetStickerPositionInSetPostResOK) setStickerPositionInSetPostRes() {}
 
 type SetWebhookPostReq struct {
-	AllowedUpdates     []string   `json:"allowed_updates"`
-	Certificate        *InputFile `json:"certificate"`
-	DropPendingUpdates OptBool    `json:"drop_pending_updates"`
-	IPAddress          OptString  `json:"ip_address"`
-	MaxConnections     OptInt     `json:"max_connections"`
-	URL                string     `json:"url"`
+	AllowedUpdates     []string     `json:"allowed_updates"`
+	Certificate        OptInputFile `json:"certificate"`
+	DropPendingUpdates OptBool      `json:"drop_pending_updates"`
+	IPAddress          OptString    `json:"ip_address"`
+	MaxConnections     OptInt       `json:"max_connections"`
+	URL                string       `json:"url"`
 }
 
 type SetWebhookPostResOK struct {

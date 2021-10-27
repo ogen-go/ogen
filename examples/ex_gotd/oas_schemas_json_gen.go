@@ -2717,7 +2717,7 @@ func (s EditMessageCaption) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -2819,15 +2819,11 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -2885,7 +2881,7 @@ func (s EditMessageLiveLocation) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("proximity_alert_radius")
 		s.ProximityAlertRadius.WriteJSON(j)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -2990,15 +2986,11 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3038,7 +3030,7 @@ func (s EditMessageMedia) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -3100,15 +3092,11 @@ func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3145,7 +3133,7 @@ func (s EditMessageReplyMarkup) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -3196,15 +3184,11 @@ func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -3263,7 +3247,7 @@ func (s EditMessageText) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -3368,15 +3352,11 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -5357,7 +5337,7 @@ func (s Message) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("proximity_alert_triggered")
 		s.ProximityAlertTriggered.WriteJSON(j)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -6017,15 +5997,11 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -6611,6 +6587,21 @@ func (o *OptID) ReadJSON(i *json.Iterator) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptID", i.WhatIsNext())
+	}
+}
+
+// WriteJSON writes json value of InlineKeyboardMarkup to json stream.
+func (o OptInlineKeyboardMarkup) WriteJSON(j *json.Stream) {
+}
+
+// ReadJSON reads json value of InlineKeyboardMarkup from json iterator.
+func (o *OptInlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptInlineKeyboardMarkup", i.WhatIsNext())
 	}
 }
 
@@ -9507,7 +9498,7 @@ func (s SendGame) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("game_short_name")
 	j.WriteString(s.GameShortName)
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -9569,15 +9560,11 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9701,7 +9688,7 @@ func (s SendInvoice) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("provider_token")
 	j.WriteString(s.ProviderToken)
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -9981,15 +9968,11 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13232,7 +13215,7 @@ func (s StopMessageLiveLocation) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -13283,15 +13266,11 @@ func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13319,7 +13298,7 @@ func (s StopPoll) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
-	if s.ReplyMarkup != nil {
+	if s.ReplyMarkup.Set {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
@@ -13354,15 +13333,11 @@ func (s *StopPoll) ReadJSON(i *json.Iterator) error {
 			return true
 		case "reply_markup":
 			if err := func() error {
-				s.ReplyMarkup = nil
-				var elem InlineKeyboardMarkup
-				if err := func() error {
-					return fmt.Errorf(`decoding of "InlineKeyboardMarkup" (alias) is not implemented`)
-				}(); err != nil {
+				s.ReplyMarkup.Reset()
+				if err := s.ReplyMarkup.ReadJSON(i); err != nil {
 					return err
 				}
-				s.ReplyMarkup = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false

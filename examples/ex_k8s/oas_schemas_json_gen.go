@@ -6510,7 +6510,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) WriteJSON(j *j
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -6544,15 +6544,11 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) ReadJSON(i *j
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7212,7 +7208,7 @@ func (s IoK8sAPIAppsV1DaemonSetCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -7243,15 +7239,11 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7893,12 +7885,12 @@ func (s IoK8sAPIAppsV1DeploymentCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
 	}
-	if s.LastUpdateTime != nil {
+	if s.LastUpdateTime.Set {
 		more.More()
 		j.WriteObjectField("lastUpdateTime")
 		s.LastUpdateTime.WriteJSON(j)
@@ -7929,15 +7921,11 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -7945,15 +7933,11 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastUpdateTime":
 			if err := func() error {
-				s.LastUpdateTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastUpdateTime.Reset()
+				if err := s.LastUpdateTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastUpdateTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -8632,7 +8616,7 @@ func (s IoK8sAPIAppsV1ReplicaSetCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -8663,15 +8647,11 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9079,12 +9059,12 @@ func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.MaxSurge != nil {
+	if s.MaxSurge.Set {
 		more.More()
 		j.WriteObjectField("maxSurge")
 		s.MaxSurge.WriteJSON(j)
 	}
-	if s.MaxUnavailable != nil {
+	if s.MaxUnavailable.Set {
 		more.More()
 		j.WriteObjectField("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(j)
@@ -9099,15 +9079,11 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error 
 		switch k {
 		case "maxSurge":
 			if err := func() error {
-				s.MaxSurge = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaxSurge.Reset()
+				if err := s.MaxSurge.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaxSurge = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9115,15 +9091,11 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error 
 			return true
 		case "maxUnavailable":
 			if err := func() error {
-				s.MaxUnavailable = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaxUnavailable.Reset()
+				if err := s.MaxUnavailable.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaxUnavailable = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9145,12 +9117,12 @@ func (s IoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.MaxSurge != nil {
+	if s.MaxSurge.Set {
 		more.More()
 		j.WriteObjectField("maxSurge")
 		s.MaxSurge.WriteJSON(j)
 	}
-	if s.MaxUnavailable != nil {
+	if s.MaxUnavailable.Set {
 		more.More()
 		j.WriteObjectField("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(j)
@@ -9165,15 +9137,11 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error
 		switch k {
 		case "maxSurge":
 			if err := func() error {
-				s.MaxSurge = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaxSurge.Reset()
+				if err := s.MaxSurge.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaxSurge = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9181,15 +9149,11 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error
 			return true
 		case "maxUnavailable":
 			if err := func() error {
-				s.MaxUnavailable = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaxUnavailable.Reset()
+				if err := s.MaxUnavailable.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaxUnavailable = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -9361,7 +9325,7 @@ func (s IoK8sAPIAppsV1StatefulSetCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -9392,15 +9356,11 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12123,7 +12083,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json.St
 	more.More()
 	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-	if s.LastScaleTime != nil {
+	if s.LastScaleTime.Set {
 		more.More()
 		j.WriteObjectField("lastScaleTime")
 		s.LastScaleTime.WriteJSON(j)
@@ -12173,15 +12133,11 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.It
 			return true
 		case "lastScaleTime":
 			if err := func() error {
-				s.LastScaleTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastScaleTime.Reset()
+				if err := s.LastScaleTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastScaleTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12226,7 +12182,7 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j *js
 		j.WriteObjectField("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(j)
 	}
-	if s.TargetAverageValue != nil {
+	if s.TargetAverageValue.Set {
 		more.More()
 		j.WriteObjectField("targetAverageValue")
 		s.TargetAverageValue.WriteJSON(j)
@@ -12271,15 +12227,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *js
 			return true
 		case "targetAverageValue":
 			if err := func() error {
-				s.TargetAverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.TargetAverageValue.Reset()
+				if err := s.TargetAverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.TargetAverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12448,12 +12400,12 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream
 		j.WriteObjectField("metricSelector")
 		s.MetricSelector.WriteJSON(j)
 	}
-	if s.TargetAverageValue != nil {
+	if s.TargetAverageValue.Set {
 		more.More()
 		j.WriteObjectField("targetAverageValue")
 		s.TargetAverageValue.WriteJSON(j)
 	}
-	if s.TargetValue != nil {
+	if s.TargetValue.Set {
 		more.More()
 		j.WriteObjectField("targetValue")
 		s.TargetValue.WriteJSON(j)
@@ -12489,15 +12441,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "targetAverageValue":
 			if err := func() error {
-				s.TargetAverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.TargetAverageValue.Reset()
+				if err := s.TargetAverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.TargetAverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12505,15 +12453,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "targetValue":
 			if err := func() error {
-				s.TargetValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.TargetValue.Reset()
+				if err := s.TargetValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.TargetValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12535,7 +12479,7 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.CurrentAverageValue != nil {
+	if s.CurrentAverageValue.Set {
 		more.More()
 		j.WriteObjectField("currentAverageValue")
 		s.CurrentAverageValue.WriteJSON(j)
@@ -12559,15 +12503,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterat
 		switch k {
 		case "currentAverageValue":
 			if err := func() error {
-				s.CurrentAverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.CurrentAverageValue.Reset()
+				if err := s.CurrentAverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.CurrentAverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -12727,7 +12667,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) WriteJSON(j 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -12758,15 +12698,11 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) ReadJSON(i 
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13076,7 +13012,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *js
 	more.More()
 	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-	if s.LastScaleTime != nil {
+	if s.LastScaleTime.Set {
 		more.More()
 		j.WriteObjectField("lastScaleTime")
 		s.LastScaleTime.WriteJSON(j)
@@ -13168,15 +13104,11 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "lastScaleTime":
 			if err := func() error {
-				s.LastScaleTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastScaleTime.Reset()
+				if err := s.LastScaleTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastScaleTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13452,7 +13384,7 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.AverageValue != nil {
+	if s.AverageValue.Set {
 		more.More()
 		j.WriteObjectField("averageValue")
 		s.AverageValue.WriteJSON(j)
@@ -13479,15 +13411,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator
 		switch k {
 		case "averageValue":
 			if err := func() error {
-				s.AverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.AverageValue.Reset()
+				if err := s.AverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.AverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13549,7 +13477,7 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.AverageValue != nil {
+	if s.AverageValue.Set {
 		more.More()
 		j.WriteObjectField("averageValue")
 		s.AverageValue.WriteJSON(j)
@@ -13576,15 +13504,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator
 		switch k {
 		case "averageValue":
 			if err := func() error {
-				s.AverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.AverageValue.Reset()
+				if err := s.AverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.AverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -13778,7 +13702,7 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Stream
 		j.WriteObjectField("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(j)
 	}
-	if s.TargetAverageValue != nil {
+	if s.TargetAverageValue.Set {
 		more.More()
 		j.WriteObjectField("targetAverageValue")
 		s.TargetAverageValue.WriteJSON(j)
@@ -13814,15 +13738,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iterat
 			return true
 		case "targetAverageValue":
 			if err := func() error {
-				s.TargetAverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.TargetAverageValue.Reset()
+				if err := s.TargetAverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.TargetAverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -14523,7 +14443,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) WriteJSON(j 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -14554,15 +14474,11 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) ReadJSON(i 
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -14889,7 +14805,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *js
 	more.More()
 	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-	if s.LastScaleTime != nil {
+	if s.LastScaleTime.Set {
 		more.More()
 		j.WriteObjectField("lastScaleTime")
 		s.LastScaleTime.WriteJSON(j)
@@ -14981,15 +14897,11 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			return true
 		case "lastScaleTime":
 			if err := func() error {
-				s.LastScaleTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastScaleTime.Reset()
+				if err := s.LastScaleTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastScaleTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -15323,7 +15235,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricTarget) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("averageUtilization")
 		s.AverageUtilization.WriteJSON(j)
 	}
-	if s.AverageValue != nil {
+	if s.AverageValue.Set {
 		more.More()
 		j.WriteObjectField("averageValue")
 		s.AverageValue.WriteJSON(j)
@@ -15331,7 +15243,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricTarget) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-	if s.Value != nil {
+	if s.Value.Set {
 		more.More()
 		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
@@ -15358,15 +15270,11 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(i *json.Iterator) erro
 			return true
 		case "averageValue":
 			if err := func() error {
-				s.AverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.AverageValue.Reset()
+				if err := s.AverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.AverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -15383,15 +15291,11 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(i *json.Iterator) erro
 			return true
 		case "value":
 			if err := func() error {
-				s.Value = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.Value.Reset()
+				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Value = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -15418,12 +15322,12 @@ func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("averageUtilization")
 		s.AverageUtilization.WriteJSON(j)
 	}
-	if s.AverageValue != nil {
+	if s.AverageValue.Set {
 		more.More()
 		j.WriteObjectField("averageValue")
 		s.AverageValue.WriteJSON(j)
 	}
-	if s.Value != nil {
+	if s.Value.Set {
 		more.More()
 		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
@@ -15450,15 +15354,11 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(i *json.Iterator)
 			return true
 		case "averageValue":
 			if err := func() error {
-				s.AverageValue = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.AverageValue.Reset()
+				if err := s.AverageValue.ReadJSON(i); err != nil {
 					return err
 				}
-				s.AverageValue = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -15466,15 +15366,11 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(i *json.Iterator)
 			return true
 		case "value":
 			if err := func() error {
-				s.Value = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.Value.Reset()
+				if err := s.Value.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Value = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -16200,12 +16096,12 @@ func (s IoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-	if s.LastScheduleTime != nil {
+	if s.LastScheduleTime.Set {
 		more.More()
 		j.WriteObjectField("lastScheduleTime")
 		s.LastScheduleTime.WriteJSON(j)
 	}
-	if s.LastSuccessfulTime != nil {
+	if s.LastSuccessfulTime.Set {
 		more.More()
 		j.WriteObjectField("lastSuccessfulTime")
 		s.LastSuccessfulTime.WriteJSON(j)
@@ -16247,15 +16143,11 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastScheduleTime":
 			if err := func() error {
-				s.LastScheduleTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastScheduleTime.Reset()
+				if err := s.LastScheduleTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastScheduleTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -16263,15 +16155,11 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastSuccessfulTime":
 			if err := func() error {
-				s.LastSuccessfulTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastSuccessfulTime.Reset()
+				if err := s.LastSuccessfulTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastSuccessfulTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -16402,12 +16290,12 @@ func (s IoK8sAPIBatchV1JobCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastProbeTime != nil {
+	if s.LastProbeTime.Set {
 		more.More()
 		j.WriteObjectField("lastProbeTime")
 		s.LastProbeTime.WriteJSON(j)
 	}
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -16438,15 +16326,11 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastProbeTime":
 			if err := func() error {
-				s.LastProbeTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastProbeTime.Reset()
+				if err := s.LastProbeTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastProbeTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -16454,15 +16338,11 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -16839,7 +16719,7 @@ func (s IoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("completedIndexes")
 		s.CompletedIndexes.WriteJSON(j)
 	}
-	if s.CompletionTime != nil {
+	if s.CompletionTime.Set {
 		more.More()
 		j.WriteObjectField("completionTime")
 		s.CompletionTime.WriteJSON(j)
@@ -16861,7 +16741,7 @@ func (s IoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("failed")
 		s.Failed.WriteJSON(j)
 	}
-	if s.StartTime != nil {
+	if s.StartTime.Set {
 		more.More()
 		j.WriteObjectField("startTime")
 		s.StartTime.WriteJSON(j)
@@ -16910,15 +16790,11 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "completionTime":
 			if err := func() error {
-				s.CompletionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.CompletionTime.Reset()
+				if err := s.CompletionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.CompletionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -16965,15 +16841,11 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startTime":
 			if err := func() error {
-				s.StartTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.StartTime.Reset()
+				if err := s.StartTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.StartTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -17543,12 +17415,12 @@ func (s IoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-	if s.LastScheduleTime != nil {
+	if s.LastScheduleTime.Set {
 		more.More()
 		j.WriteObjectField("lastScheduleTime")
 		s.LastScheduleTime.WriteJSON(j)
 	}
-	if s.LastSuccessfulTime != nil {
+	if s.LastSuccessfulTime.Set {
 		more.More()
 		j.WriteObjectField("lastSuccessfulTime")
 		s.LastSuccessfulTime.WriteJSON(j)
@@ -17590,15 +17462,11 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastScheduleTime":
 			if err := func() error {
-				s.LastScheduleTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastScheduleTime.Reset()
+				if err := s.LastScheduleTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastScheduleTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -17606,15 +17474,11 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastSuccessfulTime":
 			if err := func() error {
-				s.LastSuccessfulTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastSuccessfulTime.Reset()
+				if err := s.LastSuccessfulTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastSuccessfulTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -17800,12 +17664,12 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) WriteJSON(j *j
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
 	}
-	if s.LastUpdateTime != nil {
+	if s.LastUpdateTime.Set {
 		more.More()
 		j.WriteObjectField("lastUpdateTime")
 		s.LastUpdateTime.WriteJSON(j)
@@ -17836,15 +17700,11 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *j
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -17852,15 +17712,11 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *j
 			return true
 		case "lastUpdateTime":
 			if err := func() error {
-				s.LastUpdateTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastUpdateTime.Reset()
+				if err := s.LastUpdateTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastUpdateTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -18580,7 +18436,7 @@ func (s IoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.AcquireTime != nil {
+	if s.AcquireTime.Set {
 		more.More()
 		j.WriteObjectField("acquireTime")
 		s.AcquireTime.WriteJSON(j)
@@ -18600,7 +18456,7 @@ func (s IoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("leaseTransitions")
 		s.LeaseTransitions.WriteJSON(j)
 	}
-	if s.RenewTime != nil {
+	if s.RenewTime.Set {
 		more.More()
 		j.WriteObjectField("renewTime")
 		s.RenewTime.WriteJSON(j)
@@ -18615,15 +18471,11 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "acquireTime":
 			if err := func() error {
-				s.AcquireTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
-				}(); err != nil {
+				s.AcquireTime.Reset()
+				if err := s.AcquireTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.AcquireTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -18667,15 +18519,11 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 			return true
 		case "renewTime":
 			if err := func() error {
-				s.RenewTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
-				}(); err != nil {
+				s.RenewTime.Reset()
+				if err := s.RenewTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.RenewTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -21945,7 +21793,7 @@ func (s IoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.StartedAt != nil {
+	if s.StartedAt.Set {
 		more.More()
 		j.WriteObjectField("startedAt")
 		s.StartedAt.WriteJSON(j)
@@ -21960,15 +21808,11 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "startedAt":
 			if err := func() error {
-				s.StartedAt = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.StartedAt.Reset()
+				if err := s.StartedAt.ReadJSON(i); err != nil {
 					return err
 				}
-				s.StartedAt = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -21998,7 +21842,7 @@ func (s IoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("exitCode")
 	j.WriteInt32(s.ExitCode)
-	if s.FinishedAt != nil {
+	if s.FinishedAt.Set {
 		more.More()
 		j.WriteObjectField("finishedAt")
 		s.FinishedAt.WriteJSON(j)
@@ -22018,7 +21862,7 @@ func (s IoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("signal")
 		s.Signal.WriteJSON(j)
 	}
-	if s.StartedAt != nil {
+	if s.StartedAt.Set {
 		more.More()
 		j.WriteObjectField("startedAt")
 		s.StartedAt.WriteJSON(j)
@@ -22054,15 +21898,11 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 			return true
 		case "finishedAt":
 			if err := func() error {
-				s.FinishedAt = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.FinishedAt.Reset()
+				if err := s.FinishedAt.ReadJSON(i); err != nil {
 					return err
 				}
-				s.FinishedAt = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -22106,15 +21946,11 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 			return true
 		case "startedAt":
 			if err := func() error {
-				s.StartedAt = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.StartedAt.Reset()
+				if err := s.StartedAt.ReadJSON(i); err != nil {
 					return err
 				}
-				s.StartedAt = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -22617,7 +22453,7 @@ func (s IoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("medium")
 		s.Medium.WriteJSON(j)
 	}
-	if s.SizeLimit != nil {
+	if s.SizeLimit.Set {
 		more.More()
 		j.WriteObjectField("sizeLimit")
 		s.SizeLimit.WriteJSON(j)
@@ -22644,15 +22480,11 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error {
 			return true
 		case "sizeLimit":
 			if err := func() error {
-				s.SizeLimit = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.SizeLimit.Reset()
+				if err := s.SizeLimit.ReadJSON(i); err != nil {
 					return err
 				}
-				s.SizeLimit = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -24068,12 +23900,12 @@ func (s IoK8sAPICoreV1Event) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
-	if s.EventTime != nil {
+	if s.EventTime.Set {
 		more.More()
 		j.WriteObjectField("eventTime")
 		s.EventTime.WriteJSON(j)
 	}
-	if s.FirstTimestamp != nil {
+	if s.FirstTimestamp.Set {
 		more.More()
 		j.WriteObjectField("firstTimestamp")
 		s.FirstTimestamp.WriteJSON(j)
@@ -24086,7 +23918,7 @@ func (s IoK8sAPICoreV1Event) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	if s.LastTimestamp != nil {
+	if s.LastTimestamp.Set {
 		more.More()
 		j.WriteObjectField("lastTimestamp")
 		s.LastTimestamp.WriteJSON(j)
@@ -24180,15 +24012,11 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "eventTime":
 			if err := func() error {
-				s.EventTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
-				}(); err != nil {
+				s.EventTime.Reset()
+				if err := s.EventTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.EventTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -24196,15 +24024,11 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "firstTimestamp":
 			if err := func() error {
-				s.FirstTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.FirstTimestamp.Reset()
+				if err := s.FirstTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.FirstTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -24235,15 +24059,11 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTimestamp":
 			if err := func() error {
-				s.LastTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTimestamp.Reset()
+				if err := s.LastTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -24489,7 +24309,7 @@ func (s IoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
-	if s.LastObservedTime != nil {
+	if s.LastObservedTime.Set {
 		more.More()
 		j.WriteObjectField("lastObservedTime")
 		s.LastObservedTime.WriteJSON(j)
@@ -24516,15 +24336,11 @@ func (s *IoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastObservedTime":
 			if err := func() error {
-				s.LastObservedTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1MicroTime
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1MicroTime" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastObservedTime.Reset()
+				if err := s.LastObservedTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastObservedTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -27347,7 +27163,7 @@ func (s IoK8sAPICoreV1NamespaceCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -27378,15 +27194,11 @@ func (s *IoK8sAPICoreV1NamespaceCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -27940,12 +27752,12 @@ func (s IoK8sAPICoreV1NodeCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastHeartbeatTime != nil {
+	if s.LastHeartbeatTime.Set {
 		more.More()
 		j.WriteObjectField("lastHeartbeatTime")
 		s.LastHeartbeatTime.WriteJSON(j)
 	}
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -27976,15 +27788,11 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastHeartbeatTime":
 			if err := func() error {
-				s.LastHeartbeatTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastHeartbeatTime.Reset()
+				if err := s.LastHeartbeatTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastHeartbeatTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -27992,15 +27800,11 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -29722,12 +29526,12 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) WriteJSON(j *json.Stream) 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastProbeTime != nil {
+	if s.LastProbeTime.Set {
 		more.More()
 		j.WriteObjectField("lastProbeTime")
 		s.LastProbeTime.WriteJSON(j)
 	}
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -29758,15 +29562,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iterator
 		switch k {
 		case "lastProbeTime":
 			if err := func() error {
-				s.LastProbeTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastProbeTime.Reset()
+				if err := s.LastProbeTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastProbeTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -29774,15 +29574,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iterator
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -31676,12 +31472,12 @@ func (s IoK8sAPICoreV1PodCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastProbeTime != nil {
+	if s.LastProbeTime.Set {
 		more.More()
 		j.WriteObjectField("lastProbeTime")
 		s.LastProbeTime.WriteJSON(j)
 	}
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -31712,15 +31508,11 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iterator) error {
 		switch k {
 		case "lastProbeTime":
 			if err := func() error {
-				s.LastProbeTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastProbeTime.Reset()
+				if err := s.LastProbeTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastProbeTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -31728,15 +31520,11 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iterator) error {
 			return true
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -33392,7 +33180,7 @@ func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	if s.StartTime != nil {
+	if s.StartTime.Set {
 		more.More()
 		j.WriteObjectField("startTime")
 		s.StartTime.WriteJSON(j)
@@ -33626,15 +33414,11 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		case "startTime":
 			if err := func() error {
-				s.StartTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.StartTime.Reset()
+				if err := s.StartTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.StartTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -34931,7 +34715,7 @@ func (s IoK8sAPICoreV1ReplicationControllerCondition) WriteJSON(j *json.Stream) 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -34962,15 +34746,11 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) ReadJSON(i *json.Iterator
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -35417,7 +35197,7 @@ func (s IoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerName")
 		s.ContainerName.WriteJSON(j)
 	}
-	if s.Divisor != nil {
+	if s.Divisor.Set {
 		more.More()
 		j.WriteObjectField("divisor")
 		s.Divisor.WriteJSON(j)
@@ -35447,15 +35227,11 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) error {
 			return true
 		case "divisor":
 			if err := func() error {
-				s.Divisor = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.Divisor.Reset()
+				if err := s.Divisor.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Divisor = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -38249,7 +38025,7 @@ func (s IoK8sAPICoreV1ServicePort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-	if s.TargetPort != nil {
+	if s.TargetPort.Set {
 		more.More()
 		j.WriteObjectField("targetPort")
 		s.TargetPort.WriteJSON(j)
@@ -38321,15 +38097,11 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iterator) error {
 			return true
 		case "targetPort":
 			if err := func() error {
-				s.TargetPort = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.TargetPort.Reset()
+				if err := s.TargetPort.ReadJSON(i); err != nil {
 					return err
 				}
-				s.TargetPort = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -39274,7 +39046,7 @@ func (s IoK8sAPICoreV1Taint) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-	if s.TimeAdded != nil {
+	if s.TimeAdded.Set {
 		more.More()
 		j.WriteObjectField("timeAdded")
 		s.TimeAdded.WriteJSON(j)
@@ -39312,15 +39084,11 @@ func (s *IoK8sAPICoreV1Taint) ReadJSON(i *json.Iterator) error {
 			return true
 		case "timeAdded":
 			if err := func() error {
-				s.TimeAdded = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.TimeAdded.Reset()
+				if err := s.TimeAdded.ReadJSON(i); err != nil {
 					return err
 				}
-				s.TimeAdded = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -42292,12 +42060,12 @@ func (s IoK8sAPIEventsV1Event) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(j)
 	}
-	if s.DeprecatedFirstTimestamp != nil {
+	if s.DeprecatedFirstTimestamp.Set {
 		more.More()
 		j.WriteObjectField("deprecatedFirstTimestamp")
 		s.DeprecatedFirstTimestamp.WriteJSON(j)
 	}
-	if s.DeprecatedLastTimestamp != nil {
+	if s.DeprecatedLastTimestamp.Set {
 		more.More()
 		j.WriteObjectField("deprecatedLastTimestamp")
 		s.DeprecatedLastTimestamp.WriteJSON(j)
@@ -42404,15 +42172,11 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedFirstTimestamp":
 			if err := func() error {
-				s.DeprecatedFirstTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.DeprecatedFirstTimestamp.Reset()
+				if err := s.DeprecatedFirstTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.DeprecatedFirstTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -42420,15 +42184,11 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedLastTimestamp":
 			if err := func() error {
-				s.DeprecatedLastTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.DeprecatedLastTimestamp.Reset()
+				if err := s.DeprecatedLastTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.DeprecatedLastTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -42762,12 +42522,12 @@ func (s IoK8sAPIEventsV1beta1Event) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(j)
 	}
-	if s.DeprecatedFirstTimestamp != nil {
+	if s.DeprecatedFirstTimestamp.Set {
 		more.More()
 		j.WriteObjectField("deprecatedFirstTimestamp")
 		s.DeprecatedFirstTimestamp.WriteJSON(j)
 	}
-	if s.DeprecatedLastTimestamp != nil {
+	if s.DeprecatedLastTimestamp.Set {
 		more.More()
 		j.WriteObjectField("deprecatedLastTimestamp")
 		s.DeprecatedLastTimestamp.WriteJSON(j)
@@ -42874,15 +42634,11 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedFirstTimestamp":
 			if err := func() error {
-				s.DeprecatedFirstTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.DeprecatedFirstTimestamp.Reset()
+				if err := s.DeprecatedFirstTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.DeprecatedFirstTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -42890,15 +42646,11 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			return true
 		case "deprecatedLastTimestamp":
 			if err := func() error {
-				s.DeprecatedLastTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.DeprecatedLastTimestamp.Reset()
+				if err := s.DeprecatedLastTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.DeprecatedLastTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -43362,7 +43114,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) WriteJSON(j *json.Stream)
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -43397,15 +43149,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iterato
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -44250,7 +43998,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) WriteJSON
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -44285,15 +44033,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -45201,7 +44945,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) WriteJSON(j *json.Stream)
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -45236,15 +44980,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iterato
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -46089,7 +45829,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) WriteJSON
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -46124,15 +45864,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -48590,7 +48326,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("endPort")
 		s.EndPort.WriteJSON(j)
 	}
-	if s.Port != nil {
+	if s.Port.Set {
 		more.More()
 		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
@@ -48622,15 +48358,11 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) ReadJSON(i *json.Iterator) error
 			return true
 		case "port":
 			if err := func() error {
-				s.Port = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.Port.Reset()
+				if err := s.Port.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Port = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -50382,12 +50114,12 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.MaxUnavailable != nil {
+	if s.MaxUnavailable.Set {
 		more.More()
 		j.WriteObjectField("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(j)
 	}
-	if s.MinAvailable != nil {
+	if s.MinAvailable.Set {
 		more.More()
 		j.WriteObjectField("minAvailable")
 		s.MinAvailable.WriteJSON(j)
@@ -50407,15 +50139,11 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) err
 		switch k {
 		case "maxUnavailable":
 			if err := func() error {
-				s.MaxUnavailable = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaxUnavailable.Reset()
+				if err := s.MaxUnavailable.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaxUnavailable = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -50423,15 +50151,11 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) err
 			return true
 		case "minAvailable":
 			if err := func() error {
-				s.MinAvailable = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MinAvailable.Reset()
+				if err := s.MinAvailable.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MinAvailable = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -51168,12 +50892,12 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.MaxUnavailable != nil {
+	if s.MaxUnavailable.Set {
 		more.More()
 		j.WriteObjectField("maxUnavailable")
 		s.MaxUnavailable.WriteJSON(j)
 	}
-	if s.MinAvailable != nil {
+	if s.MinAvailable.Set {
 		more.More()
 		j.WriteObjectField("minAvailable")
 		s.MinAvailable.WriteJSON(j)
@@ -51193,15 +50917,11 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator
 		switch k {
 		case "maxUnavailable":
 			if err := func() error {
-				s.MaxUnavailable = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaxUnavailable.Reset()
+				if err := s.MaxUnavailable.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaxUnavailable = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -51209,15 +50929,11 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator
 			return true
 		case "minAvailable":
 			if err := func() error {
-				s.MinAvailable = nil
-				var elem IoK8sApimachineryPkgUtilIntstrIntOrString
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgUtilIntstrIntOrString" (alias) is not implemented`)
-				}(); err != nil {
+				s.MinAvailable.Reset()
+				if err := s.MinAvailable.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MinAvailable = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -55887,7 +55603,7 @@ func (s IoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-	if s.Time != nil {
+	if s.Time.Set {
 		more.More()
 		j.WriteObjectField("time")
 		s.Time.WriteJSON(j)
@@ -55914,15 +55630,11 @@ func (s *IoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
 			return true
 		case "time":
 			if err := func() error {
-				s.Time = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.Time.Reset()
+				if err := s.Time.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Time = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -55990,7 +55702,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	if s.Capacity != nil {
+	if s.Capacity.Set {
 		more.More()
 		j.WriteObjectField("capacity")
 		s.Capacity.WriteJSON(j)
@@ -56000,7 +55712,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	if s.MaximumVolumeSize != nil {
+	if s.MaximumVolumeSize.Set {
 		more.More()
 		j.WriteObjectField("maximumVolumeSize")
 		s.MaximumVolumeSize.WriteJSON(j)
@@ -56040,15 +55752,11 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			return true
 		case "capacity":
 			if err := func() error {
-				s.Capacity = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.Capacity.Reset()
+				if err := s.Capacity.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Capacity = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -56068,15 +55776,11 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			return true
 		case "maximumVolumeSize":
 			if err := func() error {
-				s.MaximumVolumeSize = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaximumVolumeSize.Reset()
+				if err := s.MaximumVolumeSize.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaximumVolumeSize = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -56248,7 +55952,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	if s.Capacity != nil {
+	if s.Capacity.Set {
 		more.More()
 		j.WriteObjectField("capacity")
 		s.Capacity.WriteJSON(j)
@@ -56258,7 +55962,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	if s.MaximumVolumeSize != nil {
+	if s.MaximumVolumeSize.Set {
 		more.More()
 		j.WriteObjectField("maximumVolumeSize")
 		s.MaximumVolumeSize.WriteJSON(j)
@@ -56298,15 +56002,11 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			return true
 		case "capacity":
 			if err := func() error {
-				s.Capacity = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.Capacity.Reset()
+				if err := s.Capacity.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Capacity = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -56326,15 +56026,11 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			return true
 		case "maximumVolumeSize":
 			if err := func() error {
-				s.MaximumVolumeSize = nil
-				var elem IoK8sApimachineryPkgAPIResourceQuantity
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgAPIResourceQuantity" (alias) is not implemented`)
-				}(); err != nil {
+				s.MaximumVolumeSize.Reset()
+				if err := s.MaximumVolumeSize.ReadJSON(i); err != nil {
 					return err
 				}
-				s.MaximumVolumeSize = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -56771,7 +56467,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -56802,15 +56498,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -60565,7 +60257,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) WriteJSON(j *json.Stre
 		j.WriteObjectField("subresource")
 		s.Subresource.WriteJSON(j)
 	}
-	if s.Time != nil {
+	if s.Time.Set {
 		more.More()
 		j.WriteObjectField("time")
 		s.Time.WriteJSON(j)
@@ -60659,15 +60351,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 			return true
 		case "time":
 			if err := func() error {
-				s.Time = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.Time.Reset()
+				if err := s.Time.ReadJSON(i); err != nil {
 					return err
 				}
-				s.Time = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -60702,7 +60390,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("clusterName")
 		s.ClusterName.WriteJSON(j)
 	}
-	if s.CreationTimestamp != nil {
+	if s.CreationTimestamp.Set {
 		more.More()
 		j.WriteObjectField("creationTimestamp")
 		s.CreationTimestamp.WriteJSON(j)
@@ -60712,7 +60400,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("deletionGracePeriodSeconds")
 		s.DeletionGracePeriodSeconds.WriteJSON(j)
 	}
-	if s.DeletionTimestamp != nil {
+	if s.DeletionTimestamp.Set {
 		more.More()
 		j.WriteObjectField("deletionTimestamp")
 		s.DeletionTimestamp.WriteJSON(j)
@@ -60834,15 +60522,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "creationTimestamp":
 			if err := func() error {
-				s.CreationTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.CreationTimestamp.Reset()
+				if err := s.CreationTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.CreationTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -60862,15 +60546,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			return true
 		case "deletionTimestamp":
 			if err := func() error {
-				s.DeletionTimestamp = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.DeletionTimestamp.Reset()
+				if err := s.DeletionTimestamp.ReadJSON(i); err != nil {
 					return err
 				}
-				s.DeletionTimestamp = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -62038,7 +61718,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) WriteJSO
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.LastTransitionTime != nil {
+	if s.LastTransitionTime.Set {
 		more.More()
 		j.WriteObjectField("lastTransitionTime")
 		s.LastTransitionTime.WriteJSON(j)
@@ -62069,15 +61749,11 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) ReadJSO
 		switch k {
 		case "lastTransitionTime":
 			if err := func() error {
-				s.LastTransitionTime = nil
-				var elem IoK8sApimachineryPkgApisMetaV1Time
-				if err := func() error {
-					return fmt.Errorf(`decoding of "IoK8sApimachineryPkgApisMetaV1Time" (alias) is not implemented`)
-				}(); err != nil {
+				s.LastTransitionTime.Reset()
+				if err := s.LastTransitionTime.ReadJSON(i); err != nil {
 					return err
 				}
-				s.LastTransitionTime = &elem
-				return i.Error
+				return nil
 			}(); err != nil {
 				retErr = err
 				return false
@@ -70188,6 +69864,21 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) 
 	}
 }
 
+// WriteJSON writes json value of IoK8sApimachineryPkgAPIResourceQuantity to json stream.
+func (o OptIoK8sApimachineryPkgAPIResourceQuantity) WriteJSON(j *json.Stream) {
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgAPIResourceQuantity from json iterator.
+func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgAPIResourceQuantity", i.WhatIsNext())
+	}
+}
+
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to json stream.
 func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
@@ -70245,6 +69936,21 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) e
 	}
 }
 
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1MicroTime to json stream.
+func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) WriteJSON(j *json.Stream) {
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1MicroTime from json iterator.
+func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1MicroTime", i.WhatIsNext())
+	}
+}
+
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1ObjectMeta to json stream.
 func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
@@ -70299,6 +70005,36 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterat
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1StatusDetails", i.WhatIsNext())
+	}
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1Time to json stream.
+func (o OptIoK8sApimachineryPkgApisMetaV1Time) WriteJSON(j *json.Stream) {
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1Time from json iterator.
+func (o *OptIoK8sApimachineryPkgApisMetaV1Time) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1Time", i.WhatIsNext())
+	}
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgUtilIntstrIntOrString to json stream.
+func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) WriteJSON(j *json.Stream) {
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgUtilIntstrIntOrString from json iterator.
+func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgUtilIntstrIntOrString", i.WhatIsNext())
 	}
 }
 
