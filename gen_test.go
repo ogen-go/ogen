@@ -29,14 +29,12 @@ func TestGenerate(t *testing.T) {
 	for _, tc := range []struct {
 		Name    string
 		Options gen.Options
-		Skip    bool
 	}{
 		{
 			Name: "firecracker.json",
 		},
 		{
 			Name: "api.github.com.json",
-			Skip: true,
 			Options: gen.Options{
 				IgnoreNotImplemented: []string{
 					"complex parameter types",
@@ -85,10 +83,6 @@ func TestGenerate(t *testing.T) {
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			t.Parallel()
-
-			if tc.Skip {
-				t.Skip("Skipped")
-			}
 
 			f, err := testdata.Open(path.Join("_testdata", tc.Name))
 			require.NoError(t, err)
