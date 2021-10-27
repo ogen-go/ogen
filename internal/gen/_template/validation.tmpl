@@ -8,6 +8,22 @@
             return fmt.Errorf("required, can't be nil")
         }
     {{- end }}
+    {{- if $t.IsArray }}
+    var failures []validate.FieldError
+    for i, elem := range {{ $.Var }} {
+        if err := func() error {
+            {{- template "validate" array_elem $.Type.Item }}
+        }(); err != nil {
+            failures = append(failures, validate.FieldError{
+                Name:  fmt.Sprintf("[%d]", i),
+                Error: err,
+            })
+        }
+        if len(failures) > 0 {
+            return &validate.Error{Fields: failures}
+        }
+    }
+    {{- end }}
     {{- if $va.String.Set }}
         {{- $v := $va.String }}
         if err := (validate.String{
@@ -32,6 +48,7 @@
             return err
         }
     {{- end }}
+    _ = {{ $.Var }}
     return nil
 {{- end }}
 

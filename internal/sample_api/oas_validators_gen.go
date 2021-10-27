@@ -53,6 +53,22 @@ var (
 func (s *Pet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.Friends {
+			if err := func() error {
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.Friends
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -71,6 +87,7 @@ func (s *Pet) Validate() error {
 		}).Validate(int64(s.ID)); err != nil {
 			return err
 		}
+		_ = s.ID
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -79,6 +96,7 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.Kind
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -95,6 +113,7 @@ func (s *Pet) Validate() error {
 		}).Validate(string(s.Name)); err != nil {
 			return err
 		}
+		_ = s.Name
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -103,6 +122,7 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.Primary
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -111,6 +131,48 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.TestArray1 {
+			if err := func() error {
+				if elem == nil {
+					return fmt.Errorf("required, can't be nil")
+				}
+				var failures []validate.FieldError
+				for i, elem := range elem {
+					if err := func() error {
+						if err := (validate.String{
+							MinLength:    0,
+							MinLengthSet: false,
+							MaxLength:    255,
+							MaxLengthSet: true,
+						}).Validate(string(elem)); err != nil {
+							return err
+						}
+						_ = elem
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+				}
+				_ = elem
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+		}
+		_ = s.TestArray1
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -119,6 +181,7 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.TestFloat1
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -127,6 +190,7 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.TestInteger1
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -135,6 +199,7 @@ func (s *Pet) Validate() error {
 		})
 	}
 	if err := func() error {
+		_ = s.Type
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
