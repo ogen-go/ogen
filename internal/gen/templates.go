@@ -18,6 +18,7 @@ type Elem struct {
 	Type *ir.Type
 	Var  string
 	Tag  ir.Tag
+	More bool
 }
 
 // NextVar returns name of variable for decoding recursive call.
@@ -85,6 +86,7 @@ func templateFunctions() template.FuncMap {
 				Type: parent.Type.PointerTo,
 				Sub:  true,
 				Var:  parent.NextVar(),
+				More: true,
 			}
 		},
 		// Recursive array element (e.g. array of arrays).
@@ -93,6 +95,7 @@ func templateFunctions() template.FuncMap {
 				Type: t,
 				Sub:  true,
 				Var:  parent.NextVar(),
+				More: true,
 			}
 		},
 		// Initial array element.
@@ -101,10 +104,11 @@ func templateFunctions() template.FuncMap {
 				Type: t,
 				Sub:  true,
 				Var:  "elem",
+				More: true,
 			}
 		},
-		"req_elem":        func(t *ir.Type) Elem { return Elem{Type: t, Var: "response"} },
-		"req_decode_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request"} },
+		"req_elem":        func(t *ir.Type) Elem { return Elem{Type: t, Var: "response", More: true} },
+		"req_decode_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request", More: true} },
 		"res_elem": func(i *ir.ResponseInfo) Elem {
 			v := "response"
 			if i.Default {
@@ -113,6 +117,7 @@ func templateFunctions() template.FuncMap {
 			return Elem{
 				Type: i.Type,
 				Var:  v,
+				More: true,
 			}
 		},
 		// Field of structure.
@@ -121,6 +126,14 @@ func templateFunctions() template.FuncMap {
 				Type: f.Type,
 				Var:  fmt.Sprintf("s.%s", f.Name),
 				Tag:  f.Tag,
+				More: true,
+			}
+		},
+		// Element of sum type.
+		"sum_elem": func(t *ir.Type) Elem {
+			return Elem{
+				Type: t,
+				Var:  fmt.Sprintf("s.%s", t.Name),
 			}
 		},
 	}

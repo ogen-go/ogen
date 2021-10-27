@@ -52,31 +52,57 @@ var (
 
 // Ref: #/components/schemas/Data
 type Data struct {
-	Description OptString       `json:"description"`
-	ID          DataIDStringInt `json:"id"`
+	Description OptString `json:"description"`
+	ID          DataID    `json:"id"`
 }
 
-// DataIDStringInt represents sum type.
-type DataIDStringInt struct {
-	Type   DataIDStringIntType // switch on this field
+// DataID represents sum type.
+type DataID struct {
+	Type   DataIDType // switch on this field
 	String string
 	Int    int
 }
 
-// DataIDStringIntType is oneOf type of DataIDStringInt.
-type DataIDStringIntType string
+// DataIDType is oneOf type of DataID.
+type DataIDType string
 
-// Possible values for DataIDStringIntType.
+// Possible values for DataIDType.
 const (
-	DataIDStringIntString DataIDStringIntType = "string"
-	DataIDStringIntInt    DataIDStringIntType = "int"
+	DataIDStringType DataIDType = "string"
+	DataIDIntType    DataIDType = "int"
 )
 
-// IsString reports whether DataIDStringInt is string.
-func (s DataIDStringInt) IsString() bool { return s.Type == DataIDStringIntString }
+// IsString reports whether DataID is string.
+func (s DataID) IsString() bool { return s.Type == DataIDStringType }
 
-// IsInt reports whether DataIDStringInt is int.
-func (s DataIDStringInt) IsInt() bool { return s.Type == DataIDStringIntInt }
+// IsInt reports whether DataID is int.
+func (s DataID) IsInt() bool { return s.Type == DataIDIntType }
+
+// SetString sets DataID to string.
+func (s *DataID) SetString(v string) {
+	s.Type = DataIDStringType
+	s.String = v
+}
+
+// DataIDString returns new DataID from string.
+func DataIDString(v string) DataID {
+	var s DataID
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets DataID to int.
+func (s *DataID) SetInt(v int) {
+	s.Type = DataIDIntType
+	s.Int = v
+}
+
+// DataIDInt returns new DataID from int.
+func DataIDInt(v int) DataID {
+	var s DataID
+	s.SetInt(v)
+	return s
+}
 
 // FoobarGetResNotFound is response for FoobarGet operation.
 type FoobarGetResNotFound struct{}

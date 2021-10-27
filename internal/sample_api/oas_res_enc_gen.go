@@ -59,7 +59,6 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-
 		more.More()
 		response.WriteJSON(j)
 		if err := j.Flush(); err != nil {
@@ -83,7 +82,6 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-
 		more.More()
 		response.WriteJSON(j)
 		if err := j.Flush(); err != nil {
@@ -100,7 +98,6 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-
 		more.More()
 		response.Response.WriteJSON(j)
 		if err := j.Flush(); err != nil {
@@ -124,7 +121,6 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -140,7 +136,6 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter)
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	more.Down()
 	j.WriteArrayStart()
@@ -165,7 +160,6 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-
 		more.More()
 		response.WriteJSON(j)
 		if err := j.Flush(); err != nil {
@@ -179,7 +173,6 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 		defer json.PutStream(j)
 		more := json.NewMore(j)
 		defer more.Reset()
-
 		more.More()
 		response.Response.WriteJSON(j)
 		if err := j.Flush(); err != nil {
@@ -198,7 +191,6 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -214,7 +206,6 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteString(response)
 	if err := j.Flush(); err != nil {

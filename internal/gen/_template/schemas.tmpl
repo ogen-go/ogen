@@ -66,13 +66,32 @@ type {{ $.Name }}Type string
 // Possible values for {{ $.Name }}Type.
 const (
 {{- range $s := $.SumOf }}
-    {{ $.Name }}{{ $s.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
+    {{ $.Name }}{{ $s.Name }}Type {{ $.Name }}Type = "{{ $s.Go }}"
 {{- end }}
 )
 
 {{- range $s := $.SumOf }}
 // Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
-func (s {{ $.Name }}) Is{{ $s.Name }}() bool { return s.Type == {{ $.Name }}{{ $s.Name }} }
+func (s {{ $.Go }}) Is{{ $s.Name }}() bool { return s.Type == {{ $.Name }}{{ $s.Name }}Type }
+{{- end }}
+
+{{- range $s := $.SumOf }}
+// Set{{ $s.Name }} sets {{ $.Name }} to {{ $s.Go }}.
+func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
+    s.Type = {{ $.Name }}{{ $s.Name }}Type
+    s.{{ $s.Name }} = v
+}
+
+// {{ $.Name }}{{ $s.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
+func {{ $.Name }}{{ $s.Name }}(v {{ $s.Go }}) {{ $.Go }} {
+    var s {{ $.Name }}
+    s.Set{{ $s.Name }}(v)
+    return s
+}
+{{- end }}
+
+{{- range $s := $.SumOf }}
+
 {{- end }}
 
 {{/* Define sum */}}

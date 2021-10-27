@@ -195,7 +195,6 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 				result = append(result, c)
 			}
 			t.Name = string(result)
-			sum.Name += t.Name
 			sum.SumOf = append(sum.SumOf, t)
 		}
 		return side(sum), nil

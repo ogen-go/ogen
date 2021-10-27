@@ -55,27 +55,22 @@ func (s AddStickerToSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("emojis")
 	j.WriteString(s.Emojis)
-
 	if s.MaskPosition.Set {
 		more.More()
 		j.WriteObjectField("mask_position")
 		s.MaskPosition.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.TgsSticker.Set {
 		more.More()
 		j.WriteObjectField("tgs_sticker")
 		s.TgsSticker.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -154,11 +149,9 @@ func (s AddStickerToSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -209,47 +202,38 @@ func (s Animation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("duration")
 	j.WriteInt(s.Duration)
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileName.Set {
 		more.More()
 		j.WriteObjectField("file_name")
 		s.FileName.WriteJSON(j)
 	}
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	more.More()
 	j.WriteObjectField("height")
 	j.WriteInt(s.Height)
-
 	if s.MimeType.Set {
 		more.More()
 		j.WriteObjectField("mime_type")
 		s.MimeType.WriteJSON(j)
 	}
-
 	if s.Thumb.Set {
 		more.More()
 		j.WriteObjectField("thumb")
 		s.Thumb.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("width")
 	j.WriteInt(s.Width)
@@ -370,29 +354,24 @@ func (s AnswerCallbackQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.CacheTime.Set {
 		more.More()
 		j.WriteObjectField("cache_time")
 		s.CacheTime.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("callback_query_id")
 	j.WriteString(s.CallbackQueryID)
-
 	if s.ShowAlert.Set {
 		more.More()
 		j.WriteObjectField("show_alert")
 		s.ShowAlert.WriteJSON(j)
 	}
-
 	if s.Text.Set {
 		more.More()
 		j.WriteObjectField("text")
 		s.Text.WriteJSON(j)
 	}
-
 	if s.URL.Set {
 		more.More()
 		j.WriteObjectField("url")
@@ -479,11 +458,9 @@ func (s AnswerCallbackQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -534,35 +511,29 @@ func (s AnswerInlineQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.CacheTime.Set {
 		more.More()
 		j.WriteObjectField("cache_time")
 		s.CacheTime.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("inline_query_id")
 	j.WriteString(s.InlineQueryID)
-
 	if s.IsPersonal.Set {
 		more.More()
 		j.WriteObjectField("is_personal")
 		s.IsPersonal.WriteJSON(j)
 	}
-
 	if s.NextOffset.Set {
 		more.More()
 		j.WriteObjectField("next_offset")
 		s.NextOffset.WriteJSON(j)
 	}
-
 	if s.SwitchPmParameter.Set {
 		more.More()
 		j.WriteObjectField("switch_pm_parameter")
 		s.SwitchPmParameter.WriteJSON(j)
 	}
-
 	if s.SwitchPmText.Set {
 		more.More()
 		j.WriteObjectField("switch_pm_text")
@@ -661,11 +632,9 @@ func (s AnswerInlineQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -716,17 +685,14 @@ func (s AnswerPreCheckoutQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.ErrorMessage.Set {
 		more.More()
 		j.WriteObjectField("error_message")
 		s.ErrorMessage.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	more.More()
 	j.WriteObjectField("pre_checkout_query_id")
 	j.WriteString(s.PreCheckoutQueryID)
@@ -784,11 +750,9 @@ func (s AnswerPreCheckoutQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -839,17 +803,14 @@ func (s AnswerShippingQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.ErrorMessage.Set {
 		more.More()
 		j.WriteObjectField("error_message")
 		s.ErrorMessage.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	more.More()
 	j.WriteObjectField("shipping_query_id")
 	j.WriteString(s.ShippingQueryID)
@@ -907,11 +868,9 @@ func (s AnswerShippingQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -962,49 +921,40 @@ func (s Audio) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("duration")
 	j.WriteInt(s.Duration)
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileName.Set {
 		more.More()
 		j.WriteObjectField("file_name")
 		s.FileName.WriteJSON(j)
 	}
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	if s.MimeType.Set {
 		more.More()
 		j.WriteObjectField("mime_type")
 		s.MimeType.WriteJSON(j)
 	}
-
 	if s.Performer.Set {
 		more.More()
 		j.WriteObjectField("performer")
 		s.Performer.WriteJSON(j)
 	}
-
 	if s.Thumb.Set {
 		more.More()
 		j.WriteObjectField("thumb")
 		s.Thumb.WriteJSON(j)
 	}
-
 	if s.Title.Set {
 		more.More()
 		j.WriteObjectField("title")
@@ -1133,19 +1083,16 @@ func (s BanChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.RevokeMessages.Set {
 		more.More()
 		j.WriteObjectField("revoke_messages")
 		s.RevokeMessages.WriteJSON(j)
 	}
-
 	if s.UntilDate.Set {
 		more.More()
 		j.WriteObjectField("until_date")
 		s.UntilDate.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -1206,11 +1153,9 @@ func (s BanChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -1285,105 +1230,87 @@ func (s Chat) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Bio.Set {
 		more.More()
 		j.WriteObjectField("bio")
 		s.Bio.WriteJSON(j)
 	}
-
 	if s.CanSetStickerSet.Set {
 		more.More()
 		j.WriteObjectField("can_set_sticker_set")
 		s.CanSetStickerSet.WriteJSON(j)
 	}
-
 	if s.Description.Set {
 		more.More()
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
-
 	if s.FirstName.Set {
 		more.More()
 		j.WriteObjectField("first_name")
 		s.FirstName.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt(s.ID)
-
 	if s.InviteLink.Set {
 		more.More()
 		j.WriteObjectField("invite_link")
 		s.InviteLink.WriteJSON(j)
 	}
-
 	if s.LastName.Set {
 		more.More()
 		j.WriteObjectField("last_name")
 		s.LastName.WriteJSON(j)
 	}
-
 	if s.LinkedChatID.Set {
 		more.More()
 		j.WriteObjectField("linked_chat_id")
 		s.LinkedChatID.WriteJSON(j)
 	}
-
 	if s.Location.Set {
 		more.More()
 		j.WriteObjectField("location")
 		s.Location.WriteJSON(j)
 	}
-
 	if s.MessageAutoDeleteTime.Set {
 		more.More()
 		j.WriteObjectField("message_auto_delete_time")
 		s.MessageAutoDeleteTime.WriteJSON(j)
 	}
-
 	if s.Permissions.Set {
 		more.More()
 		j.WriteObjectField("permissions")
 		s.Permissions.WriteJSON(j)
 	}
-
 	if s.Photo.Set {
 		more.More()
 		j.WriteObjectField("photo")
 		s.Photo.WriteJSON(j)
 	}
-
 	if s.PinnedMessage.Set {
 		more.More()
 		j.WriteObjectField("pinned_message")
 		s.PinnedMessage.WriteJSON(j)
 	}
-
 	if s.SlowModeDelay.Set {
 		more.More()
 		j.WriteObjectField("slow_mode_delay")
 		s.SlowModeDelay.WriteJSON(j)
 	}
-
 	if s.StickerSetName.Set {
 		more.More()
 		j.WriteObjectField("sticker_set_name")
 		s.StickerSetName.WriteJSON(j)
 	}
-
 	if s.Title.Set {
 		more.More()
 		j.WriteObjectField("title")
 		s.Title.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	if s.Username.Set {
 		more.More()
 		j.WriteObjectField("username")
@@ -1623,11 +1550,9 @@ func (s ChatLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("address")
 	j.WriteString(s.Address)
-
 	more.More()
 	j.WriteObjectField("location")
 	s.Location.WriteJSON(j)
@@ -1675,49 +1600,41 @@ func (s ChatPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.CanAddWebPagePreviews.Set {
 		more.More()
 		j.WriteObjectField("can_add_web_page_previews")
 		s.CanAddWebPagePreviews.WriteJSON(j)
 	}
-
 	if s.CanChangeInfo.Set {
 		more.More()
 		j.WriteObjectField("can_change_info")
 		s.CanChangeInfo.WriteJSON(j)
 	}
-
 	if s.CanInviteUsers.Set {
 		more.More()
 		j.WriteObjectField("can_invite_users")
 		s.CanInviteUsers.WriteJSON(j)
 	}
-
 	if s.CanPinMessages.Set {
 		more.More()
 		j.WriteObjectField("can_pin_messages")
 		s.CanPinMessages.WriteJSON(j)
 	}
-
 	if s.CanSendMediaMessages.Set {
 		more.More()
 		j.WriteObjectField("can_send_media_messages")
 		s.CanSendMediaMessages.WriteJSON(j)
 	}
-
 	if s.CanSendMessages.Set {
 		more.More()
 		j.WriteObjectField("can_send_messages")
 		s.CanSendMessages.WriteJSON(j)
 	}
-
 	if s.CanSendOtherMessages.Set {
 		more.More()
 		j.WriteObjectField("can_send_other_messages")
 		s.CanSendOtherMessages.WriteJSON(j)
 	}
-
 	if s.CanSendPolls.Set {
 		more.More()
 		j.WriteObjectField("can_send_polls")
@@ -1843,19 +1760,15 @@ func (s ChatPhoto) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("big_file_id")
 	j.WriteString(s.BigFileID)
-
 	more.More()
 	j.WriteObjectField("big_file_unique_id")
 	j.WriteString(s.BigFileUniqueID)
-
 	more.More()
 	j.WriteObjectField("small_file_id")
 	j.WriteString(s.SmallFileID)
-
 	more.More()
 	j.WriteObjectField("small_file_unique_id")
 	j.WriteString(s.SmallFileUniqueID)
@@ -1919,27 +1832,22 @@ func (s Contact) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("first_name")
 	j.WriteString(s.FirstName)
-
 	if s.LastName.Set {
 		more.More()
 		j.WriteObjectField("last_name")
 		s.LastName.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("phone_number")
 	j.WriteString(s.PhoneNumber)
-
 	if s.UserID.Set {
 		more.More()
 		j.WriteObjectField("user_id")
 		s.UserID.WriteJSON(j)
 	}
-
 	if s.Vcard.Set {
 		more.More()
 		j.WriteObjectField("vcard")
@@ -2023,35 +1931,29 @@ func (s CopyMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -2150,11 +2052,9 @@ func (s CopyMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2205,13 +2105,11 @@ func (s CreateChatInviteLink) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.ExpireDate.Set {
 		more.More()
 		j.WriteObjectField("expire_date")
 		s.ExpireDate.WriteJSON(j)
 	}
-
 	if s.MemberLimit.Set {
 		more.More()
 		j.WriteObjectField("member_limit")
@@ -2265,11 +2163,9 @@ func (s CreateChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2320,37 +2216,30 @@ func (s CreateNewStickerSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.ContainsMasks.Set {
 		more.More()
 		j.WriteObjectField("contains_masks")
 		s.ContainsMasks.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("emojis")
 	j.WriteString(s.Emojis)
-
 	if s.MaskPosition.Set {
 		more.More()
 		j.WriteObjectField("mask_position")
 		s.MaskPosition.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.TgsSticker.Set {
 		more.More()
 		j.WriteObjectField("tgs_sticker")
 		s.TgsSticker.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -2450,11 +2339,9 @@ func (s CreateNewStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2529,11 +2416,9 @@ func (s DeleteChatPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2608,11 +2493,9 @@ func (s DeleteChatStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2663,7 +2546,6 @@ func (s DeleteMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
@@ -2700,11 +2582,9 @@ func (s DeleteMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2755,13 +2635,11 @@ func (s DeleteMyCommands) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.LanguageCode.Set {
 		more.More()
 		j.WriteObjectField("language_code")
 		s.LanguageCode.WriteJSON(j)
 	}
-
 	if s.Scope != nil {
 		more.More()
 		j.WriteObjectField("scope")
@@ -2822,11 +2700,9 @@ func (s DeleteMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2877,7 +2753,6 @@ func (s DeleteStickerFromSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sticker")
 	j.WriteString(s.Sticker)
@@ -2914,11 +2789,9 @@ func (s DeleteStickerFromSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -2969,7 +2842,6 @@ func (s DeleteWebhook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.DropPendingUpdates.Set {
 		more.More()
 		j.WriteObjectField("drop_pending_updates")
@@ -3011,11 +2883,9 @@ func (s DeleteWebhookResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -3066,11 +2936,9 @@ func (s Dice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("emoji")
 	j.WriteString(s.Emoji)
-
 	more.More()
 	j.WriteObjectField("value")
 	j.WriteInt(s.Value)
@@ -3116,33 +2984,27 @@ func (s Document) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileName.Set {
 		more.More()
 		j.WriteObjectField("file_name")
 		s.FileName.WriteJSON(j)
 	}
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	if s.MimeType.Set {
 		more.More()
 		j.WriteObjectField("mime_type")
 		s.MimeType.WriteJSON(j)
 	}
-
 	if s.Thumb.Set {
 		more.More()
 		j.WriteObjectField("thumb")
@@ -3238,17 +3100,14 @@ func (s EditChatInviteLink) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.ExpireDate.Set {
 		more.More()
 		j.WriteObjectField("expire_date")
 		s.ExpireDate.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("invite_link")
 	j.WriteString(s.InviteLink)
-
 	if s.MemberLimit.Set {
 		more.More()
 		j.WriteObjectField("member_limit")
@@ -3311,11 +3170,9 @@ func (s EditChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -3366,31 +3223,26 @@ func (s EditMessageCaption) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
@@ -3487,11 +3339,9 @@ func (s EditMessageCaptionResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -3542,45 +3392,37 @@ func (s EditMessageLiveLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Heading.Set {
 		more.More()
 		j.WriteObjectField("heading")
 		s.Heading.WriteJSON(j)
 	}
-
 	if s.HorizontalAccuracy.Set {
 		more.More()
 		j.WriteObjectField("horizontal_accuracy")
 		s.HorizontalAccuracy.WriteJSON(j)
 	}
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("latitude")
 	j.WriteFloat64(s.Latitude)
-
 	more.More()
 	j.WriteObjectField("longitude")
 	j.WriteFloat64(s.Longitude)
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	if s.ProximityAlertRadius.Set {
 		more.More()
 		j.WriteObjectField("proximity_alert_radius")
 		s.ProximityAlertRadius.WriteJSON(j)
 	}
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
@@ -3707,11 +3549,9 @@ func (s EditMessageLiveLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -3762,23 +3602,19 @@ func (s EditMessageMedia) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("media")
 	s.Media.WriteJSON(j)
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
@@ -3862,11 +3698,9 @@ func (s EditMessageMediaResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -3917,19 +3751,16 @@ func (s EditMessageReplyMarkup) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
@@ -4002,11 +3833,9 @@ func (s EditMessageReplyMarkupResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4057,37 +3886,31 @@ func (s EditMessageText) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.DisableWebPagePreview.Set {
 		more.More()
 		j.WriteObjectField("disable_web_page_preview")
 		s.DisableWebPagePreview.WriteJSON(j)
 	}
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("text")
 	j.WriteString(s.Text)
@@ -4191,11 +4014,9 @@ func (s EditMessageTextResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4246,15 +4067,12 @@ func (s EncryptedCredentials) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("data")
 	j.WriteString(s.Data)
-
 	more.More()
 	j.WriteObjectField("hash")
 	j.WriteString(s.Hash)
-
 	more.More()
 	j.WriteObjectField("secret")
 	j.WriteString(s.Secret)
@@ -4333,11 +4151,9 @@ func (s ExportChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4388,13 +4204,11 @@ func (s ForwardMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
@@ -4443,11 +4257,9 @@ func (s ForwardMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4498,23 +4310,19 @@ func (s Game) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Animation.Set {
 		more.More()
 		j.WriteObjectField("animation")
 		s.Animation.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("description")
 	j.WriteString(s.Description)
-
 	if s.Text.Set {
 		more.More()
 		j.WriteObjectField("text")
 		s.Text.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -4632,11 +4440,9 @@ func (s GetChatAdministratorsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4687,7 +4493,6 @@ func (s GetChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -4748,11 +4553,9 @@ func (s GetChatMemberCountResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4803,11 +4606,9 @@ func (s GetChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4858,11 +4659,9 @@ func (s GetChatResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -4913,7 +4712,6 @@ func (s GetFile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
@@ -4950,11 +4748,9 @@ func (s GetFileResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5005,25 +4801,21 @@ func (s GetGameHighScores) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.ChatID.Set {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
 	}
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -5096,11 +4888,9 @@ func (s GetGameHighScoresResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5151,11 +4941,9 @@ func (s GetMeResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5206,13 +4994,11 @@ func (s GetMyCommands) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.LanguageCode.Set {
 		more.More()
 		j.WriteObjectField("language_code")
 		s.LanguageCode.WriteJSON(j)
 	}
-
 	if s.Scope != nil {
 		more.More()
 		j.WriteObjectField("scope")
@@ -5273,11 +5059,9 @@ func (s GetMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5328,7 +5112,6 @@ func (s GetStickerSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
@@ -5365,11 +5148,9 @@ func (s GetStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5420,19 +5201,16 @@ func (s GetUpdates) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Limit.Set {
 		more.More()
 		j.WriteObjectField("limit")
 		s.Limit.WriteJSON(j)
 	}
-
 	if s.Offset.Set {
 		more.More()
 		j.WriteObjectField("offset")
 		s.Offset.WriteJSON(j)
 	}
-
 	if s.Timeout.Set {
 		more.More()
 		j.WriteObjectField("timeout")
@@ -5498,11 +5276,9 @@ func (s GetUpdatesResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5553,19 +5329,16 @@ func (s GetUserProfilePhotos) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Limit.Set {
 		more.More()
 		j.WriteObjectField("limit")
 		s.Limit.WriteJSON(j)
 	}
-
 	if s.Offset.Set {
 		more.More()
 		j.WriteObjectField("offset")
 		s.Offset.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -5626,11 +5399,9 @@ func (s GetUserProfilePhotosResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5729,23 +5500,18 @@ func (s Invoice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("currency")
 	j.WriteString(s.Currency)
-
 	more.More()
 	j.WriteObjectField("description")
 	j.WriteString(s.Description)
-
 	more.More()
 	j.WriteObjectField("start_parameter")
 	j.WriteString(s.StartParameter)
-
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
-
 	more.More()
 	j.WriteObjectField("total_amount")
 	j.WriteInt(s.TotalAmount)
@@ -5842,11 +5608,9 @@ func (s LeaveChatResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -5897,33 +5661,27 @@ func (s Location) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Heading.Set {
 		more.More()
 		j.WriteObjectField("heading")
 		s.Heading.WriteJSON(j)
 	}
-
 	if s.HorizontalAccuracy.Set {
 		more.More()
 		j.WriteObjectField("horizontal_accuracy")
 		s.HorizontalAccuracy.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("latitude")
 	j.WriteFloat64(s.Latitude)
-
 	if s.LivePeriod.Set {
 		more.More()
 		j.WriteObjectField("live_period")
 		s.LivePeriod.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("longitude")
 	j.WriteFloat64(s.Longitude)
-
 	if s.ProximityAlertRadius.Set {
 		more.More()
 		j.WriteObjectField("proximity_alert_radius")
@@ -6019,19 +5777,15 @@ func (s MaskPosition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("point")
 	j.WriteString(s.Point)
-
 	more.More()
 	j.WriteObjectField("scale")
 	j.WriteFloat64(s.Scale)
-
 	more.More()
 	j.WriteObjectField("x_shift")
 	j.WriteFloat64(s.XShift)
-
 	more.More()
 	j.WriteObjectField("y_shift")
 	j.WriteFloat64(s.YShift)
@@ -6095,303 +5849,252 @@ func (s Message) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Animation.Set {
 		more.More()
 		j.WriteObjectField("animation")
 		s.Animation.WriteJSON(j)
 	}
-
 	if s.Audio.Set {
 		more.More()
 		j.WriteObjectField("audio")
 		s.Audio.WriteJSON(j)
 	}
-
 	if s.AuthorSignature.Set {
 		more.More()
 		j.WriteObjectField("author_signature")
 		s.AuthorSignature.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.ChannelChatCreated.Set {
 		more.More()
 		j.WriteObjectField("channel_chat_created")
 		s.ChannelChatCreated.WriteJSON(j)
 	}
-
 	if s.Chat != nil {
 		more.More()
 		j.WriteObjectField("chat")
 		s.Chat.WriteJSON(j)
 	}
-
 	if s.ConnectedWebsite.Set {
 		more.More()
 		j.WriteObjectField("connected_website")
 		s.ConnectedWebsite.WriteJSON(j)
 	}
-
 	if s.Contact.Set {
 		more.More()
 		j.WriteObjectField("contact")
 		s.Contact.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("date")
 	j.WriteInt(s.Date)
-
 	if s.DeleteChatPhoto.Set {
 		more.More()
 		j.WriteObjectField("delete_chat_photo")
 		s.DeleteChatPhoto.WriteJSON(j)
 	}
-
 	if s.Dice.Set {
 		more.More()
 		j.WriteObjectField("dice")
 		s.Dice.WriteJSON(j)
 	}
-
 	if s.Document.Set {
 		more.More()
 		j.WriteObjectField("document")
 		s.Document.WriteJSON(j)
 	}
-
 	if s.EditDate.Set {
 		more.More()
 		j.WriteObjectField("edit_date")
 		s.EditDate.WriteJSON(j)
 	}
-
 	if s.ForwardDate.Set {
 		more.More()
 		j.WriteObjectField("forward_date")
 		s.ForwardDate.WriteJSON(j)
 	}
-
 	if s.ForwardFrom.Set {
 		more.More()
 		j.WriteObjectField("forward_from")
 		s.ForwardFrom.WriteJSON(j)
 	}
-
 	if s.ForwardFromChat != nil {
 		more.More()
 		j.WriteObjectField("forward_from_chat")
 		s.ForwardFromChat.WriteJSON(j)
 	}
-
 	if s.ForwardFromMessageID.Set {
 		more.More()
 		j.WriteObjectField("forward_from_message_id")
 		s.ForwardFromMessageID.WriteJSON(j)
 	}
-
 	if s.ForwardSenderName.Set {
 		more.More()
 		j.WriteObjectField("forward_sender_name")
 		s.ForwardSenderName.WriteJSON(j)
 	}
-
 	if s.ForwardSignature.Set {
 		more.More()
 		j.WriteObjectField("forward_signature")
 		s.ForwardSignature.WriteJSON(j)
 	}
-
 	if s.From.Set {
 		more.More()
 		j.WriteObjectField("from")
 		s.From.WriteJSON(j)
 	}
-
 	if s.Game.Set {
 		more.More()
 		j.WriteObjectField("game")
 		s.Game.WriteJSON(j)
 	}
-
 	if s.GroupChatCreated.Set {
 		more.More()
 		j.WriteObjectField("group_chat_created")
 		s.GroupChatCreated.WriteJSON(j)
 	}
-
 	if s.Invoice.Set {
 		more.More()
 		j.WriteObjectField("invoice")
 		s.Invoice.WriteJSON(j)
 	}
-
 	if s.LeftChatMember.Set {
 		more.More()
 		j.WriteObjectField("left_chat_member")
 		s.LeftChatMember.WriteJSON(j)
 	}
-
 	if s.Location.Set {
 		more.More()
 		j.WriteObjectField("location")
 		s.Location.WriteJSON(j)
 	}
-
 	if s.MediaGroupID.Set {
 		more.More()
 		j.WriteObjectField("media_group_id")
 		s.MediaGroupID.WriteJSON(j)
 	}
-
 	if s.MessageAutoDeleteTimerChanged.Set {
 		more.More()
 		j.WriteObjectField("message_auto_delete_timer_changed")
 		s.MessageAutoDeleteTimerChanged.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
-
 	if s.MigrateFromChatID.Set {
 		more.More()
 		j.WriteObjectField("migrate_from_chat_id")
 		s.MigrateFromChatID.WriteJSON(j)
 	}
-
 	if s.MigrateToChatID.Set {
 		more.More()
 		j.WriteObjectField("migrate_to_chat_id")
 		s.MigrateToChatID.WriteJSON(j)
 	}
-
 	if s.NewChatTitle.Set {
 		more.More()
 		j.WriteObjectField("new_chat_title")
 		s.NewChatTitle.WriteJSON(j)
 	}
-
 	if s.PassportData.Set {
 		more.More()
 		j.WriteObjectField("passport_data")
 		s.PassportData.WriteJSON(j)
 	}
-
 	if s.PinnedMessage != nil {
 		more.More()
 		j.WriteObjectField("pinned_message")
 		s.PinnedMessage.WriteJSON(j)
 	}
-
 	if s.Poll.Set {
 		more.More()
 		j.WriteObjectField("poll")
 		s.Poll.WriteJSON(j)
 	}
-
 	if s.ProximityAlertTriggered.Set {
 		more.More()
 		j.WriteObjectField("proximity_alert_triggered")
 		s.ProximityAlertTriggered.WriteJSON(j)
 	}
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
 	}
-
 	if s.ReplyToMessage != nil {
 		more.More()
 		j.WriteObjectField("reply_to_message")
 		s.ReplyToMessage.WriteJSON(j)
 	}
-
 	if s.SenderChat != nil {
 		more.More()
 		j.WriteObjectField("sender_chat")
 		s.SenderChat.WriteJSON(j)
 	}
-
 	if s.Sticker.Set {
 		more.More()
 		j.WriteObjectField("sticker")
 		s.Sticker.WriteJSON(j)
 	}
-
 	if s.SuccessfulPayment.Set {
 		more.More()
 		j.WriteObjectField("successful_payment")
 		s.SuccessfulPayment.WriteJSON(j)
 	}
-
 	if s.SupergroupChatCreated.Set {
 		more.More()
 		j.WriteObjectField("supergroup_chat_created")
 		s.SupergroupChatCreated.WriteJSON(j)
 	}
-
 	if s.Text.Set {
 		more.More()
 		j.WriteObjectField("text")
 		s.Text.WriteJSON(j)
 	}
-
 	if s.Venue.Set {
 		more.More()
 		j.WriteObjectField("venue")
 		s.Venue.WriteJSON(j)
 	}
-
 	if s.ViaBot.Set {
 		more.More()
 		j.WriteObjectField("via_bot")
 		s.ViaBot.WriteJSON(j)
 	}
-
 	if s.Video.Set {
 		more.More()
 		j.WriteObjectField("video")
 		s.Video.WriteJSON(j)
 	}
-
 	if s.VideoNote.Set {
 		more.More()
 		j.WriteObjectField("video_note")
 		s.VideoNote.WriteJSON(j)
 	}
-
 	if s.Voice.Set {
 		more.More()
 		j.WriteObjectField("voice")
 		s.Voice.WriteJSON(j)
 	}
-
 	if s.VoiceChatEnded.Set {
 		more.More()
 		j.WriteObjectField("voice_chat_ended")
 		s.VoiceChatEnded.WriteJSON(j)
 	}
-
 	if s.VoiceChatParticipantsInvited != nil {
 		more.More()
 		j.WriteObjectField("voice_chat_participants_invited")
 		s.VoiceChatParticipantsInvited.WriteJSON(j)
 	}
-
 	if s.VoiceChatScheduled.Set {
 		more.More()
 		j.WriteObjectField("voice_chat_scheduled")
 		s.VoiceChatScheduled.WriteJSON(j)
 	}
-
 	if s.VoiceChatStarted != nil {
 		more.More()
 		j.WriteObjectField("voice_chat_started")
@@ -7083,7 +6786,6 @@ func (s MessageAutoDeleteTimerChanged) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("message_auto_delete_time")
 	j.WriteInt(s.MessageAutoDeleteTime)
@@ -7772,25 +7474,21 @@ func (s OrderInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Email.Set {
 		more.More()
 		j.WriteObjectField("email")
 		s.Email.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.PhoneNumber.Set {
 		more.More()
 		j.WriteObjectField("phone_number")
 		s.PhoneNumber.WriteJSON(j)
 	}
-
 	if s.ShippingAddress.Set {
 		more.More()
 		j.WriteObjectField("shipping_address")
@@ -7868,7 +7566,6 @@ func (s PassportData) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("credentials")
 	s.Credentials.WriteJSON(j)
@@ -7907,25 +7604,20 @@ func (s PhotoSize) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	more.More()
 	j.WriteObjectField("height")
 	j.WriteInt(s.Height)
-
 	more.More()
 	j.WriteObjectField("width")
 	j.WriteInt(s.Width)
@@ -8001,13 +7693,11 @@ func (s PinChatMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
@@ -8056,11 +7746,9 @@ func (s PinChatMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -8111,55 +7799,44 @@ func (s Poll) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("allows_multiple_answers")
 	j.WriteBool(s.AllowsMultipleAnswers)
-
 	if s.CloseDate.Set {
 		more.More()
 		j.WriteObjectField("close_date")
 		s.CloseDate.WriteJSON(j)
 	}
-
 	if s.CorrectOptionID.Set {
 		more.More()
 		j.WriteObjectField("correct_option_id")
 		s.CorrectOptionID.WriteJSON(j)
 	}
-
 	if s.Explanation.Set {
 		more.More()
 		j.WriteObjectField("explanation")
 		s.Explanation.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteString(s.ID)
-
 	more.More()
 	j.WriteObjectField("is_anonymous")
 	j.WriteBool(s.IsAnonymous)
-
 	more.More()
 	j.WriteObjectField("is_closed")
 	j.WriteBool(s.IsClosed)
-
 	if s.OpenPeriod.Set {
 		more.More()
 		j.WriteObjectField("open_period")
 		s.OpenPeriod.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("question")
 	j.WriteString(s.Question)
-
 	more.More()
 	j.WriteObjectField("total_voter_count")
 	j.WriteInt(s.TotalVoterCount)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
@@ -8298,73 +7975,61 @@ func (s PromoteChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.CanChangeInfo.Set {
 		more.More()
 		j.WriteObjectField("can_change_info")
 		s.CanChangeInfo.WriteJSON(j)
 	}
-
 	if s.CanDeleteMessages.Set {
 		more.More()
 		j.WriteObjectField("can_delete_messages")
 		s.CanDeleteMessages.WriteJSON(j)
 	}
-
 	if s.CanEditMessages.Set {
 		more.More()
 		j.WriteObjectField("can_edit_messages")
 		s.CanEditMessages.WriteJSON(j)
 	}
-
 	if s.CanInviteUsers.Set {
 		more.More()
 		j.WriteObjectField("can_invite_users")
 		s.CanInviteUsers.WriteJSON(j)
 	}
-
 	if s.CanManageChat.Set {
 		more.More()
 		j.WriteObjectField("can_manage_chat")
 		s.CanManageChat.WriteJSON(j)
 	}
-
 	if s.CanManageVoiceChats.Set {
 		more.More()
 		j.WriteObjectField("can_manage_voice_chats")
 		s.CanManageVoiceChats.WriteJSON(j)
 	}
-
 	if s.CanPinMessages.Set {
 		more.More()
 		j.WriteObjectField("can_pin_messages")
 		s.CanPinMessages.WriteJSON(j)
 	}
-
 	if s.CanPostMessages.Set {
 		more.More()
 		j.WriteObjectField("can_post_messages")
 		s.CanPostMessages.WriteJSON(j)
 	}
-
 	if s.CanPromoteMembers.Set {
 		more.More()
 		j.WriteObjectField("can_promote_members")
 		s.CanPromoteMembers.WriteJSON(j)
 	}
-
 	if s.CanRestrictMembers.Set {
 		more.More()
 		j.WriteObjectField("can_restrict_members")
 		s.CanRestrictMembers.WriteJSON(j)
 	}
-
 	if s.IsAnonymous.Set {
 		more.More()
 		j.WriteObjectField("is_anonymous")
 		s.IsAnonymous.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -8533,11 +8198,9 @@ func (s PromoteChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -8588,15 +8251,12 @@ func (s ProximityAlertTriggered) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("distance")
 	j.WriteInt(s.Distance)
-
 	more.More()
 	j.WriteObjectField("traveler")
 	s.Traveler.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("watcher")
 	s.Watcher.WriteJSON(j)
@@ -8655,17 +8315,14 @@ func (s RestrictChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("permissions")
 	s.Permissions.WriteJSON(j)
-
 	if s.UntilDate.Set {
 		more.More()
 		j.WriteObjectField("until_date")
 		s.UntilDate.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -8725,11 +8382,9 @@ func (s RestrictChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -8780,7 +8435,6 @@ func (s RevokeChatInviteLink) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("invite_link")
 	j.WriteString(s.InviteLink)
@@ -8817,11 +8471,9 @@ func (s RevokeChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -8872,49 +8524,41 @@ func (s SendAnimation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Duration.Set {
 		more.More()
 		j.WriteObjectField("duration")
 		s.Duration.WriteJSON(j)
 	}
-
 	if s.Height.Set {
 		more.More()
 		j.WriteObjectField("height")
 		s.Height.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	if s.Width.Set {
 		more.More()
 		j.WriteObjectField("width")
@@ -9040,11 +8684,9 @@ func (s SendAnimationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -9095,49 +8737,41 @@ func (s SendAudio) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Duration.Set {
 		more.More()
 		j.WriteObjectField("duration")
 		s.Duration.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.Performer.Set {
 		more.More()
 		j.WriteObjectField("performer")
 		s.Performer.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	if s.Title.Set {
 		more.More()
 		j.WriteObjectField("title")
@@ -9263,11 +8897,9 @@ func (s SendAudioResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -9318,7 +8950,6 @@ func (s SendChatAction) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("action")
 	j.WriteString(s.Action)
@@ -9355,11 +8986,9 @@ func (s SendChatActionResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -9410,39 +9039,32 @@ func (s SendContact) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("first_name")
 	j.WriteString(s.FirstName)
-
 	if s.LastName.Set {
 		more.More()
 		j.WriteObjectField("last_name")
 		s.LastName.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("phone_number")
 	j.WriteString(s.PhoneNumber)
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	if s.Vcard.Set {
 		more.More()
 		j.WriteObjectField("vcard")
@@ -9550,11 +9172,9 @@ func (s SendContactResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -9605,25 +9225,21 @@ func (s SendDice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Emoji.Set {
 		more.More()
 		j.WriteObjectField("emoji")
 		s.Emoji.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -9701,11 +9317,9 @@ func (s SendDiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -9756,37 +9370,31 @@ func (s SendDocument) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.DisableContentTypeDetection.Set {
 		more.More()
 		j.WriteObjectField("disable_content_type_detection")
 		s.DisableContentTypeDetection.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -9888,11 +9496,9 @@ func (s SendDocumentResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -9943,33 +9549,27 @@ func (s SendGame) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("chat_id")
 	j.WriteInt(s.ChatID)
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("game_short_name")
 	j.WriteString(s.GameShortName)
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -10072,11 +9672,9 @@ func (s SendGameResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -10127,131 +9725,108 @@ func (s SendInvoice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("currency")
 	j.WriteString(s.Currency)
-
 	more.More()
 	j.WriteObjectField("description")
 	j.WriteString(s.Description)
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.IsFlexible.Set {
 		more.More()
 		j.WriteObjectField("is_flexible")
 		s.IsFlexible.WriteJSON(j)
 	}
-
 	if s.MaxTipAmount.Set {
 		more.More()
 		j.WriteObjectField("max_tip_amount")
 		s.MaxTipAmount.WriteJSON(j)
 	}
-
 	if s.NeedEmail.Set {
 		more.More()
 		j.WriteObjectField("need_email")
 		s.NeedEmail.WriteJSON(j)
 	}
-
 	if s.NeedName.Set {
 		more.More()
 		j.WriteObjectField("need_name")
 		s.NeedName.WriteJSON(j)
 	}
-
 	if s.NeedPhoneNumber.Set {
 		more.More()
 		j.WriteObjectField("need_phone_number")
 		s.NeedPhoneNumber.WriteJSON(j)
 	}
-
 	if s.NeedShippingAddress.Set {
 		more.More()
 		j.WriteObjectField("need_shipping_address")
 		s.NeedShippingAddress.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("payload")
 	j.WriteString(s.Payload)
-
 	if s.PhotoHeight.Set {
 		more.More()
 		j.WriteObjectField("photo_height")
 		s.PhotoHeight.WriteJSON(j)
 	}
-
 	if s.PhotoSize.Set {
 		more.More()
 		j.WriteObjectField("photo_size")
 		s.PhotoSize.WriteJSON(j)
 	}
-
 	if s.PhotoURL.Set {
 		more.More()
 		j.WriteObjectField("photo_url")
 		s.PhotoURL.WriteJSON(j)
 	}
-
 	if s.PhotoWidth.Set {
 		more.More()
 		j.WriteObjectField("photo_width")
 		s.PhotoWidth.WriteJSON(j)
 	}
-
 	if s.ProviderData.Set {
 		more.More()
 		j.WriteObjectField("provider_data")
 		s.ProviderData.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("provider_token")
 	j.WriteString(s.ProviderToken)
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
 		s.ReplyMarkup.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	if s.SendEmailToProvider.Set {
 		more.More()
 		j.WriteObjectField("send_email_to_provider")
 		s.SendEmailToProvider.WriteJSON(j)
 	}
-
 	if s.SendPhoneNumberToProvider.Set {
 		more.More()
 		j.WriteObjectField("send_phone_number_to_provider")
 		s.SendPhoneNumberToProvider.WriteJSON(j)
 	}
-
 	if s.StartParameter.Set {
 		more.More()
 		j.WriteObjectField("start_parameter")
 		s.StartParameter.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -10547,11 +10122,9 @@ func (s SendInvoiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -10602,51 +10175,42 @@ func (s SendLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Heading.Set {
 		more.More()
 		j.WriteObjectField("heading")
 		s.Heading.WriteJSON(j)
 	}
-
 	if s.HorizontalAccuracy.Set {
 		more.More()
 		j.WriteObjectField("horizontal_accuracy")
 		s.HorizontalAccuracy.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("latitude")
 	j.WriteFloat64(s.Latitude)
-
 	if s.LivePeriod.Set {
 		more.More()
 		j.WriteObjectField("live_period")
 		s.LivePeriod.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("longitude")
 	j.WriteFloat64(s.Longitude)
-
 	if s.ProximityAlertRadius.Set {
 		more.More()
 		j.WriteObjectField("proximity_alert_radius")
 		s.ProximityAlertRadius.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -10778,11 +10342,9 @@ func (s SendLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -10833,19 +10395,16 @@ func (s SendMediaGroup) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -10911,11 +10470,9 @@ func (s SendMediaGroupResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -10966,37 +10523,31 @@ func (s SendMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.DisableWebPagePreview.Set {
 		more.More()
 		j.WriteObjectField("disable_web_page_preview")
 		s.DisableWebPagePreview.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("text")
 	j.WriteString(s.Text)
@@ -11093,11 +10644,9 @@ func (s SendMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -11148,31 +10697,26 @@ func (s SendPhoto) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -11262,11 +10806,9 @@ func (s SendPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -11317,77 +10859,64 @@ func (s SendPoll) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.AllowsMultipleAnswers.Set {
 		more.More()
 		j.WriteObjectField("allows_multiple_answers")
 		s.AllowsMultipleAnswers.WriteJSON(j)
 	}
-
 	if s.CloseDate.Set {
 		more.More()
 		j.WriteObjectField("close_date")
 		s.CloseDate.WriteJSON(j)
 	}
-
 	if s.CorrectOptionID.Set {
 		more.More()
 		j.WriteObjectField("correct_option_id")
 		s.CorrectOptionID.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Explanation.Set {
 		more.More()
 		j.WriteObjectField("explanation")
 		s.Explanation.WriteJSON(j)
 	}
-
 	if s.ExplanationParseMode.Set {
 		more.More()
 		j.WriteObjectField("explanation_parse_mode")
 		s.ExplanationParseMode.WriteJSON(j)
 	}
-
 	if s.IsAnonymous.Set {
 		more.More()
 		j.WriteObjectField("is_anonymous")
 		s.IsAnonymous.WriteJSON(j)
 	}
-
 	if s.IsClosed.Set {
 		more.More()
 		j.WriteObjectField("is_closed")
 		s.IsClosed.WriteJSON(j)
 	}
-
 	if s.OpenPeriod.Set {
 		more.More()
 		j.WriteObjectField("open_period")
 		s.OpenPeriod.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("question")
 	j.WriteString(s.Question)
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
@@ -11570,11 +11099,9 @@ func (s SendPollResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -11625,19 +11152,16 @@ func (s SendSticker) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -11703,11 +11227,9 @@ func (s SendStickerResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -11758,61 +11280,50 @@ func (s SendVenue) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("address")
 	j.WriteString(s.Address)
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.FoursquareID.Set {
 		more.More()
 		j.WriteObjectField("foursquare_id")
 		s.FoursquareID.WriteJSON(j)
 	}
-
 	if s.FoursquareType.Set {
 		more.More()
 		j.WriteObjectField("foursquare_type")
 		s.FoursquareType.WriteJSON(j)
 	}
-
 	if s.GooglePlaceID.Set {
 		more.More()
 		j.WriteObjectField("google_place_id")
 		s.GooglePlaceID.WriteJSON(j)
 	}
-
 	if s.GooglePlaceType.Set {
 		more.More()
 		j.WriteObjectField("google_place_type")
 		s.GooglePlaceType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("latitude")
 	j.WriteFloat64(s.Latitude)
-
 	more.More()
 	j.WriteObjectField("longitude")
 	j.WriteFloat64(s.Longitude)
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -11960,11 +11471,9 @@ func (s SendVenueResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -12015,55 +11524,46 @@ func (s SendVideo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Duration.Set {
 		more.More()
 		j.WriteObjectField("duration")
 		s.Duration.WriteJSON(j)
 	}
-
 	if s.Height.Set {
 		more.More()
 		j.WriteObjectField("height")
 		s.Height.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
 		s.ReplyToMessageID.WriteJSON(j)
 	}
-
 	if s.SupportsStreaming.Set {
 		more.More()
 		j.WriteObjectField("supports_streaming")
 		s.SupportsStreaming.WriteJSON(j)
 	}
-
 	if s.Width.Set {
 		more.More()
 		j.WriteObjectField("width")
@@ -12201,31 +11701,26 @@ func (s SendVideoNote) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Duration.Set {
 		more.More()
 		j.WriteObjectField("duration")
 		s.Duration.WriteJSON(j)
 	}
-
 	if s.Length.Set {
 		more.More()
 		j.WriteObjectField("length")
 		s.Length.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -12315,11 +11810,9 @@ func (s SendVideoNoteResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -12370,11 +11863,9 @@ func (s SendVideoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -12425,37 +11916,31 @@ func (s SendVoice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.AllowSendingWithoutReply.Set {
 		more.More()
 		j.WriteObjectField("allow_sending_without_reply")
 		s.AllowSendingWithoutReply.WriteJSON(j)
 	}
-
 	if s.Caption.Set {
 		more.More()
 		j.WriteObjectField("caption")
 		s.Caption.WriteJSON(j)
 	}
-
 	if s.DisableNotification.Set {
 		more.More()
 		j.WriteObjectField("disable_notification")
 		s.DisableNotification.WriteJSON(j)
 	}
-
 	if s.Duration.Set {
 		more.More()
 		j.WriteObjectField("duration")
 		s.Duration.WriteJSON(j)
 	}
-
 	if s.ParseMode.Set {
 		more.More()
 		j.WriteObjectField("parse_mode")
 		s.ParseMode.WriteJSON(j)
 	}
-
 	if s.ReplyToMessageID.Set {
 		more.More()
 		j.WriteObjectField("reply_to_message_id")
@@ -12557,11 +12042,9 @@ func (s SendVoiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -12612,11 +12095,9 @@ func (s SetChatAdministratorCustomTitle) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("custom_title")
 	j.WriteString(s.CustomTitle)
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -12662,11 +12143,9 @@ func (s SetChatAdministratorCustomTitleResOKApplicationJSON) WriteJSON(j *json.S
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -12717,7 +12196,6 @@ func (s SetChatDescription) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Description.Set {
 		more.More()
 		j.WriteObjectField("description")
@@ -12759,11 +12237,9 @@ func (s SetChatDescriptionResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -12814,7 +12290,6 @@ func (s SetChatPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("permissions")
 	s.Permissions.WriteJSON(j)
@@ -12853,11 +12328,9 @@ func (s SetChatPermissionsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -12908,7 +12381,6 @@ func (s SetChatPhoto) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("photo")
 	j.WriteString(s.Photo)
@@ -12945,11 +12417,9 @@ func (s SetChatPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13000,7 +12470,6 @@ func (s SetChatStickerSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sticker_set_name")
 	j.WriteString(s.StickerSetName)
@@ -13037,11 +12506,9 @@ func (s SetChatStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13092,7 +12559,6 @@ func (s SetChatTitle) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -13129,11 +12595,9 @@ func (s SetChatTitleResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13184,41 +12648,34 @@ func (s SetGameScore) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.ChatID.Set {
 		more.More()
 		j.WriteObjectField("chat_id")
 		s.ChatID.WriteJSON(j)
 	}
-
 	if s.DisableEditMessage.Set {
 		more.More()
 		j.WriteObjectField("disable_edit_message")
 		s.DisableEditMessage.WriteJSON(j)
 	}
-
 	if s.Force.Set {
 		more.More()
 		j.WriteObjectField("force")
 		s.Force.WriteJSON(j)
 	}
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("score")
 	j.WriteInt(s.Score)
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -13324,11 +12781,9 @@ func (s SetGameScoreResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13379,13 +12834,11 @@ func (s SetMyCommands) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.LanguageCode.Set {
 		more.More()
 		j.WriteObjectField("language_code")
 		s.LanguageCode.WriteJSON(j)
 	}
-
 	if s.Scope != nil {
 		more.More()
 		j.WriteObjectField("scope")
@@ -13446,11 +12899,9 @@ func (s SetMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13501,7 +12952,6 @@ func (s SetPassportDataErrors) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -13538,11 +12988,9 @@ func (s SetPassportDataErrorsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13593,11 +13041,9 @@ func (s SetStickerPositionInSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("position")
 	j.WriteInt(s.Position)
-
 	more.More()
 	j.WriteObjectField("sticker")
 	j.WriteString(s.Sticker)
@@ -13643,11 +13089,9 @@ func (s SetStickerPositionInSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13698,11 +13142,9 @@ func (s SetStickerSetThumb) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -13748,11 +13190,9 @@ func (s SetStickerSetThumbResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13803,31 +13243,26 @@ func (s SetWebhook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Certificate.Set {
 		more.More()
 		j.WriteObjectField("certificate")
 		s.Certificate.WriteJSON(j)
 	}
-
 	if s.DropPendingUpdates.Set {
 		more.More()
 		j.WriteObjectField("drop_pending_updates")
 		s.DropPendingUpdates.WriteJSON(j)
 	}
-
 	if s.IPAddress.Set {
 		more.More()
 		j.WriteObjectField("ip_address")
 		s.IPAddress.WriteJSON(j)
 	}
-
 	if s.MaxConnections.Set {
 		more.More()
 		j.WriteObjectField("max_connections")
 		s.MaxConnections.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("url")
 	j.WriteString(s.URL)
@@ -13912,11 +13347,9 @@ func (s SetWebhookResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -13967,27 +13400,21 @@ func (s ShippingAddress) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("city")
 	j.WriteString(s.City)
-
 	more.More()
 	j.WriteObjectField("country_code")
 	j.WriteString(s.CountryCode)
-
 	more.More()
 	j.WriteObjectField("post_code")
 	j.WriteString(s.PostCode)
-
 	more.More()
 	j.WriteObjectField("state")
 	j.WriteString(s.State)
-
 	more.More()
 	j.WriteObjectField("street_line1")
 	j.WriteString(s.StreetLine1)
-
 	more.More()
 	j.WriteObjectField("street_line2")
 	j.WriteString(s.StreetLine2)
@@ -14069,53 +13496,43 @@ func (s Sticker) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Emoji.Set {
 		more.More()
 		j.WriteObjectField("emoji")
 		s.Emoji.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	more.More()
 	j.WriteObjectField("height")
 	j.WriteInt(s.Height)
-
 	more.More()
 	j.WriteObjectField("is_animated")
 	j.WriteBool(s.IsAnimated)
-
 	if s.MaskPosition.Set {
 		more.More()
 		j.WriteObjectField("mask_position")
 		s.MaskPosition.WriteJSON(j)
 	}
-
 	if s.SetName.Set {
 		more.More()
 		j.WriteObjectField("set_name")
 		s.SetName.WriteJSON(j)
 	}
-
 	if s.Thumb.Set {
 		more.More()
 		j.WriteObjectField("thumb")
 		s.Thumb.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("width")
 	j.WriteInt(s.Width)
@@ -14248,19 +13665,16 @@ func (s StopMessageLiveLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.InlineMessageID.Set {
 		more.More()
 		j.WriteObjectField("inline_message_id")
 		s.InlineMessageID.WriteJSON(j)
 	}
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
 		s.MessageID.WriteJSON(j)
 	}
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
@@ -14333,11 +13747,9 @@ func (s StopMessageLiveLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -14388,11 +13800,9 @@ func (s StopPoll) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
-
 	if s.ReplyMarkup != nil {
 		more.More()
 		j.WriteObjectField("reply_markup")
@@ -14450,11 +13860,9 @@ func (s StopPollResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -14505,35 +13913,28 @@ func (s SuccessfulPayment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("currency")
 	j.WriteString(s.Currency)
-
 	more.More()
 	j.WriteObjectField("invoice_payload")
 	j.WriteString(s.InvoicePayload)
-
 	if s.OrderInfo.Set {
 		more.More()
 		j.WriteObjectField("order_info")
 		s.OrderInfo.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("provider_payment_charge_id")
 	j.WriteString(s.ProviderPaymentChargeID)
-
 	if s.ShippingOptionID.Set {
 		more.More()
 		j.WriteObjectField("shipping_option_id")
 		s.ShippingOptionID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("telegram_payment_charge_id")
 	j.WriteString(s.TelegramPaymentChargeID)
-
 	more.More()
 	j.WriteObjectField("total_amount")
 	j.WriteInt(s.TotalAmount)
@@ -14630,13 +14031,11 @@ func (s UnbanChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.OnlyIfBanned.Set {
 		more.More()
 		j.WriteObjectField("only_if_banned")
 		s.OnlyIfBanned.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -14685,11 +14084,9 @@ func (s UnbanChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -14764,11 +14161,9 @@ func (s UnpinAllChatMessagesResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -14819,7 +14214,6 @@ func (s UnpinChatMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.MessageID.Set {
 		more.More()
 		j.WriteObjectField("message_id")
@@ -14861,11 +14255,9 @@ func (s UnpinChatMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -14916,11 +14308,9 @@ func (s UploadStickerFile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("png_sticker")
 	j.WriteString(s.PNGSticker)
-
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -14966,11 +14356,9 @@ func (s UploadStickerFileResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
-
 	if s.Result.Set {
 		more.More()
 		j.WriteObjectField("result")
@@ -15021,49 +14409,40 @@ func (s User) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.CanJoinGroups.Set {
 		more.More()
 		j.WriteObjectField("can_join_groups")
 		s.CanJoinGroups.WriteJSON(j)
 	}
-
 	if s.CanReadAllGroupMessages.Set {
 		more.More()
 		j.WriteObjectField("can_read_all_group_messages")
 		s.CanReadAllGroupMessages.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("first_name")
 	j.WriteString(s.FirstName)
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt(s.ID)
-
 	more.More()
 	j.WriteObjectField("is_bot")
 	j.WriteBool(s.IsBot)
-
 	if s.LanguageCode.Set {
 		more.More()
 		j.WriteObjectField("language_code")
 		s.LanguageCode.WriteJSON(j)
 	}
-
 	if s.LastName.Set {
 		more.More()
 		j.WriteObjectField("last_name")
 		s.LastName.WriteJSON(j)
 	}
-
 	if s.SupportsInlineQueries.Set {
 		more.More()
 		j.WriteObjectField("supports_inline_queries")
 		s.SupportsInlineQueries.WriteJSON(j)
 	}
-
 	if s.Username.Set {
 		more.More()
 		j.WriteObjectField("username")
@@ -15192,39 +14571,32 @@ func (s Venue) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("address")
 	j.WriteString(s.Address)
-
 	if s.FoursquareID.Set {
 		more.More()
 		j.WriteObjectField("foursquare_id")
 		s.FoursquareID.WriteJSON(j)
 	}
-
 	if s.FoursquareType.Set {
 		more.More()
 		j.WriteObjectField("foursquare_type")
 		s.FoursquareType.WriteJSON(j)
 	}
-
 	if s.GooglePlaceID.Set {
 		more.More()
 		j.WriteObjectField("google_place_id")
 		s.GooglePlaceID.WriteJSON(j)
 	}
-
 	if s.GooglePlaceType.Set {
 		more.More()
 		j.WriteObjectField("google_place_type")
 		s.GooglePlaceType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("location")
 	s.Location.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -15329,47 +14701,38 @@ func (s Video) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("duration")
 	j.WriteInt(s.Duration)
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileName.Set {
 		more.More()
 		j.WriteObjectField("file_name")
 		s.FileName.WriteJSON(j)
 	}
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	more.More()
 	j.WriteObjectField("height")
 	j.WriteInt(s.Height)
-
 	if s.MimeType.Set {
 		more.More()
 		j.WriteObjectField("mime_type")
 		s.MimeType.WriteJSON(j)
 	}
-
 	if s.Thumb.Set {
 		more.More()
 		j.WriteObjectField("thumb")
 		s.Thumb.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("width")
 	j.WriteInt(s.Width)
@@ -15490,29 +14853,23 @@ func (s VideoNote) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("duration")
 	j.WriteInt(s.Duration)
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	more.More()
 	j.WriteObjectField("length")
 	j.WriteInt(s.Length)
-
 	if s.Thumb.Set {
 		more.More()
 		j.WriteObjectField("thumb")
@@ -15602,25 +14959,20 @@ func (s Voice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("duration")
 	j.WriteInt(s.Duration)
-
 	more.More()
 	j.WriteObjectField("file_id")
 	j.WriteString(s.FileID)
-
 	if s.FileSize.Set {
 		more.More()
 		j.WriteObjectField("file_size")
 		s.FileSize.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("file_unique_id")
 	j.WriteString(s.FileUniqueID)
-
 	if s.MimeType.Set {
 		more.More()
 		j.WriteObjectField("mime_type")
@@ -15701,7 +15053,6 @@ func (s VoiceChatEnded) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("duration")
 	j.WriteInt(s.Duration)
@@ -15762,7 +15113,6 @@ func (s VoiceChatScheduled) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("start_date")
 	j.WriteInt(s.StartDate)

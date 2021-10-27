@@ -22,7 +22,7 @@
             return err
         }
         return i.Error
-    {{- else if or ($t.IsStruct) ($t.IsEnum) }}
+    {{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) }}
         if err := {{ $.Var }}.ReadJSON(i); err != nil {
             return err
         }

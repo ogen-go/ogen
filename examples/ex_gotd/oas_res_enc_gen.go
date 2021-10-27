@@ -57,7 +57,6 @@ func encodeAddStickerToSetResponse(response AddStickerToSetResOKApplicationJSON,
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -73,7 +72,6 @@ func encodeAnswerCallbackQueryResponse(response AnswerCallbackQueryResOKApplicat
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -89,7 +87,6 @@ func encodeAnswerInlineQueryResponse(response AnswerInlineQueryResOKApplicationJ
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -105,7 +102,6 @@ func encodeAnswerPreCheckoutQueryResponse(response AnswerPreCheckoutQueryResOKAp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -121,7 +117,6 @@ func encodeAnswerShippingQueryResponse(response AnswerShippingQueryResOKApplicat
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -137,7 +132,6 @@ func encodeBanChatMemberResponse(response BanChatMemberResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -153,7 +147,6 @@ func encodeCopyMessageResponse(response CopyMessageResOKApplicationJSON, w http.
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -169,7 +162,6 @@ func encodeCreateChatInviteLinkResponse(response CreateChatInviteLinkResOKApplic
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -185,7 +177,6 @@ func encodeCreateNewStickerSetResponse(response CreateNewStickerSetResOKApplicat
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -201,7 +192,6 @@ func encodeDeleteChatPhotoResponse(response DeleteChatPhotoResOKApplicationJSON,
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -217,7 +207,6 @@ func encodeDeleteChatStickerSetResponse(response DeleteChatStickerSetResOKApplic
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -233,7 +222,6 @@ func encodeDeleteMessageResponse(response DeleteMessageResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -249,7 +237,6 @@ func encodeDeleteMyCommandsResponse(response DeleteMyCommandsResOKApplicationJSO
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -265,7 +252,6 @@ func encodeDeleteStickerFromSetResponse(response DeleteStickerFromSetResOKApplic
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -281,7 +267,6 @@ func encodeDeleteWebhookResponse(response DeleteWebhookResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -297,7 +282,6 @@ func encodeEditChatInviteLinkResponse(response EditChatInviteLinkResOKApplicatio
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -313,7 +297,6 @@ func encodeEditMessageCaptionResponse(response EditMessageCaptionResOKApplicatio
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -329,7 +312,6 @@ func encodeEditMessageLiveLocationResponse(response EditMessageLiveLocationResOK
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -345,7 +327,6 @@ func encodeEditMessageMediaResponse(response EditMessageMediaResOKApplicationJSO
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -361,7 +342,6 @@ func encodeEditMessageReplyMarkupResponse(response EditMessageReplyMarkupResOKAp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -377,7 +357,6 @@ func encodeEditMessageTextResponse(response EditMessageTextResOKApplicationJSON,
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -393,7 +372,6 @@ func encodeExportChatInviteLinkResponse(response ExportChatInviteLinkResOKApplic
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -409,7 +387,6 @@ func encodeForwardMessageResponse(response ForwardMessageResOKApplicationJSON, w
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -425,7 +402,6 @@ func encodeGetChatResponse(response GetChatResOKApplicationJSON, w http.Response
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -441,7 +417,6 @@ func encodeGetChatAdministratorsResponse(response GetChatAdministratorsResOKAppl
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -457,7 +432,6 @@ func encodeGetChatMemberResponse(response GetChatMemberResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -473,7 +447,6 @@ func encodeGetChatMemberCountResponse(response GetChatMemberCountResOKApplicatio
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -489,7 +462,6 @@ func encodeGetFileResponse(response GetFileResOKApplicationJSON, w http.Response
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -505,7 +477,6 @@ func encodeGetGameHighScoresResponse(response GetGameHighScoresResOKApplicationJ
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -521,7 +492,6 @@ func encodeGetMeResponse(response GetMeResOKApplicationJSON, w http.ResponseWrit
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -537,7 +507,6 @@ func encodeGetMyCommandsResponse(response GetMyCommandsResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -553,7 +522,6 @@ func encodeGetStickerSetResponse(response GetStickerSetResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -569,7 +537,6 @@ func encodeGetUpdatesResponse(response GetUpdatesResOKApplicationJSON, w http.Re
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -585,7 +552,6 @@ func encodeGetUserProfilePhotosResponse(response GetUserProfilePhotosResOKApplic
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -601,7 +567,6 @@ func encodeLeaveChatResponse(response LeaveChatResOKApplicationJSON, w http.Resp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -617,7 +582,6 @@ func encodePinChatMessageResponse(response PinChatMessageResOKApplicationJSON, w
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -633,7 +597,6 @@ func encodePromoteChatMemberResponse(response PromoteChatMemberResOKApplicationJ
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -649,7 +612,6 @@ func encodeRestrictChatMemberResponse(response RestrictChatMemberResOKApplicatio
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -665,7 +627,6 @@ func encodeRevokeChatInviteLinkResponse(response RevokeChatInviteLinkResOKApplic
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -681,7 +642,6 @@ func encodeSendAnimationResponse(response SendAnimationResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -697,7 +657,6 @@ func encodeSendAudioResponse(response SendAudioResOKApplicationJSON, w http.Resp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -713,7 +672,6 @@ func encodeSendChatActionResponse(response SendChatActionResOKApplicationJSON, w
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -729,7 +687,6 @@ func encodeSendContactResponse(response SendContactResOKApplicationJSON, w http.
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -745,7 +702,6 @@ func encodeSendDiceResponse(response SendDiceResOKApplicationJSON, w http.Respon
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -761,7 +717,6 @@ func encodeSendDocumentResponse(response SendDocumentResOKApplicationJSON, w htt
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -777,7 +732,6 @@ func encodeSendGameResponse(response SendGameResOKApplicationJSON, w http.Respon
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -793,7 +747,6 @@ func encodeSendInvoiceResponse(response SendInvoiceResOKApplicationJSON, w http.
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -809,7 +762,6 @@ func encodeSendLocationResponse(response SendLocationResOKApplicationJSON, w htt
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -825,7 +777,6 @@ func encodeSendMediaGroupResponse(response SendMediaGroupResOKApplicationJSON, w
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -841,7 +792,6 @@ func encodeSendMessageResponse(response SendMessageResOKApplicationJSON, w http.
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -857,7 +807,6 @@ func encodeSendPhotoResponse(response SendPhotoResOKApplicationJSON, w http.Resp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -873,7 +822,6 @@ func encodeSendPollResponse(response SendPollResOKApplicationJSON, w http.Respon
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -889,7 +837,6 @@ func encodeSendStickerResponse(response SendStickerResOKApplicationJSON, w http.
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -905,7 +852,6 @@ func encodeSendVenueResponse(response SendVenueResOKApplicationJSON, w http.Resp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -921,7 +867,6 @@ func encodeSendVideoResponse(response SendVideoResOKApplicationJSON, w http.Resp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -937,7 +882,6 @@ func encodeSendVideoNoteResponse(response SendVideoNoteResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -953,7 +897,6 @@ func encodeSendVoiceResponse(response SendVoiceResOKApplicationJSON, w http.Resp
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -969,7 +912,6 @@ func encodeSetChatAdministratorCustomTitleResponse(response SetChatAdministrator
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -985,7 +927,6 @@ func encodeSetChatDescriptionResponse(response SetChatDescriptionResOKApplicatio
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1001,7 +942,6 @@ func encodeSetChatPermissionsResponse(response SetChatPermissionsResOKApplicatio
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1017,7 +957,6 @@ func encodeSetChatPhotoResponse(response SetChatPhotoResOKApplicationJSON, w htt
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1033,7 +972,6 @@ func encodeSetChatStickerSetResponse(response SetChatStickerSetResOKApplicationJ
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1049,7 +987,6 @@ func encodeSetChatTitleResponse(response SetChatTitleResOKApplicationJSON, w htt
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1065,7 +1002,6 @@ func encodeSetGameScoreResponse(response SetGameScoreResOKApplicationJSON, w htt
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1081,7 +1017,6 @@ func encodeSetMyCommandsResponse(response SetMyCommandsResOKApplicationJSON, w h
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1097,7 +1032,6 @@ func encodeSetPassportDataErrorsResponse(response SetPassportDataErrorsResOKAppl
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1113,7 +1047,6 @@ func encodeSetStickerPositionInSetResponse(response SetStickerPositionInSetResOK
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1129,7 +1062,6 @@ func encodeSetStickerSetThumbResponse(response SetStickerSetThumbResOKApplicatio
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1145,7 +1077,6 @@ func encodeSetWebhookResponse(response SetWebhookResOKApplicationJSON, w http.Re
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1161,7 +1092,6 @@ func encodeStopMessageLiveLocationResponse(response StopMessageLiveLocationResOK
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1177,7 +1107,6 @@ func encodeStopPollResponse(response StopPollResOKApplicationJSON, w http.Respon
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1193,7 +1122,6 @@ func encodeUnbanChatMemberResponse(response UnbanChatMemberResOKApplicationJSON,
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1209,7 +1137,6 @@ func encodeUnpinAllChatMessagesResponse(response UnpinAllChatMessagesResOKApplic
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1225,7 +1152,6 @@ func encodeUnpinChatMessageResponse(response UnpinChatMessageResOKApplicationJSO
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {
@@ -1241,7 +1167,6 @@ func encodeUploadStickerFileResponse(response UploadStickerFileResOKApplicationJ
 	defer json.PutStream(j)
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	response.WriteJSON(j)
 	if err := j.Flush(); err != nil {

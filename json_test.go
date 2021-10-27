@@ -97,7 +97,6 @@ func TestJSONExample(t *testing.T) {
 			{
 				"Baz",
 			},
-			{},
 		},
 		Nickname:     api.NewNilString("Nick"),
 		NullStr:      api.NewOptNilString("Bar"),
@@ -114,7 +113,13 @@ func TestJSONExample(t *testing.T) {
 		IP:           net.IPv4(127, 0, 0, 1),
 		IPV4:         net.IPv4(127, 0, 0, 1),
 		IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
-		Next:         api.NewOptData(api.Data{Description: api.NewOptString("Foo")}),
+		Next: api.NewOptData(api.Data{
+			Description: api.NewOptString("Foo"),
+			ID: api.DataID{
+				Type: api.DataIDIntType,
+				Int:  10,
+			},
+		}),
 	}
 	t.Logf("%s", json.Encode(pet))
 	require.True(t, jsoniter.Valid(json.Encode(pet)), "invalid json")

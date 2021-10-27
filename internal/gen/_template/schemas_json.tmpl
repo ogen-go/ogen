@@ -124,6 +124,34 @@ func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
 {{- else if $t.IsAlias }}
 func ({{ $t.Name }}) WriteJSON(j *json.Stream) {}
 func ({{ $t.Name }}) ReadJSON(i *json.Iterator) error { return nil }
+{{- else if $t.IsSum }}
+// WriteJSON implements json.Marshaler.
+func (s {{ $t.Name }}) WriteJSON(j *json.Stream) {
+    switch s.Type {
+    {{- range $s := $t.SumOf }}
+    case {{ $t.Name }}{{ $s.Name }}Type:
+        {{- template "enc_json_value" sum_elem $s -}}
+    {{- end }}
+    }
+}
+
+// ReadJSON reads value from json stream.
+func (s *{{ $t.Name }}) ReadJSON(i *json.Iterator) error {
+    switch t := i.WhatIsNext(); t {
+    {{- range $s := $t.SumOf }}
+    case json.{{ $s.JSON.Type }}:
+        if err := func() error {
+        {{- template "dec_json_value" sum_elem $s }}
+        }(); err != nil {
+            return err
+        }
+        s.Type = {{ $t.Name }}{{ $s.Name }}Type
+    {{- end }}
+    default:
+        return fmt.Errorf("unexpected json type %d", t)
+    }
+    return nil
+}
 {{- end }}
 
 {{- end }}

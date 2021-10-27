@@ -164,7 +164,6 @@ func TestIntegration(t *testing.T) {
 			IP:           net.IPv4(127, 0, 0, 1),
 			IPV4:         net.IPv4(127, 0, 0, 1),
 			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
-			Next:         api.NewOptData(api.Data{Description: api.NewOptString("Foo")}),
 			Kind:         api.PetKindSmol,
 			Primary:      &primary,
 			Friends:      []api.Pet{friend},
@@ -172,10 +171,18 @@ func TestIntegration(t *testing.T) {
 				{"Foo", "Bar"},
 				{"Baz"},
 			},
+			Next: api.NewOptData(api.Data{
+				Description: api.NewOptString("Foo"),
+				ID: api.DataID{
+					Type: api.DataIDIntType,
+					Int:  10,
+				},
+			}),
 		}
 
 		t.Run("Valid", func(t *testing.T) {
 			data := json.Encode(pet)
+			t.Logf("%s", data)
 			require.True(t, jsoniter.Valid(data), "json should be valid")
 			require.JSONEq(t, petTestData, string(data), "should be equal to golden json")
 		})

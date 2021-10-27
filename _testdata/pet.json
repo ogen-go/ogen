@@ -22,7 +22,8 @@
   "kind": "smol",
   "name": "SomePet",
   "next": {
-    "description": "Foo"
+    "description": "Foo",
+    "id": 10
   },
   "nickname": "Nick",
   "nullStr": "Bar",

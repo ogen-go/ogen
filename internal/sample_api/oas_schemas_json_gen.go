@@ -55,14 +55,14 @@ func (s Data) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	if s.Description.Set {
 		more.More()
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
-
-	// Unsupported kind "sum".
+	more.More()
+	j.WriteObjectField("id")
+	s.ID.WriteJSON(j)
 	j.WriteObjectEnd()
 }
 
@@ -85,7 +85,10 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 			return true
 		case "id":
 			if err := func() error {
-				return fmt.Errorf(`decoding of "DataIDStringInt" (sum) is not implemented`)
+				if err := s.ID.ReadJSON(i); err != nil {
+					return err
+				}
+				return i.Error
 			}(); err != nil {
 				retErr = err
 				return false
@@ -100,6 +103,41 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 		return retErr
 	}
 	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s DataID) WriteJSON(j *json.Stream) {
+	switch s.Type {
+	case DataIDStringType:
+		j.WriteString(s.String)
+	case DataIDIntType:
+		j.WriteInt(s.Int)
+	}
+}
+
+// ReadJSON reads value from json stream.
+func (s *DataID) ReadJSON(i *json.Iterator) error {
+	switch t := i.WhatIsNext(); t {
+	case json.StringValue:
+		if err := func() error {
+			s.String = string(i.ReadString())
+			return i.Error
+		}(); err != nil {
+			return err
+		}
+		s.Type = DataIDStringType
+	case json.NumberValue:
+		if err := func() error {
+			s.Int = int(i.ReadInt())
+			return i.Error
+		}(); err != nil {
+			return err
+		}
+		s.Type = DataIDIntType
+	default:
+		return fmt.Errorf("unexpected json type %d", t)
+	}
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -131,11 +169,9 @@ func (s FoobarPostDefApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("code")
 	j.WriteInt64(s.Code)
-
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
@@ -493,11 +529,9 @@ func (s Pet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("birthday")
 	json.WriteDate(j, s.Birthday)
-
 	if s.Friends != nil {
 		more.More()
 		j.WriteObjectField("friends")
@@ -510,63 +544,50 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt64(s.ID)
-
 	more.More()
 	j.WriteObjectField("ip")
 	json.WriteIP(j, s.IP)
-
 	more.More()
 	j.WriteObjectField("ip_v4")
 	json.WriteIP(j, s.IPV4)
-
 	more.More()
 	j.WriteObjectField("ip_v6")
 	json.WriteIP(j, s.IPV6)
-
 	more.More()
 	j.WriteObjectField("kind")
 	s.Kind.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Next.Set {
 		more.More()
 		j.WriteObjectField("next")
 		s.Next.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("nickname")
 	s.Nickname.WriteJSON(j)
-
 	if s.NullStr.Set {
 		more.More()
 		j.WriteObjectField("nullStr")
 		s.NullStr.WriteJSON(j)
 	}
-
 	if s.Primary != nil {
 		more.More()
 		j.WriteObjectField("primary")
 		s.Primary.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("rate")
 	json.WriteDuration(j, s.Rate)
-
 	if s.Tag.Set {
 		more.More()
 		j.WriteObjectField("tag")
 		s.Tag.WriteJSON(j)
 	}
-
 	if s.TestArray1 != nil {
 		more.More()
 		j.WriteObjectField("testArray1")
@@ -586,53 +607,44 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.TestDate.Set {
 		more.More()
 		j.WriteObjectField("testDate")
 		s.TestDate.WriteJSON(j, json.WriteDate)
 	}
-
 	if s.TestDateTime.Set {
 		more.More()
 		j.WriteObjectField("testDateTime")
 		s.TestDateTime.WriteJSON(j, json.WriteDateTime)
 	}
-
 	if s.TestDuration.Set {
 		more.More()
 		j.WriteObjectField("testDuration")
 		s.TestDuration.WriteJSON(j)
 	}
-
 	if s.TestFloat1.Set {
 		more.More()
 		j.WriteObjectField("testFloat1")
 		s.TestFloat1.WriteJSON(j)
 	}
-
 	if s.TestInteger1.Set {
 		more.More()
 		j.WriteObjectField("testInteger1")
 		s.TestInteger1.WriteJSON(j)
 	}
-
 	if s.TestTime.Set {
 		more.More()
 		j.WriteObjectField("testTime")
 		s.TestTime.WriteJSON(j, json.WriteTime)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("unique_id")
 	json.WriteUUID(j, s.UniqueID)
-
 	more.More()
 	j.WriteObjectField("uri")
 	json.WriteURI(j, s.URI)
@@ -1020,7 +1032,6 @@ func (s PetGetDefApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
