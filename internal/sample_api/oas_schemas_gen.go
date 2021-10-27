@@ -125,18 +125,18 @@ type FoobarGetResNotFound struct{}
 
 func (*FoobarGetResNotFound) foobarGetRes() {}
 
-type FoobarPostDefApplicationJSON struct {
+type FoobarPostDef struct {
 	Code    int64  `json:"code"`
 	Message string `json:"message"`
 }
 
-// FoobarPostDefApplicationJSONStatusCode wraps FoobarPostDefApplicationJSON with StatusCode.
-type FoobarPostDefApplicationJSONStatusCode struct {
+// FoobarPostDefStatusCode wraps FoobarPostDef with StatusCode.
+type FoobarPostDefStatusCode struct {
 	StatusCode int
-	Response   FoobarPostDefApplicationJSON
+	Response   FoobarPostDef
 }
 
-func (*FoobarPostDefApplicationJSONStatusCode) foobarPostRes() {}
+func (*FoobarPostDefStatusCode) foobarPostRes() {}
 
 // FoobarPostResNotFound is response for FoobarPost operation.
 type FoobarPostResNotFound struct{}
@@ -570,17 +570,17 @@ type PetCreateReqTextPlain struct{}
 
 func (*PetCreateReqTextPlain) petCreateReq() {}
 
-type PetGetDefApplicationJSON struct {
+type PetGetDef struct {
 	Message string `json:"message"`
 }
 
-// PetGetDefApplicationJSONStatusCode wraps PetGetDefApplicationJSON with StatusCode.
-type PetGetDefApplicationJSONStatusCode struct {
+// PetGetDefStatusCode wraps PetGetDef with StatusCode.
+type PetGetDefStatusCode struct {
 	StatusCode int
-	Response   PetGetDefApplicationJSON
+	Response   PetGetDef
 }
 
-func (*PetGetDefApplicationJSONStatusCode) petGetRes() {}
+func (*PetGetDefStatusCode) petGetRes() {}
 
 type PetKind string
 

@@ -107,7 +107,7 @@ func (s *Game) Validate() error {
 	}
 	return nil
 }
-func (s *GetGameHighScoresPostResOKApplicationJSON) Validate() error {
+func (s *GetGameHighScoresPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if s.Result == nil {
 		return &validate.Error{
@@ -122,7 +122,7 @@ func (s *GetGameHighScoresPostResOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *GetMyCommandsPostResOKApplicationJSON) Validate() error {
+func (s *GetMyCommandsPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if s.Result == nil {
 		return &validate.Error{
@@ -137,7 +137,7 @@ func (s *GetMyCommandsPostResOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s *GetStickerSetPostResOKApplicationJSON) Validate() error {
+func (s *GetStickerSetPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -165,7 +165,7 @@ func (s *GetUpdatesPostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *GetUpdatesPostResOKApplicationJSON) Validate() error {
+func (s *GetUpdatesPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if s.Result == nil {
 		return &validate.Error{
@@ -201,7 +201,7 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *GetUserProfilePhotosPostResOKApplicationJSON) Validate() error {
+func (s *GetUserProfilePhotosPostResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -318,7 +318,7 @@ func (s *SendGamePostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *SendGamePostResOKApplicationJSON) Validate() error {
+func (s *SendGamePostResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -370,7 +370,7 @@ func (s *SendInvoicePostReqMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s *SendInvoicePostResOKApplicationJSON) Validate() error {
+func (s *SendInvoicePostResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}

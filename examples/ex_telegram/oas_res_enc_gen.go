@@ -52,7 +52,7 @@ var (
 
 func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *AnswerCallbackQueryPostResOKApplicationJSON:
+	case *AnswerCallbackQueryPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -85,7 +85,7 @@ func encodeAnswerCallbackQueryPostResponse(response AnswerCallbackQueryPostRes, 
 
 func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *AnswerPreCheckoutQueryPostResOKApplicationJSON:
+	case *AnswerPreCheckoutQueryPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -118,7 +118,7 @@ func encodeAnswerPreCheckoutQueryPostResponse(response AnswerPreCheckoutQueryPos
 
 func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *AnswerShippingQueryPostResOKApplicationJSON:
+	case *AnswerShippingQueryPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -151,7 +151,7 @@ func encodeAnswerShippingQueryPostResponse(response AnswerShippingQueryPostRes, 
 
 func encodeClosePostResponse(response ClosePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *ClosePostResOKApplicationJSON:
+	case *ClosePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -184,7 +184,7 @@ func encodeClosePostResponse(response ClosePostRes, w http.ResponseWriter) error
 
 func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *DeleteStickerFromSetPostResOKApplicationJSON:
+	case *DeleteStickerFromSetPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -217,7 +217,7 @@ func encodeDeleteStickerFromSetPostResponse(response DeleteStickerFromSetPostRes
 
 func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *DeleteWebhookPostResOKApplicationJSON:
+	case *DeleteWebhookPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -250,7 +250,7 @@ func encodeDeleteWebhookPostResponse(response DeleteWebhookPostRes, w http.Respo
 
 func encodeGetFilePostResponse(response GetFilePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetFilePostResOKApplicationJSON:
+	case *GetFilePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -283,7 +283,7 @@ func encodeGetFilePostResponse(response GetFilePostRes, w http.ResponseWriter) e
 
 func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetGameHighScoresPostResOKApplicationJSON:
+	case *GetGameHighScoresPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -316,7 +316,7 @@ func encodeGetGameHighScoresPostResponse(response GetGameHighScoresPostRes, w ht
 
 func encodeGetMePostResponse(response GetMePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetMePostResOKApplicationJSON:
+	case *GetMePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -349,7 +349,7 @@ func encodeGetMePostResponse(response GetMePostRes, w http.ResponseWriter) error
 
 func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetMyCommandsPostResOKApplicationJSON:
+	case *GetMyCommandsPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -382,7 +382,7 @@ func encodeGetMyCommandsPostResponse(response GetMyCommandsPostRes, w http.Respo
 
 func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetStickerSetPostResOKApplicationJSON:
+	case *GetStickerSetPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -415,7 +415,7 @@ func encodeGetStickerSetPostResponse(response GetStickerSetPostRes, w http.Respo
 
 func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetUpdatesPostResOKApplicationJSON:
+	case *GetUpdatesPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -448,7 +448,7 @@ func encodeGetUpdatesPostResponse(response GetUpdatesPostRes, w http.ResponseWri
 
 func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetUserProfilePhotosPostResOKApplicationJSON:
+	case *GetUserProfilePhotosPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -481,7 +481,7 @@ func encodeGetUserProfilePhotosPostResponse(response GetUserProfilePhotosPostRes
 
 func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *GetWebhookInfoPostResOKApplicationJSON:
+	case *GetWebhookInfoPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -514,7 +514,7 @@ func encodeGetWebhookInfoPostResponse(response GetWebhookInfoPostRes, w http.Res
 
 func encodeLogOutPostResponse(response LogOutPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *LogOutPostResOKApplicationJSON:
+	case *LogOutPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -547,7 +547,7 @@ func encodeLogOutPostResponse(response LogOutPostRes, w http.ResponseWriter) err
 
 func encodeSendGamePostResponse(response SendGamePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *SendGamePostResOKApplicationJSON:
+	case *SendGamePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -580,7 +580,7 @@ func encodeSendGamePostResponse(response SendGamePostRes, w http.ResponseWriter)
 
 func encodeSendInvoicePostResponse(response SendInvoicePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *SendInvoicePostResOKApplicationJSON:
+	case *SendInvoicePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -613,7 +613,7 @@ func encodeSendInvoicePostResponse(response SendInvoicePostRes, w http.ResponseW
 
 func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *SetMyCommandsPostResOKApplicationJSON:
+	case *SetMyCommandsPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -646,7 +646,7 @@ func encodeSetMyCommandsPostResponse(response SetMyCommandsPostRes, w http.Respo
 
 func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *SetStickerPositionInSetPostResOKApplicationJSON:
+	case *SetStickerPositionInSetPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -679,7 +679,7 @@ func encodeSetStickerPositionInSetPostResponse(response SetStickerPositionInSetP
 
 func encodeSetWebhookPostResponse(response SetWebhookPostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *SetWebhookPostResOKApplicationJSON:
+	case *SetWebhookPostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)
@@ -712,7 +712,7 @@ func encodeSetWebhookPostResponse(response SetWebhookPostRes, w http.ResponseWri
 
 func encodeUploadStickerFilePostResponse(response UploadStickerFilePostRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *UploadStickerFilePostResOKApplicationJSON:
+	case *UploadStickerFilePostResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)

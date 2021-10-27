@@ -76,7 +76,7 @@ func (s *ChatLocation) Validate() error {
 	}
 	return nil
 }
-func (s *ForwardMessageResOKApplicationJSON) Validate() error {
+func (s *ForwardMessageResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -124,105 +124,105 @@ func (s *Poll) Validate() error {
 	}
 	return nil
 }
-func (s *SendAnimationResOKApplicationJSON) Validate() error {
+func (s *SendAnimationResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendContactResOKApplicationJSON) Validate() error {
+func (s *SendContactResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendDiceResOKApplicationJSON) Validate() error {
+func (s *SendDiceResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendDocumentResOKApplicationJSON) Validate() error {
+func (s *SendDocumentResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendGameResOKApplicationJSON) Validate() error {
+func (s *SendGameResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendInvoiceResOKApplicationJSON) Validate() error {
+func (s *SendInvoiceResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendLocationResOKApplicationJSON) Validate() error {
+func (s *SendLocationResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendMessageResOKApplicationJSON) Validate() error {
+func (s *SendMessageResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendPhotoResOKApplicationJSON) Validate() error {
+func (s *SendPhotoResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendPollResOKApplicationJSON) Validate() error {
+func (s *SendPollResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendStickerResOKApplicationJSON) Validate() error {
+func (s *SendStickerResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendVenueResOKApplicationJSON) Validate() error {
+func (s *SendVenueResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendVideoNoteResOKApplicationJSON) Validate() error {
+func (s *SendVideoNoteResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendVideoResOKApplicationJSON) Validate() error {
+func (s *SendVideoResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
-func (s *SendVoiceResOKApplicationJSON) Validate() error {
+func (s *SendVoiceResOK) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}

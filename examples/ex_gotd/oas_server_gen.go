@@ -53,153 +53,153 @@ var (
 // Server handles operations described by OpenAPI v3 specification.
 type Server interface {
 	// AddStickerToSet implements addStickerToSet operation.
-	AddStickerToSet(ctx context.Context, req AddStickerToSet) (AddStickerToSetResOKApplicationJSON, error)
+	AddStickerToSet(ctx context.Context, req AddStickerToSet) (AddStickerToSetResOK, error)
 	// AnswerCallbackQuery implements answerCallbackQuery operation.
-	AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (AnswerCallbackQueryResOKApplicationJSON, error)
+	AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (AnswerCallbackQueryResOK, error)
 	// AnswerInlineQuery implements answerInlineQuery operation.
-	AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (AnswerInlineQueryResOKApplicationJSON, error)
+	AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (AnswerInlineQueryResOK, error)
 	// AnswerPreCheckoutQuery implements answerPreCheckoutQuery operation.
-	AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (AnswerPreCheckoutQueryResOKApplicationJSON, error)
+	AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (AnswerPreCheckoutQueryResOK, error)
 	// AnswerShippingQuery implements answerShippingQuery operation.
-	AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (AnswerShippingQueryResOKApplicationJSON, error)
+	AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (AnswerShippingQueryResOK, error)
 	// BanChatMember implements banChatMember operation.
-	BanChatMember(ctx context.Context, req BanChatMember) (BanChatMemberResOKApplicationJSON, error)
+	BanChatMember(ctx context.Context, req BanChatMember) (BanChatMemberResOK, error)
 	// CopyMessage implements copyMessage operation.
-	CopyMessage(ctx context.Context, req CopyMessage) (CopyMessageResOKApplicationJSON, error)
+	CopyMessage(ctx context.Context, req CopyMessage) (CopyMessageResOK, error)
 	// CreateChatInviteLink implements createChatInviteLink operation.
-	CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (CreateChatInviteLinkResOKApplicationJSON, error)
+	CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (CreateChatInviteLinkResOK, error)
 	// CreateNewStickerSet implements createNewStickerSet operation.
-	CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (CreateNewStickerSetResOKApplicationJSON, error)
+	CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (CreateNewStickerSetResOK, error)
 	// DeleteChatPhoto implements deleteChatPhoto operation.
-	DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (DeleteChatPhotoResOKApplicationJSON, error)
+	DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (DeleteChatPhotoResOK, error)
 	// DeleteChatStickerSet implements deleteChatStickerSet operation.
-	DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (DeleteChatStickerSetResOKApplicationJSON, error)
+	DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (DeleteChatStickerSetResOK, error)
 	// DeleteMessage implements deleteMessage operation.
-	DeleteMessage(ctx context.Context, req DeleteMessage) (DeleteMessageResOKApplicationJSON, error)
+	DeleteMessage(ctx context.Context, req DeleteMessage) (DeleteMessageResOK, error)
 	// DeleteMyCommands implements deleteMyCommands operation.
-	DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (DeleteMyCommandsResOKApplicationJSON, error)
+	DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (DeleteMyCommandsResOK, error)
 	// DeleteStickerFromSet implements deleteStickerFromSet operation.
-	DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (DeleteStickerFromSetResOKApplicationJSON, error)
+	DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (DeleteStickerFromSetResOK, error)
 	// DeleteWebhook implements deleteWebhook operation.
-	DeleteWebhook(ctx context.Context, req DeleteWebhook) (DeleteWebhookResOKApplicationJSON, error)
+	DeleteWebhook(ctx context.Context, req DeleteWebhook) (DeleteWebhookResOK, error)
 	// EditChatInviteLink implements editChatInviteLink operation.
-	EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (EditChatInviteLinkResOKApplicationJSON, error)
+	EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (EditChatInviteLinkResOK, error)
 	// EditMessageCaption implements editMessageCaption operation.
-	EditMessageCaption(ctx context.Context, req EditMessageCaption) (EditMessageCaptionResOKApplicationJSON, error)
+	EditMessageCaption(ctx context.Context, req EditMessageCaption) (EditMessageCaptionResOK, error)
 	// EditMessageLiveLocation implements editMessageLiveLocation operation.
-	EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (EditMessageLiveLocationResOKApplicationJSON, error)
+	EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (EditMessageLiveLocationResOK, error)
 	// EditMessageMedia implements editMessageMedia operation.
-	EditMessageMedia(ctx context.Context, req EditMessageMedia) (EditMessageMediaResOKApplicationJSON, error)
+	EditMessageMedia(ctx context.Context, req EditMessageMedia) (EditMessageMediaResOK, error)
 	// EditMessageReplyMarkup implements editMessageReplyMarkup operation.
-	EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (EditMessageReplyMarkupResOKApplicationJSON, error)
+	EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (EditMessageReplyMarkupResOK, error)
 	// EditMessageText implements editMessageText operation.
-	EditMessageText(ctx context.Context, req EditMessageText) (EditMessageTextResOKApplicationJSON, error)
+	EditMessageText(ctx context.Context, req EditMessageText) (EditMessageTextResOK, error)
 	// ExportChatInviteLink implements exportChatInviteLink operation.
-	ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (ExportChatInviteLinkResOKApplicationJSON, error)
+	ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (ExportChatInviteLinkResOK, error)
 	// ForwardMessage implements forwardMessage operation.
-	ForwardMessage(ctx context.Context, req ForwardMessage) (ForwardMessageResOKApplicationJSON, error)
+	ForwardMessage(ctx context.Context, req ForwardMessage) (ForwardMessageResOK, error)
 	// GetChat implements getChat operation.
-	GetChat(ctx context.Context, req GetChat) (GetChatResOKApplicationJSON, error)
+	GetChat(ctx context.Context, req GetChat) (GetChatResOK, error)
 	// GetChatAdministrators implements getChatAdministrators operation.
-	GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (GetChatAdministratorsResOKApplicationJSON, error)
+	GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (GetChatAdministratorsResOK, error)
 	// GetChatMember implements getChatMember operation.
-	GetChatMember(ctx context.Context, req GetChatMember) (GetChatMemberResOKApplicationJSON, error)
+	GetChatMember(ctx context.Context, req GetChatMember) (GetChatMemberResOK, error)
 	// GetChatMemberCount implements getChatMemberCount operation.
-	GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (GetChatMemberCountResOKApplicationJSON, error)
+	GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (GetChatMemberCountResOK, error)
 	// GetFile implements getFile operation.
-	GetFile(ctx context.Context, req GetFile) (GetFileResOKApplicationJSON, error)
+	GetFile(ctx context.Context, req GetFile) (GetFileResOK, error)
 	// GetGameHighScores implements getGameHighScores operation.
-	GetGameHighScores(ctx context.Context, req GetGameHighScores) (GetGameHighScoresResOKApplicationJSON, error)
+	GetGameHighScores(ctx context.Context, req GetGameHighScores) (GetGameHighScoresResOK, error)
 	// GetMe implements getMe operation.
-	GetMe(ctx context.Context) (GetMeResOKApplicationJSON, error)
+	GetMe(ctx context.Context) (GetMeResOK, error)
 	// GetMyCommands implements getMyCommands operation.
-	GetMyCommands(ctx context.Context, req GetMyCommands) (GetMyCommandsResOKApplicationJSON, error)
+	GetMyCommands(ctx context.Context, req GetMyCommands) (GetMyCommandsResOK, error)
 	// GetStickerSet implements getStickerSet operation.
-	GetStickerSet(ctx context.Context, req GetStickerSet) (GetStickerSetResOKApplicationJSON, error)
+	GetStickerSet(ctx context.Context, req GetStickerSet) (GetStickerSetResOK, error)
 	// GetUpdates implements getUpdates operation.
-	GetUpdates(ctx context.Context, req GetUpdates) (GetUpdatesResOKApplicationJSON, error)
+	GetUpdates(ctx context.Context, req GetUpdates) (GetUpdatesResOK, error)
 	// GetUserProfilePhotos implements getUserProfilePhotos operation.
-	GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (GetUserProfilePhotosResOKApplicationJSON, error)
+	GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (GetUserProfilePhotosResOK, error)
 	// LeaveChat implements leaveChat operation.
-	LeaveChat(ctx context.Context, req LeaveChat) (LeaveChatResOKApplicationJSON, error)
+	LeaveChat(ctx context.Context, req LeaveChat) (LeaveChatResOK, error)
 	// PinChatMessage implements pinChatMessage operation.
-	PinChatMessage(ctx context.Context, req PinChatMessage) (PinChatMessageResOKApplicationJSON, error)
+	PinChatMessage(ctx context.Context, req PinChatMessage) (PinChatMessageResOK, error)
 	// PromoteChatMember implements promoteChatMember operation.
-	PromoteChatMember(ctx context.Context, req PromoteChatMember) (PromoteChatMemberResOKApplicationJSON, error)
+	PromoteChatMember(ctx context.Context, req PromoteChatMember) (PromoteChatMemberResOK, error)
 	// RestrictChatMember implements restrictChatMember operation.
-	RestrictChatMember(ctx context.Context, req RestrictChatMember) (RestrictChatMemberResOKApplicationJSON, error)
+	RestrictChatMember(ctx context.Context, req RestrictChatMember) (RestrictChatMemberResOK, error)
 	// RevokeChatInviteLink implements revokeChatInviteLink operation.
-	RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (RevokeChatInviteLinkResOKApplicationJSON, error)
+	RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (RevokeChatInviteLinkResOK, error)
 	// SendAnimation implements sendAnimation operation.
-	SendAnimation(ctx context.Context, req SendAnimation) (SendAnimationResOKApplicationJSON, error)
+	SendAnimation(ctx context.Context, req SendAnimation) (SendAnimationResOK, error)
 	// SendAudio implements sendAudio operation.
-	SendAudio(ctx context.Context, req SendAudio) (SendAudioResOKApplicationJSON, error)
+	SendAudio(ctx context.Context, req SendAudio) (SendAudioResOK, error)
 	// SendChatAction implements sendChatAction operation.
-	SendChatAction(ctx context.Context, req SendChatAction) (SendChatActionResOKApplicationJSON, error)
+	SendChatAction(ctx context.Context, req SendChatAction) (SendChatActionResOK, error)
 	// SendContact implements sendContact operation.
-	SendContact(ctx context.Context, req SendContact) (SendContactResOKApplicationJSON, error)
+	SendContact(ctx context.Context, req SendContact) (SendContactResOK, error)
 	// SendDice implements sendDice operation.
-	SendDice(ctx context.Context, req SendDice) (SendDiceResOKApplicationJSON, error)
+	SendDice(ctx context.Context, req SendDice) (SendDiceResOK, error)
 	// SendDocument implements sendDocument operation.
-	SendDocument(ctx context.Context, req SendDocument) (SendDocumentResOKApplicationJSON, error)
+	SendDocument(ctx context.Context, req SendDocument) (SendDocumentResOK, error)
 	// SendGame implements sendGame operation.
-	SendGame(ctx context.Context, req SendGame) (SendGameResOKApplicationJSON, error)
+	SendGame(ctx context.Context, req SendGame) (SendGameResOK, error)
 	// SendInvoice implements sendInvoice operation.
-	SendInvoice(ctx context.Context, req SendInvoice) (SendInvoiceResOKApplicationJSON, error)
+	SendInvoice(ctx context.Context, req SendInvoice) (SendInvoiceResOK, error)
 	// SendLocation implements sendLocation operation.
-	SendLocation(ctx context.Context, req SendLocation) (SendLocationResOKApplicationJSON, error)
+	SendLocation(ctx context.Context, req SendLocation) (SendLocationResOK, error)
 	// SendMediaGroup implements sendMediaGroup operation.
-	SendMediaGroup(ctx context.Context, req SendMediaGroup) (SendMediaGroupResOKApplicationJSON, error)
+	SendMediaGroup(ctx context.Context, req SendMediaGroup) (SendMediaGroupResOK, error)
 	// SendMessage implements sendMessage operation.
-	SendMessage(ctx context.Context, req SendMessage) (SendMessageResOKApplicationJSON, error)
+	SendMessage(ctx context.Context, req SendMessage) (SendMessageResOK, error)
 	// SendPhoto implements sendPhoto operation.
-	SendPhoto(ctx context.Context, req SendPhoto) (SendPhotoResOKApplicationJSON, error)
+	SendPhoto(ctx context.Context, req SendPhoto) (SendPhotoResOK, error)
 	// SendPoll implements sendPoll operation.
-	SendPoll(ctx context.Context, req SendPoll) (SendPollResOKApplicationJSON, error)
+	SendPoll(ctx context.Context, req SendPoll) (SendPollResOK, error)
 	// SendSticker implements sendSticker operation.
-	SendSticker(ctx context.Context, req SendSticker) (SendStickerResOKApplicationJSON, error)
+	SendSticker(ctx context.Context, req SendSticker) (SendStickerResOK, error)
 	// SendVenue implements sendVenue operation.
-	SendVenue(ctx context.Context, req SendVenue) (SendVenueResOKApplicationJSON, error)
+	SendVenue(ctx context.Context, req SendVenue) (SendVenueResOK, error)
 	// SendVideo implements sendVideo operation.
-	SendVideo(ctx context.Context, req SendVideo) (SendVideoResOKApplicationJSON, error)
+	SendVideo(ctx context.Context, req SendVideo) (SendVideoResOK, error)
 	// SendVideoNote implements sendVideoNote operation.
-	SendVideoNote(ctx context.Context, req SendVideoNote) (SendVideoNoteResOKApplicationJSON, error)
+	SendVideoNote(ctx context.Context, req SendVideoNote) (SendVideoNoteResOK, error)
 	// SendVoice implements sendVoice operation.
-	SendVoice(ctx context.Context, req SendVoice) (SendVoiceResOKApplicationJSON, error)
+	SendVoice(ctx context.Context, req SendVoice) (SendVoiceResOK, error)
 	// SetChatAdministratorCustomTitle implements setChatAdministratorCustomTitle operation.
-	SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (SetChatAdministratorCustomTitleResOKApplicationJSON, error)
+	SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (SetChatAdministratorCustomTitleResOK, error)
 	// SetChatDescription implements setChatDescription operation.
-	SetChatDescription(ctx context.Context, req SetChatDescription) (SetChatDescriptionResOKApplicationJSON, error)
+	SetChatDescription(ctx context.Context, req SetChatDescription) (SetChatDescriptionResOK, error)
 	// SetChatPermissions implements setChatPermissions operation.
-	SetChatPermissions(ctx context.Context, req SetChatPermissions) (SetChatPermissionsResOKApplicationJSON, error)
+	SetChatPermissions(ctx context.Context, req SetChatPermissions) (SetChatPermissionsResOK, error)
 	// SetChatPhoto implements setChatPhoto operation.
-	SetChatPhoto(ctx context.Context, req SetChatPhoto) (SetChatPhotoResOKApplicationJSON, error)
+	SetChatPhoto(ctx context.Context, req SetChatPhoto) (SetChatPhotoResOK, error)
 	// SetChatStickerSet implements setChatStickerSet operation.
-	SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (SetChatStickerSetResOKApplicationJSON, error)
+	SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (SetChatStickerSetResOK, error)
 	// SetChatTitle implements setChatTitle operation.
-	SetChatTitle(ctx context.Context, req SetChatTitle) (SetChatTitleResOKApplicationJSON, error)
+	SetChatTitle(ctx context.Context, req SetChatTitle) (SetChatTitleResOK, error)
 	// SetGameScore implements setGameScore operation.
-	SetGameScore(ctx context.Context, req SetGameScore) (SetGameScoreResOKApplicationJSON, error)
+	SetGameScore(ctx context.Context, req SetGameScore) (SetGameScoreResOK, error)
 	// SetMyCommands implements setMyCommands operation.
-	SetMyCommands(ctx context.Context, req SetMyCommands) (SetMyCommandsResOKApplicationJSON, error)
+	SetMyCommands(ctx context.Context, req SetMyCommands) (SetMyCommandsResOK, error)
 	// SetPassportDataErrors implements setPassportDataErrors operation.
-	SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (SetPassportDataErrorsResOKApplicationJSON, error)
+	SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (SetPassportDataErrorsResOK, error)
 	// SetStickerPositionInSet implements setStickerPositionInSet operation.
-	SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (SetStickerPositionInSetResOKApplicationJSON, error)
+	SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (SetStickerPositionInSetResOK, error)
 	// SetStickerSetThumb implements setStickerSetThumb operation.
-	SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (SetStickerSetThumbResOKApplicationJSON, error)
+	SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (SetStickerSetThumbResOK, error)
 	// SetWebhook implements setWebhook operation.
-	SetWebhook(ctx context.Context, req SetWebhook) (SetWebhookResOKApplicationJSON, error)
+	SetWebhook(ctx context.Context, req SetWebhook) (SetWebhookResOK, error)
 	// StopMessageLiveLocation implements stopMessageLiveLocation operation.
-	StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (StopMessageLiveLocationResOKApplicationJSON, error)
+	StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (StopMessageLiveLocationResOK, error)
 	// StopPoll implements stopPoll operation.
-	StopPoll(ctx context.Context, req StopPoll) (StopPollResOKApplicationJSON, error)
+	StopPoll(ctx context.Context, req StopPoll) (StopPollResOK, error)
 	// UnbanChatMember implements unbanChatMember operation.
-	UnbanChatMember(ctx context.Context, req UnbanChatMember) (UnbanChatMemberResOKApplicationJSON, error)
+	UnbanChatMember(ctx context.Context, req UnbanChatMember) (UnbanChatMemberResOK, error)
 	// UnpinAllChatMessages implements unpinAllChatMessages operation.
-	UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (UnpinAllChatMessagesResOKApplicationJSON, error)
+	UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (UnpinAllChatMessagesResOK, error)
 	// UnpinChatMessage implements unpinChatMessage operation.
-	UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (UnpinChatMessageResOKApplicationJSON, error)
+	UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (UnpinChatMessageResOK, error)
 	// UploadStickerFile implements uploadStickerFile operation.
-	UploadStickerFile(ctx context.Context, req UploadStickerFile) (UploadStickerFileResOKApplicationJSON, error)
+	UploadStickerFile(ctx context.Context, req UploadStickerFile) (UploadStickerFileResOK, error)
 }

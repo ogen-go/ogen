@@ -387,7 +387,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 
 func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *MmdsGetResOKApplicationJSON:
+	case *MmdsGetResOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		j := json.NewStream(w)

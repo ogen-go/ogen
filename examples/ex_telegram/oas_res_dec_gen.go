@@ -65,7 +65,7 @@ func decodeAnswerCallbackQueryPostResponse(resp *http.Response) (res AnswerCallb
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AnswerCallbackQueryPostResOKApplicationJSON
+			var response AnswerCallbackQueryPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -119,7 +119,7 @@ func decodeAnswerPreCheckoutQueryPostResponse(resp *http.Response) (res AnswerPr
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AnswerPreCheckoutQueryPostResOKApplicationJSON
+			var response AnswerPreCheckoutQueryPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -173,7 +173,7 @@ func decodeAnswerShippingQueryPostResponse(resp *http.Response) (res AnswerShipp
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response AnswerShippingQueryPostResOKApplicationJSON
+			var response AnswerShippingQueryPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -227,7 +227,7 @@ func decodeClosePostResponse(resp *http.Response) (res ClosePostRes, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response ClosePostResOKApplicationJSON
+			var response ClosePostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -281,7 +281,7 @@ func decodeDeleteStickerFromSetPostResponse(resp *http.Response) (res DeleteStic
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response DeleteStickerFromSetPostResOKApplicationJSON
+			var response DeleteStickerFromSetPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -335,7 +335,7 @@ func decodeDeleteWebhookPostResponse(resp *http.Response) (res DeleteWebhookPost
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response DeleteWebhookPostResOKApplicationJSON
+			var response DeleteWebhookPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -389,7 +389,7 @@ func decodeGetFilePostResponse(resp *http.Response) (res GetFilePostRes, err err
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetFilePostResOKApplicationJSON
+			var response GetFilePostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -443,7 +443,7 @@ func decodeGetGameHighScoresPostResponse(resp *http.Response) (res GetGameHighSc
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetGameHighScoresPostResOKApplicationJSON
+			var response GetGameHighScoresPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -497,7 +497,7 @@ func decodeGetMePostResponse(resp *http.Response) (res GetMePostRes, err error) 
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetMePostResOKApplicationJSON
+			var response GetMePostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -551,7 +551,7 @@ func decodeGetMyCommandsPostResponse(resp *http.Response) (res GetMyCommandsPost
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetMyCommandsPostResOKApplicationJSON
+			var response GetMyCommandsPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -605,7 +605,7 @@ func decodeGetStickerSetPostResponse(resp *http.Response) (res GetStickerSetPost
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetStickerSetPostResOKApplicationJSON
+			var response GetStickerSetPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -659,7 +659,7 @@ func decodeGetUpdatesPostResponse(resp *http.Response) (res GetUpdatesPostRes, e
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetUpdatesPostResOKApplicationJSON
+			var response GetUpdatesPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -713,7 +713,7 @@ func decodeGetUserProfilePhotosPostResponse(resp *http.Response) (res GetUserPro
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetUserProfilePhotosPostResOKApplicationJSON
+			var response GetUserProfilePhotosPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -767,7 +767,7 @@ func decodeGetWebhookInfoPostResponse(resp *http.Response) (res GetWebhookInfoPo
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response GetWebhookInfoPostResOKApplicationJSON
+			var response GetWebhookInfoPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -821,7 +821,7 @@ func decodeLogOutPostResponse(resp *http.Response) (res LogOutPostRes, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response LogOutPostResOKApplicationJSON
+			var response LogOutPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -875,7 +875,7 @@ func decodeSendGamePostResponse(resp *http.Response) (res SendGamePostRes, err e
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SendGamePostResOKApplicationJSON
+			var response SendGamePostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -929,7 +929,7 @@ func decodeSendInvoicePostResponse(resp *http.Response) (res SendInvoicePostRes,
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SendInvoicePostResOKApplicationJSON
+			var response SendInvoicePostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -983,7 +983,7 @@ func decodeSetMyCommandsPostResponse(resp *http.Response) (res SetMyCommandsPost
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SetMyCommandsPostResOKApplicationJSON
+			var response SetMyCommandsPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1037,7 +1037,7 @@ func decodeSetStickerPositionInSetPostResponse(resp *http.Response) (res SetStic
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SetStickerPositionInSetPostResOKApplicationJSON
+			var response SetStickerPositionInSetPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1091,7 +1091,7 @@ func decodeSetWebhookPostResponse(resp *http.Response) (res SetWebhookPostRes, e
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response SetWebhookPostResOKApplicationJSON
+			var response SetWebhookPostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -1145,7 +1145,7 @@ func decodeUploadStickerFilePostResponse(resp *http.Response) (res UploadSticker
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response UploadStickerFilePostResOKApplicationJSON
+			var response UploadStickerFilePostResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err

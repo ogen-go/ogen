@@ -280,9 +280,9 @@ type MmdsConfigPutResNoContent struct{}
 
 func (*MmdsConfigPutResNoContent) mmdsConfigPutRes() {}
 
-type MmdsGetResOKApplicationJSON struct{}
+type MmdsGetResOK struct{}
 
-func (*MmdsGetResOKApplicationJSON) mmdsGetRes() {}
+func (*MmdsGetResOK) mmdsGetRes() {}
 
 type MmdsPatchReq struct{}
 

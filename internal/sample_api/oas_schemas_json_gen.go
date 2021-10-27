@@ -165,7 +165,7 @@ func (s *FoobarGetResNotFound) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPostDefApplicationJSON) WriteJSON(j *json.Stream) {
+func (s FoobarPostDef) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -178,8 +178,8 @@ func (s FoobarPostDefApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads FoobarPostDefApplicationJSON from json stream.
-func (s *FoobarPostDefApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostDef from json stream.
+func (s *FoobarPostDef) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -213,15 +213,15 @@ func (s *FoobarPostDefApplicationJSON) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s FoobarPostDefApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
+func (s FoobarPostDefStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads FoobarPostDefApplicationJSONStatusCode from json stream.
-func (s *FoobarPostDefApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads FoobarPostDefStatusCode from json stream.
+func (s *FoobarPostDefStatusCode) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -333,7 +333,6 @@ func (o *NilString) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading NilString", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of Data to json stream.
@@ -353,7 +352,6 @@ func (o *OptData) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptData", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
@@ -375,7 +373,6 @@ func (o *OptDuration) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptDuration", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of float64 to json stream.
@@ -393,7 +390,6 @@ func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of int to json stream.
@@ -411,7 +407,6 @@ func (o *OptInt) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
@@ -441,7 +436,6 @@ func (o *OptNilString) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptNilString", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of PetType to json stream.
@@ -459,7 +453,6 @@ func (o *OptPetType) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptPetType", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
@@ -477,7 +470,6 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of time.Time to json stream.
@@ -499,7 +491,6 @@ func (o *OptTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.T
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptTime", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
@@ -521,7 +512,6 @@ func (o *OptUUID) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptUUID", i.WhatIsNext())
 	}
-	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1028,7 +1018,7 @@ func (s *PetCreateReqTextPlain) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetDefApplicationJSON) WriteJSON(j *json.Stream) {
+func (s PetGetDef) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -1038,8 +1028,8 @@ func (s PetGetDefApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PetGetDefApplicationJSON from json stream.
-func (s *PetGetDefApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PetGetDef from json stream.
+func (s *PetGetDef) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1064,15 +1054,15 @@ func (s *PetGetDefApplicationJSON) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PetGetDefApplicationJSONStatusCode) WriteJSON(j *json.Stream) {
+func (s PetGetDefStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PetGetDefApplicationJSONStatusCode from json stream.
-func (s *PetGetDefApplicationJSONStatusCode) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PetGetDefStatusCode from json stream.
+func (s *PetGetDefStatusCode) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {

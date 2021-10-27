@@ -93,12 +93,12 @@ type AnswerCallbackQueryPostReqMultipartFormData struct {
 
 func (*AnswerCallbackQueryPostReqMultipartFormData) answerCallbackQueryPostReq() {}
 
-type AnswerCallbackQueryPostResOKApplicationJSON struct {
+type AnswerCallbackQueryPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*AnswerCallbackQueryPostResOKApplicationJSON) answerCallbackQueryPostRes() {}
+func (*AnswerCallbackQueryPostResOK) answerCallbackQueryPostRes() {}
 
 type AnswerPreCheckoutQueryPostReqApplicationJSON struct {
 	ErrorMessage       OptString `json:"error_message"`
@@ -124,12 +124,12 @@ type AnswerPreCheckoutQueryPostReqMultipartFormData struct {
 
 func (*AnswerPreCheckoutQueryPostReqMultipartFormData) answerPreCheckoutQueryPostReq() {}
 
-type AnswerPreCheckoutQueryPostResOKApplicationJSON struct {
+type AnswerPreCheckoutQueryPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*AnswerPreCheckoutQueryPostResOKApplicationJSON) answerPreCheckoutQueryPostRes() {}
+func (*AnswerPreCheckoutQueryPostResOK) answerPreCheckoutQueryPostRes() {}
 
 type AnswerShippingQueryPostReqApplicationJSON struct {
 	ErrorMessage    OptString        `json:"error_message"`
@@ -158,12 +158,12 @@ type AnswerShippingQueryPostReqMultipartFormData struct {
 
 func (*AnswerShippingQueryPostReqMultipartFormData) answerShippingQueryPostReq() {}
 
-type AnswerShippingQueryPostResOKApplicationJSON struct {
+type AnswerShippingQueryPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*AnswerShippingQueryPostResOKApplicationJSON) answerShippingQueryPostRes() {}
+func (*AnswerShippingQueryPostResOK) answerShippingQueryPostRes() {}
 
 // Ref: #/components/schemas/Audio
 type Audio struct {
@@ -260,12 +260,12 @@ type ChosenInlineResult struct {
 	ResultID        string      `json:"result_id"`
 }
 
-type ClosePostResOKApplicationJSON struct {
+type ClosePostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*ClosePostResOKApplicationJSON) closePostRes() {}
+func (*ClosePostResOK) closePostRes() {}
 
 // Ref: #/components/schemas/Contact
 type Contact struct {
@@ -294,12 +294,12 @@ type DeleteStickerFromSetPostReqMultipartFormData struct {
 
 func (*DeleteStickerFromSetPostReqMultipartFormData) deleteStickerFromSetPostReq() {}
 
-type DeleteStickerFromSetPostResOKApplicationJSON struct {
+type DeleteStickerFromSetPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*DeleteStickerFromSetPostResOKApplicationJSON) deleteStickerFromSetPostRes() {}
+func (*DeleteStickerFromSetPostResOK) deleteStickerFromSetPostRes() {}
 
 type DeleteWebhookPostReqApplicationJSON struct {
 	DropPendingUpdates OptBool `json:"drop_pending_updates"`
@@ -319,12 +319,12 @@ type DeleteWebhookPostReqMultipartFormData struct {
 
 func (*DeleteWebhookPostReqMultipartFormData) deleteWebhookPostReq() {}
 
-type DeleteWebhookPostResOKApplicationJSON struct {
+type DeleteWebhookPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*DeleteWebhookPostResOKApplicationJSON) deleteWebhookPostRes() {}
+func (*DeleteWebhookPostResOK) deleteWebhookPostRes() {}
 
 // Ref: #/components/schemas/Dice
 type Dice struct {
@@ -460,12 +460,12 @@ type GetFilePostReqMultipartFormData struct {
 
 func (*GetFilePostReqMultipartFormData) getFilePostReq() {}
 
-type GetFilePostResOKApplicationJSON struct {
+type GetFilePostResOK struct {
 	Ok     bool `json:"ok"`
 	Result File `json:"result"`
 }
 
-func (*GetFilePostResOKApplicationJSON) getFilePostRes() {}
+func (*GetFilePostResOK) getFilePostRes() {}
 
 type GetGameHighScoresPostReqApplicationJSON struct {
 	ChatID          OptInt    `json:"chat_id"`
@@ -494,26 +494,26 @@ type GetGameHighScoresPostReqMultipartFormData struct {
 
 func (*GetGameHighScoresPostReqMultipartFormData) getGameHighScoresPostReq() {}
 
-type GetGameHighScoresPostResOKApplicationJSON struct {
+type GetGameHighScoresPostResOK struct {
 	Ok     bool            `json:"ok"`
 	Result []GameHighScore `json:"result"`
 }
 
-func (*GetGameHighScoresPostResOKApplicationJSON) getGameHighScoresPostRes() {}
+func (*GetGameHighScoresPostResOK) getGameHighScoresPostRes() {}
 
-type GetMePostResOKApplicationJSON struct {
+type GetMePostResOK struct {
 	Ok     bool `json:"ok"`
 	Result User `json:"result"`
 }
 
-func (*GetMePostResOKApplicationJSON) getMePostRes() {}
+func (*GetMePostResOK) getMePostRes() {}
 
-type GetMyCommandsPostResOKApplicationJSON struct {
+type GetMyCommandsPostResOK struct {
 	Ok     bool         `json:"ok"`
 	Result []BotCommand `json:"result"`
 }
 
-func (*GetMyCommandsPostResOKApplicationJSON) getMyCommandsPostRes() {}
+func (*GetMyCommandsPostResOK) getMyCommandsPostRes() {}
 
 type GetStickerSetPostReqApplicationJSON struct {
 	Name string `json:"name"`
@@ -533,12 +533,12 @@ type GetStickerSetPostReqMultipartFormData struct {
 
 func (*GetStickerSetPostReqMultipartFormData) getStickerSetPostReq() {}
 
-type GetStickerSetPostResOKApplicationJSON struct {
+type GetStickerSetPostResOK struct {
 	Ok     bool       `json:"ok"`
 	Result StickerSet `json:"result"`
 }
 
-func (*GetStickerSetPostResOKApplicationJSON) getStickerSetPostRes() {}
+func (*GetStickerSetPostResOK) getStickerSetPostRes() {}
 
 type GetUpdatesPostReqApplicationJSON struct {
 	AllowedUpdates []string `json:"allowed_updates"`
@@ -567,12 +567,12 @@ type GetUpdatesPostReqMultipartFormData struct {
 
 func (*GetUpdatesPostReqMultipartFormData) getUpdatesPostReq() {}
 
-type GetUpdatesPostResOKApplicationJSON struct {
+type GetUpdatesPostResOK struct {
 	Ok     bool     `json:"ok"`
 	Result []Update `json:"result"`
 }
 
-func (*GetUpdatesPostResOKApplicationJSON) getUpdatesPostRes() {}
+func (*GetUpdatesPostResOK) getUpdatesPostRes() {}
 
 type GetUserProfilePhotosPostReqApplicationJSON struct {
 	Limit  OptInt `json:"limit"`
@@ -598,19 +598,19 @@ type GetUserProfilePhotosPostReqMultipartFormData struct {
 
 func (*GetUserProfilePhotosPostReqMultipartFormData) getUserProfilePhotosPostReq() {}
 
-type GetUserProfilePhotosPostResOKApplicationJSON struct {
+type GetUserProfilePhotosPostResOK struct {
 	Ok     bool              `json:"ok"`
 	Result UserProfilePhotos `json:"result"`
 }
 
-func (*GetUserProfilePhotosPostResOKApplicationJSON) getUserProfilePhotosPostRes() {}
+func (*GetUserProfilePhotosPostResOK) getUserProfilePhotosPostRes() {}
 
-type GetWebhookInfoPostResOKApplicationJSON struct {
+type GetWebhookInfoPostResOK struct {
 	Ok     bool        `json:"ok"`
 	Result WebhookInfo `json:"result"`
 }
 
-func (*GetWebhookInfoPostResOKApplicationJSON) getWebhookInfoPostRes() {}
+func (*GetWebhookInfoPostResOK) getWebhookInfoPostRes() {}
 
 // Ref: #/components/schemas/InlineKeyboardButton
 type InlineKeyboardButton struct {
@@ -663,12 +663,12 @@ type Location struct {
 	ProximityAlertRadius OptInt     `json:"proximity_alert_radius"`
 }
 
-type LogOutPostResOKApplicationJSON struct {
+type LogOutPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*LogOutPostResOKApplicationJSON) logOutPostRes() {}
+func (*LogOutPostResOK) logOutPostRes() {}
 
 // Ref: #/components/schemas/LoginUrl
 type LoginUrl struct {
@@ -2418,12 +2418,12 @@ type SendGamePostReqMultipartFormData struct {
 
 func (*SendGamePostReqMultipartFormData) sendGamePostReq() {}
 
-type SendGamePostResOKApplicationJSON struct {
+type SendGamePostResOK struct {
 	Ok     bool    `json:"ok"`
 	Result Message `json:"result"`
 }
 
-func (*SendGamePostResOKApplicationJSON) sendGamePostRes() {}
+func (*SendGamePostResOK) sendGamePostRes() {}
 
 type SendInvoicePostReqApplicationJSON struct {
 	AllowSendingWithoutReply  OptBool                 `json:"allow_sending_without_reply"`
@@ -2512,12 +2512,12 @@ type SendInvoicePostReqMultipartFormData struct {
 
 func (*SendInvoicePostReqMultipartFormData) sendInvoicePostReq() {}
 
-type SendInvoicePostResOKApplicationJSON struct {
+type SendInvoicePostResOK struct {
 	Ok     bool    `json:"ok"`
 	Result Message `json:"result"`
 }
 
-func (*SendInvoicePostResOKApplicationJSON) sendInvoicePostRes() {}
+func (*SendInvoicePostResOK) sendInvoicePostRes() {}
 
 type SetGameScorePostReqApplicationJSON struct {
 	ChatID             OptInt    `json:"chat_id"`
@@ -2573,12 +2573,12 @@ type SetMyCommandsPostReqMultipartFormData struct {
 
 func (*SetMyCommandsPostReqMultipartFormData) setMyCommandsPostReq() {}
 
-type SetMyCommandsPostResOKApplicationJSON struct {
+type SetMyCommandsPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*SetMyCommandsPostResOKApplicationJSON) setMyCommandsPostRes() {}
+func (*SetMyCommandsPostResOK) setMyCommandsPostRes() {}
 
 type SetStickerPositionInSetPostReqApplicationJSON struct {
 	Position int    `json:"position"`
@@ -2602,12 +2602,12 @@ type SetStickerPositionInSetPostReqMultipartFormData struct {
 
 func (*SetStickerPositionInSetPostReqMultipartFormData) setStickerPositionInSetPostReq() {}
 
-type SetStickerPositionInSetPostResOKApplicationJSON struct {
+type SetStickerPositionInSetPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*SetStickerPositionInSetPostResOKApplicationJSON) setStickerPositionInSetPostRes() {}
+func (*SetStickerPositionInSetPostResOK) setStickerPositionInSetPostRes() {}
 
 type SetWebhookPostReq struct {
 	AllowedUpdates     []string  `json:"allowed_updates"`
@@ -2618,12 +2618,12 @@ type SetWebhookPostReq struct {
 	URL                string    `json:"url"`
 }
 
-type SetWebhookPostResOKApplicationJSON struct {
+type SetWebhookPostResOK struct {
 	Ok     bool `json:"ok"`
 	Result bool `json:"result"`
 }
 
-func (*SetWebhookPostResOKApplicationJSON) setWebhookPostRes() {}
+func (*SetWebhookPostResOK) setWebhookPostRes() {}
 
 // Ref: #/components/schemas/ShippingAddress
 type ShippingAddress struct {
@@ -2706,12 +2706,12 @@ type UploadStickerFilePostReq struct {
 	UserID     int    `json:"user_id"`
 }
 
-type UploadStickerFilePostResOKApplicationJSON struct {
+type UploadStickerFilePostResOK struct {
 	Ok     bool `json:"ok"`
 	Result File `json:"result"`
 }
 
-func (*UploadStickerFilePostResOKApplicationJSON) uploadStickerFilePostRes() {}
+func (*UploadStickerFilePostResOK) uploadStickerFilePostRes() {}
 
 // Ref: #/components/schemas/User
 type User struct {

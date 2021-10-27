@@ -515,7 +515,7 @@ func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerCallbackQueryPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AnswerCallbackQueryPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -528,8 +528,8 @@ func (s AnswerCallbackQueryPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerCallbackQueryPostResOKApplicationJSON from json stream.
-func (s *AnswerCallbackQueryPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerCallbackQueryPostResOK from json stream.
+func (s *AnswerCallbackQueryPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -758,7 +758,7 @@ func (s *AnswerPreCheckoutQueryPostReqMultipartFormData) ReadJSON(i *json.Iterat
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerPreCheckoutQueryPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AnswerPreCheckoutQueryPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -771,8 +771,8 @@ func (s AnswerPreCheckoutQueryPostResOKApplicationJSON) WriteJSON(j *json.Stream
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerPreCheckoutQueryPostResOKApplicationJSON from json stream.
-func (s *AnswerPreCheckoutQueryPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerPreCheckoutQueryPostResOK from json stream.
+func (s *AnswerPreCheckoutQueryPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1118,7 +1118,7 @@ func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerShippingQueryPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AnswerShippingQueryPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -1131,8 +1131,8 @@ func (s AnswerShippingQueryPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerShippingQueryPostResOKApplicationJSON from json stream.
-func (s *AnswerShippingQueryPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerShippingQueryPostResOK from json stream.
+func (s *AnswerShippingQueryPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2198,7 +2198,7 @@ func (s *ChosenInlineResult) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ClosePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s ClosePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2211,8 +2211,8 @@ func (s ClosePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ClosePostResOKApplicationJSON from json stream.
-func (s *ClosePostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ClosePostResOK from json stream.
+func (s *ClosePostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2453,7 +2453,7 @@ func (s *DeleteStickerFromSetPostReqMultipartFormData) ReadJSON(i *json.Iterator
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStickerFromSetPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteStickerFromSetPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2466,8 +2466,8 @@ func (s DeleteStickerFromSetPostResOKApplicationJSON) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteStickerFromSetPostResOKApplicationJSON from json stream.
-func (s *DeleteStickerFromSetPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteStickerFromSetPostResOK from json stream.
+func (s *DeleteStickerFromSetPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2624,7 +2624,7 @@ func (s *DeleteWebhookPostReqMultipartFormData) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteWebhookPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteWebhookPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2637,8 +2637,8 @@ func (s DeleteWebhookPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteWebhookPostResOKApplicationJSON from json stream.
-func (s *DeleteWebhookPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteWebhookPostResOK from json stream.
+func (s *DeleteWebhookPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3646,7 +3646,7 @@ func (s *GetFilePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFilePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetFilePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3659,8 +3659,8 @@ func (s GetFilePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetFilePostResOKApplicationJSON from json stream.
-func (s *GetFilePostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetFilePostResOK from json stream.
+func (s *GetFilePostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3957,7 +3957,7 @@ func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(i *json.Iterator) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetGameHighScoresPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetGameHighScoresPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3977,8 +3977,8 @@ func (s GetGameHighScoresPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetGameHighScoresPostResOKApplicationJSON from json stream.
-func (s *GetGameHighScoresPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetGameHighScoresPostResOK from json stream.
+func (s *GetGameHighScoresPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4030,7 +4030,7 @@ func (s *GetGameHighScoresPostResOKApplicationJSON) ReadJSON(i *json.Iterator) e
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetMePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetMePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4043,8 +4043,8 @@ func (s GetMePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetMePostResOKApplicationJSON from json stream.
-func (s *GetMePostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetMePostResOK from json stream.
+func (s *GetMePostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4080,7 +4080,7 @@ func (s *GetMePostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetMyCommandsPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4100,8 +4100,8 @@ func (s GetMyCommandsPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetMyCommandsPostResOKApplicationJSON from json stream.
-func (s *GetMyCommandsPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetMyCommandsPostResOK from json stream.
+func (s *GetMyCommandsPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4261,7 +4261,7 @@ func (s *GetStickerSetPostReqMultipartFormData) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStickerSetPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetStickerSetPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4274,8 +4274,8 @@ func (s GetStickerSetPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetStickerSetPostResOKApplicationJSON from json stream.
-func (s *GetStickerSetPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetStickerSetPostResOK from json stream.
+func (s *GetStickerSetPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4647,7 +4647,7 @@ func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUpdatesPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetUpdatesPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4667,8 +4667,8 @@ func (s GetUpdatesPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetUpdatesPostResOKApplicationJSON from json stream.
-func (s *GetUpdatesPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUpdatesPostResOK from json stream.
+func (s *GetUpdatesPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4930,7 +4930,7 @@ func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(i *json.Iterator
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUserProfilePhotosPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetUserProfilePhotosPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4943,8 +4943,8 @@ func (s GetUserProfilePhotosPostResOKApplicationJSON) WriteJSON(j *json.Stream) 
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetUserProfilePhotosPostResOKApplicationJSON from json stream.
-func (s *GetUserProfilePhotosPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUserProfilePhotosPostResOK from json stream.
+func (s *GetUserProfilePhotosPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4980,7 +4980,7 @@ func (s *GetUserProfilePhotosPostResOKApplicationJSON) ReadJSON(i *json.Iterator
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetWebhookInfoPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetWebhookInfoPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4993,8 +4993,8 @@ func (s GetWebhookInfoPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetWebhookInfoPostResOKApplicationJSON from json stream.
-func (s *GetWebhookInfoPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetWebhookInfoPostResOK from json stream.
+func (s *GetWebhookInfoPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5608,7 +5608,7 @@ func (s *Location) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s LogOutPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s LogOutPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5621,8 +5621,8 @@ func (s LogOutPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads LogOutPostResOKApplicationJSON from json stream.
-func (s *LogOutPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads LogOutPostResOK from json stream.
+func (s *LogOutPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9029,7 +9029,7 @@ func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendGamePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendGamePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9042,8 +9042,8 @@ func (s SendGamePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendGamePostResOKApplicationJSON from json stream.
-func (s *SendGamePostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendGamePostResOK from json stream.
+func (s *SendGamePostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10330,7 +10330,7 @@ func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendInvoicePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendInvoicePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10343,8 +10343,8 @@ func (s SendInvoicePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendInvoicePostResOKApplicationJSON from json stream.
-func (s *SendInvoicePostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendInvoicePostResOK from json stream.
+func (s *SendInvoicePostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10962,7 +10962,7 @@ func (s *SetMyCommandsPostReqMultipartFormData) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetMyCommandsPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10975,8 +10975,8 @@ func (s SetMyCommandsPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetMyCommandsPostResOKApplicationJSON from json stream.
-func (s *SetMyCommandsPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetMyCommandsPostResOK from json stream.
+func (s *SetMyCommandsPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11154,7 +11154,7 @@ func (s *SetStickerPositionInSetPostReqMultipartFormData) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetStickerPositionInSetPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetStickerPositionInSetPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11167,8 +11167,8 @@ func (s SetStickerPositionInSetPostResOKApplicationJSON) WriteJSON(j *json.Strea
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetStickerPositionInSetPostResOKApplicationJSON from json stream.
-func (s *SetStickerPositionInSetPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetStickerPositionInSetPostResOK from json stream.
+func (s *SetStickerPositionInSetPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11343,7 +11343,7 @@ func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetWebhookPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetWebhookPostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11356,8 +11356,8 @@ func (s SetWebhookPostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetWebhookPostResOKApplicationJSON from json stream.
-func (s *SetWebhookPostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetWebhookPostResOK from json stream.
+func (s *SetWebhookPostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12332,7 +12332,7 @@ func (s *UploadStickerFilePostReq) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UploadStickerFilePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s UploadStickerFilePostResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12345,8 +12345,8 @@ func (s UploadStickerFilePostResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UploadStickerFilePostResOKApplicationJSON from json stream.
-func (s *UploadStickerFilePostResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UploadStickerFilePostResOK from json stream.
+func (s *UploadStickerFilePostResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {

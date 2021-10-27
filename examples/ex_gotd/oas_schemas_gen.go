@@ -59,7 +59,7 @@ type AddStickerToSet struct {
 	UserID       int             `json:"user_id"`
 }
 
-type AddStickerToSetResOKApplicationJSON struct {
+type AddStickerToSetResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -86,7 +86,7 @@ type AnswerCallbackQuery struct {
 	URL             OptString `json:"url"`
 }
 
-type AnswerCallbackQueryResOKApplicationJSON struct {
+type AnswerCallbackQueryResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -101,7 +101,7 @@ type AnswerInlineQuery struct {
 	SwitchPmText      OptString `json:"switch_pm_text"`
 }
 
-type AnswerInlineQueryResOKApplicationJSON struct {
+type AnswerInlineQueryResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -113,7 +113,7 @@ type AnswerPreCheckoutQuery struct {
 	PreCheckoutQueryID string    `json:"pre_checkout_query_id"`
 }
 
-type AnswerPreCheckoutQueryResOKApplicationJSON struct {
+type AnswerPreCheckoutQueryResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -125,7 +125,7 @@ type AnswerShippingQuery struct {
 	ShippingQueryID string    `json:"shipping_query_id"`
 }
 
-type AnswerShippingQueryResOKApplicationJSON struct {
+type AnswerShippingQueryResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -150,7 +150,7 @@ type BanChatMember struct {
 	UserID         int     `json:"user_id"`
 }
 
-type BanChatMemberResOKApplicationJSON struct {
+type BanChatMemberResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -225,7 +225,7 @@ type CopyMessage struct {
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 }
 
-type CopyMessageResOKApplicationJSON struct {
+type CopyMessageResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -236,7 +236,7 @@ type CreateChatInviteLink struct {
 	MemberLimit OptInt `json:"member_limit"`
 }
 
-type CreateChatInviteLinkResOKApplicationJSON struct {
+type CreateChatInviteLinkResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -252,7 +252,7 @@ type CreateNewStickerSet struct {
 	UserID        int             `json:"user_id"`
 }
 
-type CreateNewStickerSetResOKApplicationJSON struct {
+type CreateNewStickerSetResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -260,7 +260,7 @@ type CreateNewStickerSetResOKApplicationJSON struct {
 // Ref: #/components/schemas/deleteChatPhoto
 type DeleteChatPhoto struct{}
 
-type DeleteChatPhotoResOKApplicationJSON struct {
+type DeleteChatPhotoResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -268,7 +268,7 @@ type DeleteChatPhotoResOKApplicationJSON struct {
 // Ref: #/components/schemas/deleteChatStickerSet
 type DeleteChatStickerSet struct{}
 
-type DeleteChatStickerSetResOKApplicationJSON struct {
+type DeleteChatStickerSetResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -278,7 +278,7 @@ type DeleteMessage struct {
 	MessageID int `json:"message_id"`
 }
 
-type DeleteMessageResOKApplicationJSON struct {
+type DeleteMessageResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -289,7 +289,7 @@ type DeleteMyCommands struct {
 	Scope        *BotCommandScope `json:"scope"`
 }
 
-type DeleteMyCommandsResOKApplicationJSON struct {
+type DeleteMyCommandsResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -299,7 +299,7 @@ type DeleteStickerFromSet struct {
 	Sticker string `json:"sticker"`
 }
 
-type DeleteStickerFromSetResOKApplicationJSON struct {
+type DeleteStickerFromSetResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -309,7 +309,7 @@ type DeleteWebhook struct {
 	DropPendingUpdates OptBool `json:"drop_pending_updates"`
 }
 
-type DeleteWebhookResOKApplicationJSON struct {
+type DeleteWebhookResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -337,7 +337,7 @@ type EditChatInviteLink struct {
 	MemberLimit OptInt `json:"member_limit"`
 }
 
-type EditChatInviteLinkResOKApplicationJSON struct {
+type EditChatInviteLinkResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -351,7 +351,7 @@ type EditMessageCaption struct {
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type EditMessageCaptionResOKApplicationJSON struct {
+type EditMessageCaptionResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -368,7 +368,7 @@ type EditMessageLiveLocation struct {
 	ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type EditMessageLiveLocationResOKApplicationJSON struct {
+type EditMessageLiveLocationResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -381,7 +381,7 @@ type EditMessageMedia struct {
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type EditMessageMediaResOKApplicationJSON struct {
+type EditMessageMediaResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -393,7 +393,7 @@ type EditMessageReplyMarkup struct {
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type EditMessageReplyMarkupResOKApplicationJSON struct {
+type EditMessageReplyMarkupResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -408,7 +408,7 @@ type EditMessageText struct {
 	Text                  string                `json:"text"`
 }
 
-type EditMessageTextResOKApplicationJSON struct {
+type EditMessageTextResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -423,7 +423,7 @@ type EncryptedCredentials struct {
 // Ref: #/components/schemas/exportChatInviteLink
 type ExportChatInviteLink struct{}
 
-type ExportChatInviteLinkResOKApplicationJSON struct {
+type ExportChatInviteLinkResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -434,7 +434,7 @@ type ForwardMessage struct {
 	MessageID           int     `json:"message_id"`
 }
 
-type ForwardMessageResOKApplicationJSON struct {
+type ForwardMessageResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -453,7 +453,7 @@ type GetChat struct{}
 // Ref: #/components/schemas/getChatAdministrators
 type GetChatAdministrators struct{}
 
-type GetChatAdministratorsResOKApplicationJSON struct {
+type GetChatAdministratorsResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -466,17 +466,17 @@ type GetChatMember struct {
 // Ref: #/components/schemas/getChatMemberCount
 type GetChatMemberCount struct{}
 
-type GetChatMemberCountResOKApplicationJSON struct {
+type GetChatMemberCountResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
 
-type GetChatMemberResOKApplicationJSON struct {
+type GetChatMemberResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
 
-type GetChatResOKApplicationJSON struct {
+type GetChatResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -486,7 +486,7 @@ type GetFile struct {
 	FileID string `json:"file_id"`
 }
 
-type GetFileResOKApplicationJSON struct {
+type GetFileResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -499,12 +499,12 @@ type GetGameHighScores struct {
 	UserID          int       `json:"user_id"`
 }
 
-type GetGameHighScoresResOKApplicationJSON struct {
+type GetGameHighScoresResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
 
-type GetMeResOKApplicationJSON struct {
+type GetMeResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptUser `json:"result"`
 }
@@ -515,7 +515,7 @@ type GetMyCommands struct {
 	Scope        *BotCommandScope `json:"scope"`
 }
 
-type GetMyCommandsResOKApplicationJSON struct {
+type GetMyCommandsResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -525,7 +525,7 @@ type GetStickerSet struct {
 	Name string `json:"name"`
 }
 
-type GetStickerSetResOKApplicationJSON struct {
+type GetStickerSetResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -537,7 +537,7 @@ type GetUpdates struct {
 	Timeout OptInt `json:"timeout"`
 }
 
-type GetUpdatesResOKApplicationJSON struct {
+type GetUpdatesResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -549,7 +549,7 @@ type GetUserProfilePhotos struct {
 	UserID int    `json:"user_id"`
 }
 
-type GetUserProfilePhotosResOKApplicationJSON struct {
+type GetUserProfilePhotosResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -572,7 +572,7 @@ type Invoice struct {
 // Ref: #/components/schemas/leaveChat
 type LeaveChat struct{}
 
-type LeaveChatResOKApplicationJSON struct {
+type LeaveChatResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -1937,7 +1937,7 @@ type PinChatMessage struct {
 	MessageID           int     `json:"message_id"`
 }
 
-type PinChatMessageResOKApplicationJSON struct {
+type PinChatMessageResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -1973,7 +1973,7 @@ type PromoteChatMember struct {
 	UserID              int     `json:"user_id"`
 }
 
-type PromoteChatMemberResOKApplicationJSON struct {
+type PromoteChatMemberResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -1992,7 +1992,7 @@ type RestrictChatMember struct {
 	UserID      int             `json:"user_id"`
 }
 
-type RestrictChatMemberResOKApplicationJSON struct {
+type RestrictChatMemberResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2002,7 +2002,7 @@ type RevokeChatInviteLink struct {
 	InviteLink string `json:"invite_link"`
 }
 
-type RevokeChatInviteLinkResOKApplicationJSON struct {
+type RevokeChatInviteLinkResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2019,7 +2019,7 @@ type SendAnimation struct {
 	Width                    OptInt    `json:"width"`
 }
 
-type SendAnimationResOKApplicationJSON struct {
+type SendAnimationResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2036,7 +2036,7 @@ type SendAudio struct {
 	Title                    OptString `json:"title"`
 }
 
-type SendAudioResOKApplicationJSON struct {
+type SendAudioResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2046,7 +2046,7 @@ type SendChatAction struct {
 	Action string `json:"action"`
 }
 
-type SendChatActionResOKApplicationJSON struct {
+type SendChatActionResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2062,7 +2062,7 @@ type SendContact struct {
 	Vcard                    OptString `json:"vcard"`
 }
 
-type SendContactResOKApplicationJSON struct {
+type SendContactResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2075,7 +2075,7 @@ type SendDice struct {
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 }
 
-type SendDiceResOKApplicationJSON struct {
+type SendDiceResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2090,7 +2090,7 @@ type SendDocument struct {
 	ReplyToMessageID            OptInt    `json:"reply_to_message_id"`
 }
 
-type SendDocumentResOKApplicationJSON struct {
+type SendDocumentResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2105,7 +2105,7 @@ type SendGame struct {
 	ReplyToMessageID         OptInt                `json:"reply_to_message_id"`
 }
 
-type SendGameResOKApplicationJSON struct {
+type SendGameResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2137,7 +2137,7 @@ type SendInvoice struct {
 	Title                     string                `json:"title"`
 }
 
-type SendInvoiceResOKApplicationJSON struct {
+type SendInvoiceResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2155,7 +2155,7 @@ type SendLocation struct {
 	ReplyToMessageID         OptInt     `json:"reply_to_message_id"`
 }
 
-type SendLocationResOKApplicationJSON struct {
+type SendLocationResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2167,7 +2167,7 @@ type SendMediaGroup struct {
 	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
 }
 
-type SendMediaGroupResOKApplicationJSON struct {
+type SendMediaGroupResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2182,7 +2182,7 @@ type SendMessage struct {
 	Text                     string    `json:"text"`
 }
 
-type SendMessageResOKApplicationJSON struct {
+type SendMessageResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2196,7 +2196,7 @@ type SendPhoto struct {
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 }
 
-type SendPhotoResOKApplicationJSON struct {
+type SendPhotoResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2218,7 +2218,7 @@ type SendPoll struct {
 	Type                     OptString `json:"type"`
 }
 
-type SendPollResOKApplicationJSON struct {
+type SendPollResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2230,7 +2230,7 @@ type SendSticker struct {
 	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
 }
 
-type SendStickerResOKApplicationJSON struct {
+type SendStickerResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2250,7 +2250,7 @@ type SendVenue struct {
 	Title                    string    `json:"title"`
 }
 
-type SendVenueResOKApplicationJSON struct {
+type SendVenueResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2277,12 +2277,12 @@ type SendVideoNote struct {
 	ReplyToMessageID         OptInt  `json:"reply_to_message_id"`
 }
 
-type SendVideoNoteResOKApplicationJSON struct {
+type SendVideoNoteResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
 
-type SendVideoResOKApplicationJSON struct {
+type SendVideoResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2297,7 +2297,7 @@ type SendVoice struct {
 	ReplyToMessageID         OptInt    `json:"reply_to_message_id"`
 }
 
-type SendVoiceResOKApplicationJSON struct {
+type SendVoiceResOK struct {
 	Ok     bool       `json:"ok"`
 	Result OptMessage `json:"result"`
 }
@@ -2308,7 +2308,7 @@ type SetChatAdministratorCustomTitle struct {
 	UserID      int    `json:"user_id"`
 }
 
-type SetChatAdministratorCustomTitleResOKApplicationJSON struct {
+type SetChatAdministratorCustomTitleResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2318,7 +2318,7 @@ type SetChatDescription struct {
 	Description OptString `json:"description"`
 }
 
-type SetChatDescriptionResOKApplicationJSON struct {
+type SetChatDescriptionResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2328,7 +2328,7 @@ type SetChatPermissions struct {
 	Permissions ChatPermissions `json:"permissions"`
 }
 
-type SetChatPermissionsResOKApplicationJSON struct {
+type SetChatPermissionsResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2338,7 +2338,7 @@ type SetChatPhoto struct {
 	Photo string `json:"photo"`
 }
 
-type SetChatPhotoResOKApplicationJSON struct {
+type SetChatPhotoResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2348,7 +2348,7 @@ type SetChatStickerSet struct {
 	StickerSetName string `json:"sticker_set_name"`
 }
 
-type SetChatStickerSetResOKApplicationJSON struct {
+type SetChatStickerSetResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2358,7 +2358,7 @@ type SetChatTitle struct {
 	Title string `json:"title"`
 }
 
-type SetChatTitleResOKApplicationJSON struct {
+type SetChatTitleResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2374,7 +2374,7 @@ type SetGameScore struct {
 	UserID             int       `json:"user_id"`
 }
 
-type SetGameScoreResOKApplicationJSON struct {
+type SetGameScoreResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2385,7 +2385,7 @@ type SetMyCommands struct {
 	Scope        *BotCommandScope `json:"scope"`
 }
 
-type SetMyCommandsResOKApplicationJSON struct {
+type SetMyCommandsResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2395,7 +2395,7 @@ type SetPassportDataErrors struct {
 	UserID int `json:"user_id"`
 }
 
-type SetPassportDataErrorsResOKApplicationJSON struct {
+type SetPassportDataErrorsResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2406,7 +2406,7 @@ type SetStickerPositionInSet struct {
 	Sticker  string `json:"sticker"`
 }
 
-type SetStickerPositionInSetResOKApplicationJSON struct {
+type SetStickerPositionInSetResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2417,7 +2417,7 @@ type SetStickerSetThumb struct {
 	UserID int    `json:"user_id"`
 }
 
-type SetStickerSetThumbResOKApplicationJSON struct {
+type SetStickerSetThumbResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2431,7 +2431,7 @@ type SetWebhook struct {
 	URL                string    `json:"url"`
 }
 
-type SetWebhookResOKApplicationJSON struct {
+type SetWebhookResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2467,7 +2467,7 @@ type StopMessageLiveLocation struct {
 	ReplyMarkup     *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type StopMessageLiveLocationResOKApplicationJSON struct {
+type StopMessageLiveLocationResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2478,7 +2478,7 @@ type StopPoll struct {
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup"`
 }
 
-type StopPollResOKApplicationJSON struct {
+type StopPollResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2500,7 +2500,7 @@ type UnbanChatMember struct {
 	UserID       int     `json:"user_id"`
 }
 
-type UnbanChatMemberResOKApplicationJSON struct {
+type UnbanChatMemberResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2508,7 +2508,7 @@ type UnbanChatMemberResOKApplicationJSON struct {
 // Ref: #/components/schemas/unpinAllChatMessages
 type UnpinAllChatMessages struct{}
 
-type UnpinAllChatMessagesResOKApplicationJSON struct {
+type UnpinAllChatMessagesResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2518,7 +2518,7 @@ type UnpinChatMessage struct {
 	MessageID OptInt `json:"message_id"`
 }
 
-type UnpinChatMessageResOKApplicationJSON struct {
+type UnpinChatMessageResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }
@@ -2529,7 +2529,7 @@ type UploadStickerFile struct {
 	UserID     int    `json:"user_id"`
 }
 
-type UploadStickerFileResOKApplicationJSON struct {
+type UploadStickerFileResOK struct {
 	Ok     bool    `json:"ok"`
 	Result OptBool `json:"result"`
 }

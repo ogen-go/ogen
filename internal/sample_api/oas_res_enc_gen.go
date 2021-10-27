@@ -91,7 +91,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 	case *FoobarPostResNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *FoobarPostDefApplicationJSONStatusCode:
+	case *FoobarPostDefStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
 		j := json.NewStream(w)
@@ -166,7 +166,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 			return err
 		}
 		return nil
-	case *PetGetDefApplicationJSONStatusCode:
+	case *PetGetDefStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
 		j := json.NewStream(w)

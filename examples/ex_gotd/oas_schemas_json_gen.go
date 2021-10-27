@@ -145,7 +145,7 @@ func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AddStickerToSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AddStickerToSetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -160,8 +160,8 @@ func (s AddStickerToSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AddStickerToSetResOKApplicationJSON from json stream.
-func (s *AddStickerToSetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AddStickerToSetResOK from json stream.
+func (s *AddStickerToSetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -454,7 +454,7 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerCallbackQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AnswerCallbackQueryResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -469,8 +469,8 @@ func (s AnswerCallbackQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerCallbackQueryResOKApplicationJSON from json stream.
-func (s *AnswerCallbackQueryResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerCallbackQueryResOK from json stream.
+func (s *AnswerCallbackQueryResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -628,7 +628,7 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerInlineQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AnswerInlineQueryResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -643,8 +643,8 @@ func (s AnswerInlineQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerInlineQueryResOKApplicationJSON from json stream.
-func (s *AnswerInlineQueryResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerInlineQueryResOK from json stream.
+func (s *AnswerInlineQueryResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -746,7 +746,7 @@ func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerPreCheckoutQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AnswerPreCheckoutQueryResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -761,8 +761,8 @@ func (s AnswerPreCheckoutQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerPreCheckoutQueryResOKApplicationJSON from json stream.
-func (s *AnswerPreCheckoutQueryResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerPreCheckoutQueryResOK from json stream.
+func (s *AnswerPreCheckoutQueryResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -864,7 +864,7 @@ func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s AnswerShippingQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s AnswerShippingQueryResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -879,8 +879,8 @@ func (s AnswerShippingQueryResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads AnswerShippingQueryResOKApplicationJSON from json stream.
-func (s *AnswerShippingQueryResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads AnswerShippingQueryResOK from json stream.
+func (s *AnswerShippingQueryResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1149,7 +1149,7 @@ func (s *BanChatMember) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s BanChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s BanChatMemberResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -1164,8 +1164,8 @@ func (s BanChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads BanChatMemberResOKApplicationJSON from json stream.
-func (s *BanChatMemberResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads BanChatMemberResOK from json stream.
+func (s *BanChatMemberResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2048,7 +2048,7 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CopyMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s CopyMessageResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2063,8 +2063,8 @@ func (s CopyMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CopyMessageResOKApplicationJSON from json stream.
-func (s *CopyMessageResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads CopyMessageResOK from json stream.
+func (s *CopyMessageResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2159,7 +2159,7 @@ func (s *CreateChatInviteLink) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s CreateChatInviteLinkResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2174,8 +2174,8 @@ func (s CreateChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateChatInviteLinkResOKApplicationJSON from json stream.
-func (s *CreateChatInviteLinkResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads CreateChatInviteLinkResOK from json stream.
+func (s *CreateChatInviteLinkResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2335,7 +2335,7 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s CreateNewStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s CreateNewStickerSetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2350,8 +2350,8 @@ func (s CreateNewStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads CreateNewStickerSetResOKApplicationJSON from json stream.
-func (s *CreateNewStickerSetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads CreateNewStickerSetResOK from json stream.
+func (s *CreateNewStickerSetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2412,7 +2412,7 @@ func (s *DeleteChatPhoto) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteChatPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteChatPhotoResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2427,8 +2427,8 @@ func (s DeleteChatPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteChatPhotoResOKApplicationJSON from json stream.
-func (s *DeleteChatPhotoResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteChatPhotoResOK from json stream.
+func (s *DeleteChatPhotoResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2489,7 +2489,7 @@ func (s *DeleteChatStickerSet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteChatStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteChatStickerSetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2504,8 +2504,8 @@ func (s DeleteChatStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteChatStickerSetResOKApplicationJSON from json stream.
-func (s *DeleteChatStickerSetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteChatStickerSetResOK from json stream.
+func (s *DeleteChatStickerSetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2578,7 +2578,7 @@ func (s *DeleteMessage) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteMessageResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2593,8 +2593,8 @@ func (s DeleteMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteMessageResOKApplicationJSON from json stream.
-func (s *DeleteMessageResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteMessageResOK from json stream.
+func (s *DeleteMessageResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2696,7 +2696,7 @@ func (s *DeleteMyCommands) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteMyCommandsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2711,8 +2711,8 @@ func (s DeleteMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteMyCommandsResOKApplicationJSON from json stream.
-func (s *DeleteMyCommandsResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteMyCommandsResOK from json stream.
+func (s *DeleteMyCommandsResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2785,7 +2785,7 @@ func (s *DeleteStickerFromSet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteStickerFromSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteStickerFromSetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2800,8 +2800,8 @@ func (s DeleteStickerFromSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteStickerFromSetResOKApplicationJSON from json stream.
-func (s *DeleteStickerFromSetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteStickerFromSetResOK from json stream.
+func (s *DeleteStickerFromSetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2879,7 +2879,7 @@ func (s *DeleteWebhook) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s DeleteWebhookResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s DeleteWebhookResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -2894,8 +2894,8 @@ func (s DeleteWebhookResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads DeleteWebhookResOKApplicationJSON from json stream.
-func (s *DeleteWebhookResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads DeleteWebhookResOK from json stream.
+func (s *DeleteWebhookResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3166,7 +3166,7 @@ func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EditChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s EditChatInviteLinkResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3181,8 +3181,8 @@ func (s EditChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EditChatInviteLinkResOKApplicationJSON from json stream.
-func (s *EditChatInviteLinkResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EditChatInviteLinkResOK from json stream.
+func (s *EditChatInviteLinkResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3335,7 +3335,7 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EditMessageCaptionResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s EditMessageCaptionResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3350,8 +3350,8 @@ func (s EditMessageCaptionResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EditMessageCaptionResOKApplicationJSON from json stream.
-func (s *EditMessageCaptionResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EditMessageCaptionResOK from json stream.
+func (s *EditMessageCaptionResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3545,7 +3545,7 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EditMessageLiveLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s EditMessageLiveLocationResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3560,8 +3560,8 @@ func (s EditMessageLiveLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EditMessageLiveLocationResOKApplicationJSON from json stream.
-func (s *EditMessageLiveLocationResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EditMessageLiveLocationResOK from json stream.
+func (s *EditMessageLiveLocationResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3694,7 +3694,7 @@ func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EditMessageMediaResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s EditMessageMediaResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3709,8 +3709,8 @@ func (s EditMessageMediaResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EditMessageMediaResOKApplicationJSON from json stream.
-func (s *EditMessageMediaResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EditMessageMediaResOK from json stream.
+func (s *EditMessageMediaResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3829,7 +3829,7 @@ func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EditMessageReplyMarkupResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s EditMessageReplyMarkupResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -3844,8 +3844,8 @@ func (s EditMessageReplyMarkupResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EditMessageReplyMarkupResOKApplicationJSON from json stream.
-func (s *EditMessageReplyMarkupResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EditMessageReplyMarkupResOK from json stream.
+func (s *EditMessageReplyMarkupResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4010,7 +4010,7 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s EditMessageTextResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s EditMessageTextResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4025,8 +4025,8 @@ func (s EditMessageTextResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads EditMessageTextResOKApplicationJSON from json stream.
-func (s *EditMessageTextResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads EditMessageTextResOK from json stream.
+func (s *EditMessageTextResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4147,7 +4147,7 @@ func (s *ExportChatInviteLink) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ExportChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s ExportChatInviteLinkResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4162,8 +4162,8 @@ func (s ExportChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ExportChatInviteLinkResOKApplicationJSON from json stream.
-func (s *ExportChatInviteLinkResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ExportChatInviteLinkResOK from json stream.
+func (s *ExportChatInviteLinkResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4253,7 +4253,7 @@ func (s *ForwardMessage) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s ForwardMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s ForwardMessageResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4268,8 +4268,8 @@ func (s ForwardMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads ForwardMessageResOKApplicationJSON from json stream.
-func (s *ForwardMessageResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads ForwardMessageResOK from json stream.
+func (s *ForwardMessageResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4436,7 +4436,7 @@ func (s *GetChatAdministrators) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetChatAdministratorsResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetChatAdministratorsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4451,8 +4451,8 @@ func (s GetChatAdministratorsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetChatAdministratorsResOKApplicationJSON from json stream.
-func (s *GetChatAdministratorsResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetChatAdministratorsResOK from json stream.
+func (s *GetChatAdministratorsResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4549,7 +4549,7 @@ func (s *GetChatMemberCount) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetChatMemberCountResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetChatMemberCountResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4564,8 +4564,8 @@ func (s GetChatMemberCountResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetChatMemberCountResOKApplicationJSON from json stream.
-func (s *GetChatMemberCountResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetChatMemberCountResOK from json stream.
+func (s *GetChatMemberCountResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4602,7 +4602,7 @@ func (s *GetChatMemberCountResOKApplicationJSON) ReadJSON(i *json.Iterator) erro
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetChatMemberResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4617,8 +4617,8 @@ func (s GetChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetChatMemberResOKApplicationJSON from json stream.
-func (s *GetChatMemberResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetChatMemberResOK from json stream.
+func (s *GetChatMemberResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4655,7 +4655,7 @@ func (s *GetChatMemberResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetChatResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetChatResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4670,8 +4670,8 @@ func (s GetChatResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetChatResOKApplicationJSON from json stream.
-func (s *GetChatResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetChatResOK from json stream.
+func (s *GetChatResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4744,7 +4744,7 @@ func (s *GetFile) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetFileResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetFileResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4759,8 +4759,8 @@ func (s GetFileResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetFileResOKApplicationJSON from json stream.
-func (s *GetFileResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetFileResOK from json stream.
+func (s *GetFileResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4884,7 +4884,7 @@ func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetGameHighScoresResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetGameHighScoresResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4899,8 +4899,8 @@ func (s GetGameHighScoresResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetGameHighScoresResOKApplicationJSON from json stream.
-func (s *GetGameHighScoresResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetGameHighScoresResOK from json stream.
+func (s *GetGameHighScoresResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4937,7 +4937,7 @@ func (s *GetGameHighScoresResOKApplicationJSON) ReadJSON(i *json.Iterator) error
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetMeResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetMeResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -4952,8 +4952,8 @@ func (s GetMeResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetMeResOKApplicationJSON from json stream.
-func (s *GetMeResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetMeResOK from json stream.
+func (s *GetMeResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5055,7 +5055,7 @@ func (s *GetMyCommands) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetMyCommandsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5070,8 +5070,8 @@ func (s GetMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetMyCommandsResOKApplicationJSON from json stream.
-func (s *GetMyCommandsResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetMyCommandsResOK from json stream.
+func (s *GetMyCommandsResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5144,7 +5144,7 @@ func (s *GetStickerSet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetStickerSetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5159,8 +5159,8 @@ func (s GetStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetStickerSetResOKApplicationJSON from json stream.
-func (s *GetStickerSetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetStickerSetResOK from json stream.
+func (s *GetStickerSetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5272,7 +5272,7 @@ func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUpdatesResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetUpdatesResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5287,8 +5287,8 @@ func (s GetUpdatesResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetUpdatesResOKApplicationJSON from json stream.
-func (s *GetUpdatesResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUpdatesResOK from json stream.
+func (s *GetUpdatesResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5395,7 +5395,7 @@ func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s GetUserProfilePhotosResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s GetUserProfilePhotosResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5410,8 +5410,8 @@ func (s GetUserProfilePhotosResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads GetUserProfilePhotosResOKApplicationJSON from json stream.
-func (s *GetUserProfilePhotosResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads GetUserProfilePhotosResOK from json stream.
+func (s *GetUserProfilePhotosResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5604,7 +5604,7 @@ func (s *LeaveChat) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s LeaveChatResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s LeaveChatResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -5619,8 +5619,8 @@ func (s LeaveChatResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads LeaveChatResOKApplicationJSON from json stream.
-func (s *LeaveChatResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads LeaveChatResOK from json stream.
+func (s *LeaveChatResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -7709,7 +7709,7 @@ func (s *PinChatMessage) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PinChatMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s PinChatMessageResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -7724,8 +7724,8 @@ func (s PinChatMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PinChatMessageResOKApplicationJSON from json stream.
-func (s *PinChatMessageResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PinChatMessageResOK from json stream.
+func (s *PinChatMessageResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8161,7 +8161,7 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s PromoteChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s PromoteChatMemberResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8176,8 +8176,8 @@ func (s PromoteChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads PromoteChatMemberResOKApplicationJSON from json stream.
-func (s *PromoteChatMemberResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads PromoteChatMemberResOK from json stream.
+func (s *PromoteChatMemberResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8345,7 +8345,7 @@ func (s *RestrictChatMember) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s RestrictChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s RestrictChatMemberResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8360,8 +8360,8 @@ func (s RestrictChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads RestrictChatMemberResOKApplicationJSON from json stream.
-func (s *RestrictChatMemberResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads RestrictChatMemberResOK from json stream.
+func (s *RestrictChatMemberResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8434,7 +8434,7 @@ func (s *RevokeChatInviteLink) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s RevokeChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s RevokeChatInviteLinkResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8449,8 +8449,8 @@ func (s RevokeChatInviteLinkResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads RevokeChatInviteLinkResOKApplicationJSON from json stream.
-func (s *RevokeChatInviteLinkResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads RevokeChatInviteLinkResOK from json stream.
+func (s *RevokeChatInviteLinkResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8647,7 +8647,7 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendAnimationResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendAnimationResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8662,8 +8662,8 @@ func (s SendAnimationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendAnimationResOKApplicationJSON from json stream.
-func (s *SendAnimationResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendAnimationResOK from json stream.
+func (s *SendAnimationResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8860,7 +8860,7 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendAudioResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendAudioResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8875,8 +8875,8 @@ func (s SendAudioResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendAudioResOKApplicationJSON from json stream.
-func (s *SendAudioResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendAudioResOK from json stream.
+func (s *SendAudioResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8949,7 +8949,7 @@ func (s *SendChatAction) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendChatActionResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendChatActionResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -8964,8 +8964,8 @@ func (s SendChatActionResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendChatActionResOKApplicationJSON from json stream.
-func (s *SendChatActionResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendChatActionResOK from json stream.
+func (s *SendChatActionResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9135,7 +9135,7 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendContactResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendContactResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9150,8 +9150,8 @@ func (s SendContactResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendContactResOKApplicationJSON from json stream.
-func (s *SendContactResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendContactResOK from json stream.
+func (s *SendContactResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9280,7 +9280,7 @@ func (s *SendDice) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendDiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendDiceResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9295,8 +9295,8 @@ func (s SendDiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendDiceResOKApplicationJSON from json stream.
-func (s *SendDiceResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendDiceResOK from json stream.
+func (s *SendDiceResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9459,7 +9459,7 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendDocumentResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendDocumentResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9474,8 +9474,8 @@ func (s SendDocumentResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendDocumentResOKApplicationJSON from json stream.
-func (s *SendDocumentResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendDocumentResOK from json stream.
+func (s *SendDocumentResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9635,7 +9635,7 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendGameResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendGameResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -9650,8 +9650,8 @@ func (s SendGameResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendGameResOKApplicationJSON from json stream.
-func (s *SendGameResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendGameResOK from json stream.
+func (s *SendGameResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10085,7 +10085,7 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendInvoiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendInvoiceResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10100,8 +10100,8 @@ func (s SendInvoiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendInvoiceResOKApplicationJSON from json stream.
-func (s *SendInvoiceResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendInvoiceResOK from json stream.
+func (s *SendInvoiceResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10305,7 +10305,7 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendLocationResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10320,8 +10320,8 @@ func (s SendLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendLocationResOKApplicationJSON from json stream.
-func (s *SendLocationResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendLocationResOK from json stream.
+func (s *SendLocationResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10433,7 +10433,7 @@ func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendMediaGroupResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendMediaGroupResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10448,8 +10448,8 @@ func (s SendMediaGroupResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendMediaGroupResOKApplicationJSON from json stream.
-func (s *SendMediaGroupResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendMediaGroupResOK from json stream.
+func (s *SendMediaGroupResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10607,7 +10607,7 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendMessageResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10622,8 +10622,8 @@ func (s SendMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendMessageResOKApplicationJSON from json stream.
-func (s *SendMessageResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendMessageResOK from json stream.
+func (s *SendMessageResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10769,7 +10769,7 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendPhotoResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -10784,8 +10784,8 @@ func (s SendPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendPhotoResOKApplicationJSON from json stream.
-func (s *SendPhotoResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendPhotoResOK from json stream.
+func (s *SendPhotoResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11062,7 +11062,7 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendPollResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendPollResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11077,8 +11077,8 @@ func (s SendPollResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendPollResOKApplicationJSON from json stream.
-func (s *SendPollResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendPollResOK from json stream.
+func (s *SendPollResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11190,7 +11190,7 @@ func (s *SendSticker) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendStickerResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendStickerResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11205,8 +11205,8 @@ func (s SendStickerResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendStickerResOKApplicationJSON from json stream.
-func (s *SendStickerResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendStickerResOK from json stream.
+func (s *SendStickerResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11434,7 +11434,7 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendVenueResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendVenueResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11449,8 +11449,8 @@ func (s SendVenueResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendVenueResOKApplicationJSON from json stream.
-func (s *SendVenueResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendVenueResOK from json stream.
+func (s *SendVenueResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11773,7 +11773,7 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendVideoNoteResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendVideoNoteResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11788,8 +11788,8 @@ func (s SendVideoNoteResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendVideoNoteResOKApplicationJSON from json stream.
-func (s *SendVideoNoteResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendVideoNoteResOK from json stream.
+func (s *SendVideoNoteResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11826,7 +11826,7 @@ func (s *SendVideoNoteResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendVideoResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendVideoResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -11841,8 +11841,8 @@ func (s SendVideoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendVideoResOKApplicationJSON from json stream.
-func (s *SendVideoResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendVideoResOK from json stream.
+func (s *SendVideoResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12005,7 +12005,7 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SendVoiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SendVoiceResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12020,8 +12020,8 @@ func (s SendVoiceResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SendVoiceResOKApplicationJSON from json stream.
-func (s *SendVoiceResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SendVoiceResOK from json stream.
+func (s *SendVoiceResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12106,7 +12106,7 @@ func (s *SetChatAdministratorCustomTitle) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetChatAdministratorCustomTitleResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetChatAdministratorCustomTitleResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12121,8 +12121,8 @@ func (s SetChatAdministratorCustomTitleResOKApplicationJSON) WriteJSON(j *json.S
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetChatAdministratorCustomTitleResOKApplicationJSON from json stream.
-func (s *SetChatAdministratorCustomTitleResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetChatAdministratorCustomTitleResOK from json stream.
+func (s *SetChatAdministratorCustomTitleResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12200,7 +12200,7 @@ func (s *SetChatDescription) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetChatDescriptionResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetChatDescriptionResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12215,8 +12215,8 @@ func (s SetChatDescriptionResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetChatDescriptionResOKApplicationJSON from json stream.
-func (s *SetChatDescriptionResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetChatDescriptionResOK from json stream.
+func (s *SetChatDescriptionResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12291,7 +12291,7 @@ func (s *SetChatPermissions) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetChatPermissionsResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetChatPermissionsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12306,8 +12306,8 @@ func (s SetChatPermissionsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetChatPermissionsResOKApplicationJSON from json stream.
-func (s *SetChatPermissionsResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetChatPermissionsResOK from json stream.
+func (s *SetChatPermissionsResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12380,7 +12380,7 @@ func (s *SetChatPhoto) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetChatPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetChatPhotoResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12395,8 +12395,8 @@ func (s SetChatPhotoResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetChatPhotoResOKApplicationJSON from json stream.
-func (s *SetChatPhotoResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetChatPhotoResOK from json stream.
+func (s *SetChatPhotoResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12469,7 +12469,7 @@ func (s *SetChatStickerSet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetChatStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetChatStickerSetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12484,8 +12484,8 @@ func (s SetChatStickerSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetChatStickerSetResOKApplicationJSON from json stream.
-func (s *SetChatStickerSetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetChatStickerSetResOK from json stream.
+func (s *SetChatStickerSetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12558,7 +12558,7 @@ func (s *SetChatTitle) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetChatTitleResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetChatTitleResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12573,8 +12573,8 @@ func (s SetChatTitleResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetChatTitleResOKApplicationJSON from json stream.
-func (s *SetChatTitleResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetChatTitleResOK from json stream.
+func (s *SetChatTitleResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12744,7 +12744,7 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetGameScoreResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetGameScoreResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12759,8 +12759,8 @@ func (s SetGameScoreResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetGameScoreResOKApplicationJSON from json stream.
-func (s *SetGameScoreResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetGameScoreResOK from json stream.
+func (s *SetGameScoreResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12862,7 +12862,7 @@ func (s *SetMyCommands) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetMyCommandsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12877,8 +12877,8 @@ func (s SetMyCommandsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetMyCommandsResOKApplicationJSON from json stream.
-func (s *SetMyCommandsResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetMyCommandsResOK from json stream.
+func (s *SetMyCommandsResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12951,7 +12951,7 @@ func (s *SetPassportDataErrors) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetPassportDataErrorsResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetPassportDataErrorsResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -12966,8 +12966,8 @@ func (s SetPassportDataErrorsResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetPassportDataErrorsResOKApplicationJSON from json stream.
-func (s *SetPassportDataErrorsResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetPassportDataErrorsResOK from json stream.
+func (s *SetPassportDataErrorsResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -13052,7 +13052,7 @@ func (s *SetStickerPositionInSet) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetStickerPositionInSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetStickerPositionInSetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -13067,8 +13067,8 @@ func (s SetStickerPositionInSetResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetStickerPositionInSetResOKApplicationJSON from json stream.
-func (s *SetStickerPositionInSetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetStickerPositionInSetResOK from json stream.
+func (s *SetStickerPositionInSetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -13153,7 +13153,7 @@ func (s *SetStickerSetThumb) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetStickerSetThumbResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetStickerSetThumbResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -13168,8 +13168,8 @@ func (s SetStickerSetThumbResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetStickerSetThumbResOKApplicationJSON from json stream.
-func (s *SetStickerSetThumbResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetStickerSetThumbResOK from json stream.
+func (s *SetStickerSetThumbResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -13310,7 +13310,7 @@ func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s SetWebhookResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s SetWebhookResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -13325,8 +13325,8 @@ func (s SetWebhookResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads SetWebhookResOKApplicationJSON from json stream.
-func (s *SetWebhookResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads SetWebhookResOK from json stream.
+func (s *SetWebhookResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -13710,7 +13710,7 @@ func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s StopMessageLiveLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s StopMessageLiveLocationResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -13725,8 +13725,8 @@ func (s StopMessageLiveLocationResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads StopMessageLiveLocationResOKApplicationJSON from json stream.
-func (s *StopMessageLiveLocationResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads StopMessageLiveLocationResOK from json stream.
+func (s *StopMessageLiveLocationResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -13823,7 +13823,7 @@ func (s *StopPoll) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s StopPollResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s StopPollResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -13838,8 +13838,8 @@ func (s StopPollResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads StopPollResOKApplicationJSON from json stream.
-func (s *StopPollResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads StopPollResOK from json stream.
+func (s *StopPollResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -14047,7 +14047,7 @@ func (s *UnbanChatMember) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UnbanChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s UnbanChatMemberResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14062,8 +14062,8 @@ func (s UnbanChatMemberResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UnbanChatMemberResOKApplicationJSON from json stream.
-func (s *UnbanChatMemberResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UnbanChatMemberResOK from json stream.
+func (s *UnbanChatMemberResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -14124,7 +14124,7 @@ func (s *UnpinAllChatMessages) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UnpinAllChatMessagesResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s UnpinAllChatMessagesResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14139,8 +14139,8 @@ func (s UnpinAllChatMessagesResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UnpinAllChatMessagesResOKApplicationJSON from json stream.
-func (s *UnpinAllChatMessagesResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UnpinAllChatMessagesResOK from json stream.
+func (s *UnpinAllChatMessagesResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -14218,7 +14218,7 @@ func (s *UnpinChatMessage) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UnpinChatMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s UnpinChatMessageResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14233,8 +14233,8 @@ func (s UnpinChatMessageResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UnpinChatMessageResOKApplicationJSON from json stream.
-func (s *UnpinChatMessageResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UnpinChatMessageResOK from json stream.
+func (s *UnpinChatMessageResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -14319,7 +14319,7 @@ func (s *UploadStickerFile) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s UploadStickerFileResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s UploadStickerFileResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
@@ -14334,8 +14334,8 @@ func (s UploadStickerFileResOKApplicationJSON) WriteJSON(j *json.Stream) {
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads UploadStickerFileResOKApplicationJSON from json stream.
-func (s *UploadStickerFileResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads UploadStickerFileResOK from json stream.
+func (s *UploadStickerFileResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {

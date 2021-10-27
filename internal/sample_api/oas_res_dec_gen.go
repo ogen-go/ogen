@@ -124,7 +124,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response FoobarPostDefApplicationJSONStatusCode
+			var response FoobarPostDefStatusCode
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err
@@ -273,7 +273,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response PetGetDefApplicationJSONStatusCode
+			var response PetGetDefStatusCode
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err

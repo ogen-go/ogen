@@ -601,7 +601,7 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 			defer json.PutIterator(i)
 			i.ResetBytes(buf.Bytes())
 
-			var response MmdsGetResOKApplicationJSON
+			var response MmdsGetResOK
 			if err := func() error {
 				if err := response.ReadJSON(i); err != nil {
 					return err

@@ -1415,15 +1415,15 @@ func (s *MmdsConfigPutResNoContent) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
-func (s MmdsGetResOKApplicationJSON) WriteJSON(j *json.Stream) {
+func (s MmdsGetResOK) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
-// ReadJSON reads MmdsGetResOKApplicationJSON from json stream.
-func (s *MmdsGetResOKApplicationJSON) ReadJSON(i *json.Iterator) error {
+// ReadJSON reads MmdsGetResOK from json stream.
+func (s *MmdsGetResOK) ReadJSON(i *json.Iterator) error {
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
