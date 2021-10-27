@@ -43,6 +43,7 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 		if typ.Is(ir.KindPrimitive, ir.KindArray) {
 			// Primitive types cannot have methods, wrap it with alias.
 			typ = ir.Alias(pascal(name, string(contentType)), typ)
+			types[contentType] = typ
 			g.saveType(typ)
 		}
 
