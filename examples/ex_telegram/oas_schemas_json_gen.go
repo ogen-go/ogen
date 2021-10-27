@@ -95,6 +95,9 @@ func (s Animation) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Animation from json stream.
 func (s *Animation) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Animation to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -235,6 +238,9 @@ func (s AnswerCallbackQueryPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads AnswerCallbackQueryPostReqApplicationJSON from json stream.
 func (s *AnswerCallbackQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -339,6 +345,9 @@ func (s AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *js
 
 // ReadJSON reads AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -443,6 +452,9 @@ func (s AnswerCallbackQueryPostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads AnswerCallbackQueryPostReqMultipartFormData from json stream.
 func (s *AnswerCallbackQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -530,6 +542,9 @@ func (s AnswerCallbackQueryPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads AnswerCallbackQueryPostResOK from json stream.
 func (s *AnswerCallbackQueryPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerCallbackQueryPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -583,6 +598,9 @@ func (s AnswerPreCheckoutQueryPostReqApplicationJSON) WriteJSON(j *json.Stream) 
 
 // ReadJSON reads AnswerPreCheckoutQueryPostReqApplicationJSON from json stream.
 func (s *AnswerPreCheckoutQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -648,6 +666,9 @@ func (s AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) WriteJSON(j 
 
 // ReadJSON reads AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -713,6 +734,9 @@ func (s AnswerPreCheckoutQueryPostReqMultipartFormData) WriteJSON(j *json.Stream
 
 // ReadJSON reads AnswerPreCheckoutQueryPostReqMultipartFormData from json stream.
 func (s *AnswerPreCheckoutQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -773,6 +797,9 @@ func (s AnswerPreCheckoutQueryPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads AnswerPreCheckoutQueryPostResOK from json stream.
 func (s *AnswerPreCheckoutQueryPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerPreCheckoutQueryPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -838,6 +865,9 @@ func (s AnswerShippingQueryPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads AnswerShippingQueryPostReqApplicationJSON from json stream.
 func (s *AnswerShippingQueryPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -942,6 +972,9 @@ func (s AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *js
 
 // ReadJSON reads AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1046,6 +1079,9 @@ func (s AnswerShippingQueryPostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads AnswerShippingQueryPostReqMultipartFormData from json stream.
 func (s *AnswerShippingQueryPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1133,6 +1169,9 @@ func (s AnswerShippingQueryPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads AnswerShippingQueryPostResOK from json stream.
 func (s *AnswerShippingQueryPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode AnswerShippingQueryPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1214,6 +1253,9 @@ func (s Audio) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Audio from json stream.
 func (s *Audio) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Audio to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1343,6 +1385,9 @@ func (s BotCommand) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads BotCommand from json stream.
 func (s *BotCommand) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode BotCommand to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1417,6 +1462,9 @@ func (s CallbackQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads CallbackQuery from json stream.
 func (s *CallbackQuery) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode CallbackQuery to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1599,6 +1647,9 @@ func (s Chat) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Chat from json stream.
 func (s *Chat) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Chat to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1829,6 +1880,9 @@ func (s ChatLocation) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ChatLocation from json stream.
 func (s *ChatLocation) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ChatLocation to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -1913,6 +1967,9 @@ func (s ChatPermissions) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ChatPermissions from json stream.
 func (s *ChatPermissions) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ChatPermissions to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2045,6 +2102,9 @@ func (s ChatPhoto) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ChatPhoto from json stream.
 func (s *ChatPhoto) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ChatPhoto to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2102,6 +2162,9 @@ func (s ChatType) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ChatType from json stream.
 func (s *ChatType) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ChatType to nil`)
+	}
 	*s = ChatType(i.ReadString())
 	return i.Error
 }
@@ -2135,6 +2198,9 @@ func (s ChosenInlineResult) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ChosenInlineResult from json stream.
 func (s *ChosenInlineResult) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ChosenInlineResult to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2218,6 +2284,9 @@ func (s ClosePostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ClosePostResOK from json stream.
 func (s *ClosePostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ClosePostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2281,6 +2350,9 @@ func (s Contact) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Contact from json stream.
 func (s *Contact) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Contact to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2362,6 +2434,9 @@ func (s DeleteStickerFromSetPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads DeleteStickerFromSetPostReqApplicationJSON from json stream.
 func (s *DeleteStickerFromSetPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2398,6 +2473,9 @@ func (s DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *j
 
 // ReadJSON reads DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2434,6 +2512,9 @@ func (s DeleteStickerFromSetPostReqMultipartFormData) WriteJSON(j *json.Stream) 
 
 // ReadJSON reads DeleteStickerFromSetPostReqMultipartFormData from json stream.
 func (s *DeleteStickerFromSetPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2473,6 +2554,9 @@ func (s DeleteStickerFromSetPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads DeleteStickerFromSetPostResOK from json stream.
 func (s *DeleteStickerFromSetPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteStickerFromSetPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2520,6 +2604,9 @@ func (s DeleteWebhookPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads DeleteWebhookPostReqApplicationJSON from json stream.
 func (s *DeleteWebhookPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteWebhookPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2561,6 +2648,9 @@ func (s DeleteWebhookPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Str
 
 // ReadJSON reads DeleteWebhookPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *DeleteWebhookPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteWebhookPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2602,6 +2692,9 @@ func (s DeleteWebhookPostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads DeleteWebhookPostReqMultipartFormData from json stream.
 func (s *DeleteWebhookPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteWebhookPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2644,6 +2737,9 @@ func (s DeleteWebhookPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads DeleteWebhookPostResOK from json stream.
 func (s *DeleteWebhookPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode DeleteWebhookPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2692,6 +2788,9 @@ func (s Dice) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Dice from json stream.
 func (s *Dice) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Dice to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2760,6 +2859,9 @@ func (s Document) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Document from json stream.
 func (s *Document) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Document to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2859,6 +2961,9 @@ func (s EncryptedCredentials) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads EncryptedCredentials from json stream.
 func (s *EncryptedCredentials) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode EncryptedCredentials to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -2970,6 +3075,9 @@ func (s EncryptedPassportElement) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads EncryptedPassportElement from json stream.
 func (s *EncryptedPassportElement) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode EncryptedPassportElement to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3137,6 +3245,9 @@ func (s EncryptedPassportElementType) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads EncryptedPassportElementType from json stream.
 func (s *EncryptedPassportElementType) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode EncryptedPassportElementType to nil`)
+	}
 	*s = EncryptedPassportElementType(i.ReadString())
 	return i.Error
 }
@@ -3165,6 +3276,9 @@ func (s Error) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Error from json stream.
 func (s *Error) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Error to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3228,6 +3342,9 @@ func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ErrorStatusCode from json stream.
 func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ErrorStatusCode to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3268,6 +3385,9 @@ func (s File) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads File from json stream.
 func (s *File) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode File to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3372,6 +3492,9 @@ func (s Game) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Game from json stream.
 func (s *Game) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Game to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3501,6 +3624,9 @@ func (s GameHighScore) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GameHighScore from json stream.
 func (s *GameHighScore) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GameHighScore to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3557,6 +3683,9 @@ func (s GetFilePostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetFilePostReqApplicationJSON from json stream.
 func (s *GetFilePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetFilePostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3593,6 +3722,9 @@ func (s GetFilePostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetFilePostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *GetFilePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetFilePostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3629,6 +3761,9 @@ func (s GetFilePostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetFilePostReqMultipartFormData from json stream.
 func (s *GetFilePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetFilePostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3668,6 +3803,9 @@ func (s GetFilePostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetFilePostResOK from json stream.
 func (s *GetFilePostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetFilePostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3730,6 +3868,9 @@ func (s GetGameHighScoresPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetGameHighScoresPostReqApplicationJSON from json stream.
 func (s *GetGameHighScoresPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3817,6 +3958,9 @@ func (s GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json
 
 // ReadJSON reads GetGameHighScoresPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *GetGameHighScoresPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3904,6 +4048,9 @@ func (s GetGameHighScoresPostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetGameHighScoresPostReqMultipartFormData from json stream.
 func (s *GetGameHighScoresPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -3986,6 +4133,9 @@ func (s GetGameHighScoresPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetGameHighScoresPostResOK from json stream.
 func (s *GetGameHighScoresPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetGameHighScoresPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4052,6 +4202,9 @@ func (s GetMePostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetMePostResOK from json stream.
 func (s *GetMePostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetMePostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4109,6 +4262,9 @@ func (s GetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetMyCommandsPostResOK from json stream.
 func (s *GetMyCommandsPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetMyCommandsPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4172,6 +4328,9 @@ func (s GetStickerSetPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetStickerSetPostReqApplicationJSON from json stream.
 func (s *GetStickerSetPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetStickerSetPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4208,6 +4367,9 @@ func (s GetStickerSetPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Str
 
 // ReadJSON reads GetStickerSetPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *GetStickerSetPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetStickerSetPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4244,6 +4406,9 @@ func (s GetStickerSetPostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetStickerSetPostReqMultipartFormData from json stream.
 func (s *GetStickerSetPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetStickerSetPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4283,6 +4448,9 @@ func (s GetStickerSetPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetStickerSetPostResOK from json stream.
 func (s *GetStickerSetPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetStickerSetPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4354,6 +4522,9 @@ func (s GetUpdatesPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetUpdatesPostReqApplicationJSON from json stream.
 func (s *GetUpdatesPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUpdatesPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4466,6 +4637,9 @@ func (s GetUpdatesPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Stream
 
 // ReadJSON reads GetUpdatesPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *GetUpdatesPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUpdatesPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4578,6 +4752,9 @@ func (s GetUpdatesPostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetUpdatesPostReqMultipartFormData from json stream.
 func (s *GetUpdatesPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUpdatesPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4676,6 +4853,9 @@ func (s GetUpdatesPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetUpdatesPostResOK from json stream.
 func (s *GetUpdatesPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUpdatesPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4749,6 +4929,9 @@ func (s GetUserProfilePhotosPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetUserProfilePhotosPostReqApplicationJSON from json stream.
 func (s *GetUserProfilePhotosPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4819,6 +5002,9 @@ func (s GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *j
 
 // ReadJSON reads GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4889,6 +5075,9 @@ func (s GetUserProfilePhotosPostReqMultipartFormData) WriteJSON(j *json.Stream) 
 
 // ReadJSON reads GetUserProfilePhotosPostReqMultipartFormData from json stream.
 func (s *GetUserProfilePhotosPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -4952,6 +5141,9 @@ func (s GetUserProfilePhotosPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetUserProfilePhotosPostResOK from json stream.
 func (s *GetUserProfilePhotosPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetUserProfilePhotosPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5002,6 +5194,9 @@ func (s GetWebhookInfoPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads GetWebhookInfoPostResOK from json stream.
 func (s *GetWebhookInfoPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode GetWebhookInfoPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5084,6 +5279,9 @@ func (s InlineKeyboardButton) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads InlineKeyboardButton from json stream.
 func (s *InlineKeyboardButton) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode InlineKeyboardButton to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5218,6 +5416,9 @@ func (s InlineKeyboardMarkup) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads InlineKeyboardMarkup from json stream.
 func (s *InlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode InlineKeyboardMarkup to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5302,6 +5503,9 @@ func (s InlineQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads InlineQuery from json stream.
 func (s *InlineQuery) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode InlineQuery to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5394,6 +5598,9 @@ func (s Invoice) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Invoice from json stream.
 func (s *Invoice) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Invoice to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5469,6 +5676,9 @@ func (s LabeledPrice) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads LabeledPrice from json stream.
 func (s *LabeledPrice) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode LabeledPrice to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5537,6 +5747,9 @@ func (s Location) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Location from json stream.
 func (s *Location) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Location to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5633,6 +5846,9 @@ func (s LogOutPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads LogOutPostResOK from json stream.
 func (s *LogOutPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode LogOutPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5693,6 +5909,9 @@ func (s LoginUrl) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads LoginUrl from json stream.
 func (s *LoginUrl) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode LoginUrl to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5774,6 +5993,9 @@ func (s MaskPosition) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads MaskPosition from json stream.
 func (s *MaskPosition) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MaskPosition to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -5833,6 +6055,9 @@ func (s MaskPositionPoint) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads MaskPositionPoint from json stream.
 func (s *MaskPositionPoint) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MaskPositionPoint to nil`)
+	}
 	*s = MaskPositionPoint(i.ReadString())
 	return i.Error
 }
@@ -6133,6 +6358,9 @@ func (s Message) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Message from json stream.
 func (s *Message) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Message to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -6897,6 +7125,9 @@ func (s MessageEntity) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads MessageEntity from json stream.
 func (s *MessageEntity) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MessageEntity to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -6983,6 +7214,9 @@ func (s MessageEntityType) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads MessageEntityType from json stream.
 func (s *MessageEntityType) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode MessageEntityType to nil`)
+	}
 	*s = MessageEntityType(i.ReadString())
 	return i.Error
 }
@@ -6994,6 +7228,9 @@ func (o OptAnimation) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Animation from json iterator.
 func (o *OptAnimation) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptAnimation to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7013,6 +7250,9 @@ func (o OptAudio) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Audio from json iterator.
 func (o *OptAudio) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptAudio to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7032,6 +7272,9 @@ func (o OptBool) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of bool from json iterator.
 func (o *OptBool) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptBool to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.BoolValue:
 		o.Set = true
@@ -7048,6 +7291,9 @@ func (o OptCallbackGame) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of CallbackGame from json iterator.
 func (o *OptCallbackGame) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptCallbackGame to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -7064,6 +7310,9 @@ func (o OptCallbackQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of CallbackQuery from json iterator.
 func (o *OptCallbackQuery) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptCallbackQuery to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7083,6 +7332,9 @@ func (o OptChatLocation) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ChatLocation from json iterator.
 func (o *OptChatLocation) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptChatLocation to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7102,6 +7354,9 @@ func (o OptChatPermissions) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ChatPermissions from json iterator.
 func (o *OptChatPermissions) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptChatPermissions to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7121,6 +7376,9 @@ func (o OptChatPhoto) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ChatPhoto from json iterator.
 func (o *OptChatPhoto) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptChatPhoto to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7140,6 +7398,9 @@ func (o OptChosenInlineResult) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ChosenInlineResult from json iterator.
 func (o *OptChosenInlineResult) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptChosenInlineResult to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7159,6 +7420,9 @@ func (o OptContact) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Contact from json iterator.
 func (o *OptContact) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptContact to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7178,6 +7442,9 @@ func (o OptDice) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Dice from json iterator.
 func (o *OptDice) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptDice to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7197,6 +7464,9 @@ func (o OptDocument) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Document from json iterator.
 func (o *OptDocument) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptDocument to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7216,6 +7486,9 @@ func (o OptFloat64) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of float64 from json iterator.
 func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptFloat64 to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -7233,6 +7506,9 @@ func (o OptGame) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Game from json iterator.
 func (o *OptGame) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptGame to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7252,6 +7528,9 @@ func (o OptInlineKeyboardMarkup) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of InlineKeyboardMarkup from json iterator.
 func (o *OptInlineKeyboardMarkup) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptInlineKeyboardMarkup to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7271,6 +7550,9 @@ func (o OptInlineQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of InlineQuery from json iterator.
 func (o *OptInlineQuery) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptInlineQuery to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7289,6 +7571,9 @@ func (o OptInputFile) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of InputFile from json iterator.
 func (o *OptInputFile) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptInputFile to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -7305,6 +7590,9 @@ func (o OptInt) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int from json iterator.
 func (o *OptInt) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptInt to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -7322,6 +7610,9 @@ func (o OptInvoice) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Invoice from json iterator.
 func (o *OptInvoice) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptInvoice to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7341,6 +7632,9 @@ func (o OptLocation) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Location from json iterator.
 func (o *OptLocation) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptLocation to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7360,6 +7654,9 @@ func (o OptLoginUrl) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of LoginUrl from json iterator.
 func (o *OptLoginUrl) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptLoginUrl to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7379,6 +7676,9 @@ func (o OptMaskPosition) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of MaskPosition from json iterator.
 func (o *OptMaskPosition) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptMaskPosition to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7398,6 +7698,9 @@ func (o OptMessage) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Message from json iterator.
 func (o *OptMessage) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptMessage to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7417,6 +7720,9 @@ func (o OptOrderInfo) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of OrderInfo from json iterator.
 func (o *OptOrderInfo) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptOrderInfo to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7436,6 +7742,9 @@ func (o OptPassportData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of PassportData from json iterator.
 func (o *OptPassportData) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptPassportData to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7455,6 +7764,9 @@ func (o OptPassportFile) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of PassportFile from json iterator.
 func (o *OptPassportFile) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptPassportFile to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7474,6 +7786,9 @@ func (o OptPhotoSize) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of PhotoSize from json iterator.
 func (o *OptPhotoSize) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptPhotoSize to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7493,6 +7808,9 @@ func (o OptPoll) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Poll from json iterator.
 func (o *OptPoll) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptPoll to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7512,6 +7830,9 @@ func (o OptPollAnswer) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of PollAnswer from json iterator.
 func (o *OptPollAnswer) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptPollAnswer to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7531,6 +7852,9 @@ func (o OptPreCheckoutQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of PreCheckoutQuery from json iterator.
 func (o *OptPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptPreCheckoutQuery to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7550,6 +7874,9 @@ func (o OptProximityAlertTriggered) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ProximityAlertTriggered from json iterator.
 func (o *OptProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptProximityAlertTriggered to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7569,6 +7896,9 @@ func (o OptResponseParameters) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ResponseParameters from json iterator.
 func (o *OptResponseParameters) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptResponseParameters to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7588,6 +7918,9 @@ func (o OptShippingAddress) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ShippingAddress from json iterator.
 func (o *OptShippingAddress) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptShippingAddress to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7607,6 +7940,9 @@ func (o OptShippingQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of ShippingQuery from json iterator.
 func (o *OptShippingQuery) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptShippingQuery to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7626,6 +7962,9 @@ func (o OptSticker) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Sticker from json iterator.
 func (o *OptSticker) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptSticker to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7645,6 +7984,9 @@ func (o OptString) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of string from json iterator.
 func (o *OptString) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptString to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -7662,6 +8004,9 @@ func (o OptSuccessfulPayment) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of SuccessfulPayment from json iterator.
 func (o *OptSuccessfulPayment) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptSuccessfulPayment to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7681,6 +8026,9 @@ func (o OptUser) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of User from json iterator.
 func (o *OptUser) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptUser to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7700,6 +8048,9 @@ func (o OptVenue) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Venue from json iterator.
 func (o *OptVenue) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptVenue to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7719,6 +8070,9 @@ func (o OptVideo) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Video from json iterator.
 func (o *OptVideo) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptVideo to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7738,6 +8092,9 @@ func (o OptVideoNote) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of VideoNote from json iterator.
 func (o *OptVideoNote) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptVideoNote to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7757,6 +8114,9 @@ func (o OptVoice) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of Voice from json iterator.
 func (o *OptVoice) ReadJSON(i *json.Iterator) error {
+	if o == nil {
+		fmt.Errorf(`invalid: unable to decode OptVoice to nil`)
+	}
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -7799,6 +8159,9 @@ func (s OrderInfo) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads OrderInfo from json stream.
 func (s *OrderInfo) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode OrderInfo to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -7884,6 +8247,9 @@ func (s PassportData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads PassportData from json stream.
 func (s *PassportData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PassportData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -7958,6 +8324,9 @@ func (s PassportFile) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads PassportFile from json stream.
 func (s *PassportFile) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PassportFile to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8035,6 +8404,9 @@ func (s PhotoSize) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads PhotoSize from json stream.
 func (s *PhotoSize) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PhotoSize to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8170,6 +8542,9 @@ func (s Poll) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Poll from json stream.
 func (s *Poll) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Poll to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8375,6 +8750,9 @@ func (s PollAnswer) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads PollAnswer from json stream.
 func (s *PollAnswer) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PollAnswer to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8450,6 +8828,9 @@ func (s PollOption) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads PollOption from json stream.
 func (s *PollOption) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PollOption to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8517,6 +8898,9 @@ func (s PreCheckoutQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads PreCheckoutQuery from json stream.
 func (s *PreCheckoutQuery) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode PreCheckoutQuery to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8621,6 +9005,9 @@ func (s ProximityAlertTriggered) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ProximityAlertTriggered from json stream.
 func (s *ProximityAlertTriggered) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ProximityAlertTriggered to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8686,6 +9073,9 @@ func (s ResponseParameters) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ResponseParameters from json stream.
 func (s *ResponseParameters) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ResponseParameters to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8760,6 +9150,9 @@ func (s SendGamePostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SendGamePostReqApplicationJSON from json stream.
 func (s *SendGamePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendGamePostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8876,6 +9269,9 @@ func (s SendGamePostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Stream) 
 
 // ReadJSON reads SendGamePostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *SendGamePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendGamePostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -8992,6 +9388,9 @@ func (s SendGamePostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SendGamePostReqMultipartFormData from json stream.
 func (s *SendGamePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendGamePostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9088,6 +9487,9 @@ func (s SendGamePostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SendGamePostResOK from json stream.
 func (s *SendGamePostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendGamePostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9243,6 +9645,9 @@ func (s SendInvoicePostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SendInvoicePostReqApplicationJSON from json stream.
 func (s *SendInvoicePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendInvoicePostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -9660,6 +10065,9 @@ func (s SendInvoicePostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Strea
 
 // ReadJSON reads SendInvoicePostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *SendInvoicePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendInvoicePostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10077,6 +10485,9 @@ func (s SendInvoicePostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SendInvoicePostReqMultipartFormData from json stream.
 func (s *SendInvoicePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendInvoicePostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10389,6 +10800,9 @@ func (s SendInvoicePostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SendInvoicePostResOK from json stream.
 func (s *SendInvoicePostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SendInvoicePostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10464,6 +10878,9 @@ func (s SetGameScorePostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetGameScorePostReqApplicationJSON from json stream.
 func (s *SetGameScorePostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetGameScorePostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10597,6 +11014,9 @@ func (s SetGameScorePostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Stre
 
 // ReadJSON reads SetGameScorePostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *SetGameScorePostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetGameScorePostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10730,6 +11150,9 @@ func (s SetGameScorePostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetGameScorePostReqMultipartFormData from json stream.
 func (s *SetGameScorePostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetGameScorePostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10842,6 +11265,9 @@ func (s SetMyCommandsPostReqApplicationJSON) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetMyCommandsPostReqApplicationJSON from json stream.
 func (s *SetMyCommandsPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetMyCommandsPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10903,6 +11329,9 @@ func (s SetMyCommandsPostReqApplicationXWwwFormUrlencoded) WriteJSON(j *json.Str
 
 // ReadJSON reads SetMyCommandsPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *SetMyCommandsPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetMyCommandsPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -10964,6 +11393,9 @@ func (s SetMyCommandsPostReqMultipartFormData) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetMyCommandsPostReqMultipartFormData from json stream.
 func (s *SetMyCommandsPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetMyCommandsPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11021,6 +11453,9 @@ func (s SetMyCommandsPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetMyCommandsPostResOK from json stream.
 func (s *SetMyCommandsPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetMyCommandsPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11069,6 +11504,9 @@ func (s SetStickerPositionInSetPostReqApplicationJSON) WriteJSON(j *json.Stream)
 
 // ReadJSON reads SetStickerPositionInSetPostReqApplicationJSON from json stream.
 func (s *SetStickerPositionInSetPostReqApplicationJSON) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostReqApplicationJSON to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11117,6 +11555,9 @@ func (s SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded) WriteJSON(j
 
 // ReadJSON reads SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded from json stream.
 func (s *SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostReqApplicationXWwwFormUrlencoded to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11165,6 +11606,9 @@ func (s SetStickerPositionInSetPostReqMultipartFormData) WriteJSON(j *json.Strea
 
 // ReadJSON reads SetStickerPositionInSetPostReqMultipartFormData from json stream.
 func (s *SetStickerPositionInSetPostReqMultipartFormData) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostReqMultipartFormData to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11213,6 +11657,9 @@ func (s SetStickerPositionInSetPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetStickerPositionInSetPostResOK from json stream.
 func (s *SetStickerPositionInSetPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetStickerPositionInSetPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11290,6 +11737,9 @@ func (s SetWebhookPostReq) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetWebhookPostReq from json stream.
 func (s *SetWebhookPostReq) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetWebhookPostReq to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11402,6 +11852,9 @@ func (s SetWebhookPostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SetWebhookPostResOK from json stream.
 func (s *SetWebhookPostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SetWebhookPostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11462,6 +11915,9 @@ func (s ShippingAddress) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ShippingAddress from json stream.
 func (s *ShippingAddress) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ShippingAddress to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11556,6 +12012,9 @@ func (s ShippingOption) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ShippingOption from json stream.
 func (s *ShippingOption) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ShippingOption to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11637,6 +12096,9 @@ func (s ShippingQuery) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads ShippingQuery from json stream.
 func (s *ShippingQuery) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode ShippingQuery to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11741,6 +12203,9 @@ func (s Sticker) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Sticker from json stream.
 func (s *Sticker) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Sticker to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -11897,6 +12362,9 @@ func (s StickerSet) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads StickerSet from json stream.
 func (s *StickerSet) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode StickerSet to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12021,6 +12489,9 @@ func (s SuccessfulPayment) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads SuccessfulPayment from json stream.
 func (s *SuccessfulPayment) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode SuccessfulPayment to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12172,6 +12643,9 @@ func (s Update) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Update from json stream.
 func (s *Update) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Update to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12341,6 +12815,9 @@ func (s UploadStickerFilePostReq) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads UploadStickerFilePostReq from json stream.
 func (s *UploadStickerFilePostReq) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UploadStickerFilePostReq to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12391,6 +12868,9 @@ func (s UploadStickerFilePostResOK) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads UploadStickerFilePostResOK from json stream.
 func (s *UploadStickerFilePostResOK) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UploadStickerFilePostResOK to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12474,6 +12954,9 @@ func (s User) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads User from json stream.
 func (s *User) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode User to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12617,6 +13100,9 @@ func (s UserProfilePhotos) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads UserProfilePhotos from json stream.
 func (s *UserProfilePhotos) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode UserProfilePhotos to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12722,6 +13208,9 @@ func (s Venue) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Venue from json stream.
 func (s *Venue) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Venue to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12858,6 +13347,9 @@ func (s Video) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Video from json stream.
 func (s *Video) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Video to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -12997,6 +13489,9 @@ func (s VideoNote) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads VideoNote from json stream.
 func (s *VideoNote) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode VideoNote to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -13100,6 +13595,9 @@ func (s Voice) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads Voice from json stream.
 func (s *Voice) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode Voice to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
@@ -13216,6 +13714,9 @@ func (s WebhookInfo) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads WebhookInfo from json stream.
 func (s *WebhookInfo) ReadJSON(i *json.Iterator) error {
+	if s == nil {
+		fmt.Errorf(`invalid: unable to decode WebhookInfo to nil`)
+	}
 	var retErr error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
