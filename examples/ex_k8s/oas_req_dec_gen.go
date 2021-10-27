@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(r *http.Request) (req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, err error) {
+func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -73,7 +73,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(r *h
 	}
 }
 
-func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(r *http.Request) (req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, err error) {
+func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -90,7 +90,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(r 
 	}
 }
 
-func decodeCreateApiextensionsV1CustomResourceDefinitionRequest(r *http.Request) (req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, err error) {
+func decodeCreateApiextensionsV1CustomResourceDefinitionRequest(r *http.Request, span trace.Span) (req IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -107,7 +107,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionRequest(r *http.Request)
 	}
 }
 
-func decodeCreateApiregistrationV1APIServiceRequest(r *http.Request) (req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, err error) {
+func decodeCreateApiregistrationV1APIServiceRequest(r *http.Request, span trace.Span) (req IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -124,7 +124,7 @@ func decodeCreateApiregistrationV1APIServiceRequest(r *http.Request) (req IoK8sK
 	}
 }
 
-func decodeCreateAuthenticationV1TokenReviewRequest(r *http.Request) (req IoK8sAPIAuthenticationV1TokenReview, err error) {
+func decodeCreateAuthenticationV1TokenReviewRequest(r *http.Request, span trace.Span) (req IoK8sAPIAuthenticationV1TokenReview, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -141,7 +141,7 @@ func decodeCreateAuthenticationV1TokenReviewRequest(r *http.Request) (req IoK8sA
 	}
 }
 
-func decodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(r *http.Request) (req IoK8sAPIAuthorizationV1SelfSubjectAccessReview, err error) {
+func decodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(r *http.Request, span trace.Span) (req IoK8sAPIAuthorizationV1SelfSubjectAccessReview, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -158,7 +158,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(r *http.Request) 
 	}
 }
 
-func decodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(r *http.Request) (req IoK8sAPIAuthorizationV1SelfSubjectRulesReview, err error) {
+func decodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(r *http.Request, span trace.Span) (req IoK8sAPIAuthorizationV1SelfSubjectRulesReview, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -175,7 +175,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(r *http.Request) (
 	}
 }
 
-func decodeCreateAuthorizationV1SubjectAccessReviewRequest(r *http.Request) (req IoK8sAPIAuthorizationV1SubjectAccessReview, err error) {
+func decodeCreateAuthorizationV1SubjectAccessReviewRequest(r *http.Request, span trace.Span) (req IoK8sAPIAuthorizationV1SubjectAccessReview, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -192,7 +192,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewRequest(r *http.Request) (req
 	}
 }
 
-func decodeCreateCertificatesV1CertificateSigningRequestRequest(r *http.Request) (req IoK8sAPICertificatesV1CertificateSigningRequest, err error) {
+func decodeCreateCertificatesV1CertificateSigningRequestRequest(r *http.Request, span trace.Span) (req IoK8sAPICertificatesV1CertificateSigningRequest, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -209,7 +209,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestRequest(r *http.Request)
 	}
 }
 
-func decodeCreateCoreV1NamespaceRequest(r *http.Request) (req IoK8sAPICoreV1Namespace, err error) {
+func decodeCreateCoreV1NamespaceRequest(r *http.Request, span trace.Span) (req IoK8sAPICoreV1Namespace, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -226,7 +226,7 @@ func decodeCreateCoreV1NamespaceRequest(r *http.Request) (req IoK8sAPICoreV1Name
 	}
 }
 
-func decodeCreateCoreV1NodeRequest(r *http.Request) (req IoK8sAPICoreV1Node, err error) {
+func decodeCreateCoreV1NodeRequest(r *http.Request, span trace.Span) (req IoK8sAPICoreV1Node, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -243,7 +243,7 @@ func decodeCreateCoreV1NodeRequest(r *http.Request) (req IoK8sAPICoreV1Node, err
 	}
 }
 
-func decodeCreateCoreV1PersistentVolumeRequest(r *http.Request) (req IoK8sAPICoreV1PersistentVolume, err error) {
+func decodeCreateCoreV1PersistentVolumeRequest(r *http.Request, span trace.Span) (req IoK8sAPICoreV1PersistentVolume, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -260,7 +260,7 @@ func decodeCreateCoreV1PersistentVolumeRequest(r *http.Request) (req IoK8sAPICor
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta1FlowSchema, err error) {
+func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(r *http.Request, span trace.Span) (req IoK8sAPIFlowcontrolV1beta1FlowSchema, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -277,7 +277,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(r *http.Request) (
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, err error) {
+func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -294,7 +294,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(r 
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta2FlowSchema, err error) {
+func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(r *http.Request, span trace.Span) (req IoK8sAPIFlowcontrolV1beta2FlowSchema, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -311,7 +311,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(r *http.Request) (
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(r *http.Request) (req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, err error) {
+func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -328,7 +328,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(r 
 	}
 }
 
-func decodeCreateInternalApiserverV1alpha1StorageVersionRequest(r *http.Request) (req IoK8sAPIApiserverinternalV1alpha1StorageVersion, err error) {
+func decodeCreateInternalApiserverV1alpha1StorageVersionRequest(r *http.Request, span trace.Span) (req IoK8sAPIApiserverinternalV1alpha1StorageVersion, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -345,7 +345,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionRequest(r *http.Request)
 	}
 }
 
-func decodeCreateNetworkingV1IngressClassRequest(r *http.Request) (req IoK8sAPINetworkingV1IngressClass, err error) {
+func decodeCreateNetworkingV1IngressClassRequest(r *http.Request, span trace.Span) (req IoK8sAPINetworkingV1IngressClass, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -362,7 +362,7 @@ func decodeCreateNetworkingV1IngressClassRequest(r *http.Request) (req IoK8sAPIN
 	}
 }
 
-func decodeCreateNodeV1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1RuntimeClass, err error) {
+func decodeCreateNodeV1RuntimeClassRequest(r *http.Request, span trace.Span) (req IoK8sAPINodeV1RuntimeClass, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -379,7 +379,7 @@ func decodeCreateNodeV1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1R
 	}
 }
 
-func decodeCreateNodeV1alpha1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1alpha1RuntimeClass, err error) {
+func decodeCreateNodeV1alpha1RuntimeClassRequest(r *http.Request, span trace.Span) (req IoK8sAPINodeV1alpha1RuntimeClass, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -396,7 +396,7 @@ func decodeCreateNodeV1alpha1RuntimeClassRequest(r *http.Request) (req IoK8sAPIN
 	}
 }
 
-func decodeCreateNodeV1beta1RuntimeClassRequest(r *http.Request) (req IoK8sAPINodeV1beta1RuntimeClass, err error) {
+func decodeCreateNodeV1beta1RuntimeClassRequest(r *http.Request, span trace.Span) (req IoK8sAPINodeV1beta1RuntimeClass, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -413,7 +413,7 @@ func decodeCreateNodeV1beta1RuntimeClassRequest(r *http.Request) (req IoK8sAPINo
 	}
 }
 
-func decodeCreatePolicyV1beta1PodSecurityPolicyRequest(r *http.Request) (req IoK8sAPIPolicyV1beta1PodSecurityPolicy, err error) {
+func decodeCreatePolicyV1beta1PodSecurityPolicyRequest(r *http.Request, span trace.Span) (req IoK8sAPIPolicyV1beta1PodSecurityPolicy, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -430,7 +430,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyRequest(r *http.Request) (req IoK
 	}
 }
 
-func decodeCreateRbacAuthorizationV1ClusterRoleRequest(r *http.Request) (req IoK8sAPIRbacV1ClusterRole, err error) {
+func decodeCreateRbacAuthorizationV1ClusterRoleRequest(r *http.Request, span trace.Span) (req IoK8sAPIRbacV1ClusterRole, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -447,7 +447,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleRequest(r *http.Request) (req IoK
 	}
 }
 
-func decodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(r *http.Request) (req IoK8sAPIRbacV1ClusterRoleBinding, err error) {
+func decodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(r *http.Request, span trace.Span) (req IoK8sAPIRbacV1ClusterRoleBinding, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -464,7 +464,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(r *http.Request) (
 	}
 }
 
-func decodeCreateSchedulingV1PriorityClassRequest(r *http.Request) (req IoK8sAPISchedulingV1PriorityClass, err error) {
+func decodeCreateSchedulingV1PriorityClassRequest(r *http.Request, span trace.Span) (req IoK8sAPISchedulingV1PriorityClass, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -481,7 +481,7 @@ func decodeCreateSchedulingV1PriorityClassRequest(r *http.Request) (req IoK8sAPI
 	}
 }
 
-func decodeCreateStorageV1CSIDriverRequest(r *http.Request) (req IoK8sAPIStorageV1CSIDriver, err error) {
+func decodeCreateStorageV1CSIDriverRequest(r *http.Request, span trace.Span) (req IoK8sAPIStorageV1CSIDriver, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -498,7 +498,7 @@ func decodeCreateStorageV1CSIDriverRequest(r *http.Request) (req IoK8sAPIStorage
 	}
 }
 
-func decodeCreateStorageV1CSINodeRequest(r *http.Request) (req IoK8sAPIStorageV1CSINode, err error) {
+func decodeCreateStorageV1CSINodeRequest(r *http.Request, span trace.Span) (req IoK8sAPIStorageV1CSINode, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -515,7 +515,7 @@ func decodeCreateStorageV1CSINodeRequest(r *http.Request) (req IoK8sAPIStorageV1
 	}
 }
 
-func decodeCreateStorageV1StorageClassRequest(r *http.Request) (req IoK8sAPIStorageV1StorageClass, err error) {
+func decodeCreateStorageV1StorageClassRequest(r *http.Request, span trace.Span) (req IoK8sAPIStorageV1StorageClass, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -532,7 +532,7 @@ func decodeCreateStorageV1StorageClassRequest(r *http.Request) (req IoK8sAPIStor
 	}
 }
 
-func decodeCreateStorageV1VolumeAttachmentRequest(r *http.Request) (req IoK8sAPIStorageV1VolumeAttachment, err error) {
+func decodeCreateStorageV1VolumeAttachmentRequest(r *http.Request, span trace.Span) (req IoK8sAPIStorageV1VolumeAttachment, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -549,7 +549,7 @@ func decodeCreateStorageV1VolumeAttachmentRequest(r *http.Request) (req IoK8sAPI
 	}
 }
 
-func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -566,7 +566,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	}
 }
 
-func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -583,7 +583,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	}
 }
 
-func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -600,7 +600,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(r *htt
 	}
 }
 
-func decodeDeleteApiregistrationV1CollectionAPIServiceRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteApiregistrationV1CollectionAPIServiceRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -617,7 +617,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceRequest(r *http.Request) (
 	}
 }
 
-func decodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -634,7 +634,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(r *htt
 	}
 }
 
-func decodeDeleteCoreV1CollectionNodeRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteCoreV1CollectionNodeRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -651,7 +651,7 @@ func decodeDeleteCoreV1CollectionNodeRequest(r *http.Request) (req IoK8sApimachi
 	}
 }
 
-func decodeDeleteCoreV1CollectionPersistentVolumeRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteCoreV1CollectionPersistentVolumeRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -668,7 +668,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeRequest(r *http.Request) (req I
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -685,7 +685,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(r *http.
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -702,7 +702,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -719,7 +719,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(r *http.
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -736,7 +736,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	}
 }
 
-func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -753,7 +753,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(r *htt
 	}
 }
 
-func decodeDeleteNetworkingV1CollectionIngressClassRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteNetworkingV1CollectionIngressClassRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -770,7 +770,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassRequest(r *http.Request) (req
 	}
 }
 
-func decodeDeleteNodeV1CollectionRuntimeClassRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteNodeV1CollectionRuntimeClassRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -787,7 +787,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassRequest(r *http.Request) (req IoK8s
 	}
 }
 
-func decodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -804,7 +804,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(r *http.Request) (req
 	}
 }
 
-func decodeDeleteNodeV1beta1CollectionRuntimeClassRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteNodeV1beta1CollectionRuntimeClassRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -821,7 +821,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassRequest(r *http.Request) (req 
 	}
 }
 
-func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -838,7 +838,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(r *http.Request
 	}
 }
 
-func decodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -855,7 +855,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(r *http.Request
 	}
 }
 
-func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -872,7 +872,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(r *http.
 	}
 }
 
-func decodeDeleteSchedulingV1CollectionPriorityClassRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteSchedulingV1CollectionPriorityClassRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -889,7 +889,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassRequest(r *http.Request) (re
 	}
 }
 
-func decodeDeleteStorageV1CollectionCSIDriverRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteStorageV1CollectionCSIDriverRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -906,7 +906,7 @@ func decodeDeleteStorageV1CollectionCSIDriverRequest(r *http.Request) (req IoK8s
 	}
 }
 
-func decodeDeleteStorageV1CollectionCSINodeRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteStorageV1CollectionCSINodeRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -923,7 +923,7 @@ func decodeDeleteStorageV1CollectionCSINodeRequest(r *http.Request) (req IoK8sAp
 	}
 }
 
-func decodeDeleteStorageV1CollectionStorageClassRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteStorageV1CollectionStorageClassRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -940,7 +940,7 @@ func decodeDeleteStorageV1CollectionStorageClassRequest(r *http.Request) (req Io
 	}
 }
 
-func decodeDeleteStorageV1CollectionVolumeAttachmentRequest(r *http.Request) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
+func decodeDeleteStorageV1CollectionVolumeAttachmentRequest(r *http.Request, span trace.Span) (req IoK8sApimachineryPkgApisMetaV1DeleteOptions, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {

@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func encodeFoobarPostRequest(req Pet) (data *bytes.Buffer, contentType string, err error) {
+func encodeFoobarPostRequest(req Pet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -72,7 +72,7 @@ func encodeFoobarPostRequest(req Pet) (data *bytes.Buffer, contentType string, e
 	return buf, "application/json", nil
 }
 
-func encodePetCreateRequest(req PetCreateReq) (data *bytes.Buffer, contentType string, err error) {
+func encodePetCreateRequest(req PetCreateReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *Pet:
 		buf := json.GetBuffer()
@@ -95,7 +95,7 @@ func encodePetCreateRequest(req PetCreateReq) (data *bytes.Buffer, contentType s
 	}
 }
 
-func encodePetUpdateNameAliasPostRequest(req PetName) (data *bytes.Buffer, contentType string, err error) {
+func encodePetUpdateNameAliasPostRequest(req PetName, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -110,7 +110,7 @@ func encodePetUpdateNameAliasPostRequest(req PetName) (data *bytes.Buffer, conte
 	return buf, "application/json", nil
 }
 
-func encodePetUpdateNamePostRequest(req string) (data *bytes.Buffer, contentType string, err error) {
+func encodePetUpdateNamePostRequest(req string, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)

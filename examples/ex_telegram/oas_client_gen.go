@@ -133,7 +133,13 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerCallbackQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeAnswerCallbackQueryPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeAnswerCallbackQueryPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -149,18 +155,15 @@ func (c *Client) AnswerCallbackQueryPost(ctx context.Context, req AnswerCallback
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAnswerCallbackQueryPostResponse(resp)
+	result, err := decodeAnswerCallbackQueryPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -168,7 +171,13 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerPreCheckoutQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeAnswerPreCheckoutQueryPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -184,18 +193,15 @@ func (c *Client) AnswerPreCheckoutQueryPost(ctx context.Context, req AnswerPreCh
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAnswerPreCheckoutQueryPostResponse(resp)
+	result, err := decodeAnswerPreCheckoutQueryPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -203,7 +209,13 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 	ctx, span := c.cfg.Tracer.Start(ctx, `AnswerShippingQueryPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeAnswerShippingQueryPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeAnswerShippingQueryPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -219,18 +231,15 @@ func (c *Client) AnswerShippingQueryPost(ctx context.Context, req AnswerShipping
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAnswerShippingQueryPostResponse(resp)
+	result, err := decodeAnswerShippingQueryPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -238,6 +247,12 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 	ctx, span := c.cfg.Tracer.Start(ctx, `ClosePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/close"
 
@@ -246,18 +261,15 @@ func (c *Client) ClosePost(ctx context.Context) (res ClosePostRes, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeClosePostResponse(resp)
+	result, err := decodeClosePostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -265,7 +277,13 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteStickerFromSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteStickerFromSetPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteStickerFromSetPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -281,18 +299,15 @@ func (c *Client) DeleteStickerFromSetPost(ctx context.Context, req DeleteSticker
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteStickerFromSetPostResponse(resp)
+	result, err := decodeDeleteStickerFromSetPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -300,7 +315,13 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 	ctx, span := c.cfg.Tracer.Start(ctx, `DeleteWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteWebhookPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteWebhookPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -316,18 +337,15 @@ func (c *Client) DeleteWebhookPost(ctx context.Context, req DeleteWebhookPostReq
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteWebhookPostResponse(resp)
+	result, err := decodeDeleteWebhookPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -335,7 +353,13 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetFilePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeGetFilePostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeGetFilePostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -351,18 +375,15 @@ func (c *Client) GetFilePost(ctx context.Context, req GetFilePostReq) (res GetFi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetFilePostResponse(resp)
+	result, err := decodeGetFilePostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -370,7 +391,13 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetGameHighScoresPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeGetGameHighScoresPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeGetGameHighScoresPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -386,18 +413,15 @@ func (c *Client) GetGameHighScoresPost(ctx context.Context, req GetGameHighScore
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetGameHighScoresPostResponse(resp)
+	result, err := decodeGetGameHighScoresPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -405,6 +429,12 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMe"
 
@@ -413,18 +443,15 @@ func (c *Client) GetMePost(ctx context.Context) (res GetMePostRes, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetMePostResponse(resp)
+	result, err := decodeGetMePostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -432,6 +459,12 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMyCommands"
 
@@ -440,18 +473,15 @@ func (c *Client) GetMyCommandsPost(ctx context.Context) (res GetMyCommandsPostRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetMyCommandsPostResponse(resp)
+	result, err := decodeGetMyCommandsPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -459,7 +489,13 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetStickerSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeGetStickerSetPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeGetStickerSetPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -475,18 +511,15 @@ func (c *Client) GetStickerSetPost(ctx context.Context, req GetStickerSetPostReq
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetStickerSetPostResponse(resp)
+	result, err := decodeGetStickerSetPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -494,7 +527,13 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUpdatesPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeGetUpdatesPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeGetUpdatesPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -510,18 +549,15 @@ func (c *Client) GetUpdatesPost(ctx context.Context, req GetUpdatesPostReq) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetUpdatesPostResponse(resp)
+	result, err := decodeGetUpdatesPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -529,7 +565,13 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetUserProfilePhotosPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeGetUserProfilePhotosPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeGetUserProfilePhotosPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -545,18 +587,15 @@ func (c *Client) GetUserProfilePhotosPost(ctx context.Context, req GetUserProfil
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetUserProfilePhotosPostResponse(resp)
+	result, err := decodeGetUserProfilePhotosPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -564,6 +603,12 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 	ctx, span := c.cfg.Tracer.Start(ctx, `GetWebhookInfoPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getWebhookInfo"
 
@@ -572,18 +617,15 @@ func (c *Client) GetWebhookInfoPost(ctx context.Context) (res GetWebhookInfoPost
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetWebhookInfoPostResponse(resp)
+	result, err := decodeGetWebhookInfoPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -591,6 +633,12 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 	ctx, span := c.cfg.Tracer.Start(ctx, `LogOutPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logOut"
 
@@ -599,18 +647,15 @@ func (c *Client) LogOutPost(ctx context.Context) (res LogOutPostRes, err error) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeLogOutPostResponse(resp)
+	result, err := decodeLogOutPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -618,7 +663,13 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendGamePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeSendGamePostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeSendGamePostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -634,18 +685,15 @@ func (c *Client) SendGamePost(ctx context.Context, req SendGamePostReq) (res Sen
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSendGamePostResponse(resp)
+	result, err := decodeSendGamePostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -653,7 +701,13 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 	ctx, span := c.cfg.Tracer.Start(ctx, `SendInvoicePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeSendInvoicePostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeSendInvoicePostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -669,18 +723,15 @@ func (c *Client) SendInvoicePost(ctx context.Context, req SendInvoicePostReq) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSendInvoicePostResponse(resp)
+	result, err := decodeSendInvoicePostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -688,7 +739,13 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetMyCommandsPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeSetMyCommandsPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeSetMyCommandsPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -704,18 +761,15 @@ func (c *Client) SetMyCommandsPost(ctx context.Context, req SetMyCommandsPostReq
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSetMyCommandsPostResponse(resp)
+	result, err := decodeSetMyCommandsPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -723,7 +777,13 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetStickerPositionInSetPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeSetStickerPositionInSetPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeSetStickerPositionInSetPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -739,18 +799,15 @@ func (c *Client) SetStickerPositionInSetPost(ctx context.Context, req SetSticker
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSetStickerPositionInSetPostResponse(resp)
+	result, err := decodeSetStickerPositionInSetPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -758,7 +815,13 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 	ctx, span := c.cfg.Tracer.Start(ctx, `SetWebhookPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeSetWebhookPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeSetWebhookPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -774,18 +837,15 @@ func (c *Client) SetWebhookPost(ctx context.Context, req SetWebhookPostReq) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSetWebhookPostResponse(resp)
+	result, err := decodeSetWebhookPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -793,7 +853,13 @@ func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFil
 	ctx, span := c.cfg.Tracer.Start(ctx, `UploadStickerFilePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeUploadStickerFilePostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeUploadStickerFilePostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -809,17 +875,14 @@ func (c *Client) UploadStickerFilePost(ctx context.Context, req UploadStickerFil
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeUploadStickerFilePostResponse(resp)
+	result, err := decodeUploadStickerFilePostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }

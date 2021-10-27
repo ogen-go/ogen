@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, err error) {
+func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res CreateSnapshotRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -112,7 +112,7 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, e
 	}
 }
 
-func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRes, err error) {
+func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res CreateSyncActionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -168,7 +168,7 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 	}
 }
 
-func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBalloonConfigRes, err error) {
+func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (res DescribeBalloonConfigRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -243,7 +243,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 	}
 }
 
-func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloonStatsRes, err error) {
+func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (res DescribeBalloonStatsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -318,7 +318,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 	}
 }
 
-func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRes, err error) {
+func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res DescribeInstanceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -372,7 +372,7 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRe
 	}
 }
 
-func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfigRes, err error) {
+func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res GetExportVmConfigRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -426,7 +426,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfig
 	}
 }
 
-func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineConfigurationRes, err error) {
+func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span) (res GetMachineConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -480,7 +480,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineC
 	}
 }
 
-func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err error) {
+func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadSnapshotRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -536,7 +536,7 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err e
 	}
 }
 
-func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err error) {
+func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res MmdsConfigPutRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -592,7 +592,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err
 	}
 }
 
-func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
+func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -667,7 +667,7 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 	}
 }
 
-func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) {
+func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatchRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -723,7 +723,7 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) 
 	}
 }
 
-func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
+func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -779,7 +779,7 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 	}
 }
 
-func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err error) {
+func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res PatchBalloonRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -835,7 +835,7 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err e
 	}
 }
 
-func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBalloonStatsIntervalRes, err error) {
+func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Span) (res PatchBalloonStatsIntervalRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -891,7 +891,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 	}
 }
 
-func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDriveByIDRes, err error) {
+func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res PatchGuestDriveByIDRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -947,7 +947,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 	}
 }
 
-func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.Span) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1003,7 +1003,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 	}
 }
 
-func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMachineConfigurationRes, err error) {
+func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Span) (res PatchMachineConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1059,7 +1059,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 	}
 }
 
-func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
+func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1115,7 +1115,7 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 	}
 }
 
-func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error) {
+func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBalloonRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1171,7 +1171,7 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error
 	}
 }
 
-func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSourceRes, err error) {
+func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res PutGuestBootSourceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1227,7 +1227,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 	}
 }
 
-func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByIDRes, err error) {
+func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res PutGuestDriveByIDRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1283,7 +1283,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 	}
 }
 
-func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGuestNetworkInterfaceByIDRes, err error) {
+func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.Span) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1339,7 +1339,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 	}
 }
 
-func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err error) {
+func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutGuestVsockRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1395,7 +1395,7 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err
 	}
 }
 
-func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) {
+func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLoggerRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1451,7 +1451,7 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) 
 	}
 }
 
-func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineConfigurationRes, err error) {
+func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span) (res PutMachineConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1507,7 +1507,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 	}
 }
 
-func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error) {
+func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetricsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {

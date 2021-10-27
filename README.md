@@ -39,6 +39,7 @@ go get github.com/ogen-go/ogen
     * When required, `nil` currently the same as `[]`, but is actually invalid
     * If both nullable and required, wrapper will be generated (TODO)
 * Generated sum types for oneOf
+* OpenTelemetry tracing
 
 Example generated structure from schema:
 ```go

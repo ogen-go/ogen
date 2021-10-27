@@ -134,6 +134,12 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 		trace.WithAttributes(otelogen.OperationID(`foobarGet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
@@ -165,18 +171,15 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeFoobarGetResponse(resp)
+	result, err := decodeFoobarGetResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -185,7 +188,13 @@ func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, er
 		trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeFoobarPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeFoobarPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -201,18 +210,15 @@ func (c *Client) FoobarPost(ctx context.Context, req Pet) (res FoobarPostRes, er
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeFoobarPostResponse(resp)
+	result, err := decodeFoobarPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -220,6 +226,12 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 	ctx, span := c.cfg.Tracer.Start(ctx, `FoobarPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
@@ -228,18 +240,15 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeFoobarPutResponse(resp)
+	result, err := decodeFoobarPutResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -248,7 +257,13 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err 
 		trace.WithAttributes(otelogen.OperationID(`petCreate`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePetCreateRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePetCreateRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -264,18 +279,15 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateReq) (res Pet, err 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetCreateResponse(resp)
+	result, err := decodePetCreateResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -284,6 +296,12 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 		trace.WithAttributes(otelogen.OperationID(`petFriendsNamesByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/friendNames/"
 	{
@@ -301,18 +319,15 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetFriendsNamesByIDResponse(resp)
+	result, err := decodePetFriendsNamesByIDResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -321,6 +336,12 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 		trace.WithAttributes(otelogen.OperationID(`petGet`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
@@ -364,18 +385,15 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetGetResponse(resp)
+	result, err := decodePetGetResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -384,6 +402,12 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 		trace.WithAttributes(otelogen.OperationID(`petGetByName`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/"
 	{
@@ -401,18 +425,15 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetGetByNameResponse(resp)
+	result, err := decodePetGetByNameResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -421,6 +442,12 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 		trace.WithAttributes(otelogen.OperationID(`petNameByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/name/"
 	{
@@ -438,18 +465,15 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetNameByIDResponse(resp)
+	result, err := decodePetNameByIDResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -457,7 +481,13 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNameAliasPost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePetUpdateNameAliasPostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePetUpdateNameAliasPostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -473,18 +503,15 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, req PetName) (res P
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetUpdateNameAliasPostResponse(resp)
+	result, err := decodePetUpdateNameAliasPostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -492,7 +519,13 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpda
 	ctx, span := c.cfg.Tracer.Start(ctx, `PetUpdateNamePost`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePetUpdateNamePostRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePetUpdateNamePostRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -508,17 +541,14 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, req string) (res PetUpda
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePetUpdateNamePostResponse(resp)
+	result, err := decodePetUpdateNamePostResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }

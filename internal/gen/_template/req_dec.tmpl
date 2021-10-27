@@ -6,7 +6,7 @@
 {{/* Range over all methods */}}
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func decode{{ $op.Name }}Request(r *http.Request) (req {{ $op.Request.Type.Go }}, err error) {
+func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
     buf := json.GetBuffer()
     defer json.PutBuffer(buf)
     if _, err := io.Copy(buf, r.Body); err != nil {

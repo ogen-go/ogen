@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response, span trace.Span) (res CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -146,7 +146,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	}
 }
 
-func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response, span trace.Span) (res CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -236,7 +236,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	}
 }
 
-func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
+func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response, span trace.Span) (res CreateApiextensionsV1CustomResourceDefinitionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -326,7 +326,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	}
 }
 
-func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res CreateApiregistrationV1APIServiceRes, err error) {
+func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response, span trace.Span) (res CreateApiregistrationV1APIServiceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -416,7 +416,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (res C
 	}
 }
 
-func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res CreateAuthenticationV1TokenReviewRes, err error) {
+func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response, span trace.Span) (res CreateAuthenticationV1TokenReviewRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -506,7 +506,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (res C
 	}
 }
 
-func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Response) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
+func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Response, span trace.Span) (res CreateAuthorizationV1SelfSubjectAccessReviewRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -596,7 +596,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	}
 }
 
-func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Response) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
+func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Response, span trace.Span) (res CreateAuthorizationV1SelfSubjectRulesReviewRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -686,7 +686,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
+func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response, span trace.Span) (res CreateAuthorizationV1SubjectAccessReviewRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -776,7 +776,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	}
 }
 
-func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
+func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Response, span trace.Span) (res CreateCertificatesV1CertificateSigningRequestRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -866,7 +866,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	}
 }
 
-func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1NamespaceRes, err error) {
+func decodeCreateCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (res CreateCoreV1NamespaceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -956,7 +956,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (res CreateCoreV1N
 	}
 }
 
-func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeRes, err error) {
+func decodeCreateCoreV1NodeResponse(resp *http.Response, span trace.Span) (res CreateCoreV1NodeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1046,7 +1046,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (res CreateCoreV1NodeRe
 	}
 }
 
-func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res CreateCoreV1PersistentVolumeRes, err error) {
+func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Span) (res CreateCoreV1PersistentVolumeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1136,7 +1136,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (res Create
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response, span trace.Span) (res CreateFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1226,7 +1226,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response, span trace.Span) (res CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1316,7 +1316,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response, span trace.Span) (res CreateFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1406,7 +1406,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response, span trace.Span) (res CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1496,7 +1496,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	}
 }
 
-func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
+func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response, span trace.Span) (res CreateInternalApiserverV1alpha1StorageVersionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1586,7 +1586,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	}
 }
 
-func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res CreateNetworkingV1IngressClassRes, err error) {
+func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response, span trace.Span) (res CreateNetworkingV1IngressClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1676,7 +1676,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (res Crea
 	}
 }
 
-func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1RuntimeClassRes, err error) {
+func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) (res CreateNodeV1RuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1766,7 +1766,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (res CreateNode
 	}
 }
 
-func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
+func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.Span) (res CreateNodeV1alpha1RuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1856,7 +1856,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Crea
 	}
 }
 
-func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res CreateNodeV1beta1RuntimeClassRes, err error) {
+func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.Span) (res CreateNodeV1beta1RuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1946,7 +1946,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (res Creat
 	}
 }
 
-func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
+func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span trace.Span) (res CreatePolicyV1beta1PodSecurityPolicyRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2036,7 +2036,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (re
 	}
 }
 
-func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
+func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span trace.Span) (res CreateRbacAuthorizationV1ClusterRoleRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2126,7 +2126,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (re
 	}
 }
 
-func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response, span trace.Span) (res CreateRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2216,7 +2216,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	}
 }
 
-func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res CreateSchedulingV1PriorityClassRes, err error) {
+func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response, span trace.Span) (res CreateSchedulingV1PriorityClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2306,7 +2306,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (res Cre
 	}
 }
 
-func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStorageV1CSIDriverRes, err error) {
+func decodeCreateStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) (res CreateStorageV1CSIDriverRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2396,7 +2396,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (res CreateStor
 	}
 }
 
-func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorageV1CSINodeRes, err error) {
+func decodeCreateStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (res CreateStorageV1CSINodeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2486,7 +2486,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (res CreateStorag
 	}
 }
 
-func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateStorageV1StorageClassRes, err error) {
+func decodeCreateStorageV1StorageClassResponse(resp *http.Response, span trace.Span) (res CreateStorageV1StorageClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2576,7 +2576,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (res CreateS
 	}
 }
 
-func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res CreateStorageV1VolumeAttachmentRes, err error) {
+func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response, span trace.Span) (res CreateStorageV1VolumeAttachmentRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2666,7 +2666,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (res Cre
 	}
 }
 
-func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(resp *http.Response) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
+func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(resp *http.Response, span trace.Span) (res DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2706,7 +2706,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	}
 }
 
-func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(resp *http.Response) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
+func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(resp *http.Response, span trace.Span) (res DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2746,7 +2746,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	}
 }
 
-func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp *http.Response) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
+func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp *http.Response, span trace.Span) (res DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2786,7 +2786,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 	}
 }
 
-func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Response) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
+func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Response, span trace.Span) (res DeleteApiregistrationV1CollectionAPIServiceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2826,7 +2826,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 	}
 }
 
-func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp *http.Response) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
+func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp *http.Response, span trace.Span) (res DeleteCertificatesV1CollectionCertificateSigningRequestRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2866,7 +2866,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 	}
 }
 
-func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response) (res DeleteCoreV1CollectionNodeRes, err error) {
+func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response, span trace.Span) (res DeleteCoreV1CollectionNodeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2906,7 +2906,7 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response) (res DeleteCo
 	}
 }
 
-func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
+func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response, span trace.Span) (res DeleteCoreV1CollectionPersistentVolumeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2946,7 +2946,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response) (
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *http.Response, span trace.Span) (res DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2986,7 +2986,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(resp *http.Response, span trace.Span) (res DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3026,7 +3026,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *http.Response, span trace.Span) (res DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3066,7 +3066,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 	}
 }
 
-func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(resp *http.Response) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
+func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(resp *http.Response, span trace.Span) (res DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3106,7 +3106,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	}
 }
 
-func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp *http.Response) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
+func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp *http.Response, span trace.Span) (res DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3146,7 +3146,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 	}
 }
 
-func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
+func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response, span trace.Span) (res DeleteNetworkingV1CollectionIngressClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3186,7 +3186,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response)
 	}
 }
 
-func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
+func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response, span trace.Span) (res DeleteNodeV1CollectionRuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3226,7 +3226,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
+func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response, span trace.Span) (res DeleteNodeV1alpha1CollectionRuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3266,7 +3266,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response)
 	}
 }
 
-func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
+func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response, span trace.Span) (res DeleteNodeV1beta1CollectionRuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3306,7 +3306,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response) 
 	}
 }
 
-func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Response) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
+func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Response, span trace.Span) (res DeletePolicyV1beta1CollectionPodSecurityPolicyRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3346,7 +3346,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 	}
 }
 
-func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Response) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
+func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Response, span trace.Span) (res DeleteRbacAuthorizationV1CollectionClusterRoleRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3386,7 +3386,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 	}
 }
 
-func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *http.Response) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
+func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *http.Response, span trace.Span) (res DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3426,7 +3426,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 	}
 }
 
-func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
+func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response, span trace.Span) (res DeleteSchedulingV1CollectionPriorityClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3466,7 +3466,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 	}
 }
 
-func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
+func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response, span trace.Span) (res DeleteStorageV1CollectionCSIDriverRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3506,7 +3506,7 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response) (res DeleteStorageV1CollectionCSINodeRes, err error) {
+func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response, span trace.Span) (res DeleteStorageV1CollectionCSINodeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3546,7 +3546,7 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response) (res De
 	}
 }
 
-func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response) (res DeleteStorageV1CollectionStorageClassRes, err error) {
+func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response, span trace.Span) (res DeleteStorageV1CollectionStorageClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3586,7 +3586,7 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response) (r
 	}
 }
 
-func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
+func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response, span trace.Span) (res DeleteStorageV1CollectionVolumeAttachmentRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3626,7 +3626,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 	}
 }
 
-func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, err error) {
+func decodeGetAPIVersionsResponse(resp *http.Response, span trace.Span) (res GetAPIVersionsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3666,7 +3666,7 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, e
 	}
 }
 
-func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res GetAdmissionregistrationAPIGroupRes, err error) {
+func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response, span trace.Span) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3706,7 +3706,7 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res Ge
 	}
 }
 
-func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
+func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3746,7 +3746,7 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 	}
 }
 
-func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiextensionsAPIGroupRes, err error) {
+func decodeGetApiextensionsAPIGroupResponse(resp *http.Response, span trace.Span) (res GetApiextensionsAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3786,7 +3786,7 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiexte
 	}
 }
 
-func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetApiextensionsV1APIResourcesRes, err error) {
+func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetApiextensionsV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3826,7 +3826,7 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetA
 	}
 }
 
-func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApiregistrationAPIGroupRes, err error) {
+func decodeGetApiregistrationAPIGroupResponse(resp *http.Response, span trace.Span) (res GetApiregistrationAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3866,7 +3866,7 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApire
 	}
 }
 
-func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res GetApiregistrationV1APIResourcesRes, err error) {
+func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetApiregistrationV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3906,7 +3906,7 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res Ge
 	}
 }
 
-func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes, err error) {
+func decodeGetAppsAPIGroupResponse(resp *http.Response, span trace.Span) (res GetAppsAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3946,7 +3946,7 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes,
 	}
 }
 
-func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIResourcesRes, err error) {
+func decodeGetAppsV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetAppsV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3986,7 +3986,7 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIR
 	}
 }
 
-func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthenticationAPIGroupRes, err error) {
+func decodeGetAuthenticationAPIGroupResponse(resp *http.Response, span trace.Span) (res GetAuthenticationAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4026,7 +4026,7 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthen
 	}
 }
 
-func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res GetAuthenticationV1APIResourcesRes, err error) {
+func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetAuthenticationV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4066,7 +4066,7 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res Get
 	}
 }
 
-func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthorizationAPIGroupRes, err error) {
+func decodeGetAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span) (res GetAuthorizationAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4106,7 +4106,7 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthori
 	}
 }
 
-func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetAuthorizationV1APIResourcesRes, err error) {
+func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetAuthorizationV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4146,7 +4146,7 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetA
 	}
 }
 
-func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscalingAPIGroupRes, err error) {
+func decodeGetAutoscalingAPIGroupResponse(resp *http.Response, span trace.Span) (res GetAutoscalingAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4186,7 +4186,7 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscali
 	}
 }
 
-func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV1APIResourcesRes, err error) {
+func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetAutoscalingV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4226,7 +4226,7 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAut
 	}
 }
 
-func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
+func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4266,7 +4266,7 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res G
 	}
 }
 
-func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
+func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response, span trace.Span) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4306,7 +4306,7 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res G
 	}
 }
 
-func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRes, err error) {
+func decodeGetBatchAPIGroupResponse(resp *http.Response, span trace.Span) (res GetBatchAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4346,7 +4346,7 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRe
 	}
 }
 
-func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1APIResourcesRes, err error) {
+func decodeGetBatchV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetBatchV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4386,7 +4386,7 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1AP
 	}
 }
 
-func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatchV1beta1APIResourcesRes, err error) {
+func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetBatchV1beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4426,7 +4426,7 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatc
 	}
 }
 
-func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertificatesAPIGroupRes, err error) {
+func decodeGetCertificatesAPIGroupResponse(resp *http.Response, span trace.Span) (res GetCertificatesAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4466,7 +4466,7 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertific
 	}
 }
 
-func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCertificatesV1APIResourcesRes, err error) {
+func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetCertificatesV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4506,7 +4506,7 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCe
 	}
 }
 
-func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, err error) {
+func decodeGetCodeVersionResponse(resp *http.Response, span trace.Span) (res GetCodeVersionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4542,7 +4542,7 @@ func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, e
 	}
 }
 
-func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordinationAPIGroupRes, err error) {
+func decodeGetCoordinationAPIGroupResponse(resp *http.Response, span trace.Span) (res GetCoordinationAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4582,7 +4582,7 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordina
 	}
 }
 
-func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCoordinationV1APIResourcesRes, err error) {
+func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetCoordinationV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4622,7 +4622,7 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCo
 	}
 }
 
-func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersionsRes, err error) {
+func decodeGetCoreAPIVersionsResponse(resp *http.Response, span trace.Span) (res GetCoreAPIVersionsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4662,7 +4662,7 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersio
 	}
 }
 
-func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIResourcesRes, err error) {
+func decodeGetCoreV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetCoreV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4702,7 +4702,7 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIR
 	}
 }
 
-func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAPIGroupRes, err error) {
+func decodeGetDiscoveryAPIGroupResponse(resp *http.Response, span trace.Span) (res GetDiscoveryAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4742,7 +4742,7 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAP
 	}
 }
 
-func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1APIResourcesRes, err error) {
+func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetDiscoveryV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4782,7 +4782,7 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDisco
 	}
 }
 
-func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
+func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4822,7 +4822,7 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res Get
 	}
 }
 
-func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroupRes, err error) {
+func decodeGetEventsAPIGroupResponse(resp *http.Response, span trace.Span) (res GetEventsAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4862,7 +4862,7 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroup
 	}
 }
 
-func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1APIResourcesRes, err error) {
+func decodeGetEventsV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetEventsV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4902,7 +4902,7 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1
 	}
 }
 
-func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEventsV1beta1APIResourcesRes, err error) {
+func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetEventsV1beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4942,7 +4942,7 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEve
 	}
 }
 
-func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
+func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response, span trace.Span) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4982,7 +4982,7 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res Get
 	}
 }
 
-func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
+func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5022,7 +5022,7 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 	}
 }
 
-func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Response) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
+func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Response, span trace.Span) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5062,7 +5062,7 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 	}
 }
 
-func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInternalApiserverAPIGroupRes, err error) {
+func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response, span trace.Span) (res GetInternalApiserverAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5102,7 +5102,7 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInt
 	}
 }
 
-func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
+func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5142,7 +5142,7 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 	}
 }
 
-func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworkingAPIGroupRes, err error) {
+func decodeGetNetworkingAPIGroupResponse(resp *http.Response, span trace.Span) (res GetNetworkingAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5182,7 +5182,7 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworking
 	}
 }
 
-func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetworkingV1APIResourcesRes, err error) {
+func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetNetworkingV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5222,7 +5222,7 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetw
 	}
 }
 
-func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes, err error) {
+func decodeGetNodeAPIGroupResponse(resp *http.Response, span trace.Span) (res GetNodeAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5262,7 +5262,7 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes,
 	}
 }
 
-func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIResourcesRes, err error) {
+func decodeGetNodeV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetNodeV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5302,7 +5302,7 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIR
 	}
 }
 
-func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNodeV1alpha1APIResourcesRes, err error) {
+func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5342,7 +5342,7 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNode
 	}
 }
 
-func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV1beta1APIResourcesRes, err error) {
+func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetNodeV1beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5382,7 +5382,7 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV
 	}
 }
 
-func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroupRes, err error) {
+func decodeGetPolicyAPIGroupResponse(resp *http.Response, span trace.Span) (res GetPolicyAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5422,7 +5422,7 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroup
 	}
 }
 
-func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1APIResourcesRes, err error) {
+func decodeGetPolicyV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetPolicyV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5462,7 +5462,7 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1
 	}
 }
 
-func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPolicyV1beta1APIResourcesRes, err error) {
+func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5502,7 +5502,7 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPol
 	}
 }
 
-func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRbacAuthorizationAPIGroupRes, err error) {
+func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5542,7 +5542,7 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRba
 	}
 }
 
-func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
+func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5582,7 +5582,7 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetSchedulingAPIGroupRes, err error) {
+func decodeGetSchedulingAPIGroupResponse(resp *http.Response, span trace.Span) (res GetSchedulingAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5622,7 +5622,7 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetScheduling
 	}
 }
 
-func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSchedulingV1APIResourcesRes, err error) {
+func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetSchedulingV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5662,7 +5662,7 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSche
 	}
 }
 
-func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
+func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Response, span trace.Span) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5698,7 +5698,7 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 	}
 }
 
-func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
+func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response, span trace.Span) (res GetServiceAccountIssuerOpenIDKeysetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5720,7 +5720,7 @@ func decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp *http.Response) (res
 	}
 }
 
-func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGroupRes, err error) {
+func decodeGetStorageAPIGroupResponse(resp *http.Response, span trace.Span) (res GetStorageAPIGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5760,7 +5760,7 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGro
 	}
 }
 
-func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorageV1APIResourcesRes, err error) {
+func decodeGetStorageV1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetStorageV1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5800,7 +5800,7 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorage
 	}
 }
 
-func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetStorageV1alpha1APIResourcesRes, err error) {
+func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5840,7 +5840,7 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetS
 	}
 }
 
-func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetStorageV1beta1APIResourcesRes, err error) {
+func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response, span trace.Span) (res GetStorageV1beta1APIResourcesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5880,7 +5880,7 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetSt
 	}
 }
 
-func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
+func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response, span trace.Span) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5924,7 +5924,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 	}
 }
 
-func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
+func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp *http.Response, span trace.Span) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5968,7 +5968,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	}
 }
 
-func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
+func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Response, span trace.Span) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6012,7 +6012,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 	}
 }
 
-func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res ListApiregistrationV1APIServiceRes, err error) {
+func decodeListApiregistrationV1APIServiceResponse(resp *http.Response, span trace.Span) (res ListApiregistrationV1APIServiceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6056,7 +6056,7 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res Lis
 	}
 }
 
-func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
+func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6100,7 +6100,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
+func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6144,7 +6144,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
+func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6188,7 +6188,7 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
+func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6232,7 +6232,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
+func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6276,7 +6276,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (r
 	}
 }
 
-func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6320,7 +6320,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	}
 }
 
-func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6364,7 +6364,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	}
 }
 
-func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
+func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6408,7 +6408,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	}
 }
 
-func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
+func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6452,7 +6452,7 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1JobForAllNamespacesRes, err error) {
+func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6496,7 +6496,7 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res List
 	}
 }
 
-func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
+func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6540,7 +6540,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Response) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
+func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Response, span trace.Span) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6584,7 +6584,7 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 	}
 }
 
-func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
+func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6628,7 +6628,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV1ComponentStatusRes, err error) {
+func decodeListCoreV1ComponentStatusResponse(resp *http.Response, span trace.Span) (res ListCoreV1ComponentStatusRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6672,7 +6672,7 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV
 	}
 }
 
-func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
+func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6716,7 +6716,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
+func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6760,7 +6760,7 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res ListCoreV1EventForAllNamespacesRes, err error) {
+func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6804,7 +6804,7 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res Lis
 	}
 }
 
-func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
+func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6848,7 +6848,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1NamespaceRes, err error) {
+func decodeListCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (res ListCoreV1NamespaceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6892,7 +6892,7 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1Names
 	}
 }
 
-func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, err error) {
+func decodeListCoreV1NodeResponse(resp *http.Response, span trace.Span) (res ListCoreV1NodeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6936,7 +6936,7 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, e
 	}
 }
 
-func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCoreV1PersistentVolumeRes, err error) {
+func decodeListCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Span) (res ListCoreV1PersistentVolumeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -6980,7 +6980,7 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCore
 	}
 }
 
-func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
+func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7024,7 +7024,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 	}
 }
 
-func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodForAllNamespacesRes, err error) {
+func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7068,7 +7068,7 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListC
 	}
 }
 
-func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
+func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7112,7 +7112,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (r
 	}
 }
 
-func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
+func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7156,7 +7156,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 	}
 }
 
-func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
+func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7200,7 +7200,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res ListCoreV1SecretForAllNamespacesRes, err error) {
+func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7244,7 +7244,7 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res Li
 	}
 }
 
-func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
+func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7288,7 +7288,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
+func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7332,7 +7332,7 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res L
 	}
 }
 
-func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
+func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7376,7 +7376,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.Response) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
+func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7420,7 +7420,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 	}
 }
 
-func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1EventForAllNamespacesRes, err error) {
+func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7464,7 +7464,7 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res L
 	}
 }
 
-func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
+func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7508,7 +7508,7 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
+func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response, span trace.Span) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7552,7 +7552,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
+func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp *http.Response, span trace.Span) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7596,7 +7596,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
+func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response, span trace.Span) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7640,7 +7640,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 	}
 }
 
-func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
+func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp *http.Response, span trace.Span) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7684,7 +7684,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	}
 }
 
-func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
+func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Response, span trace.Span) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7728,7 +7728,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 	}
 }
 
-func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNetworkingV1IngressClassRes, err error) {
+func decodeListNetworkingV1IngressClassResponse(resp *http.Response, span trace.Span) (res ListNetworkingV1IngressClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7772,7 +7772,7 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNe
 	}
 }
 
-func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
+func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7816,7 +7816,7 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Response) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
+func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7860,7 +7860,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 	}
 }
 
-func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1RuntimeClassRes, err error) {
+func decodeListNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) (res ListNodeV1RuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7904,7 +7904,7 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1Ru
 	}
 }
 
-func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNodeV1alpha1RuntimeClassRes, err error) {
+func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.Span) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7948,7 +7948,7 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNo
 	}
 }
 
-func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNodeV1beta1RuntimeClassRes, err error) {
+func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.Span) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -7992,7 +7992,7 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNod
 	}
 }
 
-func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
+func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8036,7 +8036,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 	}
 }
 
-func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
+func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8080,7 +8080,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
+func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span trace.Span) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8124,7 +8124,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
+func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span trace.Span) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8168,7 +8168,7 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
+func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response, span trace.Span) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8212,7 +8212,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 	}
 }
 
-func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
+func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8256,7 +8256,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 	}
 }
 
-func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Response) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
+func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8300,7 +8300,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 	}
 }
 
-func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListSchedulingV1PriorityClassRes, err error) {
+func decodeListSchedulingV1PriorityClassResponse(resp *http.Response, span trace.Span) (res ListSchedulingV1PriorityClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8344,7 +8344,7 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListS
 	}
 }
 
-func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV1CSIDriverRes, err error) {
+func decodeListStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) (res ListStorageV1CSIDriverRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8388,7 +8388,7 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV
 	}
 }
 
-func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1CSINodeRes, err error) {
+func decodeListStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (res ListStorageV1CSINodeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8432,7 +8432,7 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1C
 	}
 }
 
-func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStorageV1StorageClassRes, err error) {
+func decodeListStorageV1StorageClassResponse(resp *http.Response, span trace.Span) (res ListStorageV1StorageClassRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8476,7 +8476,7 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStora
 	}
 }
 
-func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListStorageV1VolumeAttachmentRes, err error) {
+func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response, span trace.Span) (res ListStorageV1VolumeAttachmentRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8520,7 +8520,7 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListS
 	}
 }
 
-func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
+func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8564,7 +8564,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 	}
 }
 
-func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
+func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *http.Response, span trace.Span) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8608,7 +8608,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeLogFileListHandlerResponse(resp *http.Response) (res LogFileListHandlerResUnauthorized, err error) {
+func decodeLogFileListHandlerResponse(resp *http.Response, span trace.Span) (res LogFileListHandlerResUnauthorized, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8623,7 +8623,7 @@ func decodeLogFileListHandlerResponse(resp *http.Response) (res LogFileListHandl
 	}
 }
 
-func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
+func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp *http.Response, span trace.Span) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8667,7 +8667,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	}
 }
 
-func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp *http.Response) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
+func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp *http.Response, span trace.Span) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8711,7 +8711,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	}
 }
 
-func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.Response) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
+func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.Response, span trace.Span) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8755,7 +8755,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 	}
 }
 
-func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (res WatchApiregistrationV1APIServiceListRes, err error) {
+func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response, span trace.Span) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8799,7 +8799,7 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (re
 	}
 }
 
-func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8843,7 +8843,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 	}
 }
 
-func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8887,7 +8887,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8931,7 +8931,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 	}
 }
 
-func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -8975,7 +8975,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 	}
 }
 
-func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Response) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
+func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9019,7 +9019,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 	}
 }
 
-func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9063,7 +9063,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	}
 }
 
-func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9107,7 +9107,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	}
 }
 
-func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
+func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9151,7 +9151,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	}
 }
 
-func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
+func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9195,7 +9195,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
+func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9239,7 +9239,7 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res
 	}
 }
 
-func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Response) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
+func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9283,7 +9283,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.Response) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
+func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.Response, span trace.Span) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9327,7 +9327,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 	}
 }
 
-func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Response) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
+func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9371,7 +9371,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9415,7 +9415,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9459,7 +9459,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 	}
 }
 
-func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9503,7 +9503,7 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (re
 	}
 }
 
-func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9547,7 +9547,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 	}
 }
 
-func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV1NamespaceListRes, err error) {
+func decodeWatchCoreV1NamespaceListResponse(resp *http.Response, span trace.Span) (res WatchCoreV1NamespaceListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9591,7 +9591,7 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV
 	}
 }
 
-func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1NodeListRes, err error) {
+func decodeWatchCoreV1NodeListResponse(resp *http.Response, span trace.Span) (res WatchCoreV1NodeListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9635,7 +9635,7 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1Node
 	}
 }
 
-func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9679,7 +9679,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res WatchCoreV1PersistentVolumeListRes, err error) {
+func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response, span trace.Span) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9723,7 +9723,7 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res Wat
 	}
 }
 
-func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9767,7 +9767,7 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9811,7 +9811,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 	}
 }
 
-func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9855,7 +9855,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9899,7 +9899,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9943,7 +9943,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (r
 	}
 }
 
-func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -9987,7 +9987,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 	}
 }
 
-func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
+func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10031,7 +10031,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 	}
 }
 
-func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
+func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10075,7 +10075,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 	}
 }
 
-func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *http.Response) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
+func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10119,7 +10119,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 	}
 }
 
-func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
+func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10163,7 +10163,7 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 	}
 }
 
-func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Response) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
+func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10207,7 +10207,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Response, span trace.Span) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10251,7 +10251,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp *http.Response, span trace.Span) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10295,7 +10295,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Response, span trace.Span) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10339,7 +10339,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 	}
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp *http.Response) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
+func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp *http.Response, span trace.Span) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10383,7 +10383,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	}
 }
 
-func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.Response) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
+func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.Response, span trace.Span) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10427,7 +10427,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 	}
 }
 
-func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res WatchNetworkingV1IngressClassListRes, err error) {
+func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response, span trace.Span) (res WatchNetworkingV1IngressClassListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10471,7 +10471,7 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res W
 	}
 }
 
-func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
+func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10515,7 +10515,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 	}
 }
 
-func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http.Response) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
+func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10559,7 +10559,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 	}
 }
 
-func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1RuntimeClassListRes, err error) {
+func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response, span trace.Span) (res WatchNodeV1RuntimeClassListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10603,7 +10603,7 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNo
 	}
 }
 
-func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
+func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response, span trace.Span) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10647,7 +10647,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res W
 	}
 }
 
-func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
+func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response, span trace.Span) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10691,7 +10691,7 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res Wa
 	}
 }
 
-func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
+func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10735,7 +10735,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 	}
 }
 
-func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
+func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10779,7 +10779,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	}
 }
 
-func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
+func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response, span trace.Span) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10823,7 +10823,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Response, span trace.Span) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10867,7 +10867,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 	}
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response, span trace.Span) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10911,7 +10911,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 	}
 }
 
-func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
+func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10955,7 +10955,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 	}
 }
 
-func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.Response) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
+func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -10999,7 +10999,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 	}
 }
 
-func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res WatchSchedulingV1PriorityClassListRes, err error) {
+func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response, span trace.Span) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -11043,7 +11043,7 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchStorageV1CSIDriverListRes, err error) {
+func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response, span trace.Span) (res WatchStorageV1CSIDriverListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -11087,7 +11087,7 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchSt
 	}
 }
 
-func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStorageV1CSINodeListRes, err error) {
+func decodeWatchStorageV1CSINodeListResponse(resp *http.Response, span trace.Span) (res WatchStorageV1CSINodeListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -11131,7 +11131,7 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStor
 	}
 }
 
-func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res WatchStorageV1StorageClassListRes, err error) {
+func decodeWatchStorageV1StorageClassListResponse(resp *http.Response, span trace.Span) (res WatchStorageV1StorageClassListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -11175,7 +11175,7 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res Watc
 	}
 }
 
-func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res WatchStorageV1VolumeAttachmentListRes, err error) {
+func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response, span trace.Span) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -11219,7 +11219,7 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res 
 	}
 }
 
-func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
+func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -11263,7 +11263,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	}
 }
 
-func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
+func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp *http.Response, span trace.Span) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {

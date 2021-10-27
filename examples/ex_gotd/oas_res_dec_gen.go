@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeAddStickerToSetResponse(resp *http.Response) (res AddStickerToSetRes, err error) {
+func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res AddStickerToSetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -110,7 +110,7 @@ func decodeAddStickerToSetResponse(resp *http.Response) (res AddStickerToSetRes,
 	}
 }
 
-func decodeAnswerCallbackQueryResponse(resp *http.Response) (res AnswerCallbackQueryRes, err error) {
+func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (res AnswerCallbackQueryRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -164,7 +164,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response) (res AnswerCallbackQ
 	}
 }
 
-func decodeAnswerInlineQueryResponse(resp *http.Response) (res AnswerInlineQueryRes, err error) {
+func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res AnswerInlineQueryRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -218,7 +218,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response) (res AnswerInlineQuery
 	}
 }
 
-func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res AnswerPreCheckoutQueryRes, err error) {
+func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) (res AnswerPreCheckoutQueryRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -272,7 +272,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res AnswerPreChe
 	}
 }
 
-func decodeAnswerShippingQueryResponse(resp *http.Response) (res AnswerShippingQueryRes, err error) {
+func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (res AnswerShippingQueryRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -326,7 +326,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response) (res AnswerShippingQ
 	}
 }
 
-func decodeBanChatMemberResponse(resp *http.Response) (res BanChatMemberRes, err error) {
+func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res BanChatMemberRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -380,7 +380,7 @@ func decodeBanChatMemberResponse(resp *http.Response) (res BanChatMemberRes, err
 	}
 }
 
-func decodeCopyMessageResponse(resp *http.Response) (res CopyMessageRes, err error) {
+func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res CopyMessageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -434,7 +434,7 @@ func decodeCopyMessageResponse(resp *http.Response) (res CopyMessageRes, err err
 	}
 }
 
-func decodeCreateChatInviteLinkResponse(resp *http.Response) (res CreateChatInviteLinkRes, err error) {
+func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (res CreateChatInviteLinkRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -488,7 +488,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response) (res CreateChatInvi
 	}
 }
 
-func decodeCreateNewStickerSetResponse(resp *http.Response) (res CreateNewStickerSetRes, err error) {
+func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (res CreateNewStickerSetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -542,7 +542,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response) (res CreateNewSticke
 	}
 }
 
-func decodeDeleteChatPhotoResponse(resp *http.Response) (res DeleteChatPhotoRes, err error) {
+func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res DeleteChatPhotoRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -596,7 +596,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response) (res DeleteChatPhotoRes,
 	}
 }
 
-func decodeDeleteChatStickerSetResponse(resp *http.Response) (res DeleteChatStickerSetRes, err error) {
+func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (res DeleteChatStickerSetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -650,7 +650,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response) (res DeleteChatStic
 	}
 }
 
-func decodeDeleteMessageResponse(resp *http.Response) (res DeleteMessageRes, err error) {
+func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res DeleteMessageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -704,7 +704,7 @@ func decodeDeleteMessageResponse(resp *http.Response) (res DeleteMessageRes, err
 	}
 }
 
-func decodeDeleteMyCommandsResponse(resp *http.Response) (res DeleteMyCommandsRes, err error) {
+func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res DeleteMyCommandsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -758,7 +758,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response) (res DeleteMyCommandsRe
 	}
 }
 
-func decodeDeleteStickerFromSetResponse(resp *http.Response) (res DeleteStickerFromSetRes, err error) {
+func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (res DeleteStickerFromSetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -812,7 +812,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response) (res DeleteStickerF
 	}
 }
 
-func decodeDeleteWebhookResponse(resp *http.Response) (res DeleteWebhookRes, err error) {
+func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res DeleteWebhookRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -866,7 +866,7 @@ func decodeDeleteWebhookResponse(resp *http.Response) (res DeleteWebhookRes, err
 	}
 }
 
-func decodeEditChatInviteLinkResponse(resp *http.Response) (res EditChatInviteLinkRes, err error) {
+func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res EditChatInviteLinkRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -920,7 +920,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response) (res EditChatInviteLi
 	}
 }
 
-func decodeEditMessageCaptionResponse(resp *http.Response) (res EditMessageCaptionRes, err error) {
+func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res EditMessageCaptionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -974,7 +974,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response) (res EditMessageCapti
 	}
 }
 
-func decodeEditMessageLiveLocationResponse(resp *http.Response) (res EditMessageLiveLocationRes, err error) {
+func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res EditMessageLiveLocationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1028,7 +1028,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response) (res EditMessage
 	}
 }
 
-func decodeEditMessageMediaResponse(resp *http.Response) (res EditMessageMediaRes, err error) {
+func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res EditMessageMediaRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1082,7 +1082,7 @@ func decodeEditMessageMediaResponse(resp *http.Response) (res EditMessageMediaRe
 	}
 }
 
-func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res EditMessageReplyMarkupRes, err error) {
+func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) (res EditMessageReplyMarkupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1136,7 +1136,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res EditMessageR
 	}
 }
 
-func decodeEditMessageTextResponse(resp *http.Response) (res EditMessageTextRes, err error) {
+func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res EditMessageTextRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1190,7 +1190,7 @@ func decodeEditMessageTextResponse(resp *http.Response) (res EditMessageTextRes,
 	}
 }
 
-func decodeExportChatInviteLinkResponse(resp *http.Response) (res ExportChatInviteLinkRes, err error) {
+func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ExportChatInviteLinkRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1244,7 +1244,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response) (res ExportChatInvi
 	}
 }
 
-func decodeForwardMessageResponse(resp *http.Response) (res ForwardMessageRes, err error) {
+func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res ForwardMessageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1298,7 +1298,7 @@ func decodeForwardMessageResponse(resp *http.Response) (res ForwardMessageRes, e
 	}
 }
 
-func decodeGetChatResponse(resp *http.Response) (res GetChatRes, err error) {
+func decodeGetChatResponse(resp *http.Response, span trace.Span) (res GetChatRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1352,7 +1352,7 @@ func decodeGetChatResponse(resp *http.Response) (res GetChatRes, err error) {
 	}
 }
 
-func decodeGetChatAdministratorsResponse(resp *http.Response) (res GetChatAdministratorsRes, err error) {
+func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (res GetChatAdministratorsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1406,7 +1406,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response) (res GetChatAdmini
 	}
 }
 
-func decodeGetChatMemberResponse(resp *http.Response) (res GetChatMemberRes, err error) {
+func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res GetChatMemberRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1460,7 +1460,7 @@ func decodeGetChatMemberResponse(resp *http.Response) (res GetChatMemberRes, err
 	}
 }
 
-func decodeGetChatMemberCountResponse(resp *http.Response) (res GetChatMemberCountRes, err error) {
+func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res GetChatMemberCountRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1514,7 +1514,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response) (res GetChatMemberCou
 	}
 }
 
-func decodeGetFileResponse(resp *http.Response) (res GetFileRes, err error) {
+func decodeGetFileResponse(resp *http.Response, span trace.Span) (res GetFileRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1568,7 +1568,7 @@ func decodeGetFileResponse(resp *http.Response) (res GetFileRes, err error) {
 	}
 }
 
-func decodeGetGameHighScoresResponse(resp *http.Response) (res GetGameHighScoresRes, err error) {
+func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res GetGameHighScoresRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1622,7 +1622,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response) (res GetGameHighScores
 	}
 }
 
-func decodeGetMeResponse(resp *http.Response) (res GetMeRes, err error) {
+func decodeGetMeResponse(resp *http.Response, span trace.Span) (res GetMeRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1676,7 +1676,7 @@ func decodeGetMeResponse(resp *http.Response) (res GetMeRes, err error) {
 	}
 }
 
-func decodeGetMyCommandsResponse(resp *http.Response) (res GetMyCommandsRes, err error) {
+func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res GetMyCommandsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1730,7 +1730,7 @@ func decodeGetMyCommandsResponse(resp *http.Response) (res GetMyCommandsRes, err
 	}
 }
 
-func decodeGetStickerSetResponse(resp *http.Response) (res GetStickerSetRes, err error) {
+func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res GetStickerSetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1784,7 +1784,7 @@ func decodeGetStickerSetResponse(resp *http.Response) (res GetStickerSetRes, err
 	}
 }
 
-func decodeGetUpdatesResponse(resp *http.Response) (res GetUpdatesRes, err error) {
+func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res GetUpdatesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1838,7 +1838,7 @@ func decodeGetUpdatesResponse(resp *http.Response) (res GetUpdatesRes, err error
 	}
 }
 
-func decodeGetUserProfilePhotosResponse(resp *http.Response) (res GetUserProfilePhotosRes, err error) {
+func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (res GetUserProfilePhotosRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1892,7 +1892,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response) (res GetUserProfile
 	}
 }
 
-func decodeLeaveChatResponse(resp *http.Response) (res LeaveChatRes, err error) {
+func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res LeaveChatRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1946,7 +1946,7 @@ func decodeLeaveChatResponse(resp *http.Response) (res LeaveChatRes, err error) 
 	}
 }
 
-func decodePinChatMessageResponse(resp *http.Response) (res PinChatMessageRes, err error) {
+func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res PinChatMessageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2000,7 +2000,7 @@ func decodePinChatMessageResponse(resp *http.Response) (res PinChatMessageRes, e
 	}
 }
 
-func decodePromoteChatMemberResponse(resp *http.Response) (res PromoteChatMemberRes, err error) {
+func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res PromoteChatMemberRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2054,7 +2054,7 @@ func decodePromoteChatMemberResponse(resp *http.Response) (res PromoteChatMember
 	}
 }
 
-func decodeRestrictChatMemberResponse(resp *http.Response) (res RestrictChatMemberRes, err error) {
+func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res RestrictChatMemberRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2108,7 +2108,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response) (res RestrictChatMemb
 	}
 }
 
-func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res RevokeChatInviteLinkRes, err error) {
+func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (res RevokeChatInviteLinkRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2162,7 +2162,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res RevokeChatInvi
 	}
 }
 
-func decodeSendAnimationResponse(resp *http.Response) (res SendAnimationRes, err error) {
+func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res SendAnimationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2216,7 +2216,7 @@ func decodeSendAnimationResponse(resp *http.Response) (res SendAnimationRes, err
 	}
 }
 
-func decodeSendAudioResponse(resp *http.Response) (res SendAudioRes, err error) {
+func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res SendAudioRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2270,7 +2270,7 @@ func decodeSendAudioResponse(resp *http.Response) (res SendAudioRes, err error) 
 	}
 }
 
-func decodeSendChatActionResponse(resp *http.Response) (res SendChatActionRes, err error) {
+func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res SendChatActionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2324,7 +2324,7 @@ func decodeSendChatActionResponse(resp *http.Response) (res SendChatActionRes, e
 	}
 }
 
-func decodeSendContactResponse(resp *http.Response) (res SendContactRes, err error) {
+func decodeSendContactResponse(resp *http.Response, span trace.Span) (res SendContactRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2378,7 +2378,7 @@ func decodeSendContactResponse(resp *http.Response) (res SendContactRes, err err
 	}
 }
 
-func decodeSendDiceResponse(resp *http.Response) (res SendDiceRes, err error) {
+func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res SendDiceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2432,7 +2432,7 @@ func decodeSendDiceResponse(resp *http.Response) (res SendDiceRes, err error) {
 	}
 }
 
-func decodeSendDocumentResponse(resp *http.Response) (res SendDocumentRes, err error) {
+func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res SendDocumentRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2486,7 +2486,7 @@ func decodeSendDocumentResponse(resp *http.Response) (res SendDocumentRes, err e
 	}
 }
 
-func decodeSendGameResponse(resp *http.Response) (res SendGameRes, err error) {
+func decodeSendGameResponse(resp *http.Response, span trace.Span) (res SendGameRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2540,7 +2540,7 @@ func decodeSendGameResponse(resp *http.Response) (res SendGameRes, err error) {
 	}
 }
 
-func decodeSendInvoiceResponse(resp *http.Response) (res SendInvoiceRes, err error) {
+func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res SendInvoiceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2594,7 +2594,7 @@ func decodeSendInvoiceResponse(resp *http.Response) (res SendInvoiceRes, err err
 	}
 }
 
-func decodeSendLocationResponse(resp *http.Response) (res SendLocationRes, err error) {
+func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res SendLocationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2648,7 +2648,7 @@ func decodeSendLocationResponse(resp *http.Response) (res SendLocationRes, err e
 	}
 }
 
-func decodeSendMediaGroupResponse(resp *http.Response) (res SendMediaGroupRes, err error) {
+func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res SendMediaGroupRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2702,7 +2702,7 @@ func decodeSendMediaGroupResponse(resp *http.Response) (res SendMediaGroupRes, e
 	}
 }
 
-func decodeSendMessageResponse(resp *http.Response) (res SendMessageRes, err error) {
+func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res SendMessageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2756,7 +2756,7 @@ func decodeSendMessageResponse(resp *http.Response) (res SendMessageRes, err err
 	}
 }
 
-func decodeSendPhotoResponse(resp *http.Response) (res SendPhotoRes, err error) {
+func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res SendPhotoRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2810,7 +2810,7 @@ func decodeSendPhotoResponse(resp *http.Response) (res SendPhotoRes, err error) 
 	}
 }
 
-func decodeSendPollResponse(resp *http.Response) (res SendPollRes, err error) {
+func decodeSendPollResponse(resp *http.Response, span trace.Span) (res SendPollRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2864,7 +2864,7 @@ func decodeSendPollResponse(resp *http.Response) (res SendPollRes, err error) {
 	}
 }
 
-func decodeSendStickerResponse(resp *http.Response) (res SendStickerRes, err error) {
+func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res SendStickerRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2918,7 +2918,7 @@ func decodeSendStickerResponse(resp *http.Response) (res SendStickerRes, err err
 	}
 }
 
-func decodeSendVenueResponse(resp *http.Response) (res SendVenueRes, err error) {
+func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res SendVenueRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2972,7 +2972,7 @@ func decodeSendVenueResponse(resp *http.Response) (res SendVenueRes, err error) 
 	}
 }
 
-func decodeSendVideoResponse(resp *http.Response) (res SendVideoRes, err error) {
+func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res SendVideoRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3026,7 +3026,7 @@ func decodeSendVideoResponse(resp *http.Response) (res SendVideoRes, err error) 
 	}
 }
 
-func decodeSendVideoNoteResponse(resp *http.Response) (res SendVideoNoteRes, err error) {
+func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res SendVideoNoteRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3080,7 +3080,7 @@ func decodeSendVideoNoteResponse(resp *http.Response) (res SendVideoNoteRes, err
 	}
 }
 
-func decodeSendVoiceResponse(resp *http.Response) (res SendVoiceRes, err error) {
+func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res SendVoiceRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3134,7 +3134,7 @@ func decodeSendVoiceResponse(resp *http.Response) (res SendVoiceRes, err error) 
 	}
 }
 
-func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res SetChatAdministratorCustomTitleRes, err error) {
+func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span trace.Span) (res SetChatAdministratorCustomTitleRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3188,7 +3188,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res Set
 	}
 }
 
-func decodeSetChatDescriptionResponse(resp *http.Response) (res SetChatDescriptionRes, err error) {
+func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res SetChatDescriptionRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3242,7 +3242,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response) (res SetChatDescripti
 	}
 }
 
-func decodeSetChatPermissionsResponse(resp *http.Response) (res SetChatPermissionsRes, err error) {
+func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res SetChatPermissionsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3296,7 +3296,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response) (res SetChatPermissio
 	}
 }
 
-func decodeSetChatPhotoResponse(resp *http.Response) (res SetChatPhotoRes, err error) {
+func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res SetChatPhotoRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3350,7 +3350,7 @@ func decodeSetChatPhotoResponse(resp *http.Response) (res SetChatPhotoRes, err e
 	}
 }
 
-func decodeSetChatStickerSetResponse(resp *http.Response) (res SetChatStickerSetRes, err error) {
+func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res SetChatStickerSetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3404,7 +3404,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response) (res SetChatStickerSet
 	}
 }
 
-func decodeSetChatTitleResponse(resp *http.Response) (res SetChatTitleRes, err error) {
+func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res SetChatTitleRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3458,7 +3458,7 @@ func decodeSetChatTitleResponse(resp *http.Response) (res SetChatTitleRes, err e
 	}
 }
 
-func decodeSetGameScoreResponse(resp *http.Response) (res SetGameScoreRes, err error) {
+func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res SetGameScoreRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3512,7 +3512,7 @@ func decodeSetGameScoreResponse(resp *http.Response) (res SetGameScoreRes, err e
 	}
 }
 
-func decodeSetMyCommandsResponse(resp *http.Response) (res SetMyCommandsRes, err error) {
+func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res SetMyCommandsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3566,7 +3566,7 @@ func decodeSetMyCommandsResponse(resp *http.Response) (res SetMyCommandsRes, err
 	}
 }
 
-func decodeSetPassportDataErrorsResponse(resp *http.Response) (res SetPassportDataErrorsRes, err error) {
+func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (res SetPassportDataErrorsRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3620,7 +3620,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response) (res SetPassportDa
 	}
 }
 
-func decodeSetStickerPositionInSetResponse(resp *http.Response) (res SetStickerPositionInSetRes, err error) {
+func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span) (res SetStickerPositionInSetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3674,7 +3674,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response) (res SetStickerP
 	}
 }
 
-func decodeSetStickerSetThumbResponse(resp *http.Response) (res SetStickerSetThumbRes, err error) {
+func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res SetStickerSetThumbRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3728,7 +3728,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response) (res SetStickerSetThu
 	}
 }
 
-func decodeSetWebhookResponse(resp *http.Response) (res SetWebhookRes, err error) {
+func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res SetWebhookRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3782,7 +3782,7 @@ func decodeSetWebhookResponse(resp *http.Response) (res SetWebhookRes, err error
 	}
 }
 
-func decodeStopMessageLiveLocationResponse(resp *http.Response) (res StopMessageLiveLocationRes, err error) {
+func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res StopMessageLiveLocationRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3836,7 +3836,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response) (res StopMessage
 	}
 }
 
-func decodeStopPollResponse(resp *http.Response) (res StopPollRes, err error) {
+func decodeStopPollResponse(resp *http.Response, span trace.Span) (res StopPollRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3890,7 +3890,7 @@ func decodeStopPollResponse(resp *http.Response) (res StopPollRes, err error) {
 	}
 }
 
-func decodeUnbanChatMemberResponse(resp *http.Response) (res UnbanChatMemberRes, err error) {
+func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res UnbanChatMemberRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3944,7 +3944,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response) (res UnbanChatMemberRes,
 	}
 }
 
-func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res UnpinAllChatMessagesRes, err error) {
+func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (res UnpinAllChatMessagesRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3998,7 +3998,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res UnpinAllChatMe
 	}
 }
 
-func decodeUnpinChatMessageResponse(resp *http.Response) (res UnpinChatMessageRes, err error) {
+func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res UnpinChatMessageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4052,7 +4052,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response) (res UnpinChatMessageRe
 	}
 }
 
-func decodeUploadStickerFileResponse(resp *http.Response) (res UploadStickerFileRes, err error) {
+func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res UploadStickerFileRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {

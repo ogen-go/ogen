@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
+func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -92,7 +92,7 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
 	}
 }
 
-func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImageRes, err error) {
+func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res GetPageCoverImageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -114,7 +114,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImage
 	}
 }
 
-func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, err error) {
+func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPageImageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -136,7 +136,7 @@ func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, err e
 	}
 }
 
-func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbnailImageRes, err error) {
+func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (res GetPageThumbnailImageRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -158,7 +158,7 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbn
 	}
 }
 
-func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
+func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -194,7 +194,7 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
 	}
 }
 
-func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, err error) {
+func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res SearchByTagIDRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {

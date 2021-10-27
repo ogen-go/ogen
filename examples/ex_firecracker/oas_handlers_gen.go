@@ -56,537 +56,739 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func NewCreateSnapshotHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewCreateSnapshotHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeCreateSnapshotRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `CreateSnapshot`,
+			trace.WithAttributes(otelogen.OperationID(`createSnapshot`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodeCreateSnapshotRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.CreateSnapshot(r.Context(), request)
+		response, err := s.CreateSnapshot(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeCreateSnapshotResponse(response, w); err != nil {
-			_ = err
+		if err := encodeCreateSnapshotResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewCreateSyncActionHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewCreateSyncActionHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeCreateSyncActionRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `CreateSyncAction`,
+			trace.WithAttributes(otelogen.OperationID(`createSyncAction`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodeCreateSyncActionRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.CreateSyncAction(r.Context(), request)
+		response, err := s.CreateSyncAction(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeCreateSyncActionResponse(response, w); err != nil {
-			_ = err
+		if err := encodeCreateSyncActionResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewDescribeBalloonConfigHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewDescribeBalloonConfigHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `DescribeBalloonConfig`,
+			trace.WithAttributes(otelogen.OperationID(`describeBalloonConfig`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.DescribeBalloonConfig(r.Context())
+		response, err := s.DescribeBalloonConfig(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeDescribeBalloonConfigResponse(response, w); err != nil {
-			_ = err
+		if err := encodeDescribeBalloonConfigResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewDescribeBalloonStatsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewDescribeBalloonStatsHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `DescribeBalloonStats`,
+			trace.WithAttributes(otelogen.OperationID(`describeBalloonStats`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.DescribeBalloonStats(r.Context())
+		response, err := s.DescribeBalloonStats(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeDescribeBalloonStatsResponse(response, w); err != nil {
-			_ = err
+		if err := encodeDescribeBalloonStatsResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewDescribeInstanceHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewDescribeInstanceHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `DescribeInstance`,
+			trace.WithAttributes(otelogen.OperationID(`describeInstance`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.DescribeInstance(r.Context())
+		response, err := s.DescribeInstance(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeDescribeInstanceResponse(response, w); err != nil {
-			_ = err
+		if err := encodeDescribeInstanceResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewGetExportVmConfigHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewGetExportVmConfigHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetExportVmConfig`,
+			trace.WithAttributes(otelogen.OperationID(`getExportVmConfig`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.GetExportVmConfig(r.Context())
+		response, err := s.GetExportVmConfig(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeGetExportVmConfigResponse(response, w); err != nil {
-			_ = err
+		if err := encodeGetExportVmConfigResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewGetMachineConfigurationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewGetMachineConfigurationHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetMachineConfiguration`,
+			trace.WithAttributes(otelogen.OperationID(`getMachineConfiguration`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.GetMachineConfiguration(r.Context())
+		response, err := s.GetMachineConfiguration(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeGetMachineConfigurationResponse(response, w); err != nil {
-			_ = err
+		if err := encodeGetMachineConfigurationResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewLoadSnapshotHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewLoadSnapshotHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeLoadSnapshotRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `LoadSnapshot`,
+			trace.WithAttributes(otelogen.OperationID(`loadSnapshot`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodeLoadSnapshotRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.LoadSnapshot(r.Context(), request)
+		response, err := s.LoadSnapshot(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeLoadSnapshotResponse(response, w); err != nil {
-			_ = err
+		if err := encodeLoadSnapshotResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewMmdsConfigPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewMmdsConfigPutHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeMmdsConfigPutRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `MmdsConfigPut`,
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodeMmdsConfigPutRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.MmdsConfigPut(r.Context(), request)
+		response, err := s.MmdsConfigPut(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeMmdsConfigPutResponse(response, w); err != nil {
-			_ = err
+		if err := encodeMmdsConfigPutResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewMmdsGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewMmdsGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `MmdsGet`,
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.MmdsGet(r.Context())
+		response, err := s.MmdsGet(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeMmdsGetResponse(response, w); err != nil {
-			_ = err
+		if err := encodeMmdsGetResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewMmdsPatchHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewMmdsPatchHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeMmdsPatchRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `MmdsPatch`,
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodeMmdsPatchRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.MmdsPatch(r.Context(), request)
+		response, err := s.MmdsPatch(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeMmdsPatchResponse(response, w); err != nil {
-			_ = err
+		if err := encodeMmdsPatchResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewMmdsPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewMmdsPutHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeMmdsPutRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `MmdsPut`,
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodeMmdsPutRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.MmdsPut(r.Context(), request)
+		response, err := s.MmdsPut(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeMmdsPutResponse(response, w); err != nil {
-			_ = err
+		if err := encodeMmdsPutResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPatchBalloonHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPatchBalloonHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePatchBalloonRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PatchBalloon`,
+			trace.WithAttributes(otelogen.OperationID(`patchBalloon`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePatchBalloonRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PatchBalloon(r.Context(), request)
+		response, err := s.PatchBalloon(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePatchBalloonResponse(response, w); err != nil {
-			_ = err
+		if err := encodePatchBalloonResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPatchBalloonStatsIntervalHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPatchBalloonStatsIntervalHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePatchBalloonStatsIntervalRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PatchBalloonStatsInterval`,
+			trace.WithAttributes(otelogen.OperationID(`patchBalloonStatsInterval`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePatchBalloonStatsIntervalRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PatchBalloonStatsInterval(r.Context(), request)
+		response, err := s.PatchBalloonStatsInterval(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePatchBalloonStatsIntervalResponse(response, w); err != nil {
-			_ = err
+		if err := encodePatchBalloonStatsIntervalResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPatchGuestDriveByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPatchGuestDriveByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PatchGuestDriveByID`,
+			trace.WithAttributes(otelogen.OperationID(`patchGuestDriveByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePatchGuestDriveByIDParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
-		request, err := decodePatchGuestDriveByIDRequest(r)
+		request, err := decodePatchGuestDriveByIDRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PatchGuestDriveByID(r.Context(), request, params)
+		response, err := s.PatchGuestDriveByID(ctx, request, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePatchGuestDriveByIDResponse(response, w); err != nil {
-			_ = err
+		if err := encodePatchGuestDriveByIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPatchGuestNetworkInterfaceByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPatchGuestNetworkInterfaceByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PatchGuestNetworkInterfaceByID`,
+			trace.WithAttributes(otelogen.OperationID(`patchGuestNetworkInterfaceByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePatchGuestNetworkInterfaceByIDParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
-		request, err := decodePatchGuestNetworkInterfaceByIDRequest(r)
+		request, err := decodePatchGuestNetworkInterfaceByIDRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PatchGuestNetworkInterfaceByID(r.Context(), request, params)
+		response, err := s.PatchGuestNetworkInterfaceByID(ctx, request, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePatchGuestNetworkInterfaceByIDResponse(response, w); err != nil {
-			_ = err
+		if err := encodePatchGuestNetworkInterfaceByIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPatchMachineConfigurationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPatchMachineConfigurationHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePatchMachineConfigurationRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PatchMachineConfiguration`,
+			trace.WithAttributes(otelogen.OperationID(`patchMachineConfiguration`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePatchMachineConfigurationRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PatchMachineConfiguration(r.Context(), request)
+		response, err := s.PatchMachineConfiguration(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePatchMachineConfigurationResponse(response, w); err != nil {
-			_ = err
+		if err := encodePatchMachineConfigurationResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPatchVmHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPatchVmHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePatchVmRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PatchVm`,
+			trace.WithAttributes(otelogen.OperationID(`patchVm`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePatchVmRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PatchVm(r.Context(), request)
+		response, err := s.PatchVm(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePatchVmResponse(response, w); err != nil {
-			_ = err
+		if err := encodePatchVmResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutBalloonHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutBalloonHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePutBalloonRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutBalloon`,
+			trace.WithAttributes(otelogen.OperationID(`putBalloon`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePutBalloonRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutBalloon(r.Context(), request)
+		response, err := s.PutBalloon(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutBalloonResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutBalloonResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutGuestBootSourceHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutGuestBootSourceHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePutGuestBootSourceRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutGuestBootSource`,
+			trace.WithAttributes(otelogen.OperationID(`putGuestBootSource`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePutGuestBootSourceRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutGuestBootSource(r.Context(), request)
+		response, err := s.PutGuestBootSource(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutGuestBootSourceResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutGuestBootSourceResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutGuestDriveByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutGuestDriveByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutGuestDriveByID`,
+			trace.WithAttributes(otelogen.OperationID(`putGuestDriveByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePutGuestDriveByIDParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
-		request, err := decodePutGuestDriveByIDRequest(r)
+		request, err := decodePutGuestDriveByIDRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutGuestDriveByID(r.Context(), request, params)
+		response, err := s.PutGuestDriveByID(ctx, request, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutGuestDriveByIDResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutGuestDriveByIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutGuestNetworkInterfaceByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutGuestNetworkInterfaceByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutGuestNetworkInterfaceByID`,
+			trace.WithAttributes(otelogen.OperationID(`putGuestNetworkInterfaceByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePutGuestNetworkInterfaceByIDParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
-		request, err := decodePutGuestNetworkInterfaceByIDRequest(r)
+		request, err := decodePutGuestNetworkInterfaceByIDRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutGuestNetworkInterfaceByID(r.Context(), request, params)
+		response, err := s.PutGuestNetworkInterfaceByID(ctx, request, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutGuestNetworkInterfaceByIDResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutGuestNetworkInterfaceByIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutGuestVsockHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutGuestVsockHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePutGuestVsockRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutGuestVsock`,
+			trace.WithAttributes(otelogen.OperationID(`putGuestVsock`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePutGuestVsockRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutGuestVsock(r.Context(), request)
+		response, err := s.PutGuestVsock(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutGuestVsockResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutGuestVsockResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutLoggerHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutLoggerHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePutLoggerRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutLogger`,
+			trace.WithAttributes(otelogen.OperationID(`putLogger`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePutLoggerRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutLogger(r.Context(), request)
+		response, err := s.PutLogger(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutLoggerResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutLoggerResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutMachineConfigurationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutMachineConfigurationHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePutMachineConfigurationRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutMachineConfiguration`,
+			trace.WithAttributes(otelogen.OperationID(`putMachineConfiguration`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePutMachineConfigurationRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutMachineConfiguration(r.Context(), request)
+		response, err := s.PutMachineConfiguration(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutMachineConfigurationResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutMachineConfigurationResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPutMetricsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPutMetricsHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePutMetricsRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PutMetrics`,
+			trace.WithAttributes(otelogen.OperationID(`putMetrics`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePutMetricsRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PutMetrics(r.Context(), request)
+		response, err := s.PutMetrics(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePutMetricsResponse(response, w); err != nil {
-			_ = err
+		if err := encodePutMetricsResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}

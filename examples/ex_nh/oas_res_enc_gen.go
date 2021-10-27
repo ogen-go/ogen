@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter) error {
+func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Book:
 		w.Header().Set("Content-Type", "application/json")
@@ -79,7 +79,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter) error {
 	}
 }
 
-func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter) error {
+func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageCoverImageOKImage:
 		w.Header().Set("Content-Type", "image/*")
@@ -93,7 +93,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 	}
 }
 
-func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter) error {
+func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageImageOKImage:
 		w.Header().Set("Content-Type", "image/*")
@@ -107,7 +107,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter)
 	}
 }
 
-func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter) error {
+func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageThumbnailImageOKImage:
 		w.Header().Set("Content-Type", "image/*")
@@ -121,7 +121,7 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 	}
 }
 
-func encodeSearchResponse(response SearchRes, w http.ResponseWriter) error {
+func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
@@ -143,7 +143,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter) error {
 	}
 }
 
-func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWriter) error {
+func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchByTagIDOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")

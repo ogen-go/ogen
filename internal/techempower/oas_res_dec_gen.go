@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
+func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -90,7 +90,7 @@ func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
 	}
 }
 
-func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
+func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -124,7 +124,7 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 	}
 }
 
-func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
+func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -158,7 +158,7 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 	}
 }
 
-func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
+func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -192,7 +192,7 @@ func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
 	}
 }
 
-func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, err error) {
+func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {

@@ -56,206 +56,282 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewFoobarGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `FoobarGet`,
+			trace.WithAttributes(otelogen.OperationID(`foobarGet`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeFoobarGetParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.FoobarGet(r.Context(), params)
+		response, err := s.FoobarGet(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeFoobarGetResponse(response, w); err != nil {
-			_ = err
+		if err := encodeFoobarGetResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewFoobarPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeFoobarPostRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `FoobarPost`,
+			trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodeFoobarPostRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.FoobarPost(r.Context(), request)
+		response, err := s.FoobarPost(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeFoobarPostResponse(response, w); err != nil {
-			_ = err
+		if err := encodeFoobarPostResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewFoobarPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewFoobarPutHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `FoobarPut`,
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.FoobarPut(r.Context())
+		response, err := s.FoobarPut(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeFoobarPutResponse(response, w); err != nil {
-			_ = err
+		if err := encodeFoobarPutResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetCreateHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePetCreateRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetCreate`,
+			trace.WithAttributes(otelogen.OperationID(`petCreate`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePetCreateRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PetCreate(r.Context(), request)
+		response, err := s.PetCreate(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePetCreateResponse(response, w); err != nil {
-			_ = err
+		if err := encodePetCreateResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPetFriendsNamesByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetFriendsNamesByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetFriendsNamesByID`,
+			trace.WithAttributes(otelogen.OperationID(`petFriendsNamesByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePetFriendsNamesByIDParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PetFriendsNamesByID(r.Context(), params)
+		response, err := s.PetFriendsNamesByID(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePetFriendsNamesByIDResponse(response, w); err != nil {
-			_ = err
+		if err := encodePetFriendsNamesByIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetGetHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetGet`,
+			trace.WithAttributes(otelogen.OperationID(`petGet`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePetGetParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PetGet(r.Context(), params)
+		response, err := s.PetGet(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePetGetResponse(response, w); err != nil {
-			_ = err
+		if err := encodePetGetResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetGetByNameHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetGetByName`,
+			trace.WithAttributes(otelogen.OperationID(`petGetByName`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePetGetByNameParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PetGetByName(r.Context(), params)
+		response, err := s.PetGetByName(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePetGetByNameResponse(response, w); err != nil {
-			_ = err
+		if err := encodePetGetByNameResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPetNameByIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetNameByIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetNameByID`,
+			trace.WithAttributes(otelogen.OperationID(`petNameByID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodePetNameByIDParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PetNameByID(r.Context(), params)
+		response, err := s.PetNameByID(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePetNameByIDResponse(response, w); err != nil {
-			_ = err
+		if err := encodePetNameByIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPetUpdateNameAliasPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetUpdateNameAliasPostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePetUpdateNameAliasPostRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetUpdateNameAliasPost`,
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePetUpdateNameAliasPostRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PetUpdateNameAliasPost(r.Context(), request)
+		response, err := s.PetUpdateNameAliasPost(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePetUpdateNameAliasPostResponse(response, w); err != nil {
-			_ = err
+		if err := encodePetUpdateNameAliasPostResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewPetUpdateNamePostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetUpdateNamePostHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodePetUpdateNamePostRequest(r)
+		ctx, span := cfg.Tracer.Start(r.Context(), `PetUpdateNamePost`,
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
+		request, err := decodePetUpdateNamePostRequest(r, span)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.PetUpdateNamePost(r.Context(), request)
+		response, err := s.PetUpdateNamePost(ctx, request)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodePetUpdateNamePostResponse(response, w); err != nil {
-			_ = err
+		if err := encodePetUpdateNamePostResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}

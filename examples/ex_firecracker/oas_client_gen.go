@@ -134,7 +134,13 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 		trace.WithAttributes(otelogen.OperationID(`createSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateSnapshotRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateSnapshotRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -150,18 +156,15 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateSnapshotResponse(resp)
+	result, err := decodeCreateSnapshotResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -170,7 +173,13 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 		trace.WithAttributes(otelogen.OperationID(`createSyncAction`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateSyncActionRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateSyncActionRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -186,18 +195,15 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateSyncActionResponse(resp)
+	result, err := decodeCreateSyncActionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -206,6 +212,12 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonConfig`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
@@ -214,18 +226,15 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDescribeBalloonConfigResponse(resp)
+	result, err := decodeDescribeBalloonConfigResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -234,6 +243,12 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 		trace.WithAttributes(otelogen.OperationID(`describeBalloonStats`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
 
@@ -242,18 +257,15 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDescribeBalloonStatsResponse(resp)
+	result, err := decodeDescribeBalloonStatsResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -262,6 +274,12 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 		trace.WithAttributes(otelogen.OperationID(`describeInstance`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/"
 
@@ -270,18 +288,15 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDescribeInstanceResponse(resp)
+	result, err := decodeDescribeInstanceResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -290,6 +305,12 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 		trace.WithAttributes(otelogen.OperationID(`getExportVmConfig`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm/config"
 
@@ -298,18 +319,15 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetExportVmConfigResponse(resp)
+	result, err := decodeGetExportVmConfigResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -318,6 +336,12 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 		trace.WithAttributes(otelogen.OperationID(`getMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
@@ -326,18 +350,15 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetMachineConfigurationResponse(resp)
+	result, err := decodeGetMachineConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -346,7 +367,13 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 		trace.WithAttributes(otelogen.OperationID(`loadSnapshot`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeLoadSnapshotRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeLoadSnapshotRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -362,18 +389,15 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeLoadSnapshotResponse(resp)
+	result, err := decodeLoadSnapshotResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -381,7 +405,13 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsConfigPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeMmdsConfigPutRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeMmdsConfigPutRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -397,18 +427,15 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeMmdsConfigPutResponse(resp)
+	result, err := decodeMmdsConfigPutResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -416,6 +443,12 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsGet`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
@@ -424,18 +457,15 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeMmdsGetResponse(resp)
+	result, err := decodeMmdsGetResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -443,7 +473,13 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPatch`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeMmdsPatchRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeMmdsPatchRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -459,18 +495,15 @@ func (c *Client) MmdsPatch(ctx context.Context, req MmdsPatchReq) (res MmdsPatch
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeMmdsPatchResponse(resp)
+	result, err := decodeMmdsPatchResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -478,7 +511,13 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 	ctx, span := c.cfg.Tracer.Start(ctx, `MmdsPut`,
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeMmdsPutRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeMmdsPutRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -494,18 +533,15 @@ func (c *Client) MmdsPut(ctx context.Context, req MmdsPutReq) (res MmdsPutRes, e
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeMmdsPutResponse(resp)
+	result, err := decodeMmdsPutResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -514,7 +550,13 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 		trace.WithAttributes(otelogen.OperationID(`patchBalloon`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePatchBalloonRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePatchBalloonRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -530,18 +572,15 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePatchBalloonResponse(resp)
+	result, err := decodePatchBalloonResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -550,7 +589,13 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 		trace.WithAttributes(otelogen.OperationID(`patchBalloonStatsInterval`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePatchBalloonStatsIntervalRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePatchBalloonStatsIntervalRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -566,18 +611,15 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePatchBalloonStatsIntervalResponse(resp)
+	result, err := decodePatchBalloonStatsIntervalResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -586,7 +628,13 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 		trace.WithAttributes(otelogen.OperationID(`patchGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePatchGuestDriveByIDRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePatchGuestDriveByIDRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -611,18 +659,15 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePatchGuestDriveByIDResponse(resp)
+	result, err := decodePatchGuestDriveByIDResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -631,7 +676,13 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 		trace.WithAttributes(otelogen.OperationID(`patchGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePatchGuestNetworkInterfaceByIDRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -656,18 +707,15 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePatchGuestNetworkInterfaceByIDResponse(resp)
+	result, err := decodePatchGuestNetworkInterfaceByIDResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -676,7 +724,13 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 		trace.WithAttributes(otelogen.OperationID(`patchMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePatchMachineConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePatchMachineConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -692,18 +746,15 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req MachineConfi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePatchMachineConfigurationResponse(resp)
+	result, err := decodePatchMachineConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -712,7 +763,13 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 		trace.WithAttributes(otelogen.OperationID(`patchVm`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePatchVmRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePatchVmRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -728,18 +785,15 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmRes, err error
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePatchVmResponse(resp)
+	result, err := decodePatchVmResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -748,7 +802,13 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 		trace.WithAttributes(otelogen.OperationID(`putBalloon`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutBalloonRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutBalloonRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -764,18 +824,15 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutBalloonResponse(resp)
+	result, err := decodePutBalloonResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -784,7 +841,13 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 		trace.WithAttributes(otelogen.OperationID(`putGuestBootSource`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutGuestBootSourceRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutGuestBootSourceRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -800,18 +863,15 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutGuestBootSourceResponse(resp)
+	result, err := decodePutGuestBootSourceResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -820,7 +880,13 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 		trace.WithAttributes(otelogen.OperationID(`putGuestDriveByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutGuestDriveByIDRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutGuestDriveByIDRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -845,18 +911,15 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutGuestDriveByIDResponse(resp)
+	result, err := decodePutGuestDriveByIDResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -865,7 +928,13 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 		trace.WithAttributes(otelogen.OperationID(`putGuestNetworkInterfaceByID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutGuestNetworkInterfaceByIDRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -890,18 +959,15 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutGuestNetworkInterfaceByIDResponse(resp)
+	result, err := decodePutGuestNetworkInterfaceByIDResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -910,7 +976,13 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 		trace.WithAttributes(otelogen.OperationID(`putGuestVsock`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutGuestVsockRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutGuestVsockRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -926,18 +998,15 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutGuestVsockResponse(resp)
+	result, err := decodePutGuestVsockResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -946,7 +1015,13 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 		trace.WithAttributes(otelogen.OperationID(`putLogger`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutLoggerRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutLoggerRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -962,18 +1037,15 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRes, e
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutLoggerResponse(resp)
+	result, err := decodePutLoggerResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -982,7 +1054,13 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 		trace.WithAttributes(otelogen.OperationID(`putMachineConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutMachineConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutMachineConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -998,18 +1076,15 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req MachineConfigu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutMachineConfigurationResponse(resp)
+	result, err := decodePutMachineConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1018,7 +1093,13 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 		trace.WithAttributes(otelogen.OperationID(`putMetrics`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodePutMetricsRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodePutMetricsRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1034,17 +1115,14 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodePutMetricsResponse(resp)
+	result, err := decodePutMetricsResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }

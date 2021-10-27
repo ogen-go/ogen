@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) {
+func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -92,7 +92,7 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) 
 	}
 }
 
-func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error) {
+func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarPostRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -148,7 +148,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 	}
 }
 
-func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDefStatusCode, err error) {
+func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDefStatusCode, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -161,7 +161,7 @@ func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDefStatusCode, e
 	}
 }
 
-func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
+func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -195,7 +195,7 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 	}
 }
 
-func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err error) {
+func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (res []string, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -243,7 +243,7 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 	}
 }
 
-func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
+func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -297,7 +297,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 	}
 }
 
-func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
+func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -331,7 +331,7 @@ func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 	}
 }
 
-func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
+func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -363,7 +363,7 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 	}
 }
 
-func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDefStatusCode, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -376,7 +376,7 @@ func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res PetUpdateNam
 	}
 }
 
-func decodePetUpdateNamePostResponse(resp *http.Response) (res PetUpdateNamePostDefStatusCode, err error) {
+func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDefStatusCode, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, resp.Body); err != nil {

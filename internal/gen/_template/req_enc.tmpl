@@ -19,7 +19,7 @@ if err := j.Flush(); err != nil {
 {{/* Range over all methods */}}
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func encode{{ $op.Name }}Request(req {{ $op.Request.Type.Go }}) (data *bytes.Buffer, contentType string, err error) {
+func encode{{ $op.Name }}Request(req {{ $op.Request.Type.Go }}, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
     {{- $requestsLength := len $op.Request.Contents }}
     {{- if eq $requestsLength 1 }}
     {{- range $contentType, $type := $op.Request.Contents }}

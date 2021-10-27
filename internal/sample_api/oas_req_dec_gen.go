@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeFoobarPostRequest(r *http.Request) (req Pet, err error) {
+func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req Pet, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -91,7 +91,7 @@ func decodeFoobarPostRequest(r *http.Request) (req Pet, err error) {
 	}
 }
 
-func decodePetCreateRequest(r *http.Request) (req PetCreateReq, err error) {
+func decodePetCreateRequest(r *http.Request, span trace.Span) (req PetCreateReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -130,7 +130,7 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateReq, err error) {
 	}
 }
 
-func decodePetUpdateNameAliasPostRequest(r *http.Request) (req PetName, err error) {
+func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req PetName, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -173,7 +173,7 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request) (req PetName, err erro
 	}
 }
 
-func decodePetUpdateNamePostRequest(r *http.Request) (req string, err error) {
+func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req string, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {

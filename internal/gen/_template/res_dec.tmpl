@@ -19,7 +19,7 @@ if err := func() error {
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
-func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Response.Type.Go }}, err error) {
+func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Response.Type.Go }}, err error) {
     buf := json.GetBuffer()
     defer json.PutBuffer(buf)
     if _, err := io.Copy(buf, resp.Body); err != nil {

@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error {
+func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -79,7 +79,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter) error
 	}
 }
 
-func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) error {
+func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -115,12 +115,12 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter) err
 	}
 }
 
-func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWriter) error {
+func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
 	return nil
 }
 
-func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
+func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -135,7 +135,7 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter) error {
+func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -157,7 +157,7 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter)
 	return nil
 }
 
-func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
+func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -190,7 +190,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter) error {
 	}
 }
 
-func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
+func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -205,7 +205,7 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
+func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	j := json.NewStream(w)
@@ -220,12 +220,12 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStatusCode, w http.ResponseWriter) error {
+func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
 	return nil
 }
 
-func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, w http.ResponseWriter) error {
+func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
 	return nil
 }

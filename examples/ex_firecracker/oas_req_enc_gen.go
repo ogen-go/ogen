@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func encodeCreateSnapshotRequest(req SnapshotCreateParams) (data *bytes.Buffer, contentType string, err error) {
+func encodeCreateSnapshotRequest(req SnapshotCreateParams, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -72,7 +72,7 @@ func encodeCreateSnapshotRequest(req SnapshotCreateParams) (data *bytes.Buffer, 
 	return buf, "application/json", nil
 }
 
-func encodeCreateSyncActionRequest(req InstanceActionInfo) (data *bytes.Buffer, contentType string, err error) {
+func encodeCreateSyncActionRequest(req InstanceActionInfo, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -88,7 +88,7 @@ func encodeCreateSyncActionRequest(req InstanceActionInfo) (data *bytes.Buffer, 
 	return buf, "application/json", nil
 }
 
-func encodeLoadSnapshotRequest(req SnapshotLoadParams) (data *bytes.Buffer, contentType string, err error) {
+func encodeLoadSnapshotRequest(req SnapshotLoadParams, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -104,7 +104,7 @@ func encodeLoadSnapshotRequest(req SnapshotLoadParams) (data *bytes.Buffer, cont
 	return buf, "application/json", nil
 }
 
-func encodeMmdsConfigPutRequest(req MmdsConfig) (data *bytes.Buffer, contentType string, err error) {
+func encodeMmdsConfigPutRequest(req MmdsConfig, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -120,7 +120,7 @@ func encodeMmdsConfigPutRequest(req MmdsConfig) (data *bytes.Buffer, contentType
 	return buf, "application/json", nil
 }
 
-func encodeMmdsPatchRequest(req MmdsPatchReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeMmdsPatchRequest(req MmdsPatchReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -136,7 +136,7 @@ func encodeMmdsPatchRequest(req MmdsPatchReq) (data *bytes.Buffer, contentType s
 	return buf, "application/json", nil
 }
 
-func encodeMmdsPutRequest(req MmdsPutReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeMmdsPutRequest(req MmdsPutReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -152,7 +152,7 @@ func encodeMmdsPutRequest(req MmdsPutReq) (data *bytes.Buffer, contentType strin
 	return buf, "application/json", nil
 }
 
-func encodePatchBalloonRequest(req BalloonUpdate) (data *bytes.Buffer, contentType string, err error) {
+func encodePatchBalloonRequest(req BalloonUpdate, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -168,7 +168,7 @@ func encodePatchBalloonRequest(req BalloonUpdate) (data *bytes.Buffer, contentTy
 	return buf, "application/json", nil
 }
 
-func encodePatchBalloonStatsIntervalRequest(req BalloonStatsUpdate) (data *bytes.Buffer, contentType string, err error) {
+func encodePatchBalloonStatsIntervalRequest(req BalloonStatsUpdate, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -184,7 +184,7 @@ func encodePatchBalloonStatsIntervalRequest(req BalloonStatsUpdate) (data *bytes
 	return buf, "application/json", nil
 }
 
-func encodePatchGuestDriveByIDRequest(req PartialDrive) (data *bytes.Buffer, contentType string, err error) {
+func encodePatchGuestDriveByIDRequest(req PartialDrive, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -200,7 +200,7 @@ func encodePatchGuestDriveByIDRequest(req PartialDrive) (data *bytes.Buffer, con
 	return buf, "application/json", nil
 }
 
-func encodePatchGuestNetworkInterfaceByIDRequest(req PartialNetworkInterface) (data *bytes.Buffer, contentType string, err error) {
+func encodePatchGuestNetworkInterfaceByIDRequest(req PartialNetworkInterface, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -216,7 +216,7 @@ func encodePatchGuestNetworkInterfaceByIDRequest(req PartialNetworkInterface) (d
 	return buf, "application/json", nil
 }
 
-func encodePatchMachineConfigurationRequest(req MachineConfiguration) (data *bytes.Buffer, contentType string, err error) {
+func encodePatchMachineConfigurationRequest(req MachineConfiguration, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -232,7 +232,7 @@ func encodePatchMachineConfigurationRequest(req MachineConfiguration) (data *byt
 	return buf, "application/json", nil
 }
 
-func encodePatchVmRequest(req VM) (data *bytes.Buffer, contentType string, err error) {
+func encodePatchVmRequest(req VM, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -248,7 +248,7 @@ func encodePatchVmRequest(req VM) (data *bytes.Buffer, contentType string, err e
 	return buf, "application/json", nil
 }
 
-func encodePutBalloonRequest(req Balloon) (data *bytes.Buffer, contentType string, err error) {
+func encodePutBalloonRequest(req Balloon, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -264,7 +264,7 @@ func encodePutBalloonRequest(req Balloon) (data *bytes.Buffer, contentType strin
 	return buf, "application/json", nil
 }
 
-func encodePutGuestBootSourceRequest(req BootSource) (data *bytes.Buffer, contentType string, err error) {
+func encodePutGuestBootSourceRequest(req BootSource, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -280,7 +280,7 @@ func encodePutGuestBootSourceRequest(req BootSource) (data *bytes.Buffer, conten
 	return buf, "application/json", nil
 }
 
-func encodePutGuestDriveByIDRequest(req Drive) (data *bytes.Buffer, contentType string, err error) {
+func encodePutGuestDriveByIDRequest(req Drive, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -296,7 +296,7 @@ func encodePutGuestDriveByIDRequest(req Drive) (data *bytes.Buffer, contentType 
 	return buf, "application/json", nil
 }
 
-func encodePutGuestNetworkInterfaceByIDRequest(req NetworkInterface) (data *bytes.Buffer, contentType string, err error) {
+func encodePutGuestNetworkInterfaceByIDRequest(req NetworkInterface, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -312,7 +312,7 @@ func encodePutGuestNetworkInterfaceByIDRequest(req NetworkInterface) (data *byte
 	return buf, "application/json", nil
 }
 
-func encodePutGuestVsockRequest(req Vsock) (data *bytes.Buffer, contentType string, err error) {
+func encodePutGuestVsockRequest(req Vsock, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -328,7 +328,7 @@ func encodePutGuestVsockRequest(req Vsock) (data *bytes.Buffer, contentType stri
 	return buf, "application/json", nil
 }
 
-func encodePutLoggerRequest(req Logger) (data *bytes.Buffer, contentType string, err error) {
+func encodePutLoggerRequest(req Logger, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -344,7 +344,7 @@ func encodePutLoggerRequest(req Logger) (data *bytes.Buffer, contentType string,
 	return buf, "application/json", nil
 }
 
-func encodePutMachineConfigurationRequest(req MachineConfiguration) (data *bytes.Buffer, contentType string, err error) {
+func encodePutMachineConfigurationRequest(req MachineConfiguration, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -360,7 +360,7 @@ func encodePutMachineConfigurationRequest(req MachineConfiguration) (data *bytes
 	return buf, "application/json", nil
 }
 
-func encodePutMetricsRequest(req Metrics) (data *bytes.Buffer, contentType string, err error) {
+func encodePutMetricsRequest(req Metrics, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)

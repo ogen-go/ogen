@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *AnswerCallbackQueryPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -81,7 +81,7 @@ func encodeAnswerCallbackQueryPostRequest(req AnswerCallbackQueryPostReq) (data 
 	}
 }
 
-func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *AnswerPreCheckoutQueryPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -106,7 +106,7 @@ func encodeAnswerPreCheckoutQueryPostRequest(req AnswerPreCheckoutQueryPostReq) 
 	}
 }
 
-func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *AnswerShippingQueryPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -131,7 +131,7 @@ func encodeAnswerShippingQueryPostRequest(req AnswerShippingQueryPostReq) (data 
 	}
 }
 
-func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *DeleteStickerFromSetPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -156,7 +156,7 @@ func encodeDeleteStickerFromSetPostRequest(req DeleteStickerFromSetPostReq) (dat
 	}
 }
 
-func encodeDeleteWebhookPostRequest(req DeleteWebhookPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteWebhookPostRequest(req DeleteWebhookPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *DeleteWebhookPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -181,7 +181,7 @@ func encodeDeleteWebhookPostRequest(req DeleteWebhookPostReq) (data *bytes.Buffe
 	}
 }
 
-func encodeGetFilePostRequest(req GetFilePostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetFilePostRequest(req GetFilePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *GetFilePostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -206,7 +206,7 @@ func encodeGetFilePostRequest(req GetFilePostReq) (data *bytes.Buffer, contentTy
 	}
 }
 
-func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *GetGameHighScoresPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -231,7 +231,7 @@ func encodeGetGameHighScoresPostRequest(req GetGameHighScoresPostReq) (data *byt
 	}
 }
 
-func encodeGetStickerSetPostRequest(req GetStickerSetPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetStickerSetPostRequest(req GetStickerSetPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *GetStickerSetPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -256,7 +256,7 @@ func encodeGetStickerSetPostRequest(req GetStickerSetPostReq) (data *bytes.Buffe
 	}
 }
 
-func encodeGetUpdatesPostRequest(req GetUpdatesPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetUpdatesPostRequest(req GetUpdatesPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *GetUpdatesPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -281,7 +281,7 @@ func encodeGetUpdatesPostRequest(req GetUpdatesPostReq) (data *bytes.Buffer, con
 	}
 }
 
-func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *GetUserProfilePhotosPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -306,7 +306,7 @@ func encodeGetUserProfilePhotosPostRequest(req GetUserProfilePhotosPostReq) (dat
 	}
 }
 
-func encodeSendGamePostRequest(req SendGamePostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendGamePostRequest(req SendGamePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *SendGamePostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -331,7 +331,7 @@ func encodeSendGamePostRequest(req SendGamePostReq) (data *bytes.Buffer, content
 	}
 }
 
-func encodeSendInvoicePostRequest(req SendInvoicePostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendInvoicePostRequest(req SendInvoicePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *SendInvoicePostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -356,7 +356,7 @@ func encodeSendInvoicePostRequest(req SendInvoicePostReq) (data *bytes.Buffer, c
 	}
 }
 
-func encodeSetMyCommandsPostRequest(req SetMyCommandsPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetMyCommandsPostRequest(req SetMyCommandsPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *SetMyCommandsPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -381,7 +381,7 @@ func encodeSetMyCommandsPostRequest(req SetMyCommandsPostReq) (data *bytes.Buffe
 	}
 }
 
-func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	switch req := req.(type) {
 	case *SetStickerPositionInSetPostReqApplicationJSON:
 		buf := json.GetBuffer()
@@ -406,10 +406,10 @@ func encodeSetStickerPositionInSetPostRequest(req SetStickerPositionInSetPostReq
 	}
 }
 
-func encodeSetWebhookPostRequest(req SetWebhookPostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetWebhookPostRequest(req SetWebhookPostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 }
 
-func encodeUploadStickerFilePostRequest(req UploadStickerFilePostReq) (data *bytes.Buffer, contentType string, err error) {
+func encodeUploadStickerFilePostRequest(req UploadStickerFilePostReq, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	return nil, "", fmt.Errorf("multipart/form-data encoder not implemented")
 }

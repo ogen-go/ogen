@@ -56,96 +56,134 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func NewCachingHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewCachingHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `Caching`,
+			trace.WithAttributes(otelogen.OperationID(`Caching`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeCachingParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.Caching(r.Context(), params)
+		response, err := s.Caching(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeCachingResponse(response, w); err != nil {
-			_ = err
+		if err := encodeCachingResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewDBHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewDBHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `DB`,
+			trace.WithAttributes(otelogen.OperationID(`DB`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.DB(r.Context())
+		response, err := s.DB(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeDBResponse(response, w); err != nil {
-			_ = err
+		if err := encodeDBResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewJSONHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewJSONHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `JSON`,
+			trace.WithAttributes(otelogen.OperationID(`json`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 
-		response, err := s.JSON(r.Context())
+		response, err := s.JSON(ctx)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeJSONResponse(response, w); err != nil {
-			_ = err
+		if err := encodeJSONResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewQueriesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewQueriesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `Queries`,
+			trace.WithAttributes(otelogen.OperationID(`Queries`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeQueriesParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.Queries(r.Context(), params)
+		response, err := s.Queries(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeQueriesResponse(response, w); err != nil {
-			_ = err
+		if err := encodeQueriesResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewUpdatesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewUpdatesHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `Updates`,
+			trace.WithAttributes(otelogen.OperationID(`Updates`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeUpdatesParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.Updates(r.Context(), params)
+		response, err := s.Updates(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeUpdatesResponse(response, w); err != nil {
-			_ = err
+		if err := encodeUpdatesResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}

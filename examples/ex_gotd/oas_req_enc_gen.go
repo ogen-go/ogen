@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func encodeAddStickerToSetRequest(req AddStickerToSet) (data *bytes.Buffer, contentType string, err error) {
+func encodeAddStickerToSetRequest(req AddStickerToSet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -72,7 +72,7 @@ func encodeAddStickerToSetRequest(req AddStickerToSet) (data *bytes.Buffer, cont
 	return buf, "application/json", nil
 }
 
-func encodeAnswerCallbackQueryRequest(req AnswerCallbackQuery) (data *bytes.Buffer, contentType string, err error) {
+func encodeAnswerCallbackQueryRequest(req AnswerCallbackQuery, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -88,7 +88,7 @@ func encodeAnswerCallbackQueryRequest(req AnswerCallbackQuery) (data *bytes.Buff
 	return buf, "application/json", nil
 }
 
-func encodeAnswerInlineQueryRequest(req AnswerInlineQuery) (data *bytes.Buffer, contentType string, err error) {
+func encodeAnswerInlineQueryRequest(req AnswerInlineQuery, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -104,7 +104,7 @@ func encodeAnswerInlineQueryRequest(req AnswerInlineQuery) (data *bytes.Buffer, 
 	return buf, "application/json", nil
 }
 
-func encodeAnswerPreCheckoutQueryRequest(req AnswerPreCheckoutQuery) (data *bytes.Buffer, contentType string, err error) {
+func encodeAnswerPreCheckoutQueryRequest(req AnswerPreCheckoutQuery, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -120,7 +120,7 @@ func encodeAnswerPreCheckoutQueryRequest(req AnswerPreCheckoutQuery) (data *byte
 	return buf, "application/json", nil
 }
 
-func encodeAnswerShippingQueryRequest(req AnswerShippingQuery) (data *bytes.Buffer, contentType string, err error) {
+func encodeAnswerShippingQueryRequest(req AnswerShippingQuery, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -136,7 +136,7 @@ func encodeAnswerShippingQueryRequest(req AnswerShippingQuery) (data *bytes.Buff
 	return buf, "application/json", nil
 }
 
-func encodeBanChatMemberRequest(req BanChatMember) (data *bytes.Buffer, contentType string, err error) {
+func encodeBanChatMemberRequest(req BanChatMember, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -152,7 +152,7 @@ func encodeBanChatMemberRequest(req BanChatMember) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeCopyMessageRequest(req CopyMessage) (data *bytes.Buffer, contentType string, err error) {
+func encodeCopyMessageRequest(req CopyMessage, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -168,7 +168,7 @@ func encodeCopyMessageRequest(req CopyMessage) (data *bytes.Buffer, contentType 
 	return buf, "application/json", nil
 }
 
-func encodeCreateChatInviteLinkRequest(req CreateChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+func encodeCreateChatInviteLinkRequest(req CreateChatInviteLink, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -184,7 +184,7 @@ func encodeCreateChatInviteLinkRequest(req CreateChatInviteLink) (data *bytes.Bu
 	return buf, "application/json", nil
 }
 
-func encodeCreateNewStickerSetRequest(req CreateNewStickerSet) (data *bytes.Buffer, contentType string, err error) {
+func encodeCreateNewStickerSetRequest(req CreateNewStickerSet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -200,7 +200,7 @@ func encodeCreateNewStickerSetRequest(req CreateNewStickerSet) (data *bytes.Buff
 	return buf, "application/json", nil
 }
 
-func encodeDeleteChatPhotoRequest(req DeleteChatPhoto) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteChatPhotoRequest(req DeleteChatPhoto, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -216,7 +216,7 @@ func encodeDeleteChatPhotoRequest(req DeleteChatPhoto) (data *bytes.Buffer, cont
 	return buf, "application/json", nil
 }
 
-func encodeDeleteChatStickerSetRequest(req DeleteChatStickerSet) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteChatStickerSetRequest(req DeleteChatStickerSet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -232,7 +232,7 @@ func encodeDeleteChatStickerSetRequest(req DeleteChatStickerSet) (data *bytes.Bu
 	return buf, "application/json", nil
 }
 
-func encodeDeleteMessageRequest(req DeleteMessage) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteMessageRequest(req DeleteMessage, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -248,7 +248,7 @@ func encodeDeleteMessageRequest(req DeleteMessage) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeDeleteMyCommandsRequest(req DeleteMyCommands) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteMyCommandsRequest(req DeleteMyCommands, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -264,7 +264,7 @@ func encodeDeleteMyCommandsRequest(req DeleteMyCommands) (data *bytes.Buffer, co
 	return buf, "application/json", nil
 }
 
-func encodeDeleteStickerFromSetRequest(req DeleteStickerFromSet) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteStickerFromSetRequest(req DeleteStickerFromSet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -280,7 +280,7 @@ func encodeDeleteStickerFromSetRequest(req DeleteStickerFromSet) (data *bytes.Bu
 	return buf, "application/json", nil
 }
 
-func encodeDeleteWebhookRequest(req DeleteWebhook) (data *bytes.Buffer, contentType string, err error) {
+func encodeDeleteWebhookRequest(req DeleteWebhook, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -296,7 +296,7 @@ func encodeDeleteWebhookRequest(req DeleteWebhook) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeEditChatInviteLinkRequest(req EditChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+func encodeEditChatInviteLinkRequest(req EditChatInviteLink, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -312,7 +312,7 @@ func encodeEditChatInviteLinkRequest(req EditChatInviteLink) (data *bytes.Buffer
 	return buf, "application/json", nil
 }
 
-func encodeEditMessageCaptionRequest(req EditMessageCaption) (data *bytes.Buffer, contentType string, err error) {
+func encodeEditMessageCaptionRequest(req EditMessageCaption, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -328,7 +328,7 @@ func encodeEditMessageCaptionRequest(req EditMessageCaption) (data *bytes.Buffer
 	return buf, "application/json", nil
 }
 
-func encodeEditMessageLiveLocationRequest(req EditMessageLiveLocation) (data *bytes.Buffer, contentType string, err error) {
+func encodeEditMessageLiveLocationRequest(req EditMessageLiveLocation, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -344,7 +344,7 @@ func encodeEditMessageLiveLocationRequest(req EditMessageLiveLocation) (data *by
 	return buf, "application/json", nil
 }
 
-func encodeEditMessageMediaRequest(req EditMessageMedia) (data *bytes.Buffer, contentType string, err error) {
+func encodeEditMessageMediaRequest(req EditMessageMedia, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -360,7 +360,7 @@ func encodeEditMessageMediaRequest(req EditMessageMedia) (data *bytes.Buffer, co
 	return buf, "application/json", nil
 }
 
-func encodeEditMessageReplyMarkupRequest(req EditMessageReplyMarkup) (data *bytes.Buffer, contentType string, err error) {
+func encodeEditMessageReplyMarkupRequest(req EditMessageReplyMarkup, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -376,7 +376,7 @@ func encodeEditMessageReplyMarkupRequest(req EditMessageReplyMarkup) (data *byte
 	return buf, "application/json", nil
 }
 
-func encodeEditMessageTextRequest(req EditMessageText) (data *bytes.Buffer, contentType string, err error) {
+func encodeEditMessageTextRequest(req EditMessageText, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -392,7 +392,7 @@ func encodeEditMessageTextRequest(req EditMessageText) (data *bytes.Buffer, cont
 	return buf, "application/json", nil
 }
 
-func encodeExportChatInviteLinkRequest(req ExportChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+func encodeExportChatInviteLinkRequest(req ExportChatInviteLink, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -408,7 +408,7 @@ func encodeExportChatInviteLinkRequest(req ExportChatInviteLink) (data *bytes.Bu
 	return buf, "application/json", nil
 }
 
-func encodeForwardMessageRequest(req ForwardMessage) (data *bytes.Buffer, contentType string, err error) {
+func encodeForwardMessageRequest(req ForwardMessage, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -424,7 +424,7 @@ func encodeForwardMessageRequest(req ForwardMessage) (data *bytes.Buffer, conten
 	return buf, "application/json", nil
 }
 
-func encodeGetChatRequest(req GetChat) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetChatRequest(req GetChat, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -440,7 +440,7 @@ func encodeGetChatRequest(req GetChat) (data *bytes.Buffer, contentType string, 
 	return buf, "application/json", nil
 }
 
-func encodeGetChatAdministratorsRequest(req GetChatAdministrators) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetChatAdministratorsRequest(req GetChatAdministrators, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -456,7 +456,7 @@ func encodeGetChatAdministratorsRequest(req GetChatAdministrators) (data *bytes.
 	return buf, "application/json", nil
 }
 
-func encodeGetChatMemberRequest(req GetChatMember) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetChatMemberRequest(req GetChatMember, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -472,7 +472,7 @@ func encodeGetChatMemberRequest(req GetChatMember) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeGetChatMemberCountRequest(req GetChatMemberCount) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetChatMemberCountRequest(req GetChatMemberCount, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -488,7 +488,7 @@ func encodeGetChatMemberCountRequest(req GetChatMemberCount) (data *bytes.Buffer
 	return buf, "application/json", nil
 }
 
-func encodeGetFileRequest(req GetFile) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetFileRequest(req GetFile, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -504,7 +504,7 @@ func encodeGetFileRequest(req GetFile) (data *bytes.Buffer, contentType string, 
 	return buf, "application/json", nil
 }
 
-func encodeGetGameHighScoresRequest(req GetGameHighScores) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetGameHighScoresRequest(req GetGameHighScores, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -520,7 +520,7 @@ func encodeGetGameHighScoresRequest(req GetGameHighScores) (data *bytes.Buffer, 
 	return buf, "application/json", nil
 }
 
-func encodeGetMyCommandsRequest(req GetMyCommands) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetMyCommandsRequest(req GetMyCommands, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -536,7 +536,7 @@ func encodeGetMyCommandsRequest(req GetMyCommands) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeGetStickerSetRequest(req GetStickerSet) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetStickerSetRequest(req GetStickerSet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -552,7 +552,7 @@ func encodeGetStickerSetRequest(req GetStickerSet) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeGetUpdatesRequest(req GetUpdates) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetUpdatesRequest(req GetUpdates, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -568,7 +568,7 @@ func encodeGetUpdatesRequest(req GetUpdates) (data *bytes.Buffer, contentType st
 	return buf, "application/json", nil
 }
 
-func encodeGetUserProfilePhotosRequest(req GetUserProfilePhotos) (data *bytes.Buffer, contentType string, err error) {
+func encodeGetUserProfilePhotosRequest(req GetUserProfilePhotos, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -584,7 +584,7 @@ func encodeGetUserProfilePhotosRequest(req GetUserProfilePhotos) (data *bytes.Bu
 	return buf, "application/json", nil
 }
 
-func encodeLeaveChatRequest(req LeaveChat) (data *bytes.Buffer, contentType string, err error) {
+func encodeLeaveChatRequest(req LeaveChat, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -600,7 +600,7 @@ func encodeLeaveChatRequest(req LeaveChat) (data *bytes.Buffer, contentType stri
 	return buf, "application/json", nil
 }
 
-func encodePinChatMessageRequest(req PinChatMessage) (data *bytes.Buffer, contentType string, err error) {
+func encodePinChatMessageRequest(req PinChatMessage, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -616,7 +616,7 @@ func encodePinChatMessageRequest(req PinChatMessage) (data *bytes.Buffer, conten
 	return buf, "application/json", nil
 }
 
-func encodePromoteChatMemberRequest(req PromoteChatMember) (data *bytes.Buffer, contentType string, err error) {
+func encodePromoteChatMemberRequest(req PromoteChatMember, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -632,7 +632,7 @@ func encodePromoteChatMemberRequest(req PromoteChatMember) (data *bytes.Buffer, 
 	return buf, "application/json", nil
 }
 
-func encodeRestrictChatMemberRequest(req RestrictChatMember) (data *bytes.Buffer, contentType string, err error) {
+func encodeRestrictChatMemberRequest(req RestrictChatMember, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -648,7 +648,7 @@ func encodeRestrictChatMemberRequest(req RestrictChatMember) (data *bytes.Buffer
 	return buf, "application/json", nil
 }
 
-func encodeRevokeChatInviteLinkRequest(req RevokeChatInviteLink) (data *bytes.Buffer, contentType string, err error) {
+func encodeRevokeChatInviteLinkRequest(req RevokeChatInviteLink, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -664,7 +664,7 @@ func encodeRevokeChatInviteLinkRequest(req RevokeChatInviteLink) (data *bytes.Bu
 	return buf, "application/json", nil
 }
 
-func encodeSendAnimationRequest(req SendAnimation) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendAnimationRequest(req SendAnimation, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -680,7 +680,7 @@ func encodeSendAnimationRequest(req SendAnimation) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeSendAudioRequest(req SendAudio) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendAudioRequest(req SendAudio, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -696,7 +696,7 @@ func encodeSendAudioRequest(req SendAudio) (data *bytes.Buffer, contentType stri
 	return buf, "application/json", nil
 }
 
-func encodeSendChatActionRequest(req SendChatAction) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendChatActionRequest(req SendChatAction, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -712,7 +712,7 @@ func encodeSendChatActionRequest(req SendChatAction) (data *bytes.Buffer, conten
 	return buf, "application/json", nil
 }
 
-func encodeSendContactRequest(req SendContact) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendContactRequest(req SendContact, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -728,7 +728,7 @@ func encodeSendContactRequest(req SendContact) (data *bytes.Buffer, contentType 
 	return buf, "application/json", nil
 }
 
-func encodeSendDiceRequest(req SendDice) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendDiceRequest(req SendDice, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -744,7 +744,7 @@ func encodeSendDiceRequest(req SendDice) (data *bytes.Buffer, contentType string
 	return buf, "application/json", nil
 }
 
-func encodeSendDocumentRequest(req SendDocument) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendDocumentRequest(req SendDocument, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -760,7 +760,7 @@ func encodeSendDocumentRequest(req SendDocument) (data *bytes.Buffer, contentTyp
 	return buf, "application/json", nil
 }
 
-func encodeSendGameRequest(req SendGame) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendGameRequest(req SendGame, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -776,7 +776,7 @@ func encodeSendGameRequest(req SendGame) (data *bytes.Buffer, contentType string
 	return buf, "application/json", nil
 }
 
-func encodeSendInvoiceRequest(req SendInvoice) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendInvoiceRequest(req SendInvoice, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -792,7 +792,7 @@ func encodeSendInvoiceRequest(req SendInvoice) (data *bytes.Buffer, contentType 
 	return buf, "application/json", nil
 }
 
-func encodeSendLocationRequest(req SendLocation) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendLocationRequest(req SendLocation, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -808,7 +808,7 @@ func encodeSendLocationRequest(req SendLocation) (data *bytes.Buffer, contentTyp
 	return buf, "application/json", nil
 }
 
-func encodeSendMediaGroupRequest(req SendMediaGroup) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendMediaGroupRequest(req SendMediaGroup, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -824,7 +824,7 @@ func encodeSendMediaGroupRequest(req SendMediaGroup) (data *bytes.Buffer, conten
 	return buf, "application/json", nil
 }
 
-func encodeSendMessageRequest(req SendMessage) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendMessageRequest(req SendMessage, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -840,7 +840,7 @@ func encodeSendMessageRequest(req SendMessage) (data *bytes.Buffer, contentType 
 	return buf, "application/json", nil
 }
 
-func encodeSendPhotoRequest(req SendPhoto) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendPhotoRequest(req SendPhoto, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -856,7 +856,7 @@ func encodeSendPhotoRequest(req SendPhoto) (data *bytes.Buffer, contentType stri
 	return buf, "application/json", nil
 }
 
-func encodeSendPollRequest(req SendPoll) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendPollRequest(req SendPoll, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -872,7 +872,7 @@ func encodeSendPollRequest(req SendPoll) (data *bytes.Buffer, contentType string
 	return buf, "application/json", nil
 }
 
-func encodeSendStickerRequest(req SendSticker) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendStickerRequest(req SendSticker, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -888,7 +888,7 @@ func encodeSendStickerRequest(req SendSticker) (data *bytes.Buffer, contentType 
 	return buf, "application/json", nil
 }
 
-func encodeSendVenueRequest(req SendVenue) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendVenueRequest(req SendVenue, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -904,7 +904,7 @@ func encodeSendVenueRequest(req SendVenue) (data *bytes.Buffer, contentType stri
 	return buf, "application/json", nil
 }
 
-func encodeSendVideoRequest(req SendVideo) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendVideoRequest(req SendVideo, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -920,7 +920,7 @@ func encodeSendVideoRequest(req SendVideo) (data *bytes.Buffer, contentType stri
 	return buf, "application/json", nil
 }
 
-func encodeSendVideoNoteRequest(req SendVideoNote) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendVideoNoteRequest(req SendVideoNote, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -936,7 +936,7 @@ func encodeSendVideoNoteRequest(req SendVideoNote) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeSendVoiceRequest(req SendVoice) (data *bytes.Buffer, contentType string, err error) {
+func encodeSendVoiceRequest(req SendVoice, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -952,7 +952,7 @@ func encodeSendVoiceRequest(req SendVoice) (data *bytes.Buffer, contentType stri
 	return buf, "application/json", nil
 }
 
-func encodeSetChatAdministratorCustomTitleRequest(req SetChatAdministratorCustomTitle) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetChatAdministratorCustomTitleRequest(req SetChatAdministratorCustomTitle, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -968,7 +968,7 @@ func encodeSetChatAdministratorCustomTitleRequest(req SetChatAdministratorCustom
 	return buf, "application/json", nil
 }
 
-func encodeSetChatDescriptionRequest(req SetChatDescription) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetChatDescriptionRequest(req SetChatDescription, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -984,7 +984,7 @@ func encodeSetChatDescriptionRequest(req SetChatDescription) (data *bytes.Buffer
 	return buf, "application/json", nil
 }
 
-func encodeSetChatPermissionsRequest(req SetChatPermissions) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetChatPermissionsRequest(req SetChatPermissions, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1000,7 +1000,7 @@ func encodeSetChatPermissionsRequest(req SetChatPermissions) (data *bytes.Buffer
 	return buf, "application/json", nil
 }
 
-func encodeSetChatPhotoRequest(req SetChatPhoto) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetChatPhotoRequest(req SetChatPhoto, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1016,7 +1016,7 @@ func encodeSetChatPhotoRequest(req SetChatPhoto) (data *bytes.Buffer, contentTyp
 	return buf, "application/json", nil
 }
 
-func encodeSetChatStickerSetRequest(req SetChatStickerSet) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetChatStickerSetRequest(req SetChatStickerSet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1032,7 +1032,7 @@ func encodeSetChatStickerSetRequest(req SetChatStickerSet) (data *bytes.Buffer, 
 	return buf, "application/json", nil
 }
 
-func encodeSetChatTitleRequest(req SetChatTitle) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetChatTitleRequest(req SetChatTitle, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1048,7 +1048,7 @@ func encodeSetChatTitleRequest(req SetChatTitle) (data *bytes.Buffer, contentTyp
 	return buf, "application/json", nil
 }
 
-func encodeSetGameScoreRequest(req SetGameScore) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetGameScoreRequest(req SetGameScore, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1064,7 +1064,7 @@ func encodeSetGameScoreRequest(req SetGameScore) (data *bytes.Buffer, contentTyp
 	return buf, "application/json", nil
 }
 
-func encodeSetMyCommandsRequest(req SetMyCommands) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetMyCommandsRequest(req SetMyCommands, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1080,7 +1080,7 @@ func encodeSetMyCommandsRequest(req SetMyCommands) (data *bytes.Buffer, contentT
 	return buf, "application/json", nil
 }
 
-func encodeSetPassportDataErrorsRequest(req SetPassportDataErrors) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetPassportDataErrorsRequest(req SetPassportDataErrors, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1096,7 +1096,7 @@ func encodeSetPassportDataErrorsRequest(req SetPassportDataErrors) (data *bytes.
 	return buf, "application/json", nil
 }
 
-func encodeSetStickerPositionInSetRequest(req SetStickerPositionInSet) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetStickerPositionInSetRequest(req SetStickerPositionInSet, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1112,7 +1112,7 @@ func encodeSetStickerPositionInSetRequest(req SetStickerPositionInSet) (data *by
 	return buf, "application/json", nil
 }
 
-func encodeSetStickerSetThumbRequest(req SetStickerSetThumb) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetStickerSetThumbRequest(req SetStickerSetThumb, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1128,7 +1128,7 @@ func encodeSetStickerSetThumbRequest(req SetStickerSetThumb) (data *bytes.Buffer
 	return buf, "application/json", nil
 }
 
-func encodeSetWebhookRequest(req SetWebhook) (data *bytes.Buffer, contentType string, err error) {
+func encodeSetWebhookRequest(req SetWebhook, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1144,7 +1144,7 @@ func encodeSetWebhookRequest(req SetWebhook) (data *bytes.Buffer, contentType st
 	return buf, "application/json", nil
 }
 
-func encodeStopMessageLiveLocationRequest(req StopMessageLiveLocation) (data *bytes.Buffer, contentType string, err error) {
+func encodeStopMessageLiveLocationRequest(req StopMessageLiveLocation, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1160,7 +1160,7 @@ func encodeStopMessageLiveLocationRequest(req StopMessageLiveLocation) (data *by
 	return buf, "application/json", nil
 }
 
-func encodeStopPollRequest(req StopPoll) (data *bytes.Buffer, contentType string, err error) {
+func encodeStopPollRequest(req StopPoll, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1176,7 +1176,7 @@ func encodeStopPollRequest(req StopPoll) (data *bytes.Buffer, contentType string
 	return buf, "application/json", nil
 }
 
-func encodeUnbanChatMemberRequest(req UnbanChatMember) (data *bytes.Buffer, contentType string, err error) {
+func encodeUnbanChatMemberRequest(req UnbanChatMember, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1192,7 +1192,7 @@ func encodeUnbanChatMemberRequest(req UnbanChatMember) (data *bytes.Buffer, cont
 	return buf, "application/json", nil
 }
 
-func encodeUnpinAllChatMessagesRequest(req UnpinAllChatMessages) (data *bytes.Buffer, contentType string, err error) {
+func encodeUnpinAllChatMessagesRequest(req UnpinAllChatMessages, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1208,7 +1208,7 @@ func encodeUnpinAllChatMessagesRequest(req UnpinAllChatMessages) (data *bytes.Bu
 	return buf, "application/json", nil
 }
 
-func encodeUnpinChatMessageRequest(req UnpinChatMessage) (data *bytes.Buffer, contentType string, err error) {
+func encodeUnpinChatMessageRequest(req UnpinChatMessage, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)
@@ -1224,7 +1224,7 @@ func encodeUnpinChatMessageRequest(req UnpinChatMessage) (data *bytes.Buffer, co
 	return buf, "application/json", nil
 }
 
-func encodeUploadStickerFileRequest(req UploadStickerFile) (data *bytes.Buffer, contentType string, err error) {
+func encodeUploadStickerFileRequest(req UploadStickerFile, span trace.Span) (data *bytes.Buffer, contentType string, err error) {
 	buf := json.GetBuffer()
 	j := json.GetStream(buf)
 	defer json.PutStream(j)

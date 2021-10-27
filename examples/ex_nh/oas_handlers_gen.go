@@ -56,127 +56,175 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func NewGetBookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewGetBookHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetBook`,
+			trace.WithAttributes(otelogen.OperationID(`getBook`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeGetBookParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.GetBook(r.Context(), params)
+		response, err := s.GetBook(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeGetBookResponse(response, w); err != nil {
-			_ = err
+		if err := encodeGetBookResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewGetPageCoverImageHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewGetPageCoverImageHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetPageCoverImage`,
+			trace.WithAttributes(otelogen.OperationID(`getPageCoverImage`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeGetPageCoverImageParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.GetPageCoverImage(r.Context(), params)
+		response, err := s.GetPageCoverImage(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeGetPageCoverImageResponse(response, w); err != nil {
-			_ = err
+		if err := encodeGetPageCoverImageResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewGetPageImageHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewGetPageImageHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetPageImage`,
+			trace.WithAttributes(otelogen.OperationID(`getPageImage`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeGetPageImageParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.GetPageImage(r.Context(), params)
+		response, err := s.GetPageImage(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeGetPageImageResponse(response, w); err != nil {
-			_ = err
+		if err := encodeGetPageImageResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewGetPageThumbnailImageHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewGetPageThumbnailImageHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `GetPageThumbnailImage`,
+			trace.WithAttributes(otelogen.OperationID(`getPageThumbnailImage`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeGetPageThumbnailImageParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.GetPageThumbnailImage(r.Context(), params)
+		response, err := s.GetPageThumbnailImage(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeGetPageThumbnailImageResponse(response, w); err != nil {
-			_ = err
+		if err := encodeGetPageThumbnailImageResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewSearchHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewSearchHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `Search`,
+			trace.WithAttributes(otelogen.OperationID(`search`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeSearchParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.Search(r.Context(), params)
+		response, err := s.Search(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeSearchResponse(response, w); err != nil {
-			_ = err
+		if err := encodeSearchResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}
 }
 
-func NewSearchByTagIDHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewSearchByTagIDHandler(s Server, opts ...Option) func(w http.ResponseWriter, r *http.Request) {
+	cfg := newConfig(opts...)
 	return func(w http.ResponseWriter, r *http.Request) {
+		ctx, span := cfg.Tracer.Start(r.Context(), `SearchByTagID`,
+			trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
+			trace.WithSpanKind(trace.SpanKindServer),
+		)
+		defer span.End()
 		params, err := decodeSearchByTagIDParams(r)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
-		response, err := s.SearchByTagID(r.Context(), params)
+		response, err := s.SearchByTagID(ctx, params)
 		if err != nil {
+			span.RecordError(err)
 			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
-		if err := encodeSearchByTagIDResponse(response, w); err != nil {
-			_ = err
+		if err := encodeSearchByTagIDResponse(response, w, span); err != nil {
+			span.RecordError(err)
 			return
 		}
 	}

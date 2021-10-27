@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter) error {
+func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -126,7 +126,7 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	}
 }
 
-func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter) error {
+func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -196,7 +196,7 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	}
 }
 
-func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response CreateApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter) error {
+func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response CreateApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -266,7 +266,7 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 	}
 }
 
-func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrationV1APIServiceRes, w http.ResponseWriter) error {
+func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateApiregistrationV1APIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -336,7 +336,7 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 	}
 }
 
-func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticationV1TokenReviewRes, w http.ResponseWriter) error {
+func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticationV1TokenReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthenticationV1TokenReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -406,7 +406,7 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 	}
 }
 
-func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateAuthorizationV1SelfSubjectAccessReviewRes, w http.ResponseWriter) error {
+func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateAuthorizationV1SelfSubjectAccessReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -476,7 +476,7 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 	}
 }
 
-func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAuthorizationV1SelfSubjectRulesReviewRes, w http.ResponseWriter) error {
+func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAuthorizationV1SelfSubjectRulesReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -546,7 +546,7 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 	}
 }
 
-func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAuthorizationV1SubjectAccessReviewRes, w http.ResponseWriter) error {
+func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAuthorizationV1SubjectAccessReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -616,7 +616,7 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 	}
 }
 
-func encodeCreateCertificatesV1CertificateSigningRequestResponse(response CreateCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter) error {
+func encodeCreateCertificatesV1CertificateSigningRequestResponse(response CreateCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -686,7 +686,7 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 	}
 }
 
-func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w http.ResponseWriter) error {
+func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCoreV1NamespaceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -756,7 +756,7 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceRes, w ht
 	}
 }
 
-func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.ResponseWriter) error {
+func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCoreV1NodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -826,7 +826,7 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeRes, w http.Respons
 	}
 }
 
-func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentVolumeRes, w http.ResponseWriter) error {
+func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateCoreV1PersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -896,7 +896,7 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter) error {
+func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -966,7 +966,7 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter) error {
+func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1036,7 +1036,7 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter) error {
+func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1106,7 +1106,7 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 	}
 }
 
-func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter) error {
+func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1176,7 +1176,7 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	}
 }
 
-func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response CreateInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter) error {
+func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response CreateInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1246,7 +1246,7 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 	}
 }
 
-func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1IngressClassRes, w http.ResponseWriter) error {
+func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNetworkingV1IngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1316,7 +1316,7 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 	}
 }
 
-func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes, w http.ResponseWriter) error {
+func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNodeV1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1386,7 +1386,7 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 	}
 }
 
-func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1RuntimeClassRes, w http.ResponseWriter) error {
+func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNodeV1alpha1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1456,7 +1456,7 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 	}
 }
 
-func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1RuntimeClassRes, w http.ResponseWriter) error {
+func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateNodeV1beta1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1526,7 +1526,7 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 	}
 }
 
-func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter) error {
+func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1596,7 +1596,7 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 	}
 }
 
-func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter) error {
+func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1666,7 +1666,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 	}
 }
 
-func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter) error {
+func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1736,7 +1736,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 	}
 }
 
-func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1PriorityClassRes, w http.ResponseWriter) error {
+func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateSchedulingV1PriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1806,7 +1806,7 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 	}
 }
 
-func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes, w http.ResponseWriter) error {
+func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1CSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1876,7 +1876,7 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 	}
 }
 
-func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w http.ResponseWriter) error {
+func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1CSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -1946,7 +1946,7 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRes, w 
 	}
 }
 
-func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageClassRes, w http.ResponseWriter) error {
+func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1StorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2016,7 +2016,7 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 	}
 }
 
-func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1VolumeAttachmentRes, w http.ResponseWriter) error {
+func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateStorageV1VolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2086,7 +2086,7 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 	}
 }
 
-func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, w http.ResponseWriter) error {
+func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2116,7 +2116,7 @@ func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	}
 }
 
-func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, w http.ResponseWriter) error {
+func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2146,7 +2146,7 @@ func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	}
 }
 
-func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(response DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, w http.ResponseWriter) error {
+func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(response DeleteApiextensionsV1CollectionCustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2176,7 +2176,7 @@ func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(respo
 	}
 }
 
-func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteApiregistrationV1CollectionAPIServiceRes, w http.ResponseWriter) error {
+func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteApiregistrationV1CollectionAPIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2206,7 +2206,7 @@ func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteAp
 	}
 }
 
-func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(response DeleteCertificatesV1CollectionCertificateSigningRequestRes, w http.ResponseWriter) error {
+func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(response DeleteCertificatesV1CollectionCertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2236,7 +2236,7 @@ func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(respo
 	}
 }
 
-func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNodeRes, w http.ResponseWriter) error {
+func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteCoreV1CollectionNodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2266,7 +2266,7 @@ func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNod
 	}
 }
 
-func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1CollectionPersistentVolumeRes, w http.ResponseWriter) error {
+func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1CollectionPersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2296,7 +2296,7 @@ func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1C
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, w http.ResponseWriter) error {
+func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2326,7 +2326,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(respons
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, w http.ResponseWriter) error {
+func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2356,7 +2356,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, w http.ResponseWriter) error {
+func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2386,7 +2386,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(respons
 	}
 }
 
-func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, w http.ResponseWriter) error {
+func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2416,7 +2416,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	}
 }
 
-func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(response DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, w http.ResponseWriter) error {
+func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(response DeleteInternalApiserverV1alpha1CollectionStorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2446,7 +2446,7 @@ func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(respo
 	}
 }
 
-func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetworkingV1CollectionIngressClassRes, w http.ResponseWriter) error {
+func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetworkingV1CollectionIngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNetworkingV1CollectionIngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2476,7 +2476,7 @@ func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetwo
 	}
 }
 
-func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1CollectionRuntimeClassRes, w http.ResponseWriter) error {
+func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1CollectionRuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNodeV1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2506,7 +2506,7 @@ func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1Colle
 	}
 }
 
-func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV1alpha1CollectionRuntimeClassRes, w http.ResponseWriter) error {
+func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV1alpha1CollectionRuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2536,7 +2536,7 @@ func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV
 	}
 }
 
-func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1beta1CollectionRuntimeClassRes, w http.ResponseWriter) error {
+func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1beta1CollectionRuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2566,7 +2566,7 @@ func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1
 	}
 }
 
-func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response DeletePolicyV1beta1CollectionPodSecurityPolicyRes, w http.ResponseWriter) error {
+func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response DeletePolicyV1beta1CollectionPodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2596,7 +2596,7 @@ func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response Delet
 	}
 }
 
-func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleRes, w http.ResponseWriter) error {
+func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2626,7 +2626,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response Delet
 	}
 }
 
-func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, w http.ResponseWriter) error {
+func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2656,7 +2656,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(respons
 	}
 }
 
-func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSchedulingV1CollectionPriorityClassRes, w http.ResponseWriter) error {
+func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSchedulingV1CollectionPriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2686,7 +2686,7 @@ func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSche
 	}
 }
 
-func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1CollectionCSIDriverRes, w http.ResponseWriter) error {
+func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1CollectionCSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionCSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2716,7 +2716,7 @@ func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1Co
 	}
 }
 
-func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1CollectionCSINodeRes, w http.ResponseWriter) error {
+func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1CollectionCSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionCSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2746,7 +2746,7 @@ func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1Coll
 	}
 }
 
-func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV1CollectionStorageClassRes, w http.ResponseWriter) error {
+func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV1CollectionStorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionStorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2776,7 +2776,7 @@ func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV
 	}
 }
 
-func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStorageV1CollectionVolumeAttachmentRes, w http.ResponseWriter) error {
+func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStorageV1CollectionVolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2806,7 +2806,7 @@ func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStor
 	}
 }
 
-func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWriter) error {
+func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAPIVersionsApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2836,7 +2836,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 	}
 }
 
-func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAdmissionregistrationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2866,7 +2866,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 	}
 }
 
-func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAdmissionregistrationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2896,7 +2896,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 	}
 }
 
-func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiextensionsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2926,7 +2926,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 	}
 }
 
-func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiextensionsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2956,7 +2956,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 	}
 }
 
-func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiregistrationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -2986,7 +2986,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 	}
 }
 
-func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetApiregistrationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3016,7 +3016,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 	}
 }
 
-func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAppsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3046,7 +3046,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 	}
 }
 
-func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAppsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3076,7 +3076,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 	}
 }
 
-func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthenticationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3106,7 +3106,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 	}
 }
 
-func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthenticationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3136,7 +3136,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 	}
 }
 
-func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthorizationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3166,7 +3166,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 	}
 }
 
-func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAuthorizationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3196,7 +3196,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 	}
 }
 
-func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3226,7 +3226,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 	}
 }
 
-func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3256,7 +3256,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 	}
 }
 
-func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingV2beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3286,7 +3286,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 	}
 }
 
-func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetAutoscalingV2beta2APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3316,7 +3316,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 	}
 }
 
-func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetBatchAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3346,7 +3346,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 	}
 }
 
-func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetBatchV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3376,7 +3376,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 	}
 }
 
-func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetBatchV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3406,7 +3406,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 	}
 }
 
-func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCertificatesAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3436,7 +3436,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 	}
 }
 
-func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCertificatesV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3466,7 +3466,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 	}
 }
 
-func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWriter) error {
+func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgVersionInfo:
 		w.Header().Set("Content-Type", "application/json")
@@ -3489,7 +3489,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 	}
 }
 
-func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoordinationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3519,7 +3519,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 	}
 }
 
-func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoordinationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3549,7 +3549,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 	}
 }
 
-func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.ResponseWriter) error {
+func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoreAPIVersionsApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3579,7 +3579,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 	}
 }
 
-func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetCoreV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3609,7 +3609,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 	}
 }
 
-func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetDiscoveryAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3639,7 +3639,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 	}
 }
 
-func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetDiscoveryV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3669,7 +3669,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 	}
 }
 
-func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetDiscoveryV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3699,7 +3699,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 	}
 }
 
-func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetEventsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3729,7 +3729,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 	}
 }
 
-func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetEventsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3759,7 +3759,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 	}
 }
 
-func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetEventsV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3789,7 +3789,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 	}
 }
 
-func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetFlowcontrolApiserverAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3819,7 +3819,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 	}
 }
 
-func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3849,7 +3849,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 	}
 }
 
-func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3879,7 +3879,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 	}
 }
 
-func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetInternalApiserverAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3909,7 +3909,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 	}
 }
 
-func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3939,7 +3939,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 	}
 }
 
-func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNetworkingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3969,7 +3969,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 	}
 }
 
-func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNetworkingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -3999,7 +3999,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 	}
 }
 
-func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4029,7 +4029,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 	}
 }
 
-func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4059,7 +4059,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 	}
 }
 
-func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4089,7 +4089,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 	}
 }
 
-func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetNodeV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4119,7 +4119,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 	}
 }
 
-func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPolicyAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4149,7 +4149,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 	}
 }
 
-func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPolicyV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4179,7 +4179,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 	}
 }
 
-func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPolicyV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4209,7 +4209,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 	}
 }
 
-func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetRbacAuthorizationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4239,7 +4239,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 	}
 }
 
-func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetRbacAuthorizationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4269,7 +4269,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 	}
 }
 
-func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetSchedulingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4299,7 +4299,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 	}
 }
 
-func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetSchedulingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4329,7 +4329,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 	}
 }
 
-func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, w http.ResponseWriter) error {
+func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
@@ -4351,7 +4351,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 	}
 }
 
-func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccountIssuerOpenIDKeysetRes, w http.ResponseWriter) error {
+func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccountIssuerOpenIDKeysetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON:
 		w.Header().Set("Content-Type", "application/jwk-set+json")
@@ -4365,7 +4365,7 @@ func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccoun
 	}
 }
 
-func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.ResponseWriter) error {
+func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4395,7 +4395,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 	}
 }
 
-func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4425,7 +4425,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 	}
 }
 
-func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4455,7 +4455,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 	}
 }
 
-func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesRes, w http.ResponseWriter) error {
+func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetStorageV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4485,7 +4485,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 	}
 }
 
-func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter) error {
+func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4523,7 +4523,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 	}
 }
 
-func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter) error {
+func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4561,7 +4561,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	}
 }
 
-func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter) error {
+func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4599,7 +4599,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 	}
 }
 
-func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceRes, w http.ResponseWriter) error {
+func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListApiregistrationV1APIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4637,7 +4637,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 	}
 }
 
-func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4675,7 +4675,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 	}
 }
 
-func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4713,7 +4713,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 	}
 }
 
-func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1DeploymentForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4751,7 +4751,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 	}
 }
 
-func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4789,7 +4789,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 	}
 }
 
-func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4827,7 +4827,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 	}
 }
 
-func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4865,7 +4865,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	}
 }
 
-func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4903,7 +4903,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	}
 }
 
-func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4941,7 +4941,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	}
 }
 
-func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListBatchV1CronJobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -4979,7 +4979,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 	}
 }
 
-func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListBatchV1JobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5017,7 +5017,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 	}
 }
 
-func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5055,7 +5055,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 	}
 }
 
-func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter) error {
+func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCertificatesV1CertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5093,7 +5093,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 	}
 }
 
-func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5131,7 +5131,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 	}
 }
 
-func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusRes, w http.ResponseWriter) error {
+func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ComponentStatusApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5169,7 +5169,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 	}
 }
 
-func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5207,7 +5207,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 	}
 }
 
-func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1EndpointsForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5245,7 +5245,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 	}
 }
 
-func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5283,7 +5283,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 	}
 }
 
-func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5321,7 +5321,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 	}
 }
 
-func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.ResponseWriter) error {
+func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1NamespaceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5359,7 +5359,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 	}
 }
 
-func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWriter) error {
+func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1NodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5397,7 +5397,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 	}
 }
 
-func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeRes, w http.ResponseWriter) error {
+func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5435,7 +5435,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 	}
 }
 
-func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5473,7 +5473,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 	}
 }
 
-func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PodForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5511,7 +5511,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 	}
 }
 
-func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5549,7 +5549,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 	}
 }
 
-func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5587,7 +5587,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 	}
 }
 
-func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5625,7 +5625,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 	}
 }
 
-func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1SecretForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5663,7 +5663,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 	}
 }
 
-func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5701,7 +5701,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 	}
 }
 
-func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListCoreV1ServiceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5739,7 +5739,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 	}
 }
 
-func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5777,7 +5777,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 	}
 }
 
-func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5815,7 +5815,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 	}
 }
 
-func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListEventsV1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5853,7 +5853,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 	}
 }
 
-func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListEventsV1beta1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5891,7 +5891,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter) error {
+func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5929,7 +5929,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter) error {
+func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -5967,7 +5967,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter) error {
+func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6005,7 +6005,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 	}
 }
 
-func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter) error {
+func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6043,7 +6043,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	}
 }
 
-func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter) error {
+func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6081,7 +6081,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 	}
 }
 
-func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassRes, w http.ResponseWriter) error {
+func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNetworkingV1IngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6119,7 +6119,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 	}
 }
 
-func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNetworkingV1IngressForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6157,7 +6157,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 	}
 }
 
-func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6195,7 +6195,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 	}
 }
 
-func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w http.ResponseWriter) error {
+func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNodeV1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6233,7 +6233,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 	}
 }
 
-func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassRes, w http.ResponseWriter) error {
+func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNodeV1alpha1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6271,7 +6271,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 	}
 }
 
-func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassRes, w http.ResponseWriter) error {
+func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListNodeV1beta1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6309,7 +6309,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 	}
 }
 
-func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6347,7 +6347,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 	}
 }
 
-func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6385,7 +6385,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 	}
 }
 
-func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter) error {
+func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6423,7 +6423,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 	}
 }
 
-func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter) error {
+func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1ClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6461,7 +6461,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 	}
 }
 
-func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter) error {
+func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6499,7 +6499,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 	}
 }
 
-func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6537,7 +6537,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 	}
 }
 
-func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6575,7 +6575,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 	}
 }
 
-func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassRes, w http.ResponseWriter) error {
+func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListSchedulingV1PriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6613,7 +6613,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 	}
 }
 
-func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w http.ResponseWriter) error {
+func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1CSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6651,7 +6651,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 	}
 }
 
-func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http.ResponseWriter) error {
+func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1CSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6689,7 +6689,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 	}
 }
 
-func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassRes, w http.ResponseWriter) error {
+func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1StorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6727,7 +6727,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 	}
 }
 
-func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentRes, w http.ResponseWriter) error {
+func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1VolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6765,7 +6765,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 	}
 }
 
-func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6803,7 +6803,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 	}
 }
 
-func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6841,12 +6841,12 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 	}
 }
 
-func encodeLogFileListHandlerResponse(response LogFileListHandlerResUnauthorized, w http.ResponseWriter) error {
+func encodeLogFileListHandlerResponse(response LogFileListHandlerResUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	return nil
 }
 
-func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, w http.ResponseWriter) error {
+func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6884,7 +6884,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	}
 }
 
-func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, w http.ResponseWriter) error {
+func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6922,7 +6922,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	}
 }
 
-func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListRes, w http.ResponseWriter) error {
+func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6960,7 +6960,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 	}
 }
 
-func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListRes, w http.ResponseWriter) error {
+func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchApiregistrationV1APIServiceListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -6998,7 +6998,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 	}
 }
 
-func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7036,7 +7036,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 	}
 }
 
-func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7074,7 +7074,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 	}
 }
 
-func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7112,7 +7112,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 	}
 }
 
-func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7150,7 +7150,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 	}
 }
 
-func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7188,7 +7188,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 	}
 }
 
-func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7226,7 +7226,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	}
 }
 
-func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7264,7 +7264,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	}
 }
 
-func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7302,7 +7302,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	}
 }
 
-func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7340,7 +7340,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 	}
 }
 
-func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchBatchV1JobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7378,7 +7378,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 	}
 }
 
-func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7416,7 +7416,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 	}
 }
 
-func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListRes, w http.ResponseWriter) error {
+func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7454,7 +7454,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 	}
 }
 
-func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7492,7 +7492,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 	}
 }
 
-func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7530,7 +7530,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 	}
 }
 
-func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7568,7 +7568,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 	}
 }
 
-func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7606,7 +7606,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 	}
 }
 
-func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7644,7 +7644,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 	}
 }
 
-func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1NamespaceListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7682,7 +7682,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 	}
 }
 
-func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1NodeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7720,7 +7720,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 	}
 }
 
-func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7758,7 +7758,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 	}
 }
 
-func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PersistentVolumeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7796,7 +7796,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 	}
 }
 
-func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PodListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7834,7 +7834,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 	}
 }
 
-func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7872,7 +7872,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 	}
 }
 
-func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7910,7 +7910,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 	}
 }
 
-func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7948,7 +7948,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 	}
 }
 
-func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1SecretListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -7986,7 +7986,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 	}
 }
 
-func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8024,7 +8024,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 	}
 }
 
-func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8062,7 +8062,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 	}
 }
 
-func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8100,7 +8100,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 	}
 }
 
-func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8138,7 +8138,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 	}
 }
 
-func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchEventsV1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8176,7 +8176,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 	}
 }
 
-func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8214,7 +8214,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, w http.ResponseWriter) error {
+func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8252,7 +8252,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, w http.ResponseWriter) error {
+func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8290,7 +8290,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, w http.ResponseWriter) error {
+func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8328,7 +8328,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 	}
 }
 
-func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, w http.ResponseWriter) error {
+func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8366,7 +8366,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	}
 }
 
-func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListRes, w http.ResponseWriter) error {
+func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8404,7 +8404,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 	}
 }
 
-func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListRes, w http.ResponseWriter) error {
+func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNetworkingV1IngressClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8442,7 +8442,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 	}
 }
 
-func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8480,7 +8480,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 	}
 }
 
-func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8518,7 +8518,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 	}
 }
 
-func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListRes, w http.ResponseWriter) error {
+func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNodeV1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8556,7 +8556,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 	}
 }
 
-func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListRes, w http.ResponseWriter) error {
+func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNodeV1alpha1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8594,7 +8594,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 	}
 }
 
-func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListRes, w http.ResponseWriter) error {
+func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchNodeV1beta1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8632,7 +8632,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 	}
 }
 
-func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8670,7 +8670,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 	}
 }
 
-func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8708,7 +8708,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	}
 }
 
-func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListRes, w http.ResponseWriter) error {
+func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8746,7 +8746,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 	}
 }
 
-func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListRes, w http.ResponseWriter) error {
+func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8784,7 +8784,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 	}
 }
 
-func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListRes, w http.ResponseWriter) error {
+func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8822,7 +8822,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 	}
 }
 
-func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8860,7 +8860,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 	}
 }
 
-func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8898,7 +8898,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 	}
 }
 
-func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListRes, w http.ResponseWriter) error {
+func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchSchedulingV1PriorityClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8936,7 +8936,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 	}
 }
 
-func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListRes, w http.ResponseWriter) error {
+func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1CSIDriverListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -8974,7 +8974,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 	}
 }
 
-func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListRes, w http.ResponseWriter) error {
+func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1CSINodeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -9012,7 +9012,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 	}
 }
 
-func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListRes, w http.ResponseWriter) error {
+func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1StorageClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -9050,7 +9050,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 	}
 }
 
-func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListRes, w http.ResponseWriter) error {
+func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1VolumeAttachmentListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -9088,7 +9088,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 	}
 }
 
-func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
@@ -9126,7 +9126,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	}
 }
 
-func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter) error {
+func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")

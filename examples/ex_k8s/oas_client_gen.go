@@ -134,7 +134,13 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 		trace.WithAttributes(otelogen.OperationID(`createAdmissionregistrationV1MutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -173,18 +179,15 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp)
+	result, err := decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -193,7 +196,13 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 		trace.WithAttributes(otelogen.OperationID(`createAdmissionregistrationV1ValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -232,18 +241,15 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp)
+	result, err := decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -252,7 +258,13 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 		trace.WithAttributes(otelogen.OperationID(`createApiextensionsV1CustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateApiextensionsV1CustomResourceDefinitionRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -291,18 +303,15 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp)
+	result, err := decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -311,7 +320,13 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 		trace.WithAttributes(otelogen.OperationID(`createApiregistrationV1APIService`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateApiregistrationV1APIServiceRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateApiregistrationV1APIServiceRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -350,18 +365,15 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateApiregistrationV1APIServiceResponse(resp)
+	result, err := decodeCreateApiregistrationV1APIServiceResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -370,7 +382,13 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 		trace.WithAttributes(otelogen.OperationID(`createAuthenticationV1TokenReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateAuthenticationV1TokenReviewRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateAuthenticationV1TokenReviewRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -386,18 +404,15 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateAuthenticationV1TokenReviewResponse(resp)
+	result, err := decodeCreateAuthenticationV1TokenReviewResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -406,7 +421,13 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SelfSubjectAccessReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectAccessReviewRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -422,18 +443,15 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp)
+	result, err := decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -442,7 +460,13 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SelfSubjectRulesReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateAuthorizationV1SelfSubjectRulesReviewRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -458,18 +482,15 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp)
+	result, err := decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -478,7 +499,13 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 		trace.WithAttributes(otelogen.OperationID(`createAuthorizationV1SubjectAccessReview`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateAuthorizationV1SubjectAccessReviewRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateAuthorizationV1SubjectAccessReviewRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -494,18 +521,15 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp)
+	result, err := decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -514,7 +538,13 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 		trace.WithAttributes(otelogen.OperationID(`createCertificatesV1CertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateCertificatesV1CertificateSigningRequestRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateCertificatesV1CertificateSigningRequestRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -553,18 +583,15 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateCertificatesV1CertificateSigningRequestResponse(resp)
+	result, err := decodeCreateCertificatesV1CertificateSigningRequestResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -573,7 +600,13 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Namespace`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateCoreV1NamespaceRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateCoreV1NamespaceRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -612,18 +645,15 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateCoreV1NamespaceResponse(resp)
+	result, err := decodeCreateCoreV1NamespaceResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -632,7 +662,13 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1Node`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateCoreV1NodeRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateCoreV1NodeRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -671,18 +707,15 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateCoreV1NodeResponse(resp)
+	result, err := decodeCreateCoreV1NodeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -691,7 +724,13 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 		trace.WithAttributes(otelogen.OperationID(`createCoreV1PersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateCoreV1PersistentVolumeRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateCoreV1PersistentVolumeRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -730,18 +769,15 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateCoreV1PersistentVolumeResponse(resp)
+	result, err := decodeCreateCoreV1PersistentVolumeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -750,7 +786,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta1FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1FlowSchemaRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -789,18 +831,15 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp)
+	result, err := decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -809,7 +848,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -848,18 +893,15 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp)
+	result, err := decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -868,7 +910,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta2FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2FlowSchemaRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -907,18 +955,15 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp)
+	result, err := decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -927,7 +972,13 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 		trace.WithAttributes(otelogen.OperationID(`createFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -966,18 +1017,15 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp)
+	result, err := decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -986,7 +1034,13 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 		trace.WithAttributes(otelogen.OperationID(`createInternalApiserverV1alpha1StorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateInternalApiserverV1alpha1StorageVersionRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1025,18 +1079,15 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp)
+	result, err := decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1045,7 +1096,13 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 		trace.WithAttributes(otelogen.OperationID(`createNetworkingV1IngressClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateNetworkingV1IngressClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateNetworkingV1IngressClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1084,18 +1141,15 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateNetworkingV1IngressClassResponse(resp)
+	result, err := decodeCreateNetworkingV1IngressClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1104,7 +1158,13 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateNodeV1RuntimeClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateNodeV1RuntimeClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1143,18 +1203,15 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateNodeV1RuntimeClassResponse(resp)
+	result, err := decodeCreateNodeV1RuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1163,7 +1220,13 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1alpha1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateNodeV1alpha1RuntimeClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateNodeV1alpha1RuntimeClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1202,18 +1265,15 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateNodeV1alpha1RuntimeClassResponse(resp)
+	result, err := decodeCreateNodeV1alpha1RuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1222,7 +1282,13 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 		trace.WithAttributes(otelogen.OperationID(`createNodeV1beta1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateNodeV1beta1RuntimeClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateNodeV1beta1RuntimeClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1261,18 +1327,15 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateNodeV1beta1RuntimeClassResponse(resp)
+	result, err := decodeCreateNodeV1beta1RuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1281,7 +1344,13 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 		trace.WithAttributes(otelogen.OperationID(`createPolicyV1beta1PodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreatePolicyV1beta1PodSecurityPolicyRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1320,18 +1389,15 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp)
+	result, err := decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1340,7 +1406,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 		trace.WithAttributes(otelogen.OperationID(`createRbacAuthorizationV1ClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1379,18 +1451,15 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp)
+	result, err := decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1399,7 +1468,13 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`createRbacAuthorizationV1ClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateRbacAuthorizationV1ClusterRoleBindingRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1438,18 +1513,15 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp)
+	result, err := decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1458,7 +1530,13 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 		trace.WithAttributes(otelogen.OperationID(`createSchedulingV1PriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateSchedulingV1PriorityClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateSchedulingV1PriorityClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1497,18 +1575,15 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateSchedulingV1PriorityClassResponse(resp)
+	result, err := decodeCreateSchedulingV1PriorityClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1517,7 +1592,13 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1CSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateStorageV1CSIDriverRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateStorageV1CSIDriverRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1556,18 +1637,15 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateStorageV1CSIDriverResponse(resp)
+	result, err := decodeCreateStorageV1CSIDriverResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1576,7 +1654,13 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1CSINode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateStorageV1CSINodeRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateStorageV1CSINodeRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1615,18 +1699,15 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateStorageV1CSINodeResponse(resp)
+	result, err := decodeCreateStorageV1CSINodeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1635,7 +1716,13 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1StorageClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateStorageV1StorageClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateStorageV1StorageClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1674,18 +1761,15 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateStorageV1StorageClassResponse(resp)
+	result, err := decodeCreateStorageV1StorageClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1694,7 +1778,13 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 		trace.WithAttributes(otelogen.OperationID(`createStorageV1VolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeCreateStorageV1VolumeAttachmentRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeCreateStorageV1VolumeAttachmentRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1733,18 +1823,15 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCreateStorageV1VolumeAttachmentResponse(resp)
+	result, err := decodeCreateStorageV1VolumeAttachmentResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1753,7 +1840,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -1882,18 +1975,15 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(resp)
+	result, err := decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -1902,7 +1992,13 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		trace.WithAttributes(otelogen.OperationID(`deleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -2031,18 +2127,15 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(resp)
+	result, err := decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -2051,7 +2144,13 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		trace.WithAttributes(otelogen.OperationID(`deleteApiextensionsV1CollectionCustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -2180,18 +2279,15 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp)
+	result, err := decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -2200,7 +2296,13 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`deleteApiregistrationV1CollectionAPIService`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteApiregistrationV1CollectionAPIServiceRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -2329,18 +2431,15 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp)
+	result, err := decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -2349,7 +2448,13 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		trace.WithAttributes(otelogen.OperationID(`deleteCertificatesV1CollectionCertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteCertificatesV1CollectionCertificateSigningRequestRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -2478,18 +2583,15 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp)
+	result, err := decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -2498,7 +2600,13 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionNode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteCoreV1CollectionNodeRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteCoreV1CollectionNodeRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -2627,18 +2735,15 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req IoK8sApimac
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteCoreV1CollectionNodeResponse(resp)
+	result, err := decodeDeleteCoreV1CollectionNodeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -2647,7 +2752,13 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		trace.WithAttributes(otelogen.OperationID(`deleteCoreV1CollectionPersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteCoreV1CollectionPersistentVolumeRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteCoreV1CollectionPersistentVolumeRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -2776,18 +2887,15 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp)
+	result, err := decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -2796,7 +2904,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionFlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -2925,18 +3039,15 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp)
+	result, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -2945,7 +3056,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -3074,18 +3191,15 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(resp)
+	result, err := decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -3094,7 +3208,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionFlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -3223,18 +3343,15 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp)
+	result, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -3243,7 +3360,13 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		trace.WithAttributes(otelogen.OperationID(`deleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -3372,18 +3495,15 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(resp)
+	result, err := decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -3392,7 +3512,13 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		trace.WithAttributes(otelogen.OperationID(`deleteInternalApiserverV1alpha1CollectionStorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -3521,18 +3647,15 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp)
+	result, err := decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -3541,7 +3664,13 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		trace.WithAttributes(otelogen.OperationID(`deleteNetworkingV1CollectionIngressClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteNetworkingV1CollectionIngressClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteNetworkingV1CollectionIngressClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -3670,18 +3799,15 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteNetworkingV1CollectionIngressClassResponse(resp)
+	result, err := decodeDeleteNetworkingV1CollectionIngressClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -3690,7 +3816,13 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1CollectionRuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteNodeV1CollectionRuntimeClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteNodeV1CollectionRuntimeClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -3819,18 +3951,15 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req IoK
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteNodeV1CollectionRuntimeClassResponse(resp)
+	result, err := decodeDeleteNodeV1CollectionRuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -3839,7 +3968,13 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1alpha1CollectionRuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteNodeV1alpha1CollectionRuntimeClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -3968,18 +4103,15 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp)
+	result, err := decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -3988,7 +4120,13 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		trace.WithAttributes(otelogen.OperationID(`deleteNodeV1beta1CollectionRuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteNodeV1beta1CollectionRuntimeClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -4117,18 +4255,15 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp)
+	result, err := decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -4137,7 +4272,13 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		trace.WithAttributes(otelogen.OperationID(`deletePolicyV1beta1CollectionPodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeletePolicyV1beta1CollectionPodSecurityPolicyRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -4266,18 +4407,15 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp)
+	result, err := decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -4286,7 +4424,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -4415,18 +4559,15 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp)
+	result, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -4435,7 +4576,13 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		trace.WithAttributes(otelogen.OperationID(`deleteRbacAuthorizationV1CollectionClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -4564,18 +4711,15 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp)
+	result, err := decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -4584,7 +4728,13 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		trace.WithAttributes(otelogen.OperationID(`deleteSchedulingV1CollectionPriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteSchedulingV1CollectionPriorityClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteSchedulingV1CollectionPriorityClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -4713,18 +4863,15 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp)
+	result, err := decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -4733,7 +4880,13 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteStorageV1CollectionCSIDriverRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteStorageV1CollectionCSIDriverRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -4862,18 +5015,15 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req IoK
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteStorageV1CollectionCSIDriverResponse(resp)
+	result, err := decodeDeleteStorageV1CollectionCSIDriverResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -4882,7 +5032,13 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionCSINode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteStorageV1CollectionCSINodeRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteStorageV1CollectionCSINodeRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -5011,18 +5167,15 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req IoK8s
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteStorageV1CollectionCSINodeResponse(resp)
+	result, err := decodeDeleteStorageV1CollectionCSINodeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5031,7 +5184,13 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionStorageClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteStorageV1CollectionStorageClassRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteStorageV1CollectionStorageClassRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -5160,18 +5319,15 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteStorageV1CollectionStorageClassResponse(resp)
+	result, err := decodeDeleteStorageV1CollectionStorageClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5180,7 +5336,13 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		trace.WithAttributes(otelogen.OperationID(`deleteStorageV1CollectionVolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
-	buf, contentType, err := encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
+	buf, contentType, err := encodeDeleteStorageV1CollectionVolumeAttachmentRequest(req, span)
 	if err != nil {
 		return res, err
 	}
@@ -5309,18 +5471,15 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp)
+	result, err := decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5329,6 +5488,12 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 		trace.WithAttributes(otelogen.OperationID(`getAPIVersions`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/"
 
@@ -5337,18 +5502,15 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAPIVersionsResponse(resp)
+	result, err := decodeGetAPIVersionsResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5357,6 +5519,12 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 		trace.WithAttributes(otelogen.OperationID(`getAdmissionregistrationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/"
 
@@ -5365,18 +5533,15 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAdmissionregistrationAPIGroupResponse(resp)
+	result, err := decodeGetAdmissionregistrationAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5385,6 +5550,12 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 		trace.WithAttributes(otelogen.OperationID(`getAdmissionregistrationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/"
 
@@ -5393,18 +5564,15 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAdmissionregistrationV1APIResourcesResponse(resp)
+	result, err := decodeGetAdmissionregistrationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5413,6 +5581,12 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 		trace.WithAttributes(otelogen.OperationID(`getApiextensionsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/"
 
@@ -5421,18 +5595,15 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetApiextensionsAPIGroupResponse(resp)
+	result, err := decodeGetApiextensionsAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5441,6 +5612,12 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 		trace.WithAttributes(otelogen.OperationID(`getApiextensionsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/"
 
@@ -5449,18 +5626,15 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetApiextensionsV1APIResourcesResponse(resp)
+	result, err := decodeGetApiextensionsV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5469,6 +5643,12 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 		trace.WithAttributes(otelogen.OperationID(`getApiregistrationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/"
 
@@ -5477,18 +5657,15 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetApiregistrationAPIGroupResponse(resp)
+	result, err := decodeGetApiregistrationAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5497,6 +5674,12 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 		trace.WithAttributes(otelogen.OperationID(`getApiregistrationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/"
 
@@ -5505,18 +5688,15 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetApiregistrationV1APIResourcesResponse(resp)
+	result, err := decodeGetApiregistrationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5525,6 +5705,12 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 		trace.WithAttributes(otelogen.OperationID(`getAppsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/"
 
@@ -5533,18 +5719,15 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAppsAPIGroupResponse(resp)
+	result, err := decodeGetAppsAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5553,6 +5736,12 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 		trace.WithAttributes(otelogen.OperationID(`getAppsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/"
 
@@ -5561,18 +5750,15 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAppsV1APIResourcesResponse(resp)
+	result, err := decodeGetAppsV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5581,6 +5767,12 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 		trace.WithAttributes(otelogen.OperationID(`getAuthenticationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authentication.k8s.io/"
 
@@ -5589,18 +5781,15 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAuthenticationAPIGroupResponse(resp)
+	result, err := decodeGetAuthenticationAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5609,6 +5798,12 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 		trace.WithAttributes(otelogen.OperationID(`getAuthenticationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authentication.k8s.io/v1/"
 
@@ -5617,18 +5812,15 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAuthenticationV1APIResourcesResponse(resp)
+	result, err := decodeGetAuthenticationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5637,6 +5829,12 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 		trace.WithAttributes(otelogen.OperationID(`getAuthorizationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/"
 
@@ -5645,18 +5843,15 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAuthorizationAPIGroupResponse(resp)
+	result, err := decodeGetAuthorizationAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5665,6 +5860,12 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 		trace.WithAttributes(otelogen.OperationID(`getAuthorizationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/v1/"
 
@@ -5673,18 +5874,15 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAuthorizationV1APIResourcesResponse(resp)
+	result, err := decodeGetAuthorizationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5693,6 +5891,12 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/"
 
@@ -5701,18 +5905,15 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAutoscalingAPIGroupResponse(resp)
+	result, err := decodeGetAutoscalingAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5721,6 +5922,12 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/"
 
@@ -5729,18 +5936,15 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAutoscalingV1APIResourcesResponse(resp)
+	result, err := decodeGetAutoscalingV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5749,6 +5953,12 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV2beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/"
 
@@ -5757,18 +5967,15 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAutoscalingV2beta1APIResourcesResponse(resp)
+	result, err := decodeGetAutoscalingV2beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5777,6 +5984,12 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV2beta2APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/"
 
@@ -5785,18 +5998,15 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetAutoscalingV2beta2APIResourcesResponse(resp)
+	result, err := decodeGetAutoscalingV2beta2APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5805,6 +6015,12 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 		trace.WithAttributes(otelogen.OperationID(`getBatchAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/"
 
@@ -5813,18 +6029,15 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetBatchAPIGroupResponse(resp)
+	result, err := decodeGetBatchAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5833,6 +6046,12 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 		trace.WithAttributes(otelogen.OperationID(`getBatchV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/"
 
@@ -5841,18 +6060,15 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetBatchV1APIResourcesResponse(resp)
+	result, err := decodeGetBatchV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5861,6 +6077,12 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 		trace.WithAttributes(otelogen.OperationID(`getBatchV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/"
 
@@ -5869,18 +6091,15 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetBatchV1beta1APIResourcesResponse(resp)
+	result, err := decodeGetBatchV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5889,6 +6108,12 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 		trace.WithAttributes(otelogen.OperationID(`getCertificatesAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/"
 
@@ -5897,18 +6122,15 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetCertificatesAPIGroupResponse(resp)
+	result, err := decodeGetCertificatesAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5917,6 +6139,12 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 		trace.WithAttributes(otelogen.OperationID(`getCertificatesV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/"
 
@@ -5925,18 +6153,15 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetCertificatesV1APIResourcesResponse(resp)
+	result, err := decodeGetCertificatesV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5945,6 +6170,12 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 		trace.WithAttributes(otelogen.OperationID(`getCodeVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/version/"
 
@@ -5953,18 +6184,15 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetCodeVersionResponse(resp)
+	result, err := decodeGetCodeVersionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -5973,6 +6201,12 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 		trace.WithAttributes(otelogen.OperationID(`getCoordinationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/"
 
@@ -5981,18 +6215,15 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetCoordinationAPIGroupResponse(resp)
+	result, err := decodeGetCoordinationAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6001,6 +6232,12 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 		trace.WithAttributes(otelogen.OperationID(`getCoordinationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/"
 
@@ -6009,18 +6246,15 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetCoordinationV1APIResourcesResponse(resp)
+	result, err := decodeGetCoordinationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6029,6 +6263,12 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 		trace.WithAttributes(otelogen.OperationID(`getCoreAPIVersions`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/"
 
@@ -6037,18 +6277,15 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetCoreAPIVersionsResponse(resp)
+	result, err := decodeGetCoreAPIVersionsResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6057,6 +6294,12 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 		trace.WithAttributes(otelogen.OperationID(`getCoreV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/"
 
@@ -6065,18 +6308,15 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetCoreV1APIResourcesResponse(resp)
+	result, err := decodeGetCoreV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6085,6 +6325,12 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/"
 
@@ -6093,18 +6339,15 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetDiscoveryAPIGroupResponse(resp)
+	result, err := decodeGetDiscoveryAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6113,6 +6356,12 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/"
 
@@ -6121,18 +6370,15 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetDiscoveryV1APIResourcesResponse(resp)
+	result, err := decodeGetDiscoveryV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6141,6 +6387,12 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/"
 
@@ -6149,18 +6401,15 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetDiscoveryV1beta1APIResourcesResponse(resp)
+	result, err := decodeGetDiscoveryV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6169,6 +6418,12 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 		trace.WithAttributes(otelogen.OperationID(`getEventsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/"
 
@@ -6177,18 +6432,15 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetEventsAPIGroupResponse(resp)
+	result, err := decodeGetEventsAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6197,6 +6449,12 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 		trace.WithAttributes(otelogen.OperationID(`getEventsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/"
 
@@ -6205,18 +6463,15 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetEventsV1APIResourcesResponse(resp)
+	result, err := decodeGetEventsV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6225,6 +6480,12 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 		trace.WithAttributes(otelogen.OperationID(`getEventsV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/"
 
@@ -6233,18 +6494,15 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetEventsV1beta1APIResourcesResponse(resp)
+	result, err := decodeGetEventsV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6253,6 +6511,12 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/"
 
@@ -6261,18 +6525,15 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetFlowcontrolApiserverAPIGroupResponse(resp)
+	result, err := decodeGetFlowcontrolApiserverAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6281,6 +6542,12 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
 
@@ -6289,18 +6556,15 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp)
+	result, err := decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6309,6 +6573,12 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverV1beta2APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
 
@@ -6317,18 +6587,15 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp)
+	result, err := decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6337,6 +6604,12 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 		trace.WithAttributes(otelogen.OperationID(`getInternalApiserverAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/"
 
@@ -6345,18 +6618,15 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetInternalApiserverAPIGroupResponse(resp)
+	result, err := decodeGetInternalApiserverAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6365,6 +6635,12 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 		trace.WithAttributes(otelogen.OperationID(`getInternalApiserverV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/"
 
@@ -6373,18 +6649,15 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp)
+	result, err := decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6393,6 +6666,12 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 		trace.WithAttributes(otelogen.OperationID(`getNetworkingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/"
 
@@ -6401,18 +6680,15 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetNetworkingAPIGroupResponse(resp)
+	result, err := decodeGetNetworkingAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6421,6 +6697,12 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 		trace.WithAttributes(otelogen.OperationID(`getNetworkingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/"
 
@@ -6429,18 +6711,15 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetNetworkingV1APIResourcesResponse(resp)
+	result, err := decodeGetNetworkingV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6449,6 +6728,12 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 		trace.WithAttributes(otelogen.OperationID(`getNodeAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/"
 
@@ -6457,18 +6742,15 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetNodeAPIGroupResponse(resp)
+	result, err := decodeGetNodeAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6477,6 +6759,12 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/"
 
@@ -6485,18 +6773,15 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetNodeV1APIResourcesResponse(resp)
+	result, err := decodeGetNodeV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6505,6 +6790,12 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/"
 
@@ -6513,18 +6804,15 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetNodeV1alpha1APIResourcesResponse(resp)
+	result, err := decodeGetNodeV1alpha1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6533,6 +6821,12 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/"
 
@@ -6541,18 +6835,15 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetNodeV1beta1APIResourcesResponse(resp)
+	result, err := decodeGetNodeV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6561,6 +6852,12 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 		trace.WithAttributes(otelogen.OperationID(`getPolicyAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/"
 
@@ -6569,18 +6866,15 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetPolicyAPIGroupResponse(resp)
+	result, err := decodeGetPolicyAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6589,6 +6883,12 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 		trace.WithAttributes(otelogen.OperationID(`getPolicyV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/"
 
@@ -6597,18 +6897,15 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetPolicyV1APIResourcesResponse(resp)
+	result, err := decodeGetPolicyV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6617,6 +6914,12 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 		trace.WithAttributes(otelogen.OperationID(`getPolicyV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/"
 
@@ -6625,18 +6928,15 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetPolicyV1beta1APIResourcesResponse(resp)
+	result, err := decodeGetPolicyV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6645,6 +6945,12 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 		trace.WithAttributes(otelogen.OperationID(`getRbacAuthorizationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/"
 
@@ -6653,18 +6959,15 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetRbacAuthorizationAPIGroupResponse(resp)
+	result, err := decodeGetRbacAuthorizationAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6673,6 +6976,12 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 		trace.WithAttributes(otelogen.OperationID(`getRbacAuthorizationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/"
 
@@ -6681,18 +6990,15 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetRbacAuthorizationV1APIResourcesResponse(resp)
+	result, err := decodeGetRbacAuthorizationV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6701,6 +7007,12 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 		trace.WithAttributes(otelogen.OperationID(`getSchedulingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/"
 
@@ -6709,18 +7021,15 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetSchedulingAPIGroupResponse(resp)
+	result, err := decodeGetSchedulingAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6729,6 +7038,12 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 		trace.WithAttributes(otelogen.OperationID(`getSchedulingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/"
 
@@ -6737,18 +7052,15 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetSchedulingV1APIResourcesResponse(resp)
+	result, err := decodeGetSchedulingV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6757,6 +7069,12 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 		trace.WithAttributes(otelogen.OperationID(`getServiceAccountIssuerOpenIDConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/.well-known/openid-configuration/"
 
@@ -6765,18 +7083,15 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp)
+	result, err := decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6785,6 +7100,12 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res G
 		trace.WithAttributes(otelogen.OperationID(`getServiceAccountIssuerOpenIDKeyset`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/openid/v1/jwks/"
 
@@ -6793,18 +7114,15 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res G
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp)
+	result, err := decodeGetServiceAccountIssuerOpenIDKeysetResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6813,6 +7131,12 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 		trace.WithAttributes(otelogen.OperationID(`getStorageAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/"
 
@@ -6821,18 +7145,15 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetStorageAPIGroupResponse(resp)
+	result, err := decodeGetStorageAPIGroupResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6841,6 +7162,12 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/"
 
@@ -6849,18 +7176,15 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetStorageV1APIResourcesResponse(resp)
+	result, err := decodeGetStorageV1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6869,6 +7193,12 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/"
 
@@ -6877,18 +7207,15 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetStorageV1alpha1APIResourcesResponse(resp)
+	result, err := decodeGetStorageV1alpha1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6897,6 +7224,12 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/"
 
@@ -6905,18 +7238,15 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetStorageV1beta1APIResourcesResponse(resp)
+	result, err := decodeGetStorageV1beta1APIResourcesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -6925,6 +7255,12 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1MutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
@@ -7026,18 +7362,15 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp)
+	result, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7046,6 +7379,12 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1ValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
@@ -7147,18 +7486,15 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp)
+	result, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7167,6 +7503,12 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`listApiextensionsV1CustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
@@ -7268,18 +7610,15 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListApiextensionsV1CustomResourceDefinitionResponse(resp)
+	result, err := decodeListApiextensionsV1CustomResourceDefinitionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7288,6 +7627,12 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		trace.WithAttributes(otelogen.OperationID(`listApiregistrationV1APIService`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
@@ -7389,18 +7734,15 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListApiregistrationV1APIServiceResponse(resp)
+	result, err := decodeListApiregistrationV1APIServiceResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7409,6 +7751,12 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1ControllerRevisionForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/controllerrevisions"
 
@@ -7417,18 +7765,15 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp)
+	result, err := decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7437,6 +7782,12 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1DaemonSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/daemonsets"
 
@@ -7445,18 +7796,15 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAppsV1DaemonSetForAllNamespacesResponse(resp)
+	result, err := decodeListAppsV1DaemonSetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7465,6 +7813,12 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1DeploymentForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/deployments"
 
@@ -7473,18 +7827,15 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAppsV1DeploymentForAllNamespacesResponse(resp)
+	result, err := decodeListAppsV1DeploymentForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7493,6 +7844,12 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1ReplicaSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/replicasets"
 
@@ -7501,18 +7858,15 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp)
+	result, err := decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7521,6 +7875,12 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1StatefulSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/statefulsets"
 
@@ -7529,18 +7889,15 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAppsV1StatefulSetForAllNamespacesResponse(resp)
+	result, err := decodeListAppsV1StatefulSetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7549,6 +7906,12 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/horizontalpodautoscalers"
 
@@ -7557,18 +7920,15 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp)
+	result, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7577,6 +7937,12 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
 
@@ -7585,18 +7951,15 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp)
+	result, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7605,6 +7968,12 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
 
@@ -7613,18 +7982,15 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp)
+	result, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7633,6 +7999,12 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1CronJobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/cronjobs"
 
@@ -7641,18 +8013,15 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListBatchV1CronJobForAllNamespacesResponse(resp)
+	result, err := decodeListBatchV1CronJobForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7661,6 +8030,12 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1JobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/jobs"
 
@@ -7669,18 +8044,15 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListBatchV1JobForAllNamespacesResponse(resp)
+	result, err := decodeListBatchV1JobForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7689,6 +8061,12 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1beta1CronJobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/cronjobs"
 
@@ -7697,18 +8075,15 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp)
+	result, err := decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7717,6 +8092,12 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`listCertificatesV1CertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
@@ -7818,18 +8199,15 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCertificatesV1CertificateSigningRequestResponse(resp)
+	result, err := decodeListCertificatesV1CertificateSigningRequestResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7838,6 +8216,12 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 		trace.WithAttributes(otelogen.OperationID(`listCoordinationV1LeaseForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/leases"
 
@@ -7846,18 +8230,15 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoordinationV1LeaseForAllNamespacesResponse(resp)
+	result, err := decodeListCoordinationV1LeaseForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7866,6 +8247,12 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ComponentStatus`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/componentstatuses"
 
@@ -7874,18 +8261,15 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1ComponentStatusResponse(resp)
+	result, err := decodeListCoreV1ComponentStatusResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7894,6 +8278,12 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ConfigMapForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/configmaps"
 
@@ -7902,18 +8292,15 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1ConfigMapForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1ConfigMapForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7922,6 +8309,12 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1EndpointsForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/endpoints"
 
@@ -7930,18 +8323,15 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1EndpointsForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1EndpointsForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7950,6 +8340,12 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/events"
 
@@ -7958,18 +8354,15 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1EventForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1EventForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -7978,6 +8371,12 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1LimitRangeForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/limitranges"
 
@@ -7986,18 +8385,15 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1LimitRangeForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1LimitRangeForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8006,6 +8402,12 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Namespace`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces"
 
@@ -8107,18 +8509,15 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1NamespaceResponse(resp)
+	result, err := decodeListCoreV1NamespaceResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8127,6 +8526,12 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Node`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
 
@@ -8228,18 +8633,15 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1NodeResponse(resp)
+	result, err := decodeListCoreV1NodeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8248,6 +8650,12 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
 
@@ -8349,18 +8757,15 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1PersistentVolumeResponse(resp)
+	result, err := decodeListCoreV1PersistentVolumeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8369,6 +8774,12 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PersistentVolumeClaimForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumeclaims"
 
@@ -8377,18 +8788,15 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8397,6 +8805,12 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PodForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/pods"
 
@@ -8405,18 +8819,15 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1PodForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1PodForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8425,6 +8836,12 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PodTemplateForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/podtemplates"
 
@@ -8433,18 +8850,15 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1PodTemplateForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1PodTemplateForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8453,6 +8867,12 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ReplicationControllerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/replicationcontrollers"
 
@@ -8461,18 +8881,15 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8481,6 +8898,12 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ResourceQuotaForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/resourcequotas"
 
@@ -8489,18 +8912,15 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8509,6 +8929,12 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1SecretForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/secrets"
 
@@ -8517,18 +8943,15 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1SecretForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1SecretForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8537,6 +8960,12 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ServiceAccountForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/serviceaccounts"
 
@@ -8545,18 +8974,15 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8565,6 +8991,12 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ServiceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/services"
 
@@ -8573,18 +9005,15 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListCoreV1ServiceForAllNamespacesResponse(resp)
+	result, err := decodeListCoreV1ServiceForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8593,6 +9022,12 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1EndpointSliceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/endpointslices"
 
@@ -8601,18 +9036,15 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp)
+	result, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8621,6 +9053,12 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1beta1EndpointSliceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
 
@@ -8629,18 +9067,15 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp)
+	result, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8649,6 +9084,12 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/events"
 
@@ -8657,18 +9098,15 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListEventsV1EventForAllNamespacesResponse(resp)
+	result, err := decodeListEventsV1EventForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8677,6 +9115,12 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1beta1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/events"
 
@@ -8685,18 +9129,15 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListEventsV1beta1EventForAllNamespacesResponse(resp)
+	result, err := decodeListEventsV1beta1EventForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8705,6 +9146,12 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
@@ -8806,18 +9253,15 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp)
+	result, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8826,6 +9270,12 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
@@ -8927,18 +9377,15 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp)
+	result, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -8947,6 +9394,12 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
@@ -9048,18 +9501,15 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp)
+	result, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9068,6 +9518,12 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
@@ -9169,18 +9625,15 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp)
+	result, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9189,6 +9642,12 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`listInternalApiserverV1alpha1StorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
@@ -9290,18 +9749,15 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListInternalApiserverV1alpha1StorageVersionResponse(resp)
+	result, err := decodeListInternalApiserverV1alpha1StorageVersionResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9310,6 +9766,12 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1IngressClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
@@ -9411,18 +9873,15 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListNetworkingV1IngressClassResponse(resp)
+	result, err := decodeListNetworkingV1IngressClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9431,6 +9890,12 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1IngressForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingresses"
 
@@ -9439,18 +9904,15 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListNetworkingV1IngressForAllNamespacesResponse(resp)
+	result, err := decodeListNetworkingV1IngressForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9459,6 +9921,12 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1NetworkPolicyForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/networkpolicies"
 
@@ -9467,18 +9935,15 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp)
+	result, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9487,6 +9952,12 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
@@ -9588,18 +10059,15 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListNodeV1RuntimeClassResponse(resp)
+	result, err := decodeListNodeV1RuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9608,6 +10076,12 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1alpha1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
@@ -9709,18 +10183,15 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListNodeV1alpha1RuntimeClassResponse(resp)
+	result, err := decodeListNodeV1alpha1RuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9729,6 +10200,12 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1beta1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
@@ -9830,18 +10307,15 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListNodeV1beta1RuntimeClassResponse(resp)
+	result, err := decodeListNodeV1beta1RuntimeClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9850,6 +10324,12 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1PodDisruptionBudgetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/poddisruptionbudgets"
 
@@ -9858,18 +10338,15 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp)
+	result, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9878,6 +10355,12 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1PodDisruptionBudgetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/poddisruptionbudgets"
 
@@ -9886,18 +10369,15 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp)
+	result, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -9906,6 +10386,12 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1PodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
@@ -10007,18 +10493,15 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListPolicyV1beta1PodSecurityPolicyResponse(resp)
+	result, err := decodeListPolicyV1beta1PodSecurityPolicyResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10027,6 +10510,12 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
@@ -10128,18 +10617,15 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListRbacAuthorizationV1ClusterRoleResponse(resp)
+	result, err := decodeListRbacAuthorizationV1ClusterRoleResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10148,6 +10634,12 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
@@ -10249,18 +10741,15 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp)
+	result, err := decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10269,6 +10758,12 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1RoleBindingForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
 
@@ -10277,18 +10772,15 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp)
+	result, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10297,6 +10789,12 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1RoleForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/roles"
 
@@ -10305,18 +10803,15 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp)
+	result, err := decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10325,6 +10820,12 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		trace.WithAttributes(otelogen.OperationID(`listSchedulingV1PriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
@@ -10426,18 +10927,15 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListSchedulingV1PriorityClassResponse(resp)
+	result, err := decodeListSchedulingV1PriorityClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10446,6 +10944,12 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
@@ -10547,18 +11051,15 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListStorageV1CSIDriverResponse(resp)
+	result, err := decodeListStorageV1CSIDriverResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10567,6 +11068,12 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSINode`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
@@ -10668,18 +11175,15 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListStorageV1CSINodeResponse(resp)
+	result, err := decodeListStorageV1CSINodeResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10688,6 +11192,12 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1StorageClass`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
@@ -10789,18 +11299,15 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListStorageV1StorageClassResponse(resp)
+	result, err := decodeListStorageV1StorageClassResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10809,6 +11316,12 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1VolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
@@ -10910,18 +11423,15 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListStorageV1VolumeAttachmentResponse(resp)
+	result, err := decodeListStorageV1VolumeAttachmentResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10930,6 +11440,12 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1alpha1CSIStorageCapacityForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
 
@@ -10938,18 +11454,15 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp)
+	result, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10958,6 +11471,12 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1beta1CSIStorageCapacityForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
 
@@ -10966,18 +11485,15 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp)
+	result, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -10986,6 +11502,12 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 		trace.WithAttributes(otelogen.OperationID(`logFileListHandler`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logs/"
 
@@ -10994,18 +11516,15 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeLogFileListHandlerResponse(resp)
+	result, err := decodeLogFileListHandlerResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11014,6 +11533,12 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1MutatingWebhookConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
 
@@ -11022,18 +11547,15 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp)
+	result, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11042,6 +11564,12 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1ValidatingWebhookConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
 
@@ -11050,18 +11578,15 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp)
+	result, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11070,6 +11595,12 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 		trace.WithAttributes(otelogen.OperationID(`watchApiextensionsV1CustomResourceDefinitionList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
 
@@ -11078,18 +11609,15 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp)
+	result, err := decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11098,6 +11626,12 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 		trace.WithAttributes(otelogen.OperationID(`watchApiregistrationV1APIServiceList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
 
@@ -11106,18 +11640,15 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchApiregistrationV1APIServiceListResponse(resp)
+	result, err := decodeWatchApiregistrationV1APIServiceListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11126,6 +11657,12 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1ControllerRevisionListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/controllerrevisions"
 
@@ -11134,18 +11671,15 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11154,6 +11688,12 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1DaemonSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/daemonsets"
 
@@ -11162,18 +11702,15 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11182,6 +11719,12 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1DeploymentListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/deployments"
 
@@ -11190,18 +11733,15 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11210,6 +11750,12 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1ReplicaSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/replicasets"
 
@@ -11218,18 +11764,15 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11238,6 +11781,12 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1StatefulSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/statefulsets"
 
@@ -11246,18 +11795,15 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11266,6 +11812,12 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
 
@@ -11274,18 +11826,15 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11294,6 +11843,12 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
 
@@ -11302,18 +11857,15 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11322,6 +11874,12 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
 
@@ -11330,18 +11888,15 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp)
+	result, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11350,6 +11905,12 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1CronJobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/cronjobs"
 
@@ -11358,18 +11919,15 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp)
+	result, err := decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11378,6 +11936,12 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1JobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/jobs"
 
@@ -11386,18 +11950,15 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchBatchV1JobListForAllNamespacesResponse(resp)
+	result, err := decodeWatchBatchV1JobListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11406,6 +11967,12 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1beta1CronJobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/watch/cronjobs"
 
@@ -11414,18 +11981,15 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp)
+	result, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11434,6 +11998,12 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 		trace.WithAttributes(otelogen.OperationID(`watchCertificatesV1CertificateSigningRequestList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
 
@@ -11442,18 +12012,15 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp)
+	result, err := decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11462,6 +12029,12 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 		trace.WithAttributes(otelogen.OperationID(`watchCoordinationV1LeaseListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/watch/leases"
 
@@ -11470,18 +12043,15 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11490,6 +12060,12 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ConfigMapListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/configmaps"
 
@@ -11498,18 +12074,15 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11518,6 +12091,12 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1EndpointsListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/endpoints"
 
@@ -11526,18 +12105,15 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11546,6 +12122,12 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/events"
 
@@ -11554,18 +12136,15 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1EventListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1EventListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11574,6 +12153,12 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1LimitRangeListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/limitranges"
 
@@ -11582,18 +12167,15 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11602,6 +12184,12 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespaceList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces"
 
@@ -11610,18 +12198,15 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1NamespaceListResponse(resp)
+	result, err := decodeWatchCoreV1NamespaceListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11630,6 +12215,12 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NodeList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/nodes"
 
@@ -11638,18 +12229,15 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1NodeListResponse(resp)
+	result, err := decodeWatchCoreV1NodeListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11658,6 +12246,12 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PersistentVolumeClaimListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumeclaims"
 
@@ -11666,18 +12260,15 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11686,6 +12277,12 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PersistentVolumeList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumes"
 
@@ -11694,18 +12291,15 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1PersistentVolumeListResponse(resp)
+	result, err := decodeWatchCoreV1PersistentVolumeListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11714,6 +12308,12 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PodListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/pods"
 
@@ -11722,18 +12322,15 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1PodListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1PodListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11742,6 +12339,12 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PodTemplateListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/podtemplates"
 
@@ -11750,18 +12353,15 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11770,6 +12370,12 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ReplicationControllerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/replicationcontrollers"
 
@@ -11778,18 +12384,15 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11798,6 +12401,12 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ResourceQuotaListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/resourcequotas"
 
@@ -11806,18 +12415,15 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11826,6 +12432,12 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1SecretListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/secrets"
 
@@ -11834,18 +12446,15 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1SecretListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1SecretListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11854,6 +12463,12 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ServiceAccountListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/serviceaccounts"
 
@@ -11862,18 +12477,15 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11882,6 +12494,12 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ServiceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/services"
 
@@ -11890,18 +12508,15 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp)
+	result, err := decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11910,6 +12525,12 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1EndpointSliceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
 
@@ -11918,18 +12539,15 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp)
+	result, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11938,6 +12556,12 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1beta1EndpointSliceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
 
@@ -11946,18 +12570,15 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp)
+	result, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11966,6 +12587,12 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/watch/events"
 
@@ -11974,18 +12601,15 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchEventsV1EventListForAllNamespacesResponse(resp)
+	result, err := decodeWatchEventsV1EventListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -11994,6 +12618,12 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1beta1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/events"
 
@@ -12002,18 +12632,15 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp)
+	result, err := decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12022,6 +12649,12 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1FlowSchemaList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
 
@@ -12030,18 +12663,15 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp)
+	result, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12050,6 +12680,12 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
 
@@ -12058,18 +12694,15 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp)
+	result, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12078,6 +12711,12 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2FlowSchemaList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
 
@@ -12086,18 +12725,15 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp)
+	result, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12106,6 +12742,12 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
 
@@ -12114,18 +12756,15 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp)
+	result, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12134,6 +12773,12 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 		trace.WithAttributes(otelogen.OperationID(`watchInternalApiserverV1alpha1StorageVersionList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
 
@@ -12142,18 +12787,15 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp)
+	result, err := decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12162,6 +12804,12 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1IngressClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
 
@@ -12170,18 +12818,15 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchNetworkingV1IngressClassListResponse(resp)
+	result, err := decodeWatchNetworkingV1IngressClassListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12190,6 +12835,12 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1IngressListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingresses"
 
@@ -12198,18 +12849,15 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp)
+	result, err := decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12218,6 +12866,12 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1NetworkPolicyListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
 
@@ -12226,18 +12880,15 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp)
+	result, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12246,6 +12897,12 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
 
@@ -12254,18 +12911,15 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchNodeV1RuntimeClassListResponse(resp)
+	result, err := decodeWatchNodeV1RuntimeClassListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12274,6 +12928,12 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1alpha1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
 
@@ -12282,18 +12942,15 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchNodeV1alpha1RuntimeClassListResponse(resp)
+	result, err := decodeWatchNodeV1alpha1RuntimeClassListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12302,6 +12959,12 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1beta1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
 
@@ -12310,18 +12973,15 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchNodeV1beta1RuntimeClassListResponse(resp)
+	result, err := decodeWatchNodeV1beta1RuntimeClassListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12330,6 +12990,12 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1PodDisruptionBudgetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/watch/poddisruptionbudgets"
 
@@ -12338,18 +13004,15 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp)
+	result, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12358,6 +13021,12 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
 
@@ -12366,18 +13035,15 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp)
+	result, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12386,6 +13052,12 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1PodSecurityPolicyList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
 
@@ -12394,18 +13066,15 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp)
+	result, err := decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12414,6 +13083,12 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRoleBindingList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
 
@@ -12422,18 +13097,15 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp)
+	result, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12442,6 +13114,12 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRoleList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
 
@@ -12450,18 +13128,15 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp)
+	result, err := decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12470,6 +13145,12 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1RoleBindingListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
 
@@ -12478,18 +13159,15 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp)
+	result, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12498,6 +13176,12 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1RoleListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
 
@@ -12506,18 +13190,15 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp)
+	result, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12526,6 +13207,12 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 		trace.WithAttributes(otelogen.OperationID(`watchSchedulingV1PriorityClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
 
@@ -12534,18 +13221,15 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchSchedulingV1PriorityClassListResponse(resp)
+	result, err := decodeWatchSchedulingV1PriorityClassListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12554,6 +13238,12 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSIDriverList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers"
 
@@ -12562,18 +13252,15 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchStorageV1CSIDriverListResponse(resp)
+	result, err := decodeWatchStorageV1CSIDriverListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12582,6 +13269,12 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSINodeList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes"
 
@@ -12590,18 +13283,15 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchStorageV1CSINodeListResponse(resp)
+	result, err := decodeWatchStorageV1CSINodeListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12610,6 +13300,12 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1StorageClassList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses"
 
@@ -12618,18 +13314,15 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchStorageV1StorageClassListResponse(resp)
+	result, err := decodeWatchStorageV1StorageClassListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12638,6 +13331,12 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1VolumeAttachmentList`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
 
@@ -12646,18 +13345,15 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchStorageV1VolumeAttachmentListResponse(resp)
+	result, err := decodeWatchStorageV1VolumeAttachmentListResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12666,6 +13362,12 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
 
@@ -12674,18 +13376,15 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp)
+	result, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -12694,6 +13393,12 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1beta1CSIStorageCapacityListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
 
@@ -12702,17 +13407,14 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp)
+	result, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }

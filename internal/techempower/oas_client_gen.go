@@ -134,6 +134,12 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 		trace.WithAttributes(otelogen.OperationID(`Caching`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/cached-worlds"
 
@@ -155,18 +161,15 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeCachingResponse(resp)
+	result, err := decodeCachingResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -175,6 +178,12 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 		trace.WithAttributes(otelogen.OperationID(`DB`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/db"
 
@@ -183,18 +192,15 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeDBResponse(resp)
+	result, err := decodeDBResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -203,6 +209,12 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 		trace.WithAttributes(otelogen.OperationID(`json`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/json"
 
@@ -211,18 +223,15 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeJSONResponse(resp)
+	result, err := decodeJSONResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -231,6 +240,12 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 		trace.WithAttributes(otelogen.OperationID(`Queries`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
 
@@ -252,18 +267,15 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeQueriesResponse(resp)
+	result, err := decodeQueriesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -272,6 +284,12 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 		trace.WithAttributes(otelogen.OperationID(`Updates`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/updates"
 
@@ -293,17 +311,14 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeUpdatesResponse(resp)
+	result, err := decodeUpdatesResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }

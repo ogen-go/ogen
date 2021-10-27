@@ -134,6 +134,12 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 		trace.WithAttributes(otelogen.OperationID(`getBook`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/gallery/"
 	{
@@ -151,18 +157,15 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetBookResponse(resp)
+	result, err := decodeGetBookResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -171,6 +174,12 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 		trace.WithAttributes(otelogen.OperationID(`getPageCoverImage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -198,18 +207,15 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetPageCoverImageResponse(resp)
+	result, err := decodeGetPageCoverImageResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -218,6 +224,12 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 		trace.WithAttributes(otelogen.OperationID(`getPageImage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -255,18 +267,15 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetPageImageResponse(resp)
+	result, err := decodeGetPageImageResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -275,6 +284,12 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 		trace.WithAttributes(otelogen.OperationID(`getPageThumbnailImage`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/galleries/"
 	{
@@ -312,18 +327,15 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeGetPageThumbnailImageResponse(resp)
+	result, err := decodeGetPageThumbnailImageResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -332,6 +344,12 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 		trace.WithAttributes(otelogen.OperationID(`search`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/search"
 
@@ -363,18 +381,15 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSearchResponse(resp)
+	result, err := decodeSearchResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }
 
@@ -383,6 +398,12 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 		trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+		}
+		span.End()
+	}()
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/tagged"
 
@@ -414,17 +435,14 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSearchByTagIDResponse(resp)
+	result, err := decodeSearchByTagIDResponse(resp, span)
 	if err != nil {
-		span.End()
 		return res, fmt.Errorf("decode response: %w", err)
 	}
 
-	span.End()
 	return result, nil
 }

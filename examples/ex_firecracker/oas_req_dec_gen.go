@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeCreateSnapshotRequest(r *http.Request) (req SnapshotCreateParams, err error) {
+func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotCreateParams, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -91,7 +91,7 @@ func decodeCreateSnapshotRequest(r *http.Request) (req SnapshotCreateParams, err
 	}
 }
 
-func decodeCreateSyncActionRequest(r *http.Request) (req InstanceActionInfo, err error) {
+func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req InstanceActionInfo, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -126,7 +126,7 @@ func decodeCreateSyncActionRequest(r *http.Request) (req InstanceActionInfo, err
 	}
 }
 
-func decodeLoadSnapshotRequest(r *http.Request) (req SnapshotLoadParams, err error) {
+func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLoadParams, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -153,7 +153,7 @@ func decodeLoadSnapshotRequest(r *http.Request) (req SnapshotLoadParams, err err
 	}
 }
 
-func decodeMmdsConfigPutRequest(r *http.Request) (req MmdsConfig, err error) {
+func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfig, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -180,7 +180,7 @@ func decodeMmdsConfigPutRequest(r *http.Request) (req MmdsConfig, err error) {
 	}
 }
 
-func decodeMmdsPatchRequest(r *http.Request) (req MmdsPatchReq, err error) {
+func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req MmdsPatchReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -207,7 +207,7 @@ func decodeMmdsPatchRequest(r *http.Request) (req MmdsPatchReq, err error) {
 	}
 }
 
-func decodeMmdsPutRequest(r *http.Request) (req MmdsPutReq, err error) {
+func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req MmdsPutReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -234,7 +234,7 @@ func decodeMmdsPutRequest(r *http.Request) (req MmdsPutReq, err error) {
 	}
 }
 
-func decodePatchBalloonRequest(r *http.Request) (req BalloonUpdate, err error) {
+func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpdate, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -261,7 +261,7 @@ func decodePatchBalloonRequest(r *http.Request) (req BalloonUpdate, err error) {
 	}
 }
 
-func decodePatchBalloonStatsIntervalRequest(r *http.Request) (req BalloonStatsUpdate, err error) {
+func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (req BalloonStatsUpdate, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -288,7 +288,7 @@ func decodePatchBalloonStatsIntervalRequest(r *http.Request) (req BalloonStatsUp
 	}
 }
 
-func decodePatchGuestDriveByIDRequest(r *http.Request) (req PartialDrive, err error) {
+func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req PartialDrive, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -323,7 +323,7 @@ func decodePatchGuestDriveByIDRequest(r *http.Request) (req PartialDrive, err er
 	}
 }
 
-func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (req PartialNetworkInterface, err error) {
+func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (req PartialNetworkInterface, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -358,7 +358,7 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (req PartialNe
 	}
 }
 
-func decodePatchMachineConfigurationRequest(r *http.Request) (req MachineConfiguration, err error) {
+func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (req MachineConfiguration, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -393,7 +393,7 @@ func decodePatchMachineConfigurationRequest(r *http.Request) (req MachineConfigu
 	}
 }
 
-func decodePatchVmRequest(r *http.Request) (req VM, err error) {
+func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -428,7 +428,7 @@ func decodePatchVmRequest(r *http.Request) (req VM, err error) {
 	}
 }
 
-func decodePutBalloonRequest(r *http.Request) (req Balloon, err error) {
+func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -455,7 +455,7 @@ func decodePutBalloonRequest(r *http.Request) (req Balloon, err error) {
 	}
 }
 
-func decodePutGuestBootSourceRequest(r *http.Request) (req BootSource, err error) {
+func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req BootSource, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -482,7 +482,7 @@ func decodePutGuestBootSourceRequest(r *http.Request) (req BootSource, err error
 	}
 }
 
-func decodePutGuestDriveByIDRequest(r *http.Request) (req Drive, err error) {
+func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -517,7 +517,7 @@ func decodePutGuestDriveByIDRequest(r *http.Request) (req Drive, err error) {
 	}
 }
 
-func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (req NetworkInterface, err error) {
+func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (req NetworkInterface, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -552,7 +552,7 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (req NetworkInte
 	}
 }
 
-func decodePutGuestVsockRequest(r *http.Request) (req Vsock, err error) {
+func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -587,7 +587,7 @@ func decodePutGuestVsockRequest(r *http.Request) (req Vsock, err error) {
 	}
 }
 
-func decodePutLoggerRequest(r *http.Request) (req Logger, err error) {
+func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -622,7 +622,7 @@ func decodePutLoggerRequest(r *http.Request) (req Logger, err error) {
 	}
 }
 
-func decodePutMachineConfigurationRequest(r *http.Request) (req MachineConfiguration, err error) {
+func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req MachineConfiguration, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -657,7 +657,7 @@ func decodePutMachineConfigurationRequest(r *http.Request) (req MachineConfigura
 	}
 }
 
-func decodePutMetricsRequest(r *http.Request) (req Metrics, err error) {
+func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {

@@ -56,7 +56,7 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func decodeAnswerCallbackQueryPostRequest(r *http.Request) (req AnswerCallbackQueryPostReq, err error) {
+func decodeAnswerCallbackQueryPostRequest(r *http.Request, span trace.Span) (req AnswerCallbackQueryPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -91,7 +91,7 @@ func decodeAnswerCallbackQueryPostRequest(r *http.Request) (req AnswerCallbackQu
 	}
 }
 
-func decodeAnswerPreCheckoutQueryPostRequest(r *http.Request) (req AnswerPreCheckoutQueryPostReq, err error) {
+func decodeAnswerPreCheckoutQueryPostRequest(r *http.Request, span trace.Span) (req AnswerPreCheckoutQueryPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -126,7 +126,7 @@ func decodeAnswerPreCheckoutQueryPostRequest(r *http.Request) (req AnswerPreChec
 	}
 }
 
-func decodeAnswerShippingQueryPostRequest(r *http.Request) (req AnswerShippingQueryPostReq, err error) {
+func decodeAnswerShippingQueryPostRequest(r *http.Request, span trace.Span) (req AnswerShippingQueryPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -169,7 +169,7 @@ func decodeAnswerShippingQueryPostRequest(r *http.Request) (req AnswerShippingQu
 	}
 }
 
-func decodeDeleteStickerFromSetPostRequest(r *http.Request) (req DeleteStickerFromSetPostReq, err error) {
+func decodeDeleteStickerFromSetPostRequest(r *http.Request, span trace.Span) (req DeleteStickerFromSetPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -204,7 +204,7 @@ func decodeDeleteStickerFromSetPostRequest(r *http.Request) (req DeleteStickerFr
 	}
 }
 
-func decodeDeleteWebhookPostRequest(r *http.Request) (req DeleteWebhookPostReq, err error) {
+func decodeDeleteWebhookPostRequest(r *http.Request, span trace.Span) (req DeleteWebhookPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -239,7 +239,7 @@ func decodeDeleteWebhookPostRequest(r *http.Request) (req DeleteWebhookPostReq, 
 	}
 }
 
-func decodeGetFilePostRequest(r *http.Request) (req GetFilePostReq, err error) {
+func decodeGetFilePostRequest(r *http.Request, span trace.Span) (req GetFilePostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -274,7 +274,7 @@ func decodeGetFilePostRequest(r *http.Request) (req GetFilePostReq, err error) {
 	}
 }
 
-func decodeGetGameHighScoresPostRequest(r *http.Request) (req GetGameHighScoresPostReq, err error) {
+func decodeGetGameHighScoresPostRequest(r *http.Request, span trace.Span) (req GetGameHighScoresPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -309,7 +309,7 @@ func decodeGetGameHighScoresPostRequest(r *http.Request) (req GetGameHighScoresP
 	}
 }
 
-func decodeGetStickerSetPostRequest(r *http.Request) (req GetStickerSetPostReq, err error) {
+func decodeGetStickerSetPostRequest(r *http.Request, span trace.Span) (req GetStickerSetPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -344,7 +344,7 @@ func decodeGetStickerSetPostRequest(r *http.Request) (req GetStickerSetPostReq, 
 	}
 }
 
-func decodeGetUpdatesPostRequest(r *http.Request) (req GetUpdatesPostReq, err error) {
+func decodeGetUpdatesPostRequest(r *http.Request, span trace.Span) (req GetUpdatesPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -387,7 +387,7 @@ func decodeGetUpdatesPostRequest(r *http.Request) (req GetUpdatesPostReq, err er
 	}
 }
 
-func decodeGetUserProfilePhotosPostRequest(r *http.Request) (req GetUserProfilePhotosPostReq, err error) {
+func decodeGetUserProfilePhotosPostRequest(r *http.Request, span trace.Span) (req GetUserProfilePhotosPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -430,7 +430,7 @@ func decodeGetUserProfilePhotosPostRequest(r *http.Request) (req GetUserProfileP
 	}
 }
 
-func decodeSendGamePostRequest(r *http.Request) (req SendGamePostReq, err error) {
+func decodeSendGamePostRequest(r *http.Request, span trace.Span) (req SendGamePostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -473,7 +473,7 @@ func decodeSendGamePostRequest(r *http.Request) (req SendGamePostReq, err error)
 	}
 }
 
-func decodeSendInvoicePostRequest(r *http.Request) (req SendInvoicePostReq, err error) {
+func decodeSendInvoicePostRequest(r *http.Request, span trace.Span) (req SendInvoicePostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -516,7 +516,7 @@ func decodeSendInvoicePostRequest(r *http.Request) (req SendInvoicePostReq, err 
 	}
 }
 
-func decodeSetMyCommandsPostRequest(r *http.Request) (req SetMyCommandsPostReq, err error) {
+func decodeSetMyCommandsPostRequest(r *http.Request, span trace.Span) (req SetMyCommandsPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -559,7 +559,7 @@ func decodeSetMyCommandsPostRequest(r *http.Request) (req SetMyCommandsPostReq, 
 	}
 }
 
-func decodeSetStickerPositionInSetPostRequest(r *http.Request) (req SetStickerPositionInSetPostReq, err error) {
+func decodeSetStickerPositionInSetPostRequest(r *http.Request, span trace.Span) (req SetStickerPositionInSetPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -594,7 +594,7 @@ func decodeSetStickerPositionInSetPostRequest(r *http.Request) (req SetStickerPo
 	}
 }
 
-func decodeSetWebhookPostRequest(r *http.Request) (req SetWebhookPostReq, err error) {
+func decodeSetWebhookPostRequest(r *http.Request, span trace.Span) (req SetWebhookPostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {
@@ -611,7 +611,7 @@ func decodeSetWebhookPostRequest(r *http.Request) (req SetWebhookPostReq, err er
 	}
 }
 
-func decodeUploadStickerFilePostRequest(r *http.Request) (req UploadStickerFilePostReq, err error) {
+func decodeUploadStickerFilePostRequest(r *http.Request, span trace.Span) (req UploadStickerFilePostReq, err error) {
 	buf := json.GetBuffer()
 	defer json.PutBuffer(buf)
 	if _, err := io.Copy(buf, r.Body); err != nil {

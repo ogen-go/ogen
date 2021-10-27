@@ -56,15 +56,15 @@ var (
 	_ = otel.GetTracerProvider
 )
 
-func Register(r chi.Router, s Server) {
-	r.MethodFunc("GET", "/foobar", NewFoobarGetHandler(s))
-	r.MethodFunc("POST", "/foobar", NewFoobarPostHandler(s))
-	r.MethodFunc("PUT", "/foobar", NewFoobarPutHandler(s))
-	r.MethodFunc("POST", "/pet", NewPetCreateHandler(s))
-	r.MethodFunc("GET", "/pet/friendNames/{id}", NewPetFriendsNamesByIDHandler(s))
-	r.MethodFunc("GET", "/pet", NewPetGetHandler(s))
-	r.MethodFunc("GET", "/pet/{name}", NewPetGetByNameHandler(s))
-	r.MethodFunc("GET", "/pet/name/{id}", NewPetNameByIDHandler(s))
-	r.MethodFunc("POST", "/pet/updateNameAlias", NewPetUpdateNameAliasPostHandler(s))
-	r.MethodFunc("POST", "/pet/updateName", NewPetUpdateNamePostHandler(s))
+func Register(r chi.Router, s Server, opts ...Option) {
+	r.MethodFunc("GET", "/foobar", NewFoobarGetHandler(s, opts...))
+	r.MethodFunc("POST", "/foobar", NewFoobarPostHandler(s, opts...))
+	r.MethodFunc("PUT", "/foobar", NewFoobarPutHandler(s, opts...))
+	r.MethodFunc("POST", "/pet", NewPetCreateHandler(s, opts...))
+	r.MethodFunc("GET", "/pet/friendNames/{id}", NewPetFriendsNamesByIDHandler(s, opts...))
+	r.MethodFunc("GET", "/pet", NewPetGetHandler(s, opts...))
+	r.MethodFunc("GET", "/pet/{name}", NewPetGetByNameHandler(s, opts...))
+	r.MethodFunc("GET", "/pet/name/{id}", NewPetNameByIDHandler(s, opts...))
+	r.MethodFunc("POST", "/pet/updateNameAlias", NewPetUpdateNameAliasPostHandler(s, opts...))
+	r.MethodFunc("POST", "/pet/updateName", NewPetUpdateNamePostHandler(s, opts...))
 }
