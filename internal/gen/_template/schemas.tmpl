@@ -82,6 +82,14 @@ func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
     s.{{ $s.Name }} = v
 }
 
+// Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
+func (s *{{ $.Go }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
+    if !s.Is{{ $s.Name }}() {
+        return v, false
+    }
+    return s.{{ $s.Name }}, true
+}
+
 // {{ $.Name }}{{ $s.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
 func {{ $.Name }}{{ $s.Name }}(v {{ $s.Go }}) {{ $.Go }} {
     var s {{ $.Name }}

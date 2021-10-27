@@ -84,6 +84,14 @@ func (s *DataID) SetString(v string) {
 	s.String = v
 }
 
+// GetString returns string and true boolean if DataID is string.
+func (s *DataID) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
 // DataIDString returns new DataID from string.
 func DataIDString(v string) DataID {
 	var s DataID
@@ -95,6 +103,14 @@ func DataIDString(v string) DataID {
 func (s *DataID) SetInt(v int) {
 	s.Type = DataIDIntType
 	s.Int = v
+}
+
+// GetInt returns int and true boolean if DataID is int.
+func (s *DataID) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
 }
 
 // DataIDInt returns new DataID from int.
